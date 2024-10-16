@@ -20,35 +20,37 @@ import (
 	tes "testing"
 )
 
-var filenames = []string{
-	"../ast/Package.go",
-	"../grammar/Package.go",
-	"../testdata/Package.go",
+var inputDirectory = "../"
+var outputDirectory = "../../../go-test-framework/v5/"
+var testDirectories = []string{
+	"ast/",
+	"grammar/",
+	"testdata/",
 }
 
 func TestRoundTrips(t *tes.T) {
 	fmt.Println("Round Trip Tests:")
-	for _, filename := range filenames {
-		fmt.Printf("   %v\n", filename)
-		// Read in the class model file.
-		var bytes, err = osx.ReadFile(filename)
+	for _, testDirectory := range testDirectories {
+		var directory = inputDirectory + testDirectory
+		fmt.Printf("   %v\n", directory)
+		var bytes, err = osx.ReadFile(directory + "Package.go")
 		if err != nil {
 			panic(err)
 		}
 		var source = string(bytes)
-
-		// Parse the source code for the class model.
 		var parser = gra.Parser().Make()
 		var model = parser.ParseSource(source)
-
-		// Validate the class model.
 		var validator = gra.Validator().Make()
 		validator.ValidateModel(model)
-
-		// Format the class model.
 		var formatter = gra.Formatter().Make()
 		var actual = formatter.FormatModel(model)
 		ass.Equal(t, source, actual)
+		directory = outputDirectory + testDirectory
+		var filename = directory + "Package.go"
+		err = osx.WriteFile(filename, bytes, 0644)
+		if err != nil {
+			panic(err)
+		}
 	}
 	fmt.Println("Done.")
 }

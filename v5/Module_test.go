@@ -14,37 +14,30 @@ package module_test
 
 import (
 	fmt "fmt"
-	cla "github.com/craterdog/go-class-model/v5"
+	mod "github.com/craterdog/go-class-model/v5"
 	ass "github.com/stretchr/testify/assert"
 	osx "os"
 	tes "testing"
 )
 
-var filenames = []string{
-	"./ast/Package.go",
-	"./grammar/Package.go",
-	"./testdata/Package.go",
+var testDirectories = []string{
+	"../../go-test-framework/v5/ast/",
+	"../../go-test-framework/v5/grammar/",
+	"../../go-test-framework/v5/testdata/",
 }
 
 func TestRoundTrips(t *tes.T) {
 	fmt.Println("Round Trip Tests:")
-	for _, filename := range filenames {
-		fmt.Printf("   %v\n", filename)
-		// Read in the class model file.
-		var bytes, err = osx.ReadFile(filename)
+	for _, directory := range testDirectories {
+		fmt.Printf("   %v\n", directory)
+		var bytes, err = osx.ReadFile(directory + "Package.go")
 		if err != nil {
 			panic(err)
 		}
 		var source = string(bytes)
-
-		// Parse the source code for the class model.
-		var model = cla.ParseSource(source)
-
-		// Validate the class model.
-		cla.ValidateModel(model)
-
-		// Format the class model.
-		var actual = cla.FormatModel(model)
+		var model = mod.ParseSource(source)
+		mod.ValidateModel(model)
+		var actual = mod.FormatModel(model)
 		ass.Equal(t, source, actual)
 	}
 	fmt.Println("Done.")

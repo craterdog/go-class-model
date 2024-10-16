@@ -15,7 +15,7 @@ Package "example" provides examples of each of the four types of classes.
 
 This package follows the Crater Dog Technologies™ Go Coding Conventions located
 here:
-  - https://github.com/craterdog/go-model-framework/wiki
+  - https://github.com/craterdog/go-class-model/wiki
 
 Additional implementations of the concrete classes provided by this package can
 be developed and used seamlessly since the interface definitions only depend on

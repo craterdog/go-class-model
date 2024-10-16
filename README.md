@@ -1,16 +1,16 @@
 <img src="https://craterdog.com/images/CraterDog.png" width="50%">
 
-## Go Class Model Framework
+## Go Class Model
 
 ### Overview
-This project provides a class-based model framework for jump-starting Go package
-development.  It can be used to up-level the typically low-level of Go code.
+This project provides a class-based model for jump-starting Go package
+development.  It can be used to up-level typically low-level Go code.
 
 ### Quick Links
 For more information on this project click on the following links:
  * [project documentation](https://github.com/craterdog/go-class-model/wiki)
  * [coding conventions](https://github.com/craterdog/go-class-model/wiki)
- * [command-line tools](https://github.com/craterdog/go-model-tools/wiki)
+ * [command-line tools](https://github.com/craterdog/go-class-tools/wiki)
 
 ### Getting Started
 To include the Go packages for this module use the following import statement:
