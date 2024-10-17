@@ -53,6 +53,12 @@ func (c *functionMethodClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *functionMethod_) GetClass() FunctionMethodClassLike {
+	return functionMethodReference()
+}
+
 // Attribute Methods
 
 func (v *functionMethod_) GetName() string {
@@ -67,19 +73,9 @@ func (v *functionMethod_) GetResult() ResultLike {
 	return v.result_
 }
 
-// Public Methods
-
-func (v *functionMethod_) GetClass() FunctionMethodClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *functionMethod_) getClass() *functionMethodClass_ {
-	return functionMethodReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

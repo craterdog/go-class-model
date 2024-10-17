@@ -42,25 +42,21 @@ func (c *additionalConstraintClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *additionalConstraint_) GetClass() AdditionalConstraintClassLike {
+	return additionalConstraintReference()
+}
+
 // Attribute Methods
 
 func (v *additionalConstraint_) GetConstraint() ConstraintLike {
 	return v.constraint_
 }
 
-// Public Methods
-
-func (v *additionalConstraint_) GetClass() AdditionalConstraintClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *additionalConstraint_) getClass() *additionalConstraintClass_ {
-	return additionalConstraintReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

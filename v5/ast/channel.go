@@ -32,19 +32,15 @@ func (c *channelClass_) Make() ChannelLike {
 
 // INSTANCE INTERFACE
 
-// Public Methods
+// Primary Methods
 
 func (v *channel_) GetClass() ChannelClassLike {
-	return v.getClass()
-}
-
-// Private Methods
-
-func (v *channel_) getClass() *channelClass_ {
 	return channelReference()
 }
 
-// PRIVATE INTERFACE
+// PROTECTED INTERFACE
+
+// Private Methods
 
 // Instance Structure
 

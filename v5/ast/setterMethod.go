@@ -47,6 +47,12 @@ func (c *setterMethodClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *setterMethod_) GetClass() SetterMethodClassLike {
+	return setterMethodReference()
+}
+
 // Attribute Methods
 
 func (v *setterMethod_) GetName() string {
@@ -57,19 +63,9 @@ func (v *setterMethod_) GetParameter() ParameterLike {
 	return v.parameter_
 }
 
-// Public Methods
-
-func (v *setterMethod_) GetClass() SetterMethodClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *setterMethod_) getClass() *setterMethodClass_ {
-	return setterMethodReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

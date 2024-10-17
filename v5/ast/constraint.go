@@ -47,6 +47,12 @@ func (c *constraintClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *constraint_) GetClass() ConstraintClassLike {
+	return constraintReference()
+}
+
 // Attribute Methods
 
 func (v *constraint_) GetName() string {
@@ -57,19 +63,9 @@ func (v *constraint_) GetAbstraction() AbstractionLike {
 	return v.abstraction_
 }
 
-// Public Methods
-
-func (v *constraint_) GetClass() ConstraintClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *constraint_) getClass() *constraintClass_ {
-	return constraintReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

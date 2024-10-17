@@ -43,25 +43,21 @@ func (c *importsClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *imports_) GetClass() ImportsClassLike {
+	return importsReference()
+}
+
 // Attribute Methods
 
 func (v *imports_) GetModules() abs.Sequential[ModuleLike] {
 	return v.modules_
 }
 
-// Public Methods
-
-func (v *imports_) GetClass() ImportsClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *imports_) getClass() *importsClass_ {
-	return importsReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

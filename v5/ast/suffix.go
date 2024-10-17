@@ -42,25 +42,21 @@ func (c *suffixClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *suffix_) GetClass() SuffixClassLike {
+	return suffixReference()
+}
+
 // Attribute Methods
 
 func (v *suffix_) GetName() string {
 	return v.name_
 }
 
-// Public Methods
-
-func (v *suffix_) GetClass() SuffixClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *suffix_) getClass() *suffixClass_ {
-	return suffixReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

@@ -49,6 +49,12 @@ func (c *typeDefinitionClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *typeDefinition_) GetClass() TypeDefinitionClassLike {
+	return typeDefinitionReference()
+}
+
 // Attribute Methods
 
 func (v *typeDefinition_) GetDeclaration() DeclarationLike {
@@ -63,19 +69,9 @@ func (v *typeDefinition_) GetOptionalEnumeration() EnumerationLike {
 	return v.optionalEnumeration_
 }
 
-// Public Methods
-
-func (v *typeDefinition_) GetClass() TypeDefinitionClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *typeDefinition_) getClass() *typeDefinitionClass_ {
-	return typeDefinitionReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

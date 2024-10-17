@@ -42,25 +42,21 @@ func (c *additionalValueClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *additionalValue_) GetClass() AdditionalValueClassLike {
+	return additionalValueReference()
+}
+
 // Attribute Methods
 
 func (v *additionalValue_) GetName() string {
 	return v.name_
 }
 
-// Public Methods
-
-func (v *additionalValue_) GetClass() AdditionalValueClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *additionalValue_) getClass() *additionalValueClass_ {
-	return additionalValueReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

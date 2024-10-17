@@ -47,6 +47,12 @@ func (c *constantMethodClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *constantMethod_) GetClass() ConstantMethodClassLike {
+	return constantMethodReference()
+}
+
 // Attribute Methods
 
 func (v *constantMethod_) GetName() string {
@@ -57,19 +63,9 @@ func (v *constantMethod_) GetAbstraction() AbstractionLike {
 	return v.abstraction_
 }
 
-// Public Methods
-
-func (v *constantMethod_) GetClass() ConstantMethodClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *constantMethod_) getClass() *constantMethodClass_ {
-	return constantMethodReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

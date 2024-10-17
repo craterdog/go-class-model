@@ -166,7 +166,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete formatter-like class.
 */
 type FormatterLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() FormatterClassLike
 	FormatModel(
 		model ast.ModelLike,
@@ -182,7 +182,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete parser-like class.
 */
 type ParserLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ParserClassLike
 	ParseSource(
 		source string,
@@ -195,7 +195,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete processor-like class.
 */
 type ProcessorLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ProcessorClassLike
 
 	// Aspect Methods
@@ -208,7 +208,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete scanner-like class.
 */
 type ScannerLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ScannerClassLike
 }
 
@@ -218,7 +218,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete token-like class.
 */
 type TokenLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() TokenClassLike
 
 	// Attribute Methods
@@ -234,7 +234,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete validator-like class.
 */
 type ValidatorLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ValidatorClassLike
 	ValidateModel(
 		model ast.ModelLike,
@@ -250,7 +250,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete visitor-like class.
 */
 type VisitorLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() VisitorClassLike
 	VisitModel(
 		model ast.ModelLike,
@@ -762,6 +762,28 @@ type Methodical interface {
 	PostprocessPrefix(
 		prefix ast.PrefixLike,
 	)
+	PreprocessPrimaryMethod(
+		primaryMethod ast.PrimaryMethodLike,
+		index uint,
+		size uint,
+	)
+	ProcessPrimaryMethodSlot(
+		slot uint,
+	)
+	PostprocessPrimaryMethod(
+		primaryMethod ast.PrimaryMethodLike,
+		index uint,
+		size uint,
+	)
+	PreprocessPrimarySubsection(
+		primarySubsection ast.PrimarySubsectionLike,
+	)
+	ProcessPrimarySubsectionSlot(
+		slot uint,
+	)
+	PostprocessPrimarySubsection(
+		primarySubsection ast.PrimarySubsectionLike,
+	)
 	PreprocessPrimitiveDefinitions(
 		primitiveDefinitions ast.PrimitiveDefinitionsLike,
 	)
@@ -770,28 +792,6 @@ type Methodical interface {
 	)
 	PostprocessPrimitiveDefinitions(
 		primitiveDefinitions ast.PrimitiveDefinitionsLike,
-	)
-	PreprocessPublicMethod(
-		publicMethod ast.PublicMethodLike,
-		index uint,
-		size uint,
-	)
-	ProcessPublicMethodSlot(
-		slot uint,
-	)
-	PostprocessPublicMethod(
-		publicMethod ast.PublicMethodLike,
-		index uint,
-		size uint,
-	)
-	PreprocessPublicSubsection(
-		publicSubsection ast.PublicSubsectionLike,
-	)
-	ProcessPublicSubsectionSlot(
-		slot uint,
-	)
-	PostprocessPublicSubsection(
-		publicSubsection ast.PublicSubsectionLike,
 	)
 	PreprocessResult(
 		result ast.ResultLike,

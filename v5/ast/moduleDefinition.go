@@ -49,6 +49,12 @@ func (c *moduleDefinitionClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *moduleDefinition_) GetClass() ModuleDefinitionClassLike {
+	return moduleDefinitionReference()
+}
+
 // Attribute Methods
 
 func (v *moduleDefinition_) GetNotice() NoticeLike {
@@ -63,19 +69,9 @@ func (v *moduleDefinition_) GetOptionalImports() ImportsLike {
 	return v.optionalImports_
 }
 
-// Public Methods
-
-func (v *moduleDefinition_) GetClass() ModuleDefinitionClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *moduleDefinition_) getClass() *moduleDefinitionClass_ {
-	return moduleDefinitionReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

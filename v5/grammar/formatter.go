@@ -475,9 +475,9 @@ func (v *formatter_) PostprocessParameterized(parameterized ast.ParameterizedLik
 	v.appendString(")")
 }
 
-func (v *formatter_) PreprocessPublicSubsection(publicSubsection ast.PublicSubsectionLike) {
+func (v *formatter_) PreprocessPrimarySubsection(publicSubsection ast.PrimarySubsectionLike) {
 	v.appendNewline()
-	v.appendString("// Public Methods")
+	v.appendString("// Primary Methods")
 }
 
 func (v *formatter_) PreprocessResult(result ast.ResultLike) {
@@ -547,7 +547,7 @@ func (v *formatter_) PostprocessValue(value ast.ValueLike) {
 	v.appendString(" = iota")
 }
 
-// Public Methods
+// Primary Methods
 
 func (v *formatter_) GetClass() FormatterClassLike {
 	return v.getClass()
@@ -561,6 +561,8 @@ func (v *formatter_) FormatModel(
 	result_ = v.getResult()
 	return result_
 }
+
+// PROTECTED INTERFACE
 
 // Private Methods
 
@@ -587,8 +589,6 @@ func (v *formatter_) getResult() string {
 	v.result_.Reset()
 	return result
 }
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

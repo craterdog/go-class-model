@@ -46,6 +46,12 @@ func (c *classMethodsClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *classMethods_) GetClass() ClassMethodsClassLike {
+	return classMethodsReference()
+}
+
 // Attribute Methods
 
 func (v *classMethods_) GetConstructorSubsection() ConstructorSubsectionLike {
@@ -60,19 +66,9 @@ func (v *classMethods_) GetOptionalFunctionSubsection() FunctionSubsectionLike {
 	return v.optionalFunctionSubsection_
 }
 
-// Public Methods
-
-func (v *classMethods_) GetClass() ClassMethodsClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *classMethods_) getClass() *classMethodsClass_ {
-	return classMethodsReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

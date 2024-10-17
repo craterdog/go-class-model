@@ -43,25 +43,21 @@ func (c *parameterizedClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *parameterized_) GetClass() ParameterizedClassLike {
+	return parameterizedReference()
+}
+
 // Attribute Methods
 
 func (v *parameterized_) GetParameters() abs.Sequential[ParameterLike] {
 	return v.parameters_
 }
 
-// Public Methods
-
-func (v *parameterized_) GetClass() ParameterizedClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *parameterized_) getClass() *parameterizedClass_ {
-	return parameterizedReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

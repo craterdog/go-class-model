@@ -49,6 +49,12 @@ func (c *declarationClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *declaration_) GetClass() DeclarationClassLike {
+	return declarationReference()
+}
+
 // Attribute Methods
 
 func (v *declaration_) GetComment() string {
@@ -63,19 +69,9 @@ func (v *declaration_) GetOptionalConstraints() ConstraintsLike {
 	return v.optionalConstraints_
 }
 
-// Public Methods
-
-func (v *declaration_) GetClass() DeclarationClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *declaration_) getClass() *declarationClass_ {
-	return declarationReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

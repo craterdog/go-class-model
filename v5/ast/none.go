@@ -42,25 +42,21 @@ func (c *noneClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *none_) GetClass() NoneClassLike {
+	return noneReference()
+}
+
 // Attribute Methods
 
 func (v *none_) GetNewline() string {
 	return v.newline_
 }
 
-// Public Methods
-
-func (v *none_) GetClass() NoneClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *none_) getClass() *noneClass_ {
-	return noneReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

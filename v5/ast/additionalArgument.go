@@ -42,25 +42,21 @@ func (c *additionalArgumentClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *additionalArgument_) GetClass() AdditionalArgumentClassLike {
+	return additionalArgumentReference()
+}
+
 // Attribute Methods
 
 func (v *additionalArgument_) GetArgument() ArgumentLike {
 	return v.argument_
 }
 
-// Public Methods
-
-func (v *additionalArgument_) GetClass() AdditionalArgumentClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *additionalArgument_) getClass() *additionalArgumentClass_ {
-	return additionalArgumentReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

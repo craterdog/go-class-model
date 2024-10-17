@@ -43,25 +43,21 @@ func (c *constructorSubsectionClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *constructorSubsection_) GetClass() ConstructorSubsectionClassLike {
+	return constructorSubsectionReference()
+}
+
 // Attribute Methods
 
 func (v *constructorSubsection_) GetConstructorMethods() abs.Sequential[ConstructorMethodLike] {
 	return v.constructorMethods_
 }
 
-// Public Methods
-
-func (v *constructorSubsection_) GetClass() ConstructorSubsectionClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *constructorSubsection_) getClass() *constructorSubsectionClass_ {
-	return constructorSubsectionReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

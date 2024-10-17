@@ -48,6 +48,12 @@ func (c *aspectDefinitionClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *aspectDefinition_) GetClass() AspectDefinitionClassLike {
+	return aspectDefinitionReference()
+}
+
 // Attribute Methods
 
 func (v *aspectDefinition_) GetDeclaration() DeclarationLike {
@@ -58,19 +64,9 @@ func (v *aspectDefinition_) GetAspectMethods() abs.Sequential[AspectMethodLike] 
 	return v.aspectMethods_
 }
 
-// Public Methods
-
-func (v *aspectDefinition_) GetClass() AspectDefinitionClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *aspectDefinition_) getClass() *aspectDefinitionClass_ {
-	return aspectDefinitionReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

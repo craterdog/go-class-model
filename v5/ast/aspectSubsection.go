@@ -43,25 +43,21 @@ func (c *aspectSubsectionClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *aspectSubsection_) GetClass() AspectSubsectionClassLike {
+	return aspectSubsectionReference()
+}
+
 // Attribute Methods
 
 func (v *aspectSubsection_) GetAspectInterfaces() abs.Sequential[AspectInterfaceLike] {
 	return v.aspectInterfaces_
 }
 
-// Public Methods
-
-func (v *aspectSubsection_) GetClass() AspectSubsectionClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *aspectSubsection_) getClass() *aspectSubsectionClass_ {
-	return aspectSubsectionReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

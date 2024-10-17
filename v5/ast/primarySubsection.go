@@ -21,21 +21,21 @@ import (
 
 // Access Function
 
-func PublicSubsection() PublicSubsectionClassLike {
-	return publicSubsectionReference()
+func PrimarySubsection() PrimarySubsectionClassLike {
+	return primarySubsectionReference()
 }
 
 // Constructor Methods
 
-func (c *publicSubsectionClass_) Make(
-	publicMethods abs.Sequential[PublicMethodLike],
-) PublicSubsectionLike {
-	if uti.IsUndefined(publicMethods) {
-		panic("The \"publicMethods\" attribute is required by this class.")
+func (c *primarySubsectionClass_) Make(
+	primaryMethods abs.Sequential[PrimaryMethodLike],
+) PrimarySubsectionLike {
+	if uti.IsUndefined(primaryMethods) {
+		panic("The \"primaryMethods\" attribute is required by this class.")
 	}
-	var instance = &publicSubsection_{
+	var instance = &primarySubsection_{
 		// Initialize the instance attributes.
-		publicMethods_: publicMethods,
+		primaryMethods_: primaryMethods,
 	}
 	return instance
 
@@ -43,45 +43,41 @@ func (c *publicSubsectionClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *primarySubsection_) GetClass() PrimarySubsectionClassLike {
+	return primarySubsectionReference()
+}
+
 // Attribute Methods
 
-func (v *publicSubsection_) GetPublicMethods() abs.Sequential[PublicMethodLike] {
-	return v.publicMethods_
+func (v *primarySubsection_) GetPrimaryMethods() abs.Sequential[PrimaryMethodLike] {
+	return v.primaryMethods_
 }
 
-// Public Methods
-
-func (v *publicSubsection_) GetClass() PublicSubsectionClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
 
-func (v *publicSubsection_) getClass() *publicSubsectionClass_ {
-	return publicSubsectionReference()
-}
-
-// PRIVATE INTERFACE
-
 // Instance Structure
 
-type publicSubsection_ struct {
+type primarySubsection_ struct {
 	// Declare the instance attributes.
-	publicMethods_ abs.Sequential[PublicMethodLike]
+	primaryMethods_ abs.Sequential[PrimaryMethodLike]
 }
 
 // Class Structure
 
-type publicSubsectionClass_ struct {
+type primarySubsectionClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func publicSubsectionReference() *publicSubsectionClass_ {
-	return publicSubsectionReference_
+func primarySubsectionReference() *primarySubsectionClass_ {
+	return primarySubsectionReference_
 }
 
-var publicSubsectionReference_ = &publicSubsectionClass_{
+var primarySubsectionReference_ = &primarySubsectionClass_{
 	// Initialize the class constants.
 }

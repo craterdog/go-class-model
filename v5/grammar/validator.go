@@ -89,10 +89,10 @@ func (v *validator_) PreprocessInterfaceDefinitions(
 	}
 }
 
-// Public Methods
+// Primary Methods
 
 func (v *validator_) GetClass() ValidatorClassLike {
-	return v.getClass()
+	return validatorReference()
 }
 
 func (v *validator_) ValidateModel(
@@ -101,11 +101,9 @@ func (v *validator_) ValidateModel(
 	v.visitor_.VisitModel(model)
 }
 
-// Private Methods
+// PROTECTED INTERFACE
 
-func (v *validator_) getClass() *validatorClass_ {
-	return validatorReference()
-}
+// Private Methods
 
 func (v *validator_) validateToken(
 	tokenValue string,
@@ -120,8 +118,6 @@ func (v *validator_) validateToken(
 		panic(message)
 	}
 }
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

@@ -47,6 +47,12 @@ func (c *parameterClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *parameter_) GetClass() ParameterClassLike {
+	return parameterReference()
+}
+
 // Attribute Methods
 
 func (v *parameter_) GetName() string {
@@ -57,19 +63,9 @@ func (v *parameter_) GetAbstraction() AbstractionLike {
 	return v.abstraction_
 }
 
-// Public Methods
-
-func (v *parameter_) GetClass() ParameterClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *parameter_) getClass() *parameterClass_ {
-	return parameterReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

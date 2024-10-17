@@ -74,19 +74,15 @@ func (v *token_) GetValue() string {
 	return v.value_
 }
 
-// Public Methods
+// Primary Methods
 
 func (v *token_) GetClass() TokenClassLike {
-	return v.getClass()
-}
-
-// Private Methods
-
-func (v *token_) getClass() *tokenClass_ {
 	return tokenReference()
 }
 
-// PRIVATE INTERFACE
+// PROTECTED INTERFACE
+
+// Private Methods
 
 // Instance Structure
 

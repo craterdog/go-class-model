@@ -47,6 +47,12 @@ func (c *headerClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *header_) GetClass() HeaderClassLike {
+	return headerReference()
+}
+
 // Attribute Methods
 
 func (v *header_) GetComment() string {
@@ -57,19 +63,9 @@ func (v *header_) GetName() string {
 	return v.name_
 }
 
-// Public Methods
-
-func (v *header_) GetClass() HeaderClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *header_) getClass() *headerClass_ {
-	return headerReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

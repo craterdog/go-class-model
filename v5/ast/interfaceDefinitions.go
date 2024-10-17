@@ -49,6 +49,12 @@ func (c *interfaceDefinitionsClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *interfaceDefinitions_) GetClass() InterfaceDefinitionsClassLike {
+	return interfaceDefinitionsReference()
+}
+
 // Attribute Methods
 
 func (v *interfaceDefinitions_) GetClassSection() ClassSectionLike {
@@ -63,19 +69,9 @@ func (v *interfaceDefinitions_) GetOptionalAspectSection() AspectSectionLike {
 	return v.optionalAspectSection_
 }
 
-// Public Methods
-
-func (v *interfaceDefinitions_) GetClass() InterfaceDefinitionsClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *interfaceDefinitions_) getClass() *interfaceDefinitionsClass_ {
-	return interfaceDefinitionsReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

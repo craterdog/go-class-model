@@ -143,11 +143,11 @@ InstanceSection: "// Instance Definitions" InstanceDefinition+
 
 InstanceDefinition: Declaration "interface" "{" InstanceMethods "}"
 
-InstanceMethods: PublicSubsection AttributeSubsection? AspectSubsection?
+InstanceMethods: PrimarySubsection AttributeSubsection? AspectSubsection?
 
-PublicSubsection: "// Public Methods" PublicMethod+
+PrimarySubsection: "// Primary Methods" PrimaryMethod+
 
-PublicMethod: Method
+PrimaryMethod: Method
 
 Method: name "(" Parameter* ")" Result?
 

@@ -256,7 +256,7 @@ abstractions and methods that must be supported by each instance of a concrete
 angle-like class.
 */
 type AngleLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() AngleClassLike
 	GetIntrinsic() float64
 	IsZero() bool
@@ -276,7 +276,7 @@ uses ORDINAL based indexing rather than the more common—and nonsensical—ZERO
 based indexing scheme.
 */
 type ArrayLike[V any] interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ArrayClassLike[V]
 	GetIntrinsic() []V
 	SortValues()
@@ -296,7 +296,7 @@ complete set of instance attributes, abstractions and methods that must be
 supported by each instance of a concrete association-like class.
 */
 type AssociationLike[K comparable, V any] interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() AssociationClassLike[K, V]
 
 	// Attribute Methods
@@ -313,7 +313,7 @@ complete set of instance attributes, abstractions and methods that must be
 supported by each instance of a concrete catalog-like class.
 */
 type CatalogLike[K comparable, V any] interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() CatalogClassLike[K, V]
 	SortValues()
 	SortValuesWithRanker(
@@ -331,7 +331,7 @@ abstractions and methods that must be supported by each instance of a concrete
 complex-like class.
 */
 type ComplexLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ComplexClassLike
 	IsReal() bool
 	IsImaginary() bool

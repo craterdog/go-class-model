@@ -48,6 +48,12 @@ func (c *argumentsClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *arguments_) GetClass() ArgumentsClassLike {
+	return argumentsReference()
+}
+
 // Attribute Methods
 
 func (v *arguments_) GetArgument() ArgumentLike {
@@ -58,19 +64,9 @@ func (v *arguments_) GetAdditionalArguments() abs.Sequential[AdditionalArgumentL
 	return v.additionalArguments_
 }
 
-// Public Methods
-
-func (v *arguments_) GetClass() ArgumentsClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *arguments_) getClass() *argumentsClass_ {
-	return argumentsReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

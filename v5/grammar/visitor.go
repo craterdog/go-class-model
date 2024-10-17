@@ -43,10 +43,10 @@ func (c *visitorClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Public Methods
+// Primary Methods
 
 func (v *visitor_) GetClass() VisitorClassLike {
-	return v.getClass()
+	return visitorReference()
 }
 
 func (v *visitor_) VisitModel(
@@ -57,11 +57,9 @@ func (v *visitor_) VisitModel(
 	v.processor_.PostprocessModel(model)
 }
 
-// Private Methods
+// PROTECTED INTERFACE
 
-func (v *visitor_) getClass() *visitorClass_ {
-	return visitorReference()
-}
+// Private Methods
 
 func (v *visitor_) visitAbstraction(abstraction ast.AbstractionLike) {
 	// Visit the optional prefix rule.
@@ -756,11 +754,11 @@ func (v *visitor_) visitInstanceDefinition(instanceDefinition ast.InstanceDefini
 }
 
 func (v *visitor_) visitInstanceMethods(instanceMethods ast.InstanceMethodsLike) {
-	// Visit the publicSubsection rule.
-	var publicSubsection = instanceMethods.GetPublicSubsection()
-	v.processor_.PreprocessPublicSubsection(publicSubsection)
-	v.visitPublicSubsection(publicSubsection)
-	v.processor_.PostprocessPublicSubsection(publicSubsection)
+	// Visit the primarySubsection rule.
+	var primarySubsection = instanceMethods.GetPrimarySubsection()
+	v.processor_.PreprocessPrimarySubsection(primarySubsection)
+	v.visitPrimarySubsection(primarySubsection)
+	v.processor_.PostprocessPrimarySubsection(primarySubsection)
 
 	// Visit slot 1 between references.
 	v.processor_.ProcessInstanceMethodsSlot(1)
@@ -1022,6 +1020,36 @@ func (v *visitor_) visitPrefix(prefix ast.PrefixLike) {
 	}
 }
 
+func (v *visitor_) visitPrimaryMethod(primaryMethod ast.PrimaryMethodLike) {
+	// Visit the method rule.
+	var method = primaryMethod.GetMethod()
+	v.processor_.PreprocessMethod(method)
+	v.visitMethod(method)
+	v.processor_.PostprocessMethod(method)
+}
+
+func (v *visitor_) visitPrimarySubsection(primarySubsection ast.PrimarySubsectionLike) {
+	// Visit each primaryMethod rule.
+	var primaryMethodIndex uint
+	var primaryMethods = primarySubsection.GetPrimaryMethods().GetIterator()
+	var primaryMethodsSize = uint(primaryMethods.GetSize())
+	for primaryMethods.HasNext() {
+		primaryMethodIndex++
+		var primaryMethod = primaryMethods.GetNext()
+		v.processor_.PreprocessPrimaryMethod(
+			primaryMethod,
+			primaryMethodIndex,
+			primaryMethodsSize,
+		)
+		v.visitPrimaryMethod(primaryMethod)
+		v.processor_.PostprocessPrimaryMethod(
+			primaryMethod,
+			primaryMethodIndex,
+			primaryMethodsSize,
+		)
+	}
+}
+
 func (v *visitor_) visitPrimitiveDefinitions(primitiveDefinitions ast.PrimitiveDefinitionsLike) {
 	// Visit the optional typeSection rule.
 	var optionalTypeSection = primitiveDefinitions.GetOptionalTypeSection()
@@ -1040,36 +1068,6 @@ func (v *visitor_) visitPrimitiveDefinitions(primitiveDefinitions ast.PrimitiveD
 		v.processor_.PreprocessFunctionalSection(optionalFunctionalSection)
 		v.visitFunctionalSection(optionalFunctionalSection)
 		v.processor_.PostprocessFunctionalSection(optionalFunctionalSection)
-	}
-}
-
-func (v *visitor_) visitPublicMethod(publicMethod ast.PublicMethodLike) {
-	// Visit the method rule.
-	var method = publicMethod.GetMethod()
-	v.processor_.PreprocessMethod(method)
-	v.visitMethod(method)
-	v.processor_.PostprocessMethod(method)
-}
-
-func (v *visitor_) visitPublicSubsection(publicSubsection ast.PublicSubsectionLike) {
-	// Visit each publicMethod rule.
-	var publicMethodIndex uint
-	var publicMethods = publicSubsection.GetPublicMethods().GetIterator()
-	var publicMethodsSize = uint(publicMethods.GetSize())
-	for publicMethods.HasNext() {
-		publicMethodIndex++
-		var publicMethod = publicMethods.GetNext()
-		v.processor_.PreprocessPublicMethod(
-			publicMethod,
-			publicMethodIndex,
-			publicMethodsSize,
-		)
-		v.visitPublicMethod(publicMethod)
-		v.processor_.PostprocessPublicMethod(
-			publicMethod,
-			publicMethodIndex,
-			publicMethodsSize,
-		)
 	}
 }
 
@@ -1185,8 +1183,6 @@ func (v *visitor_) visitValue(value ast.ValueLike) {
 	v.visitAbstraction(abstraction)
 	v.processor_.PostprocessAbstraction(abstraction)
 }
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

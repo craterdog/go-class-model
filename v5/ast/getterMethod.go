@@ -47,6 +47,12 @@ func (c *getterMethodClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *getterMethod_) GetClass() GetterMethodClassLike {
+	return getterMethodReference()
+}
+
 // Attribute Methods
 
 func (v *getterMethod_) GetName() string {
@@ -57,19 +63,9 @@ func (v *getterMethod_) GetAbstraction() AbstractionLike {
 	return v.abstraction_
 }
 
-// Public Methods
-
-func (v *getterMethod_) GetClass() GetterMethodClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *getterMethod_) getClass() *getterMethodClass_ {
-	return getterMethodReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

@@ -47,6 +47,12 @@ func (c *moduleClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *module_) GetClass() ModuleClassLike {
+	return moduleReference()
+}
+
 // Attribute Methods
 
 func (v *module_) GetName() string {
@@ -57,19 +63,9 @@ func (v *module_) GetPath() string {
 	return v.path_
 }
 
-// Public Methods
-
-func (v *module_) GetClass() ModuleClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *module_) getClass() *moduleClass_ {
-	return moduleReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

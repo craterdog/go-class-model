@@ -827,6 +827,40 @@ func (v *processor_) PostprocessPrefix(
 ) {
 }
 
+func (v *processor_) PreprocessPrimaryMethod(
+	primaryMethod ast.PrimaryMethodLike,
+	index uint,
+	size uint,
+) {
+}
+
+func (v *processor_) ProcessPrimaryMethodSlot(
+	slot uint,
+) {
+}
+
+func (v *processor_) PostprocessPrimaryMethod(
+	primaryMethod ast.PrimaryMethodLike,
+	index uint,
+	size uint,
+) {
+}
+
+func (v *processor_) PreprocessPrimarySubsection(
+	primarySubsection ast.PrimarySubsectionLike,
+) {
+}
+
+func (v *processor_) ProcessPrimarySubsectionSlot(
+	slot uint,
+) {
+}
+
+func (v *processor_) PostprocessPrimarySubsection(
+	primarySubsection ast.PrimarySubsectionLike,
+) {
+}
+
 func (v *processor_) PreprocessPrimitiveDefinitions(
 	primitiveDefinitions ast.PrimitiveDefinitionsLike,
 ) {
@@ -839,40 +873,6 @@ func (v *processor_) ProcessPrimitiveDefinitionsSlot(
 
 func (v *processor_) PostprocessPrimitiveDefinitions(
 	primitiveDefinitions ast.PrimitiveDefinitionsLike,
-) {
-}
-
-func (v *processor_) PreprocessPublicMethod(
-	publicMethod ast.PublicMethodLike,
-	index uint,
-	size uint,
-) {
-}
-
-func (v *processor_) ProcessPublicMethodSlot(
-	slot uint,
-) {
-}
-
-func (v *processor_) PostprocessPublicMethod(
-	publicMethod ast.PublicMethodLike,
-	index uint,
-	size uint,
-) {
-}
-
-func (v *processor_) PreprocessPublicSubsection(
-	publicSubsection ast.PublicSubsectionLike,
-) {
-}
-
-func (v *processor_) ProcessPublicSubsectionSlot(
-	slot uint,
-) {
-}
-
-func (v *processor_) PostprocessPublicSubsection(
-	publicSubsection ast.PublicSubsectionLike,
 ) {
 }
 
@@ -970,19 +970,15 @@ func (v *processor_) PostprocessValue(
 ) {
 }
 
-// Public Methods
+// Primary Methods
 
 func (v *processor_) GetClass() ProcessorClassLike {
-	return v.getClass()
-}
-
-// Private Methods
-
-func (v *processor_) getClass() *processorClass_ {
 	return processorReference()
 }
 
-// PRIVATE INTERFACE
+// PROTECTED INTERFACE
+
+// Private Methods
 
 // Instance Structure
 

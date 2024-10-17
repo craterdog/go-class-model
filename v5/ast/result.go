@@ -42,25 +42,21 @@ func (c *resultClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *result_) GetClass() ResultClassLike {
+	return resultReference()
+}
+
 // Attribute Methods
 
 func (v *result_) GetAny() any {
 	return v.any_
 }
 
-// Public Methods
-
-func (v *result_) GetClass() ResultClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *result_) getClass() *resultClass_ {
-	return resultReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

@@ -42,25 +42,21 @@ func (c *noticeClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *notice_) GetClass() NoticeClassLike {
+	return noticeReference()
+}
+
 // Attribute Methods
 
 func (v *notice_) GetComment() string {
 	return v.comment_
 }
 
-// Public Methods
-
-func (v *notice_) GetClass() NoticeClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *notice_) getClass() *noticeClass_ {
-	return noticeReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

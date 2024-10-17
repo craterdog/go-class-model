@@ -48,6 +48,12 @@ func (c *abstractionClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *abstraction_) GetClass() AbstractionClassLike {
+	return abstractionReference()
+}
+
 // Attribute Methods
 
 func (v *abstraction_) GetOptionalPrefix() PrefixLike {
@@ -66,19 +72,9 @@ func (v *abstraction_) GetOptionalArguments() ArgumentsLike {
 	return v.optionalArguments_
 }
 
-// Public Methods
-
-func (v *abstraction_) GetClass() AbstractionClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *abstraction_) getClass() *abstractionClass_ {
-	return abstractionReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

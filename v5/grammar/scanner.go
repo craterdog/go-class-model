@@ -89,17 +89,15 @@ func (c *scannerClass_) MatchesType(
 
 // INSTANCE INTERFACE
 
-// Public Methods
+// Primary Methods
 
 func (v *scanner_) GetClass() ScannerClassLike {
-	return v.getClass()
-}
-
-// Private Methods
-
-func (v *scanner_) getClass() *scannerClass_ {
 	return scannerReference()
 }
+
+// PROTECTED INTERFACE
+
+// Private Methods
 
 func (v *scanner_) emitToken(tokenType TokenType) {
 	var value = string(v.runes_[v.first_:v.next_])
@@ -132,7 +130,7 @@ func (v *scanner_) foundError() {
 func (v *scanner_) foundToken(tokenType TokenType) bool {
 	// Attempt to match the specified token type.
 	var text = string(v.runes_[v.next_:])
-	var matcher = v.getClass().matchers_[tokenType]
+	var matcher = scannerReference().matchers_[tokenType]
 	var match = matcher.FindString(text)
 	if len(match) == 0 {
 		return false
@@ -192,8 +190,6 @@ loop:
 	}
 	v.tokens_.CloseQueue()
 }
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 
@@ -263,7 +259,7 @@ const (
 
 	// Define the regular expression patterns for each token type.
 	comment_   = "(?:/\\*" + eol_ + "(" + any_ + "|" + eol_ + ")*?" + eol_ + "\\*/" + eol_ + ")"
-	delimiter_ = "(?:type|package|map|iota|interface|import|func|const|chan|\\}|\\{|\\]|\\[|\\.|\\)|\\(|=|// Type Definitions|// Public Methods|// Instance Definitions|// Functional Definitions|// Function Methods|// Constructor Methods|// Constant Methods|// Class Definitions|// Attribute Methods|// Aspect Definitions|// Aspect Methods|,)"
+	delimiter_ = "(?:type|package|map|iota|interface|import|func|const|chan|\\}|\\{|\\]|\\[|\\.|\\)|\\(|=|// Type Definitions|// Primary Methods|// Instance Definitions|// Functional Definitions|// Function Methods|// Constructor Methods|// Constant Methods|// Class Definitions|// Attribute Methods|// Aspect Definitions|// Aspect Methods|,)"
 	name_      = "(?:(" + lower_ + "|" + upper_ + ")(" + lower_ + "|" + upper_ + "|" + digit_ + ")*_?)"
 	newline_   = "(?:\\r?\\n)"
 	path_      = "(?:\"" + any_ + "*?\")"

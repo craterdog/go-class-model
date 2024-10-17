@@ -42,25 +42,21 @@ func (c *aspectMethodClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *aspectMethod_) GetClass() AspectMethodClassLike {
+	return aspectMethodReference()
+}
+
 // Attribute Methods
 
 func (v *aspectMethod_) GetMethod() MethodLike {
 	return v.method_
 }
 
-// Public Methods
-
-func (v *aspectMethod_) GetClass() AspectMethodClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *aspectMethod_) getClass() *aspectMethodClass_ {
-	return aspectMethodReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

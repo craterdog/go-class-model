@@ -43,25 +43,21 @@ func (c *attributeSubsectionClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *attributeSubsection_) GetClass() AttributeSubsectionClassLike {
+	return attributeSubsectionReference()
+}
+
 // Attribute Methods
 
 func (v *attributeSubsection_) GetAttributeMethods() abs.Sequential[AttributeMethodLike] {
 	return v.attributeMethods_
 }
 
-// Public Methods
-
-func (v *attributeSubsection_) GetClass() AttributeSubsectionClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *attributeSubsection_) getClass() *attributeSubsectionClass_ {
-	return attributeSubsectionReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

@@ -48,6 +48,12 @@ func (c *enumerationClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *enumeration_) GetClass() EnumerationClassLike {
+	return enumerationReference()
+}
+
 // Attribute Methods
 
 func (v *enumeration_) GetValue() ValueLike {
@@ -58,19 +64,9 @@ func (v *enumeration_) GetAdditionalValues() abs.Sequential[AdditionalValueLike]
 	return v.additionalValues_
 }
 
-// Public Methods
-
-func (v *enumeration_) GetClass() EnumerationClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *enumeration_) getClass() *enumerationClass_ {
-	return enumerationReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

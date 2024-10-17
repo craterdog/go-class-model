@@ -42,25 +42,21 @@ func (c *argumentClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *argument_) GetClass() ArgumentClassLike {
+	return argumentReference()
+}
+
 // Attribute Methods
 
 func (v *argument_) GetAbstraction() AbstractionLike {
 	return v.abstraction_
 }
 
-// Public Methods
-
-func (v *argument_) GetClass() ArgumentClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *argument_) getClass() *argumentClass_ {
-	return argumentReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

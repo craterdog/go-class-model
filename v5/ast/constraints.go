@@ -48,6 +48,12 @@ func (c *constraintsClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *constraints_) GetClass() ConstraintsClassLike {
+	return constraintsReference()
+}
+
 // Attribute Methods
 
 func (v *constraints_) GetConstraint() ConstraintLike {
@@ -58,19 +64,9 @@ func (v *constraints_) GetAdditionalConstraints() abs.Sequential[AdditionalConst
 	return v.additionalConstraints_
 }
 
-// Public Methods
-
-func (v *constraints_) GetClass() ConstraintsClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *constraints_) getClass() *constraintsClass_ {
-	return constraintsReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

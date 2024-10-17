@@ -470,7 +470,7 @@ concrete instance-methods-like class.
 type InstanceMethodsClassLike interface {
 	// Constructor Methods
 	Make(
-		publicSubsection PublicSubsectionLike,
+		primarySubsection PrimarySubsectionLike,
 		optionalAttributeSubsection AttributeSubsectionLike,
 		optionalAspectSubsection AspectSubsectionLike,
 	) InstanceMethodsLike
@@ -631,6 +631,30 @@ type PrefixClassLike interface {
 }
 
 /*
+PrimaryMethodClassLike is a class interface that defines the complete set of
+class constants, constructors and functions that must be supported by each
+concrete primary-method-like class.
+*/
+type PrimaryMethodClassLike interface {
+	// Constructor Methods
+	Make(
+		method MethodLike,
+	) PrimaryMethodLike
+}
+
+/*
+PrimarySubsectionClassLike is a class interface that defines the complete set of
+class constants, constructors and functions that must be supported by each
+concrete primary-subsection-like class.
+*/
+type PrimarySubsectionClassLike interface {
+	// Constructor Methods
+	Make(
+		primaryMethods abs.Sequential[PrimaryMethodLike],
+	) PrimarySubsectionLike
+}
+
+/*
 PrimitiveDefinitionsClassLike is a class interface that defines the complete set of
 class constants, constructors and functions that must be supported by each
 concrete primitive-definitions-like class.
@@ -641,30 +665,6 @@ type PrimitiveDefinitionsClassLike interface {
 		optionalTypeSection TypeSectionLike,
 		optionalFunctionalSection FunctionalSectionLike,
 	) PrimitiveDefinitionsLike
-}
-
-/*
-PublicMethodClassLike is a class interface that defines the complete set of
-class constants, constructors and functions that must be supported by each
-concrete public-method-like class.
-*/
-type PublicMethodClassLike interface {
-	// Constructor Methods
-	Make(
-		method MethodLike,
-	) PublicMethodLike
-}
-
-/*
-PublicSubsectionClassLike is a class interface that defines the complete set of
-class constants, constructors and functions that must be supported by each
-concrete public-subsection-like class.
-*/
-type PublicSubsectionClassLike interface {
-	// Constructor Methods
-	Make(
-		publicMethods abs.Sequential[PublicMethodLike],
-	) PublicSubsectionLike
 }
 
 /*
@@ -751,7 +751,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete abstraction-like class.
 */
 type AbstractionLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() AbstractionClassLike
 
 	// Attribute Methods
@@ -767,7 +767,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete additional-argument-like class.
 */
 type AdditionalArgumentLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() AdditionalArgumentClassLike
 
 	// Attribute Methods
@@ -780,7 +780,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete additional-constraint-like class.
 */
 type AdditionalConstraintLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() AdditionalConstraintClassLike
 
 	// Attribute Methods
@@ -793,7 +793,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete additional-value-like class.
 */
 type AdditionalValueLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() AdditionalValueClassLike
 
 	// Attribute Methods
@@ -806,7 +806,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete argument-like class.
 */
 type ArgumentLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ArgumentClassLike
 
 	// Attribute Methods
@@ -819,7 +819,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete arguments-like class.
 */
 type ArgumentsLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ArgumentsClassLike
 
 	// Attribute Methods
@@ -833,7 +833,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete array-like class.
 */
 type ArrayLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ArrayClassLike
 }
 
@@ -843,7 +843,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete aspect-definition-like class.
 */
 type AspectDefinitionLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() AspectDefinitionClassLike
 
 	// Attribute Methods
@@ -857,7 +857,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete aspect-interface-like class.
 */
 type AspectInterfaceLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() AspectInterfaceClassLike
 
 	// Attribute Methods
@@ -870,7 +870,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete aspect-method-like class.
 */
 type AspectMethodLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() AspectMethodClassLike
 
 	// Attribute Methods
@@ -883,7 +883,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete aspect-section-like class.
 */
 type AspectSectionLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() AspectSectionClassLike
 
 	// Attribute Methods
@@ -896,7 +896,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete aspect-subsection-like class.
 */
 type AspectSubsectionLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() AspectSubsectionClassLike
 
 	// Attribute Methods
@@ -909,7 +909,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete attribute-method-like class.
 */
 type AttributeMethodLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() AttributeMethodClassLike
 
 	// Attribute Methods
@@ -922,7 +922,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete attribute-subsection-like class.
 */
 type AttributeSubsectionLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() AttributeSubsectionClassLike
 
 	// Attribute Methods
@@ -935,7 +935,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete channel-like class.
 */
 type ChannelLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ChannelClassLike
 }
 
@@ -945,7 +945,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete class-definition-like class.
 */
 type ClassDefinitionLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ClassDefinitionClassLike
 
 	// Attribute Methods
@@ -959,7 +959,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete class-methods-like class.
 */
 type ClassMethodsLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ClassMethodsClassLike
 
 	// Attribute Methods
@@ -974,7 +974,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete class-section-like class.
 */
 type ClassSectionLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ClassSectionClassLike
 
 	// Attribute Methods
@@ -987,7 +987,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete constant-method-like class.
 */
 type ConstantMethodLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ConstantMethodClassLike
 
 	// Attribute Methods
@@ -1001,7 +1001,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete constant-subsection-like class.
 */
 type ConstantSubsectionLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ConstantSubsectionClassLike
 
 	// Attribute Methods
@@ -1014,7 +1014,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete constraint-like class.
 */
 type ConstraintLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ConstraintClassLike
 
 	// Attribute Methods
@@ -1028,7 +1028,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete constraints-like class.
 */
 type ConstraintsLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ConstraintsClassLike
 
 	// Attribute Methods
@@ -1042,7 +1042,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete constructor-method-like class.
 */
 type ConstructorMethodLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ConstructorMethodClassLike
 
 	// Attribute Methods
@@ -1057,7 +1057,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete constructor-subsection-like class.
 */
 type ConstructorSubsectionLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ConstructorSubsectionClassLike
 
 	// Attribute Methods
@@ -1070,7 +1070,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete declaration-like class.
 */
 type DeclarationLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() DeclarationClassLike
 
 	// Attribute Methods
@@ -1085,7 +1085,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete enumeration-like class.
 */
 type EnumerationLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() EnumerationClassLike
 
 	// Attribute Methods
@@ -1099,7 +1099,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete function-method-like class.
 */
 type FunctionMethodLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() FunctionMethodClassLike
 
 	// Attribute Methods
@@ -1114,7 +1114,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete function-subsection-like class.
 */
 type FunctionSubsectionLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() FunctionSubsectionClassLike
 
 	// Attribute Methods
@@ -1127,7 +1127,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete functional-definition-like class.
 */
 type FunctionalDefinitionLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() FunctionalDefinitionClassLike
 
 	// Attribute Methods
@@ -1142,7 +1142,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete functional-section-like class.
 */
 type FunctionalSectionLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() FunctionalSectionClassLike
 
 	// Attribute Methods
@@ -1155,7 +1155,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete getter-method-like class.
 */
 type GetterMethodLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() GetterMethodClassLike
 
 	// Attribute Methods
@@ -1169,7 +1169,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete header-like class.
 */
 type HeaderLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() HeaderClassLike
 
 	// Attribute Methods
@@ -1183,7 +1183,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete imports-like class.
 */
 type ImportsLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ImportsClassLike
 
 	// Attribute Methods
@@ -1196,7 +1196,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete instance-definition-like class.
 */
 type InstanceDefinitionLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() InstanceDefinitionClassLike
 
 	// Attribute Methods
@@ -1210,11 +1210,11 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete instance-methods-like class.
 */
 type InstanceMethodsLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() InstanceMethodsClassLike
 
 	// Attribute Methods
-	GetPublicSubsection() PublicSubsectionLike
+	GetPrimarySubsection() PrimarySubsectionLike
 	GetOptionalAttributeSubsection() AttributeSubsectionLike
 	GetOptionalAspectSubsection() AspectSubsectionLike
 }
@@ -1225,7 +1225,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete instance-section-like class.
 */
 type InstanceSectionLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() InstanceSectionClassLike
 
 	// Attribute Methods
@@ -1238,7 +1238,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete interface-definitions-like class.
 */
 type InterfaceDefinitionsLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() InterfaceDefinitionsClassLike
 
 	// Attribute Methods
@@ -1253,7 +1253,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete map-like class.
 */
 type MapLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() MapClassLike
 
 	// Attribute Methods
@@ -1266,7 +1266,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete method-like class.
 */
 type MethodLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() MethodClassLike
 
 	// Attribute Methods
@@ -1281,7 +1281,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete model-like class.
 */
 type ModelLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ModelClassLike
 
 	// Attribute Methods
@@ -1296,7 +1296,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete module-like class.
 */
 type ModuleLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ModuleClassLike
 
 	// Attribute Methods
@@ -1310,7 +1310,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete module-definition-like class.
 */
 type ModuleDefinitionLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ModuleDefinitionClassLike
 
 	// Attribute Methods
@@ -1325,7 +1325,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete none-like class.
 */
 type NoneLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() NoneClassLike
 
 	// Attribute Methods
@@ -1338,7 +1338,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete notice-like class.
 */
 type NoticeLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() NoticeClassLike
 
 	// Attribute Methods
@@ -1351,7 +1351,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete parameter-like class.
 */
 type ParameterLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ParameterClassLike
 
 	// Attribute Methods
@@ -1365,7 +1365,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete parameterized-like class.
 */
 type ParameterizedLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ParameterizedClassLike
 
 	// Attribute Methods
@@ -1378,11 +1378,37 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete prefix-like class.
 */
 type PrefixLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() PrefixClassLike
 
 	// Attribute Methods
 	GetAny() any
+}
+
+/*
+PrimaryMethodLike is an instance interface that defines the complete set of
+instance attributes, abstractions and methods that must be supported by each
+instance of a concrete primary-method-like class.
+*/
+type PrimaryMethodLike interface {
+	// Primary Methods
+	GetClass() PrimaryMethodClassLike
+
+	// Attribute Methods
+	GetMethod() MethodLike
+}
+
+/*
+PrimarySubsectionLike is an instance interface that defines the complete set of
+instance attributes, abstractions and methods that must be supported by each
+instance of a concrete primary-subsection-like class.
+*/
+type PrimarySubsectionLike interface {
+	// Primary Methods
+	GetClass() PrimarySubsectionClassLike
+
+	// Attribute Methods
+	GetPrimaryMethods() abs.Sequential[PrimaryMethodLike]
 }
 
 /*
@@ -1391,7 +1417,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete primitive-definitions-like class.
 */
 type PrimitiveDefinitionsLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() PrimitiveDefinitionsClassLike
 
 	// Attribute Methods
@@ -1400,38 +1426,12 @@ type PrimitiveDefinitionsLike interface {
 }
 
 /*
-PublicMethodLike is an instance interface that defines the complete set of
-instance attributes, abstractions and methods that must be supported by each
-instance of a concrete public-method-like class.
-*/
-type PublicMethodLike interface {
-	// Public Methods
-	GetClass() PublicMethodClassLike
-
-	// Attribute Methods
-	GetMethod() MethodLike
-}
-
-/*
-PublicSubsectionLike is an instance interface that defines the complete set of
-instance attributes, abstractions and methods that must be supported by each
-instance of a concrete public-subsection-like class.
-*/
-type PublicSubsectionLike interface {
-	// Public Methods
-	GetClass() PublicSubsectionClassLike
-
-	// Attribute Methods
-	GetPublicMethods() abs.Sequential[PublicMethodLike]
-}
-
-/*
 ResultLike is an instance interface that defines the complete set of
 instance attributes, abstractions and methods that must be supported by each
 instance of a concrete result-like class.
 */
 type ResultLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ResultClassLike
 
 	// Attribute Methods
@@ -1444,7 +1444,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete setter-method-like class.
 */
 type SetterMethodLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() SetterMethodClassLike
 
 	// Attribute Methods
@@ -1458,7 +1458,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete suffix-like class.
 */
 type SuffixLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() SuffixClassLike
 
 	// Attribute Methods
@@ -1471,7 +1471,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete type-definition-like class.
 */
 type TypeDefinitionLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() TypeDefinitionClassLike
 
 	// Attribute Methods
@@ -1486,7 +1486,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete type-section-like class.
 */
 type TypeSectionLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() TypeSectionClassLike
 
 	// Attribute Methods
@@ -1499,7 +1499,7 @@ instance attributes, abstractions and methods that must be supported by each
 instance of a concrete value-like class.
 */
 type ValueLike interface {
-	// Public Methods
+	// Primary Methods
 	GetClass() ValueClassLike
 
 	// Attribute Methods

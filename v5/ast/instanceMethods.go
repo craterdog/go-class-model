@@ -27,16 +27,16 @@ func InstanceMethods() InstanceMethodsClassLike {
 // Constructor Methods
 
 func (c *instanceMethodsClass_) Make(
-	publicSubsection PublicSubsectionLike,
+	primarySubsection PrimarySubsectionLike,
 	optionalAttributeSubsection AttributeSubsectionLike,
 	optionalAspectSubsection AspectSubsectionLike,
 ) InstanceMethodsLike {
-	if uti.IsUndefined(publicSubsection) {
-		panic("The \"publicSubsection\" attribute is required by this class.")
+	if uti.IsUndefined(primarySubsection) {
+		panic("The \"primarySubsection\" attribute is required by this class.")
 	}
 	var instance = &instanceMethods_{
 		// Initialize the instance attributes.
-		publicSubsection_:            publicSubsection,
+		primarySubsection_:           primarySubsection,
 		optionalAttributeSubsection_: optionalAttributeSubsection,
 		optionalAspectSubsection_:    optionalAspectSubsection,
 	}
@@ -46,10 +46,16 @@ func (c *instanceMethodsClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *instanceMethods_) GetClass() InstanceMethodsClassLike {
+	return instanceMethodsReference()
+}
+
 // Attribute Methods
 
-func (v *instanceMethods_) GetPublicSubsection() PublicSubsectionLike {
-	return v.publicSubsection_
+func (v *instanceMethods_) GetPrimarySubsection() PrimarySubsectionLike {
+	return v.primarySubsection_
 }
 
 func (v *instanceMethods_) GetOptionalAttributeSubsection() AttributeSubsectionLike {
@@ -60,25 +66,15 @@ func (v *instanceMethods_) GetOptionalAspectSubsection() AspectSubsectionLike {
 	return v.optionalAspectSubsection_
 }
 
-// Public Methods
-
-func (v *instanceMethods_) GetClass() InstanceMethodsClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *instanceMethods_) getClass() *instanceMethodsClass_ {
-	return instanceMethodsReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 
 type instanceMethods_ struct {
 	// Declare the instance attributes.
-	publicSubsection_            PublicSubsectionLike
+	primarySubsection_           PrimarySubsectionLike
 	optionalAttributeSubsection_ AttributeSubsectionLike
 	optionalAspectSubsection_    AspectSubsectionLike
 }

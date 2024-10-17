@@ -52,6 +52,12 @@ func (c *modelClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *model_) GetClass() ModelClassLike {
+	return modelReference()
+}
+
 // Attribute Methods
 
 func (v *model_) GetModuleDefinition() ModuleDefinitionLike {
@@ -66,19 +72,9 @@ func (v *model_) GetInterfaceDefinitions() InterfaceDefinitionsLike {
 	return v.interfaceDefinitions_
 }
 
-// Public Methods
-
-func (v *model_) GetClass() ModelClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *model_) getClass() *modelClass_ {
-	return modelReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

@@ -20,19 +20,19 @@ import (
 
 // Access Function
 
-func PublicMethod() PublicMethodClassLike {
-	return publicMethodReference()
+func PrimaryMethod() PrimaryMethodClassLike {
+	return primaryMethodReference()
 }
 
 // Constructor Methods
 
-func (c *publicMethodClass_) Make(
+func (c *primaryMethodClass_) Make(
 	method MethodLike,
-) PublicMethodLike {
+) PrimaryMethodLike {
 	if uti.IsUndefined(method) {
 		panic("The \"method\" attribute is required by this class.")
 	}
-	var instance = &publicMethod_{
+	var instance = &primaryMethod_{
 		// Initialize the instance attributes.
 		method_: method,
 	}
@@ -42,45 +42,41 @@ func (c *publicMethodClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *primaryMethod_) GetClass() PrimaryMethodClassLike {
+	return primaryMethodReference()
+}
+
 // Attribute Methods
 
-func (v *publicMethod_) GetMethod() MethodLike {
+func (v *primaryMethod_) GetMethod() MethodLike {
 	return v.method_
 }
 
-// Public Methods
-
-func (v *publicMethod_) GetClass() PublicMethodClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
 
-func (v *publicMethod_) getClass() *publicMethodClass_ {
-	return publicMethodReference()
-}
-
-// PRIVATE INTERFACE
-
 // Instance Structure
 
-type publicMethod_ struct {
+type primaryMethod_ struct {
 	// Declare the instance attributes.
 	method_ MethodLike
 }
 
 // Class Structure
 
-type publicMethodClass_ struct {
+type primaryMethodClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func publicMethodReference() *publicMethodClass_ {
-	return publicMethodReference_
+func primaryMethodReference() *primaryMethodClass_ {
+	return primaryMethodReference_
 }
 
-var publicMethodReference_ = &publicMethodClass_{
+var primaryMethodReference_ = &primaryMethodClass_{
 	// Initialize the class constants.
 }

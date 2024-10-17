@@ -53,6 +53,12 @@ func (c *functionalDefinitionClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *functionalDefinition_) GetClass() FunctionalDefinitionClassLike {
+	return functionalDefinitionReference()
+}
+
 // Attribute Methods
 
 func (v *functionalDefinition_) GetDeclaration() DeclarationLike {
@@ -67,19 +73,9 @@ func (v *functionalDefinition_) GetResult() ResultLike {
 	return v.result_
 }
 
-// Public Methods
-
-func (v *functionalDefinition_) GetClass() FunctionalDefinitionClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *functionalDefinition_) getClass() *functionalDefinitionClass_ {
-	return functionalDefinitionReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

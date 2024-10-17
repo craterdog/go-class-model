@@ -50,6 +50,12 @@ func (c *methodClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *method_) GetClass() MethodClassLike {
+	return methodReference()
+}
+
 // Attribute Methods
 
 func (v *method_) GetName() string {
@@ -64,19 +70,9 @@ func (v *method_) GetOptionalResult() ResultLike {
 	return v.optionalResult_
 }
 
-// Public Methods
-
-func (v *method_) GetClass() MethodClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *method_) getClass() *methodClass_ {
-	return methodReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

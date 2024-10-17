@@ -47,6 +47,12 @@ func (c *valueClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *value_) GetClass() ValueClassLike {
+	return valueReference()
+}
+
 // Attribute Methods
 
 func (v *value_) GetName() string {
@@ -57,19 +63,9 @@ func (v *value_) GetAbstraction() AbstractionLike {
 	return v.abstraction_
 }
 
-// Public Methods
-
-func (v *value_) GetClass() ValueClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *value_) getClass() *valueClass_ {
-	return valueReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

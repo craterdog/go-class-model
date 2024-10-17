@@ -42,25 +42,21 @@ func (c *prefixClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *prefix_) GetClass() PrefixClassLike {
+	return prefixReference()
+}
+
 // Attribute Methods
 
 func (v *prefix_) GetAny() any {
 	return v.any_
 }
 
-// Public Methods
-
-func (v *prefix_) GetClass() PrefixClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *prefix_) getClass() *prefixClass_ {
-	return prefixReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

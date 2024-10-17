@@ -42,25 +42,21 @@ func (c *mapClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *map_) GetClass() MapClassLike {
+	return mapReference()
+}
+
 // Attribute Methods
 
 func (v *map_) GetName() string {
 	return v.name_
 }
 
-// Public Methods
-
-func (v *map_) GetClass() MapClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *map_) getClass() *mapClass_ {
-	return mapReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

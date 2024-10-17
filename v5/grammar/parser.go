@@ -41,10 +41,10 @@ func (c *parserClass_) Make() ParserLike {
 
 // INSTANCE INTERFACE
 
-// Public Methods
+// Primary Methods
 
 func (v *parser_) GetClass() ParserClassLike {
-	return v.getClass()
+	return parserReference()
 }
 
 // NOTE: For consistent error reporting we must replace each tab with 4
@@ -57,9 +57,9 @@ func (v *parser_) ParseSource(
 ) ast.ModelLike {
 	// Create a scanner running in a separate Go routine.
 	v.source_ = sts.ReplaceAll(source, "\t", "    ")
-	v.tokens_ = col.Queue[TokenLike](v.getClass().queueSize_)
+	v.tokens_ = col.Queue[TokenLike](parserReference().queueSize_)
 	Scanner().Make(v.source_, v.tokens_)
-	v.next_ = col.Stack[TokenLike](v.getClass().stackSize_)
+	v.next_ = col.Stack[TokenLike](parserReference().stackSize_)
 
 	// Attempt to parse the model from the token stream.
 	var result_, token, ok = v.parseModel()
@@ -70,11 +70,9 @@ func (v *parser_) ParseSource(
 	return result_
 }
 
-// Private Methods
+// PROTECTED INTERFACE
 
-func (v *parser_) getClass() *parserClass_ {
-	return parserReference()
-}
+// Private Methods
 
 func (v *parser_) parseAbstraction() (
 	abstraction ast.AbstractionLike,
@@ -309,7 +307,7 @@ func (v *parser_) parseArguments() (
 	// Attempt to parse 0 to unlimited additionalArgument rules.
 	var additionalArguments = col.List[ast.AdditionalArgumentLike]()
 additionalArgumentsLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var additionalArgument ast.AdditionalArgumentLike
 		additionalArgument, token, ok = v.parseAdditionalArgument()
 		if !ok {
@@ -447,7 +445,7 @@ func (v *parser_) parseAspectDefinition() (
 	// Attempt to parse 1 to unlimited aspectMethod rules.
 	var aspectMethods = col.List[ast.AspectMethodLike]()
 aspectMethodsLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var aspectMethod ast.AspectMethodLike
 		aspectMethod, token, ok = v.parseAspectMethod()
 		if !ok {
@@ -575,7 +573,7 @@ func (v *parser_) parseAspectSection() (
 	// Attempt to parse 1 to unlimited aspectDefinition rules.
 	var aspectDefinitions = col.List[ast.AspectDefinitionLike]()
 aspectDefinitionsLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var aspectDefinition ast.AspectDefinitionLike
 		aspectDefinition, token, ok = v.parseAspectDefinition()
 		if !ok {
@@ -642,7 +640,7 @@ func (v *parser_) parseAspectSubsection() (
 	// Attempt to parse 1 to unlimited interface rules.
 	var interfaces = col.List[ast.AspectInterfaceLike]()
 interfacesLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var aspectInterface ast.AspectInterfaceLike
 		aspectInterface, token, ok = v.parseAspectInterface()
 		if !ok {
@@ -720,7 +718,7 @@ func (v *parser_) parseAttributeSubsection() (
 	// Attempt to parse 1 to unlimited attributeMethod rules.
 	var attributeMethods = col.List[ast.AttributeMethodLike]()
 attributeMethodsLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var attributeMethod ast.AttributeMethodLike
 		attributeMethod, token, ok = v.parseAttributeMethod()
 		if !ok {
@@ -932,7 +930,7 @@ func (v *parser_) parseClassSection() (
 	// Attempt to parse 1 to unlimited classDefinition rules.
 	var classDefinitions = col.List[ast.ClassDefinitionLike]()
 classDefinitionsLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var classDefinition ast.ClassDefinitionLike
 		classDefinition, token, ok = v.parseClass()
 		if !ok {
@@ -1073,7 +1071,7 @@ func (v *parser_) parseConstantSubsection() (
 	// Attempt to parse 1 to unlimited constantMethod rules.
 	var constantMethods = col.List[ast.ConstantMethodLike]()
 constantMethodsLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var constantMethod ast.ConstantMethodLike
 		constantMethod, token, ok = v.parseConstantMethod()
 		if !ok {
@@ -1185,7 +1183,7 @@ func (v *parser_) parseConstraints() (
 	// Attempt to parse 0 to unlimited additionalConstraint rules.
 	var additionalConstraints = col.List[ast.AdditionalConstraintLike]()
 additionalConstraintsLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var additionalConstraint ast.AdditionalConstraintLike
 		additionalConstraint, token, ok = v.parseAdditionalConstraint()
 		if !ok {
@@ -1268,7 +1266,7 @@ func (v *parser_) parseConstructorMethod() (
 	// Attempt to parse 0 to unlimited parameter rules.
 	var parameters = col.List[ast.ParameterLike]()
 parametersLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var parameter ast.ParameterLike
 		parameter, token, ok = v.parseParameter()
 		if !ok {
@@ -1352,7 +1350,7 @@ func (v *parser_) parseConstructorSubsection() (
 	// Attempt to parse 1 to unlimited constructorMethod rules.
 	var constructorMethods = col.List[ast.ConstructorMethodLike]()
 constructorMethodsLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var constructorMethod ast.ConstructorMethodLike
 		constructorMethod, token, ok = v.parseConstructorMethod()
 		if !ok {
@@ -1500,7 +1498,7 @@ func (v *parser_) parseEnumeration() (
 	// Attempt to parse 0 to unlimited additionalValue rules.
 	var additionalValues = col.List[ast.AdditionalValueLike]()
 additionalValuesLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var additionalValue ast.AdditionalValueLike
 		additionalValue, token, ok = v.parseAdditionalValue()
 		if !ok {
@@ -1583,7 +1581,7 @@ func (v *parser_) parseFunctionMethod() (
 	// Attempt to parse 0 to unlimited parameter rules.
 	var parameters = col.List[ast.ParameterLike]()
 parametersLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var parameter ast.ParameterLike
 		parameter, token, ok = v.parseParameter()
 		if !ok {
@@ -1667,7 +1665,7 @@ func (v *parser_) parseFunctionSubsection() (
 	// Attempt to parse 1 to unlimited functionMethod rules.
 	var functionMethods = col.List[ast.FunctionMethodLike]()
 functionMethodsLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var functionMethod ast.FunctionMethodLike
 		functionMethod, token, ok = v.parseFunctionMethod()
 		if !ok {
@@ -1747,7 +1745,7 @@ func (v *parser_) parseFunctionalDefinition() (
 	// Attempt to parse 0 to unlimited parameter rules.
 	var parameters = col.List[ast.ParameterLike]()
 parametersLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var parameter ast.ParameterLike
 		parameter, token, ok = v.parseParameter()
 		if !ok {
@@ -1831,7 +1829,7 @@ func (v *parser_) parseFunctionalSection() (
 	// Attempt to parse 1 to unlimited functional rules.
 	var functionalDefinitions = col.List[ast.FunctionalDefinitionLike]()
 functionalDefinitionsLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var functionalDefinition ast.FunctionalDefinitionLike
 		functionalDefinition, token, ok = v.parseFunctionalDefinition()
 		if !ok {
@@ -2066,7 +2064,7 @@ func (v *parser_) parseImports() (
 	// Attempt to parse 1 to unlimited module rules.
 	var modules = col.List[ast.ModuleLike]()
 modulesLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var module ast.ModuleLike
 		module, token, ok = v.parseModule()
 		if !ok {
@@ -2219,7 +2217,7 @@ func (v *parser_) parseInstanceSection() (
 	// Attempt to parse 1 to unlimited instanceDefinition rules.
 	var instanceDefinitions = col.List[ast.InstanceDefinitionLike]()
 instanceDefinitionsLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var instanceDefinition ast.InstanceDefinitionLike
 		instanceDefinition, token, ok = v.parseInstanceDefinition()
 		if !ok {
@@ -2269,9 +2267,9 @@ func (v *parser_) parseInstanceMethods() (
 ) {
 	var ruleFound_ bool
 
-	// Attempt to parse a single publicSubsection rule.
-	var publicSubsection ast.PublicSubsectionLike
-	publicSubsection, token, ok = v.parsePublicSubsection()
+	// Attempt to parse a single primarySubsection rule.
+	var primarySubsection ast.PrimarySubsectionLike
+	primarySubsection, token, ok = v.parsePrimarySubsection()
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
@@ -2301,7 +2299,7 @@ func (v *parser_) parseInstanceMethods() (
 	// Found a single instanceMethods rule.
 	ruleFound_ = true
 	instanceMethods = ast.InstanceMethods().Make(
-		publicSubsection,
+		primarySubsection,
 		optionalAttributeSubsection,
 		optionalAspectSubsection,
 	)
@@ -2471,7 +2469,7 @@ func (v *parser_) parseMethod() (
 	// Attempt to parse 0 to unlimited parameter rules.
 	var parameters = col.List[ast.ParameterLike]()
 parametersLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var parameter ast.ParameterLike
 		parameter, token, ok = v.parseParameter()
 		if !ok {
@@ -2825,7 +2823,7 @@ func (v *parser_) parseParameterized() (
 	// Attempt to parse 1 to unlimited parameter rules.
 	var parameters = col.List[ast.ParameterLike]()
 parametersLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var parameter ast.ParameterLike
 		parameter, token, ok = v.parseParameter()
 		if !ok {
@@ -2932,85 +2930,85 @@ func (v *parser_) parsePrimitiveDefinitions() (
 	return primitiveDefinitions, token, ruleFound_
 }
 
-func (v *parser_) parsePublicMethod() (
-	publicMethod ast.PublicMethodLike,
+func (v *parser_) parsePrimaryMethod() (
+	primaryMethod ast.PrimaryMethodLike,
 	token TokenLike,
 	ok bool,
 ) {
 	var ruleFound_ bool
 
-	// Attempt to parse a single method rule.
+	// Attempt to parse a single primaryMethod rule.
 	var method ast.MethodLike
 	method, token, ok = v.parseMethod()
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "PublicMethod")
+			var message = v.formatError(token, "PrimaryMethod")
 			panic(message)
 		} else {
-			// This is not a single public rule.
-			return publicMethod, token, false
+			// This is not a single primaryMethod rule.
+			return primaryMethod, token, false
 		}
 	}
 	ruleFound_ = true
 
-	// Found a single publicMethod rule.
+	// Found a single primaryMethod rule.
 	ruleFound_ = true
-	publicMethod = ast.PublicMethod().Make(
+	primaryMethod = ast.PrimaryMethod().Make(
 		method,
 	)
-	return publicMethod, token, ruleFound_
+	return primaryMethod, token, ruleFound_
 }
 
-func (v *parser_) parsePublicSubsection() (
-	publicSubsection ast.PublicSubsectionLike,
+func (v *parser_) parsePrimarySubsection() (
+	primarySubsection ast.PrimarySubsectionLike,
 	token TokenLike,
 	ok bool,
 ) {
 	var ruleFound_ bool
 
-	// Attempt to parse a single "// Public Methods" delimiter.
-	_, token, ok = v.parseDelimiter("// Public Methods")
+	// Attempt to parse a single "// Primary Methods" delimiter.
+	_, token, ok = v.parseDelimiter("// Primary Methods")
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "PublicSubsection")
+			var message = v.formatError(token, "PrimarySubsection")
 			panic(message)
 		} else {
-			// This is not a single publicSubsection rule.
-			return publicSubsection, token, false
+			// This is not a single primarySubsection rule.
+			return primarySubsection, token, false
 		}
 	}
 	ruleFound_ = true
 
-	// Attempt to parse 1 to unlimited publicMethod rules.
-	var publicMethods = col.List[ast.PublicMethodLike]()
-publicMethodsLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
-		var publicMethod ast.PublicMethodLike
-		publicMethod, token, ok = v.parsePublicMethod()
+	// Attempt to parse 1 to unlimited primaryMethod rules.
+	var primaryMethods = col.List[ast.PrimaryMethodLike]()
+primaryMethodsLoop:
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
+		var primaryMethod ast.PrimaryMethodLike
+		primaryMethod, token, ok = v.parsePrimaryMethod()
 		if !ok {
 			switch {
 			case numberFound_ < 1:
 				if !ruleFound_ {
-					// This is not a single publicSubsection rule.
-					return publicSubsection, token, false
+					// This is not a single primarySubsection rule.
+					return primarySubsection, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "PublicSubsection")
-				message += "The number of publicMethod rules must be at least 1."
+				var message = v.formatError(token, "PrimarySubsection")
+				message += "The number of primaryMethod rules must be at least 1."
 				panic(message)
 			default:
-				break publicMethodsLoop
+				break primaryMethodsLoop
 			}
 		}
-		publicMethods.AppendValue(publicMethod)
+		primaryMethods.AppendValue(primaryMethod)
 	}
 
-	// Found a single publicSubsection rule.
+	// Found a single primarySubsection rule.
 	ruleFound_ = true
-	publicSubsection = ast.PublicSubsection().Make(publicMethods)
-	return publicSubsection, token, ruleFound_
+	primarySubsection = ast.PrimarySubsection().Make(primaryMethods)
+	return primarySubsection, token, ruleFound_
 }
 
 func (v *parser_) parseResult() (
@@ -3243,7 +3241,7 @@ func (v *parser_) parseTypeSection() (
 	// Attempt to parse 1 to unlimited typeDefinition rules.
 	var typeDefinitions = col.List[ast.TypeDefinitionLike]()
 typeDefinitionsLoop:
-	for numberFound_ := 0; numberFound_ < v.getClass().unlimited_; numberFound_++ {
+	for numberFound_ := 0; numberFound_ < parserReference().unlimited_; numberFound_++ {
 		var typeDefinition ast.TypeDefinitionLike
 		typeDefinition, token, ok = v.parseTypeDefinition()
 		if !ok {
@@ -3451,7 +3449,7 @@ func (v *parser_) formatError(token TokenLike, ruleName string) string {
 }
 
 func (v *parser_) getDefinition(ruleName string) string {
-	return v.getClass().syntax_.GetValue(ruleName)
+	return parserReference().syntax_.GetValue(ruleName)
 }
 
 func (v *parser_) getNextToken() TokenLike {
@@ -3479,8 +3477,6 @@ func (v *parser_) getNextToken() TokenLike {
 func (v *parser_) putBack(token TokenLike) {
 	v.next_.AddValue(token)
 }
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 
@@ -3565,9 +3561,9 @@ var parserReference_ = &parserClass_{
 			"FunctionMethod":        `name "(" Parameter* ")" Result`,
 			"InstanceSection":       `"// Instance Definitions" InstanceDefinition+`,
 			"InstanceDefinition":    `Declaration "interface" "{" InstanceMethods "}"`,
-			"InstanceMethods":       `PublicSubsection AttributeSubsection? AspectSubsection?`,
-			"PublicSubsection":      `"// Public Methods" PublicMethod+`,
-			"PublicMethod":          `Method`,
+			"InstanceMethods":       `PrimarySubsection AttributeSubsection? AspectSubsection?`,
+			"PrimarySubsection":     `"// Primary Methods" PrimaryMethod+`,
+			"PrimaryMethod":         `Method`,
 			"Method":                `name "(" Parameter* ")" Result?`,
 			"AttributeSubsection":   `"// Attribute Methods" AttributeMethod+`,
 			"AttributeMethod": `

@@ -81,9 +81,9 @@ type (
 	ParameterLike             = ast.ParameterLike
 	ParameterizedLike         = ast.ParameterizedLike
 	PrefixLike                = ast.PrefixLike
+	PrimaryMethodLike         = ast.PrimaryMethodLike
+	PrimarySubsectionLike     = ast.PrimarySubsectionLike
 	PrimitiveDefinitionsLike  = ast.PrimitiveDefinitionsLike
-	PublicMethodLike          = ast.PublicMethodLike
-	PublicSubsectionLike      = ast.PublicSubsectionLike
 	ResultLike                = ast.ResultLike
 	SetterMethodLike          = ast.SetterMethodLike
 	SuffixLike                = ast.SuffixLike

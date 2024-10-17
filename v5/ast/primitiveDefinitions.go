@@ -37,6 +37,12 @@ func (c *primitiveDefinitionsClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *primitiveDefinitions_) GetClass() PrimitiveDefinitionsClassLike {
+	return primitiveDefinitionsReference()
+}
+
 // Attribute Methods
 
 func (v *primitiveDefinitions_) GetOptionalTypeSection() TypeSectionLike {
@@ -47,19 +53,9 @@ func (v *primitiveDefinitions_) GetOptionalFunctionalSection() FunctionalSection
 	return v.optionalFunctionalSection_
 }
 
-// Public Methods
-
-func (v *primitiveDefinitions_) GetClass() PrimitiveDefinitionsClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *primitiveDefinitions_) getClass() *primitiveDefinitionsClass_ {
-	return primitiveDefinitionsReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

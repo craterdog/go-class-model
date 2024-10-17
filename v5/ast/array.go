@@ -32,19 +32,15 @@ func (c *arrayClass_) Make() ArrayLike {
 
 // INSTANCE INTERFACE
 
-// Public Methods
+// Primary Methods
 
 func (v *array_) GetClass() ArrayClassLike {
-	return v.getClass()
-}
-
-// Private Methods
-
-func (v *array_) getClass() *arrayClass_ {
 	return arrayReference()
 }
 
-// PRIVATE INTERFACE
+// PROTECTED INTERFACE
+
+// Private Methods
 
 // Instance Structure
 

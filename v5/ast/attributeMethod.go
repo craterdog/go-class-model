@@ -42,25 +42,21 @@ func (c *attributeMethodClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *attributeMethod_) GetClass() AttributeMethodClassLike {
+	return attributeMethodReference()
+}
+
 // Attribute Methods
 
 func (v *attributeMethod_) GetAny() any {
 	return v.any_
 }
 
-// Public Methods
-
-func (v *attributeMethod_) GetClass() AttributeMethodClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *attributeMethod_) getClass() *attributeMethodClass_ {
-	return attributeMethodReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 

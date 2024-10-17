@@ -43,25 +43,21 @@ func (c *constantSubsectionClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *constantSubsection_) GetClass() ConstantSubsectionClassLike {
+	return constantSubsectionReference()
+}
+
 // Attribute Methods
 
 func (v *constantSubsection_) GetConstantMethods() abs.Sequential[ConstantMethodLike] {
 	return v.constantMethods_
 }
 
-// Public Methods
-
-func (v *constantSubsection_) GetClass() ConstantSubsectionClassLike {
-	return v.getClass()
-}
+// PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *constantSubsection_) getClass() *constantSubsectionClass_ {
-	return constantSubsectionReference()
-}
-
-// PRIVATE INTERFACE
 
 // Instance Structure
 
