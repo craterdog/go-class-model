@@ -51,125 +51,125 @@ sequence of terms within in a rule definition may be separated by spaces which
 are ignored by the parser.  Newlines are also ignored unless a "newline" regular
 expression pattern is defined and used in one or more rule definitions.
 <!
-Model: ModuleDefinition PrimitiveDefinitions InterfaceDefinitions
+$Model: ModuleDefinition PrimitiveDefinitions InterfaceDefinitions
 
-ModuleDefinition: Notice Header Imports?
+$ModuleDefinition: Notice Header Imports?
 
-PrimitiveDefinitions: TypeSection? FunctionalSection?
+$PrimitiveDefinitions: TypeSection? FunctionalSection?
 
-InterfaceDefinitions: ClassSection InstanceSection AspectSection?
+$InterfaceDefinitions: ClassSection InstanceSection AspectSection?
 
-Notice: comment
+$Notice: comment
 
-Header: comment "package" name
+$Header: comment "package" name
 
-Imports: "import" "(" Module+ ")"
+$Imports: "import" "(" Module+ ")"
 
-Module: name path
+$Module: name path
 
-TypeSection: "// Type Definitions" TypeDefinition+
+$TypeSection: "// Type Definitions" TypeDefinition+
 
-TypeDefinition: Declaration Abstraction Enumeration?
+$TypeDefinition: Declaration Abstraction Enumeration?
 
-Declaration: comment "type" name Constraints?
+$Declaration: comment "type" name Constraints?
 
-Constraints: "[" Constraint AdditionalConstraint* "]"
+$Constraints: "[" Constraint AdditionalConstraint* "]"
 
-Constraint: name Abstraction
+$Constraint: name Abstraction
 
-AdditionalConstraint: "," Constraint
+$AdditionalConstraint: "," Constraint
 
-Abstraction: Prefix? name Suffix? Arguments?
+$Abstraction: Prefix? name Suffix? Arguments?
 
-Prefix:
+$Prefix:
   - Array
   - Map
   - Channel
 
-Array: "[" "]"
+$Array: "[" "]"
 
-Map: "map" "[" name "]"
+$Map: "map" "[" name "]"
 
-Channel: "chan"
+$Channel: "chan"
 
-Suffix: "." name
+$Suffix: "." name
 
-Arguments: "[" Argument AdditionalArgument* "]"
+$Arguments: "[" Argument AdditionalArgument* "]"
 
-Argument: Abstraction
+$Argument: Abstraction
 
-AdditionalArgument: "," Argument
+$AdditionalArgument: "," Argument
 
-Enumeration: "const" "(" Value AdditionalValue* ")"
+$Enumeration: "const" "(" Value AdditionalValue* ")"
 
-Value: name Abstraction "=" "iota"
+$Value: name Abstraction "=" "iota"
 
-AdditionalValue: name
+$AdditionalValue: name
 
-FunctionalSection: "// Functional Definitions" FunctionalDefinition+
+$FunctionalSection: "// Functional Definitions" FunctionalDefinition+
 
-FunctionalDefinition: Declaration "func" "(" Parameter* ")" Result
+$FunctionalDefinition: Declaration "func" "(" Parameter* ")" Result
 
-Parameter: name Abstraction ","
+$Parameter: name Abstraction ","
 
-Result:
+$Result:
   - None
   - Abstraction
   - Parameterized
 
-None: newline
+$None: newline
 
-Parameterized: "(" Parameter+ ")"
+$Parameterized: "(" Parameter+ ")"
 
-ClassSection: "// Class Definitions" ClassDefinition+
+$ClassSection: "// Class Definitions" ClassDefinition+
 
-ClassDefinition: Declaration "interface" "{" ClassMethods "}"
+$ClassDefinition: Declaration "interface" "{" ClassMethods "}"
 
-ClassMethods: ConstructorSubsection ConstantSubsection? FunctionSubsection?
+$ClassMethods: ConstructorSubsection ConstantSubsection? FunctionSubsection?
 
-ConstructorSubsection: "// Constructor Methods" ConstructorMethod+
+$ConstructorSubsection: "// Constructor Methods" ConstructorMethod+
 
-ConstructorMethod: name "(" Parameter* ")" Abstraction
+$ConstructorMethod: name "(" Parameter* ")" Abstraction
 
-ConstantSubsection: "// Constant Methods" ConstantMethod+
+$ConstantSubsection: "// Constant Methods" ConstantMethod+
 
-ConstantMethod: name "(" ")" Abstraction
+$ConstantMethod: name "(" ")" Abstraction
 
-FunctionSubsection: "// Function Methods" FunctionMethod+
+$FunctionSubsection: "// Function Methods" FunctionMethod+
 
-FunctionMethod: name "(" Parameter* ")" Result
+$FunctionMethod: name "(" Parameter* ")" Result
 
-InstanceSection: "// Instance Definitions" InstanceDefinition+
+$InstanceSection: "// Instance Definitions" InstanceDefinition+
 
-InstanceDefinition: Declaration "interface" "{" InstanceMethods "}"
+$InstanceDefinition: Declaration "interface" "{" InstanceMethods "}"
 
-InstanceMethods: PrimarySubsection AttributeSubsection? AspectSubsection?
+$InstanceMethods: PrimarySubsection AttributeSubsection? AspectSubsection?
 
-PrimarySubsection: "// Primary Methods" PrimaryMethod+
+$PrimarySubsection: "// Primary Methods" PrimaryMethod+
 
-PrimaryMethod: Method
+$PrimaryMethod: Method
 
-Method: name "(" Parameter* ")" Result?
+$Method: name "(" Parameter* ")" Result?
 
-AttributeSubsection: "// Attribute Methods" AttributeMethod+
+$AttributeSubsection: "// Attribute Methods" AttributeMethod+
 
-AttributeMethod:
+$AttributeMethod:
   - GetterMethod
   - SetterMethod
 
-GetterMethod: name "(" ")" Abstraction
+$GetterMethod: name "(" ")" Abstraction
 
-SetterMethod: name "(" Parameter ")"
+$SetterMethod: name "(" Parameter ")"
 
-AspectSubsection: "// Aspect Interfaces" AspectInterface+
+$AspectSubsection: "// Aspect Interfaces" AspectInterface+
 
-AspectInterface: Abstraction
+$AspectInterface: Abstraction
 
-AspectSection: "// Aspect Definitions" AspectDefinition+
+$AspectSection: "// Aspect Definitions" AspectDefinition+
 
-AspectDefinition: Declaration "interface" "{" AspectMethod+ "}"
+$AspectDefinition: Declaration "interface" "{" AspectMethod+ "}"
 
-AspectMethod: Method
+$AspectMethod: Method
 
 !>
 EXPRESSION PATTERNS
@@ -183,9 +183,9 @@ patterns is greedy unless the pattern contains the ANY intrinsic character.  Any
 spaces within a regular expression pattern are part of the regular expression
 and are NOT ignored.
 <!
-comment: "/*" EOL (ANY | EOL)* EOL "*/" EOL  ! Chooses the shortest possible match.
+$comment: "/*" EOL (ANY | EOL)* EOL "*/" EOL  ! Chooses the shortest possible match.
 
-name: (LOWER | UPPER) (LOWER | UPPER | DIGIT)* "_"?
+$name: (LOWER | UPPER) (LOWER | UPPER | DIGIT)* "_"?
 
-path: '"' ANY* '"'  ! Chooses the shortest possible match.
+$path: '"' ANY* '"'  ! Chooses the shortest possible match.
 
