@@ -64,7 +64,7 @@ func (v *parser_) ParseSource(
 	// Attempt to parse the model from the token stream.
 	var result_, token, ok = v.parseModel()
 	if !ok {
-		var message = v.formatError(token, "Model")
+		var message = v.formatError(token, "$Model")
 		panic(message)
 	}
 	return result_
@@ -94,7 +94,7 @@ func (v *parser_) parseAbstraction() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Abstraction")
+			var message = v.formatError(token, "$Abstraction")
 			panic(message)
 		} else {
 			// This is not a single abstraction rule.
@@ -140,7 +140,7 @@ func (v *parser_) parseAdditionalArgument() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "AdditionalArgument")
+			var message = v.formatError(token, "$AdditionalArgument")
 			panic(message)
 		} else {
 			// This is not a single additionalArgument rule.
@@ -155,7 +155,7 @@ func (v *parser_) parseAdditionalArgument() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "AdditionalArgument")
+			var message = v.formatError(token, "$AdditionalArgument")
 			panic(message)
 		} else {
 			// This is not a single additionalArgument rule.
@@ -182,7 +182,7 @@ func (v *parser_) parseAdditionalConstraint() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "AdditionalConstraint")
+			var message = v.formatError(token, "$AdditionalConstraint")
 			panic(message)
 		} else {
 			// This is not a single additionalConstraint rule.
@@ -197,7 +197,7 @@ func (v *parser_) parseAdditionalConstraint() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "AdditionalConstraint")
+			var message = v.formatError(token, "$AdditionalConstraint")
 			panic(message)
 		} else {
 			// This is not a single additionalConstraint rule.
@@ -225,7 +225,7 @@ func (v *parser_) parseAdditionalValue() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "AdditionalValue")
+			var message = v.formatError(token, "$AdditionalValue")
 			panic(message)
 		} else {
 			// This is not a single additionalValue rule.
@@ -253,7 +253,7 @@ func (v *parser_) parseArgument() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Argument")
+			var message = v.formatError(token, "$Argument")
 			panic(message)
 		} else {
 			// This is not a single argument rule.
@@ -280,7 +280,7 @@ func (v *parser_) parseArguments() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Arguments")
+			var message = v.formatError(token, "$Arguments")
 			panic(message)
 		} else {
 			// This is not a single arguments rule.
@@ -295,7 +295,7 @@ func (v *parser_) parseArguments() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Arguments")
+			var message = v.formatError(token, "$Arguments")
 			panic(message)
 		} else {
 			// This is not a single arguments rule.
@@ -318,7 +318,7 @@ additionalArgumentsLoop:
 					return arguments, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "Arguments")
+				var message = v.formatError(token, "$Arguments")
 				message += "The number of additionalArgument rules must be at least 0."
 				panic(message)
 			default:
@@ -333,7 +333,7 @@ additionalArgumentsLoop:
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Arguments")
+			var message = v.formatError(token, "$Arguments")
 			panic(message)
 		} else {
 			// This is not a single arguments rule.
@@ -363,7 +363,7 @@ func (v *parser_) parseArray() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Array")
+			var message = v.formatError(token, "$Array")
 			panic(message)
 		} else {
 			// This is not a single array rule.
@@ -377,7 +377,7 @@ func (v *parser_) parseArray() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Array")
+			var message = v.formatError(token, "$Array")
 			panic(message)
 		} else {
 			// This is not a single array rule.
@@ -405,7 +405,7 @@ func (v *parser_) parseAspectDefinition() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "AspectDefinition")
+			var message = v.formatError(token, "$AspectDefinition")
 			panic(message)
 		} else {
 			// This is not a single aspect rule.
@@ -419,7 +419,7 @@ func (v *parser_) parseAspectDefinition() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "AspectDefinition")
+			var message = v.formatError(token, "$AspectDefinition")
 			panic(message)
 		} else {
 			// This is not a single aspect rule.
@@ -433,7 +433,7 @@ func (v *parser_) parseAspectDefinition() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "AspectDefinition")
+			var message = v.formatError(token, "$AspectDefinition")
 			panic(message)
 		} else {
 			// This is not a single aspect rule.
@@ -456,7 +456,7 @@ aspectMethodsLoop:
 					return aspectDefinition, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "AspectDefinition")
+				var message = v.formatError(token, "$AspectDefinition")
 				message += "The number of aspectMethod rules must be at least 1."
 				panic(message)
 			default:
@@ -471,7 +471,7 @@ aspectMethodsLoop:
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "AspectDefinition")
+			var message = v.formatError(token, "$AspectDefinition")
 			panic(message)
 		} else {
 			// This is not a single aspect rule.
@@ -502,7 +502,7 @@ func (v *parser_) parseAspectInterface() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "AspectInterface")
+			var message = v.formatError(token, "$AspectInterface")
 			panic(message)
 		} else {
 			// This is not a single interface rule.
@@ -532,7 +532,7 @@ func (v *parser_) parseAspectMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "AspectMethod")
+			var message = v.formatError(token, "$AspectMethod")
 			panic(message)
 		} else {
 			// This is not a single aspect rule.
@@ -561,7 +561,7 @@ func (v *parser_) parseAspectSection() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "AspectSection")
+			var message = v.formatError(token, "$AspectSection")
 			panic(message)
 		} else {
 			// This is not a single aspectSection rule.
@@ -584,7 +584,7 @@ aspectDefinitionsLoop:
 					return aspectSection, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "AspectSection")
+				var message = v.formatError(token, "$AspectSection")
 				message += "The number of aspectDefinition rules must be at least 1."
 				panic(message)
 			default:
@@ -628,7 +628,7 @@ func (v *parser_) parseAspectSubsection() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "AspectSubsection")
+			var message = v.formatError(token, "$AspectSubsection")
 			panic(message)
 		} else {
 			// This is not a single aspectSubsection rule.
@@ -651,7 +651,7 @@ interfacesLoop:
 					return aspectSubsection, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "AspectSubsection")
+				var message = v.formatError(token, "$AspectSubsection")
 				message += "The number of interface rules must be at least 1."
 				panic(message)
 			default:
@@ -706,7 +706,7 @@ func (v *parser_) parseAttributeSubsection() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "AttributeSubsection")
+			var message = v.formatError(token, "$AttributeSubsection")
 			panic(message)
 		} else {
 			// This is not a single attributeSubsection rule.
@@ -729,7 +729,7 @@ attributeMethodsLoop:
 					return attributeSubsection, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "AttributeSubsection")
+				var message = v.formatError(token, "$AttributeSubsection")
 				message += "The number of attributeMethod rules must be at least 1."
 				panic(message)
 			default:
@@ -757,7 +757,7 @@ func (v *parser_) parseChannel() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Channel")
+			var message = v.formatError(token, "$Channel")
 			panic(message)
 		} else {
 			// This is not a single channel rule.
@@ -785,7 +785,7 @@ func (v *parser_) parseClass() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Class")
+			var message = v.formatError(token, "$Class")
 			panic(message)
 		} else {
 			// This is not a single classDefinition rule.
@@ -799,7 +799,7 @@ func (v *parser_) parseClass() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Class")
+			var message = v.formatError(token, "$Class")
 			panic(message)
 		} else {
 			// This is not a single classDefinition rule.
@@ -813,7 +813,7 @@ func (v *parser_) parseClass() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Class")
+			var message = v.formatError(token, "$Class")
 			panic(message)
 		} else {
 			// This is not a single classDefinition rule.
@@ -828,7 +828,7 @@ func (v *parser_) parseClass() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Class")
+			var message = v.formatError(token, "$Class")
 			panic(message)
 		} else {
 			// This is not a single classDefinition rule.
@@ -842,7 +842,7 @@ func (v *parser_) parseClass() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Class")
+			var message = v.formatError(token, "$Class")
 			panic(message)
 		} else {
 			// This is not a single classDefinition rule.
@@ -873,7 +873,7 @@ func (v *parser_) parseClassMethods() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "ClassMethods")
+			var message = v.formatError(token, "$ClassMethods")
 			panic(message)
 		} else {
 			// This is not a single classMethods rule.
@@ -918,7 +918,7 @@ func (v *parser_) parseClassSection() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "ClassSection")
+			var message = v.formatError(token, "$ClassSection")
 			panic(message)
 		} else {
 			// This is not a single classSection rule.
@@ -941,7 +941,7 @@ classDefinitionsLoop:
 					return classSection, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "ClassSection")
+				var message = v.formatError(token, "$ClassSection")
 				message += "The number of classDefinition rules must be at least 1."
 				panic(message)
 			default:
@@ -986,7 +986,7 @@ func (v *parser_) parseConstantMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "ConstantMethod")
+			var message = v.formatError(token, "$ConstantMethod")
 			panic(message)
 		} else {
 			// This is not a single constantMethod rule.
@@ -1000,7 +1000,7 @@ func (v *parser_) parseConstantMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "ConstantMethod")
+			var message = v.formatError(token, "$ConstantMethod")
 			panic(message)
 		} else {
 			// This is not a single constantMethod rule.
@@ -1014,7 +1014,7 @@ func (v *parser_) parseConstantMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "ConstantMethod")
+			var message = v.formatError(token, "$ConstantMethod")
 			panic(message)
 		} else {
 			// This is not a single constantMethod rule.
@@ -1029,7 +1029,7 @@ func (v *parser_) parseConstantMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "ConstantMethod")
+			var message = v.formatError(token, "$ConstantMethod")
 			panic(message)
 		} else {
 			// This is not a single constantMethod rule.
@@ -1059,7 +1059,7 @@ func (v *parser_) parseConstantSubsection() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "ConstantSubsection")
+			var message = v.formatError(token, "$ConstantSubsection")
 			panic(message)
 		} else {
 			// This is not a single constantSubsection rule.
@@ -1082,7 +1082,7 @@ constantMethodsLoop:
 					return constantSubsection, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "ConstantSubsection")
+				var message = v.formatError(token, "$ConstantSubsection")
 				message += "The number of constantMethod rules must be at least 1."
 				panic(message)
 			default:
@@ -1111,7 +1111,7 @@ func (v *parser_) parseConstraint() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Constraint")
+			var message = v.formatError(token, "$Constraint")
 			panic(message)
 		} else {
 			// This is not a single constraint rule.
@@ -1126,7 +1126,7 @@ func (v *parser_) parseConstraint() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Constraint")
+			var message = v.formatError(token, "$Constraint")
 			panic(message)
 		} else {
 			// This is not a single constraint rule.
@@ -1156,7 +1156,7 @@ func (v *parser_) parseConstraints() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Constraints")
+			var message = v.formatError(token, "$Constraints")
 			panic(message)
 		} else {
 			// This is not a single constraints rule.
@@ -1171,7 +1171,7 @@ func (v *parser_) parseConstraints() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Constraints")
+			var message = v.formatError(token, "$Constraints")
 			panic(message)
 		} else {
 			// This is not a single constraints rule.
@@ -1194,7 +1194,7 @@ additionalConstraintsLoop:
 					return constraints, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "Constraints")
+				var message = v.formatError(token, "$Constraints")
 				message += "The number of additionalConstraint rules must be at least 0."
 				panic(message)
 			default:
@@ -1209,7 +1209,7 @@ additionalConstraintsLoop:
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Constraints")
+			var message = v.formatError(token, "$Constraints")
 			panic(message)
 		} else {
 			// This is not a single constraints rule.
@@ -1240,7 +1240,7 @@ func (v *parser_) parseConstructorMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "ConstructorMethod")
+			var message = v.formatError(token, "$ConstructorMethod")
 			panic(message)
 		} else {
 			// This is not a single constructorMethod rule.
@@ -1254,7 +1254,7 @@ func (v *parser_) parseConstructorMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "ConstructorMethod")
+			var message = v.formatError(token, "$ConstructorMethod")
 			panic(message)
 		} else {
 			// This is not a single constructorMethod rule.
@@ -1277,7 +1277,7 @@ parametersLoop:
 					return constructorMethod, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "ConstructorMethod")
+				var message = v.formatError(token, "$ConstructorMethod")
 				message += "The number of parameter rules must be at least 0."
 				panic(message)
 			default:
@@ -1292,7 +1292,7 @@ parametersLoop:
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "ConstructorMethod")
+			var message = v.formatError(token, "$ConstructorMethod")
 			panic(message)
 		} else {
 			// This is not a single constructorMethod rule.
@@ -1307,7 +1307,7 @@ parametersLoop:
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "ConstructorMethod")
+			var message = v.formatError(token, "$ConstructorMethod")
 			panic(message)
 		} else {
 			// This is not a single constructorMethod rule.
@@ -1338,7 +1338,7 @@ func (v *parser_) parseConstructorSubsection() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "ConstructorSubsection")
+			var message = v.formatError(token, "$ConstructorSubsection")
 			panic(message)
 		} else {
 			// This is not a single constructorSubsection rule.
@@ -1361,7 +1361,7 @@ constructorMethodsLoop:
 					return constructorSubsection, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "ConstructorSubsection")
+				var message = v.formatError(token, "$ConstructorSubsection")
 				message += "The number of constructorMethod rules must be at least 1."
 				panic(message)
 			default:
@@ -1390,7 +1390,7 @@ func (v *parser_) parseDeclaration() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Declaration")
+			var message = v.formatError(token, "$Declaration")
 			panic(message)
 		} else {
 			// This is not a single declaration rule.
@@ -1404,7 +1404,7 @@ func (v *parser_) parseDeclaration() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Declaration")
+			var message = v.formatError(token, "$Declaration")
 			panic(message)
 		} else {
 			// This is not a single declaration rule.
@@ -1419,7 +1419,7 @@ func (v *parser_) parseDeclaration() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Declaration")
+			var message = v.formatError(token, "$Declaration")
 			panic(message)
 		} else {
 			// This is not a single declaration rule.
@@ -1457,7 +1457,7 @@ func (v *parser_) parseEnumeration() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Enumeration")
+			var message = v.formatError(token, "$Enumeration")
 			panic(message)
 		} else {
 			// This is not a single enumeration rule.
@@ -1471,7 +1471,7 @@ func (v *parser_) parseEnumeration() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Enumeration")
+			var message = v.formatError(token, "$Enumeration")
 			panic(message)
 		} else {
 			// This is not a single enumeration rule.
@@ -1486,7 +1486,7 @@ func (v *parser_) parseEnumeration() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Enumeration")
+			var message = v.formatError(token, "$Enumeration")
 			panic(message)
 		} else {
 			// This is not a single enumeration rule.
@@ -1509,7 +1509,7 @@ additionalValuesLoop:
 					return enumeration, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "Enumeration")
+				var message = v.formatError(token, "$Enumeration")
 				message += "The number of additionalValue rules must be at least 0."
 				panic(message)
 			default:
@@ -1524,7 +1524,7 @@ additionalValuesLoop:
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Enumeration")
+			var message = v.formatError(token, "$Enumeration")
 			panic(message)
 		} else {
 			// This is not a single enumeration rule.
@@ -1555,7 +1555,7 @@ func (v *parser_) parseFunctionMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "FunctionMethod")
+			var message = v.formatError(token, "$FunctionMethod")
 			panic(message)
 		} else {
 			// This is not a single functionMethod rule.
@@ -1569,7 +1569,7 @@ func (v *parser_) parseFunctionMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "FunctionMethod")
+			var message = v.formatError(token, "$FunctionMethod")
 			panic(message)
 		} else {
 			// This is not a single functionMethod rule.
@@ -1592,7 +1592,7 @@ parametersLoop:
 					return functionMethod, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "FunctionMethod")
+				var message = v.formatError(token, "$FunctionMethod")
 				message += "The number of parameter rules must be at least 0."
 				panic(message)
 			default:
@@ -1607,7 +1607,7 @@ parametersLoop:
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "FunctionMethod")
+			var message = v.formatError(token, "$FunctionMethod")
 			panic(message)
 		} else {
 			// This is not a single functionMethod rule.
@@ -1622,7 +1622,7 @@ parametersLoop:
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "FunctionMethod")
+			var message = v.formatError(token, "$FunctionMethod")
 			panic(message)
 		} else {
 			// This is not a single functionMethod rule.
@@ -1653,7 +1653,7 @@ func (v *parser_) parseFunctionSubsection() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "FunctionSubsection")
+			var message = v.formatError(token, "$FunctionSubsection")
 			panic(message)
 		} else {
 			// This is not a single functionSubsection rule.
@@ -1676,7 +1676,7 @@ functionMethodsLoop:
 					return functionSubsection, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "FunctionSubsection")
+				var message = v.formatError(token, "$FunctionSubsection")
 				message += "The number of functionMethod rules must be at least 1."
 				panic(message)
 			default:
@@ -1705,7 +1705,7 @@ func (v *parser_) parseFunctionalDefinition() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "FunctionalDefinition")
+			var message = v.formatError(token, "$FunctionalDefinition")
 			panic(message)
 		} else {
 			// This is not a single functional rule.
@@ -1719,7 +1719,7 @@ func (v *parser_) parseFunctionalDefinition() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "FunctionalDefinition")
+			var message = v.formatError(token, "$FunctionalDefinition")
 			panic(message)
 		} else {
 			// This is not a single functional rule.
@@ -1733,7 +1733,7 @@ func (v *parser_) parseFunctionalDefinition() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "FunctionalDefinition")
+			var message = v.formatError(token, "$FunctionalDefinition")
 			panic(message)
 		} else {
 			// This is not a single functional rule.
@@ -1756,7 +1756,7 @@ parametersLoop:
 					return functionalDefinition, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "FunctionalDefinition")
+				var message = v.formatError(token, "$FunctionalDefinition")
 				message += "The number of parameter rules must be at least 0."
 				panic(message)
 			default:
@@ -1771,7 +1771,7 @@ parametersLoop:
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "FunctionalDefinition")
+			var message = v.formatError(token, "$FunctionalDefinition")
 			panic(message)
 		} else {
 			// This is not a single functional rule.
@@ -1786,7 +1786,7 @@ parametersLoop:
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "FunctionalDefinition")
+			var message = v.formatError(token, "$FunctionalDefinition")
 			panic(message)
 		} else {
 			// This is not a single functional rule.
@@ -1817,7 +1817,7 @@ func (v *parser_) parseFunctionalSection() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "FunctionalSection")
+			var message = v.formatError(token, "$FunctionalSection")
 			panic(message)
 		} else {
 			// This is not a single functionalSection rule.
@@ -1840,7 +1840,7 @@ functionalDefinitionsLoop:
 					return functionalSection, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "FunctionalSection")
+				var message = v.formatError(token, "$FunctionalSection")
 				message += "The number of functional rules must be at least 1."
 				panic(message)
 			default:
@@ -1886,7 +1886,7 @@ func (v *parser_) parseGetterMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "GetterMethod")
+			var message = v.formatError(token, "$GetterMethod")
 			panic(message)
 		} else {
 			// This is not a single getterMethod rule.
@@ -1905,7 +1905,7 @@ func (v *parser_) parseGetterMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "GetterMethod")
+			var message = v.formatError(token, "$GetterMethod")
 			panic(message)
 		} else {
 			// This is not a single getterMethod rule.
@@ -1924,7 +1924,7 @@ func (v *parser_) parseGetterMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "GetterMethod")
+			var message = v.formatError(token, "$GetterMethod")
 			panic(message)
 		} else {
 			// This is not a single getterMethod rule.
@@ -1944,7 +1944,7 @@ func (v *parser_) parseGetterMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "GetterMethod")
+			var message = v.formatError(token, "$GetterMethod")
 			panic(message)
 		} else {
 			// This is not a single getterMethod rule.
@@ -1979,7 +1979,7 @@ func (v *parser_) parseHeader() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Header")
+			var message = v.formatError(token, "$Header")
 			panic(message)
 		} else {
 			// This is not a single header rule.
@@ -1993,7 +1993,7 @@ func (v *parser_) parseHeader() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Header")
+			var message = v.formatError(token, "$Header")
 			panic(message)
 		} else {
 			// This is not a single header rule.
@@ -2008,7 +2008,7 @@ func (v *parser_) parseHeader() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Header")
+			var message = v.formatError(token, "$Header")
 			panic(message)
 		} else {
 			// This is not a single header rule.
@@ -2038,7 +2038,7 @@ func (v *parser_) parseImports() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Imports")
+			var message = v.formatError(token, "$Imports")
 			panic(message)
 		} else {
 			// This is not a single imports rule.
@@ -2052,7 +2052,7 @@ func (v *parser_) parseImports() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Imports")
+			var message = v.formatError(token, "$Imports")
 			panic(message)
 		} else {
 			// This is not a single imports rule.
@@ -2075,7 +2075,7 @@ modulesLoop:
 					return imports, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "Imports")
+				var message = v.formatError(token, "$Imports")
 				message += "The number of module rules must be at least 1."
 				panic(message)
 			default:
@@ -2090,7 +2090,7 @@ modulesLoop:
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Imports")
+			var message = v.formatError(token, "$Imports")
 			panic(message)
 		} else {
 			// This is not a single imports rule.
@@ -2118,7 +2118,7 @@ func (v *parser_) parseInstanceDefinition() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "InstanceDefinition")
+			var message = v.formatError(token, "$InstanceDefinition")
 			panic(message)
 		} else {
 			// This is not a single instanceDefinition rule.
@@ -2132,7 +2132,7 @@ func (v *parser_) parseInstanceDefinition() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "InstanceDefinition")
+			var message = v.formatError(token, "$InstanceDefinition")
 			panic(message)
 		} else {
 			// This is not a single instanceDefinition rule.
@@ -2146,7 +2146,7 @@ func (v *parser_) parseInstanceDefinition() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "InstanceDefinition")
+			var message = v.formatError(token, "$InstanceDefinition")
 			panic(message)
 		} else {
 			// This is not a single instanceDefinition rule.
@@ -2161,7 +2161,7 @@ func (v *parser_) parseInstanceDefinition() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "InstanceDefinition")
+			var message = v.formatError(token, "$InstanceDefinition")
 			panic(message)
 		} else {
 			// This is not a single instanceDefinition rule.
@@ -2175,7 +2175,7 @@ func (v *parser_) parseInstanceDefinition() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "InstanceDefinition")
+			var message = v.formatError(token, "$InstanceDefinition")
 			panic(message)
 		} else {
 			// This is not a single instanceDefinition rule.
@@ -2205,7 +2205,7 @@ func (v *parser_) parseInstanceSection() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "InstanceSection")
+			var message = v.formatError(token, "$InstanceSection")
 			panic(message)
 		} else {
 			// This is not a single instanceSection rule.
@@ -2228,7 +2228,7 @@ instanceDefinitionsLoop:
 					return instanceSection, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "InstanceSection")
+				var message = v.formatError(token, "$InstanceSection")
 				message += "The number of instanceDefinition rules must be at least 1."
 				panic(message)
 			default:
@@ -2273,7 +2273,7 @@ func (v *parser_) parseInstanceMethods() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "InstanceMethods")
+			var message = v.formatError(token, "$InstanceMethods")
 			panic(message)
 		} else {
 			// This is not a single instanceMethods rule.
@@ -2319,7 +2319,7 @@ func (v *parser_) parseInterfaceDefinitions() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "InterfaceDefinitions")
+			var message = v.formatError(token, "$InterfaceDefinitions")
 			panic(message)
 		} else {
 			// This is not a single interfaceDefinitions rule.
@@ -2334,7 +2334,7 @@ func (v *parser_) parseInterfaceDefinitions() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "InterfaceDefinitions")
+			var message = v.formatError(token, "$InterfaceDefinitions")
 			panic(message)
 		} else {
 			// This is not a single interfaceDefinitions rule.
@@ -2372,7 +2372,7 @@ func (v *parser_) parseMap() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Map")
+			var message = v.formatError(token, "$Map")
 			panic(message)
 		} else {
 			// This is not a single map rule.
@@ -2386,7 +2386,7 @@ func (v *parser_) parseMap() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Map")
+			var message = v.formatError(token, "$Map")
 			panic(message)
 		} else {
 			// This is not a single map rule.
@@ -2401,7 +2401,7 @@ func (v *parser_) parseMap() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Map")
+			var message = v.formatError(token, "$Map")
 			panic(message)
 		} else {
 			// This is not a single map rule.
@@ -2415,7 +2415,7 @@ func (v *parser_) parseMap() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Map")
+			var message = v.formatError(token, "$Map")
 			panic(message)
 		} else {
 			// This is not a single map rule.
@@ -2443,7 +2443,7 @@ func (v *parser_) parseMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Method")
+			var message = v.formatError(token, "$Method")
 			panic(message)
 		} else {
 			// This is not a single method rule.
@@ -2457,7 +2457,7 @@ func (v *parser_) parseMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Method")
+			var message = v.formatError(token, "$Method")
 			panic(message)
 		} else {
 			// This is not a single method rule.
@@ -2480,7 +2480,7 @@ parametersLoop:
 					return method, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "Method")
+				var message = v.formatError(token, "$Method")
 				message += "The number of parameter rules must be at least 0."
 				panic(message)
 			default:
@@ -2495,7 +2495,7 @@ parametersLoop:
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Method")
+			var message = v.formatError(token, "$Method")
 			panic(message)
 		} else {
 			// This is not a single method rule.
@@ -2534,7 +2534,7 @@ func (v *parser_) parseModel() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Model")
+			var message = v.formatError(token, "$Model")
 			panic(message)
 		} else {
 			// This is not a single model rule.
@@ -2549,7 +2549,7 @@ func (v *parser_) parseModel() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Model")
+			var message = v.formatError(token, "$Model")
 			panic(message)
 		} else {
 			// This is not a single model rule.
@@ -2564,7 +2564,7 @@ func (v *parser_) parseModel() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Model")
+			var message = v.formatError(token, "$Model")
 			panic(message)
 		} else {
 			// This is not a single model rule.
@@ -2596,7 +2596,7 @@ func (v *parser_) parseModule() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Module")
+			var message = v.formatError(token, "$Module")
 			panic(message)
 		} else {
 			// This is not a single module rule.
@@ -2611,7 +2611,7 @@ func (v *parser_) parseModule() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Module")
+			var message = v.formatError(token, "$Module")
 			panic(message)
 		} else {
 			// This is not a single module rule.
@@ -2642,7 +2642,7 @@ func (v *parser_) parseModuleDefinition() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "ModuleDefinition")
+			var message = v.formatError(token, "$ModuleDefinition")
 			panic(message)
 		} else {
 			// This is not a single moduleDefinition rule.
@@ -2657,7 +2657,7 @@ func (v *parser_) parseModuleDefinition() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "ModuleDefinition")
+			var message = v.formatError(token, "$ModuleDefinition")
 			panic(message)
 		} else {
 			// This is not a single moduleDefinition rule.
@@ -2696,7 +2696,7 @@ func (v *parser_) parseNone() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "None")
+			var message = v.formatError(token, "$None")
 			panic(message)
 		} else {
 			// This is not a single none rule.
@@ -2724,7 +2724,7 @@ func (v *parser_) parseNotice() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Notice")
+			var message = v.formatError(token, "$Notice")
 			panic(message)
 		} else {
 			// This is not a single notice rule.
@@ -2752,7 +2752,7 @@ func (v *parser_) parseParameter() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Parameter")
+			var message = v.formatError(token, "$Parameter")
 			panic(message)
 		} else {
 			// This is not a single parameter rule.
@@ -2767,7 +2767,7 @@ func (v *parser_) parseParameter() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Parameter")
+			var message = v.formatError(token, "$Parameter")
 			panic(message)
 		} else {
 			// This is not a single parameter rule.
@@ -2781,7 +2781,7 @@ func (v *parser_) parseParameter() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Parameter")
+			var message = v.formatError(token, "$Parameter")
 			panic(message)
 		} else {
 			// This is not a single parameter rule.
@@ -2811,7 +2811,7 @@ func (v *parser_) parseParameterized() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Parameterized")
+			var message = v.formatError(token, "$Parameterized")
 			panic(message)
 		} else {
 			// This is not a single parameterized rule.
@@ -2834,7 +2834,7 @@ parametersLoop:
 					return parameterized, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "Parameterized")
+				var message = v.formatError(token, "$Parameterized")
 				message += "The number of parameter rules must be at least 1."
 				panic(message)
 			default:
@@ -2849,7 +2849,7 @@ parametersLoop:
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Parameterized")
+			var message = v.formatError(token, "$Parameterized")
 			panic(message)
 		} else {
 			// This is not a single parameterized rule.
@@ -2943,7 +2943,7 @@ func (v *parser_) parsePrimaryMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "PrimaryMethod")
+			var message = v.formatError(token, "$PrimaryMethod")
 			panic(message)
 		} else {
 			// This is not a single primaryMethod rule.
@@ -2972,7 +2972,7 @@ func (v *parser_) parsePrimarySubsection() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "PrimarySubsection")
+			var message = v.formatError(token, "$PrimarySubsection")
 			panic(message)
 		} else {
 			// This is not a single primarySubsection rule.
@@ -2995,7 +2995,7 @@ primaryMethodsLoop:
 					return primarySubsection, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "PrimarySubsection")
+				var message = v.formatError(token, "$PrimarySubsection")
 				message += "The number of primaryMethod rules must be at least 1."
 				panic(message)
 			default:
@@ -3061,7 +3061,7 @@ func (v *parser_) parseSetterMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "SetterMethod")
+			var message = v.formatError(token, "$SetterMethod")
 			panic(message)
 		} else {
 			// This is not a single setterMethod rule.
@@ -3075,7 +3075,7 @@ func (v *parser_) parseSetterMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "SetterMethod")
+			var message = v.formatError(token, "$SetterMethod")
 			panic(message)
 		} else {
 			// This is not a single setterMethod rule.
@@ -3090,7 +3090,7 @@ func (v *parser_) parseSetterMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "SetterMethod")
+			var message = v.formatError(token, "$SetterMethod")
 			panic(message)
 		} else {
 			// This is not a single setterMethod rule.
@@ -3104,7 +3104,7 @@ func (v *parser_) parseSetterMethod() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "SetterMethod")
+			var message = v.formatError(token, "$SetterMethod")
 			panic(message)
 		} else {
 			// This is not a single setterMethod rule.
@@ -3133,7 +3133,7 @@ func (v *parser_) parseSuffix() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Suffix")
+			var message = v.formatError(token, "$Suffix")
 			panic(message)
 		} else {
 			// This is not a single suffix rule.
@@ -3148,7 +3148,7 @@ func (v *parser_) parseSuffix() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Suffix")
+			var message = v.formatError(token, "$Suffix")
 			panic(message)
 		} else {
 			// This is not a single suffix rule.
@@ -3176,7 +3176,7 @@ func (v *parser_) parseTypeDefinition() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "TypeDefinition")
+			var message = v.formatError(token, "$TypeDefinition")
 			panic(message)
 		} else {
 			// This is not a single type rule.
@@ -3191,7 +3191,7 @@ func (v *parser_) parseTypeDefinition() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "TypeDefinition")
+			var message = v.formatError(token, "$TypeDefinition")
 			panic(message)
 		} else {
 			// This is not a single type rule.
@@ -3229,7 +3229,7 @@ func (v *parser_) parseTypeSection() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "TypeSection")
+			var message = v.formatError(token, "$TypeSection")
 			panic(message)
 		} else {
 			// This is not a single typeSection rule.
@@ -3252,7 +3252,7 @@ typeDefinitionsLoop:
 					return typeSection, token, false
 				}
 				// Found a syntax error.
-				var message = v.formatError(token, "TypeSection")
+				var message = v.formatError(token, "$TypeSection")
 				message += "The number of typeDefinition rules must be at least 1."
 				panic(message)
 			default:
@@ -3297,7 +3297,7 @@ func (v *parser_) parseValue() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Value")
+			var message = v.formatError(token, "$Value")
 			panic(message)
 		} else {
 			// This is not a single value rule.
@@ -3312,7 +3312,7 @@ func (v *parser_) parseValue() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Value")
+			var message = v.formatError(token, "$Value")
 			panic(message)
 		} else {
 			// This is not a single value rule.
@@ -3326,7 +3326,7 @@ func (v *parser_) parseValue() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Value")
+			var message = v.formatError(token, "$Value")
 			panic(message)
 		} else {
 			// This is not a single value rule.
@@ -3340,7 +3340,7 @@ func (v *parser_) parseValue() (
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
-			var message = v.formatError(token, "Value")
+			var message = v.formatError(token, "$Value")
 			panic(message)
 		} else {
 			// This is not a single value rule.
