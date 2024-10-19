@@ -48,8 +48,8 @@ expressions or other rules and are matched by the parser in the order listed.  A
 rule definition may also be directly or indirectly recursive.  The parsing of
 tokens is greedy and will match as many repeated token types as possible. The
 sequence of terms within in a rule definition may be separated by spaces which
-are ignored by the parser.  Newlines are also ignored unless a "newline" regular
-expression pattern is defined and used in one or more rule definitions.
+are ignored by the parser.  Newlines are also ignored unless explicitly
+specified as terms in one or more rule definitions.
 <!
 $Model: ModuleDefinition PrimitiveDefinitions InterfaceDefinitions
 
