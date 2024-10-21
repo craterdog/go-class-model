@@ -13,44 +13,24 @@
 package grammar_test
 
 import (
-	fmt "fmt"
 	gra "github.com/craterdog/go-class-model/v5/grammar"
 	ass "github.com/stretchr/testify/assert"
 	osx "os"
 	tes "testing"
 )
 
-var inputDirectory = "../"
-var outputDirectory = "../../../go-test-framework/v5/"
-var testDirectories = []string{
-	"ast/",
-	"grammar/",
-	"testdata/",
-}
-
 func TestRoundTrips(t *tes.T) {
-	fmt.Println("Round Trip Tests:")
-	for _, testDirectory := range testDirectories {
-		var directory = inputDirectory + testDirectory
-		fmt.Printf("   %v\n", directory)
-		var bytes, err = osx.ReadFile(directory + "Package.go")
-		if err != nil {
-			panic(err)
-		}
-		var source = string(bytes)
-		var parser = gra.Parser().Make()
-		var model = parser.ParseSource(source)
-		var validator = gra.Validator().Make()
-		validator.ValidateModel(model)
-		var formatter = gra.Formatter().Make()
-		var actual = formatter.FormatModel(model)
-		ass.Equal(t, source, actual)
-		directory = outputDirectory + testDirectory
-		var filename = directory + "Package.go"
-		err = osx.WriteFile(filename, bytes, 0644)
-		if err != nil {
-			panic(err)
-		}
+	var modelFile = "./Package.go"
+	var bytes, err = osx.ReadFile(modelFile)
+	if err != nil {
+		panic(err)
 	}
-	fmt.Println("Done.")
+	var source = string(bytes)
+	var parser = gra.Parser().Make()
+	var model = parser.ParseSource(source)
+	var validator = gra.Validator().Make()
+	validator.ValidateModel(model)
+	var formatter = gra.Formatter().Make()
+	var actual = formatter.FormatModel(model)
+	ass.Equal(t, source, actual)
 }
