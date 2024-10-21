@@ -20,17 +20,17 @@ import (
 	tes "testing"
 )
 
-var testDirectories = []string{
-	"../../go-test-framework/v5/ast/",
-	"../../go-test-framework/v5/grammar/",
-	"../../go-test-framework/v5/example/",
+var modelFiles = []string{
+	"./ast/Package.go",
+	"./grammar/Package.go",
+	"./testdata/Package.go",
 }
 
 func TestRoundTrips(t *tes.T) {
 	fmt.Println("Round Trip Tests:")
-	for _, directory := range testDirectories {
-		fmt.Printf("   %v\n", directory)
-		var bytes, err = osx.ReadFile(directory + "Package.go")
+	for _, modelFile := range modelFiles {
+		fmt.Printf("   %v\n", modelFile)
+		var bytes, err = osx.ReadFile(modelFile)
 		if err != nil {
 			panic(err)
 		}
