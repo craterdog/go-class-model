@@ -261,7 +261,7 @@ type AngleLike interface {
 	GetIntrinsic() float64
 	IsZero() bool
 
-	// Aspect Methods
+	// Aspect Interfaces
 	Angular
 }
 
@@ -284,7 +284,7 @@ type ArrayLike[V any] interface {
 		ranker RankingFunction[V],
 	)
 
-	// Aspect Methods
+	// Aspect Interfaces
 	Accessible[V]
 	Sequential[V]
 	Updatable[V]
@@ -320,7 +320,7 @@ type CatalogLike[K comparable, V any] interface {
 		ranker RankingFunction[AssociationLike[K, V]],
 	)
 
-	// Aspect Methods
+	// Aspect Interfaces
 	Associative[K, V]
 	Sequential[AssociationLike[K, V]]
 }
@@ -344,7 +344,7 @@ type ComplexLike interface {
 		form Form,
 	)
 
-	// Aspect Methods
+	// Aspect Interfaces
 	Continuous
 }
 

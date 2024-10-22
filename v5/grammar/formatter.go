@@ -149,7 +149,7 @@ func (v *formatter_) PreprocessAspectSection(aspectSection ast.AspectSectionLike
 func (v *formatter_) PreprocessAspectSubsection(aspectSubsection ast.AspectSubsectionLike) {
 	v.appendString("\n")
 	v.appendNewline()
-	v.appendString("// Aspect Methods")
+	v.appendString("// Aspect Interfaces")
 }
 
 func (v *formatter_) PreprocessAttributeMethod(

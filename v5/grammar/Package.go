@@ -172,7 +172,7 @@ type FormatterLike interface {
 		model ast.ModelLike,
 	) string
 
-	// Aspect Methods
+	// Aspect Interfaces
 	Methodical
 }
 
@@ -198,7 +198,7 @@ type ProcessorLike interface {
 	// Primary Methods
 	GetClass() ProcessorClassLike
 
-	// Aspect Methods
+	// Aspect Interfaces
 	Methodical
 }
 
@@ -240,7 +240,7 @@ type ValidatorLike interface {
 		model ast.ModelLike,
 	)
 
-	// Aspect Methods
+	// Aspect Interfaces
 	Methodical
 }
 

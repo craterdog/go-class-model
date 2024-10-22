@@ -623,8 +623,8 @@ func (v *parser_) parseAspectSubsection() (
 ) {
 	var ruleFound_ bool
 
-	// Attempt to parse a single "// Aspect Methods" delimiter.
-	_, token, ok = v.parseDelimiter("// Aspect Methods")
+	// Attempt to parse a single "// Aspect Interfaces" delimiter.
+	_, token, ok = v.parseDelimiter("// Aspect Interfaces")
 	if !ok {
 		if ruleFound_ {
 			// Found a syntax error.
