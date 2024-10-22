@@ -261,7 +261,7 @@ const (
 	comment_   = "(?:/\\*" + eol_ + "(" + any_ + "|" + eol_ + ")*?" + eol_ + "\\*/" + eol_ + ")"
 	delimiter_ = "(?:type|package|map|iota|interface|import|func|const|chan|\\}|\\{|\\]|\\[|\\.|\\)|\\(|=|// Type Definitions|// Primary Methods|// Instance Definitions|// Functional Definitions|// Function Methods|// Constructor Methods|// Constant Methods|// Class Definitions|// Attribute Methods|// Aspect Interfaces|// Aspect Definitions|,)"
 	name_      = "(?:(" + lower_ + "|" + upper_ + ")(" + lower_ + "|" + upper_ + "|" + digit_ + ")*_?)"
-	newline_   = "(?:\\r?\\n)"
+	newline_   = "(?:" + eol_ + ")"
 	path_      = "(?:\"" + any_ + "*?\")"
 	space_     = "(?:[ \\t]+)"
 )
