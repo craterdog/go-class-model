@@ -35,6 +35,12 @@ func (c *processorClass_) Make() ProcessorLike {
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *processor_) GetClass() ProcessorClassLike {
+	return processorReference()
+}
+
 // Methodical Methods
 
 func (v *processor_) ProcessComment(
@@ -968,12 +974,6 @@ func (v *processor_) ProcessValueSlot(
 func (v *processor_) PostprocessValue(
 	value ast.ValueLike,
 ) {
-}
-
-// Primary Methods
-
-func (v *processor_) GetClass() ProcessorClassLike {
-	return processorReference()
 }
 
 // PROTECTED INTERFACE
