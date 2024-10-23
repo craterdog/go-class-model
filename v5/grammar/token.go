@@ -56,6 +56,13 @@ func (c *tokenClass_) Make(
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *token_) GetClass() TokenClassLike {
+	return tokenReference()
+}
+
+// Attribute Methods
 // Attribute Methods
 
 func (v *token_) GetLine() uint {
@@ -72,12 +79,6 @@ func (v *token_) GetType() TokenType {
 
 func (v *token_) GetValue() string {
 	return v.value_
-}
-
-// Primary Methods
-
-func (v *token_) GetClass() TokenClassLike {
-	return tokenReference()
 }
 
 // PROTECTED INTERFACE
