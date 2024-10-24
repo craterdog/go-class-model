@@ -62,7 +62,7 @@ func (v *visitor_) VisitModel(
 // Private Methods
 
 func (v *visitor_) visitAbstraction(abstraction ast.AbstractionLike) {
-	// Visit the optional prefix rule.
+	// Visit an optional prefix rule.
 	var optionalPrefix = abstraction.GetOptionalPrefix()
 	if uti.IsDefined(optionalPrefix) {
 		v.processor_.PreprocessPrefix(optionalPrefix)
@@ -73,14 +73,14 @@ func (v *visitor_) visitAbstraction(abstraction ast.AbstractionLike) {
 	// Visit slot 1 between references.
 	v.processor_.ProcessAbstractionSlot(1)
 
-	// Visit the name token.
+	// Visit a single name token.
 	var name = abstraction.GetName()
 	v.processor_.ProcessName(name)
 
 	// Visit slot 2 between references.
 	v.processor_.ProcessAbstractionSlot(2)
 
-	// Visit the optional suffix rule.
+	// Visit an optional suffix rule.
 	var optionalSuffix = abstraction.GetOptionalSuffix()
 	if uti.IsDefined(optionalSuffix) {
 		v.processor_.PreprocessSuffix(optionalSuffix)
@@ -91,7 +91,7 @@ func (v *visitor_) visitAbstraction(abstraction ast.AbstractionLike) {
 	// Visit slot 3 between references.
 	v.processor_.ProcessAbstractionSlot(3)
 
-	// Visit the optional arguments rule.
+	// Visit an optional arguments rule.
 	var optionalArguments = abstraction.GetOptionalArguments()
 	if uti.IsDefined(optionalArguments) {
 		v.processor_.PreprocessArguments(optionalArguments)
@@ -101,7 +101,7 @@ func (v *visitor_) visitAbstraction(abstraction ast.AbstractionLike) {
 }
 
 func (v *visitor_) visitAdditionalArgument(additionalArgument ast.AdditionalArgumentLike) {
-	// Visit the argument rule.
+	// Visit a single argument rule.
 	var argument = additionalArgument.GetArgument()
 	v.processor_.PreprocessArgument(argument)
 	v.visitArgument(argument)
@@ -109,7 +109,7 @@ func (v *visitor_) visitAdditionalArgument(additionalArgument ast.AdditionalArgu
 }
 
 func (v *visitor_) visitAdditionalConstraint(additionalConstraint ast.AdditionalConstraintLike) {
-	// Visit the constraint rule.
+	// Visit a single constraint rule.
 	var constraint = additionalConstraint.GetConstraint()
 	v.processor_.PreprocessConstraint(constraint)
 	v.visitConstraint(constraint)
@@ -117,13 +117,13 @@ func (v *visitor_) visitAdditionalConstraint(additionalConstraint ast.Additional
 }
 
 func (v *visitor_) visitAdditionalValue(additionalValue ast.AdditionalValueLike) {
-	// Visit the name token.
+	// Visit a single name token.
 	var name = additionalValue.GetName()
 	v.processor_.ProcessName(name)
 }
 
 func (v *visitor_) visitArgument(argument ast.ArgumentLike) {
-	// Visit the abstraction rule.
+	// Visit a single abstraction rule.
 	var abstraction = argument.GetAbstraction()
 	v.processor_.PreprocessAbstraction(abstraction)
 	v.visitAbstraction(abstraction)
@@ -131,7 +131,7 @@ func (v *visitor_) visitArgument(argument ast.ArgumentLike) {
 }
 
 func (v *visitor_) visitArguments(arguments ast.ArgumentsLike) {
-	// Visit the argument rule.
+	// Visit a single argument rule.
 	var argument = arguments.GetArgument()
 	v.processor_.PreprocessArgument(argument)
 	v.visitArgument(argument)
@@ -164,7 +164,7 @@ func (v *visitor_) visitArguments(arguments ast.ArgumentsLike) {
 func (v *visitor_) visitArray(array ast.ArrayLike) {}
 
 func (v *visitor_) visitAspectDefinition(aspectDefinition ast.AspectDefinitionLike) {
-	// Visit the declaration rule.
+	// Visit a single declaration rule.
 	var declaration = aspectDefinition.GetDeclaration()
 	v.processor_.PreprocessDeclaration(declaration)
 	v.visitDeclaration(declaration)
@@ -195,7 +195,7 @@ func (v *visitor_) visitAspectDefinition(aspectDefinition ast.AspectDefinitionLi
 }
 
 func (v *visitor_) visitAspectInterface(aspectInterface ast.AspectInterfaceLike) {
-	// Visit the abstraction rule.
+	// Visit a single abstraction rule.
 	var abstraction = aspectInterface.GetAbstraction()
 	v.processor_.PreprocessAbstraction(abstraction)
 	v.visitAbstraction(abstraction)
@@ -203,7 +203,7 @@ func (v *visitor_) visitAspectInterface(aspectInterface ast.AspectInterfaceLike)
 }
 
 func (v *visitor_) visitAspectMethod(aspectMethod ast.AspectMethodLike) {
-	// Visit the method rule.
+	// Visit a single method rule.
 	var method = aspectMethod.GetMethod()
 	v.processor_.PreprocessMethod(method)
 	v.visitMethod(method)
@@ -233,23 +233,23 @@ func (v *visitor_) visitAspectSection(aspectSection ast.AspectSectionLike) {
 }
 
 func (v *visitor_) visitAspectSubsection(aspectSubsection ast.AspectSubsectionLike) {
-	// Visit each interface rule.
-	var interfaceIndex uint
-	var interfaces = aspectSubsection.GetAspectInterfaces().GetIterator()
-	var interfacesSize = uint(interfaces.GetSize())
-	for interfaces.HasNext() {
-		interfaceIndex++
-		var aspectInterface = interfaces.GetNext()
+	// Visit each aspectInterface rule.
+	var aspectInterfaceIndex uint
+	var aspectInterfaces = aspectSubsection.GetAspectInterfaces().GetIterator()
+	var aspectInterfacesSize = uint(aspectInterfaces.GetSize())
+	for aspectInterfaces.HasNext() {
+		aspectInterfaceIndex++
+		var aspectInterface = aspectInterfaces.GetNext()
 		v.processor_.PreprocessAspectInterface(
 			aspectInterface,
-			interfaceIndex,
-			interfacesSize,
+			aspectInterfaceIndex,
+			aspectInterfacesSize,
 		)
 		v.visitAspectInterface(aspectInterface)
 		v.processor_.PostprocessAspectInterface(
 			aspectInterface,
-			interfaceIndex,
-			interfacesSize,
+			aspectInterfaceIndex,
+			aspectInterfacesSize,
 		)
 	}
 }
@@ -265,6 +265,11 @@ func (v *visitor_) visitAttributeMethod(attributeMethod ast.AttributeMethodLike)
 		v.processor_.PreprocessSetterMethod(actual)
 		v.visitSetterMethod(actual)
 		v.processor_.PostprocessSetterMethod(actual)
+	case string:
+		switch {
+		default:
+			panic(fmt.Sprintf("Invalid token: %v", actual))
+		}
 	default:
 		panic(fmt.Sprintf("Invalid rule type: %T", actual))
 	}
@@ -292,11 +297,10 @@ func (v *visitor_) visitAttributeSubsection(attributeSubsection ast.AttributeSub
 	}
 }
 
-func (v *visitor_) visitChannel(channel ast.ChannelLike) {
-}
+func (v *visitor_) visitChannel(channel ast.ChannelLike) {}
 
 func (v *visitor_) visitClassDefinition(classDefinition ast.ClassDefinitionLike) {
-	// Visit the declaration rule.
+	// Visit a single declaration rule.
 	var declaration = classDefinition.GetDeclaration()
 	v.processor_.PreprocessDeclaration(declaration)
 	v.visitDeclaration(declaration)
@@ -305,7 +309,7 @@ func (v *visitor_) visitClassDefinition(classDefinition ast.ClassDefinitionLike)
 	// Visit slot 1 between references.
 	v.processor_.ProcessClassDefinitionSlot(1)
 
-	// Visit the classMethods rule.
+	// Visit a single classMethods rule.
 	var classMethods = classDefinition.GetClassMethods()
 	v.processor_.PreprocessClassMethods(classMethods)
 	v.visitClassMethods(classMethods)
@@ -313,7 +317,7 @@ func (v *visitor_) visitClassDefinition(classDefinition ast.ClassDefinitionLike)
 }
 
 func (v *visitor_) visitClassMethods(classMethods ast.ClassMethodsLike) {
-	// Visit the constructorSubsection rule.
+	// Visit a single constructorSubsection rule.
 	var constructorSubsection = classMethods.GetConstructorSubsection()
 	v.processor_.PreprocessConstructorSubsection(constructorSubsection)
 	v.visitConstructorSubsection(constructorSubsection)
@@ -322,7 +326,7 @@ func (v *visitor_) visitClassMethods(classMethods ast.ClassMethodsLike) {
 	// Visit slot 1 between references.
 	v.processor_.ProcessClassMethodsSlot(1)
 
-	// Visit the optional constantSubsection rule.
+	// Visit an optional constantSubsection rule.
 	var optionalConstantSubsection = classMethods.GetOptionalConstantSubsection()
 	if uti.IsDefined(optionalConstantSubsection) {
 		v.processor_.PreprocessConstantSubsection(optionalConstantSubsection)
@@ -333,7 +337,7 @@ func (v *visitor_) visitClassMethods(classMethods ast.ClassMethodsLike) {
 	// Visit slot 2 between references.
 	v.processor_.ProcessClassMethodsSlot(2)
 
-	// Visit the optional functionSubsection rule.
+	// Visit an optional functionSubsection rule.
 	var optionalFunctionSubsection = classMethods.GetOptionalFunctionSubsection()
 	if uti.IsDefined(optionalFunctionSubsection) {
 		v.processor_.PreprocessFunctionSubsection(optionalFunctionSubsection)
@@ -365,14 +369,14 @@ func (v *visitor_) visitClassSection(classSection ast.ClassSectionLike) {
 }
 
 func (v *visitor_) visitConstantMethod(constantMethod ast.ConstantMethodLike) {
-	// Visit the name token.
+	// Visit a single name token.
 	var name = constantMethod.GetName()
 	v.processor_.ProcessName(name)
 
 	// Visit slot 1 between references.
 	v.processor_.ProcessConstantMethodSlot(1)
 
-	// Visit the abstraction rule.
+	// Visit a single abstraction rule.
 	var abstraction = constantMethod.GetAbstraction()
 	v.processor_.PreprocessAbstraction(abstraction)
 	v.visitAbstraction(abstraction)
@@ -402,14 +406,14 @@ func (v *visitor_) visitConstantSubsection(constantSubsection ast.ConstantSubsec
 }
 
 func (v *visitor_) visitConstraint(constraint ast.ConstraintLike) {
-	// Visit the name token.
+	// Visit a single name token.
 	var name = constraint.GetName()
 	v.processor_.ProcessName(name)
 
 	// Visit slot 1 between references.
 	v.processor_.ProcessConstraintSlot(1)
 
-	// Visit the abstraction rule.
+	// Visit a single abstraction rule.
 	var abstraction = constraint.GetAbstraction()
 	v.processor_.PreprocessAbstraction(abstraction)
 	v.visitAbstraction(abstraction)
@@ -417,7 +421,7 @@ func (v *visitor_) visitConstraint(constraint ast.ConstraintLike) {
 }
 
 func (v *visitor_) visitConstraints(constraints ast.ConstraintsLike) {
-	// Visit the constraint rule.
+	// Visit a single constraint rule.
 	var constraint = constraints.GetConstraint()
 	v.processor_.PreprocessConstraint(constraint)
 	v.visitConstraint(constraint)
@@ -448,7 +452,7 @@ func (v *visitor_) visitConstraints(constraints ast.ConstraintsLike) {
 }
 
 func (v *visitor_) visitConstructorMethod(constructorMethod ast.ConstructorMethodLike) {
-	// Visit the name token.
+	// Visit a single name token.
 	var name = constructorMethod.GetName()
 	v.processor_.ProcessName(name)
 
@@ -478,7 +482,7 @@ func (v *visitor_) visitConstructorMethod(constructorMethod ast.ConstructorMetho
 	// Visit slot 2 between references.
 	v.processor_.ProcessConstructorMethodSlot(2)
 
-	// Visit the abstraction rule.
+	// Visit a single abstraction rule.
 	var abstraction = constructorMethod.GetAbstraction()
 	v.processor_.PreprocessAbstraction(abstraction)
 	v.visitAbstraction(abstraction)
@@ -487,42 +491,42 @@ func (v *visitor_) visitConstructorMethod(constructorMethod ast.ConstructorMetho
 
 func (v *visitor_) visitConstructorSubsection(constructorSubsection ast.ConstructorSubsectionLike) {
 	// Visit each constructorMethod rule.
-	var constructorIndex uint
+	var constructorMethodIndex uint
 	var constructorMethods = constructorSubsection.GetConstructorMethods().GetIterator()
 	var constructorMethodsSize = uint(constructorMethods.GetSize())
 	for constructorMethods.HasNext() {
-		constructorIndex++
+		constructorMethodIndex++
 		var constructorMethod = constructorMethods.GetNext()
 		v.processor_.PreprocessConstructorMethod(
 			constructorMethod,
-			constructorIndex,
+			constructorMethodIndex,
 			constructorMethodsSize,
 		)
 		v.visitConstructorMethod(constructorMethod)
 		v.processor_.PostprocessConstructorMethod(
 			constructorMethod,
-			constructorIndex,
+			constructorMethodIndex,
 			constructorMethodsSize,
 		)
 	}
 }
 
 func (v *visitor_) visitDeclaration(declaration ast.DeclarationLike) {
-	// Visit the comment token.
+	// Visit a single comment token.
 	var comment = declaration.GetComment()
 	v.processor_.ProcessComment(comment)
 
 	// Visit slot 1 between references.
 	v.processor_.ProcessDeclarationSlot(1)
 
-	// Visit the name token.
+	// Visit a single name token.
 	var name = declaration.GetName()
 	v.processor_.ProcessName(name)
 
 	// Visit slot 2 between references.
 	v.processor_.ProcessDeclarationSlot(2)
 
-	// Visit the optional constraints rule.
+	// Visit an optional constraints rule.
 	var optionalConstraints = declaration.GetOptionalConstraints()
 	if uti.IsDefined(optionalConstraints) {
 		v.processor_.PreprocessConstraints(optionalConstraints)
@@ -532,7 +536,7 @@ func (v *visitor_) visitDeclaration(declaration ast.DeclarationLike) {
 }
 
 func (v *visitor_) visitEnumeration(enumeration ast.EnumerationLike) {
-	// Visit the value rule.
+	// Visit a single value rule.
 	var value = enumeration.GetValue()
 	v.processor_.PreprocessValue(value)
 	v.visitValue(value)
@@ -563,7 +567,7 @@ func (v *visitor_) visitEnumeration(enumeration ast.EnumerationLike) {
 }
 
 func (v *visitor_) visitFunctionMethod(functionMethod ast.FunctionMethodLike) {
-	// Visit the name token.
+	// Visit a single name token.
 	var name = functionMethod.GetName()
 	v.processor_.ProcessName(name)
 
@@ -593,7 +597,7 @@ func (v *visitor_) visitFunctionMethod(functionMethod ast.FunctionMethodLike) {
 	// Visit slot 2 between references.
 	v.processor_.ProcessFunctionMethodSlot(2)
 
-	// Visit the result rule.
+	// Visit a single result rule.
 	var result = functionMethod.GetResult()
 	v.processor_.PreprocessResult(result)
 	v.visitResult(result)
@@ -623,7 +627,7 @@ func (v *visitor_) visitFunctionSubsection(functionSubsection ast.FunctionSubsec
 }
 
 func (v *visitor_) visitFunctionalDefinition(functionalDefinition ast.FunctionalDefinitionLike) {
-	// Visit the declaration rule.
+	// Visit a single declaration rule.
 	var declaration = functionalDefinition.GetDeclaration()
 	v.processor_.PreprocessDeclaration(declaration)
 	v.visitDeclaration(declaration)
@@ -655,7 +659,7 @@ func (v *visitor_) visitFunctionalDefinition(functionalDefinition ast.Functional
 	// Visit slot 2 between references.
 	v.processor_.ProcessFunctionalDefinitionSlot(2)
 
-	// Visit the result rule.
+	// Visit a single result rule.
 	var result = functionalDefinition.GetResult()
 	v.processor_.PreprocessResult(result)
 	v.visitResult(result)
@@ -685,31 +689,29 @@ func (v *visitor_) visitFunctionalSection(functionalSection ast.FunctionalSectio
 }
 
 func (v *visitor_) visitGetterMethod(getterMethod ast.GetterMethodLike) {
-	// Visit the name token.
+	// Visit a single name token.
 	var name = getterMethod.GetName()
 	v.processor_.ProcessName(name)
 
 	// Visit slot 1 between references.
 	v.processor_.ProcessGetterMethodSlot(1)
 
-	// Visit the single abstraction rule.
+	// Visit a single abstraction rule.
 	var abstraction = getterMethod.GetAbstraction()
-	if uti.IsDefined(abstraction) {
-		v.processor_.PreprocessAbstraction(abstraction)
-		v.visitAbstraction(abstraction)
-		v.processor_.PostprocessAbstraction(abstraction)
-	}
+	v.processor_.PreprocessAbstraction(abstraction)
+	v.visitAbstraction(abstraction)
+	v.processor_.PostprocessAbstraction(abstraction)
 }
 
 func (v *visitor_) visitHeader(header ast.HeaderLike) {
-	// Visit the comment token.
+	// Visit a single comment token.
 	var comment = header.GetComment()
 	v.processor_.ProcessComment(comment)
 
 	// Visit slot 1 between references.
 	v.processor_.ProcessHeaderSlot(1)
 
-	// Visit the name token.
+	// Visit a single name token.
 	var name = header.GetName()
 	v.processor_.ProcessName(name)
 }
@@ -737,7 +739,7 @@ func (v *visitor_) visitImports(imports ast.ImportsLike) {
 }
 
 func (v *visitor_) visitInstanceDefinition(instanceDefinition ast.InstanceDefinitionLike) {
-	// Visit the declaration rule.
+	// Visit a single declaration rule.
 	var declaration = instanceDefinition.GetDeclaration()
 	v.processor_.PreprocessDeclaration(declaration)
 	v.visitDeclaration(declaration)
@@ -746,7 +748,7 @@ func (v *visitor_) visitInstanceDefinition(instanceDefinition ast.InstanceDefini
 	// Visit slot 1 between references.
 	v.processor_.ProcessInstanceDefinitionSlot(1)
 
-	// Visit the instanceMethods rule.
+	// Visit a single instanceMethods rule.
 	var instanceMethods = instanceDefinition.GetInstanceMethods()
 	v.processor_.PreprocessInstanceMethods(instanceMethods)
 	v.visitInstanceMethods(instanceMethods)
@@ -754,7 +756,7 @@ func (v *visitor_) visitInstanceDefinition(instanceDefinition ast.InstanceDefini
 }
 
 func (v *visitor_) visitInstanceMethods(instanceMethods ast.InstanceMethodsLike) {
-	// Visit the primarySubsection rule.
+	// Visit a single primarySubsection rule.
 	var primarySubsection = instanceMethods.GetPrimarySubsection()
 	v.processor_.PreprocessPrimarySubsection(primarySubsection)
 	v.visitPrimarySubsection(primarySubsection)
@@ -763,7 +765,7 @@ func (v *visitor_) visitInstanceMethods(instanceMethods ast.InstanceMethodsLike)
 	// Visit slot 1 between references.
 	v.processor_.ProcessInstanceMethodsSlot(1)
 
-	// Visit the optional attributeSubsection rule.
+	// Visit an optional attributeSubsection rule.
 	var optionalAttributeSubsection = instanceMethods.GetOptionalAttributeSubsection()
 	if uti.IsDefined(optionalAttributeSubsection) {
 		v.processor_.PreprocessAttributeSubsection(optionalAttributeSubsection)
@@ -774,7 +776,7 @@ func (v *visitor_) visitInstanceMethods(instanceMethods ast.InstanceMethodsLike)
 	// Visit slot 2 between references.
 	v.processor_.ProcessInstanceMethodsSlot(2)
 
-	// Visit the optional aspectSubsection rule.
+	// Visit an optional aspectSubsection rule.
 	var optionalAspectSubsection = instanceMethods.GetOptionalAspectSubsection()
 	if uti.IsDefined(optionalAspectSubsection) {
 		v.processor_.PreprocessAspectSubsection(optionalAspectSubsection)
@@ -806,7 +808,7 @@ func (v *visitor_) visitInstanceSection(instanceSection ast.InstanceSectionLike)
 }
 
 func (v *visitor_) visitInterfaceDefinitions(interfaceDefinitions ast.InterfaceDefinitionsLike) {
-	// Visit the classSection rule.
+	// Visit a single classSection rule.
 	var classSection = interfaceDefinitions.GetClassSection()
 	v.processor_.PreprocessClassSection(classSection)
 	v.visitClassSection(classSection)
@@ -815,7 +817,7 @@ func (v *visitor_) visitInterfaceDefinitions(interfaceDefinitions ast.InterfaceD
 	// Visit slot 1 between references.
 	v.processor_.ProcessInterfaceDefinitionsSlot(1)
 
-	// Visit the instanceSection rule.
+	// Visit a single instanceSection rule.
 	var instanceSection = interfaceDefinitions.GetInstanceSection()
 	v.processor_.PreprocessInstanceSection(instanceSection)
 	v.visitInstanceSection(instanceSection)
@@ -824,7 +826,7 @@ func (v *visitor_) visitInterfaceDefinitions(interfaceDefinitions ast.InterfaceD
 	// Visit slot 2 between references.
 	v.processor_.ProcessInterfaceDefinitionsSlot(2)
 
-	// Visit the optional aspectSection rule.
+	// Visit an optional aspectSection rule.
 	var optionalAspectSection = interfaceDefinitions.GetOptionalAspectSection()
 	if uti.IsDefined(optionalAspectSection) {
 		v.processor_.PreprocessAspectSection(optionalAspectSection)
@@ -834,13 +836,13 @@ func (v *visitor_) visitInterfaceDefinitions(interfaceDefinitions ast.InterfaceD
 }
 
 func (v *visitor_) visitMap(map_ ast.MapLike) {
-	// Visit the name token.
+	// Visit a single name token.
 	var name = map_.GetName()
 	v.processor_.ProcessName(name)
 }
 
 func (v *visitor_) visitMethod(method ast.MethodLike) {
-	// Visit the name token.
+	// Visit a single name token.
 	var name = method.GetName()
 	v.processor_.ProcessName(name)
 
@@ -870,7 +872,7 @@ func (v *visitor_) visitMethod(method ast.MethodLike) {
 	// Visit slot 2 between references.
 	v.processor_.ProcessMethodSlot(2)
 
-	// Visit the optional result rule.
+	// Visit an optional result rule.
 	var optionalResult = method.GetOptionalResult()
 	if uti.IsDefined(optionalResult) {
 		v.processor_.PreprocessResult(optionalResult)
@@ -880,7 +882,7 @@ func (v *visitor_) visitMethod(method ast.MethodLike) {
 }
 
 func (v *visitor_) visitModel(model ast.ModelLike) {
-	// Visit the moduleDefinition rule.
+	// Visit a single moduleDefinition rule.
 	var moduleDefinition = model.GetModuleDefinition()
 	v.processor_.PreprocessModuleDefinition(moduleDefinition)
 	v.visitModuleDefinition(moduleDefinition)
@@ -889,7 +891,7 @@ func (v *visitor_) visitModel(model ast.ModelLike) {
 	// Visit slot 1 between references.
 	v.processor_.ProcessModelSlot(1)
 
-	// Visit the primitiveDefinitions rule.
+	// Visit a single primitiveDefinitions rule.
 	var primitiveDefinitions = model.GetPrimitiveDefinitions()
 	v.processor_.PreprocessPrimitiveDefinitions(primitiveDefinitions)
 	v.visitPrimitiveDefinitions(primitiveDefinitions)
@@ -898,7 +900,7 @@ func (v *visitor_) visitModel(model ast.ModelLike) {
 	// Visit slot 2 between references.
 	v.processor_.ProcessModelSlot(2)
 
-	// Visit the interfaceDefinitions rule.
+	// Visit a single interfaceDefinitions rule.
 	var interfaceDefinitions = model.GetInterfaceDefinitions()
 	v.processor_.PreprocessInterfaceDefinitions(interfaceDefinitions)
 	v.visitInterfaceDefinitions(interfaceDefinitions)
@@ -906,20 +908,20 @@ func (v *visitor_) visitModel(model ast.ModelLike) {
 }
 
 func (v *visitor_) visitModule(module ast.ModuleLike) {
-	// Visit the name token.
+	// Visit a single name token.
 	var name = module.GetName()
 	v.processor_.ProcessName(name)
 
 	// Visit slot 1 between references.
 	v.processor_.ProcessModuleSlot(1)
 
-	// Visit the path token.
+	// Visit a single path token.
 	var path = module.GetPath()
 	v.processor_.ProcessPath(path)
 }
 
 func (v *visitor_) visitModuleDefinition(moduleDefinition ast.ModuleDefinitionLike) {
-	// Visit the notice rule.
+	// Visit a single notice rule.
 	var notice = moduleDefinition.GetNotice()
 	v.processor_.PreprocessNotice(notice)
 	v.visitNotice(notice)
@@ -928,7 +930,7 @@ func (v *visitor_) visitModuleDefinition(moduleDefinition ast.ModuleDefinitionLi
 	// Visit slot 1 between references.
 	v.processor_.ProcessModuleDefinitionSlot(1)
 
-	// Visit the header rule.
+	// Visit a single header rule.
 	var header = moduleDefinition.GetHeader()
 	v.processor_.PreprocessHeader(header)
 	v.visitHeader(header)
@@ -937,7 +939,7 @@ func (v *visitor_) visitModuleDefinition(moduleDefinition ast.ModuleDefinitionLi
 	// Visit slot 2 between references.
 	v.processor_.ProcessModuleDefinitionSlot(2)
 
-	// Visit the optional imports rule.
+	// Visit an optional imports rule.
 	var optionalImports = moduleDefinition.GetOptionalImports()
 	if uti.IsDefined(optionalImports) {
 		v.processor_.PreprocessImports(optionalImports)
@@ -947,26 +949,26 @@ func (v *visitor_) visitModuleDefinition(moduleDefinition ast.ModuleDefinitionLi
 }
 
 func (v *visitor_) visitNone(none ast.NoneLike) {
-	// Visit the newline token.
+	// Visit a single newline token.
 	var newline = none.GetNewline()
 	v.processor_.ProcessNewline(newline)
 }
 
 func (v *visitor_) visitNotice(notice ast.NoticeLike) {
-	// Visit the comment token.
+	// Visit a single comment token.
 	var comment = notice.GetComment()
 	v.processor_.ProcessComment(comment)
 }
 
 func (v *visitor_) visitParameter(parameter ast.ParameterLike) {
-	// Visit the name token.
+	// Visit a single name token.
 	var name = parameter.GetName()
 	v.processor_.ProcessName(name)
 
 	// Visit slot 1 between references.
 	v.processor_.ProcessParameterSlot(1)
 
-	// Visit the abstraction rule.
+	// Visit a single abstraction rule.
 	var abstraction = parameter.GetAbstraction()
 	v.processor_.PreprocessAbstraction(abstraction)
 	v.visitAbstraction(abstraction)
@@ -1021,7 +1023,7 @@ func (v *visitor_) visitPrefix(prefix ast.PrefixLike) {
 }
 
 func (v *visitor_) visitPrimaryMethod(primaryMethod ast.PrimaryMethodLike) {
-	// Visit the method rule.
+	// Visit a single method rule.
 	var method = primaryMethod.GetMethod()
 	v.processor_.PreprocessMethod(method)
 	v.visitMethod(method)
@@ -1051,7 +1053,7 @@ func (v *visitor_) visitPrimarySubsection(primarySubsection ast.PrimarySubsectio
 }
 
 func (v *visitor_) visitPrimitiveDefinitions(primitiveDefinitions ast.PrimitiveDefinitionsLike) {
-	// Visit the optional typeSection rule.
+	// Visit an optional typeSection rule.
 	var optionalTypeSection = primitiveDefinitions.GetOptionalTypeSection()
 	if uti.IsDefined(optionalTypeSection) {
 		v.processor_.PreprocessTypeSection(optionalTypeSection)
@@ -1062,7 +1064,7 @@ func (v *visitor_) visitPrimitiveDefinitions(primitiveDefinitions ast.PrimitiveD
 	// Visit slot 1 between references.
 	v.processor_.ProcessPrimitiveDefinitionsSlot(1)
 
-	// Visit the optional functionalSection rule.
+	// Visit an optional functionalSection rule.
 	var optionalFunctionalSection = primitiveDefinitions.GetOptionalFunctionalSection()
 	if uti.IsDefined(optionalFunctionalSection) {
 		v.processor_.PreprocessFunctionalSection(optionalFunctionalSection)
@@ -1097,14 +1099,14 @@ func (v *visitor_) visitResult(result ast.ResultLike) {
 }
 
 func (v *visitor_) visitSetterMethod(setterMethod ast.SetterMethodLike) {
-	// Visit the name token.
+	// Visit a single name token.
 	var name = setterMethod.GetName()
 	v.processor_.ProcessName(name)
 
 	// Visit slot 1 between references.
 	v.processor_.ProcessSetterMethodSlot(1)
 
-	// Visit the parameter rule.
+	// Visit a single parameter rule.
 	var parameter = setterMethod.GetParameter()
 	if uti.IsDefined(parameter) {
 		v.processor_.PreprocessParameter(parameter, 1, 1)
@@ -1114,13 +1116,13 @@ func (v *visitor_) visitSetterMethod(setterMethod ast.SetterMethodLike) {
 }
 
 func (v *visitor_) visitSuffix(suffix ast.SuffixLike) {
-	// Visit the name token.
+	// Visit a single name token.
 	var name = suffix.GetName()
 	v.processor_.ProcessName(name)
 }
 
 func (v *visitor_) visitTypeDefinition(typeDefinition ast.TypeDefinitionLike) {
-	// Visit the declaration rule.
+	// Visit a single declaration rule.
 	var declaration = typeDefinition.GetDeclaration()
 	v.processor_.PreprocessDeclaration(declaration)
 	v.visitDeclaration(declaration)
@@ -1129,7 +1131,7 @@ func (v *visitor_) visitTypeDefinition(typeDefinition ast.TypeDefinitionLike) {
 	// Visit slot 1 between references.
 	v.processor_.ProcessTypeDefinitionSlot(1)
 
-	// Visit the abstraction rule.
+	// Visit a single abstraction rule.
 	var abstraction = typeDefinition.GetAbstraction()
 	v.processor_.PreprocessAbstraction(abstraction)
 	v.visitAbstraction(abstraction)
@@ -1138,7 +1140,7 @@ func (v *visitor_) visitTypeDefinition(typeDefinition ast.TypeDefinitionLike) {
 	// Visit slot 2 between references.
 	v.processor_.ProcessTypeDefinitionSlot(2)
 
-	// Visit the optional enumeration rule.
+	// Visit an optional enumeration rule.
 	var optionalEnumeration = typeDefinition.GetOptionalEnumeration()
 	if uti.IsDefined(optionalEnumeration) {
 		v.processor_.PreprocessEnumeration(optionalEnumeration)
@@ -1170,14 +1172,14 @@ func (v *visitor_) visitTypeSection(typeSection ast.TypeSectionLike) {
 }
 
 func (v *visitor_) visitValue(value ast.ValueLike) {
-	// Visit the name token.
+	// Visit a single name token.
 	var name = value.GetName()
 	v.processor_.ProcessName(name)
 
 	// Visit slot 1 between references.
 	v.processor_.ProcessValueSlot(1)
 
-	// Visit the abstraction rule.
+	// Visit a single abstraction rule.
 	var abstraction = value.GetAbstraction()
 	v.processor_.PreprocessAbstraction(abstraction)
 	v.visitAbstraction(abstraction)
