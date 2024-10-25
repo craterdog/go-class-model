@@ -40,21 +40,40 @@ func (c *formatterClass_) Make() FormatterLike {
 
 // INSTANCE INTERFACE
 
+// Primary Methods
+
+func (v *formatter_) GetClass() FormatterClassLike {
+	return formatterReference()
+}
+
+func (v *formatter_) FormatModel(model ast.ModelLike) string {
+	v.visitor_.VisitModel(model)
+	return v.getResult()
+}
+
 // Methodical Methods
 
-func (v *formatter_) ProcessComment(comment string) {
+func (v *formatter_) ProcessComment(
+	comment string,
+) {
 	v.appendString(comment)
 }
 
-func (v *formatter_) ProcessName(name string) {
+func (v *formatter_) ProcessName(
+	name string,
+) {
 	v.appendString(name)
 }
 
-func (v *formatter_) ProcessPath(path string) {
+func (v *formatter_) ProcessPath(
+	path string,
+) {
 	v.appendString(path)
 }
 
-func (v *formatter_) ProcessSpace(space string) {
+func (v *formatter_) ProcessSpace(
+	space string,
+) {
 	v.appendString(space)
 }
 
@@ -547,28 +566,9 @@ func (v *formatter_) PostprocessValue(value ast.ValueLike) {
 	v.appendString(" = iota")
 }
 
-// Primary Methods
-
-func (v *formatter_) GetClass() FormatterClassLike {
-	return v.getClass()
-}
-
-func (v *formatter_) FormatModel(
-	model ast.ModelLike,
-) string {
-	var result_ string
-	v.visitor_.VisitModel(model)
-	result_ = v.getResult()
-	return result_
-}
-
 // PROTECTED INTERFACE
 
 // Private Methods
-
-func (v *formatter_) getClass() *formatterClass_ {
-	return formatterReference()
-}
 
 func (v *formatter_) appendNewline() {
 	var newline = "\n"
