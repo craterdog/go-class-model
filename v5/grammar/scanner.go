@@ -259,7 +259,7 @@ const (
 
 	// Define the regular expression patterns for each token type.
 	comment_   = "(?:/\\*" + eol_ + "(" + any_ + "|" + eol_ + ")*?" + eol_ + "\\*/" + eol_ + ")"
-	delimiter_ = "(?:type|package|map|iota|interface|import|func|const|chan|\\}|\\{|\\]|\\[|\\.|\\)|\\(|=|// Type Definitions|// Primary Methods|// Instance Definitions|// Functional Definitions|// Function Methods|// Constructor Methods|// Constant Methods|// Class Definitions|// Attribute Methods|// Aspect Interfaces|// Aspect Definitions|,)"
+	delimiter_ = "(?:type|package|map|iota|interface|import|func|const|chan|\\}|\\{|\\]|\\[|\\.|\\)|\\(|=|// Type Declarations|// Primary Methods|// Instance Declarations|// Functional Declarations|// Function Methods|// Constructor Methods|// Constant Methods|// Class Declarations|// Attribute Methods|// Aspect Interfaces|// Aspect Declarations|,)"
 	name_      = "(?:(" + lower_ + "|" + upper_ + ")(" + lower_ + "|" + upper_ + "|" + digit_ + ")*_?)"
 	newline_   = "(?:" + eol_ + ")"
 	path_      = "(?:\"" + any_ + "*?\")"

@@ -612,8 +612,8 @@ func (v *parser_) parseAspectSection() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "// Aspect Definitions" delimiter.
-	_, token, ok = v.parseDelimiter("// Aspect Definitions")
+	// Attempt to parse a single "// Aspect Declarations" delimiter.
+	_, token, ok = v.parseDelimiter("// Aspect Declarations")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single AspectSection rule.
@@ -994,8 +994,8 @@ func (v *parser_) parseClassSection() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "// Class Definitions" delimiter.
-	_, token, ok = v.parseDelimiter("// Class Definitions")
+	// Attempt to parse a single "// Class Declarations" delimiter.
+	_, token, ok = v.parseDelimiter("// Class Declarations")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single ClassSection rule.
@@ -1999,8 +1999,8 @@ func (v *parser_) parseFunctionalSection() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "// Functional Definitions" delimiter.
-	_, token, ok = v.parseDelimiter("// Functional Definitions")
+	// Attempt to parse a single "// Functional Declarations" delimiter.
+	_, token, ok = v.parseDelimiter("// Functional Declarations")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single FunctionalSection rule.
@@ -2456,8 +2456,8 @@ func (v *parser_) parseInstanceSection() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "// Instance Definitions" delimiter.
-	_, token, ok = v.parseDelimiter("// Instance Definitions")
+	// Attempt to parse a single "// Instance Declarations" delimiter.
+	_, token, ok = v.parseDelimiter("// Instance Declarations")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single InstanceSection rule.
@@ -3537,8 +3537,8 @@ func (v *parser_) parseTypeSection() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "// Type Definitions" delimiter.
-	_, token, ok = v.parseDelimiter("// Type Definitions")
+	// Attempt to parse a single "// Type Declarations" delimiter.
+	_, token, ok = v.parseDelimiter("// Type Declarations")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single TypeSection rule.
@@ -3852,7 +3852,7 @@ var parserReference_ = &parserClass_{
 			"$Header":               `comment "package" name`,
 			"$Imports":              `"import" "(" Module+ ")"`,
 			"$Module":               `name path`,
-			"$TypeSection":          `"// Type Definitions" TypeDefinition+`,
+			"$TypeSection":          `"// Type Declarations" TypeDefinition+`,
 			"$TypeDefinition":       `Declaration Abstraction Enumeration?`,
 			"$Declaration":          `comment "type" name Constraints?`,
 			"$Constraints":          `"[" Constraint AdditionalConstraint* "]"`,
@@ -3873,7 +3873,7 @@ var parserReference_ = &parserClass_{
 			"$Enumeration":          `"const" "(" Value AdditionalValue* ")"`,
 			"$Value":                `name Abstraction "=" "iota"`,
 			"$AdditionalValue":      `name`,
-			"$FunctionalSection":    `"// Functional Definitions" FunctionalDefinition+`,
+			"$FunctionalSection":    `"// Functional Declarations" FunctionalDefinition+`,
 			"$FunctionalDefinition": `Declaration "func" "(" Parameter* ")" Result`,
 			"$Parameter":            `name Abstraction ","`,
 			"$Result": `
@@ -3882,7 +3882,7 @@ var parserReference_ = &parserClass_{
   - Parameterized`,
 			"$None":                  `newline`,
 			"$Parameterized":         `"(" Parameter+ ")"`,
-			"$ClassSection":          `"// Class Definitions" ClassDefinition+`,
+			"$ClassSection":          `"// Class Declarations" ClassDefinition+`,
 			"$ClassDefinition":       `Declaration "interface" "{" ClassMethods "}"`,
 			"$ClassMethods":          `ConstructorSubsection ConstantSubsection? FunctionSubsection?`,
 			"$ConstructorSubsection": `"// Constructor Methods" ConstructorMethod+`,
@@ -3891,7 +3891,7 @@ var parserReference_ = &parserClass_{
 			"$ConstantMethod":        `name "(" ")" Abstraction`,
 			"$FunctionSubsection":    `"// Function Methods" FunctionMethod+`,
 			"$FunctionMethod":        `name "(" Parameter* ")" Result`,
-			"$InstanceSection":       `"// Instance Definitions" InstanceDefinition+`,
+			"$InstanceSection":       `"// Instance Declarations" InstanceDefinition+`,
 			"$InstanceDefinition":    `Declaration "interface" "{" InstanceMethods "}"`,
 			"$InstanceMethods":       `PrimarySubsection AttributeSubsection? AspectSubsection?`,
 			"$PrimarySubsection":     `"// Primary Methods" PrimaryMethod+`,
@@ -3905,7 +3905,7 @@ var parserReference_ = &parserClass_{
 			"$SetterMethod":     `name "(" Parameter ")"`,
 			"$AspectSubsection": `"// Aspect Interfaces" AspectInterface+`,
 			"$AspectInterface":  `Abstraction`,
-			"$AspectSection":    `"// Aspect Definitions" AspectDefinition+`,
+			"$AspectSection":    `"// Aspect Declarations" AspectDefinition+`,
 			"$AspectDefinition": `Declaration "interface" "{" AspectMethod+ "}"`,
 			"$AspectMethod":     `Method`,
 		},
