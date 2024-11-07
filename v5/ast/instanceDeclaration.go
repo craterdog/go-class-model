@@ -20,26 +20,26 @@ import (
 
 // Access Function
 
-func ClassDefinition() ClassDefinitionClassLike {
-	return classDefinitionReference()
+func InstanceDeclaration() InstanceDeclarationClassLike {
+	return instanceDeclarationReference()
 }
 
 // Constructor Methods
 
-func (c *classDefinitionClass_) Make(
+func (c *instanceDeclarationClass_) Make(
 	declaration DeclarationLike,
-	classMethods ClassMethodsLike,
-) ClassDefinitionLike {
+	instanceMethods InstanceMethodsLike,
+) InstanceDeclarationLike {
 	if uti.IsUndefined(declaration) {
 		panic("The \"declaration\" attribute is required by this class.")
 	}
-	if uti.IsUndefined(classMethods) {
-		panic("The \"classMethods\" attribute is required by this class.")
+	if uti.IsUndefined(instanceMethods) {
+		panic("The \"instanceMethods\" attribute is required by this class.")
 	}
-	var instance = &classDefinition_{
+	var instance = &instanceDeclaration_{
 		// Initialize the instance attributes.
-		declaration_:  declaration,
-		classMethods_: classMethods,
+		declaration_:     declaration,
+		instanceMethods_: instanceMethods,
 	}
 	return instance
 
@@ -49,18 +49,18 @@ func (c *classDefinitionClass_) Make(
 
 // Primary Methods
 
-func (v *classDefinition_) GetClass() ClassDefinitionClassLike {
-	return classDefinitionReference()
+func (v *instanceDeclaration_) GetClass() InstanceDeclarationClassLike {
+	return instanceDeclarationReference()
 }
 
 // Attribute Methods
 
-func (v *classDefinition_) GetDeclaration() DeclarationLike {
+func (v *instanceDeclaration_) GetDeclaration() DeclarationLike {
 	return v.declaration_
 }
 
-func (v *classDefinition_) GetClassMethods() ClassMethodsLike {
-	return v.classMethods_
+func (v *instanceDeclaration_) GetInstanceMethods() InstanceMethodsLike {
+	return v.instanceMethods_
 }
 
 // PROTECTED INTERFACE
@@ -69,24 +69,24 @@ func (v *classDefinition_) GetClassMethods() ClassMethodsLike {
 
 // Instance Structure
 
-type classDefinition_ struct {
+type instanceDeclaration_ struct {
 	// Declare the instance attributes.
-	declaration_  DeclarationLike
-	classMethods_ ClassMethodsLike
+	declaration_     DeclarationLike
+	instanceMethods_ InstanceMethodsLike
 }
 
 // Class Structure
 
-type classDefinitionClass_ struct {
+type instanceDeclarationClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func classDefinitionReference() *classDefinitionClass_ {
-	return classDefinitionReference_
+func instanceDeclarationReference() *instanceDeclarationClass_ {
+	return instanceDeclarationReference_
 }
 
-var classDefinitionReference_ = &classDefinitionClass_{
+var instanceDeclarationReference_ = &instanceDeclarationClass_{
 	// Initialize the class constants.
 }

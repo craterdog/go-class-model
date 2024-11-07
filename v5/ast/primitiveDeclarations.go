@@ -16,17 +16,17 @@ package ast
 
 // Access Function
 
-func PrimitiveDefinitions() PrimitiveDefinitionsClassLike {
-	return primitiveDefinitionsReference()
+func PrimitiveDeclarations() PrimitiveDeclarationsClassLike {
+	return primitiveDeclarationsReference()
 }
 
 // Constructor Methods
 
-func (c *primitiveDefinitionsClass_) Make(
+func (c *primitiveDeclarationsClass_) Make(
 	optionalTypeSection TypeSectionLike,
 	optionalFunctionalSection FunctionalSectionLike,
-) PrimitiveDefinitionsLike {
-	var instance = &primitiveDefinitions_{
+) PrimitiveDeclarationsLike {
+	var instance = &primitiveDeclarations_{
 		// Initialize the instance attributes.
 		optionalTypeSection_:       optionalTypeSection,
 		optionalFunctionalSection_: optionalFunctionalSection,
@@ -39,17 +39,17 @@ func (c *primitiveDefinitionsClass_) Make(
 
 // Primary Methods
 
-func (v *primitiveDefinitions_) GetClass() PrimitiveDefinitionsClassLike {
-	return primitiveDefinitionsReference()
+func (v *primitiveDeclarations_) GetClass() PrimitiveDeclarationsClassLike {
+	return primitiveDeclarationsReference()
 }
 
 // Attribute Methods
 
-func (v *primitiveDefinitions_) GetOptionalTypeSection() TypeSectionLike {
+func (v *primitiveDeclarations_) GetOptionalTypeSection() TypeSectionLike {
 	return v.optionalTypeSection_
 }
 
-func (v *primitiveDefinitions_) GetOptionalFunctionalSection() FunctionalSectionLike {
+func (v *primitiveDeclarations_) GetOptionalFunctionalSection() FunctionalSectionLike {
 	return v.optionalFunctionalSection_
 }
 
@@ -59,7 +59,7 @@ func (v *primitiveDefinitions_) GetOptionalFunctionalSection() FunctionalSection
 
 // Instance Structure
 
-type primitiveDefinitions_ struct {
+type primitiveDeclarations_ struct {
 	// Declare the instance attributes.
 	optionalTypeSection_       TypeSectionLike
 	optionalFunctionalSection_ FunctionalSectionLike
@@ -67,16 +67,16 @@ type primitiveDefinitions_ struct {
 
 // Class Structure
 
-type primitiveDefinitionsClass_ struct {
+type primitiveDeclarationsClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func primitiveDefinitionsReference() *primitiveDefinitionsClass_ {
-	return primitiveDefinitionsReference_
+func primitiveDeclarationsReference() *primitiveDeclarationsClass_ {
+	return primitiveDeclarationsReference_
 }
 
-var primitiveDefinitionsReference_ = &primitiveDefinitionsClass_{
+var primitiveDeclarationsReference_ = &primitiveDeclarationsClass_{
 	// Initialize the class constants.
 }

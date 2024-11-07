@@ -20,24 +20,24 @@ import (
 
 // Access Function
 
-func InterfaceDefinitions() InterfaceDefinitionsClassLike {
-	return interfaceDefinitionsReference()
+func InterfaceDeclarations() InterfaceDeclarationsClassLike {
+	return interfaceDeclarationsReference()
 }
 
 // Constructor Methods
 
-func (c *interfaceDefinitionsClass_) Make(
+func (c *interfaceDeclarationsClass_) Make(
 	classSection ClassSectionLike,
 	instanceSection InstanceSectionLike,
 	optionalAspectSection AspectSectionLike,
-) InterfaceDefinitionsLike {
+) InterfaceDeclarationsLike {
 	if uti.IsUndefined(classSection) {
 		panic("The \"classSection\" attribute is required by this class.")
 	}
 	if uti.IsUndefined(instanceSection) {
 		panic("The \"instanceSection\" attribute is required by this class.")
 	}
-	var instance = &interfaceDefinitions_{
+	var instance = &interfaceDeclarations_{
 		// Initialize the instance attributes.
 		classSection_:          classSection,
 		instanceSection_:       instanceSection,
@@ -51,21 +51,21 @@ func (c *interfaceDefinitionsClass_) Make(
 
 // Primary Methods
 
-func (v *interfaceDefinitions_) GetClass() InterfaceDefinitionsClassLike {
-	return interfaceDefinitionsReference()
+func (v *interfaceDeclarations_) GetClass() InterfaceDeclarationsClassLike {
+	return interfaceDeclarationsReference()
 }
 
 // Attribute Methods
 
-func (v *interfaceDefinitions_) GetClassSection() ClassSectionLike {
+func (v *interfaceDeclarations_) GetClassSection() ClassSectionLike {
 	return v.classSection_
 }
 
-func (v *interfaceDefinitions_) GetInstanceSection() InstanceSectionLike {
+func (v *interfaceDeclarations_) GetInstanceSection() InstanceSectionLike {
 	return v.instanceSection_
 }
 
-func (v *interfaceDefinitions_) GetOptionalAspectSection() AspectSectionLike {
+func (v *interfaceDeclarations_) GetOptionalAspectSection() AspectSectionLike {
 	return v.optionalAspectSection_
 }
 
@@ -75,7 +75,7 @@ func (v *interfaceDefinitions_) GetOptionalAspectSection() AspectSectionLike {
 
 // Instance Structure
 
-type interfaceDefinitions_ struct {
+type interfaceDeclarations_ struct {
 	// Declare the instance attributes.
 	classSection_          ClassSectionLike
 	instanceSection_       InstanceSectionLike
@@ -84,16 +84,16 @@ type interfaceDefinitions_ struct {
 
 // Class Structure
 
-type interfaceDefinitionsClass_ struct {
+type interfaceDeclarationsClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func interfaceDefinitionsReference() *interfaceDefinitionsClass_ {
-	return interfaceDefinitionsReference_
+func interfaceDeclarationsReference() *interfaceDeclarationsClass_ {
+	return interfaceDeclarationsReference_
 }
 
-var interfaceDefinitionsReference_ = &interfaceDefinitionsClass_{
+var interfaceDeclarationsReference_ = &interfaceDeclarationsClass_{
 	// Initialize the class constants.
 }

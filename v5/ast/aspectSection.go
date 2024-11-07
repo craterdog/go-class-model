@@ -28,14 +28,14 @@ func AspectSection() AspectSectionClassLike {
 // Constructor Methods
 
 func (c *aspectSectionClass_) Make(
-	aspectDefinitions abs.Sequential[AspectDefinitionLike],
+	aspectDeclarations abs.Sequential[AspectDeclarationLike],
 ) AspectSectionLike {
-	if uti.IsUndefined(aspectDefinitions) {
-		panic("The \"aspectDefinitions\" attribute is required by this class.")
+	if uti.IsUndefined(aspectDeclarations) {
+		panic("The \"aspectDeclarations\" attribute is required by this class.")
 	}
 	var instance = &aspectSection_{
 		// Initialize the instance attributes.
-		aspectDefinitions_: aspectDefinitions,
+		aspectDeclarations_: aspectDeclarations,
 	}
 	return instance
 
@@ -51,8 +51,8 @@ func (v *aspectSection_) GetClass() AspectSectionClassLike {
 
 // Attribute Methods
 
-func (v *aspectSection_) GetAspectDefinitions() abs.Sequential[AspectDefinitionLike] {
-	return v.aspectDefinitions_
+func (v *aspectSection_) GetAspectDeclarations() abs.Sequential[AspectDeclarationLike] {
+	return v.aspectDeclarations_
 }
 
 // PROTECTED INTERFACE
@@ -63,7 +63,7 @@ func (v *aspectSection_) GetAspectDefinitions() abs.Sequential[AspectDefinitionL
 
 type aspectSection_ struct {
 	// Declare the instance attributes.
-	aspectDefinitions_ abs.Sequential[AspectDefinitionLike]
+	aspectDeclarations_ abs.Sequential[AspectDeclarationLike]
 }
 
 // Class Structure

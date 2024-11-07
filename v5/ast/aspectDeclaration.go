@@ -13,6 +13,7 @@
 package ast
 
 import (
+	abs "github.com/craterdog/go-collection-framework/v4/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 )
 
@@ -20,26 +21,26 @@ import (
 
 // Access Function
 
-func InstanceDefinition() InstanceDefinitionClassLike {
-	return instanceDefinitionReference()
+func AspectDeclaration() AspectDeclarationClassLike {
+	return aspectDeclarationReference()
 }
 
 // Constructor Methods
 
-func (c *instanceDefinitionClass_) Make(
+func (c *aspectDeclarationClass_) Make(
 	declaration DeclarationLike,
-	instanceMethods InstanceMethodsLike,
-) InstanceDefinitionLike {
+	aspectMethods abs.Sequential[AspectMethodLike],
+) AspectDeclarationLike {
 	if uti.IsUndefined(declaration) {
 		panic("The \"declaration\" attribute is required by this class.")
 	}
-	if uti.IsUndefined(instanceMethods) {
-		panic("The \"instanceMethods\" attribute is required by this class.")
+	if uti.IsUndefined(aspectMethods) {
+		panic("The \"aspectMethods\" attribute is required by this class.")
 	}
-	var instance = &instanceDefinition_{
+	var instance = &aspectDeclaration_{
 		// Initialize the instance attributes.
-		declaration_:     declaration,
-		instanceMethods_: instanceMethods,
+		declaration_:   declaration,
+		aspectMethods_: aspectMethods,
 	}
 	return instance
 
@@ -49,18 +50,18 @@ func (c *instanceDefinitionClass_) Make(
 
 // Primary Methods
 
-func (v *instanceDefinition_) GetClass() InstanceDefinitionClassLike {
-	return instanceDefinitionReference()
+func (v *aspectDeclaration_) GetClass() AspectDeclarationClassLike {
+	return aspectDeclarationReference()
 }
 
 // Attribute Methods
 
-func (v *instanceDefinition_) GetDeclaration() DeclarationLike {
+func (v *aspectDeclaration_) GetDeclaration() DeclarationLike {
 	return v.declaration_
 }
 
-func (v *instanceDefinition_) GetInstanceMethods() InstanceMethodsLike {
-	return v.instanceMethods_
+func (v *aspectDeclaration_) GetAspectMethods() abs.Sequential[AspectMethodLike] {
+	return v.aspectMethods_
 }
 
 // PROTECTED INTERFACE
@@ -69,24 +70,24 @@ func (v *instanceDefinition_) GetInstanceMethods() InstanceMethodsLike {
 
 // Instance Structure
 
-type instanceDefinition_ struct {
+type aspectDeclaration_ struct {
 	// Declare the instance attributes.
-	declaration_     DeclarationLike
-	instanceMethods_ InstanceMethodsLike
+	declaration_   DeclarationLike
+	aspectMethods_ abs.Sequential[AspectMethodLike]
 }
 
 // Class Structure
 
-type instanceDefinitionClass_ struct {
+type aspectDeclarationClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func instanceDefinitionReference() *instanceDefinitionClass_ {
-	return instanceDefinitionReference_
+func aspectDeclarationReference() *aspectDeclarationClass_ {
+	return aspectDeclarationReference_
 }
 
-var instanceDefinitionReference_ = &instanceDefinitionClass_{
+var aspectDeclarationReference_ = &aspectDeclarationClass_{
 	// Initialize the class constants.
 }

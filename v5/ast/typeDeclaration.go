@@ -13,7 +13,6 @@
 package ast
 
 import (
-	abs "github.com/craterdog/go-collection-framework/v4/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 )
 
@@ -21,26 +20,28 @@ import (
 
 // Access Function
 
-func AspectDefinition() AspectDefinitionClassLike {
-	return aspectDefinitionReference()
+func TypeDeclaration() TypeDeclarationClassLike {
+	return typeDeclarationReference()
 }
 
 // Constructor Methods
 
-func (c *aspectDefinitionClass_) Make(
+func (c *typeDeclarationClass_) Make(
 	declaration DeclarationLike,
-	aspectMethods abs.Sequential[AspectMethodLike],
-) AspectDefinitionLike {
+	abstraction AbstractionLike,
+	optionalEnumeration EnumerationLike,
+) TypeDeclarationLike {
 	if uti.IsUndefined(declaration) {
 		panic("The \"declaration\" attribute is required by this class.")
 	}
-	if uti.IsUndefined(aspectMethods) {
-		panic("The \"aspectMethods\" attribute is required by this class.")
+	if uti.IsUndefined(abstraction) {
+		panic("The \"abstraction\" attribute is required by this class.")
 	}
-	var instance = &aspectDefinition_{
+	var instance = &typeDeclaration_{
 		// Initialize the instance attributes.
-		declaration_:   declaration,
-		aspectMethods_: aspectMethods,
+		declaration_:         declaration,
+		abstraction_:         abstraction,
+		optionalEnumeration_: optionalEnumeration,
 	}
 	return instance
 
@@ -50,18 +51,22 @@ func (c *aspectDefinitionClass_) Make(
 
 // Primary Methods
 
-func (v *aspectDefinition_) GetClass() AspectDefinitionClassLike {
-	return aspectDefinitionReference()
+func (v *typeDeclaration_) GetClass() TypeDeclarationClassLike {
+	return typeDeclarationReference()
 }
 
 // Attribute Methods
 
-func (v *aspectDefinition_) GetDeclaration() DeclarationLike {
+func (v *typeDeclaration_) GetDeclaration() DeclarationLike {
 	return v.declaration_
 }
 
-func (v *aspectDefinition_) GetAspectMethods() abs.Sequential[AspectMethodLike] {
-	return v.aspectMethods_
+func (v *typeDeclaration_) GetAbstraction() AbstractionLike {
+	return v.abstraction_
+}
+
+func (v *typeDeclaration_) GetOptionalEnumeration() EnumerationLike {
+	return v.optionalEnumeration_
 }
 
 // PROTECTED INTERFACE
@@ -70,24 +75,25 @@ func (v *aspectDefinition_) GetAspectMethods() abs.Sequential[AspectMethodLike] 
 
 // Instance Structure
 
-type aspectDefinition_ struct {
+type typeDeclaration_ struct {
 	// Declare the instance attributes.
-	declaration_   DeclarationLike
-	aspectMethods_ abs.Sequential[AspectMethodLike]
+	declaration_         DeclarationLike
+	abstraction_         AbstractionLike
+	optionalEnumeration_ EnumerationLike
 }
 
 // Class Structure
 
-type aspectDefinitionClass_ struct {
+type typeDeclarationClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func aspectDefinitionReference() *aspectDefinitionClass_ {
-	return aspectDefinitionReference_
+func typeDeclarationReference() *typeDeclarationClass_ {
+	return typeDeclarationReference_
 }
 
-var aspectDefinitionReference_ = &aspectDefinitionClass_{
+var typeDeclarationReference_ = &typeDeclarationClass_{
 	// Initialize the class constants.
 }

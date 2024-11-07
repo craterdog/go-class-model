@@ -117,15 +117,15 @@ func (v *formatter_) PostprocessArray(array ast.ArrayLike) {
 	v.appendString("]")
 }
 
-func (v *formatter_) PreprocessAspectDefinition(
-	aspectDefinition ast.AspectDefinitionLike,
+func (v *formatter_) PreprocessAspectDeclaration(
+	aspectDeclaration ast.AspectDeclarationLike,
 	index uint,
 	size uint,
 ) {
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessAspectDefinitionSlot(slot uint) {
+func (v *formatter_) ProcessAspectDeclarationSlot(slot uint) {
 	switch slot {
 	case 1:
 		v.appendString(" interface {")
@@ -133,8 +133,8 @@ func (v *formatter_) ProcessAspectDefinitionSlot(slot uint) {
 	}
 }
 
-func (v *formatter_) PostprocessAspectDefinition(
-	aspectDefinition ast.AspectDefinitionLike,
+func (v *formatter_) PostprocessAspectDeclaration(
+	aspectDeclaration ast.AspectDeclarationLike,
 	index uint,
 	size uint,
 ) {
@@ -189,15 +189,15 @@ func (v *formatter_) PreprocessChannel(channel ast.ChannelLike) {
 	v.appendString("chan ")
 }
 
-func (v *formatter_) PreprocessClassDefinition(
-	classDefinition ast.ClassDefinitionLike,
+func (v *formatter_) PreprocessClassDeclaration(
+	classDeclaration ast.ClassDeclarationLike,
 	index uint,
 	size uint,
 ) {
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessClassDefinitionSlot(slot uint) {
+func (v *formatter_) ProcessClassDeclarationSlot(slot uint) {
 	switch slot {
 	case 1:
 		v.appendString(" interface {")
@@ -205,8 +205,8 @@ func (v *formatter_) ProcessClassDefinitionSlot(slot uint) {
 	}
 }
 
-func (v *formatter_) PostprocessClassDefinition(
-	classDefinition ast.ClassDefinitionLike,
+func (v *formatter_) PostprocessClassDeclaration(
+	classDeclaration ast.ClassDeclarationLike,
 	index uint,
 	size uint,
 ) {
@@ -325,15 +325,15 @@ func (v *formatter_) PreprocessFunctionSubsection(functionSubsection ast.Functio
 	v.appendString("// Function Methods")
 }
 
-func (v *formatter_) PreprocessFunctionalDefinition(
-	functionalDefinition ast.FunctionalDefinitionLike,
+func (v *formatter_) PreprocessFunctionalDeclaration(
+	functionalDeclaration ast.FunctionalDeclarationLike,
 	index uint,
 	size uint,
 ) {
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessFunctionalDefinitionSlot(slot uint) {
+func (v *formatter_) ProcessFunctionalDeclarationSlot(slot uint) {
 	switch slot {
 	case 1:
 		v.appendString(" func(")
@@ -342,8 +342,8 @@ func (v *formatter_) ProcessFunctionalDefinitionSlot(slot uint) {
 	}
 }
 
-func (v *formatter_) PostprocessFunctionalDefinition(
-	functionalDefinition ast.FunctionalDefinitionLike,
+func (v *formatter_) PostprocessFunctionalDeclaration(
+	functionalDeclaration ast.FunctionalDeclarationLike,
 	index uint,
 	size uint,
 ) {
@@ -380,15 +380,15 @@ func (v *formatter_) PostprocessImports(imports ast.ImportsLike) {
 	v.appendString(")")
 }
 
-func (v *formatter_) PreprocessInstanceDefinition(
-	instanceDefinition ast.InstanceDefinitionLike,
+func (v *formatter_) PreprocessInstanceDeclaration(
+	instanceDeclaration ast.InstanceDeclarationLike,
 	index uint,
 	size uint,
 ) {
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessInstanceDefinitionSlot(slot uint) {
+func (v *formatter_) ProcessInstanceDeclarationSlot(slot uint) {
 	switch slot {
 	case 1:
 		v.appendString(" interface {")
@@ -396,8 +396,8 @@ func (v *formatter_) ProcessInstanceDefinitionSlot(slot uint) {
 	}
 }
 
-func (v *formatter_) PostprocessInstanceDefinition(
-	instanceDefinition ast.InstanceDefinitionLike,
+func (v *formatter_) PostprocessInstanceDeclaration(
+	instanceDeclaration ast.InstanceDeclarationLike,
 	index uint,
 	size uint,
 ) {
@@ -448,7 +448,7 @@ func (v *formatter_) ProcessModuleSlot(slot uint) {
 	v.appendString(" ")
 }
 
-func (v *formatter_) PostprocessModuleDefinition(moduleDefinition_ ast.ModuleDefinitionLike) {
+func (v *formatter_) PostprocessModuleDeclaration(moduleDeclaration_ ast.ModuleDeclarationLike) {
 	v.appendNewline()
 }
 
@@ -522,23 +522,23 @@ func (v *formatter_) PreprocessSuffix(suffix ast.SuffixLike) {
 	v.appendString(".")
 }
 
-func (v *formatter_) PreprocessTypeDefinition(
-	typeDefinition ast.TypeDefinitionLike,
+func (v *formatter_) PreprocessTypeDeclaration(
+	typeDeclaration ast.TypeDeclarationLike,
 	index uint,
 	size uint,
 ) {
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessTypeDefinitionSlot(slot uint) {
+func (v *formatter_) ProcessTypeDeclarationSlot(slot uint) {
 	switch slot {
 	case 1:
 		v.appendString(" ")
 	}
 }
 
-func (v *formatter_) PostprocessTypeDefinition(
-	typeDefinition ast.TypeDefinitionLike,
+func (v *formatter_) PostprocessTypeDeclaration(
+	typeDeclaration ast.TypeDeclarationLike,
 	index uint,
 	size uint,
 ) {

@@ -354,16 +354,16 @@ type Methodical interface {
 	PostprocessArray(
 		array ast.ArrayLike,
 	)
-	PreprocessAspectDefinition(
-		aspectDefinition ast.AspectDefinitionLike,
+	PreprocessAspectDeclaration(
+		aspectDeclaration ast.AspectDeclarationLike,
 		index uint,
 		size uint,
 	)
-	ProcessAspectDefinitionSlot(
+	ProcessAspectDeclarationSlot(
 		slot uint,
 	)
-	PostprocessAspectDefinition(
-		aspectDefinition ast.AspectDefinitionLike,
+	PostprocessAspectDeclaration(
+		aspectDeclaration ast.AspectDeclarationLike,
 		index uint,
 		size uint,
 	)
@@ -442,16 +442,16 @@ type Methodical interface {
 	PostprocessChannel(
 		channel ast.ChannelLike,
 	)
-	PreprocessClassDefinition(
-		classDefinition ast.ClassDefinitionLike,
+	PreprocessClassDeclaration(
+		classDeclaration ast.ClassDeclarationLike,
 		index uint,
 		size uint,
 	)
-	ProcessClassDefinitionSlot(
+	ProcessClassDeclarationSlot(
 		slot uint,
 	)
-	PostprocessClassDefinition(
-		classDefinition ast.ClassDefinitionLike,
+	PostprocessClassDeclaration(
+		classDeclaration ast.ClassDeclarationLike,
 		index uint,
 		size uint,
 	)
@@ -575,16 +575,16 @@ type Methodical interface {
 	PostprocessFunctionSubsection(
 		functionSubsection ast.FunctionSubsectionLike,
 	)
-	PreprocessFunctionalDefinition(
-		functionalDefinition ast.FunctionalDefinitionLike,
+	PreprocessFunctionalDeclaration(
+		functionalDeclaration ast.FunctionalDeclarationLike,
 		index uint,
 		size uint,
 	)
-	ProcessFunctionalDefinitionSlot(
+	ProcessFunctionalDeclarationSlot(
 		slot uint,
 	)
-	PostprocessFunctionalDefinition(
-		functionalDefinition ast.FunctionalDefinitionLike,
+	PostprocessFunctionalDeclaration(
+		functionalDeclaration ast.FunctionalDeclarationLike,
 		index uint,
 		size uint,
 	)
@@ -624,16 +624,16 @@ type Methodical interface {
 	PostprocessImports(
 		imports ast.ImportsLike,
 	)
-	PreprocessInstanceDefinition(
-		instanceDefinition ast.InstanceDefinitionLike,
+	PreprocessInstanceDeclaration(
+		instanceDeclaration ast.InstanceDeclarationLike,
 		index uint,
 		size uint,
 	)
-	ProcessInstanceDefinitionSlot(
+	ProcessInstanceDeclarationSlot(
 		slot uint,
 	)
-	PostprocessInstanceDefinition(
-		instanceDefinition ast.InstanceDefinitionLike,
+	PostprocessInstanceDeclaration(
+		instanceDeclaration ast.InstanceDeclarationLike,
 		index uint,
 		size uint,
 	)
@@ -655,14 +655,14 @@ type Methodical interface {
 	PostprocessInstanceSection(
 		instanceSection ast.InstanceSectionLike,
 	)
-	PreprocessInterfaceDefinitions(
-		interfaceDefinitions ast.InterfaceDefinitionsLike,
+	PreprocessInterfaceDeclarations(
+		interfaceDeclarations ast.InterfaceDeclarationsLike,
 	)
-	ProcessInterfaceDefinitionsSlot(
+	ProcessInterfaceDeclarationsSlot(
 		slot uint,
 	)
-	PostprocessInterfaceDefinitions(
-		interfaceDefinitions ast.InterfaceDefinitionsLike,
+	PostprocessInterfaceDeclarations(
+		interfaceDeclarations ast.InterfaceDeclarationsLike,
 	)
 	PreprocessMap(
 		map_ ast.MapLike,
@@ -704,14 +704,14 @@ type Methodical interface {
 		index uint,
 		size uint,
 	)
-	PreprocessModuleDefinition(
-		moduleDefinition ast.ModuleDefinitionLike,
+	PreprocessModuleDeclaration(
+		moduleDeclaration ast.ModuleDeclarationLike,
 	)
-	ProcessModuleDefinitionSlot(
+	ProcessModuleDeclarationSlot(
 		slot uint,
 	)
-	PostprocessModuleDefinition(
-		moduleDefinition ast.ModuleDefinitionLike,
+	PostprocessModuleDeclaration(
+		moduleDeclaration ast.ModuleDeclarationLike,
 	)
 	PreprocessNone(
 		none ast.NoneLike,
@@ -784,14 +784,14 @@ type Methodical interface {
 	PostprocessPrimarySubsection(
 		primarySubsection ast.PrimarySubsectionLike,
 	)
-	PreprocessPrimitiveDefinitions(
-		primitiveDefinitions ast.PrimitiveDefinitionsLike,
+	PreprocessPrimitiveDeclarations(
+		primitiveDeclarations ast.PrimitiveDeclarationsLike,
 	)
-	ProcessPrimitiveDefinitionsSlot(
+	ProcessPrimitiveDeclarationsSlot(
 		slot uint,
 	)
-	PostprocessPrimitiveDefinitions(
-		primitiveDefinitions ast.PrimitiveDefinitionsLike,
+	PostprocessPrimitiveDeclarations(
+		primitiveDeclarations ast.PrimitiveDeclarationsLike,
 	)
 	PreprocessResult(
 		result ast.ResultLike,
@@ -820,16 +820,16 @@ type Methodical interface {
 	PostprocessSuffix(
 		suffix ast.SuffixLike,
 	)
-	PreprocessTypeDefinition(
-		typeDefinition ast.TypeDefinitionLike,
+	PreprocessTypeDeclaration(
+		typeDeclaration ast.TypeDeclarationLike,
 		index uint,
 		size uint,
 	)
-	ProcessTypeDefinitionSlot(
+	ProcessTypeDeclarationSlot(
 		slot uint,
 	)
-	PostprocessTypeDefinition(
-		typeDefinition ast.TypeDefinitionLike,
+	PostprocessTypeDeclaration(
+		typeDeclaration ast.TypeDeclarationLike,
 		index uint,
 		size uint,
 	)

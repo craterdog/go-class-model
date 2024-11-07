@@ -117,16 +117,16 @@ type ArrayClassLike interface {
 }
 
 /*
-AspectDefinitionClassLike is a class interface that defines the complete set
+AspectDeclarationClassLike is a class interface that defines the complete set
 of class constructors, constants and functions that must be supported by
-each concrete aspect-definition-like class.
+each concrete aspect-declaration-like class.
 */
-type AspectDefinitionClassLike interface {
+type AspectDeclarationClassLike interface {
 	// Constructor Methods
 	Make(
 		declaration DeclarationLike,
 		aspectMethods abs.Sequential[AspectMethodLike],
-	) AspectDefinitionLike
+	) AspectDeclarationLike
 }
 
 /*
@@ -161,7 +161,7 @@ each concrete aspect-section-like class.
 type AspectSectionClassLike interface {
 	// Constructor Methods
 	Make(
-		aspectDefinitions abs.Sequential[AspectDefinitionLike],
+		aspectDeclarations abs.Sequential[AspectDeclarationLike],
 	) AspectSectionLike
 }
 
@@ -212,16 +212,16 @@ type ChannelClassLike interface {
 }
 
 /*
-ClassDefinitionClassLike is a class interface that defines the complete set
+ClassDeclarationClassLike is a class interface that defines the complete set
 of class constructors, constants and functions that must be supported by
-each concrete class-definition-like class.
+each concrete class-declaration-like class.
 */
-type ClassDefinitionClassLike interface {
+type ClassDeclarationClassLike interface {
 	// Constructor Methods
 	Make(
 		declaration DeclarationLike,
 		classMethods ClassMethodsLike,
-	) ClassDefinitionLike
+	) ClassDeclarationLike
 }
 
 /*
@@ -246,7 +246,7 @@ each concrete class-section-like class.
 type ClassSectionClassLike interface {
 	// Constructor Methods
 	Make(
-		classDefinitions abs.Sequential[ClassDefinitionLike],
+		classDeclarations abs.Sequential[ClassDeclarationLike],
 	) ClassSectionLike
 }
 
@@ -381,17 +381,17 @@ type FunctionSubsectionClassLike interface {
 }
 
 /*
-FunctionalDefinitionClassLike is a class interface that defines the complete set
+FunctionalDeclarationClassLike is a class interface that defines the complete set
 of class constructors, constants and functions that must be supported by
-each concrete functional-definition-like class.
+each concrete functional-declaration-like class.
 */
-type FunctionalDefinitionClassLike interface {
+type FunctionalDeclarationClassLike interface {
 	// Constructor Methods
 	Make(
 		declaration DeclarationLike,
 		parameters abs.Sequential[ParameterLike],
 		result ResultLike,
-	) FunctionalDefinitionLike
+	) FunctionalDeclarationLike
 }
 
 /*
@@ -402,7 +402,7 @@ each concrete functional-section-like class.
 type FunctionalSectionClassLike interface {
 	// Constructor Methods
 	Make(
-		functionalDefinitions abs.Sequential[FunctionalDefinitionLike],
+		functionalDeclarations abs.Sequential[FunctionalDeclarationLike],
 	) FunctionalSectionLike
 }
 
@@ -445,16 +445,16 @@ type ImportsClassLike interface {
 }
 
 /*
-InstanceDefinitionClassLike is a class interface that defines the complete set
+InstanceDeclarationClassLike is a class interface that defines the complete set
 of class constructors, constants and functions that must be supported by
-each concrete instance-definition-like class.
+each concrete instance-declaration-like class.
 */
-type InstanceDefinitionClassLike interface {
+type InstanceDeclarationClassLike interface {
 	// Constructor Methods
 	Make(
 		declaration DeclarationLike,
 		instanceMethods InstanceMethodsLike,
-	) InstanceDefinitionLike
+	) InstanceDeclarationLike
 }
 
 /*
@@ -479,22 +479,22 @@ each concrete instance-section-like class.
 type InstanceSectionClassLike interface {
 	// Constructor Methods
 	Make(
-		instanceDefinitions abs.Sequential[InstanceDefinitionLike],
+		instanceDeclarations abs.Sequential[InstanceDeclarationLike],
 	) InstanceSectionLike
 }
 
 /*
-InterfaceDefinitionsClassLike is a class interface that defines the complete set
+InterfaceDeclarationsClassLike is a class interface that defines the complete set
 of class constructors, constants and functions that must be supported by
-each concrete interface-definitions-like class.
+each concrete interface-declarations-like class.
 */
-type InterfaceDefinitionsClassLike interface {
+type InterfaceDeclarationsClassLike interface {
 	// Constructor Methods
 	Make(
 		classSection ClassSectionLike,
 		instanceSection InstanceSectionLike,
 		optionalAspectSection AspectSectionLike,
-	) InterfaceDefinitionsLike
+	) InterfaceDeclarationsLike
 }
 
 /*
@@ -531,9 +531,9 @@ each concrete model-like class.
 type ModelClassLike interface {
 	// Constructor Methods
 	Make(
-		moduleDefinition ModuleDefinitionLike,
-		primitiveDefinitions PrimitiveDefinitionsLike,
-		interfaceDefinitions InterfaceDefinitionsLike,
+		moduleDeclaration ModuleDeclarationLike,
+		primitiveDeclarations PrimitiveDeclarationsLike,
+		interfaceDeclarations InterfaceDeclarationsLike,
 	) ModelLike
 }
 
@@ -551,17 +551,17 @@ type ModuleClassLike interface {
 }
 
 /*
-ModuleDefinitionClassLike is a class interface that defines the complete set
+ModuleDeclarationClassLike is a class interface that defines the complete set
 of class constructors, constants and functions that must be supported by
-each concrete module-definition-like class.
+each concrete module-declaration-like class.
 */
-type ModuleDefinitionClassLike interface {
+type ModuleDeclarationClassLike interface {
 	// Constructor Methods
 	Make(
 		notice NoticeLike,
 		header HeaderLike,
 		optionalImports ImportsLike,
-	) ModuleDefinitionLike
+	) ModuleDeclarationLike
 }
 
 /*
@@ -650,16 +650,16 @@ type PrimarySubsectionClassLike interface {
 }
 
 /*
-PrimitiveDefinitionsClassLike is a class interface that defines the complete set
+PrimitiveDeclarationsClassLike is a class interface that defines the complete set
 of class constructors, constants and functions that must be supported by
-each concrete primitive-definitions-like class.
+each concrete primitive-declarations-like class.
 */
-type PrimitiveDefinitionsClassLike interface {
+type PrimitiveDeclarationsClassLike interface {
 	// Constructor Methods
 	Make(
 		optionalTypeSection TypeSectionLike,
 		optionalFunctionalSection FunctionalSectionLike,
-	) PrimitiveDefinitionsLike
+	) PrimitiveDeclarationsLike
 }
 
 /*
@@ -700,17 +700,17 @@ type SuffixClassLike interface {
 }
 
 /*
-TypeDefinitionClassLike is a class interface that defines the complete set
+TypeDeclarationClassLike is a class interface that defines the complete set
 of class constructors, constants and functions that must be supported by
-each concrete type-definition-like class.
+each concrete type-declaration-like class.
 */
-type TypeDefinitionClassLike interface {
+type TypeDeclarationClassLike interface {
 	// Constructor Methods
 	Make(
 		declaration DeclarationLike,
 		abstraction AbstractionLike,
 		optionalEnumeration EnumerationLike,
-	) TypeDefinitionLike
+	) TypeDeclarationLike
 }
 
 /*
@@ -721,7 +721,7 @@ each concrete type-section-like class.
 type TypeSectionClassLike interface {
 	// Constructor Methods
 	Make(
-		typeDefinitions abs.Sequential[TypeDefinitionLike],
+		typeDeclarations abs.Sequential[TypeDeclarationLike],
 	) TypeSectionLike
 }
 
@@ -833,13 +833,13 @@ type ArrayLike interface {
 }
 
 /*
-AspectDefinitionLike is an instance interface that defines the complete set
+AspectDeclarationLike is an instance interface that defines the complete set
 of primary, attribute and aspect methods that must be supported by each
-instance of a concrete aspect-definition-like class.
+instance of a concrete aspect-declaration-like class.
 */
-type AspectDefinitionLike interface {
+type AspectDeclarationLike interface {
 	// Primary Methods
-	GetClass() AspectDefinitionClassLike
+	GetClass() AspectDeclarationClassLike
 
 	// Attribute Methods
 	GetDeclaration() DeclarationLike
@@ -882,7 +882,7 @@ type AspectSectionLike interface {
 	GetClass() AspectSectionClassLike
 
 	// Attribute Methods
-	GetAspectDefinitions() abs.Sequential[AspectDefinitionLike]
+	GetAspectDeclarations() abs.Sequential[AspectDeclarationLike]
 }
 
 /*
@@ -935,13 +935,13 @@ type ChannelLike interface {
 }
 
 /*
-ClassDefinitionLike is an instance interface that defines the complete set
+ClassDeclarationLike is an instance interface that defines the complete set
 of primary, attribute and aspect methods that must be supported by each
-instance of a concrete class-definition-like class.
+instance of a concrete class-declaration-like class.
 */
-type ClassDefinitionLike interface {
+type ClassDeclarationLike interface {
 	// Primary Methods
-	GetClass() ClassDefinitionClassLike
+	GetClass() ClassDeclarationClassLike
 
 	// Attribute Methods
 	GetDeclaration() DeclarationLike
@@ -973,7 +973,7 @@ type ClassSectionLike interface {
 	GetClass() ClassSectionClassLike
 
 	// Attribute Methods
-	GetClassDefinitions() abs.Sequential[ClassDefinitionLike]
+	GetClassDeclarations() abs.Sequential[ClassDeclarationLike]
 }
 
 /*
@@ -1117,13 +1117,13 @@ type FunctionSubsectionLike interface {
 }
 
 /*
-FunctionalDefinitionLike is an instance interface that defines the complete set
+FunctionalDeclarationLike is an instance interface that defines the complete set
 of primary, attribute and aspect methods that must be supported by each
-instance of a concrete functional-definition-like class.
+instance of a concrete functional-declaration-like class.
 */
-type FunctionalDefinitionLike interface {
+type FunctionalDeclarationLike interface {
 	// Primary Methods
-	GetClass() FunctionalDefinitionClassLike
+	GetClass() FunctionalDeclarationClassLike
 
 	// Attribute Methods
 	GetDeclaration() DeclarationLike
@@ -1141,7 +1141,7 @@ type FunctionalSectionLike interface {
 	GetClass() FunctionalSectionClassLike
 
 	// Attribute Methods
-	GetFunctionalDefinitions() abs.Sequential[FunctionalDefinitionLike]
+	GetFunctionalDeclarations() abs.Sequential[FunctionalDeclarationLike]
 }
 
 /*
@@ -1186,13 +1186,13 @@ type ImportsLike interface {
 }
 
 /*
-InstanceDefinitionLike is an instance interface that defines the complete set
+InstanceDeclarationLike is an instance interface that defines the complete set
 of primary, attribute and aspect methods that must be supported by each
-instance of a concrete instance-definition-like class.
+instance of a concrete instance-declaration-like class.
 */
-type InstanceDefinitionLike interface {
+type InstanceDeclarationLike interface {
 	// Primary Methods
-	GetClass() InstanceDefinitionClassLike
+	GetClass() InstanceDeclarationClassLike
 
 	// Attribute Methods
 	GetDeclaration() DeclarationLike
@@ -1224,17 +1224,17 @@ type InstanceSectionLike interface {
 	GetClass() InstanceSectionClassLike
 
 	// Attribute Methods
-	GetInstanceDefinitions() abs.Sequential[InstanceDefinitionLike]
+	GetInstanceDeclarations() abs.Sequential[InstanceDeclarationLike]
 }
 
 /*
-InterfaceDefinitionsLike is an instance interface that defines the complete set
+InterfaceDeclarationsLike is an instance interface that defines the complete set
 of primary, attribute and aspect methods that must be supported by each
-instance of a concrete interface-definitions-like class.
+instance of a concrete interface-declarations-like class.
 */
-type InterfaceDefinitionsLike interface {
+type InterfaceDeclarationsLike interface {
 	// Primary Methods
-	GetClass() InterfaceDefinitionsClassLike
+	GetClass() InterfaceDeclarationsClassLike
 
 	// Attribute Methods
 	GetClassSection() ClassSectionLike
@@ -1280,9 +1280,9 @@ type ModelLike interface {
 	GetClass() ModelClassLike
 
 	// Attribute Methods
-	GetModuleDefinition() ModuleDefinitionLike
-	GetPrimitiveDefinitions() PrimitiveDefinitionsLike
-	GetInterfaceDefinitions() InterfaceDefinitionsLike
+	GetModuleDeclaration() ModuleDeclarationLike
+	GetPrimitiveDeclarations() PrimitiveDeclarationsLike
+	GetInterfaceDeclarations() InterfaceDeclarationsLike
 }
 
 /*
@@ -1300,13 +1300,13 @@ type ModuleLike interface {
 }
 
 /*
-ModuleDefinitionLike is an instance interface that defines the complete set
+ModuleDeclarationLike is an instance interface that defines the complete set
 of primary, attribute and aspect methods that must be supported by each
-instance of a concrete module-definition-like class.
+instance of a concrete module-declaration-like class.
 */
-type ModuleDefinitionLike interface {
+type ModuleDeclarationLike interface {
 	// Primary Methods
-	GetClass() ModuleDefinitionClassLike
+	GetClass() ModuleDeclarationClassLike
 
 	// Attribute Methods
 	GetNotice() NoticeLike
@@ -1407,13 +1407,13 @@ type PrimarySubsectionLike interface {
 }
 
 /*
-PrimitiveDefinitionsLike is an instance interface that defines the complete set
+PrimitiveDeclarationsLike is an instance interface that defines the complete set
 of primary, attribute and aspect methods that must be supported by each
-instance of a concrete primitive-definitions-like class.
+instance of a concrete primitive-declarations-like class.
 */
-type PrimitiveDefinitionsLike interface {
+type PrimitiveDeclarationsLike interface {
 	// Primary Methods
-	GetClass() PrimitiveDefinitionsClassLike
+	GetClass() PrimitiveDeclarationsClassLike
 
 	// Attribute Methods
 	GetOptionalTypeSection() TypeSectionLike
@@ -1461,13 +1461,13 @@ type SuffixLike interface {
 }
 
 /*
-TypeDefinitionLike is an instance interface that defines the complete set
+TypeDeclarationLike is an instance interface that defines the complete set
 of primary, attribute and aspect methods that must be supported by each
-instance of a concrete type-definition-like class.
+instance of a concrete type-declaration-like class.
 */
-type TypeDefinitionLike interface {
+type TypeDeclarationLike interface {
 	// Primary Methods
-	GetClass() TypeDefinitionClassLike
+	GetClass() TypeDeclarationClassLike
 
 	// Attribute Methods
 	GetDeclaration() DeclarationLike
@@ -1485,7 +1485,7 @@ type TypeSectionLike interface {
 	GetClass() TypeSectionClassLike
 
 	// Attribute Methods
-	GetTypeDefinitions() abs.Sequential[TypeDefinitionLike]
+	GetTypeDeclarations() abs.Sequential[TypeDeclarationLike]
 }
 
 /*

@@ -20,28 +20,26 @@ import (
 
 // Access Function
 
-func TypeDefinition() TypeDefinitionClassLike {
-	return typeDefinitionReference()
+func ClassDeclaration() ClassDeclarationClassLike {
+	return classDeclarationReference()
 }
 
 // Constructor Methods
 
-func (c *typeDefinitionClass_) Make(
+func (c *classDeclarationClass_) Make(
 	declaration DeclarationLike,
-	abstraction AbstractionLike,
-	optionalEnumeration EnumerationLike,
-) TypeDefinitionLike {
+	classMethods ClassMethodsLike,
+) ClassDeclarationLike {
 	if uti.IsUndefined(declaration) {
 		panic("The \"declaration\" attribute is required by this class.")
 	}
-	if uti.IsUndefined(abstraction) {
-		panic("The \"abstraction\" attribute is required by this class.")
+	if uti.IsUndefined(classMethods) {
+		panic("The \"classMethods\" attribute is required by this class.")
 	}
-	var instance = &typeDefinition_{
+	var instance = &classDeclaration_{
 		// Initialize the instance attributes.
-		declaration_:         declaration,
-		abstraction_:         abstraction,
-		optionalEnumeration_: optionalEnumeration,
+		declaration_:  declaration,
+		classMethods_: classMethods,
 	}
 	return instance
 
@@ -51,22 +49,18 @@ func (c *typeDefinitionClass_) Make(
 
 // Primary Methods
 
-func (v *typeDefinition_) GetClass() TypeDefinitionClassLike {
-	return typeDefinitionReference()
+func (v *classDeclaration_) GetClass() ClassDeclarationClassLike {
+	return classDeclarationReference()
 }
 
 // Attribute Methods
 
-func (v *typeDefinition_) GetDeclaration() DeclarationLike {
+func (v *classDeclaration_) GetDeclaration() DeclarationLike {
 	return v.declaration_
 }
 
-func (v *typeDefinition_) GetAbstraction() AbstractionLike {
-	return v.abstraction_
-}
-
-func (v *typeDefinition_) GetOptionalEnumeration() EnumerationLike {
-	return v.optionalEnumeration_
+func (v *classDeclaration_) GetClassMethods() ClassMethodsLike {
+	return v.classMethods_
 }
 
 // PROTECTED INTERFACE
@@ -75,25 +69,24 @@ func (v *typeDefinition_) GetOptionalEnumeration() EnumerationLike {
 
 // Instance Structure
 
-type typeDefinition_ struct {
+type classDeclaration_ struct {
 	// Declare the instance attributes.
-	declaration_         DeclarationLike
-	abstraction_         AbstractionLike
-	optionalEnumeration_ EnumerationLike
+	declaration_  DeclarationLike
+	classMethods_ ClassMethodsLike
 }
 
 // Class Structure
 
-type typeDefinitionClass_ struct {
+type classDeclarationClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func typeDefinitionReference() *typeDefinitionClass_ {
-	return typeDefinitionReference_
+func classDeclarationReference() *classDeclarationClass_ {
+	return classDeclarationReference_
 }
 
-var typeDefinitionReference_ = &typeDefinitionClass_{
+var classDeclarationReference_ = &classDeclarationClass_{
 	// Initialize the class constants.
 }

@@ -27,24 +27,24 @@ func Model() ModelClassLike {
 // Constructor Methods
 
 func (c *modelClass_) Make(
-	moduleDefinition ModuleDefinitionLike,
-	primitiveDefinitions PrimitiveDefinitionsLike,
-	interfaceDefinitions InterfaceDefinitionsLike,
+	moduleDeclaration ModuleDeclarationLike,
+	primitiveDeclarations PrimitiveDeclarationsLike,
+	interfaceDeclarations InterfaceDeclarationsLike,
 ) ModelLike {
-	if uti.IsUndefined(moduleDefinition) {
-		panic("The \"moduleDefinition\" attribute is required by this class.")
+	if uti.IsUndefined(moduleDeclaration) {
+		panic("The \"moduleDeclaration\" attribute is required by this class.")
 	}
-	if uti.IsUndefined(primitiveDefinitions) {
-		panic("The \"primitiveDefinitions\" attribute is required by this class.")
+	if uti.IsUndefined(primitiveDeclarations) {
+		panic("The \"primitiveDeclarations\" attribute is required by this class.")
 	}
-	if uti.IsUndefined(interfaceDefinitions) {
-		panic("The \"interfaceDefinitions\" attribute is required by this class.")
+	if uti.IsUndefined(interfaceDeclarations) {
+		panic("The \"interfaceDeclarations\" attribute is required by this class.")
 	}
 	var instance = &model_{
 		// Initialize the instance attributes.
-		moduleDefinition_:     moduleDefinition,
-		primitiveDefinitions_: primitiveDefinitions,
-		interfaceDefinitions_: interfaceDefinitions,
+		moduleDeclaration_:     moduleDeclaration,
+		primitiveDeclarations_: primitiveDeclarations,
+		interfaceDeclarations_: interfaceDeclarations,
 	}
 	return instance
 
@@ -60,16 +60,16 @@ func (v *model_) GetClass() ModelClassLike {
 
 // Attribute Methods
 
-func (v *model_) GetModuleDefinition() ModuleDefinitionLike {
-	return v.moduleDefinition_
+func (v *model_) GetModuleDeclaration() ModuleDeclarationLike {
+	return v.moduleDeclaration_
 }
 
-func (v *model_) GetPrimitiveDefinitions() PrimitiveDefinitionsLike {
-	return v.primitiveDefinitions_
+func (v *model_) GetPrimitiveDeclarations() PrimitiveDeclarationsLike {
+	return v.primitiveDeclarations_
 }
 
-func (v *model_) GetInterfaceDefinitions() InterfaceDefinitionsLike {
-	return v.interfaceDefinitions_
+func (v *model_) GetInterfaceDeclarations() InterfaceDeclarationsLike {
+	return v.interfaceDeclarations_
 }
 
 // PROTECTED INTERFACE
@@ -80,9 +80,9 @@ func (v *model_) GetInterfaceDefinitions() InterfaceDefinitionsLike {
 
 type model_ struct {
 	// Declare the instance attributes.
-	moduleDefinition_     ModuleDefinitionLike
-	primitiveDefinitions_ PrimitiveDefinitionsLike
-	interfaceDefinitions_ InterfaceDefinitionsLike
+	moduleDeclaration_     ModuleDeclarationLike
+	primitiveDeclarations_ PrimitiveDeclarationsLike
+	interfaceDeclarations_ InterfaceDeclarationsLike
 }
 
 // Class Structure

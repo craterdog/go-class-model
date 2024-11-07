@@ -20,24 +20,24 @@ import (
 
 // Access Function
 
-func ModuleDefinition() ModuleDefinitionClassLike {
-	return moduleDefinitionReference()
+func ModuleDeclaration() ModuleDeclarationClassLike {
+	return moduleDeclarationReference()
 }
 
 // Constructor Methods
 
-func (c *moduleDefinitionClass_) Make(
+func (c *moduleDeclarationClass_) Make(
 	notice NoticeLike,
 	header HeaderLike,
 	optionalImports ImportsLike,
-) ModuleDefinitionLike {
+) ModuleDeclarationLike {
 	if uti.IsUndefined(notice) {
 		panic("The \"notice\" attribute is required by this class.")
 	}
 	if uti.IsUndefined(header) {
 		panic("The \"header\" attribute is required by this class.")
 	}
-	var instance = &moduleDefinition_{
+	var instance = &moduleDeclaration_{
 		// Initialize the instance attributes.
 		notice_:          notice,
 		header_:          header,
@@ -51,21 +51,21 @@ func (c *moduleDefinitionClass_) Make(
 
 // Primary Methods
 
-func (v *moduleDefinition_) GetClass() ModuleDefinitionClassLike {
-	return moduleDefinitionReference()
+func (v *moduleDeclaration_) GetClass() ModuleDeclarationClassLike {
+	return moduleDeclarationReference()
 }
 
 // Attribute Methods
 
-func (v *moduleDefinition_) GetNotice() NoticeLike {
+func (v *moduleDeclaration_) GetNotice() NoticeLike {
 	return v.notice_
 }
 
-func (v *moduleDefinition_) GetHeader() HeaderLike {
+func (v *moduleDeclaration_) GetHeader() HeaderLike {
 	return v.header_
 }
 
-func (v *moduleDefinition_) GetOptionalImports() ImportsLike {
+func (v *moduleDeclaration_) GetOptionalImports() ImportsLike {
 	return v.optionalImports_
 }
 
@@ -75,7 +75,7 @@ func (v *moduleDefinition_) GetOptionalImports() ImportsLike {
 
 // Instance Structure
 
-type moduleDefinition_ struct {
+type moduleDeclaration_ struct {
 	// Declare the instance attributes.
 	notice_          NoticeLike
 	header_          HeaderLike
@@ -84,16 +84,16 @@ type moduleDefinition_ struct {
 
 // Class Structure
 
-type moduleDefinitionClass_ struct {
+type moduleDeclarationClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func moduleDefinitionReference() *moduleDefinitionClass_ {
-	return moduleDefinitionReference_
+func moduleDeclarationReference() *moduleDeclarationClass_ {
+	return moduleDeclarationReference_
 }
 
-var moduleDefinitionReference_ = &moduleDefinitionClass_{
+var moduleDeclarationReference_ = &moduleDeclarationClass_{
 	// Initialize the class constants.
 }

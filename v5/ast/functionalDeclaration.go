@@ -21,17 +21,17 @@ import (
 
 // Access Function
 
-func FunctionalDefinition() FunctionalDefinitionClassLike {
-	return functionalDefinitionReference()
+func FunctionalDeclaration() FunctionalDeclarationClassLike {
+	return functionalDeclarationReference()
 }
 
 // Constructor Methods
 
-func (c *functionalDefinitionClass_) Make(
+func (c *functionalDeclarationClass_) Make(
 	declaration DeclarationLike,
 	parameters abs.Sequential[ParameterLike],
 	result ResultLike,
-) FunctionalDefinitionLike {
+) FunctionalDeclarationLike {
 	if uti.IsUndefined(declaration) {
 		panic("The \"declaration\" attribute is required by this class.")
 	}
@@ -41,7 +41,7 @@ func (c *functionalDefinitionClass_) Make(
 	if uti.IsUndefined(result) {
 		panic("The \"result\" attribute is required by this class.")
 	}
-	var instance = &functionalDefinition_{
+	var instance = &functionalDeclaration_{
 		// Initialize the instance attributes.
 		declaration_: declaration,
 		parameters_:  parameters,
@@ -55,21 +55,21 @@ func (c *functionalDefinitionClass_) Make(
 
 // Primary Methods
 
-func (v *functionalDefinition_) GetClass() FunctionalDefinitionClassLike {
-	return functionalDefinitionReference()
+func (v *functionalDeclaration_) GetClass() FunctionalDeclarationClassLike {
+	return functionalDeclarationReference()
 }
 
 // Attribute Methods
 
-func (v *functionalDefinition_) GetDeclaration() DeclarationLike {
+func (v *functionalDeclaration_) GetDeclaration() DeclarationLike {
 	return v.declaration_
 }
 
-func (v *functionalDefinition_) GetParameters() abs.Sequential[ParameterLike] {
+func (v *functionalDeclaration_) GetParameters() abs.Sequential[ParameterLike] {
 	return v.parameters_
 }
 
-func (v *functionalDefinition_) GetResult() ResultLike {
+func (v *functionalDeclaration_) GetResult() ResultLike {
 	return v.result_
 }
 
@@ -79,7 +79,7 @@ func (v *functionalDefinition_) GetResult() ResultLike {
 
 // Instance Structure
 
-type functionalDefinition_ struct {
+type functionalDeclaration_ struct {
 	// Declare the instance attributes.
 	declaration_ DeclarationLike
 	parameters_  abs.Sequential[ParameterLike]
@@ -88,16 +88,16 @@ type functionalDefinition_ struct {
 
 // Class Structure
 
-type functionalDefinitionClass_ struct {
+type functionalDeclarationClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func functionalDefinitionReference() *functionalDefinitionClass_ {
-	return functionalDefinitionReference_
+func functionalDeclarationReference() *functionalDeclarationClass_ {
+	return functionalDeclarationReference_
 }
 
-var functionalDefinitionReference_ = &functionalDefinitionClass_{
+var functionalDeclarationReference_ = &functionalDeclarationClass_{
 	// Initialize the class constants.
 }

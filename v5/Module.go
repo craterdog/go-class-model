@@ -41,7 +41,7 @@ type (
 	ArgumentLike              = ast.ArgumentLike
 	ArgumentsLike             = ast.ArgumentsLike
 	ArrayLike                 = ast.ArrayLike
-	AspectDefinitionLike      = ast.AspectDefinitionLike
+	AspectDeclarationLike     = ast.AspectDeclarationLike
 	AspectInterfaceLike       = ast.AspectInterfaceLike
 	AspectMethodLike          = ast.AspectMethodLike
 	AspectSectionLike         = ast.AspectSectionLike
@@ -49,7 +49,7 @@ type (
 	AttributeMethodLike       = ast.AttributeMethodLike
 	AttributeSubsectionLike   = ast.AttributeSubsectionLike
 	ChannelLike               = ast.ChannelLike
-	ClassDefinitionLike       = ast.ClassDefinitionLike
+	ClassDeclarationLike      = ast.ClassDeclarationLike
 	ClassMethodsLike          = ast.ClassMethodsLike
 	ClassSectionLike          = ast.ClassSectionLike
 	ConstantMethodLike        = ast.ConstantMethodLike
@@ -62,20 +62,20 @@ type (
 	EnumerationLike           = ast.EnumerationLike
 	FunctionMethodLike        = ast.FunctionMethodLike
 	FunctionSubsectionLike    = ast.FunctionSubsectionLike
-	FunctionalDefinitionLike  = ast.FunctionalDefinitionLike
+	FunctionalDeclarationLike = ast.FunctionalDeclarationLike
 	FunctionalSectionLike     = ast.FunctionalSectionLike
 	GetterMethodLike          = ast.GetterMethodLike
 	HeaderLike                = ast.HeaderLike
 	ImportsLike               = ast.ImportsLike
-	InstanceDefinitionLike    = ast.InstanceDefinitionLike
+	InstanceDeclarationLike   = ast.InstanceDeclarationLike
 	InstanceMethodsLike       = ast.InstanceMethodsLike
 	InstanceSectionLike       = ast.InstanceSectionLike
-	InterfaceDefinitionsLike  = ast.InterfaceDefinitionsLike
+	InterfaceDeclarationsLike = ast.InterfaceDeclarationsLike
 	MapLike                   = ast.MapLike
 	MethodLike                = ast.MethodLike
 	ModelLike                 = ast.ModelLike
 	ModuleLike                = ast.ModuleLike
-	ModuleDefinitionLike      = ast.ModuleDefinitionLike
+	ModuleDeclarationLike     = ast.ModuleDeclarationLike
 	NoneLike                  = ast.NoneLike
 	NoticeLike                = ast.NoticeLike
 	ParameterLike             = ast.ParameterLike
@@ -83,11 +83,11 @@ type (
 	PrefixLike                = ast.PrefixLike
 	PrimaryMethodLike         = ast.PrimaryMethodLike
 	PrimarySubsectionLike     = ast.PrimarySubsectionLike
-	PrimitiveDefinitionsLike  = ast.PrimitiveDefinitionsLike
+	PrimitiveDeclarationsLike = ast.PrimitiveDeclarationsLike
 	ResultLike                = ast.ResultLike
 	SetterMethodLike          = ast.SetterMethodLike
 	SuffixLike                = ast.SuffixLike
-	TypeDefinitionLike        = ast.TypeDefinitionLike
+	TypeDeclarationLike       = ast.TypeDeclarationLike
 	TypeSectionLike           = ast.TypeSectionLike
 	ValueLike                 = ast.ValueLike
 )

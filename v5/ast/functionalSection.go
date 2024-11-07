@@ -28,14 +28,14 @@ func FunctionalSection() FunctionalSectionClassLike {
 // Constructor Methods
 
 func (c *functionalSectionClass_) Make(
-	functionalDefinitions abs.Sequential[FunctionalDefinitionLike],
+	functionalDeclarations abs.Sequential[FunctionalDeclarationLike],
 ) FunctionalSectionLike {
-	if uti.IsUndefined(functionalDefinitions) {
-		panic("The \"functionalDefinitions\" attribute is required by this class.")
+	if uti.IsUndefined(functionalDeclarations) {
+		panic("The \"functionalDeclarations\" attribute is required by this class.")
 	}
 	var instance = &functionalSection_{
 		// Initialize the instance attributes.
-		functionalDefinitions_: functionalDefinitions,
+		functionalDeclarations_: functionalDeclarations,
 	}
 	return instance
 
@@ -51,8 +51,8 @@ func (v *functionalSection_) GetClass() FunctionalSectionClassLike {
 
 // Attribute Methods
 
-func (v *functionalSection_) GetFunctionalDefinitions() abs.Sequential[FunctionalDefinitionLike] {
-	return v.functionalDefinitions_
+func (v *functionalSection_) GetFunctionalDeclarations() abs.Sequential[FunctionalDeclarationLike] {
+	return v.functionalDeclarations_
 }
 
 // PROTECTED INTERFACE
@@ -63,7 +63,7 @@ func (v *functionalSection_) GetFunctionalDefinitions() abs.Sequential[Functiona
 
 type functionalSection_ struct {
 	// Declare the instance attributes.
-	functionalDefinitions_ abs.Sequential[FunctionalDefinitionLike]
+	functionalDeclarations_ abs.Sequential[FunctionalDeclarationLike]
 }
 
 // Class Structure

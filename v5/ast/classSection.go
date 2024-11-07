@@ -28,14 +28,14 @@ func ClassSection() ClassSectionClassLike {
 // Constructor Methods
 
 func (c *classSectionClass_) Make(
-	classDefinitions abs.Sequential[ClassDefinitionLike],
+	classDeclarations abs.Sequential[ClassDeclarationLike],
 ) ClassSectionLike {
-	if uti.IsUndefined(classDefinitions) {
-		panic("The \"classDefinitions\" attribute is required by this class.")
+	if uti.IsUndefined(classDeclarations) {
+		panic("The \"classDeclarations\" attribute is required by this class.")
 	}
 	var instance = &classSection_{
 		// Initialize the instance attributes.
-		classDefinitions_: classDefinitions,
+		classDeclarations_: classDeclarations,
 	}
 	return instance
 
@@ -51,8 +51,8 @@ func (v *classSection_) GetClass() ClassSectionClassLike {
 
 // Attribute Methods
 
-func (v *classSection_) GetClassDefinitions() abs.Sequential[ClassDefinitionLike] {
-	return v.classDefinitions_
+func (v *classSection_) GetClassDeclarations() abs.Sequential[ClassDeclarationLike] {
+	return v.classDeclarations_
 }
 
 // PROTECTED INTERFACE
@@ -63,7 +63,7 @@ func (v *classSection_) GetClassDefinitions() abs.Sequential[ClassDefinitionLike
 
 type classSection_ struct {
 	// Declare the instance attributes.
-	classDefinitions_ abs.Sequential[ClassDefinitionLike]
+	classDeclarations_ abs.Sequential[ClassDeclarationLike]
 }
 
 // Class Structure

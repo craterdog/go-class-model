@@ -28,14 +28,14 @@ func TypeSection() TypeSectionClassLike {
 // Constructor Methods
 
 func (c *typeSectionClass_) Make(
-	typeDefinitions abs.Sequential[TypeDefinitionLike],
+	typeDeclarations abs.Sequential[TypeDeclarationLike],
 ) TypeSectionLike {
-	if uti.IsUndefined(typeDefinitions) {
-		panic("The \"typeDefinitions\" attribute is required by this class.")
+	if uti.IsUndefined(typeDeclarations) {
+		panic("The \"typeDeclarations\" attribute is required by this class.")
 	}
 	var instance = &typeSection_{
 		// Initialize the instance attributes.
-		typeDefinitions_: typeDefinitions,
+		typeDeclarations_: typeDeclarations,
 	}
 	return instance
 
@@ -51,8 +51,8 @@ func (v *typeSection_) GetClass() TypeSectionClassLike {
 
 // Attribute Methods
 
-func (v *typeSection_) GetTypeDefinitions() abs.Sequential[TypeDefinitionLike] {
-	return v.typeDefinitions_
+func (v *typeSection_) GetTypeDeclarations() abs.Sequential[TypeDeclarationLike] {
+	return v.typeDeclarations_
 }
 
 // PROTECTED INTERFACE
@@ -63,7 +63,7 @@ func (v *typeSection_) GetTypeDefinitions() abs.Sequential[TypeDefinitionLike] {
 
 type typeSection_ struct {
 	// Declare the instance attributes.
-	typeDefinitions_ abs.Sequential[TypeDefinitionLike]
+	typeDeclarations_ abs.Sequential[TypeDeclarationLike]
 }
 
 // Class Structure

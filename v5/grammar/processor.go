@@ -185,20 +185,20 @@ func (v *processor_) PostprocessArray(
 ) {
 }
 
-func (v *processor_) PreprocessAspectDefinition(
-	aspectDefinition ast.AspectDefinitionLike,
+func (v *processor_) PreprocessAspectDeclaration(
+	aspectDeclaration ast.AspectDeclarationLike,
 	index uint,
 	size uint,
 ) {
 }
 
-func (v *processor_) ProcessAspectDefinitionSlot(
+func (v *processor_) ProcessAspectDeclarationSlot(
 	slot uint,
 ) {
 }
 
-func (v *processor_) PostprocessAspectDefinition(
-	aspectDefinition ast.AspectDefinitionLike,
+func (v *processor_) PostprocessAspectDeclaration(
+	aspectDeclaration ast.AspectDeclarationLike,
 	index uint,
 	size uint,
 ) {
@@ -321,20 +321,20 @@ func (v *processor_) PostprocessChannel(
 ) {
 }
 
-func (v *processor_) PreprocessClassDefinition(
-	classDefinition ast.ClassDefinitionLike,
+func (v *processor_) PreprocessClassDeclaration(
+	classDeclaration ast.ClassDeclarationLike,
 	index uint,
 	size uint,
 ) {
 }
 
-func (v *processor_) ProcessClassDefinitionSlot(
+func (v *processor_) ProcessClassDeclarationSlot(
 	slot uint,
 ) {
 }
 
-func (v *processor_) PostprocessClassDefinition(
-	classDefinition ast.ClassDefinitionLike,
+func (v *processor_) PostprocessClassDeclaration(
+	classDeclaration ast.ClassDeclarationLike,
 	index uint,
 	size uint,
 ) {
@@ -532,20 +532,20 @@ func (v *processor_) PostprocessFunctionSubsection(
 ) {
 }
 
-func (v *processor_) PreprocessFunctionalDefinition(
-	functionalDefinition ast.FunctionalDefinitionLike,
+func (v *processor_) PreprocessFunctionalDeclaration(
+	functionalDeclaration ast.FunctionalDeclarationLike,
 	index uint,
 	size uint,
 ) {
 }
 
-func (v *processor_) ProcessFunctionalDefinitionSlot(
+func (v *processor_) ProcessFunctionalDeclarationSlot(
 	slot uint,
 ) {
 }
 
-func (v *processor_) PostprocessFunctionalDefinition(
-	functionalDefinition ast.FunctionalDefinitionLike,
+func (v *processor_) PostprocessFunctionalDeclaration(
+	functionalDeclaration ast.FunctionalDeclarationLike,
 	index uint,
 	size uint,
 ) {
@@ -611,20 +611,20 @@ func (v *processor_) PostprocessImports(
 ) {
 }
 
-func (v *processor_) PreprocessInstanceDefinition(
-	instanceDefinition ast.InstanceDefinitionLike,
+func (v *processor_) PreprocessInstanceDeclaration(
+	instanceDeclaration ast.InstanceDeclarationLike,
 	index uint,
 	size uint,
 ) {
 }
 
-func (v *processor_) ProcessInstanceDefinitionSlot(
+func (v *processor_) ProcessInstanceDeclarationSlot(
 	slot uint,
 ) {
 }
 
-func (v *processor_) PostprocessInstanceDefinition(
-	instanceDefinition ast.InstanceDefinitionLike,
+func (v *processor_) PostprocessInstanceDeclaration(
+	instanceDeclaration ast.InstanceDeclarationLike,
 	index uint,
 	size uint,
 ) {
@@ -660,18 +660,18 @@ func (v *processor_) PostprocessInstanceSection(
 ) {
 }
 
-func (v *processor_) PreprocessInterfaceDefinitions(
-	interfaceDefinitions ast.InterfaceDefinitionsLike,
+func (v *processor_) PreprocessInterfaceDeclarations(
+	interfaceDeclarations ast.InterfaceDeclarationsLike,
 ) {
 }
 
-func (v *processor_) ProcessInterfaceDefinitionsSlot(
+func (v *processor_) ProcessInterfaceDeclarationsSlot(
 	slot uint,
 ) {
 }
 
-func (v *processor_) PostprocessInterfaceDefinitions(
-	interfaceDefinitions ast.InterfaceDefinitionsLike,
+func (v *processor_) PostprocessInterfaceDeclarations(
+	interfaceDeclarations ast.InterfaceDeclarationsLike,
 ) {
 }
 
@@ -739,18 +739,18 @@ func (v *processor_) PostprocessModule(
 ) {
 }
 
-func (v *processor_) PreprocessModuleDefinition(
-	moduleDefinition ast.ModuleDefinitionLike,
+func (v *processor_) PreprocessModuleDeclaration(
+	moduleDeclaration ast.ModuleDeclarationLike,
 ) {
 }
 
-func (v *processor_) ProcessModuleDefinitionSlot(
+func (v *processor_) ProcessModuleDeclarationSlot(
 	slot uint,
 ) {
 }
 
-func (v *processor_) PostprocessModuleDefinition(
-	moduleDefinition ast.ModuleDefinitionLike,
+func (v *processor_) PostprocessModuleDeclaration(
+	moduleDeclaration ast.ModuleDeclarationLike,
 ) {
 }
 
@@ -867,18 +867,18 @@ func (v *processor_) PostprocessPrimarySubsection(
 ) {
 }
 
-func (v *processor_) PreprocessPrimitiveDefinitions(
-	primitiveDefinitions ast.PrimitiveDefinitionsLike,
+func (v *processor_) PreprocessPrimitiveDeclarations(
+	primitiveDeclarations ast.PrimitiveDeclarationsLike,
 ) {
 }
 
-func (v *processor_) ProcessPrimitiveDefinitionsSlot(
+func (v *processor_) ProcessPrimitiveDeclarationsSlot(
 	slot uint,
 ) {
 }
 
-func (v *processor_) PostprocessPrimitiveDefinitions(
-	primitiveDefinitions ast.PrimitiveDefinitionsLike,
+func (v *processor_) PostprocessPrimitiveDeclarations(
+	primitiveDeclarations ast.PrimitiveDeclarationsLike,
 ) {
 }
 
@@ -927,20 +927,20 @@ func (v *processor_) PostprocessSuffix(
 ) {
 }
 
-func (v *processor_) PreprocessTypeDefinition(
-	typeDefinition ast.TypeDefinitionLike,
+func (v *processor_) PreprocessTypeDeclaration(
+	typeDeclaration ast.TypeDeclarationLike,
 	index uint,
 	size uint,
 ) {
 }
 
-func (v *processor_) ProcessTypeDefinitionSlot(
+func (v *processor_) ProcessTypeDeclarationSlot(
 	slot uint,
 ) {
 }
 
-func (v *processor_) PostprocessTypeDefinition(
-	typeDefinition ast.TypeDefinitionLike,
+func (v *processor_) PostprocessTypeDeclaration(
+	typeDeclaration ast.TypeDeclarationLike,
 	index uint,
 	size uint,
 ) {

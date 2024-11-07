@@ -222,22 +222,22 @@ func (v *validator_) PostprocessArray(
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessAspectDefinition(
-	aspectDefinition ast.AspectDefinitionLike,
+func (v *validator_) PreprocessAspectDeclaration(
+	aspectDeclaration ast.AspectDeclarationLike,
 	index uint,
 	size uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) ProcessAspectDefinitionSlot(
+func (v *validator_) ProcessAspectDeclarationSlot(
 	slot uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PostprocessAspectDefinition(
-	aspectDefinition ast.AspectDefinitionLike,
+func (v *validator_) PostprocessAspectDeclaration(
+	aspectDeclaration ast.AspectDeclarationLike,
 	index uint,
 	size uint,
 ) {
@@ -382,22 +382,22 @@ func (v *validator_) PostprocessChannel(
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessClassDefinition(
-	classDefinition ast.ClassDefinitionLike,
+func (v *validator_) PreprocessClassDeclaration(
+	classDeclaration ast.ClassDeclarationLike,
 	index uint,
 	size uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) ProcessClassDefinitionSlot(
+func (v *validator_) ProcessClassDeclarationSlot(
 	slot uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PostprocessClassDefinition(
-	classDefinition ast.ClassDefinitionLike,
+func (v *validator_) PostprocessClassDeclaration(
+	classDeclaration ast.ClassDeclarationLike,
 	index uint,
 	size uint,
 ) {
@@ -632,22 +632,22 @@ func (v *validator_) PostprocessFunctionSubsection(
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessFunctionalDefinition(
-	functionalDefinition ast.FunctionalDefinitionLike,
+func (v *validator_) PreprocessFunctionalDeclaration(
+	functionalDeclaration ast.FunctionalDeclarationLike,
 	index uint,
 	size uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) ProcessFunctionalDefinitionSlot(
+func (v *validator_) ProcessFunctionalDeclarationSlot(
 	slot uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PostprocessFunctionalDefinition(
-	functionalDefinition ast.FunctionalDefinitionLike,
+func (v *validator_) PostprocessFunctionalDeclaration(
+	functionalDeclaration ast.FunctionalDeclarationLike,
 	index uint,
 	size uint,
 ) {
@@ -726,22 +726,22 @@ func (v *validator_) PostprocessImports(
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessInstanceDefinition(
-	instanceDefinition ast.InstanceDefinitionLike,
+func (v *validator_) PreprocessInstanceDeclaration(
+	instanceDeclaration ast.InstanceDeclarationLike,
 	index uint,
 	size uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) ProcessInstanceDefinitionSlot(
+func (v *validator_) ProcessInstanceDeclarationSlot(
 	slot uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PostprocessInstanceDefinition(
-	instanceDefinition ast.InstanceDefinitionLike,
+func (v *validator_) PostprocessInstanceDeclaration(
+	instanceDeclaration ast.InstanceDeclarationLike,
 	index uint,
 	size uint,
 ) {
@@ -784,20 +784,20 @@ func (v *validator_) PostprocessInstanceSection(
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessInterfaceDefinitions(
-	interfaceDefinitions ast.InterfaceDefinitionsLike,
+func (v *validator_) PreprocessInterfaceDeclarations(
+	interfaceDeclarations ast.InterfaceDeclarationsLike,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) ProcessInterfaceDefinitionsSlot(
+func (v *validator_) ProcessInterfaceDeclarationsSlot(
 	slot uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PostprocessInterfaceDefinitions(
-	interfaceDefinitions ast.InterfaceDefinitionsLike,
+func (v *validator_) PostprocessInterfaceDeclarations(
+	interfaceDeclarations ast.InterfaceDeclarationsLike,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -878,20 +878,20 @@ func (v *validator_) PostprocessModule(
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessModuleDefinition(
-	moduleDefinition ast.ModuleDefinitionLike,
+func (v *validator_) PreprocessModuleDeclaration(
+	moduleDeclaration ast.ModuleDeclarationLike,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) ProcessModuleDefinitionSlot(
+func (v *validator_) ProcessModuleDeclarationSlot(
 	slot uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PostprocessModuleDefinition(
-	moduleDefinition ast.ModuleDefinitionLike,
+func (v *validator_) PostprocessModuleDeclaration(
+	moduleDeclaration ast.ModuleDeclarationLike,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -1030,20 +1030,20 @@ func (v *validator_) PostprocessPrimarySubsection(
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessPrimitiveDefinitions(
-	primitiveDefinitions ast.PrimitiveDefinitionsLike,
+func (v *validator_) PreprocessPrimitiveDeclarations(
+	primitiveDeclarations ast.PrimitiveDeclarationsLike,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) ProcessPrimitiveDefinitionsSlot(
+func (v *validator_) ProcessPrimitiveDeclarationsSlot(
 	slot uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PostprocessPrimitiveDefinitions(
-	primitiveDefinitions ast.PrimitiveDefinitionsLike,
+func (v *validator_) PostprocessPrimitiveDeclarations(
+	primitiveDeclarations ast.PrimitiveDeclarationsLike,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -1102,22 +1102,22 @@ func (v *validator_) PostprocessSuffix(
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessTypeDefinition(
-	typeDefinition ast.TypeDefinitionLike,
+func (v *validator_) PreprocessTypeDeclaration(
+	typeDeclaration ast.TypeDeclarationLike,
 	index uint,
 	size uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) ProcessTypeDefinitionSlot(
+func (v *validator_) ProcessTypeDeclarationSlot(
 	slot uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PostprocessTypeDefinition(
-	typeDefinition ast.TypeDefinitionLike,
+func (v *validator_) PostprocessTypeDeclaration(
+	typeDeclaration ast.TypeDeclarationLike,
 	index uint,
 	size uint,
 ) {
