@@ -53,19 +53,19 @@ specified as terms in one or more rule definitions.
 <!
 $Model: ModuleDeclaration PrimitiveDeclarations InterfaceDeclarations
 
-$ModuleDeclaration: Notice Header Imports?
+$ModuleDeclaration: LegalNotice ModuleHeader ModuleImports?
 
 $PrimitiveDeclarations: TypeSection? FunctionalSection?
 
 $InterfaceDeclarations: ClassSection InstanceSection AspectSection?
 
-$Notice: comment
+$LegalNotice: comment
 
-$Header: comment "package" name
+$ModuleHeader: comment "package" name
 
-$Imports: "import" "(" Module+ ")"
+$ModuleImports: "import" "(" ImportedPackage+ ")"
 
-$Module: name path
+$ImportedPackage: name path
 
 $TypeSection: "// Type Declarations" TypeDeclaration+
 
@@ -115,11 +115,11 @@ $Parameter: name Abstraction ","
 $Result:
   - None
   - Abstraction
-  - Parameterized
+  - Multivalue
 
 $None: newline
 
-$Parameterized: "(" Parameter+ ")"
+$Multivalue: "(" Parameter+ ")"
 
 $ClassSection: "// Class Declarations" ClassDeclaration+
 

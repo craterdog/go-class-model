@@ -13,7 +13,6 @@
 package ast
 
 import (
-	abs "github.com/craterdog/go-collection-framework/v4/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 )
 
@@ -21,21 +20,26 @@ import (
 
 // Access Function
 
-func Imports() ImportsClassLike {
-	return importsReference()
+func ImportedPackage() ImportedPackageClassLike {
+	return importedPackageReference()
 }
 
 // Constructor Methods
 
-func (c *importsClass_) Make(
-	modules abs.Sequential[ModuleLike],
-) ImportsLike {
-	if uti.IsUndefined(modules) {
-		panic("The \"modules\" attribute is required by this class.")
+func (c *importedPackageClass_) Make(
+	name string,
+	path string,
+) ImportedPackageLike {
+	if uti.IsUndefined(name) {
+		panic("The \"name\" attribute is required by this class.")
 	}
-	var instance = &imports_{
+	if uti.IsUndefined(path) {
+		panic("The \"path\" attribute is required by this class.")
+	}
+	var instance = &importedPackage_{
 		// Initialize the instance attributes.
-		modules_: modules,
+		name_: name,
+		path_: path,
 	}
 	return instance
 
@@ -45,14 +49,18 @@ func (c *importsClass_) Make(
 
 // Primary Methods
 
-func (v *imports_) GetClass() ImportsClassLike {
-	return importsReference()
+func (v *importedPackage_) GetClass() ImportedPackageClassLike {
+	return importedPackageReference()
 }
 
 // Attribute Methods
 
-func (v *imports_) GetModules() abs.Sequential[ModuleLike] {
-	return v.modules_
+func (v *importedPackage_) GetName() string {
+	return v.name_
+}
+
+func (v *importedPackage_) GetPath() string {
+	return v.path_
 }
 
 // PROTECTED INTERFACE
@@ -61,23 +69,24 @@ func (v *imports_) GetModules() abs.Sequential[ModuleLike] {
 
 // Instance Structure
 
-type imports_ struct {
+type importedPackage_ struct {
 	// Declare the instance attributes.
-	modules_ abs.Sequential[ModuleLike]
+	name_ string
+	path_ string
 }
 
 // Class Structure
 
-type importsClass_ struct {
+type importedPackageClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func importsReference() *importsClass_ {
-	return importsReference_
+func importedPackageReference() *importedPackageClass_ {
+	return importedPackageReference_
 }
 
-var importsReference_ = &importsClass_{
+var importedPackageReference_ = &importedPackageClass_{
 	// Initialize the class constants.
 }

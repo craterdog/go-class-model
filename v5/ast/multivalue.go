@@ -21,19 +21,19 @@ import (
 
 // Access Function
 
-func Parameterized() ParameterizedClassLike {
-	return parameterizedReference()
+func Multivalue() MultivalueClassLike {
+	return multivalueReference()
 }
 
 // Constructor Methods
 
-func (c *parameterizedClass_) Make(
+func (c *multivalueClass_) Make(
 	parameters abs.Sequential[ParameterLike],
-) ParameterizedLike {
+) MultivalueLike {
 	if uti.IsUndefined(parameters) {
 		panic("The \"parameters\" attribute is required by this class.")
 	}
-	var instance = &parameterized_{
+	var instance = &multivalue_{
 		// Initialize the instance attributes.
 		parameters_: parameters,
 	}
@@ -45,13 +45,13 @@ func (c *parameterizedClass_) Make(
 
 // Primary Methods
 
-func (v *parameterized_) GetClass() ParameterizedClassLike {
-	return parameterizedReference()
+func (v *multivalue_) GetClass() MultivalueClassLike {
+	return multivalueReference()
 }
 
 // Attribute Methods
 
-func (v *parameterized_) GetParameters() abs.Sequential[ParameterLike] {
+func (v *multivalue_) GetParameters() abs.Sequential[ParameterLike] {
 	return v.parameters_
 }
 
@@ -61,23 +61,23 @@ func (v *parameterized_) GetParameters() abs.Sequential[ParameterLike] {
 
 // Instance Structure
 
-type parameterized_ struct {
+type multivalue_ struct {
 	// Declare the instance attributes.
 	parameters_ abs.Sequential[ParameterLike]
 }
 
 // Class Structure
 
-type parameterizedClass_ struct {
+type multivalueClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func parameterizedReference() *parameterizedClass_ {
-	return parameterizedReference_
+func multivalueReference() *multivalueClass_ {
+	return multivalueReference_
 }
 
-var parameterizedReference_ = &parameterizedClass_{
+var multivalueReference_ = &multivalueClass_{
 	// Initialize the class constants.
 }

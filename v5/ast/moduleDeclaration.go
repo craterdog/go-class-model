@@ -27,21 +27,21 @@ func ModuleDeclaration() ModuleDeclarationClassLike {
 // Constructor Methods
 
 func (c *moduleDeclarationClass_) Make(
-	notice NoticeLike,
-	header HeaderLike,
-	optionalImports ImportsLike,
+	legalNotice LegalNoticeLike,
+	moduleHeader ModuleHeaderLike,
+	optionalModuleImports ModuleImportsLike,
 ) ModuleDeclarationLike {
-	if uti.IsUndefined(notice) {
-		panic("The \"notice\" attribute is required by this class.")
+	if uti.IsUndefined(legalNotice) {
+		panic("The \"legalNotice\" attribute is required by this class.")
 	}
-	if uti.IsUndefined(header) {
-		panic("The \"header\" attribute is required by this class.")
+	if uti.IsUndefined(moduleHeader) {
+		panic("The \"moduleHeader\" attribute is required by this class.")
 	}
 	var instance = &moduleDeclaration_{
 		// Initialize the instance attributes.
-		notice_:          notice,
-		header_:          header,
-		optionalImports_: optionalImports,
+		legalNotice_:           legalNotice,
+		moduleHeader_:          moduleHeader,
+		optionalModuleImports_: optionalModuleImports,
 	}
 	return instance
 
@@ -57,16 +57,16 @@ func (v *moduleDeclaration_) GetClass() ModuleDeclarationClassLike {
 
 // Attribute Methods
 
-func (v *moduleDeclaration_) GetNotice() NoticeLike {
-	return v.notice_
+func (v *moduleDeclaration_) GetLegalNotice() LegalNoticeLike {
+	return v.legalNotice_
 }
 
-func (v *moduleDeclaration_) GetHeader() HeaderLike {
-	return v.header_
+func (v *moduleDeclaration_) GetModuleHeader() ModuleHeaderLike {
+	return v.moduleHeader_
 }
 
-func (v *moduleDeclaration_) GetOptionalImports() ImportsLike {
-	return v.optionalImports_
+func (v *moduleDeclaration_) GetOptionalModuleImports() ModuleImportsLike {
+	return v.optionalModuleImports_
 }
 
 // PROTECTED INTERFACE
@@ -77,9 +77,9 @@ func (v *moduleDeclaration_) GetOptionalImports() ImportsLike {
 
 type moduleDeclaration_ struct {
 	// Declare the instance attributes.
-	notice_          NoticeLike
-	header_          HeaderLike
-	optionalImports_ ImportsLike
+	legalNotice_           LegalNoticeLike
+	moduleHeader_          ModuleHeaderLike
+	optionalModuleImports_ ModuleImportsLike
 }
 
 // Class Structure

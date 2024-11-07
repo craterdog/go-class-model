@@ -20,26 +20,26 @@ import (
 
 // Access Function
 
-func Module() ModuleClassLike {
-	return moduleReference()
+func ModuleHeader() ModuleHeaderClassLike {
+	return moduleHeaderReference()
 }
 
 // Constructor Methods
 
-func (c *moduleClass_) Make(
+func (c *moduleHeaderClass_) Make(
+	comment string,
 	name string,
-	path string,
-) ModuleLike {
+) ModuleHeaderLike {
+	if uti.IsUndefined(comment) {
+		panic("The \"comment\" attribute is required by this class.")
+	}
 	if uti.IsUndefined(name) {
 		panic("The \"name\" attribute is required by this class.")
 	}
-	if uti.IsUndefined(path) {
-		panic("The \"path\" attribute is required by this class.")
-	}
-	var instance = &module_{
+	var instance = &moduleHeader_{
 		// Initialize the instance attributes.
-		name_: name,
-		path_: path,
+		comment_: comment,
+		name_:    name,
 	}
 	return instance
 
@@ -49,18 +49,18 @@ func (c *moduleClass_) Make(
 
 // Primary Methods
 
-func (v *module_) GetClass() ModuleClassLike {
-	return moduleReference()
+func (v *moduleHeader_) GetClass() ModuleHeaderClassLike {
+	return moduleHeaderReference()
 }
 
 // Attribute Methods
 
-func (v *module_) GetName() string {
-	return v.name_
+func (v *moduleHeader_) GetComment() string {
+	return v.comment_
 }
 
-func (v *module_) GetPath() string {
-	return v.path_
+func (v *moduleHeader_) GetName() string {
+	return v.name_
 }
 
 // PROTECTED INTERFACE
@@ -69,24 +69,24 @@ func (v *module_) GetPath() string {
 
 // Instance Structure
 
-type module_ struct {
+type moduleHeader_ struct {
 	// Declare the instance attributes.
-	name_ string
-	path_ string
+	comment_ string
+	name_    string
 }
 
 // Class Structure
 
-type moduleClass_ struct {
+type moduleHeaderClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func moduleReference() *moduleClass_ {
-	return moduleReference_
+func moduleHeaderReference() *moduleHeaderClass_ {
+	return moduleHeaderReference_
 }
 
-var moduleReference_ = &moduleClass_{
+var moduleHeaderReference_ = &moduleHeaderClass_{
 	// Initialize the class constants.
 }

@@ -581,33 +581,22 @@ func (v *processor_) PostprocessGetterMethod(
 ) {
 }
 
-func (v *processor_) PreprocessHeader(
-	header ast.HeaderLike,
+func (v *processor_) PreprocessImportedPackage(
+	importedPackage ast.ImportedPackageLike,
+	index uint,
+	size uint,
 ) {
 }
 
-func (v *processor_) ProcessHeaderSlot(
+func (v *processor_) ProcessImportedPackageSlot(
 	slot uint,
 ) {
 }
 
-func (v *processor_) PostprocessHeader(
-	header ast.HeaderLike,
-) {
-}
-
-func (v *processor_) PreprocessImports(
-	imports ast.ImportsLike,
-) {
-}
-
-func (v *processor_) ProcessImportsSlot(
-	slot uint,
-) {
-}
-
-func (v *processor_) PostprocessImports(
-	imports ast.ImportsLike,
+func (v *processor_) PostprocessImportedPackage(
+	importedPackage ast.ImportedPackageLike,
+	index uint,
+	size uint,
 ) {
 }
 
@@ -675,6 +664,21 @@ func (v *processor_) PostprocessInterfaceDeclarations(
 ) {
 }
 
+func (v *processor_) PreprocessLegalNotice(
+	legalNotice ast.LegalNoticeLike,
+) {
+}
+
+func (v *processor_) ProcessLegalNoticeSlot(
+	slot uint,
+) {
+}
+
+func (v *processor_) PostprocessLegalNotice(
+	legalNotice ast.LegalNoticeLike,
+) {
+}
+
 func (v *processor_) PreprocessMap(
 	map_ ast.MapLike,
 ) {
@@ -720,25 +724,6 @@ func (v *processor_) PostprocessModel(
 ) {
 }
 
-func (v *processor_) PreprocessModule(
-	module ast.ModuleLike,
-	index uint,
-	size uint,
-) {
-}
-
-func (v *processor_) ProcessModuleSlot(
-	slot uint,
-) {
-}
-
-func (v *processor_) PostprocessModule(
-	module ast.ModuleLike,
-	index uint,
-	size uint,
-) {
-}
-
 func (v *processor_) PreprocessModuleDeclaration(
 	moduleDeclaration ast.ModuleDeclarationLike,
 ) {
@@ -754,6 +739,51 @@ func (v *processor_) PostprocessModuleDeclaration(
 ) {
 }
 
+func (v *processor_) PreprocessModuleHeader(
+	moduleHeader ast.ModuleHeaderLike,
+) {
+}
+
+func (v *processor_) ProcessModuleHeaderSlot(
+	slot uint,
+) {
+}
+
+func (v *processor_) PostprocessModuleHeader(
+	moduleHeader ast.ModuleHeaderLike,
+) {
+}
+
+func (v *processor_) PreprocessModuleImports(
+	moduleImports ast.ModuleImportsLike,
+) {
+}
+
+func (v *processor_) ProcessModuleImportsSlot(
+	slot uint,
+) {
+}
+
+func (v *processor_) PostprocessModuleImports(
+	moduleImports ast.ModuleImportsLike,
+) {
+}
+
+func (v *processor_) PreprocessMultivalue(
+	multivalue ast.MultivalueLike,
+) {
+}
+
+func (v *processor_) ProcessMultivalueSlot(
+	slot uint,
+) {
+}
+
+func (v *processor_) PostprocessMultivalue(
+	multivalue ast.MultivalueLike,
+) {
+}
+
 func (v *processor_) PreprocessNone(
 	none ast.NoneLike,
 ) {
@@ -766,21 +796,6 @@ func (v *processor_) ProcessNoneSlot(
 
 func (v *processor_) PostprocessNone(
 	none ast.NoneLike,
-) {
-}
-
-func (v *processor_) PreprocessNotice(
-	notice ast.NoticeLike,
-) {
-}
-
-func (v *processor_) ProcessNoticeSlot(
-	slot uint,
-) {
-}
-
-func (v *processor_) PostprocessNotice(
-	notice ast.NoticeLike,
 ) {
 }
 
@@ -800,21 +815,6 @@ func (v *processor_) PostprocessParameter(
 	parameter ast.ParameterLike,
 	index uint,
 	size uint,
-) {
-}
-
-func (v *processor_) PreprocessParameterized(
-	parameterized ast.ParameterizedLike,
-) {
-}
-
-func (v *processor_) ProcessParameterizedSlot(
-	slot uint,
-) {
-}
-
-func (v *processor_) PostprocessParameterized(
-	parameterized ast.ParameterizedLike,
 ) {
 }
 

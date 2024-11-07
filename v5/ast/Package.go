@@ -420,28 +420,16 @@ type GetterMethodClassLike interface {
 }
 
 /*
-HeaderClassLike is a class interface that defines the complete set
+ImportedPackageClassLike is a class interface that defines the complete set
 of class constructors, constants and functions that must be supported by
-each concrete header-like class.
+each concrete imported-package-like class.
 */
-type HeaderClassLike interface {
+type ImportedPackageClassLike interface {
 	// Constructor Methods
 	Make(
-		comment string,
 		name string,
-	) HeaderLike
-}
-
-/*
-ImportsClassLike is a class interface that defines the complete set
-of class constructors, constants and functions that must be supported by
-each concrete imports-like class.
-*/
-type ImportsClassLike interface {
-	// Constructor Methods
-	Make(
-		modules abs.Sequential[ModuleLike],
-	) ImportsLike
+		path string,
+	) ImportedPackageLike
 }
 
 /*
@@ -498,6 +486,18 @@ type InterfaceDeclarationsClassLike interface {
 }
 
 /*
+LegalNoticeClassLike is a class interface that defines the complete set
+of class constructors, constants and functions that must be supported by
+each concrete legal-notice-like class.
+*/
+type LegalNoticeClassLike interface {
+	// Constructor Methods
+	Make(
+		comment string,
+	) LegalNoticeLike
+}
+
+/*
 MapClassLike is a class interface that defines the complete set
 of class constructors, constants and functions that must be supported by
 each concrete map-like class.
@@ -538,19 +538,6 @@ type ModelClassLike interface {
 }
 
 /*
-ModuleClassLike is a class interface that defines the complete set
-of class constructors, constants and functions that must be supported by
-each concrete module-like class.
-*/
-type ModuleClassLike interface {
-	// Constructor Methods
-	Make(
-		name string,
-		path string,
-	) ModuleLike
-}
-
-/*
 ModuleDeclarationClassLike is a class interface that defines the complete set
 of class constructors, constants and functions that must be supported by
 each concrete module-declaration-like class.
@@ -558,10 +545,47 @@ each concrete module-declaration-like class.
 type ModuleDeclarationClassLike interface {
 	// Constructor Methods
 	Make(
-		notice NoticeLike,
-		header HeaderLike,
-		optionalImports ImportsLike,
+		legalNotice LegalNoticeLike,
+		moduleHeader ModuleHeaderLike,
+		optionalModuleImports ModuleImportsLike,
 	) ModuleDeclarationLike
+}
+
+/*
+ModuleHeaderClassLike is a class interface that defines the complete set
+of class constructors, constants and functions that must be supported by
+each concrete module-header-like class.
+*/
+type ModuleHeaderClassLike interface {
+	// Constructor Methods
+	Make(
+		comment string,
+		name string,
+	) ModuleHeaderLike
+}
+
+/*
+ModuleImportsClassLike is a class interface that defines the complete set
+of class constructors, constants and functions that must be supported by
+each concrete module-imports-like class.
+*/
+type ModuleImportsClassLike interface {
+	// Constructor Methods
+	Make(
+		importedPackages abs.Sequential[ImportedPackageLike],
+	) ModuleImportsLike
+}
+
+/*
+MultivalueClassLike is a class interface that defines the complete set
+of class constructors, constants and functions that must be supported by
+each concrete multivalue-like class.
+*/
+type MultivalueClassLike interface {
+	// Constructor Methods
+	Make(
+		parameters abs.Sequential[ParameterLike],
+	) MultivalueLike
 }
 
 /*
@@ -577,18 +601,6 @@ type NoneClassLike interface {
 }
 
 /*
-NoticeClassLike is a class interface that defines the complete set
-of class constructors, constants and functions that must be supported by
-each concrete notice-like class.
-*/
-type NoticeClassLike interface {
-	// Constructor Methods
-	Make(
-		comment string,
-	) NoticeLike
-}
-
-/*
 ParameterClassLike is a class interface that defines the complete set
 of class constructors, constants and functions that must be supported by
 each concrete parameter-like class.
@@ -599,18 +611,6 @@ type ParameterClassLike interface {
 		name string,
 		abstraction AbstractionLike,
 	) ParameterLike
-}
-
-/*
-ParameterizedClassLike is a class interface that defines the complete set
-of class constructors, constants and functions that must be supported by
-each concrete parameterized-like class.
-*/
-type ParameterizedClassLike interface {
-	// Constructor Methods
-	Make(
-		parameters abs.Sequential[ParameterLike],
-	) ParameterizedLike
 }
 
 /*
@@ -1159,30 +1159,17 @@ type GetterMethodLike interface {
 }
 
 /*
-HeaderLike is an instance interface that defines the complete set
+ImportedPackageLike is an instance interface that defines the complete set
 of primary, attribute and aspect methods that must be supported by each
-instance of a concrete header-like class.
+instance of a concrete imported-package-like class.
 */
-type HeaderLike interface {
+type ImportedPackageLike interface {
 	// Primary Methods
-	GetClass() HeaderClassLike
+	GetClass() ImportedPackageClassLike
 
 	// Attribute Methods
-	GetComment() string
 	GetName() string
-}
-
-/*
-ImportsLike is an instance interface that defines the complete set
-of primary, attribute and aspect methods that must be supported by each
-instance of a concrete imports-like class.
-*/
-type ImportsLike interface {
-	// Primary Methods
-	GetClass() ImportsClassLike
-
-	// Attribute Methods
-	GetModules() abs.Sequential[ModuleLike]
+	GetPath() string
 }
 
 /*
@@ -1243,6 +1230,19 @@ type InterfaceDeclarationsLike interface {
 }
 
 /*
+LegalNoticeLike is an instance interface that defines the complete set
+of primary, attribute and aspect methods that must be supported by each
+instance of a concrete legal-notice-like class.
+*/
+type LegalNoticeLike interface {
+	// Primary Methods
+	GetClass() LegalNoticeClassLike
+
+	// Attribute Methods
+	GetComment() string
+}
+
+/*
 MapLike is an instance interface that defines the complete set
 of primary, attribute and aspect methods that must be supported by each
 instance of a concrete map-like class.
@@ -1286,20 +1286,6 @@ type ModelLike interface {
 }
 
 /*
-ModuleLike is an instance interface that defines the complete set
-of primary, attribute and aspect methods that must be supported by each
-instance of a concrete module-like class.
-*/
-type ModuleLike interface {
-	// Primary Methods
-	GetClass() ModuleClassLike
-
-	// Attribute Methods
-	GetName() string
-	GetPath() string
-}
-
-/*
 ModuleDeclarationLike is an instance interface that defines the complete set
 of primary, attribute and aspect methods that must be supported by each
 instance of a concrete module-declaration-like class.
@@ -1309,9 +1295,49 @@ type ModuleDeclarationLike interface {
 	GetClass() ModuleDeclarationClassLike
 
 	// Attribute Methods
-	GetNotice() NoticeLike
-	GetHeader() HeaderLike
-	GetOptionalImports() ImportsLike
+	GetLegalNotice() LegalNoticeLike
+	GetModuleHeader() ModuleHeaderLike
+	GetOptionalModuleImports() ModuleImportsLike
+}
+
+/*
+ModuleHeaderLike is an instance interface that defines the complete set
+of primary, attribute and aspect methods that must be supported by each
+instance of a concrete module-header-like class.
+*/
+type ModuleHeaderLike interface {
+	// Primary Methods
+	GetClass() ModuleHeaderClassLike
+
+	// Attribute Methods
+	GetComment() string
+	GetName() string
+}
+
+/*
+ModuleImportsLike is an instance interface that defines the complete set
+of primary, attribute and aspect methods that must be supported by each
+instance of a concrete module-imports-like class.
+*/
+type ModuleImportsLike interface {
+	// Primary Methods
+	GetClass() ModuleImportsClassLike
+
+	// Attribute Methods
+	GetImportedPackages() abs.Sequential[ImportedPackageLike]
+}
+
+/*
+MultivalueLike is an instance interface that defines the complete set
+of primary, attribute and aspect methods that must be supported by each
+instance of a concrete multivalue-like class.
+*/
+type MultivalueLike interface {
+	// Primary Methods
+	GetClass() MultivalueClassLike
+
+	// Attribute Methods
+	GetParameters() abs.Sequential[ParameterLike]
 }
 
 /*
@@ -1328,19 +1354,6 @@ type NoneLike interface {
 }
 
 /*
-NoticeLike is an instance interface that defines the complete set
-of primary, attribute and aspect methods that must be supported by each
-instance of a concrete notice-like class.
-*/
-type NoticeLike interface {
-	// Primary Methods
-	GetClass() NoticeClassLike
-
-	// Attribute Methods
-	GetComment() string
-}
-
-/*
 ParameterLike is an instance interface that defines the complete set
 of primary, attribute and aspect methods that must be supported by each
 instance of a concrete parameter-like class.
@@ -1352,19 +1365,6 @@ type ParameterLike interface {
 	// Attribute Methods
 	GetName() string
 	GetAbstraction() AbstractionLike
-}
-
-/*
-ParameterizedLike is an instance interface that defines the complete set
-of primary, attribute and aspect methods that must be supported by each
-instance of a concrete parameterized-like class.
-*/
-type ParameterizedLike interface {
-	// Primary Methods
-	GetClass() ParameterizedClassLike
-
-	// Attribute Methods
-	GetParameters() abs.Sequential[ParameterLike]
 }
 
 /*

@@ -363,21 +363,16 @@ func (v *formatter_) ProcessGetterMethodSlot(slot uint) {
 	}
 }
 
-func (v *formatter_) ProcessHeaderSlot(slot uint) {
-	v.appendString("package ")
+func (v *formatter_) PreprocessImportedPackage(
+	importedPackage ast.ImportedPackageLike,
+	index uint,
+	size uint,
+) {
+	v.appendNewline()
 }
 
-func (v *formatter_) PreprocessImports(imports ast.ImportsLike) {
-	v.appendNewline()
-	v.appendNewline()
-	v.appendString("import (")
-	v.depth_++
-}
-
-func (v *formatter_) PostprocessImports(imports ast.ImportsLike) {
-	v.depth_--
-	v.appendNewline()
-	v.appendString(")")
+func (v *formatter_) ProcessImportedPackageSlot(slot uint) {
+	v.appendString(" ")
 }
 
 func (v *formatter_) PreprocessInstanceDeclaration(
@@ -413,6 +408,10 @@ func (v *formatter_) PreprocessInstanceSection(instanceSection ast.InstanceSecti
 	v.appendNewline()
 }
 
+func (v *formatter_) PostprocessLegalNotice(legalNotice ast.LegalNoticeLike) {
+	v.appendNewline()
+}
+
 func (v *formatter_) PreprocessMap(map_ ast.MapLike) {
 	v.appendString("map[")
 }
@@ -436,24 +435,33 @@ func (v *formatter_) ProcessMethodSlot(slot uint) {
 	}
 }
 
-func (v *formatter_) PreprocessModule(
-	module ast.ModuleLike,
-	index uint,
-	size uint,
-) {
-	v.appendNewline()
-}
-
-func (v *formatter_) ProcessModuleSlot(slot uint) {
-	v.appendString(" ")
-}
-
 func (v *formatter_) PostprocessModuleDeclaration(moduleDeclaration_ ast.ModuleDeclarationLike) {
 	v.appendNewline()
 }
 
-func (v *formatter_) PostprocessNotice(notice ast.NoticeLike) {
+func (v *formatter_) ProcessModuleHeaderSlot(slot uint) {
+	v.appendString("package ")
+}
+
+func (v *formatter_) PreprocessModuleImports(moduleImports ast.ModuleImportsLike) {
 	v.appendNewline()
+	v.appendNewline()
+	v.appendString("import (")
+	v.depth_++
+}
+
+func (v *formatter_) PostprocessModuleImports(moduleImports ast.ModuleImportsLike) {
+	v.depth_--
+	v.appendNewline()
+	v.appendString(")")
+}
+
+func (v *formatter_) PreprocessMultivalue(multivalue ast.MultivalueLike) {
+	v.appendString("(")
+}
+
+func (v *formatter_) PostprocessMultivalue(multivalue ast.MultivalueLike) {
+	v.appendString(")")
 }
 
 func (v *formatter_) PreprocessParameter(
@@ -484,14 +492,6 @@ func (v *formatter_) PostprocessParameter(
 		v.depth_--
 		v.appendNewline()
 	}
-}
-
-func (v *formatter_) PreprocessParameterized(parameterized ast.ParameterizedLike) {
-	v.appendString("(")
-}
-
-func (v *formatter_) PostprocessParameterized(parameterized ast.ParameterizedLike) {
-	v.appendString(")")
 }
 
 func (v *formatter_) PreprocessPrimarySubsection(publicSubsection ast.PrimarySubsectionLike) {

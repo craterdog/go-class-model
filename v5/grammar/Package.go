@@ -606,23 +606,18 @@ type Methodical interface {
 	PostprocessGetterMethod(
 		getterMethod ast.GetterMethodLike,
 	)
-	PreprocessHeader(
-		header ast.HeaderLike,
+	PreprocessImportedPackage(
+		importedPackage ast.ImportedPackageLike,
+		index uint,
+		size uint,
 	)
-	ProcessHeaderSlot(
+	ProcessImportedPackageSlot(
 		slot uint,
 	)
-	PostprocessHeader(
-		header ast.HeaderLike,
-	)
-	PreprocessImports(
-		imports ast.ImportsLike,
-	)
-	ProcessImportsSlot(
-		slot uint,
-	)
-	PostprocessImports(
-		imports ast.ImportsLike,
+	PostprocessImportedPackage(
+		importedPackage ast.ImportedPackageLike,
+		index uint,
+		size uint,
 	)
 	PreprocessInstanceDeclaration(
 		instanceDeclaration ast.InstanceDeclarationLike,
@@ -664,6 +659,15 @@ type Methodical interface {
 	PostprocessInterfaceDeclarations(
 		interfaceDeclarations ast.InterfaceDeclarationsLike,
 	)
+	PreprocessLegalNotice(
+		legalNotice ast.LegalNoticeLike,
+	)
+	ProcessLegalNoticeSlot(
+		slot uint,
+	)
+	PostprocessLegalNotice(
+		legalNotice ast.LegalNoticeLike,
+	)
 	PreprocessMap(
 		map_ ast.MapLike,
 	)
@@ -691,19 +695,6 @@ type Methodical interface {
 	PostprocessModel(
 		model ast.ModelLike,
 	)
-	PreprocessModule(
-		module ast.ModuleLike,
-		index uint,
-		size uint,
-	)
-	ProcessModuleSlot(
-		slot uint,
-	)
-	PostprocessModule(
-		module ast.ModuleLike,
-		index uint,
-		size uint,
-	)
 	PreprocessModuleDeclaration(
 		moduleDeclaration ast.ModuleDeclarationLike,
 	)
@@ -713,6 +704,33 @@ type Methodical interface {
 	PostprocessModuleDeclaration(
 		moduleDeclaration ast.ModuleDeclarationLike,
 	)
+	PreprocessModuleHeader(
+		moduleHeader ast.ModuleHeaderLike,
+	)
+	ProcessModuleHeaderSlot(
+		slot uint,
+	)
+	PostprocessModuleHeader(
+		moduleHeader ast.ModuleHeaderLike,
+	)
+	PreprocessModuleImports(
+		moduleImports ast.ModuleImportsLike,
+	)
+	ProcessModuleImportsSlot(
+		slot uint,
+	)
+	PostprocessModuleImports(
+		moduleImports ast.ModuleImportsLike,
+	)
+	PreprocessMultivalue(
+		multivalue ast.MultivalueLike,
+	)
+	ProcessMultivalueSlot(
+		slot uint,
+	)
+	PostprocessMultivalue(
+		multivalue ast.MultivalueLike,
+	)
 	PreprocessNone(
 		none ast.NoneLike,
 	)
@@ -721,15 +739,6 @@ type Methodical interface {
 	)
 	PostprocessNone(
 		none ast.NoneLike,
-	)
-	PreprocessNotice(
-		notice ast.NoticeLike,
-	)
-	ProcessNoticeSlot(
-		slot uint,
-	)
-	PostprocessNotice(
-		notice ast.NoticeLike,
 	)
 	PreprocessParameter(
 		parameter ast.ParameterLike,
@@ -743,15 +752,6 @@ type Methodical interface {
 		parameter ast.ParameterLike,
 		index uint,
 		size uint,
-	)
-	PreprocessParameterized(
-		parameterized ast.ParameterizedLike,
-	)
-	ProcessParameterizedSlot(
-		slot uint,
-	)
-	PostprocessParameterized(
-		parameterized ast.ParameterizedLike,
 	)
 	PreprocessPrefix(
 		prefix ast.PrefixLike,

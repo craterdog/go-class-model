@@ -690,38 +690,24 @@ func (v *validator_) PostprocessGetterMethod(
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessHeader(
-	header ast.HeaderLike,
+func (v *validator_) PreprocessImportedPackage(
+	importedPackage ast.ImportedPackageLike,
+	index uint,
+	size uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) ProcessHeaderSlot(
+func (v *validator_) ProcessImportedPackageSlot(
 	slot uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PostprocessHeader(
-	header ast.HeaderLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) PreprocessImports(
-	imports ast.ImportsLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessImportsSlot(
-	slot uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) PostprocessImports(
-	imports ast.ImportsLike,
+func (v *validator_) PostprocessImportedPackage(
+	importedPackage ast.ImportedPackageLike,
+	index uint,
+	size uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -802,6 +788,24 @@ func (v *validator_) PostprocessInterfaceDeclarations(
 	// TBD - Add any validation checks.
 }
 
+func (v *validator_) PreprocessLegalNotice(
+	legalNotice ast.LegalNoticeLike,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) ProcessLegalNoticeSlot(
+	slot uint,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) PostprocessLegalNotice(
+	legalNotice ast.LegalNoticeLike,
+) {
+	// TBD - Add any validation checks.
+}
+
 func (v *validator_) PreprocessMap(
 	map_ ast.MapLike,
 ) {
@@ -856,28 +860,6 @@ func (v *validator_) PostprocessModel(
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessModule(
-	module ast.ModuleLike,
-	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessModuleSlot(
-	slot uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) PostprocessModule(
-	module ast.ModuleLike,
-	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
 func (v *validator_) PreprocessModuleDeclaration(
 	moduleDeclaration ast.ModuleDeclarationLike,
 ) {
@@ -892,6 +874,60 @@ func (v *validator_) ProcessModuleDeclarationSlot(
 
 func (v *validator_) PostprocessModuleDeclaration(
 	moduleDeclaration ast.ModuleDeclarationLike,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) PreprocessModuleHeader(
+	moduleHeader ast.ModuleHeaderLike,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) ProcessModuleHeaderSlot(
+	slot uint,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) PostprocessModuleHeader(
+	moduleHeader ast.ModuleHeaderLike,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) PreprocessModuleImports(
+	moduleImports ast.ModuleImportsLike,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) ProcessModuleImportsSlot(
+	slot uint,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) PostprocessModuleImports(
+	moduleImports ast.ModuleImportsLike,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) PreprocessMultivalue(
+	multivalue ast.MultivalueLike,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) ProcessMultivalueSlot(
+	slot uint,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) PostprocessMultivalue(
+	multivalue ast.MultivalueLike,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -914,24 +950,6 @@ func (v *validator_) PostprocessNone(
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessNotice(
-	notice ast.NoticeLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessNoticeSlot(
-	slot uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) PostprocessNotice(
-	notice ast.NoticeLike,
-) {
-	// TBD - Add any validation checks.
-}
-
 func (v *validator_) PreprocessParameter(
 	parameter ast.ParameterLike,
 	index uint,
@@ -950,24 +968,6 @@ func (v *validator_) PostprocessParameter(
 	parameter ast.ParameterLike,
 	index uint,
 	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) PreprocessParameterized(
-	parameterized ast.ParameterizedLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessParameterizedSlot(
-	slot uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) PostprocessParameterized(
-	parameterized ast.ParameterizedLike,
 ) {
 	// TBD - Add any validation checks.
 }

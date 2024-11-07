@@ -20,26 +20,21 @@ import (
 
 // Access Function
 
-func Header() HeaderClassLike {
-	return headerReference()
+func LegalNotice() LegalNoticeClassLike {
+	return legalNoticeReference()
 }
 
 // Constructor Methods
 
-func (c *headerClass_) Make(
+func (c *legalNoticeClass_) Make(
 	comment string,
-	name string,
-) HeaderLike {
+) LegalNoticeLike {
 	if uti.IsUndefined(comment) {
 		panic("The \"comment\" attribute is required by this class.")
 	}
-	if uti.IsUndefined(name) {
-		panic("The \"name\" attribute is required by this class.")
-	}
-	var instance = &header_{
+	var instance = &legalNotice_{
 		// Initialize the instance attributes.
 		comment_: comment,
-		name_:    name,
 	}
 	return instance
 
@@ -49,18 +44,14 @@ func (c *headerClass_) Make(
 
 // Primary Methods
 
-func (v *header_) GetClass() HeaderClassLike {
-	return headerReference()
+func (v *legalNotice_) GetClass() LegalNoticeClassLike {
+	return legalNoticeReference()
 }
 
 // Attribute Methods
 
-func (v *header_) GetComment() string {
+func (v *legalNotice_) GetComment() string {
 	return v.comment_
-}
-
-func (v *header_) GetName() string {
-	return v.name_
 }
 
 // PROTECTED INTERFACE
@@ -69,24 +60,23 @@ func (v *header_) GetName() string {
 
 // Instance Structure
 
-type header_ struct {
+type legalNotice_ struct {
 	// Declare the instance attributes.
 	comment_ string
-	name_    string
 }
 
 // Class Structure
 
-type headerClass_ struct {
+type legalNoticeClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func headerReference() *headerClass_ {
-	return headerReference_
+func legalNoticeReference() *legalNoticeClass_ {
+	return legalNoticeReference_
 }
 
-var headerReference_ = &headerClass_{
+var legalNoticeReference_ = &legalNoticeClass_{
 	// Initialize the class constants.
 }

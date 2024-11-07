@@ -13,6 +13,7 @@
 package ast
 
 import (
+	abs "github.com/craterdog/go-collection-framework/v4/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 )
 
@@ -20,21 +21,21 @@ import (
 
 // Access Function
 
-func Notice() NoticeClassLike {
-	return noticeReference()
+func ModuleImports() ModuleImportsClassLike {
+	return moduleImportsReference()
 }
 
 // Constructor Methods
 
-func (c *noticeClass_) Make(
-	comment string,
-) NoticeLike {
-	if uti.IsUndefined(comment) {
-		panic("The \"comment\" attribute is required by this class.")
+func (c *moduleImportsClass_) Make(
+	importedPackages abs.Sequential[ImportedPackageLike],
+) ModuleImportsLike {
+	if uti.IsUndefined(importedPackages) {
+		panic("The \"importedPackages\" attribute is required by this class.")
 	}
-	var instance = &notice_{
+	var instance = &moduleImports_{
 		// Initialize the instance attributes.
-		comment_: comment,
+		importedPackages_: importedPackages,
 	}
 	return instance
 
@@ -44,14 +45,14 @@ func (c *noticeClass_) Make(
 
 // Primary Methods
 
-func (v *notice_) GetClass() NoticeClassLike {
-	return noticeReference()
+func (v *moduleImports_) GetClass() ModuleImportsClassLike {
+	return moduleImportsReference()
 }
 
 // Attribute Methods
 
-func (v *notice_) GetComment() string {
-	return v.comment_
+func (v *moduleImports_) GetImportedPackages() abs.Sequential[ImportedPackageLike] {
+	return v.importedPackages_
 }
 
 // PROTECTED INTERFACE
@@ -60,23 +61,23 @@ func (v *notice_) GetComment() string {
 
 // Instance Structure
 
-type notice_ struct {
+type moduleImports_ struct {
 	// Declare the instance attributes.
-	comment_ string
+	importedPackages_ abs.Sequential[ImportedPackageLike]
 }
 
 // Class Structure
 
-type noticeClass_ struct {
+type moduleImportsClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func noticeReference() *noticeClass_ {
-	return noticeReference_
+func moduleImportsReference() *moduleImportsClass_ {
+	return moduleImportsReference_
 }
 
-var noticeReference_ = &noticeClass_{
+var moduleImportsReference_ = &moduleImportsClass_{
 	// Initialize the class constants.
 }
