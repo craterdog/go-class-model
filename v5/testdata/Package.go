@@ -24,7 +24,7 @@ on interfaces, not on each other.
 */
 package example
 
-// Type Definitions
+// Type Declarations
 
 /*
 Form is a constrained type representing the possible notational forms for the
@@ -59,7 +59,7 @@ const (
 	Gradians
 )
 
-// Functional Definitions
+// Functional Declarations
 
 /*
 NormFunction[V any] is a functional type that defines the signature for any
@@ -86,7 +86,7 @@ type TrigonometricFunction func(
 	angle AngleLike,
 ) float64
 
-// Class Definitions
+// Class Declarations
 
 /*
 AngleClassLike is a class interface that defines the set of class constants,
@@ -248,7 +248,7 @@ type ComplexClassLike interface {
 	) float64
 }
 
-// Instance Definitions
+// Instance Declarations
 
 /*
 AngleLike is an instance interface that defines the complete set of attributes,
@@ -348,7 +348,7 @@ type ComplexLike interface {
 	Continuous
 }
 
-// Aspect Definitions
+// Aspect Declarations
 
 /*
 Accessible[V any] is an aspect interface that defines a set of method signatures

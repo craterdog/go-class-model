@@ -51,13 +51,13 @@ sequence of terms within in a rule definition may be separated by spaces which
 are ignored by the parser.  Newlines are also ignored unless explicitly
 specified as terms in one or more rule definitions.
 <!
-$Model: ModuleDefinition PrimitiveDefinitions InterfaceDefinitions
+$Model: ModuleDeclaration PrimitiveDeclarations InterfaceDeclarations
 
-$ModuleDefinition: Notice Header Imports?
+$ModuleDeclaration: Notice Header Imports?
 
-$PrimitiveDefinitions: TypeSection? FunctionalSection?
+$PrimitiveDeclarations: TypeSection? FunctionalSection?
 
-$InterfaceDefinitions: ClassSection InstanceSection AspectSection?
+$InterfaceDeclarations: ClassSection InstanceSection AspectSection?
 
 $Notice: comment
 
@@ -67,9 +67,9 @@ $Imports: "import" "(" Module+ ")"
 
 $Module: name path
 
-$TypeSection: "// Type Definitions" TypeDefinition+
+$TypeSection: "// Type Declarations" TypeDeclaration+
 
-$TypeDefinition: Declaration Abstraction Enumeration?
+$TypeDeclaration: Declaration Abstraction Enumeration?
 
 $Declaration: comment "type" name Constraints?
 
@@ -106,9 +106,9 @@ $Value: name Abstraction "=" "iota"
 
 $AdditionalValue: name
 
-$FunctionalSection: "// Functional Definitions" FunctionalDefinition+
+$FunctionalSection: "// Functional Declarations" FunctionalDeclaration+
 
-$FunctionalDefinition: Declaration "func" "(" Parameter* ")" Result
+$FunctionalDeclaration: Declaration "func" "(" Parameter* ")" Result
 
 $Parameter: name Abstraction ","
 
@@ -121,9 +121,9 @@ $None: newline
 
 $Parameterized: "(" Parameter+ ")"
 
-$ClassSection: "// Class Definitions" ClassDefinition+
+$ClassSection: "// Class Declarations" ClassDeclaration+
 
-$ClassDefinition: Declaration "interface" "{" ClassMethods "}"
+$ClassDeclaration: Declaration "interface" "{" ClassMethods "}"
 
 $ClassMethods: ConstructorSubsection ConstantSubsection? FunctionSubsection?
 
@@ -139,9 +139,9 @@ $FunctionSubsection: "// Function Methods" FunctionMethod+
 
 $FunctionMethod: name "(" Parameter* ")" Result
 
-$InstanceSection: "// Instance Definitions" InstanceDefinition+
+$InstanceSection: "// Instance Declarations" InstanceDeclaration+
 
-$InstanceDefinition: Declaration "interface" "{" InstanceMethods "}"
+$InstanceDeclaration: Declaration "interface" "{" InstanceMethods "}"
 
 $InstanceMethods: PrimarySubsection AttributeSubsection? AspectSubsection?
 
@@ -165,9 +165,9 @@ $AspectSubsection: "// Aspect Interfaces" AspectInterface+
 
 $AspectInterface: Abstraction
 
-$AspectSection: "// Aspect Definitions" AspectDefinition+
+$AspectSection: "// Aspect Declarations" AspectDeclaration+
 
-$AspectDefinition: Declaration "interface" "{" AspectMethod+ "}"
+$AspectDeclaration: Declaration "interface" "{" AspectMethod+ "}"
 
 $AspectMethod: Method
 

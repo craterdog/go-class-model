@@ -28,8 +28,6 @@ import (
 	abs "github.com/craterdog/go-collection-framework/v4/collection"
 )
 
-// Type Declarations
-
 // Class Declarations
 
 /*
@@ -1503,5 +1501,3 @@ type ValueLike interface {
 	GetName() string
 	GetAbstraction() AbstractionLike
 }
-
-// Aspect Declarations
