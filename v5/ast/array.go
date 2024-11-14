@@ -30,6 +30,10 @@ func (c *arrayClass_) Make() ArrayLike {
 
 }
 
+// Constant Methods
+
+// Function Methods
+
 // INSTANCE INTERFACE
 
 // Primary Methods
@@ -37,6 +41,8 @@ func (c *arrayClass_) Make() ArrayLike {
 func (v *array_) GetClass() ArrayClassLike {
 	return arrayReference()
 }
+
+// Attribute Methods
 
 // PROTECTED INTERFACE
 

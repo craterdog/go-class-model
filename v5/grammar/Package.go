@@ -29,7 +29,7 @@ here:
   - https://github.com/craterdog/go-class-model/wiki
 
 Additional concrete implementations of the classes defined by this package can
-be developed and used seamlessly since the interface definitions only depend on
+be developed and used seamlessly since the interface declarations only depend on
 other interfaces and intrinsic types—and the class implementations only depend
 on interfaces, not on each other.
 */

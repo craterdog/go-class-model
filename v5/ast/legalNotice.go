@@ -40,6 +40,10 @@ func (c *legalNoticeClass_) Make(
 
 }
 
+// Constant Methods
+
+// Function Methods
+
 // INSTANCE INTERFACE
 
 // Primary Methods

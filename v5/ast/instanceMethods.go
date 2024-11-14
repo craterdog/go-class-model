@@ -44,6 +44,10 @@ func (c *instanceMethodsClass_) Make(
 
 }
 
+// Constant Methods
+
+// Function Methods
+
 // INSTANCE INTERFACE
 
 // Primary Methods

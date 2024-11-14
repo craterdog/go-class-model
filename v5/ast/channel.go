@@ -30,6 +30,10 @@ func (c *channelClass_) Make() ChannelLike {
 
 }
 
+// Constant Methods
+
+// Function Methods
+
 // INSTANCE INTERFACE
 
 // Primary Methods
@@ -37,6 +41,8 @@ func (c *channelClass_) Make() ChannelLike {
 func (v *channel_) GetClass() ChannelClassLike {
 	return channelReference()
 }
+
+// Attribute Methods
 
 // PROTECTED INTERFACE
 

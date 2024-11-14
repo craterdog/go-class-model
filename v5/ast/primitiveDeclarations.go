@@ -35,6 +35,10 @@ func (c *primitiveDeclarationsClass_) Make(
 
 }
 
+// Constant Methods
+
+// Function Methods
+
 // INSTANCE INTERFACE
 
 // Primary Methods

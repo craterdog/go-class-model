@@ -63,7 +63,6 @@ func (v *token_) GetClass() TokenClassLike {
 }
 
 // Attribute Methods
-// Attribute Methods
 
 func (v *token_) GetLine() uint {
 	return v.line_

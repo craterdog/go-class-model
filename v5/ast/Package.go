@@ -11,9 +11,10 @@
 */
 
 /*
-Package "ast" provides the abstract syntax tree (AST) classes for this module.
-Each AST class manages the attributes associated with the rule definition found
-in the syntax grammar with the same rule name as the class.
+Package "ast" provides the abstract syntax tree (AST) classes for this module
+based on the "Syntax.cdsn" grammar for the module.  Each AST class manages the
+attributes associated with its corresponding rule definition found in the
+grammar.
 
 For detailed documentation on this package refer to the wiki:
   - https://github.com/craterdog/go-class-model/wiki
@@ -21,6 +22,11 @@ For detailed documentation on this package refer to the wiki:
 This package follows the Crater Dog Technologies™ Go Coding Conventions located
 here:
   - https://github.com/craterdog/go-class-model/wiki
+
+Additional concrete implementations of the classes defined by this package can
+be developed and used seamlessly since the interface declarations only depend on
+other interfaces and intrinsic types—and the class implementations only depend
+on interfaces, not on each other.
 */
 package ast
 

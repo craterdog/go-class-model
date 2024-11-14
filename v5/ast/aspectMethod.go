@@ -40,6 +40,10 @@ func (c *aspectMethodClass_) Make(
 
 }
 
+// Constant Methods
+
+// Function Methods
+
 // INSTANCE INTERFACE
 
 // Primary Methods

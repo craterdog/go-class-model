@@ -45,6 +45,10 @@ func (c *moduleHeaderClass_) Make(
 
 }
 
+// Constant Methods
+
+// Function Methods
+
 // INSTANCE INTERFACE
 
 // Primary Methods

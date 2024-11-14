@@ -48,41 +48,42 @@ func (c *scannerClass_) Make(
 		runes_:    []rune(source),
 		tokens_:   tokens,
 	}
-	go instance.scanTokens() // Do scanning in the background...
+	go instance.scanTokens() // Start scanning tokens in the background.
 	return instance
 }
 
-func (c *scannerClass_) FormatToken(token TokenLike) string {
-	var result_ string
+// Function Methods
+
+func (c *scannerClass_) FormatToken(
+	token TokenLike,
+) string {
 	var value = token.GetValue()
 	value = fmt.Sprintf("%q", value)
 	if len(value) > 40 {
 		value = fmt.Sprintf("%.40q...", value)
 	}
-	result_ = fmt.Sprintf(
+	return fmt.Sprintf(
 		"Token [type: %s, line: %d, position: %d]: %s",
 		c.tokens_[token.GetType()],
 		token.GetLine(),
 		token.GetPosition(),
 		value,
 	)
-	return result_
 }
 
-func (c *scannerClass_) FormatType(tokenType TokenType) string {
-	var result_ = c.tokens_[tokenType]
-	return result_
+func (c *scannerClass_) FormatType(
+	tokenType TokenType,
+) string {
+	return c.tokens_[tokenType]
 }
 
 func (c *scannerClass_) MatchesType(
 	tokenValue string,
 	tokenType TokenType,
 ) bool {
-	var result_ bool
 	var matcher = c.matchers_[tokenType]
 	var match = matcher.FindString(tokenValue)
-	result_ = uti.IsDefined(match)
-	return result_
+	return uti.IsDefined(match)
 }
 
 // INSTANCE INTERFACE
@@ -130,7 +131,7 @@ func (v *scanner_) foundToken(tokenType TokenType) bool {
 	var text = string(v.runes_[v.next_:])
 	var matcher = scannerReference().matchers_[tokenType]
 	var match = matcher.FindString(text)
-	if len(match) == 0 {
+	if uti.IsUndefined(match) {
 		return false
 	}
 
@@ -218,7 +219,8 @@ func scannerReference() *scannerClass_ {
 var scannerReference_ = &scannerClass_{
 	// Initialize the class constants.
 	tokens_: map[TokenType]string{
-		// Define identifiers for each type of token.ErrorToken: "error",
+		// Define identifiers for each type of token.
+		ErrorToken:     "error",
 		CommentToken:   "comment",
 		DelimiterToken: "delimiter",
 		NameToken:      "name",
@@ -256,11 +258,11 @@ const (
 	lower_   = "\\p{Ll}"
 	upper_   = "\\p{Lu}"
 
-	// Define the regular expression patterns for each token type."
+	// Define the regular expression patterns for each token type.
 	comment_   = "(?:/\\*" + eol_ + "(" + any_ + "|" + eol_ + ")*?" + eol_ + "\\*/" + eol_ + ")"
 	delimiter_ = "(?:type|package|map|iota|interface|import|func|const|chan|\\}|\\{|\\]|\\[|\\.|\\)|\\(|=|// Type Declarations|// Primary Methods|// Instance Declarations|// Functional Declarations|// Function Methods|// Constructor Methods|// Constant Methods|// Class Declarations|// Attribute Methods|// Aspect Interfaces|// Aspect Declarations|,)"
 	name_      = "(?:(" + lower_ + "|" + upper_ + ")(" + lower_ + "|" + upper_ + "|" + digit_ + ")*_?)"
-	newline_   = "(?:\\r?\\n)"
+	newline_   = "(?:" + eol_ + ")"
 	path_      = "(?:\"" + any_ + "*?\")"
 	space_     = "(?:[ \\t]+)"
 )
