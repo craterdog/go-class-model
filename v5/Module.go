@@ -795,12 +795,12 @@ func ClassMethods(arguments ...any) ClassMethodsLike {
 	switch argumentTypes {
 	case "ConstructorSubsectionLike, ConstantSubsectionLike, FunctionSubsectionLike":
 		var constructorSubsection = arguments[0].(ConstructorSubsectionLike)
-		var constantSubsection = arguments[1].(ConstantSubsectionLike)
-		var functionSubsection = arguments[2].(FunctionSubsectionLike)
+		var optionalConstantSubsection = arguments[1].(ConstantSubsectionLike)
+		var optionalFunctionSubsection = arguments[2].(FunctionSubsectionLike)
 		instance_ = ast.ClassMethods().Make(
 			constructorSubsection,
-			constantSubsection,
-			functionSubsection,
+			optionalConstantSubsection,
+			optionalFunctionSubsection,
 		)
 	default:
 		var message = fmt.Sprintf(
@@ -1539,12 +1539,12 @@ func InstanceMethods(arguments ...any) InstanceMethodsLike {
 	switch argumentTypes {
 	case "PrimarySubsectionLike, AttributeSubsectionLike, AspectSubsectionLike":
 		var primarySubsection = arguments[0].(PrimarySubsectionLike)
-		var attributeSubsection = arguments[1].(AttributeSubsectionLike)
-		var aspectSubsection = arguments[2].(AspectSubsectionLike)
+		var optionalAttributeSubsection = arguments[1].(AttributeSubsectionLike)
+		var optionalAspectSubsection = arguments[2].(AspectSubsectionLike)
 		instance_ = ast.InstanceMethods().Make(
 			primarySubsection,
-			attributeSubsection,
-			aspectSubsection,
+			optionalAttributeSubsection,
+			optionalAspectSubsection,
 		)
 	default:
 		var message = fmt.Sprintf(

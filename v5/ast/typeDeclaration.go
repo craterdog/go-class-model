@@ -44,7 +44,6 @@ func (c *typeDeclarationClass_) Make(
 		optionalEnumeration_: optionalEnumeration,
 	}
 	return instance
-
 }
 
 // Constant Methods

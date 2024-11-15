@@ -38,7 +38,6 @@ func (c *functionSubsectionClass_) Make(
 		functionMethods_: functionMethods,
 	}
 	return instance
-
 }
 
 // Constant Methods

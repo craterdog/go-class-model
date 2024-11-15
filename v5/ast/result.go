@@ -37,7 +37,6 @@ func (c *resultClass_) Make(
 		any_: any_,
 	}
 	return instance
-
 }
 
 // Constant Methods

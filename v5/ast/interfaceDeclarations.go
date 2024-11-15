@@ -47,7 +47,6 @@ func (c *interfaceDeclarationsClass_) Make(
 		aspectSection_:   aspectSection,
 	}
 	return instance
-
 }
 
 // Constant Methods

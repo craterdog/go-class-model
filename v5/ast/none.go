@@ -37,7 +37,6 @@ func (c *noneClass_) Make(
 		newline_: newline,
 	}
 	return instance
-
 }
 
 // Constant Methods

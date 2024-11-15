@@ -45,7 +45,6 @@ func (c *methodClass_) Make(
 		optionalResult_: optionalResult,
 	}
 	return instance
-
 }
 
 // Constant Methods

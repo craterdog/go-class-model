@@ -37,7 +37,6 @@ func (c *additionalValueClass_) Make(
 		name_: name,
 	}
 	return instance
-
 }
 
 // Constant Methods

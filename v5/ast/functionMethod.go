@@ -48,7 +48,6 @@ func (c *functionMethodClass_) Make(
 		result_:     result,
 	}
 	return instance
-
 }
 
 // Constant Methods

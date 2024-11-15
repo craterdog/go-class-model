@@ -37,7 +37,6 @@ func (c *legalNoticeClass_) Make(
 		comment_: comment,
 	}
 	return instance
-
 }
 
 // Constant Methods

@@ -38,7 +38,6 @@ func (c *attributeSubsectionClass_) Make(
 		attributeMethods_: attributeMethods,
 	}
 	return instance
-
 }
 
 // Constant Methods

@@ -43,7 +43,6 @@ func (c *enumerationClass_) Make(
 		additionalValues_: additionalValues,
 	}
 	return instance
-
 }
 
 // Constant Methods

@@ -44,7 +44,6 @@ func (c *declarationClass_) Make(
 		optionalConstraints_: optionalConstraints,
 	}
 	return instance
-
 }
 
 // Constant Methods

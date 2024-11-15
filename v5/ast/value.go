@@ -42,7 +42,6 @@ func (c *valueClass_) Make(
 		abstraction_: abstraction,
 	}
 	return instance
-
 }
 
 // Constant Methods

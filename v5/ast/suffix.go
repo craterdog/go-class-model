@@ -37,7 +37,6 @@ func (c *suffixClass_) Make(
 		name_: name,
 	}
 	return instance
-
 }
 
 // Constant Methods

@@ -47,7 +47,6 @@ func (c *modelClass_) Make(
 		interfaceDeclarations_: interfaceDeclarations,
 	}
 	return instance
-
 }
 
 // Constant Methods

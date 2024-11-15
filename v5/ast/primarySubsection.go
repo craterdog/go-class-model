@@ -38,7 +38,6 @@ func (c *primarySubsectionClass_) Make(
 		primaryMethods_: primaryMethods,
 	}
 	return instance
-
 }
 
 // Constant Methods

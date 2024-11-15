@@ -38,7 +38,6 @@ func (c *typeSectionClass_) Make(
 		typeDeclarations_: typeDeclarations,
 	}
 	return instance
-
 }
 
 // Constant Methods

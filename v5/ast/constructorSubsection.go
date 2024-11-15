@@ -38,7 +38,6 @@ func (c *constructorSubsectionClass_) Make(
 		constructorMethods_: constructorMethods,
 	}
 	return instance
-
 }
 
 // Constant Methods

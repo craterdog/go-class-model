@@ -43,7 +43,6 @@ func (c *abstractionClass_) Make(
 		optionalArguments_: optionalArguments,
 	}
 	return instance
-
 }
 
 // Constant Methods

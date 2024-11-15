@@ -42,7 +42,6 @@ func (c *constantMethodClass_) Make(
 		abstraction_: abstraction,
 	}
 	return instance
-
 }
 
 // Constant Methods

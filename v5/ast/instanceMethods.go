@@ -41,7 +41,6 @@ func (c *instanceMethodsClass_) Make(
 		optionalAspectSubsection_:    optionalAspectSubsection,
 	}
 	return instance
-
 }
 
 // Constant Methods

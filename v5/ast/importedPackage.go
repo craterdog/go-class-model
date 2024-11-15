@@ -42,7 +42,6 @@ func (c *importedPackageClass_) Make(
 		path_: path,
 	}
 	return instance
-
 }
 
 // Constant Methods

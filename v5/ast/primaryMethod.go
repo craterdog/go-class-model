@@ -37,7 +37,6 @@ func (c *primaryMethodClass_) Make(
 		method_: method,
 	}
 	return instance
-
 }
 
 // Constant Methods

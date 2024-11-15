@@ -42,7 +42,6 @@ func (c *setterMethodClass_) Make(
 		parameter_: parameter,
 	}
 	return instance
-
 }
 
 // Constant Methods

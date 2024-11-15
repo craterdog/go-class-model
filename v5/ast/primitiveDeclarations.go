@@ -42,7 +42,6 @@ func (c *primitiveDeclarationsClass_) Make(
 		functionalSection_: functionalSection,
 	}
 	return instance
-
 }
 
 // Constant Methods

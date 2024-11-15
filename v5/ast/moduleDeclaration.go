@@ -47,7 +47,6 @@ func (c *moduleDeclarationClass_) Make(
 		moduleImports_: moduleImports,
 	}
 	return instance
-
 }
 
 // Constant Methods

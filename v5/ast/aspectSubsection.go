@@ -38,7 +38,6 @@ func (c *aspectSubsectionClass_) Make(
 		aspectInterfaces_: aspectInterfaces,
 	}
 	return instance
-
 }
 
 // Constant Methods

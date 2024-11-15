@@ -42,7 +42,6 @@ func (c *classDeclarationClass_) Make(
 		classMethods_: classMethods,
 	}
 	return instance
-
 }
 
 // Constant Methods

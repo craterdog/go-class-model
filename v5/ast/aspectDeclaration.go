@@ -43,7 +43,6 @@ func (c *aspectDeclarationClass_) Make(
 		aspectMethods_: aspectMethods,
 	}
 	return instance
-
 }
 
 // Constant Methods

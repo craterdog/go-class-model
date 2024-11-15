@@ -12,6 +12,8 @@
 
 package ast
 
+import ()
+
 // CLASS INTERFACE
 
 // Access Function
@@ -27,7 +29,6 @@ func (c *channelClass_) Make() ChannelLike {
 		// Initialize the instance attributes.
 	}
 	return instance
-
 }
 
 // Constant Methods

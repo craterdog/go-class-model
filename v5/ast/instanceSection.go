@@ -38,7 +38,6 @@ func (c *instanceSectionClass_) Make(
 		instanceDeclarations_: instanceDeclarations,
 	}
 	return instance
-
 }
 
 // Constant Methods

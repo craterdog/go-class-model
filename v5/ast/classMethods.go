@@ -41,7 +41,6 @@ func (c *classMethodsClass_) Make(
 		optionalFunctionSubsection_: optionalFunctionSubsection,
 	}
 	return instance
-
 }
 
 // Constant Methods

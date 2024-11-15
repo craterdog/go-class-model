@@ -38,7 +38,6 @@ func (c *functionalSectionClass_) Make(
 		functionalDeclarations_: functionalDeclarations,
 	}
 	return instance
-
 }
 
 // Constant Methods

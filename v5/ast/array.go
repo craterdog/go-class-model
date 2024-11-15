@@ -12,6 +12,8 @@
 
 package ast
 
+import ()
+
 // CLASS INTERFACE
 
 // Access Function
@@ -27,7 +29,6 @@ func (c *arrayClass_) Make() ArrayLike {
 		// Initialize the instance attributes.
 	}
 	return instance
-
 }
 
 // Constant Methods

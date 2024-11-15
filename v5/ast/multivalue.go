@@ -38,7 +38,6 @@ func (c *multivalueClass_) Make(
 		parameters_: parameters,
 	}
 	return instance
-
 }
 
 // Constant Methods

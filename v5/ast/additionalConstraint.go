@@ -37,7 +37,6 @@ func (c *additionalConstraintClass_) Make(
 		constraint_: constraint,
 	}
 	return instance
-
 }
 
 // Constant Methods

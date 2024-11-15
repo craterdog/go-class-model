@@ -38,7 +38,6 @@ func (c *aspectSectionClass_) Make(
 		aspectDeclarations_: aspectDeclarations,
 	}
 	return instance
-
 }
 
 // Constant Methods

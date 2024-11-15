@@ -37,7 +37,6 @@ func (c *aspectInterfaceClass_) Make(
 		abstraction_: abstraction,
 	}
 	return instance
-
 }
 
 // Constant Methods

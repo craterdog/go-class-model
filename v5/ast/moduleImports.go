@@ -38,7 +38,6 @@ func (c *moduleImportsClass_) Make(
 		importedPackages_: importedPackages,
 	}
 	return instance
-
 }
 
 // Constant Methods

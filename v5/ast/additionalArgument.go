@@ -37,7 +37,6 @@ func (c *additionalArgumentClass_) Make(
 		argument_: argument,
 	}
 	return instance
-
 }
 
 // Constant Methods

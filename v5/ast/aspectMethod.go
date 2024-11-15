@@ -37,7 +37,6 @@ func (c *aspectMethodClass_) Make(
 		method_: method,
 	}
 	return instance
-
 }
 
 // Constant Methods
