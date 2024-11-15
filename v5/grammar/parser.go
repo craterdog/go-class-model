@@ -637,7 +637,7 @@ aspectDeclarationsLoop:
 		aspectDeclaration, token, ok = v.parseAspectDeclaration()
 		if !ok {
 			switch {
-			case count >= 1:
+			case count >= 0:
 				break aspectDeclarationsLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple AspectDeclaration rules.
@@ -646,7 +646,7 @@ aspectDeclarationsLoop:
 			default:
 				// Found a syntax error.
 				var message = v.formatError("$AspectSection", token)
-				message += "1 or more AspectDeclaration rules are required."
+				message += "0 or more AspectDeclaration rules are required."
 				panic(message)
 			}
 		}
@@ -2024,7 +2024,7 @@ functionalDeclarationsLoop:
 		functionalDeclaration, token, ok = v.parseFunctionalDeclaration()
 		if !ok {
 			switch {
-			case count >= 1:
+			case count >= 0:
 				break functionalDeclarationsLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple FunctionalDeclaration rules.
@@ -2033,7 +2033,7 @@ functionalDeclarationsLoop:
 			default:
 				// Found a syntax error.
 				var message = v.formatError("$FunctionalSection", token)
-				message += "1 or more FunctionalDeclaration rules are required."
+				message += "0 or more FunctionalDeclaration rules are required."
 				panic(message)
 			}
 		}
@@ -2439,12 +2439,21 @@ func (v *parser_) parseInterfaceDeclarations() (
 		panic(message)
 	}
 
-	// Attempt to parse an optional AspectSection rule.
-	var optionalAspectSection ast.AspectSectionLike
-	optionalAspectSection, _, ok = v.parseAspectSection()
-	if ok {
+	// Attempt to parse a single AspectSection rule.
+	var aspectSection ast.AspectSectionLike
+	aspectSection, token, ok = v.parseAspectSection()
+	switch {
+	case ok:
 		// No additional put backs allowed at this point.
 		tokens = nil
+	case uti.IsDefined(tokens):
+		// This is not a single InterfaceDeclarations rule.
+		v.putBack(tokens)
+		return
+	default:
+		// Found a syntax error.
+		var message = v.formatError("$InterfaceDeclarations", token)
+		panic(message)
 	}
 
 	// Found a single InterfaceDeclarations rule.
@@ -2453,7 +2462,7 @@ func (v *parser_) parseInterfaceDeclarations() (
 	interfaceDeclarations = ast.InterfaceDeclarations().Make(
 		classSection,
 		instanceSection,
-		optionalAspectSection,
+		aspectSection,
 	)
 	return
 }
@@ -2787,12 +2796,21 @@ func (v *parser_) parseModuleDeclaration() (
 		panic(message)
 	}
 
-	// Attempt to parse an optional ModuleImports rule.
-	var optionalModuleImports ast.ModuleImportsLike
-	optionalModuleImports, _, ok = v.parseModuleImports()
-	if ok {
+	// Attempt to parse a single ModuleImports rule.
+	var moduleImports ast.ModuleImportsLike
+	moduleImports, token, ok = v.parseModuleImports()
+	switch {
+	case ok:
 		// No additional put backs allowed at this point.
 		tokens = nil
+	case uti.IsDefined(tokens):
+		// This is not a single ModuleDeclaration rule.
+		v.putBack(tokens)
+		return
+	default:
+		// Found a syntax error.
+		var message = v.formatError("$ModuleDeclaration", token)
+		panic(message)
 	}
 
 	// Found a single ModuleDeclaration rule.
@@ -2801,7 +2819,7 @@ func (v *parser_) parseModuleDeclaration() (
 	moduleDeclaration = ast.ModuleDeclaration().Make(
 		legalNotice,
 		moduleHeader,
-		optionalModuleImports,
+		moduleImports,
 	)
 	return
 }
@@ -2925,7 +2943,7 @@ importedPackagesLoop:
 		importedPackage, token, ok = v.parseImportedPackage()
 		if !ok {
 			switch {
-			case count >= 1:
+			case count >= 0:
 				break importedPackagesLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple ImportedPackage rules.
@@ -2934,7 +2952,7 @@ importedPackagesLoop:
 			default:
 				// Found a syntax error.
 				var message = v.formatError("$ModuleImports", token)
-				message += "1 or more ImportedPackage rules are required."
+				message += "0 or more ImportedPackage rules are required."
 				panic(message)
 			}
 		}
@@ -3273,28 +3291,46 @@ func (v *parser_) parsePrimitiveDeclarations() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse an optional TypeSection rule.
-	var optionalTypeSection ast.TypeSectionLike
-	optionalTypeSection, _, ok = v.parseTypeSection()
-	if ok {
+	// Attempt to parse a single TypeSection rule.
+	var typeSection ast.TypeSectionLike
+	typeSection, token, ok = v.parseTypeSection()
+	switch {
+	case ok:
 		// No additional put backs allowed at this point.
 		tokens = nil
+	case uti.IsDefined(tokens):
+		// This is not a single PrimitiveDeclarations rule.
+		v.putBack(tokens)
+		return
+	default:
+		// Found a syntax error.
+		var message = v.formatError("$PrimitiveDeclarations", token)
+		panic(message)
 	}
 
-	// Attempt to parse an optional FunctionalSection rule.
-	var optionalFunctionalSection ast.FunctionalSectionLike
-	optionalFunctionalSection, _, ok = v.parseFunctionalSection()
-	if ok {
+	// Attempt to parse a single FunctionalSection rule.
+	var functionalSection ast.FunctionalSectionLike
+	functionalSection, token, ok = v.parseFunctionalSection()
+	switch {
+	case ok:
 		// No additional put backs allowed at this point.
 		tokens = nil
+	case uti.IsDefined(tokens):
+		// This is not a single PrimitiveDeclarations rule.
+		v.putBack(tokens)
+		return
+	default:
+		// Found a syntax error.
+		var message = v.formatError("$PrimitiveDeclarations", token)
+		panic(message)
 	}
 
 	// Found a single PrimitiveDeclarations rule.
 	ok = true
 	v.remove(tokens)
 	primitiveDeclarations = ast.PrimitiveDeclarations().Make(
-		optionalTypeSection,
-		optionalFunctionalSection,
+		typeSection,
+		functionalSection,
 	)
 	return
 }
@@ -3562,7 +3598,7 @@ typeDeclarationsLoop:
 		typeDeclaration, token, ok = v.parseTypeDeclaration()
 		if !ok {
 			switch {
-			case count >= 1:
+			case count >= 0:
 				break typeDeclarationsLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple TypeDeclaration rules.
@@ -3571,7 +3607,7 @@ typeDeclarationsLoop:
 			default:
 				// Found a syntax error.
 				var message = v.formatError("$TypeSection", token)
-				message += "1 or more TypeDeclaration rules are required."
+				message += "0 or more TypeDeclaration rules are required."
 				panic(message)
 			}
 		}
@@ -3845,14 +3881,14 @@ var parserReference_ = &parserClass_{
 	syntax_: col.Catalog[string, string](
 		map[string]string{
 			"$Model":                 `ModuleDeclaration PrimitiveDeclarations InterfaceDeclarations`,
-			"$ModuleDeclaration":     `LegalNotice ModuleHeader ModuleImports?`,
-			"$PrimitiveDeclarations": `TypeSection? FunctionalSection?`,
-			"$InterfaceDeclarations": `ClassSection InstanceSection AspectSection?`,
+			"$ModuleDeclaration":     `LegalNotice ModuleHeader ModuleImports`,
+			"$PrimitiveDeclarations": `TypeSection FunctionalSection`,
+			"$InterfaceDeclarations": `ClassSection InstanceSection AspectSection`,
 			"$LegalNotice":           `comment`,
 			"$ModuleHeader":          `comment "package" name`,
-			"$ModuleImports":         `"import" "(" ImportedPackage+ ")"`,
+			"$ModuleImports":         `"import" "(" ImportedPackage* ")"`,
 			"$ImportedPackage":       `name path`,
-			"$TypeSection":           `"// Type Declarations" TypeDeclaration+`,
+			"$TypeSection":           `"// Type Declarations" TypeDeclaration*`,
 			"$TypeDeclaration":       `Declaration Abstraction Enumeration?`,
 			"$Declaration":           `comment "type" name Constraints?`,
 			"$Constraints":           `"[" Constraint AdditionalConstraint* "]"`,
@@ -3873,7 +3909,7 @@ var parserReference_ = &parserClass_{
 			"$Enumeration":           `"const" "(" Value AdditionalValue* ")"`,
 			"$Value":                 `name Abstraction "=" "iota"`,
 			"$AdditionalValue":       `name`,
-			"$FunctionalSection":     `"// Functional Declarations" FunctionalDeclaration+`,
+			"$FunctionalSection":     `"// Functional Declarations" FunctionalDeclaration*`,
 			"$FunctionalDeclaration": `Declaration "func" "(" Parameter* ")" Result`,
 			"$Parameter":             `name Abstraction ","`,
 			"$Result": `
@@ -3905,7 +3941,7 @@ var parserReference_ = &parserClass_{
 			"$SetterMethod":      `name "(" Parameter ")"`,
 			"$AspectSubsection":  `"// Aspect Interfaces" AspectInterface+`,
 			"$AspectInterface":   `Abstraction`,
-			"$AspectSection":     `"// Aspect Declarations" AspectDeclaration+`,
+			"$AspectSection":     `"// Aspect Declarations" AspectDeclaration*`,
 			"$AspectDeclaration": `Declaration "interface" "{" AspectMethod+ "}"`,
 			"$AspectMethod":      `Method`,
 		},

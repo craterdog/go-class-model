@@ -24,6 +24,9 @@ on interfaces, not on each other.
 */
 package example
 
+import (
+)
+
 // Type Declarations
 
 /*

@@ -58,6 +58,8 @@ const (
 	SpaceToken
 )
 
+// Functional Declarations
+
 // Class Declarations
 
 /*

@@ -804,13 +804,11 @@ func (v *visitor_) visitInterfaceDeclarations(interfaceDeclarations ast.Interfac
 	// Visit slot 2 between references.
 	v.processor_.ProcessInterfaceDeclarationsSlot(2)
 
-	// Visit an optional aspectSection rule.
-	var optionalAspectSection = interfaceDeclarations.GetOptionalAspectSection()
-	if uti.IsDefined(optionalAspectSection) {
-		v.processor_.PreprocessAspectSection(optionalAspectSection)
-		v.visitAspectSection(optionalAspectSection)
-		v.processor_.PostprocessAspectSection(optionalAspectSection)
-	}
+	// Visit a single aspectSection rule.
+	var aspectSection = interfaceDeclarations.GetAspectSection()
+	v.processor_.PreprocessAspectSection(aspectSection)
+	v.visitAspectSection(aspectSection)
+	v.processor_.PostprocessAspectSection(aspectSection)
 }
 
 func (v *visitor_) visitLegalNotice(legalNotice ast.LegalNoticeLike) {
@@ -910,13 +908,11 @@ func (v *visitor_) visitModuleDeclaration(moduleDeclaration ast.ModuleDeclaratio
 	// Visit slot 2 between references.
 	v.processor_.ProcessModuleDeclarationSlot(2)
 
-	// Visit an optional moduleImports rule.
-	var optionalModuleImports = moduleDeclaration.GetOptionalModuleImports()
-	if uti.IsDefined(optionalModuleImports) {
-		v.processor_.PreprocessModuleImports(optionalModuleImports)
-		v.visitModuleImports(optionalModuleImports)
-		v.processor_.PostprocessModuleImports(optionalModuleImports)
-	}
+	// Visit a single moduleImports rule.
+	var moduleImports = moduleDeclaration.GetModuleImports()
+	v.processor_.PreprocessModuleImports(moduleImports)
+	v.visitModuleImports(moduleImports)
+	v.processor_.PostprocessModuleImports(moduleImports)
 }
 
 func (v *visitor_) visitModuleHeader(moduleHeader ast.ModuleHeaderLike) {
@@ -1053,24 +1049,20 @@ func (v *visitor_) visitPrimarySubsection(primarySubsection ast.PrimarySubsectio
 }
 
 func (v *visitor_) visitPrimitiveDeclarations(primitiveDeclarations ast.PrimitiveDeclarationsLike) {
-	// Visit an optional typeSection rule.
-	var optionalTypeSection = primitiveDeclarations.GetOptionalTypeSection()
-	if uti.IsDefined(optionalTypeSection) {
-		v.processor_.PreprocessTypeSection(optionalTypeSection)
-		v.visitTypeSection(optionalTypeSection)
-		v.processor_.PostprocessTypeSection(optionalTypeSection)
-	}
+	// Visit a single typeSection rule.
+	var typeSection = primitiveDeclarations.GetTypeSection()
+	v.processor_.PreprocessTypeSection(typeSection)
+	v.visitTypeSection(typeSection)
+	v.processor_.PostprocessTypeSection(typeSection)
 
 	// Visit slot 1 between references.
 	v.processor_.ProcessPrimitiveDeclarationsSlot(1)
 
-	// Visit an optional functionalSection rule.
-	var optionalFunctionalSection = primitiveDeclarations.GetOptionalFunctionalSection()
-	if uti.IsDefined(optionalFunctionalSection) {
-		v.processor_.PreprocessFunctionalSection(optionalFunctionalSection)
-		v.visitFunctionalSection(optionalFunctionalSection)
-		v.processor_.PostprocessFunctionalSection(optionalFunctionalSection)
-	}
+	// Visit a single functionalSection rule.
+	var functionalSection = primitiveDeclarations.GetFunctionalSection()
+	v.processor_.PreprocessFunctionalSection(functionalSection)
+	v.visitFunctionalSection(functionalSection)
+	v.processor_.PostprocessFunctionalSection(functionalSection)
 }
 
 func (v *visitor_) visitResult(result ast.ResultLike) {

@@ -29,7 +29,7 @@ func ModuleDeclaration() ModuleDeclarationClassLike {
 func (c *moduleDeclarationClass_) Make(
 	legalNotice LegalNoticeLike,
 	moduleHeader ModuleHeaderLike,
-	optionalModuleImports ModuleImportsLike,
+	moduleImports ModuleImportsLike,
 ) ModuleDeclarationLike {
 	if uti.IsUndefined(legalNotice) {
 		panic("The \"legalNotice\" attribute is required by this class.")
@@ -37,11 +37,14 @@ func (c *moduleDeclarationClass_) Make(
 	if uti.IsUndefined(moduleHeader) {
 		panic("The \"moduleHeader\" attribute is required by this class.")
 	}
+	if uti.IsUndefined(moduleImports) {
+		panic("The \"moduleImports\" attribute is required by this class.")
+	}
 	var instance = &moduleDeclaration_{
 		// Initialize the instance attributes.
-		legalNotice_:           legalNotice,
-		moduleHeader_:          moduleHeader,
-		optionalModuleImports_: optionalModuleImports,
+		legalNotice_:   legalNotice,
+		moduleHeader_:  moduleHeader,
+		moduleImports_: moduleImports,
 	}
 	return instance
 
@@ -69,8 +72,8 @@ func (v *moduleDeclaration_) GetModuleHeader() ModuleHeaderLike {
 	return v.moduleHeader_
 }
 
-func (v *moduleDeclaration_) GetOptionalModuleImports() ModuleImportsLike {
-	return v.optionalModuleImports_
+func (v *moduleDeclaration_) GetModuleImports() ModuleImportsLike {
+	return v.moduleImports_
 }
 
 // PROTECTED INTERFACE
@@ -81,9 +84,9 @@ func (v *moduleDeclaration_) GetOptionalModuleImports() ModuleImportsLike {
 
 type moduleDeclaration_ struct {
 	// Declare the instance attributes.
-	legalNotice_           LegalNoticeLike
-	moduleHeader_          ModuleHeaderLike
-	optionalModuleImports_ ModuleImportsLike
+	legalNotice_   LegalNoticeLike
+	moduleHeader_  ModuleHeaderLike
+	moduleImports_ ModuleImportsLike
 }
 
 // Class Structure

@@ -795,12 +795,12 @@ func ClassMethods(arguments ...any) ClassMethodsLike {
 	switch argumentTypes {
 	case "ConstructorSubsectionLike, ConstantSubsectionLike, FunctionSubsectionLike":
 		var constructorSubsection = arguments[0].(ConstructorSubsectionLike)
-		var optionalConstantSubsection = arguments[1].(ConstantSubsectionLike)
-		var optionalFunctionSubsection = arguments[2].(FunctionSubsectionLike)
+		var constantSubsection = arguments[1].(ConstantSubsectionLike)
+		var functionSubsection = arguments[2].(FunctionSubsectionLike)
 		instance_ = ast.ClassMethods().Make(
 			constructorSubsection,
-			optionalConstantSubsection,
-			optionalFunctionSubsection,
+			constantSubsection,
+			functionSubsection,
 		)
 	default:
 		var message = fmt.Sprintf(
@@ -1539,12 +1539,12 @@ func InstanceMethods(arguments ...any) InstanceMethodsLike {
 	switch argumentTypes {
 	case "PrimarySubsectionLike, AttributeSubsectionLike, AspectSubsectionLike":
 		var primarySubsection = arguments[0].(PrimarySubsectionLike)
-		var optionalAttributeSubsection = arguments[1].(AttributeSubsectionLike)
-		var optionalAspectSubsection = arguments[2].(AspectSubsectionLike)
+		var attributeSubsection = arguments[1].(AttributeSubsectionLike)
+		var aspectSubsection = arguments[2].(AspectSubsectionLike)
 		instance_ = ast.InstanceMethods().Make(
 			primarySubsection,
-			optionalAttributeSubsection,
-			optionalAspectSubsection,
+			attributeSubsection,
+			aspectSubsection,
 		)
 	default:
 		var message = fmt.Sprintf(
@@ -1628,11 +1628,11 @@ func InterfaceDeclarations(arguments ...any) InterfaceDeclarationsLike {
 	case "ClassSectionLike, InstanceSectionLike, AspectSectionLike":
 		var classSection = arguments[0].(ClassSectionLike)
 		var instanceSection = arguments[1].(InstanceSectionLike)
-		var optionalAspectSection = arguments[2].(AspectSectionLike)
+		var aspectSection = arguments[2].(AspectSectionLike)
 		instance_ = ast.InterfaceDeclarations().Make(
 			classSection,
 			instanceSection,
-			optionalAspectSection,
+			aspectSection,
 		)
 	default:
 		var message = fmt.Sprintf(
@@ -1852,11 +1852,11 @@ func ModuleDeclaration(arguments ...any) ModuleDeclarationLike {
 	case "LegalNoticeLike, ModuleHeaderLike, ModuleImportsLike":
 		var legalNotice = arguments[0].(LegalNoticeLike)
 		var moduleHeader = arguments[1].(ModuleHeaderLike)
-		var optionalModuleImports = arguments[2].(ModuleImportsLike)
+		var moduleImports = arguments[2].(ModuleImportsLike)
 		instance_ = ast.ModuleDeclaration().Make(
 			legalNotice,
 			moduleHeader,
-			optionalModuleImports,
+			moduleImports,
 		)
 	default:
 		var message = fmt.Sprintf(
@@ -2222,11 +2222,11 @@ func PrimitiveDeclarations(arguments ...any) PrimitiveDeclarationsLike {
 	var instance_ PrimitiveDeclarationsLike
 	switch argumentTypes {
 	case "TypeSectionLike, FunctionalSectionLike":
-		var optionalTypeSection = arguments[0].(TypeSectionLike)
-		var optionalFunctionalSection = arguments[1].(FunctionalSectionLike)
+		var typeSection = arguments[0].(TypeSectionLike)
+		var functionalSection = arguments[1].(FunctionalSectionLike)
 		instance_ = ast.PrimitiveDeclarations().Make(
-			optionalTypeSection,
-			optionalFunctionalSection,
+			typeSection,
+			functionalSection,
 		)
 	default:
 		var message = fmt.Sprintf(

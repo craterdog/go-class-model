@@ -12,6 +12,10 @@
 
 package ast
 
+import (
+	uti "github.com/craterdog/go-missing-utilities/v2"
+)
+
 // CLASS INTERFACE
 
 // Access Function
@@ -23,13 +27,19 @@ func PrimitiveDeclarations() PrimitiveDeclarationsClassLike {
 // Constructor Methods
 
 func (c *primitiveDeclarationsClass_) Make(
-	optionalTypeSection TypeSectionLike,
-	optionalFunctionalSection FunctionalSectionLike,
+	typeSection TypeSectionLike,
+	functionalSection FunctionalSectionLike,
 ) PrimitiveDeclarationsLike {
+	if uti.IsUndefined(typeSection) {
+		panic("The \"typeSection\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(functionalSection) {
+		panic("The \"functionalSection\" attribute is required by this class.")
+	}
 	var instance = &primitiveDeclarations_{
 		// Initialize the instance attributes.
-		optionalTypeSection_:       optionalTypeSection,
-		optionalFunctionalSection_: optionalFunctionalSection,
+		typeSection_:       typeSection,
+		functionalSection_: functionalSection,
 	}
 	return instance
 
@@ -49,12 +59,12 @@ func (v *primitiveDeclarations_) GetClass() PrimitiveDeclarationsClassLike {
 
 // Attribute Methods
 
-func (v *primitiveDeclarations_) GetOptionalTypeSection() TypeSectionLike {
-	return v.optionalTypeSection_
+func (v *primitiveDeclarations_) GetTypeSection() TypeSectionLike {
+	return v.typeSection_
 }
 
-func (v *primitiveDeclarations_) GetOptionalFunctionalSection() FunctionalSectionLike {
-	return v.optionalFunctionalSection_
+func (v *primitiveDeclarations_) GetFunctionalSection() FunctionalSectionLike {
+	return v.functionalSection_
 }
 
 // PROTECTED INTERFACE
@@ -65,8 +75,8 @@ func (v *primitiveDeclarations_) GetOptionalFunctionalSection() FunctionalSectio
 
 type primitiveDeclarations_ struct {
 	// Declare the instance attributes.
-	optionalTypeSection_       TypeSectionLike
-	optionalFunctionalSection_ FunctionalSectionLike
+	typeSection_       TypeSectionLike
+	functionalSection_ FunctionalSectionLike
 }
 
 // Class Structure

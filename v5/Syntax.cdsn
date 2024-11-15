@@ -53,21 +53,21 @@ specified as terms in one or more rule definitions.
 <!
 $Model: ModuleDeclaration PrimitiveDeclarations InterfaceDeclarations
 
-$ModuleDeclaration: LegalNotice ModuleHeader ModuleImports?
+$ModuleDeclaration: LegalNotice ModuleHeader ModuleImports
 
-$PrimitiveDeclarations: TypeSection? FunctionalSection?
+$PrimitiveDeclarations: TypeSection FunctionalSection
 
-$InterfaceDeclarations: ClassSection InstanceSection AspectSection?
+$InterfaceDeclarations: ClassSection InstanceSection AspectSection
 
 $LegalNotice: comment
 
 $ModuleHeader: comment "package" name
 
-$ModuleImports: "import" "(" ImportedPackage+ ")"
+$ModuleImports: "import" "(" ImportedPackage* ")"
 
 $ImportedPackage: name path
 
-$TypeSection: "// Type Declarations" TypeDeclaration+
+$TypeSection: "// Type Declarations" TypeDeclaration*
 
 $TypeDeclaration: Declaration Abstraction Enumeration?
 
@@ -106,7 +106,7 @@ $Value: name Abstraction "=" "iota"
 
 $AdditionalValue: name
 
-$FunctionalSection: "// Functional Declarations" FunctionalDeclaration+
+$FunctionalSection: "// Functional Declarations" FunctionalDeclaration*
 
 $FunctionalDeclaration: Declaration "func" "(" Parameter* ")" Result
 
@@ -165,7 +165,7 @@ $AspectSubsection: "// Aspect Interfaces" AspectInterface+
 
 $AspectInterface: Abstraction
 
-$AspectSection: "// Aspect Declarations" AspectDeclaration+
+$AspectSection: "// Aspect Declarations" AspectDeclaration*
 
 $AspectDeclaration: Declaration "interface" "{" AspectMethod+ "}"
 

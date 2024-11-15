@@ -29,7 +29,7 @@ func InterfaceDeclarations() InterfaceDeclarationsClassLike {
 func (c *interfaceDeclarationsClass_) Make(
 	classSection ClassSectionLike,
 	instanceSection InstanceSectionLike,
-	optionalAspectSection AspectSectionLike,
+	aspectSection AspectSectionLike,
 ) InterfaceDeclarationsLike {
 	if uti.IsUndefined(classSection) {
 		panic("The \"classSection\" attribute is required by this class.")
@@ -37,11 +37,14 @@ func (c *interfaceDeclarationsClass_) Make(
 	if uti.IsUndefined(instanceSection) {
 		panic("The \"instanceSection\" attribute is required by this class.")
 	}
+	if uti.IsUndefined(aspectSection) {
+		panic("The \"aspectSection\" attribute is required by this class.")
+	}
 	var instance = &interfaceDeclarations_{
 		// Initialize the instance attributes.
-		classSection_:          classSection,
-		instanceSection_:       instanceSection,
-		optionalAspectSection_: optionalAspectSection,
+		classSection_:    classSection,
+		instanceSection_: instanceSection,
+		aspectSection_:   aspectSection,
 	}
 	return instance
 
@@ -69,8 +72,8 @@ func (v *interfaceDeclarations_) GetInstanceSection() InstanceSectionLike {
 	return v.instanceSection_
 }
 
-func (v *interfaceDeclarations_) GetOptionalAspectSection() AspectSectionLike {
-	return v.optionalAspectSection_
+func (v *interfaceDeclarations_) GetAspectSection() AspectSectionLike {
+	return v.aspectSection_
 }
 
 // PROTECTED INTERFACE
@@ -81,9 +84,9 @@ func (v *interfaceDeclarations_) GetOptionalAspectSection() AspectSectionLike {
 
 type interfaceDeclarations_ struct {
 	// Declare the instance attributes.
-	classSection_          ClassSectionLike
-	instanceSection_       InstanceSectionLike
-	optionalAspectSection_ AspectSectionLike
+	classSection_    ClassSectionLike
+	instanceSection_ InstanceSectionLike
+	aspectSection_   AspectSectionLike
 }
 
 // Class Structure
