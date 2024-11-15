@@ -452,7 +452,9 @@ func (v *formatter_) PreprocessModuleImports(moduleImports ast.ModuleImportsLike
 
 func (v *formatter_) PostprocessModuleImports(moduleImports ast.ModuleImportsLike) {
 	v.depth_--
-	v.appendNewline()
+	if !moduleImports.GetImportedPackages().IsEmpty() {
+		v.appendNewline()
+	}
 	v.appendString(")")
 }
 
