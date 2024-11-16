@@ -35,12 +35,9 @@ func TestRoundTrips(t *tes.T) {
 			panic(err)
 		}
 		var source = string(bytes)
-		var parser = mod.Parser()
-		var model = parser.ParseSource(source)
-		var validator = mod.Validator()
-		validator.ValidateModel(model)
-		var formatter = mod.Formatter()
-		var actual = formatter.FormatModel(model)
+		var model = mod.ParseSource(source)
+		mod.ValidateModel(model)
+		var actual = mod.FormatModel(model)
 		ass.Equal(t, source, actual)
 	}
 	fmt.Println("Done.")

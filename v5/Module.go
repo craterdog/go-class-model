@@ -111,6 +111,16 @@ type (
 	Methodical    = gra.Methodical
 )
 
+const (
+	ErrorToken     = gra.ErrorToken
+	CommentToken   = gra.CommentToken
+	DelimiterToken = gra.DelimiterToken
+	NameToken      = gra.NameToken
+	NewlineToken   = gra.NewlineToken
+	PathToken      = gra.PathToken
+	SpaceToken     = gra.SpaceToken
+)
+
 // UNIVERSAL CONSTRUCTORS
 
 // Ast
@@ -2773,4 +2783,23 @@ func Visitor(arguments ...any) VisitorLike {
 		panic(message)
 	}
 	return instance_
+}
+
+// GLOBAL FUNCTIONS
+
+func FormatModel(model ModelLike) string {
+	var formatter = Formatter()
+	var source = formatter.FormatModel(model)
+	return source
+}
+
+func ParseSource(source string) ModelLike {
+	var parser = Parser()
+	var model = parser.ParseSource(source)
+	return model
+}
+
+func ValidateModel(model ModelLike) {
+	var validator = Validator()
+	validator.ValidateModel(model)
 }
