@@ -442,24 +442,24 @@ func (v *formatter_) ProcessMethodSlot(slot uint) {
 	}
 }
 
-func (v *formatter_) PostprocessModuleDeclaration(moduleDeclaration_ ast.ModuleDeclarationLike) {
+func (v *formatter_) PostprocessPackageDeclaration(packageDeclaration_ ast.PackageDeclarationLike) {
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessModuleHeaderSlot(slot uint) {
+func (v *formatter_) ProcessPackageHeaderSlot(slot uint) {
 	v.appendString("package ")
 }
 
-func (v *formatter_) PreprocessModuleImports(moduleImports ast.ModuleImportsLike) {
+func (v *formatter_) PreprocessPackageImports(packageImports ast.PackageImportsLike) {
 	v.appendNewline()
 	v.appendNewline()
 	v.appendString("import (")
 	v.depth_++
 }
 
-func (v *formatter_) PostprocessModuleImports(moduleImports ast.ModuleImportsLike) {
+func (v *formatter_) PostprocessPackageImports(packageImports ast.PackageImportsLike) {
 	v.depth_--
-	if !moduleImports.GetImportedPackages().IsEmpty() {
+	if !packageImports.GetImportedPackages().IsEmpty() {
 		v.appendNewline()
 	}
 	v.appendString(")")

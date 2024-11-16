@@ -871,11 +871,11 @@ func (v *visitor_) visitMethod(method ast.MethodLike) {
 }
 
 func (v *visitor_) visitModel(model ast.ModelLike) {
-	// Visit a single moduleDeclaration rule.
-	var moduleDeclaration = model.GetModuleDeclaration()
-	v.processor_.PreprocessModuleDeclaration(moduleDeclaration)
-	v.visitModuleDeclaration(moduleDeclaration)
-	v.processor_.PostprocessModuleDeclaration(moduleDeclaration)
+	// Visit a single packageDeclaration rule.
+	var packageDeclaration = model.GetPackageDeclaration()
+	v.processor_.PreprocessPackageDeclaration(packageDeclaration)
+	v.visitPackageDeclaration(packageDeclaration)
+	v.processor_.PostprocessPackageDeclaration(packageDeclaration)
 
 	// Visit slot 1 between references.
 	v.processor_.ProcessModelSlot(1)
@@ -894,67 +894,6 @@ func (v *visitor_) visitModel(model ast.ModelLike) {
 	v.processor_.PreprocessInterfaceDeclarations(interfaceDeclarations)
 	v.visitInterfaceDeclarations(interfaceDeclarations)
 	v.processor_.PostprocessInterfaceDeclarations(interfaceDeclarations)
-}
-
-func (v *visitor_) visitModuleDeclaration(moduleDeclaration ast.ModuleDeclarationLike) {
-	// Visit a single legalNotice rule.
-	var legalNotice = moduleDeclaration.GetLegalNotice()
-	v.processor_.PreprocessLegalNotice(legalNotice)
-	v.visitLegalNotice(legalNotice)
-	v.processor_.PostprocessLegalNotice(legalNotice)
-
-	// Visit slot 1 between references.
-	v.processor_.ProcessModuleDeclarationSlot(1)
-
-	// Visit a single moduleHeader rule.
-	var moduleHeader = moduleDeclaration.GetModuleHeader()
-	v.processor_.PreprocessModuleHeader(moduleHeader)
-	v.visitModuleHeader(moduleHeader)
-	v.processor_.PostprocessModuleHeader(moduleHeader)
-
-	// Visit slot 2 between references.
-	v.processor_.ProcessModuleDeclarationSlot(2)
-
-	// Visit a single moduleImports rule.
-	var moduleImports = moduleDeclaration.GetModuleImports()
-	v.processor_.PreprocessModuleImports(moduleImports)
-	v.visitModuleImports(moduleImports)
-	v.processor_.PostprocessModuleImports(moduleImports)
-}
-
-func (v *visitor_) visitModuleHeader(moduleHeader ast.ModuleHeaderLike) {
-	// Visit a single comment token.
-	var comment = moduleHeader.GetComment()
-	v.processor_.ProcessComment(comment)
-
-	// Visit slot 1 between references.
-	v.processor_.ProcessModuleHeaderSlot(1)
-
-	// Visit a single name token.
-	var name = moduleHeader.GetName()
-	v.processor_.ProcessName(name)
-}
-
-func (v *visitor_) visitModuleImports(moduleImports ast.ModuleImportsLike) {
-	// Visit each importedPackage rule.
-	var importedPackageIndex uint
-	var importedPackages = moduleImports.GetImportedPackages().GetIterator()
-	var importedPackagesSize = uint(importedPackages.GetSize())
-	for importedPackages.HasNext() {
-		importedPackageIndex++
-		var importedPackage = importedPackages.GetNext()
-		v.processor_.PreprocessImportedPackage(
-			importedPackage,
-			importedPackageIndex,
-			importedPackagesSize,
-		)
-		v.visitImportedPackage(importedPackage)
-		v.processor_.PostprocessImportedPackage(
-			importedPackage,
-			importedPackageIndex,
-			importedPackagesSize,
-		)
-	}
 }
 
 func (v *visitor_) visitMultivalue(multivalue ast.MultivalueLike) {
@@ -983,6 +922,67 @@ func (v *visitor_) visitNone(none ast.NoneLike) {
 	// Visit a single newline token.
 	var newline = none.GetNewline()
 	v.processor_.ProcessNewline(newline)
+}
+
+func (v *visitor_) visitPackageDeclaration(packageDeclaration ast.PackageDeclarationLike) {
+	// Visit a single legalNotice rule.
+	var legalNotice = packageDeclaration.GetLegalNotice()
+	v.processor_.PreprocessLegalNotice(legalNotice)
+	v.visitLegalNotice(legalNotice)
+	v.processor_.PostprocessLegalNotice(legalNotice)
+
+	// Visit slot 1 between references.
+	v.processor_.ProcessPackageDeclarationSlot(1)
+
+	// Visit a single packageHeader rule.
+	var packageHeader = packageDeclaration.GetPackageHeader()
+	v.processor_.PreprocessPackageHeader(packageHeader)
+	v.visitPackageHeader(packageHeader)
+	v.processor_.PostprocessPackageHeader(packageHeader)
+
+	// Visit slot 2 between references.
+	v.processor_.ProcessPackageDeclarationSlot(2)
+
+	// Visit a single packageImports rule.
+	var packageImports = packageDeclaration.GetPackageImports()
+	v.processor_.PreprocessPackageImports(packageImports)
+	v.visitPackageImports(packageImports)
+	v.processor_.PostprocessPackageImports(packageImports)
+}
+
+func (v *visitor_) visitPackageHeader(packageHeader ast.PackageHeaderLike) {
+	// Visit a single comment token.
+	var comment = packageHeader.GetComment()
+	v.processor_.ProcessComment(comment)
+
+	// Visit slot 1 between references.
+	v.processor_.ProcessPackageHeaderSlot(1)
+
+	// Visit a single name token.
+	var name = packageHeader.GetName()
+	v.processor_.ProcessName(name)
+}
+
+func (v *visitor_) visitPackageImports(packageImports ast.PackageImportsLike) {
+	// Visit each importedPackage rule.
+	var importedPackageIndex uint
+	var importedPackages = packageImports.GetImportedPackages().GetIterator()
+	var importedPackagesSize = uint(importedPackages.GetSize())
+	for importedPackages.HasNext() {
+		importedPackageIndex++
+		var importedPackage = importedPackages.GetNext()
+		v.processor_.PreprocessImportedPackage(
+			importedPackage,
+			importedPackageIndex,
+			importedPackagesSize,
+		)
+		v.visitImportedPackage(importedPackage)
+		v.processor_.PostprocessImportedPackage(
+			importedPackage,
+			importedPackageIndex,
+			importedPackagesSize,
+		)
+	}
 }
 
 func (v *visitor_) visitParameter(parameter ast.ParameterLike) {

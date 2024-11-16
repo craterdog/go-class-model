@@ -34,12 +34,12 @@ func Model() ModelClassLike {
 // Constructor Methods
 
 func (c *modelClass_) Make(
-	moduleDeclaration ModuleDeclarationLike,
+	packageDeclaration PackageDeclarationLike,
 	primitiveDeclarations PrimitiveDeclarationsLike,
 	interfaceDeclarations InterfaceDeclarationsLike,
 ) ModelLike {
-	if uti.IsUndefined(moduleDeclaration) {
-		panic("The \"moduleDeclaration\" attribute is required by this class.")
+	if uti.IsUndefined(packageDeclaration) {
+		panic("The \"packageDeclaration\" attribute is required by this class.")
 	}
 	if uti.IsUndefined(primitiveDeclarations) {
 		panic("The \"primitiveDeclarations\" attribute is required by this class.")
@@ -49,7 +49,7 @@ func (c *modelClass_) Make(
 	}
 	var instance = &model_{
 		// Initialize the instance attributes.
-		moduleDeclaration_:     moduleDeclaration,
+		packageDeclaration_:    packageDeclaration,
 		primitiveDeclarations_: primitiveDeclarations,
 		interfaceDeclarations_: interfaceDeclarations,
 	}
@@ -70,8 +70,8 @@ func (v *model_) GetClass() ModelClassLike {
 
 // Attribute Methods
 
-func (v *model_) GetModuleDeclaration() ModuleDeclarationLike {
-	return v.moduleDeclaration_
+func (v *model_) GetPackageDeclaration() PackageDeclarationLike {
+	return v.packageDeclaration_
 }
 
 func (v *model_) GetPrimitiveDeclarations() PrimitiveDeclarationsLike {
@@ -90,7 +90,7 @@ func (v *model_) GetInterfaceDeclarations() InterfaceDeclarationsLike {
 
 type model_ struct {
 	// Declare the instance attributes.
-	moduleDeclaration_     ModuleDeclarationLike
+	packageDeclaration_    PackageDeclarationLike
 	primitiveDeclarations_ PrimitiveDeclarationsLike
 	interfaceDeclarations_ InterfaceDeclarationsLike
 }

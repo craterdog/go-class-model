@@ -702,33 +702,6 @@ type Methodical interface {
 	PostprocessModel(
 		model ast.ModelLike,
 	)
-	PreprocessModuleDeclaration(
-		moduleDeclaration ast.ModuleDeclarationLike,
-	)
-	ProcessModuleDeclarationSlot(
-		slot uint,
-	)
-	PostprocessModuleDeclaration(
-		moduleDeclaration ast.ModuleDeclarationLike,
-	)
-	PreprocessModuleHeader(
-		moduleHeader ast.ModuleHeaderLike,
-	)
-	ProcessModuleHeaderSlot(
-		slot uint,
-	)
-	PostprocessModuleHeader(
-		moduleHeader ast.ModuleHeaderLike,
-	)
-	PreprocessModuleImports(
-		moduleImports ast.ModuleImportsLike,
-	)
-	ProcessModuleImportsSlot(
-		slot uint,
-	)
-	PostprocessModuleImports(
-		moduleImports ast.ModuleImportsLike,
-	)
 	PreprocessMultivalue(
 		multivalue ast.MultivalueLike,
 	)
@@ -746,6 +719,33 @@ type Methodical interface {
 	)
 	PostprocessNone(
 		none ast.NoneLike,
+	)
+	PreprocessPackageDeclaration(
+		packageDeclaration ast.PackageDeclarationLike,
+	)
+	ProcessPackageDeclarationSlot(
+		slot uint,
+	)
+	PostprocessPackageDeclaration(
+		packageDeclaration ast.PackageDeclarationLike,
+	)
+	PreprocessPackageHeader(
+		packageHeader ast.PackageHeaderLike,
+	)
+	ProcessPackageHeaderSlot(
+		slot uint,
+	)
+	PostprocessPackageHeader(
+		packageHeader ast.PackageHeaderLike,
+	)
+	PreprocessPackageImports(
+		packageImports ast.PackageImportsLike,
+	)
+	ProcessPackageImportsSlot(
+		slot uint,
+	)
+	PostprocessPackageImports(
+		packageImports ast.PackageImportsLike,
 	)
 	PreprocessParameter(
 		parameter ast.ParameterLike,

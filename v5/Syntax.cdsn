@@ -51,9 +51,9 @@ sequence of terms within in a rule definition may be separated by spaces which
 are ignored by the parser.  Newlines are also ignored unless explicitly
 specified as terms in one or more rule definitions.
 <!
-$Model: ModuleDeclaration PrimitiveDeclarations InterfaceDeclarations
+$Model: PackageDeclaration PrimitiveDeclarations InterfaceDeclarations
 
-$ModuleDeclaration: LegalNotice ModuleHeader ModuleImports
+$PackageDeclaration: LegalNotice PackageHeader PackageImports
 
 $PrimitiveDeclarations: TypeSection FunctionalSection
 
@@ -61,9 +61,9 @@ $InterfaceDeclarations: ClassSection InstanceSection AspectSection
 
 $LegalNotice: comment
 
-$ModuleHeader: comment "package" name
+$PackageHeader: comment "package" name
 
-$ModuleImports: "import" "(" ImportedPackage* ")"
+$PackageImports: "import" "(" ImportedPackage* ")"
 
 $ImportedPackage: name path
 

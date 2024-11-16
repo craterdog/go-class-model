@@ -867,56 +867,56 @@ func (v *validator_) PostprocessModel(
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessModuleDeclaration(
-	moduleDeclaration ast.ModuleDeclarationLike,
+func (v *validator_) PreprocessPackageDeclaration(
+	packageDeclaration ast.PackageDeclarationLike,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) ProcessModuleDeclarationSlot(
+func (v *validator_) ProcessPackageDeclarationSlot(
 	slot uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PostprocessModuleDeclaration(
-	moduleDeclaration ast.ModuleDeclarationLike,
+func (v *validator_) PostprocessPackageDeclaration(
+	packageDeclaration ast.PackageDeclarationLike,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessModuleHeader(
-	moduleHeader ast.ModuleHeaderLike,
+func (v *validator_) PreprocessPackageHeader(
+	packageHeader ast.PackageHeaderLike,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) ProcessModuleHeaderSlot(
+func (v *validator_) ProcessPackageHeaderSlot(
 	slot uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PostprocessModuleHeader(
-	moduleHeader ast.ModuleHeaderLike,
+func (v *validator_) PostprocessPackageHeader(
+	packageHeader ast.PackageHeaderLike,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessModuleImports(
-	moduleImports ast.ModuleImportsLike,
+func (v *validator_) PreprocessPackageImports(
+	packageImports ast.PackageImportsLike,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) ProcessModuleImportsSlot(
+func (v *validator_) ProcessPackageImportsSlot(
 	slot uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PostprocessModuleImports(
-	moduleImports ast.ModuleImportsLike,
+func (v *validator_) PostprocessPackageImports(
+	packageImports ast.PackageImportsLike,
 ) {
 	// TBD - Add any validation checks.
 }

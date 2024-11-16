@@ -2700,9 +2700,9 @@ func (v *parser_) parseModel() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single ModuleDeclaration rule.
-	var moduleDeclaration ast.ModuleDeclarationLike
-	moduleDeclaration, token, ok = v.parseModuleDeclaration()
+	// Attempt to parse a single PackageDeclaration rule.
+	var packageDeclaration ast.PackageDeclarationLike
+	packageDeclaration, token, ok = v.parsePackageDeclaration()
 	switch {
 	case ok:
 		// No additional put backs allowed at this point.
@@ -2755,240 +2755,10 @@ func (v *parser_) parseModel() (
 	ok = true
 	v.remove(tokens)
 	model = ast.Model().Make(
-		moduleDeclaration,
+		packageDeclaration,
 		primitiveDeclarations,
 		interfaceDeclarations,
 	)
-	return
-}
-
-func (v *parser_) parseModuleDeclaration() (
-	moduleDeclaration ast.ModuleDeclarationLike,
-	token TokenLike,
-	ok bool,
-) {
-	var tokens = col.List[TokenLike]()
-
-	// Attempt to parse a single LegalNotice rule.
-	var legalNotice ast.LegalNoticeLike
-	legalNotice, token, ok = v.parseLegalNotice()
-	switch {
-	case ok:
-		// No additional put backs allowed at this point.
-		tokens = nil
-	case uti.IsDefined(tokens):
-		// This is not a single ModuleDeclaration rule.
-		v.putBack(tokens)
-		return
-	default:
-		// Found a syntax error.
-		var message = v.formatError("$ModuleDeclaration", token)
-		panic(message)
-	}
-
-	// Attempt to parse a single ModuleHeader rule.
-	var moduleHeader ast.ModuleHeaderLike
-	moduleHeader, token, ok = v.parseModuleHeader()
-	switch {
-	case ok:
-		// No additional put backs allowed at this point.
-		tokens = nil
-	case uti.IsDefined(tokens):
-		// This is not a single ModuleDeclaration rule.
-		v.putBack(tokens)
-		return
-	default:
-		// Found a syntax error.
-		var message = v.formatError("$ModuleDeclaration", token)
-		panic(message)
-	}
-
-	// Attempt to parse a single ModuleImports rule.
-	var moduleImports ast.ModuleImportsLike
-	moduleImports, token, ok = v.parseModuleImports()
-	switch {
-	case ok:
-		// No additional put backs allowed at this point.
-		tokens = nil
-	case uti.IsDefined(tokens):
-		// This is not a single ModuleDeclaration rule.
-		v.putBack(tokens)
-		return
-	default:
-		// Found a syntax error.
-		var message = v.formatError("$ModuleDeclaration", token)
-		panic(message)
-	}
-
-	// Found a single ModuleDeclaration rule.
-	ok = true
-	v.remove(tokens)
-	moduleDeclaration = ast.ModuleDeclaration().Make(
-		legalNotice,
-		moduleHeader,
-		moduleImports,
-	)
-	return
-}
-
-func (v *parser_) parseModuleHeader() (
-	moduleHeader ast.ModuleHeaderLike,
-	token TokenLike,
-	ok bool,
-) {
-	var tokens = col.List[TokenLike]()
-
-	// Attempt to parse a single comment token.
-	var comment string
-	comment, token, ok = v.parseToken(CommentToken)
-	if !ok {
-		if uti.IsDefined(tokens) {
-			// This is not a single ModuleHeader rule.
-			v.putBack(tokens)
-			return
-		} else {
-			// Found a syntax error.
-			var message = v.formatError("$ModuleHeader", token)
-			panic(message)
-		}
-	}
-	if uti.IsDefined(tokens) {
-		tokens.AppendValue(token)
-	}
-
-	// Attempt to parse a single "package" delimiter.
-	_, token, ok = v.parseDelimiter("package")
-	if !ok {
-		if uti.IsDefined(tokens) {
-			// This is not a single ModuleHeader rule.
-			v.putBack(tokens)
-			return
-		} else {
-			// Found a syntax error.
-			var message = v.formatError("$ModuleHeader", token)
-			panic(message)
-		}
-	}
-	if uti.IsDefined(tokens) {
-		tokens.AppendValue(token)
-	}
-
-	// Attempt to parse a single name token.
-	var name string
-	name, token, ok = v.parseToken(NameToken)
-	if !ok {
-		if uti.IsDefined(tokens) {
-			// This is not a single ModuleHeader rule.
-			v.putBack(tokens)
-			return
-		} else {
-			// Found a syntax error.
-			var message = v.formatError("$ModuleHeader", token)
-			panic(message)
-		}
-	}
-	if uti.IsDefined(tokens) {
-		tokens.AppendValue(token)
-	}
-
-	// Found a single ModuleHeader rule.
-	ok = true
-	v.remove(tokens)
-	moduleHeader = ast.ModuleHeader().Make(
-		comment,
-		name,
-	)
-	return
-}
-
-func (v *parser_) parseModuleImports() (
-	moduleImports ast.ModuleImportsLike,
-	token TokenLike,
-	ok bool,
-) {
-	var tokens = col.List[TokenLike]()
-
-	// Attempt to parse a single "import" delimiter.
-	_, token, ok = v.parseDelimiter("import")
-	if !ok {
-		if uti.IsDefined(tokens) {
-			// This is not a single ModuleImports rule.
-			v.putBack(tokens)
-			return
-		} else {
-			// Found a syntax error.
-			var message = v.formatError("$ModuleImports", token)
-			panic(message)
-		}
-	}
-	if uti.IsDefined(tokens) {
-		tokens.AppendValue(token)
-	}
-
-	// Attempt to parse a single "(" delimiter.
-	_, token, ok = v.parseDelimiter("(")
-	if !ok {
-		if uti.IsDefined(tokens) {
-			// This is not a single ModuleImports rule.
-			v.putBack(tokens)
-			return
-		} else {
-			// Found a syntax error.
-			var message = v.formatError("$ModuleImports", token)
-			panic(message)
-		}
-	}
-	if uti.IsDefined(tokens) {
-		tokens.AppendValue(token)
-	}
-
-	// Attempt to parse multiple ImportedPackage rules.
-	var importedPackages = col.List[ast.ImportedPackageLike]()
-importedPackagesLoop:
-	for count := 0; count < mat.MaxInt; count++ {
-		var importedPackage ast.ImportedPackageLike
-		importedPackage, token, ok = v.parseImportedPackage()
-		if !ok {
-			switch {
-			case count >= 0:
-				break importedPackagesLoop
-			case uti.IsDefined(tokens):
-				// This is not multiple ImportedPackage rules.
-				v.putBack(tokens)
-				return
-			default:
-				// Found a syntax error.
-				var message = v.formatError("$ModuleImports", token)
-				message += "0 or more ImportedPackage rules are required."
-				panic(message)
-			}
-		}
-		// No additional put backs allowed at this point.
-		tokens = nil
-		importedPackages.AppendValue(importedPackage)
-	}
-
-	// Attempt to parse a single ")" delimiter.
-	_, token, ok = v.parseDelimiter(")")
-	if !ok {
-		if uti.IsDefined(tokens) {
-			// This is not a single ModuleImports rule.
-			v.putBack(tokens)
-			return
-		} else {
-			// Found a syntax error.
-			var message = v.formatError("$ModuleImports", token)
-			panic(message)
-		}
-	}
-	if uti.IsDefined(tokens) {
-		tokens.AppendValue(token)
-	}
-
-	// Found a single ModuleImports rule.
-	ok = true
-	v.remove(tokens)
-	moduleImports = ast.ModuleImports().Make(importedPackages)
 	return
 }
 
@@ -3095,6 +2865,236 @@ func (v *parser_) parseNone() (
 	ok = true
 	v.remove(tokens)
 	none = ast.None().Make(newline)
+	return
+}
+
+func (v *parser_) parsePackageDeclaration() (
+	packageDeclaration ast.PackageDeclarationLike,
+	token TokenLike,
+	ok bool,
+) {
+	var tokens = col.List[TokenLike]()
+
+	// Attempt to parse a single LegalNotice rule.
+	var legalNotice ast.LegalNoticeLike
+	legalNotice, token, ok = v.parseLegalNotice()
+	switch {
+	case ok:
+		// No additional put backs allowed at this point.
+		tokens = nil
+	case uti.IsDefined(tokens):
+		// This is not a single PackageDeclaration rule.
+		v.putBack(tokens)
+		return
+	default:
+		// Found a syntax error.
+		var message = v.formatError("$PackageDeclaration", token)
+		panic(message)
+	}
+
+	// Attempt to parse a single PackageHeader rule.
+	var packageHeader ast.PackageHeaderLike
+	packageHeader, token, ok = v.parsePackageHeader()
+	switch {
+	case ok:
+		// No additional put backs allowed at this point.
+		tokens = nil
+	case uti.IsDefined(tokens):
+		// This is not a single PackageDeclaration rule.
+		v.putBack(tokens)
+		return
+	default:
+		// Found a syntax error.
+		var message = v.formatError("$PackageDeclaration", token)
+		panic(message)
+	}
+
+	// Attempt to parse a single PackageImports rule.
+	var packageImports ast.PackageImportsLike
+	packageImports, token, ok = v.parsePackageImports()
+	switch {
+	case ok:
+		// No additional put backs allowed at this point.
+		tokens = nil
+	case uti.IsDefined(tokens):
+		// This is not a single PackageDeclaration rule.
+		v.putBack(tokens)
+		return
+	default:
+		// Found a syntax error.
+		var message = v.formatError("$PackageDeclaration", token)
+		panic(message)
+	}
+
+	// Found a single PackageDeclaration rule.
+	ok = true
+	v.remove(tokens)
+	packageDeclaration = ast.PackageDeclaration().Make(
+		legalNotice,
+		packageHeader,
+		packageImports,
+	)
+	return
+}
+
+func (v *parser_) parsePackageHeader() (
+	packageHeader ast.PackageHeaderLike,
+	token TokenLike,
+	ok bool,
+) {
+	var tokens = col.List[TokenLike]()
+
+	// Attempt to parse a single comment token.
+	var comment string
+	comment, token, ok = v.parseToken(CommentToken)
+	if !ok {
+		if uti.IsDefined(tokens) {
+			// This is not a single PackageHeader rule.
+			v.putBack(tokens)
+			return
+		} else {
+			// Found a syntax error.
+			var message = v.formatError("$PackageHeader", token)
+			panic(message)
+		}
+	}
+	if uti.IsDefined(tokens) {
+		tokens.AppendValue(token)
+	}
+
+	// Attempt to parse a single "package" delimiter.
+	_, token, ok = v.parseDelimiter("package")
+	if !ok {
+		if uti.IsDefined(tokens) {
+			// This is not a single PackageHeader rule.
+			v.putBack(tokens)
+			return
+		} else {
+			// Found a syntax error.
+			var message = v.formatError("$PackageHeader", token)
+			panic(message)
+		}
+	}
+	if uti.IsDefined(tokens) {
+		tokens.AppendValue(token)
+	}
+
+	// Attempt to parse a single name token.
+	var name string
+	name, token, ok = v.parseToken(NameToken)
+	if !ok {
+		if uti.IsDefined(tokens) {
+			// This is not a single PackageHeader rule.
+			v.putBack(tokens)
+			return
+		} else {
+			// Found a syntax error.
+			var message = v.formatError("$PackageHeader", token)
+			panic(message)
+		}
+	}
+	if uti.IsDefined(tokens) {
+		tokens.AppendValue(token)
+	}
+
+	// Found a single PackageHeader rule.
+	ok = true
+	v.remove(tokens)
+	packageHeader = ast.PackageHeader().Make(
+		comment,
+		name,
+	)
+	return
+}
+
+func (v *parser_) parsePackageImports() (
+	packageImports ast.PackageImportsLike,
+	token TokenLike,
+	ok bool,
+) {
+	var tokens = col.List[TokenLike]()
+
+	// Attempt to parse a single "import" delimiter.
+	_, token, ok = v.parseDelimiter("import")
+	if !ok {
+		if uti.IsDefined(tokens) {
+			// This is not a single PackageImports rule.
+			v.putBack(tokens)
+			return
+		} else {
+			// Found a syntax error.
+			var message = v.formatError("$PackageImports", token)
+			panic(message)
+		}
+	}
+	if uti.IsDefined(tokens) {
+		tokens.AppendValue(token)
+	}
+
+	// Attempt to parse a single "(" delimiter.
+	_, token, ok = v.parseDelimiter("(")
+	if !ok {
+		if uti.IsDefined(tokens) {
+			// This is not a single PackageImports rule.
+			v.putBack(tokens)
+			return
+		} else {
+			// Found a syntax error.
+			var message = v.formatError("$PackageImports", token)
+			panic(message)
+		}
+	}
+	if uti.IsDefined(tokens) {
+		tokens.AppendValue(token)
+	}
+
+	// Attempt to parse multiple ImportedPackage rules.
+	var importedPackages = col.List[ast.ImportedPackageLike]()
+importedPackagesLoop:
+	for count := 0; count < mat.MaxInt; count++ {
+		var importedPackage ast.ImportedPackageLike
+		importedPackage, token, ok = v.parseImportedPackage()
+		if !ok {
+			switch {
+			case count >= 0:
+				break importedPackagesLoop
+			case uti.IsDefined(tokens):
+				// This is not multiple ImportedPackage rules.
+				v.putBack(tokens)
+				return
+			default:
+				// Found a syntax error.
+				var message = v.formatError("$PackageImports", token)
+				message += "0 or more ImportedPackage rules are required."
+				panic(message)
+			}
+		}
+		// No additional put backs allowed at this point.
+		tokens = nil
+		importedPackages.AppendValue(importedPackage)
+	}
+
+	// Attempt to parse a single ")" delimiter.
+	_, token, ok = v.parseDelimiter(")")
+	if !ok {
+		if uti.IsDefined(tokens) {
+			// This is not a single PackageImports rule.
+			v.putBack(tokens)
+			return
+		} else {
+			// Found a syntax error.
+			var message = v.formatError("$PackageImports", token)
+			panic(message)
+		}
+	}
+	if uti.IsDefined(tokens) {
+		tokens.AppendValue(token)
+	}
+
+	// Found a single PackageImports rule.
+	ok = true
+	v.remove(tokens)
+	packageImports = ast.PackageImports().Make(importedPackages)
 	return
 }
 
@@ -3887,13 +3887,13 @@ var parserReference_ = &parserClass_{
 	stackSize_: 16,
 	syntax_: col.Catalog[string, string](
 		map[string]string{
-			"$Model":                 `ModuleDeclaration PrimitiveDeclarations InterfaceDeclarations`,
-			"$ModuleDeclaration":     `LegalNotice ModuleHeader ModuleImports`,
+			"$Model":                 `PackageDeclaration PrimitiveDeclarations InterfaceDeclarations`,
+			"$PackageDeclaration":    `LegalNotice PackageHeader PackageImports`,
 			"$PrimitiveDeclarations": `TypeSection FunctionalSection`,
 			"$InterfaceDeclarations": `ClassSection InstanceSection AspectSection`,
 			"$LegalNotice":           `comment`,
-			"$ModuleHeader":          `comment "package" name`,
-			"$ModuleImports":         `"import" "(" ImportedPackage* ")"`,
+			"$PackageHeader":         `comment "package" name`,
+			"$PackageImports":        `"import" "(" ImportedPackage* ")"`,
 			"$ImportedPackage":       `name path`,
 			"$TypeSection":           `"// Type Declarations" TypeDeclaration*`,
 			"$TypeDeclaration":       `Declaration Abstraction Enumeration?`,

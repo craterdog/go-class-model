@@ -546,49 +546,10 @@ each concrete model-like class.
 type ModelClassLike interface {
 	// Constructor Methods
 	Make(
-		moduleDeclaration ModuleDeclarationLike,
+		packageDeclaration PackageDeclarationLike,
 		primitiveDeclarations PrimitiveDeclarationsLike,
 		interfaceDeclarations InterfaceDeclarationsLike,
 	) ModelLike
-}
-
-/*
-ModuleDeclarationClassLike is a class interface that defines the complete set
-of class constructors, constants and functions that must be supported by
-each concrete module-declaration-like class.
-*/
-type ModuleDeclarationClassLike interface {
-	// Constructor Methods
-	Make(
-		legalNotice LegalNoticeLike,
-		moduleHeader ModuleHeaderLike,
-		moduleImports ModuleImportsLike,
-	) ModuleDeclarationLike
-}
-
-/*
-ModuleHeaderClassLike is a class interface that defines the complete set
-of class constructors, constants and functions that must be supported by
-each concrete module-header-like class.
-*/
-type ModuleHeaderClassLike interface {
-	// Constructor Methods
-	Make(
-		comment string,
-		name string,
-	) ModuleHeaderLike
-}
-
-/*
-ModuleImportsClassLike is a class interface that defines the complete set
-of class constructors, constants and functions that must be supported by
-each concrete module-imports-like class.
-*/
-type ModuleImportsClassLike interface {
-	// Constructor Methods
-	Make(
-		importedPackages abs.Sequential[ImportedPackageLike],
-	) ModuleImportsLike
 }
 
 /*
@@ -613,6 +574,45 @@ type NoneClassLike interface {
 	Make(
 		newline string,
 	) NoneLike
+}
+
+/*
+PackageDeclarationClassLike is a class interface that defines the complete set
+of class constructors, constants and functions that must be supported by
+each concrete package-declaration-like class.
+*/
+type PackageDeclarationClassLike interface {
+	// Constructor Methods
+	Make(
+		legalNotice LegalNoticeLike,
+		packageHeader PackageHeaderLike,
+		packageImports PackageImportsLike,
+	) PackageDeclarationLike
+}
+
+/*
+PackageHeaderClassLike is a class interface that defines the complete set
+of class constructors, constants and functions that must be supported by
+each concrete package-header-like class.
+*/
+type PackageHeaderClassLike interface {
+	// Constructor Methods
+	Make(
+		comment string,
+		name string,
+	) PackageHeaderLike
+}
+
+/*
+PackageImportsClassLike is a class interface that defines the complete set
+of class constructors, constants and functions that must be supported by
+each concrete package-imports-like class.
+*/
+type PackageImportsClassLike interface {
+	// Constructor Methods
+	Make(
+		importedPackages abs.Sequential[ImportedPackageLike],
+	) PackageImportsLike
 }
 
 /*
@@ -1295,51 +1295,9 @@ type ModelLike interface {
 	GetClass() ModelClassLike
 
 	// Attribute Methods
-	GetModuleDeclaration() ModuleDeclarationLike
+	GetPackageDeclaration() PackageDeclarationLike
 	GetPrimitiveDeclarations() PrimitiveDeclarationsLike
 	GetInterfaceDeclarations() InterfaceDeclarationsLike
-}
-
-/*
-ModuleDeclarationLike is an instance interface that defines the complete set
-of primary, attribute and aspect methods that must be supported by each
-instance of a concrete module-declaration-like class.
-*/
-type ModuleDeclarationLike interface {
-	// Primary Methods
-	GetClass() ModuleDeclarationClassLike
-
-	// Attribute Methods
-	GetLegalNotice() LegalNoticeLike
-	GetModuleHeader() ModuleHeaderLike
-	GetModuleImports() ModuleImportsLike
-}
-
-/*
-ModuleHeaderLike is an instance interface that defines the complete set
-of primary, attribute and aspect methods that must be supported by each
-instance of a concrete module-header-like class.
-*/
-type ModuleHeaderLike interface {
-	// Primary Methods
-	GetClass() ModuleHeaderClassLike
-
-	// Attribute Methods
-	GetComment() string
-	GetName() string
-}
-
-/*
-ModuleImportsLike is an instance interface that defines the complete set
-of primary, attribute and aspect methods that must be supported by each
-instance of a concrete module-imports-like class.
-*/
-type ModuleImportsLike interface {
-	// Primary Methods
-	GetClass() ModuleImportsClassLike
-
-	// Attribute Methods
-	GetImportedPackages() abs.Sequential[ImportedPackageLike]
 }
 
 /*
@@ -1366,6 +1324,48 @@ type NoneLike interface {
 
 	// Attribute Methods
 	GetNewline() string
+}
+
+/*
+PackageDeclarationLike is an instance interface that defines the complete set
+of primary, attribute and aspect methods that must be supported by each
+instance of a concrete package-declaration-like class.
+*/
+type PackageDeclarationLike interface {
+	// Primary Methods
+	GetClass() PackageDeclarationClassLike
+
+	// Attribute Methods
+	GetLegalNotice() LegalNoticeLike
+	GetPackageHeader() PackageHeaderLike
+	GetPackageImports() PackageImportsLike
+}
+
+/*
+PackageHeaderLike is an instance interface that defines the complete set
+of primary, attribute and aspect methods that must be supported by each
+instance of a concrete package-header-like class.
+*/
+type PackageHeaderLike interface {
+	// Primary Methods
+	GetClass() PackageHeaderClassLike
+
+	// Attribute Methods
+	GetComment() string
+	GetName() string
+}
+
+/*
+PackageImportsLike is an instance interface that defines the complete set
+of primary, attribute and aspect methods that must be supported by each
+instance of a concrete package-imports-like class.
+*/
+type PackageImportsLike interface {
+	// Primary Methods
+	GetClass() PackageImportsClassLike
+
+	// Attribute Methods
+	GetImportedPackages() abs.Sequential[ImportedPackageLike]
 }
 
 /*

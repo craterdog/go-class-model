@@ -79,11 +79,11 @@ type (
 	MapLike                   = ast.MapLike
 	MethodLike                = ast.MethodLike
 	ModelLike                 = ast.ModelLike
-	ModuleDeclarationLike     = ast.ModuleDeclarationLike
-	ModuleHeaderLike          = ast.ModuleHeaderLike
-	ModuleImportsLike         = ast.ModuleImportsLike
 	MultivalueLike            = ast.MultivalueLike
 	NoneLike                  = ast.NoneLike
+	PackageDeclarationLike    = ast.PackageDeclarationLike
+	PackageHeaderLike         = ast.PackageHeaderLike
+	PackageImportsLike        = ast.PackageImportsLike
 	ParameterLike             = ast.ParameterLike
 	PrefixLike                = ast.PrefixLike
 	PrimaryMethodLike         = ast.PrimaryMethodLike
@@ -1792,8 +1792,8 @@ func Model(arguments ...any) ModelLike {
 	var argumentTypes string
 	for _, argument := range arguments {
 		switch actual := argument.(type) {
-		case ModuleDeclarationLike:
-			argumentTypes += "ModuleDeclarationLike, "
+		case PackageDeclarationLike:
+			argumentTypes += "PackageDeclarationLike, "
 		case PrimitiveDeclarationsLike:
 			argumentTypes += "PrimitiveDeclarationsLike, "
 		case InterfaceDeclarationsLike:
@@ -1816,148 +1816,18 @@ func Model(arguments ...any) ModelLike {
 	// Call the corresponding constructor.
 	var instance_ ModelLike
 	switch argumentTypes {
-	case "ModuleDeclarationLike, PrimitiveDeclarationsLike, InterfaceDeclarationsLike":
-		var moduleDeclaration = arguments[0].(ModuleDeclarationLike)
+	case "PackageDeclarationLike, PrimitiveDeclarationsLike, InterfaceDeclarationsLike":
+		var packageDeclaration = arguments[0].(PackageDeclarationLike)
 		var primitiveDeclarations = arguments[1].(PrimitiveDeclarationsLike)
 		var interfaceDeclarations = arguments[2].(InterfaceDeclarationsLike)
 		instance_ = ast.Model().Make(
-			moduleDeclaration,
+			packageDeclaration,
 			primitiveDeclarations,
 			interfaceDeclarations,
 		)
 	default:
 		var message = fmt.Sprintf(
 			"No Model constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
-}
-
-func ModuleDeclaration(arguments ...any) ModuleDeclarationLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case LegalNoticeLike:
-			argumentTypes += "LegalNoticeLike, "
-		case ModuleHeaderLike:
-			argumentTypes += "ModuleHeaderLike, "
-		case ModuleImportsLike:
-			argumentTypes += "ModuleImportsLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the ModuleDeclaration constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma.
-		argumentTypes = argumentTypes[:length-1]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ModuleDeclarationLike
-	switch argumentTypes {
-	case "LegalNoticeLike, ModuleHeaderLike, ModuleImportsLike":
-		var legalNotice = arguments[0].(LegalNoticeLike)
-		var moduleHeader = arguments[1].(ModuleHeaderLike)
-		var moduleImports = arguments[2].(ModuleImportsLike)
-		instance_ = ast.ModuleDeclaration().Make(
-			legalNotice,
-			moduleHeader,
-			moduleImports,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No ModuleDeclaration constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
-}
-
-func ModuleHeader(arguments ...any) ModuleHeaderLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the ModuleHeader constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma.
-		argumentTypes = argumentTypes[:length-1]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ModuleHeaderLike
-	switch argumentTypes {
-	case "string, string":
-		var comment = arguments[0].(string)
-		var name = arguments[1].(string)
-		instance_ = ast.ModuleHeader().Make(
-			comment,
-			name,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No ModuleHeader constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
-}
-
-func ModuleImports(arguments ...any) ModuleImportsLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case abs.Sequential[ImportedPackageLike]:
-			argumentTypes += "abs.Sequential[ImportedPackageLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the ModuleImports constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma.
-		argumentTypes = argumentTypes[:length-1]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ModuleImportsLike
-	switch argumentTypes {
-	case "abs.Sequential[ImportedPackageLike]":
-		var importedPackages = arguments[0].(abs.Sequential[ImportedPackageLike])
-		instance_ = ast.ModuleImports().Make(
-			importedPackages,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No ModuleImports constructor matching the arguments was found: %v\n",
 			arguments,
 		)
 		panic(message)
@@ -2038,6 +1908,136 @@ func None(arguments ...any) NoneLike {
 	default:
 		var message = fmt.Sprintf(
 			"No None constructor matching the arguments was found: %v\n",
+			arguments,
+		)
+		panic(message)
+	}
+	return instance_
+}
+
+func PackageDeclaration(arguments ...any) PackageDeclarationLike {
+	// Analyze the arguments.
+	var argumentTypes string
+	for _, argument := range arguments {
+		switch actual := argument.(type) {
+		case LegalNoticeLike:
+			argumentTypes += "LegalNoticeLike, "
+		case PackageHeaderLike:
+			argumentTypes += "PackageHeaderLike, "
+		case PackageImportsLike:
+			argumentTypes += "PackageImportsLike, "
+		default:
+			var message = fmt.Sprintf(
+				"An unexpected argument type was passed into the PackageDeclaration constructor: %v of type %T",
+				argument,
+				actual,
+			)
+			panic(message)
+		}
+	}
+	var length = len(argumentTypes)
+	if length > 0 {
+		// Remove the trailing comma.
+		argumentTypes = argumentTypes[:length-1]
+	}
+
+	// Call the corresponding constructor.
+	var instance_ PackageDeclarationLike
+	switch argumentTypes {
+	case "LegalNoticeLike, PackageHeaderLike, PackageImportsLike":
+		var legalNotice = arguments[0].(LegalNoticeLike)
+		var packageHeader = arguments[1].(PackageHeaderLike)
+		var packageImports = arguments[2].(PackageImportsLike)
+		instance_ = ast.PackageDeclaration().Make(
+			legalNotice,
+			packageHeader,
+			packageImports,
+		)
+	default:
+		var message = fmt.Sprintf(
+			"No PackageDeclaration constructor matching the arguments was found: %v\n",
+			arguments,
+		)
+		panic(message)
+	}
+	return instance_
+}
+
+func PackageHeader(arguments ...any) PackageHeaderLike {
+	// Analyze the arguments.
+	var argumentTypes string
+	for _, argument := range arguments {
+		switch actual := argument.(type) {
+		case string:
+			argumentTypes += "string, "
+		default:
+			var message = fmt.Sprintf(
+				"An unexpected argument type was passed into the PackageHeader constructor: %v of type %T",
+				argument,
+				actual,
+			)
+			panic(message)
+		}
+	}
+	var length = len(argumentTypes)
+	if length > 0 {
+		// Remove the trailing comma.
+		argumentTypes = argumentTypes[:length-1]
+	}
+
+	// Call the corresponding constructor.
+	var instance_ PackageHeaderLike
+	switch argumentTypes {
+	case "string, string":
+		var comment = arguments[0].(string)
+		var name = arguments[1].(string)
+		instance_ = ast.PackageHeader().Make(
+			comment,
+			name,
+		)
+	default:
+		var message = fmt.Sprintf(
+			"No PackageHeader constructor matching the arguments was found: %v\n",
+			arguments,
+		)
+		panic(message)
+	}
+	return instance_
+}
+
+func PackageImports(arguments ...any) PackageImportsLike {
+	// Analyze the arguments.
+	var argumentTypes string
+	for _, argument := range arguments {
+		switch actual := argument.(type) {
+		case abs.Sequential[ImportedPackageLike]:
+			argumentTypes += "abs.Sequential[ImportedPackageLike], "
+		default:
+			var message = fmt.Sprintf(
+				"An unexpected argument type was passed into the PackageImports constructor: %v of type %T",
+				argument,
+				actual,
+			)
+			panic(message)
+		}
+	}
+	var length = len(argumentTypes)
+	if length > 0 {
+		// Remove the trailing comma.
+		argumentTypes = argumentTypes[:length-1]
+	}
+
+	// Call the corresponding constructor.
+	var instance_ PackageImportsLike
+	switch argumentTypes {
+	case "abs.Sequential[ImportedPackageLike]":
+		var importedPackages = arguments[0].(abs.Sequential[ImportedPackageLike])
+		instance_ = ast.PackageImports().Make(
+			importedPackages,
+		)
+	default:
+		var message = fmt.Sprintf(
+			"No PackageImports constructor matching the arguments was found: %v\n",
 			arguments,
 		)
 		panic(message)

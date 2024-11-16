@@ -27,26 +27,31 @@ import (
 
 // Access Function
 
-func ModuleHeader() ModuleHeaderClassLike {
-	return moduleHeaderReference()
+func PackageDeclaration() PackageDeclarationClassLike {
+	return packageDeclarationReference()
 }
 
 // Constructor Methods
 
-func (c *moduleHeaderClass_) Make(
-	comment string,
-	name string,
-) ModuleHeaderLike {
-	if uti.IsUndefined(comment) {
-		panic("The \"comment\" attribute is required by this class.")
+func (c *packageDeclarationClass_) Make(
+	legalNotice LegalNoticeLike,
+	packageHeader PackageHeaderLike,
+	packageImports PackageImportsLike,
+) PackageDeclarationLike {
+	if uti.IsUndefined(legalNotice) {
+		panic("The \"legalNotice\" attribute is required by this class.")
 	}
-	if uti.IsUndefined(name) {
-		panic("The \"name\" attribute is required by this class.")
+	if uti.IsUndefined(packageHeader) {
+		panic("The \"packageHeader\" attribute is required by this class.")
 	}
-	var instance = &moduleHeader_{
+	if uti.IsUndefined(packageImports) {
+		panic("The \"packageImports\" attribute is required by this class.")
+	}
+	var instance = &packageDeclaration_{
 		// Initialize the instance attributes.
-		comment_: comment,
-		name_:    name,
+		legalNotice_:    legalNotice,
+		packageHeader_:  packageHeader,
+		packageImports_: packageImports,
 	}
 	return instance
 }
@@ -59,18 +64,22 @@ func (c *moduleHeaderClass_) Make(
 
 // Primary Methods
 
-func (v *moduleHeader_) GetClass() ModuleHeaderClassLike {
-	return moduleHeaderReference()
+func (v *packageDeclaration_) GetClass() PackageDeclarationClassLike {
+	return packageDeclarationReference()
 }
 
 // Attribute Methods
 
-func (v *moduleHeader_) GetComment() string {
-	return v.comment_
+func (v *packageDeclaration_) GetLegalNotice() LegalNoticeLike {
+	return v.legalNotice_
 }
 
-func (v *moduleHeader_) GetName() string {
-	return v.name_
+func (v *packageDeclaration_) GetPackageHeader() PackageHeaderLike {
+	return v.packageHeader_
+}
+
+func (v *packageDeclaration_) GetPackageImports() PackageImportsLike {
+	return v.packageImports_
 }
 
 // PROTECTED INTERFACE
@@ -79,24 +88,25 @@ func (v *moduleHeader_) GetName() string {
 
 // Instance Structure
 
-type moduleHeader_ struct {
+type packageDeclaration_ struct {
 	// Declare the instance attributes.
-	comment_ string
-	name_    string
+	legalNotice_    LegalNoticeLike
+	packageHeader_  PackageHeaderLike
+	packageImports_ PackageImportsLike
 }
 
 // Class Structure
 
-type moduleHeaderClass_ struct {
+type packageDeclarationClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func moduleHeaderReference() *moduleHeaderClass_ {
-	return moduleHeaderReference_
+func packageDeclarationReference() *packageDeclarationClass_ {
+	return packageDeclarationReference_
 }
 
-var moduleHeaderReference_ = &moduleHeaderClass_{
+var packageDeclarationReference_ = &packageDeclarationClass_{
 	// Initialize the class constants.
 }

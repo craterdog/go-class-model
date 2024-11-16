@@ -731,51 +731,6 @@ func (v *processor_) PostprocessModel(
 ) {
 }
 
-func (v *processor_) PreprocessModuleDeclaration(
-	moduleDeclaration ast.ModuleDeclarationLike,
-) {
-}
-
-func (v *processor_) ProcessModuleDeclarationSlot(
-	slot uint,
-) {
-}
-
-func (v *processor_) PostprocessModuleDeclaration(
-	moduleDeclaration ast.ModuleDeclarationLike,
-) {
-}
-
-func (v *processor_) PreprocessModuleHeader(
-	moduleHeader ast.ModuleHeaderLike,
-) {
-}
-
-func (v *processor_) ProcessModuleHeaderSlot(
-	slot uint,
-) {
-}
-
-func (v *processor_) PostprocessModuleHeader(
-	moduleHeader ast.ModuleHeaderLike,
-) {
-}
-
-func (v *processor_) PreprocessModuleImports(
-	moduleImports ast.ModuleImportsLike,
-) {
-}
-
-func (v *processor_) ProcessModuleImportsSlot(
-	slot uint,
-) {
-}
-
-func (v *processor_) PostprocessModuleImports(
-	moduleImports ast.ModuleImportsLike,
-) {
-}
-
 func (v *processor_) PreprocessMultivalue(
 	multivalue ast.MultivalueLike,
 ) {
@@ -803,6 +758,51 @@ func (v *processor_) ProcessNoneSlot(
 
 func (v *processor_) PostprocessNone(
 	none ast.NoneLike,
+) {
+}
+
+func (v *processor_) PreprocessPackageDeclaration(
+	packageDeclaration ast.PackageDeclarationLike,
+) {
+}
+
+func (v *processor_) ProcessPackageDeclarationSlot(
+	slot uint,
+) {
+}
+
+func (v *processor_) PostprocessPackageDeclaration(
+	packageDeclaration ast.PackageDeclarationLike,
+) {
+}
+
+func (v *processor_) PreprocessPackageHeader(
+	packageHeader ast.PackageHeaderLike,
+) {
+}
+
+func (v *processor_) ProcessPackageHeaderSlot(
+	slot uint,
+) {
+}
+
+func (v *processor_) PostprocessPackageHeader(
+	packageHeader ast.PackageHeaderLike,
+) {
+}
+
+func (v *processor_) PreprocessPackageImports(
+	packageImports ast.PackageImportsLike,
+) {
+}
+
+func (v *processor_) ProcessPackageImportsSlot(
+	slot uint,
+) {
+}
+
+func (v *processor_) PostprocessPackageImports(
+	packageImports ast.PackageImportsLike,
 ) {
 }
 

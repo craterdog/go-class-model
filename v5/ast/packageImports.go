@@ -28,19 +28,19 @@ import (
 
 // Access Function
 
-func ModuleImports() ModuleImportsClassLike {
-	return moduleImportsReference()
+func PackageImports() PackageImportsClassLike {
+	return packageImportsReference()
 }
 
 // Constructor Methods
 
-func (c *moduleImportsClass_) Make(
+func (c *packageImportsClass_) Make(
 	importedPackages abs.Sequential[ImportedPackageLike],
-) ModuleImportsLike {
+) PackageImportsLike {
 	if uti.IsUndefined(importedPackages) {
 		panic("The \"importedPackages\" attribute is required by this class.")
 	}
-	var instance = &moduleImports_{
+	var instance = &packageImports_{
 		// Initialize the instance attributes.
 		importedPackages_: importedPackages,
 	}
@@ -55,13 +55,13 @@ func (c *moduleImportsClass_) Make(
 
 // Primary Methods
 
-func (v *moduleImports_) GetClass() ModuleImportsClassLike {
-	return moduleImportsReference()
+func (v *packageImports_) GetClass() PackageImportsClassLike {
+	return packageImportsReference()
 }
 
 // Attribute Methods
 
-func (v *moduleImports_) GetImportedPackages() abs.Sequential[ImportedPackageLike] {
+func (v *packageImports_) GetImportedPackages() abs.Sequential[ImportedPackageLike] {
 	return v.importedPackages_
 }
 
@@ -71,23 +71,23 @@ func (v *moduleImports_) GetImportedPackages() abs.Sequential[ImportedPackageLik
 
 // Instance Structure
 
-type moduleImports_ struct {
+type packageImports_ struct {
 	// Declare the instance attributes.
 	importedPackages_ abs.Sequential[ImportedPackageLike]
 }
 
 // Class Structure
 
-type moduleImportsClass_ struct {
+type packageImportsClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func moduleImportsReference() *moduleImportsClass_ {
-	return moduleImportsReference_
+func packageImportsReference() *packageImportsClass_ {
+	return packageImportsReference_
 }
 
-var moduleImportsReference_ = &moduleImportsClass_{
+var packageImportsReference_ = &packageImportsClass_{
 	// Initialize the class constants.
 }
