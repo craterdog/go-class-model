@@ -11,6 +11,11 @@
 */
 
 /*
+┌────────────────────────────────── WARNING ───────────────────────────────────┐
+│             THIS "Package.go" FILE WAS AUTOMATICALLY GENERATED.              │
+│                    ANY UPDATES TO IT WILL BE OVERWRITTEN.                    │
+└──────────────────────────────────────────────────────────────────────────────┘
+
 Package "grammar" provides the following grammar classes that operate on the
 abstract syntax tree (AST) for this module:
   - Token captures the attributes associated with a parsed token.

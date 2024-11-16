@@ -11,6 +11,11 @@
 */
 
 /*
+┌────────────────────────────────── WARNING ───────────────────────────────────┐
+│              THIS "Module.go" FILE WAS AUTOMATICALLY GENERATED.              │
+│                    ANY UPDATES TO IT WILL BE OVERWRITTEN.                    │
+└──────────────────────────────────────────────────────────────────────────────┘
+
 Package "module" defines type aliases for the commonly used types defined in the
 packages contained in this module.  It also provides a universal constructor for
 each commonly used class that is exported by the module.  Each constructor
