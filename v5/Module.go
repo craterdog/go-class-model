@@ -2789,14 +2789,17 @@ func Visitor(arguments ...any) VisitorLike {
 
 func FormatModel(model ModelLike) string {
 	var formatter = Formatter()
-	var source = formatter.FormatModel(model)
-	return source
+	return formatter.FormatModel(model)
+}
+
+func MatchesType(tokenValue string, tokenType TokenType) bool {
+	var scannerClass = gra.Scanner()
+	return scannerClass.MatchesType(tokenValue, tokenType)
 }
 
 func ParseSource(source string) ModelLike {
 	var parser = Parser()
-	var model = parser.ParseSource(source)
-	return model
+	return parser.ParseSource(source)
 }
 
 func ValidateModel(model ModelLike) {
