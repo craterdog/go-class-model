@@ -53,7 +53,7 @@ func (c *functionSubsectionClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *functionSubsection_) GetClass() FunctionSubsectionClassLike {
 	return functionSubsectionReference()

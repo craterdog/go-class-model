@@ -48,7 +48,7 @@ func (c *parserClass_) Make() ParserLike {
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *parser_) GetClass() ParserClassLike {
 	return parserReference()

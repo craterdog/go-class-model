@@ -63,7 +63,7 @@ func (c *functionMethodClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *functionMethod_) GetClass() FunctionMethodClassLike {
 	return functionMethodReference()

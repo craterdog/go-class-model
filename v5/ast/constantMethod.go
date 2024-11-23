@@ -57,7 +57,7 @@ func (c *constantMethodClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *constantMethod_) GetClass() ConstantMethodClassLike {
 	return constantMethodReference()

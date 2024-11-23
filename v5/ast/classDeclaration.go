@@ -57,7 +57,7 @@ func (c *classDeclarationClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *classDeclaration_) GetClass() ClassDeclarationClassLike {
 	return classDeclarationReference()

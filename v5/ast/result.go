@@ -52,7 +52,7 @@ func (c *resultClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *result_) GetClass() ResultClassLike {
 	return resultReference()

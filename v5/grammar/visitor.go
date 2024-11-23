@@ -50,7 +50,7 @@ func (c *visitorClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *visitor_) GetClass() VisitorClassLike {
 	return visitorReference()

@@ -52,7 +52,7 @@ func (c *additionalArgumentClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *additionalArgument_) GetClass() AdditionalArgumentClassLike {
 	return additionalArgumentReference()

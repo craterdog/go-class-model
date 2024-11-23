@@ -63,7 +63,7 @@ func (c *constructorMethodClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *constructorMethod_) GetClass() ConstructorMethodClassLike {
 	return constructorMethodReference()

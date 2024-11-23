@@ -52,7 +52,7 @@ func (c *aspectInterfaceClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *aspectInterface_) GetClass() AspectInterfaceClassLike {
 	return aspectInterfaceReference()

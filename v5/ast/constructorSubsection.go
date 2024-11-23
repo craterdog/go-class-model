@@ -53,7 +53,7 @@ func (c *constructorSubsectionClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *constructorSubsection_) GetClass() ConstructorSubsectionClassLike {
 	return constructorSubsectionReference()

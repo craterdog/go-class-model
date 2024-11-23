@@ -52,7 +52,7 @@ func (c *noneClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *none_) GetClass() NoneClassLike {
 	return noneReference()

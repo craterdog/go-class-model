@@ -52,7 +52,7 @@ func (c *mapClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *map_) GetClass() MapClassLike {
 	return mapReference()

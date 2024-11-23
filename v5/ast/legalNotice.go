@@ -52,7 +52,7 @@ func (c *legalNoticeClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *legalNotice_) GetClass() LegalNoticeClassLike {
 	return legalNoticeReference()

@@ -44,7 +44,7 @@ func (c *channelClass_) Make() ChannelLike {
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *channel_) GetClass() ChannelClassLike {
 	return channelReference()

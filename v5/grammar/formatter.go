@@ -47,7 +47,7 @@ func (c *formatterClass_) Make() FormatterLike {
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *formatter_) GetClass() FormatterClassLike {
 	return formatterReference()

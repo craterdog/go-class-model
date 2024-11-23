@@ -57,7 +57,7 @@ func (c *setterMethodClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *setterMethod_) GetClass() SetterMethodClassLike {
 	return setterMethodReference()

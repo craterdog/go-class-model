@@ -57,7 +57,7 @@ func (c *importedPackageClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *importedPackage_) GetClass() ImportedPackageClassLike {
 	return importedPackageReference()

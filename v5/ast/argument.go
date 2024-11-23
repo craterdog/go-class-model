@@ -52,7 +52,7 @@ func (c *argumentClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *argument_) GetClass() ArgumentClassLike {
 	return argumentReference()

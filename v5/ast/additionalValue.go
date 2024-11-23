@@ -52,7 +52,7 @@ func (c *additionalValueClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *additionalValue_) GetClass() AdditionalValueClassLike {
 	return additionalValueReference()

@@ -53,7 +53,7 @@ func (c *multivalueClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *multivalue_) GetClass() MultivalueClassLike {
 	return multivalueReference()

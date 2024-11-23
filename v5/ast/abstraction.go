@@ -58,7 +58,7 @@ func (c *abstractionClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *abstraction_) GetClass() AbstractionClassLike {
 	return abstractionReference()

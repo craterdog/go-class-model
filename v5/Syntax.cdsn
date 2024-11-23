@@ -67,7 +67,7 @@ $PackageImports: "import" "(" ImportedPackage* ")"
 
 $ImportedPackage: name path
 
-$TypeSection: "// Type Declarations" TypeDeclaration*
+$TypeSection: "// TYPE DECLARATIONS" TypeDeclaration*
 
 $TypeDeclaration: Declaration Abstraction Enumeration?
 
@@ -106,7 +106,7 @@ $Value: name Abstraction "=" "iota"
 
 $AdditionalValue: name
 
-$FunctionalSection: "// Functional Declarations" FunctionalDeclaration*
+$FunctionalSection: "// FUNCTIONAL DECLARATIONS" FunctionalDeclaration*
 
 $FunctionalDeclaration: Declaration "func" "(" Parameter* ")" Result
 
@@ -121,7 +121,7 @@ $None: newline
 
 $Multivalue: "(" Parameter+ ")"
 
-$ClassSection: "// Class Declarations" ClassDeclaration+
+$ClassSection: "// CLASS DECLARATIONS" ClassDeclaration+
 
 $ClassDeclaration: Declaration "interface" "{" ClassMethods "}"
 
@@ -139,15 +139,15 @@ $FunctionSubsection: "// Function Methods" FunctionMethod+
 
 $FunctionMethod: name "(" Parameter* ")" Result
 
-$InstanceSection: "// Instance Declarations" InstanceDeclaration+
+$InstanceSection: "// INSTANCE DECLARATIONS" InstanceDeclaration+
 
 $InstanceDeclaration: Declaration "interface" "{" InstanceMethods "}"
 
-$InstanceMethods: PrimarySubsection AttributeSubsection? AspectSubsection?
+$InstanceMethods: PrincipalSubsection AttributeSubsection? AspectSubsection?
 
-$PrimarySubsection: "// Primary Methods" PrimaryMethod+
+$PrincipalSubsection: "// Principal Methods" PrincipalMethod+
 
-$PrimaryMethod: Method
+$PrincipalMethod: Method
 
 $Method: name "(" Parameter* ")" Result?
 
@@ -165,7 +165,7 @@ $AspectSubsection: "// Aspect Interfaces" AspectInterface+
 
 $AspectInterface: Abstraction
 
-$AspectSection: "// Aspect Declarations" AspectDeclaration*
+$AspectSection: "// ASPECT DECLARATIONS" AspectDeclaration*
 
 $AspectDeclaration: Declaration "interface" "{" AspectMethod+ "}"
 

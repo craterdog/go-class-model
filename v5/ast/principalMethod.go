@@ -52,7 +52,7 @@ func (c *principalMethodClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *principalMethod_) GetClass() PrincipalMethodClassLike {
 	return principalMethodReference()

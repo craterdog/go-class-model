@@ -57,7 +57,7 @@ func (c *parameterClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *parameter_) GetClass() ParameterClassLike {
 	return parameterReference()

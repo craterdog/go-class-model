@@ -59,7 +59,7 @@ func (c *declarationClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *declaration_) GetClass() DeclarationClassLike {
 	return declarationReference()

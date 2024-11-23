@@ -53,7 +53,7 @@ func (c *attributeSubsectionClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *attributeSubsection_) GetClass() AttributeSubsectionClassLike {
 	return attributeSubsectionReference()

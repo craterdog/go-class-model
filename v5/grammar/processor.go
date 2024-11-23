@@ -42,7 +42,7 @@ func (c *processorClass_) Make() ProcessorLike {
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *processor_) GetClass() ProcessorClassLike {
 	return processorReference()

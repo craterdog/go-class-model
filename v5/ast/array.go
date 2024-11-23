@@ -44,7 +44,7 @@ func (c *arrayClass_) Make() ArrayLike {
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *array_) GetClass() ArrayClassLike {
 	return arrayReference()

@@ -58,7 +58,7 @@ func (c *constraintsClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *constraints_) GetClass() ConstraintsClassLike {
 	return constraintsReference()

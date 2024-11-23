@@ -57,7 +57,7 @@ func (c *packageHeaderClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *packageHeader_) GetClass() PackageHeaderClassLike {
 	return packageHeaderReference()

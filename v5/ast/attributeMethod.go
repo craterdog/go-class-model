@@ -52,7 +52,7 @@ func (c *attributeMethodClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *attributeMethod_) GetClass() AttributeMethodClassLike {
 	return attributeMethodReference()

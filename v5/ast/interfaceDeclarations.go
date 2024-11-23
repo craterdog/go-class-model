@@ -62,7 +62,7 @@ func (c *interfaceDeclarationsClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *interfaceDeclarations_) GetClass() InterfaceDeclarationsClassLike {
 	return interfaceDeclarationsReference()

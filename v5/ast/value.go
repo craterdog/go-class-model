@@ -57,7 +57,7 @@ func (c *valueClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *value_) GetClass() ValueClassLike {
 	return valueReference()

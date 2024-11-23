@@ -47,7 +47,7 @@ func (c *validatorClass_) Make() ValidatorLike {
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *validator_) GetClass() ValidatorClassLike {
 	return validatorReference()
@@ -998,7 +998,7 @@ func (v *validator_) PostprocessPrefix(
 }
 
 func (v *validator_) PreprocessPrincipalMethod(
-	primaryMethod ast.PrincipalMethodLike,
+	principalMethod ast.PrincipalMethodLike,
 	index uint,
 	size uint,
 ) {
@@ -1012,7 +1012,7 @@ func (v *validator_) ProcessPrincipalMethodSlot(
 }
 
 func (v *validator_) PostprocessPrincipalMethod(
-	primaryMethod ast.PrincipalMethodLike,
+	principalMethod ast.PrincipalMethodLike,
 	index uint,
 	size uint,
 ) {
@@ -1020,7 +1020,7 @@ func (v *validator_) PostprocessPrincipalMethod(
 }
 
 func (v *validator_) PreprocessPrincipalSubsection(
-	primarySubsection ast.PrincipalSubsectionLike,
+	principalSubsection ast.PrincipalSubsectionLike,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -1032,7 +1032,7 @@ func (v *validator_) ProcessPrincipalSubsectionSlot(
 }
 
 func (v *validator_) PostprocessPrincipalSubsection(
-	primarySubsection ast.PrincipalSubsectionLike,
+	principalSubsection ast.PrincipalSubsectionLike,
 ) {
 	// TBD - Add any validation checks.
 }

@@ -53,7 +53,7 @@ func (c *instanceSectionClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *instanceSection_) GetClass() InstanceSectionClassLike {
 	return instanceSectionReference()

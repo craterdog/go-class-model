@@ -53,7 +53,7 @@ func (c *aspectSectionClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *aspectSection_) GetClass() AspectSectionClassLike {
 	return aspectSectionReference()

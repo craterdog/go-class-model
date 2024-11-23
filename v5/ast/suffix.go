@@ -52,7 +52,7 @@ func (c *suffixClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *suffix_) GetClass() SuffixClassLike {
 	return suffixReference()

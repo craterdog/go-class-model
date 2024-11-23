@@ -62,7 +62,7 @@ func (c *modelClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *model_) GetClass() ModelClassLike {
 	return modelReference()

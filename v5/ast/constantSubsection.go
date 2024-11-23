@@ -53,7 +53,7 @@ func (c *constantSubsectionClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *constantSubsection_) GetClass() ConstantSubsectionClassLike {
 	return constantSubsectionReference()

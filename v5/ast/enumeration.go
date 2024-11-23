@@ -58,7 +58,7 @@ func (c *enumerationClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *enumeration_) GetClass() EnumerationClassLike {
 	return enumerationReference()

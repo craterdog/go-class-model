@@ -95,7 +95,7 @@ func (c *scannerClass_) MatchesType(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *scanner_) GetClass() ScannerClassLike {
 	return scannerReference()

@@ -58,7 +58,7 @@ func (c *aspectDeclarationClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *aspectDeclaration_) GetClass() AspectDeclarationClassLike {
 	return aspectDeclarationReference()

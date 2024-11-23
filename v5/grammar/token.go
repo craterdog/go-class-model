@@ -63,7 +63,7 @@ func (c *tokenClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *token_) GetClass() TokenClassLike {
 	return tokenReference()

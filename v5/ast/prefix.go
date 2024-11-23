@@ -52,7 +52,7 @@ func (c *prefixClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *prefix_) GetClass() PrefixClassLike {
 	return prefixReference()

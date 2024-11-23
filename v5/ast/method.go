@@ -60,7 +60,7 @@ func (c *methodClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *method_) GetClass() MethodClassLike {
 	return methodReference()

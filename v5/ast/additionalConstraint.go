@@ -52,7 +52,7 @@ func (c *additionalConstraintClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *additionalConstraint_) GetClass() AdditionalConstraintClassLike {
 	return additionalConstraintReference()

@@ -62,7 +62,7 @@ func (c *packageDeclarationClass_) Make(
 
 // INSTANCE INTERFACE
 
-// Primary Methods
+// Principal Methods
 
 func (v *packageDeclaration_) GetClass() PackageDeclarationClassLike {
 	return packageDeclarationReference()
