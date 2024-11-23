@@ -12,8 +12,8 @@
 
 /*
 ┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 THIS CLASS FILE WAS AUTOMATICALLY GENERATED.                 │
-│                    ANY UPDATES TO IT WILL BE OVERWRITTEN.                    │
+│                 This class file was automatically generated.                 │
+│   Updates to any section other than the Private Methods may be overwritten.  │
 └──────────────────────────────────────────────────────────────────────────────┘
 */
 
@@ -741,11 +741,11 @@ func (v *visitor_) visitInstanceDeclaration(instanceDeclaration ast.InstanceDecl
 }
 
 func (v *visitor_) visitInstanceMethods(instanceMethods ast.InstanceMethodsLike) {
-	// Visit a single primarySubsection rule.
-	var primarySubsection = instanceMethods.GetPrimarySubsection()
-	v.processor_.PreprocessPrimarySubsection(primarySubsection)
-	v.visitPrimarySubsection(primarySubsection)
-	v.processor_.PostprocessPrimarySubsection(primarySubsection)
+	// Visit a single principalSubsection rule.
+	var principalSubsection = instanceMethods.GetPrincipalSubsection()
+	v.processor_.PreprocessPrincipalSubsection(principalSubsection)
+	v.visitPrincipalSubsection(principalSubsection)
+	v.processor_.PostprocessPrincipalSubsection(principalSubsection)
 
 	// Visit slot 1 between references.
 	v.processor_.ProcessInstanceMethodsSlot(1)
@@ -1025,36 +1025,6 @@ func (v *visitor_) visitPrefix(prefix ast.PrefixLike) {
 	}
 }
 
-func (v *visitor_) visitPrimaryMethod(primaryMethod ast.PrimaryMethodLike) {
-	// Visit a single method rule.
-	var method = primaryMethod.GetMethod()
-	v.processor_.PreprocessMethod(method)
-	v.visitMethod(method)
-	v.processor_.PostprocessMethod(method)
-}
-
-func (v *visitor_) visitPrimarySubsection(primarySubsection ast.PrimarySubsectionLike) {
-	// Visit each primaryMethod rule.
-	var primaryMethodIndex uint
-	var primaryMethods = primarySubsection.GetPrimaryMethods().GetIterator()
-	var primaryMethodsSize = uint(primaryMethods.GetSize())
-	for primaryMethods.HasNext() {
-		primaryMethodIndex++
-		var primaryMethod = primaryMethods.GetNext()
-		v.processor_.PreprocessPrimaryMethod(
-			primaryMethod,
-			primaryMethodIndex,
-			primaryMethodsSize,
-		)
-		v.visitPrimaryMethod(primaryMethod)
-		v.processor_.PostprocessPrimaryMethod(
-			primaryMethod,
-			primaryMethodIndex,
-			primaryMethodsSize,
-		)
-	}
-}
-
 func (v *visitor_) visitPrimitiveDeclarations(primitiveDeclarations ast.PrimitiveDeclarationsLike) {
 	// Visit a single typeSection rule.
 	var typeSection = primitiveDeclarations.GetTypeSection()
@@ -1070,6 +1040,36 @@ func (v *visitor_) visitPrimitiveDeclarations(primitiveDeclarations ast.Primitiv
 	v.processor_.PreprocessFunctionalSection(functionalSection)
 	v.visitFunctionalSection(functionalSection)
 	v.processor_.PostprocessFunctionalSection(functionalSection)
+}
+
+func (v *visitor_) visitPrincipalMethod(principalMethod ast.PrincipalMethodLike) {
+	// Visit a single method rule.
+	var method = principalMethod.GetMethod()
+	v.processor_.PreprocessMethod(method)
+	v.visitMethod(method)
+	v.processor_.PostprocessMethod(method)
+}
+
+func (v *visitor_) visitPrincipalSubsection(principalSubsection ast.PrincipalSubsectionLike) {
+	// Visit each principalMethod rule.
+	var principalMethodIndex uint
+	var principalMethods = principalSubsection.GetPrincipalMethods().GetIterator()
+	var principalMethodsSize = uint(principalMethods.GetSize())
+	for principalMethods.HasNext() {
+		principalMethodIndex++
+		var principalMethod = principalMethods.GetNext()
+		v.processor_.PreprocessPrincipalMethod(
+			principalMethod,
+			principalMethodIndex,
+			principalMethodsSize,
+		)
+		v.visitPrincipalMethod(principalMethod)
+		v.processor_.PostprocessPrincipalMethod(
+			principalMethod,
+			principalMethodIndex,
+			principalMethodsSize,
+		)
+	}
 }
 
 func (v *visitor_) visitResult(result ast.ResultLike) {

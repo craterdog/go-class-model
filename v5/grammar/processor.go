@@ -12,8 +12,8 @@
 
 /*
 ┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 THIS CLASS FILE WAS AUTOMATICALLY GENERATED.                 │
-│                    ANY UPDATES TO IT WILL BE OVERWRITTEN.                    │
+│                 This class file was automatically generated.                 │
+│   Updates to any section other than the Private Methods may be overwritten.  │
 └──────────────────────────────────────────────────────────────────────────────┘
 */
 
@@ -840,40 +840,6 @@ func (v *processor_) PostprocessPrefix(
 ) {
 }
 
-func (v *processor_) PreprocessPrimaryMethod(
-	primaryMethod ast.PrimaryMethodLike,
-	index uint,
-	size uint,
-) {
-}
-
-func (v *processor_) ProcessPrimaryMethodSlot(
-	slot uint,
-) {
-}
-
-func (v *processor_) PostprocessPrimaryMethod(
-	primaryMethod ast.PrimaryMethodLike,
-	index uint,
-	size uint,
-) {
-}
-
-func (v *processor_) PreprocessPrimarySubsection(
-	primarySubsection ast.PrimarySubsectionLike,
-) {
-}
-
-func (v *processor_) ProcessPrimarySubsectionSlot(
-	slot uint,
-) {
-}
-
-func (v *processor_) PostprocessPrimarySubsection(
-	primarySubsection ast.PrimarySubsectionLike,
-) {
-}
-
 func (v *processor_) PreprocessPrimitiveDeclarations(
 	primitiveDeclarations ast.PrimitiveDeclarationsLike,
 ) {
@@ -886,6 +852,40 @@ func (v *processor_) ProcessPrimitiveDeclarationsSlot(
 
 func (v *processor_) PostprocessPrimitiveDeclarations(
 	primitiveDeclarations ast.PrimitiveDeclarationsLike,
+) {
+}
+
+func (v *processor_) PreprocessPrincipalMethod(
+	principalMethod ast.PrincipalMethodLike,
+	index uint,
+	size uint,
+) {
+}
+
+func (v *processor_) ProcessPrincipalMethodSlot(
+	slot uint,
+) {
+}
+
+func (v *processor_) PostprocessPrincipalMethod(
+	principalMethod ast.PrincipalMethodLike,
+	index uint,
+	size uint,
+) {
+}
+
+func (v *processor_) PreprocessPrincipalSubsection(
+	principalSubsection ast.PrincipalSubsectionLike,
+) {
+}
+
+func (v *processor_) ProcessPrincipalSubsectionSlot(
+	slot uint,
+) {
+}
+
+func (v *processor_) PostprocessPrincipalSubsection(
+	principalSubsection ast.PrincipalSubsectionLike,
 ) {
 }
 

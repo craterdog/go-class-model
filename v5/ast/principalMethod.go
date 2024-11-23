@@ -12,8 +12,8 @@
 
 /*
 ┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 THIS CLASS FILE WAS AUTOMATICALLY GENERATED.                 │
-│                    ANY UPDATES TO IT WILL BE OVERWRITTEN.                    │
+│                 This class file was automatically generated.                 │
+│   Updates to any section other than the Private Methods may be overwritten.  │
 └──────────────────────────────────────────────────────────────────────────────┘
 */
 
@@ -27,19 +27,19 @@ import (
 
 // Access Function
 
-func PrimaryMethod() PrimaryMethodClassLike {
-	return primaryMethodReference()
+func PrincipalMethod() PrincipalMethodClassLike {
+	return principalMethodReference()
 }
 
 // Constructor Methods
 
-func (c *primaryMethodClass_) Make(
+func (c *principalMethodClass_) Make(
 	method MethodLike,
-) PrimaryMethodLike {
+) PrincipalMethodLike {
 	if uti.IsUndefined(method) {
 		panic("The \"method\" attribute is required by this class.")
 	}
-	var instance = &primaryMethod_{
+	var instance = &principalMethod_{
 		// Initialize the instance attributes.
 		method_: method,
 	}
@@ -54,13 +54,13 @@ func (c *primaryMethodClass_) Make(
 
 // Primary Methods
 
-func (v *primaryMethod_) GetClass() PrimaryMethodClassLike {
-	return primaryMethodReference()
+func (v *principalMethod_) GetClass() PrincipalMethodClassLike {
+	return principalMethodReference()
 }
 
 // Attribute Methods
 
-func (v *primaryMethod_) GetMethod() MethodLike {
+func (v *principalMethod_) GetMethod() MethodLike {
 	return v.method_
 }
 
@@ -70,23 +70,23 @@ func (v *primaryMethod_) GetMethod() MethodLike {
 
 // Instance Structure
 
-type primaryMethod_ struct {
+type principalMethod_ struct {
 	// Declare the instance attributes.
 	method_ MethodLike
 }
 
 // Class Structure
 
-type primaryMethodClass_ struct {
+type principalMethodClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func primaryMethodReference() *primaryMethodClass_ {
-	return primaryMethodReference_
+func principalMethodReference() *principalMethodClass_ {
+	return principalMethodReference_
 }
 
-var primaryMethodReference_ = &primaryMethodClass_{
+var principalMethodReference_ = &principalMethodClass_{
 	// Initialize the class constants.
 }

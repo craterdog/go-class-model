@@ -12,8 +12,8 @@
 
 /*
 ┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 THIS CLASS FILE WAS AUTOMATICALLY GENERATED.                 │
-│                    ANY UPDATES TO IT WILL BE OVERWRITTEN.                    │
+│                 This class file was automatically generated.                 │
+│   Updates to any section other than the Private Methods may be overwritten.  │
 └──────────────────────────────────────────────────────────────────────────────┘
 */
 
@@ -997,42 +997,42 @@ func (v *validator_) PostprocessPrefix(
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessPrimaryMethod(
-	primaryMethod ast.PrimaryMethodLike,
+func (v *validator_) PreprocessPrincipalMethod(
+	primaryMethod ast.PrincipalMethodLike,
 	index uint,
 	size uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) ProcessPrimaryMethodSlot(
+func (v *validator_) ProcessPrincipalMethodSlot(
 	slot uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PostprocessPrimaryMethod(
-	primaryMethod ast.PrimaryMethodLike,
+func (v *validator_) PostprocessPrincipalMethod(
+	primaryMethod ast.PrincipalMethodLike,
 	index uint,
 	size uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessPrimarySubsection(
-	primarySubsection ast.PrimarySubsectionLike,
+func (v *validator_) PreprocessPrincipalSubsection(
+	primarySubsection ast.PrincipalSubsectionLike,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) ProcessPrimarySubsectionSlot(
+func (v *validator_) ProcessPrincipalSubsectionSlot(
 	slot uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PostprocessPrimarySubsection(
-	primarySubsection ast.PrimarySubsectionLike,
+func (v *validator_) PostprocessPrincipalSubsection(
+	primarySubsection ast.PrincipalSubsectionLike,
 ) {
 	// TBD - Add any validation checks.
 }

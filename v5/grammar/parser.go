@@ -2304,9 +2304,9 @@ func (v *parser_) parseInstanceMethods() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single PrimarySubsection rule.
-	var primarySubsection ast.PrimarySubsectionLike
-	primarySubsection, token, ok = v.parsePrimarySubsection()
+	// Attempt to parse a single PrincipalSubsection rule.
+	var principalSubsection ast.PrincipalSubsectionLike
+	principalSubsection, token, ok = v.parsePrincipalSubsection()
 	switch {
 	case ok:
 		// No additional put backs allowed at this point.
@@ -2341,7 +2341,7 @@ func (v *parser_) parseInstanceMethods() (
 	ok = true
 	v.remove(tokens)
 	instanceMethods = ast.InstanceMethods().Make(
-		primarySubsection,
+		principalSubsection,
 		optionalAttributeSubsection,
 		optionalAspectSubsection,
 	)
@@ -3203,94 +3203,6 @@ func (v *parser_) parsePrefix() (
 	return
 }
 
-func (v *parser_) parsePrimaryMethod() (
-	primaryMethod ast.PrimaryMethodLike,
-	token TokenLike,
-	ok bool,
-) {
-	var tokens = col.List[TokenLike]()
-
-	// Attempt to parse a single Method rule.
-	var method ast.MethodLike
-	method, token, ok = v.parseMethod()
-	switch {
-	case ok:
-		// No additional put backs allowed at this point.
-		tokens = nil
-	case uti.IsDefined(tokens):
-		// This is not a single PrimaryMethod rule.
-		v.putBack(tokens)
-		return
-	default:
-		// Found a syntax error.
-		var message = v.formatError("$PrimaryMethod", token)
-		panic(message)
-	}
-
-	// Found a single PrimaryMethod rule.
-	ok = true
-	v.remove(tokens)
-	primaryMethod = ast.PrimaryMethod().Make(method)
-	return
-}
-
-func (v *parser_) parsePrimarySubsection() (
-	primarySubsection ast.PrimarySubsectionLike,
-	token TokenLike,
-	ok bool,
-) {
-	var tokens = col.List[TokenLike]()
-
-	// Attempt to parse a single "// Primary Methods" delimiter.
-	_, token, ok = v.parseDelimiter("// Primary Methods")
-	if !ok {
-		if uti.IsDefined(tokens) {
-			// This is not a single PrimarySubsection rule.
-			v.putBack(tokens)
-			return
-		} else {
-			// Found a syntax error.
-			var message = v.formatError("$PrimarySubsection", token)
-			panic(message)
-		}
-	}
-	if uti.IsDefined(tokens) {
-		tokens.AppendValue(token)
-	}
-
-	// Attempt to parse multiple PrimaryMethod rules.
-	var primaryMethods = col.List[ast.PrimaryMethodLike]()
-primaryMethodsLoop:
-	for count := 0; count < mat.MaxInt; count++ {
-		var primaryMethod ast.PrimaryMethodLike
-		primaryMethod, token, ok = v.parsePrimaryMethod()
-		if !ok {
-			switch {
-			case count >= 1:
-				break primaryMethodsLoop
-			case uti.IsDefined(tokens):
-				// This is not multiple PrimaryMethod rules.
-				v.putBack(tokens)
-				return
-			default:
-				// Found a syntax error.
-				var message = v.formatError("$PrimarySubsection", token)
-				message += "1 or more PrimaryMethod rules are required."
-				panic(message)
-			}
-		}
-		// No additional put backs allowed at this point.
-		tokens = nil
-		primaryMethods.AppendValue(primaryMethod)
-	}
-
-	// Found a single PrimarySubsection rule.
-	ok = true
-	v.remove(tokens)
-	primarySubsection = ast.PrimarySubsection().Make(primaryMethods)
-	return
-}
-
 func (v *parser_) parsePrimitiveDeclarations() (
 	primitiveDeclarations ast.PrimitiveDeclarationsLike,
 	token TokenLike,
@@ -3339,6 +3251,94 @@ func (v *parser_) parsePrimitiveDeclarations() (
 		typeSection,
 		functionalSection,
 	)
+	return
+}
+
+func (v *parser_) parsePrincipalMethod() (
+	principalMethod ast.PrincipalMethodLike,
+	token TokenLike,
+	ok bool,
+) {
+	var tokens = col.List[TokenLike]()
+
+	// Attempt to parse a single Method rule.
+	var method ast.MethodLike
+	method, token, ok = v.parseMethod()
+	switch {
+	case ok:
+		// No additional put backs allowed at this point.
+		tokens = nil
+	case uti.IsDefined(tokens):
+		// This is not a single PrincipalMethod rule.
+		v.putBack(tokens)
+		return
+	default:
+		// Found a syntax error.
+		var message = v.formatError("$PrincipalMethod", token)
+		panic(message)
+	}
+
+	// Found a single PrincipalMethod rule.
+	ok = true
+	v.remove(tokens)
+	principalMethod = ast.PrincipalMethod().Make(method)
+	return
+}
+
+func (v *parser_) parsePrincipalSubsection() (
+	principalSubsection ast.PrincipalSubsectionLike,
+	token TokenLike,
+	ok bool,
+) {
+	var tokens = col.List[TokenLike]()
+
+	// Attempt to parse a single "// Principal Methods" delimiter.
+	_, token, ok = v.parseDelimiter("// Principal Methods")
+	if !ok {
+		if uti.IsDefined(tokens) {
+			// This is not a single PrincipalSubsection rule.
+			v.putBack(tokens)
+			return
+		} else {
+			// Found a syntax error.
+			var message = v.formatError("$PrincipalSubsection", token)
+			panic(message)
+		}
+	}
+	if uti.IsDefined(tokens) {
+		tokens.AppendValue(token)
+	}
+
+	// Attempt to parse multiple PrincipalMethod rules.
+	var principalMethods = col.List[ast.PrincipalMethodLike]()
+principalMethodsLoop:
+	for count := 0; count < mat.MaxInt; count++ {
+		var principalMethod ast.PrincipalMethodLike
+		principalMethod, token, ok = v.parsePrincipalMethod()
+		if !ok {
+			switch {
+			case count >= 1:
+				break principalMethodsLoop
+			case uti.IsDefined(tokens):
+				// This is not multiple PrincipalMethod rules.
+				v.putBack(tokens)
+				return
+			default:
+				// Found a syntax error.
+				var message = v.formatError("$PrincipalSubsection", token)
+				message += "1 or more PrincipalMethod rules are required."
+				panic(message)
+			}
+		}
+		// No additional put backs allowed at this point.
+		tokens = nil
+		principalMethods.AppendValue(principalMethod)
+	}
+
+	// Found a single PrincipalSubsection rule.
+	ok = true
+	v.remove(tokens)
+	principalSubsection = ast.PrincipalSubsection().Make(principalMethods)
 	return
 }
 
@@ -3936,9 +3936,9 @@ var parserReference_ = &parserClass_{
 			"$FunctionMethod":        `name "(" Parameter* ")" Result`,
 			"$InstanceSection":       `"// INSTANCE DECLARATIONS" InstanceDeclaration+`,
 			"$InstanceDeclaration":   `Declaration "interface" "{" InstanceMethods "}"`,
-			"$InstanceMethods":       `PrimarySubsection AttributeSubsection? AspectSubsection?`,
-			"$PrimarySubsection":     `"// Primary Methods" PrimaryMethod+`,
-			"$PrimaryMethod":         `Method`,
+			"$InstanceMethods":       `PrincipalSubsection AttributeSubsection? AspectSubsection?`,
+			"$PrincipalSubsection":   `"// Principal Methods" PrincipalMethod+`,
+			"$PrincipalMethod":       `Method`,
 			"$Method":                `name "(" Parameter* ")" Result?`,
 			"$AttributeSubsection":   `"// Attribute Methods" AttributeMethod+`,
 			"$AttributeMethod": `

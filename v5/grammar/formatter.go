@@ -12,8 +12,8 @@
 
 /*
 ┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 THIS CLASS FILE WAS AUTOMATICALLY GENERATED.                 │
-│                    ANY UPDATES TO IT WILL BE OVERWRITTEN.                    │
+│                 This class file was automatically generated.                 │
+│   Updates to any section other than the Private Methods may be overwritten.  │
 └──────────────────────────────────────────────────────────────────────────────┘
 */
 
@@ -503,9 +503,9 @@ func (v *formatter_) PostprocessParameter(
 	}
 }
 
-func (v *formatter_) PreprocessPrimarySubsection(publicSubsection ast.PrimarySubsectionLike) {
+func (v *formatter_) PreprocessPrincipalSubsection(publicSubsection ast.PrincipalSubsectionLike) {
 	v.appendNewline()
-	v.appendString("// Primary Methods")
+	v.appendString("// Principal Methods")
 }
 
 func (v *formatter_) PreprocessResult(result ast.ResultLike) {

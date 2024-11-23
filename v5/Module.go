@@ -12,15 +12,14 @@
 
 /*
 ┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│              THIS "Module.go" FILE WAS AUTOMATICALLY GENERATED.              │
-│                    ANY UPDATES TO IT WILL BE OVERWRITTEN.                    │
+│              This "Module.go" file was automatically generated.              │
+│  Updates to any section other than the GLOBAL FUNCTIONS may be overwritten.  │
 └──────────────────────────────────────────────────────────────────────────────┘
-
-Package "module" defines type aliases for the commonly used types defined in the
-packages contained in this module.  It also provides a universal constructor for
-each commonly used class that is exported by the module.  Each constructor
+Package "module" declares type aliases for the commonly used types declared in
+the packages contained in this module.  It also provides a universal constructor
+for each commonly used class that is exported by the module.  Each constructor
 delegates the actual construction process to its corresponding concrete class
-defined in the corresponding package contained within this module.
+declared in the corresponding package contained within this module.
 
 For detailed documentation on this entire module refer to the wiki:
   - github.com/craterdog/go-class-model/wiki
@@ -86,9 +85,9 @@ type (
 	PackageImportsLike        = ast.PackageImportsLike
 	ParameterLike             = ast.ParameterLike
 	PrefixLike                = ast.PrefixLike
-	PrimaryMethodLike         = ast.PrimaryMethodLike
-	PrimarySubsectionLike     = ast.PrimarySubsectionLike
 	PrimitiveDeclarationsLike = ast.PrimitiveDeclarationsLike
+	PrincipalMethodLike       = ast.PrincipalMethodLike
+	PrincipalSubsectionLike   = ast.PrincipalSubsectionLike
 	ResultLike                = ast.ResultLike
 	SetterMethodLike          = ast.SetterMethodLike
 	SuffixLike                = ast.SuffixLike
@@ -1534,8 +1533,8 @@ func InstanceMethods(arguments ...any) InstanceMethodsLike {
 	var argumentTypes string
 	for _, argument := range arguments {
 		switch actual := argument.(type) {
-		case PrimarySubsectionLike:
-			argumentTypes += "PrimarySubsectionLike, "
+		case PrincipalSubsectionLike:
+			argumentTypes += "PrincipalSubsectionLike, "
 		case AttributeSubsectionLike:
 			argumentTypes += "AttributeSubsectionLike, "
 		case AspectSubsectionLike:
@@ -1558,12 +1557,12 @@ func InstanceMethods(arguments ...any) InstanceMethodsLike {
 	// Call the corresponding constructor.
 	var instance_ InstanceMethodsLike
 	switch argumentTypes {
-	case "PrimarySubsectionLike, AttributeSubsectionLike, AspectSubsectionLike":
-		var primarySubsection = arguments[0].(PrimarySubsectionLike)
+	case "PrincipalSubsectionLike, AttributeSubsectionLike, AspectSubsectionLike":
+		var principalSubsection = arguments[0].(PrincipalSubsectionLike)
 		var optionalAttributeSubsection = arguments[1].(AttributeSubsectionLike)
 		var optionalAspectSubsection = arguments[2].(AspectSubsectionLike)
 		instance_ = ast.InstanceMethods().Make(
-			primarySubsection,
+			principalSubsection,
 			optionalAttributeSubsection,
 			optionalAspectSubsection,
 		)
@@ -2135,86 +2134,6 @@ func Prefix(arguments ...any) PrefixLike {
 	return instance_
 }
 
-func PrimaryMethod(arguments ...any) PrimaryMethodLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case MethodLike:
-			argumentTypes += "MethodLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the PrimaryMethod constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma.
-		argumentTypes = argumentTypes[:length-1]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ PrimaryMethodLike
-	switch argumentTypes {
-	case "MethodLike":
-		var method = arguments[0].(MethodLike)
-		instance_ = ast.PrimaryMethod().Make(
-			method,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No PrimaryMethod constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
-}
-
-func PrimarySubsection(arguments ...any) PrimarySubsectionLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case abs.Sequential[PrimaryMethodLike]:
-			argumentTypes += "abs.Sequential[PrimaryMethodLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the PrimarySubsection constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma.
-		argumentTypes = argumentTypes[:length-1]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ PrimarySubsectionLike
-	switch argumentTypes {
-	case "abs.Sequential[PrimaryMethodLike]":
-		var primaryMethods = arguments[0].(abs.Sequential[PrimaryMethodLike])
-		instance_ = ast.PrimarySubsection().Make(
-			primaryMethods,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No PrimarySubsection constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
-}
-
 func PrimitiveDeclarations(arguments ...any) PrimitiveDeclarationsLike {
 	// Analyze the arguments.
 	var argumentTypes string
@@ -2252,6 +2171,86 @@ func PrimitiveDeclarations(arguments ...any) PrimitiveDeclarationsLike {
 	default:
 		var message = fmt.Sprintf(
 			"No PrimitiveDeclarations constructor matching the arguments was found: %v\n",
+			arguments,
+		)
+		panic(message)
+	}
+	return instance_
+}
+
+func PrincipalMethod(arguments ...any) PrincipalMethodLike {
+	// Analyze the arguments.
+	var argumentTypes string
+	for _, argument := range arguments {
+		switch actual := argument.(type) {
+		case MethodLike:
+			argumentTypes += "MethodLike, "
+		default:
+			var message = fmt.Sprintf(
+				"An unexpected argument type was passed into the PrincipalMethod constructor: %v of type %T",
+				argument,
+				actual,
+			)
+			panic(message)
+		}
+	}
+	var length = len(argumentTypes)
+	if length > 0 {
+		// Remove the trailing comma.
+		argumentTypes = argumentTypes[:length-1]
+	}
+
+	// Call the corresponding constructor.
+	var instance_ PrincipalMethodLike
+	switch argumentTypes {
+	case "MethodLike":
+		var method = arguments[0].(MethodLike)
+		instance_ = ast.PrincipalMethod().Make(
+			method,
+		)
+	default:
+		var message = fmt.Sprintf(
+			"No PrincipalMethod constructor matching the arguments was found: %v\n",
+			arguments,
+		)
+		panic(message)
+	}
+	return instance_
+}
+
+func PrincipalSubsection(arguments ...any) PrincipalSubsectionLike {
+	// Analyze the arguments.
+	var argumentTypes string
+	for _, argument := range arguments {
+		switch actual := argument.(type) {
+		case abs.Sequential[PrincipalMethodLike]:
+			argumentTypes += "abs.Sequential[PrincipalMethodLike], "
+		default:
+			var message = fmt.Sprintf(
+				"An unexpected argument type was passed into the PrincipalSubsection constructor: %v of type %T",
+				argument,
+				actual,
+			)
+			panic(message)
+		}
+	}
+	var length = len(argumentTypes)
+	if length > 0 {
+		// Remove the trailing comma.
+		argumentTypes = argumentTypes[:length-1]
+	}
+
+	// Call the corresponding constructor.
+	var instance_ PrincipalSubsectionLike
+	switch argumentTypes {
+	case "abs.Sequential[PrincipalMethodLike]":
+		var principalMethods = arguments[0].(abs.Sequential[PrincipalMethodLike])
+		instance_ = ast.PrincipalSubsection().Make(
+			principalMethods,
+		)
+	default:
+		var message = fmt.Sprintf(
+			"No PrincipalSubsection constructor matching the arguments was found: %v\n",
 			arguments,
 		)
 		panic(message)

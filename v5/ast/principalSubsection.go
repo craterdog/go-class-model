@@ -12,8 +12,8 @@
 
 /*
 ┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 THIS CLASS FILE WAS AUTOMATICALLY GENERATED.                 │
-│                    ANY UPDATES TO IT WILL BE OVERWRITTEN.                    │
+│                 This class file was automatically generated.                 │
+│   Updates to any section other than the Private Methods may be overwritten.  │
 └──────────────────────────────────────────────────────────────────────────────┘
 */
 
@@ -28,21 +28,21 @@ import (
 
 // Access Function
 
-func PrimarySubsection() PrimarySubsectionClassLike {
-	return primarySubsectionReference()
+func PrincipalSubsection() PrincipalSubsectionClassLike {
+	return principalSubsectionReference()
 }
 
 // Constructor Methods
 
-func (c *primarySubsectionClass_) Make(
-	primaryMethods abs.Sequential[PrimaryMethodLike],
-) PrimarySubsectionLike {
-	if uti.IsUndefined(primaryMethods) {
-		panic("The \"primaryMethods\" attribute is required by this class.")
+func (c *principalSubsectionClass_) Make(
+	principalMethods abs.Sequential[PrincipalMethodLike],
+) PrincipalSubsectionLike {
+	if uti.IsUndefined(principalMethods) {
+		panic("The \"principalMethods\" attribute is required by this class.")
 	}
-	var instance = &primarySubsection_{
+	var instance = &principalSubsection_{
 		// Initialize the instance attributes.
-		primaryMethods_: primaryMethods,
+		principalMethods_: principalMethods,
 	}
 	return instance
 }
@@ -55,14 +55,14 @@ func (c *primarySubsectionClass_) Make(
 
 // Primary Methods
 
-func (v *primarySubsection_) GetClass() PrimarySubsectionClassLike {
-	return primarySubsectionReference()
+func (v *principalSubsection_) GetClass() PrincipalSubsectionClassLike {
+	return principalSubsectionReference()
 }
 
 // Attribute Methods
 
-func (v *primarySubsection_) GetPrimaryMethods() abs.Sequential[PrimaryMethodLike] {
-	return v.primaryMethods_
+func (v *principalSubsection_) GetPrincipalMethods() abs.Sequential[PrincipalMethodLike] {
+	return v.principalMethods_
 }
 
 // PROTECTED INTERFACE
@@ -71,23 +71,23 @@ func (v *primarySubsection_) GetPrimaryMethods() abs.Sequential[PrimaryMethodLik
 
 // Instance Structure
 
-type primarySubsection_ struct {
+type principalSubsection_ struct {
 	// Declare the instance attributes.
-	primaryMethods_ abs.Sequential[PrimaryMethodLike]
+	principalMethods_ abs.Sequential[PrincipalMethodLike]
 }
 
 // Class Structure
 
-type primarySubsectionClass_ struct {
+type principalSubsectionClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func primarySubsectionReference() *primarySubsectionClass_ {
-	return primarySubsectionReference_
+func principalSubsectionReference() *principalSubsectionClass_ {
+	return principalSubsectionReference_
 }
 
-var primarySubsectionReference_ = &primarySubsectionClass_{
+var principalSubsectionReference_ = &principalSubsectionClass_{
 	// Initialize the class constants.
 }
