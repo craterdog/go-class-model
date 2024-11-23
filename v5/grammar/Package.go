@@ -45,7 +45,7 @@ import (
 	abs "github.com/craterdog/go-collection-framework/v4/collection"
 )
 
-// Type Declarations
+// TYPE DECLARATIONS
 
 /*
 TokenType is a constrained type representing any token type recognized by a
@@ -63,9 +63,9 @@ const (
 	SpaceToken
 )
 
-// Functional Declarations
+// FUNCTIONAL DECLARATIONS
 
-// Class Declarations
+// CLASS DECLARATIONS
 
 /*
 FormatterClassLike is a class interface that defines the complete set of
@@ -165,7 +165,7 @@ type VisitorClassLike interface {
 	) VisitorLike
 }
 
-// Instance Declarations
+// INSTANCE DECLARATIONS
 
 /*
 FormatterLike is an instance interface that defines the complete set of
@@ -264,7 +264,7 @@ type VisitorLike interface {
 	)
 }
 
-// Aspect Declarations
+// ASPECT DECLARATIONS
 
 /*
 Methodical defines the set of method signatures that must be supported

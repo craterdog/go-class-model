@@ -168,7 +168,7 @@ func (v *formatter_) PreprocessAspectMethod(
 
 func (v *formatter_) PreprocessAspectSection(aspectSection ast.AspectSectionLike) {
 	v.appendNewline()
-	v.appendString("// Aspect Declarations")
+	v.appendString("// ASPECT DECLARATIONS")
 	v.appendNewline()
 }
 
@@ -225,7 +225,7 @@ func (v *formatter_) PostprocessClassDeclaration(
 
 func (v *formatter_) PreprocessClassSection(classSection ast.ClassSectionLike) {
 	v.appendNewline()
-	v.appendString("// Class Declarations")
+	v.appendString("// CLASS DECLARATIONS")
 	v.appendNewline()
 }
 
@@ -359,7 +359,7 @@ func (v *formatter_) PostprocessFunctionalDeclaration(
 
 func (v *formatter_) PreprocessFunctionalSection(functionalSection ast.FunctionalSectionLike) {
 	v.appendNewline()
-	v.appendString("// Functional Declarations")
+	v.appendString("// FUNCTIONAL DECLARATIONS")
 	v.appendNewline()
 }
 
@@ -411,7 +411,7 @@ func (v *formatter_) PostprocessInstanceDeclaration(
 
 func (v *formatter_) PreprocessInstanceSection(instanceSection ast.InstanceSectionLike) {
 	v.appendNewline()
-	v.appendString("// Instance Declarations")
+	v.appendString("// INSTANCE DECLARATIONS")
 	v.appendNewline()
 }
 
@@ -556,7 +556,7 @@ func (v *formatter_) PostprocessTypeDeclaration(
 
 func (v *formatter_) PreprocessTypeSection(typeSection ast.TypeSectionLike) {
 	v.appendNewline()
-	v.appendString("// Type Declarations")
+	v.appendString("// TYPE DECLARATIONS")
 	v.appendNewline()
 }
 

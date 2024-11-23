@@ -39,11 +39,11 @@ import (
 	abs "github.com/craterdog/go-collection-framework/v4/collection"
 )
 
-// Type Declarations
+// TYPE DECLARATIONS
 
-// Functional Declarations
+// FUNCTIONAL DECLARATIONS
 
-// Class Declarations
+// CLASS DECLARATIONS
 
 /*
 AbstractionClassLike is a class interface that defines the complete set
@@ -753,7 +753,7 @@ type ValueClassLike interface {
 	) ValueLike
 }
 
-// Instance Declarations
+// INSTANCE DECLARATIONS
 
 /*
 AbstractionLike is an instance interface that defines the complete set
@@ -1517,4 +1517,4 @@ type ValueLike interface {
 	GetAbstraction() AbstractionLike
 }
 
-// Aspect Declarations
+// ASPECT DECLARATIONS
