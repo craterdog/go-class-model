@@ -508,6 +508,18 @@ func (v *formatter_) ProcessMethodSlot(
 	}
 }
 
+func (v *formatter_) PreprocessMultivalue(
+	multivalue ast.MultivalueLike,
+) {
+	v.appendString("(")
+}
+
+func (v *formatter_) PostprocessMultivalue(
+	multivalue ast.MultivalueLike,
+) {
+	v.appendString(")")
+}
+
 func (v *formatter_) PostprocessPackageDeclaration(
 	packageDeclaration_ ast.PackageDeclarationLike,
 ) {
@@ -536,18 +548,6 @@ func (v *formatter_) PostprocessPackageImports(
 	if !packageImports.GetImportedPackages().IsEmpty() {
 		v.appendNewline()
 	}
-	v.appendString(")")
-}
-
-func (v *formatter_) PreprocessMultivalue(
-	multivalue ast.MultivalueLike,
-) {
-	v.appendString("(")
-}
-
-func (v *formatter_) PostprocessMultivalue(
-	multivalue ast.MultivalueLike,
-) {
 	v.appendString(")")
 }
 
