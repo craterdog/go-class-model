@@ -68,7 +68,9 @@ func (v *visitor_) VisitModel(
 
 // Private Methods
 
-func (v *visitor_) visitAbstraction(abstraction ast.AbstractionLike) {
+func (v *visitor_) visitAbstraction(
+	abstraction ast.AbstractionLike,
+) {
 	// Visit an optional prefix rule.
 	var optionalPrefix = abstraction.GetOptionalPrefix()
 	if uti.IsDefined(optionalPrefix) {
@@ -107,7 +109,9 @@ func (v *visitor_) visitAbstraction(abstraction ast.AbstractionLike) {
 	}
 }
 
-func (v *visitor_) visitAdditionalArgument(additionalArgument ast.AdditionalArgumentLike) {
+func (v *visitor_) visitAdditionalArgument(
+	additionalArgument ast.AdditionalArgumentLike,
+) {
 	// Visit a single argument rule.
 	var argument = additionalArgument.GetArgument()
 	v.processor_.PreprocessArgument(argument)
@@ -115,7 +119,9 @@ func (v *visitor_) visitAdditionalArgument(additionalArgument ast.AdditionalArgu
 	v.processor_.PostprocessArgument(argument)
 }
 
-func (v *visitor_) visitAdditionalConstraint(additionalConstraint ast.AdditionalConstraintLike) {
+func (v *visitor_) visitAdditionalConstraint(
+	additionalConstraint ast.AdditionalConstraintLike,
+) {
 	// Visit a single constraint rule.
 	var constraint = additionalConstraint.GetConstraint()
 	v.processor_.PreprocessConstraint(constraint)
@@ -123,13 +129,17 @@ func (v *visitor_) visitAdditionalConstraint(additionalConstraint ast.Additional
 	v.processor_.PostprocessConstraint(constraint)
 }
 
-func (v *visitor_) visitAdditionalValue(additionalValue ast.AdditionalValueLike) {
+func (v *visitor_) visitAdditionalValue(
+	additionalValue ast.AdditionalValueLike,
+) {
 	// Visit a single name token.
 	var name = additionalValue.GetName()
 	v.processor_.ProcessName(name)
 }
 
-func (v *visitor_) visitArgument(argument ast.ArgumentLike) {
+func (v *visitor_) visitArgument(
+	argument ast.ArgumentLike,
+) {
 	// Visit a single abstraction rule.
 	var abstraction = argument.GetAbstraction()
 	v.processor_.PreprocessAbstraction(abstraction)
@@ -137,7 +147,9 @@ func (v *visitor_) visitArgument(argument ast.ArgumentLike) {
 	v.processor_.PostprocessAbstraction(abstraction)
 }
 
-func (v *visitor_) visitArguments(arguments ast.ArgumentsLike) {
+func (v *visitor_) visitArguments(
+	arguments ast.ArgumentsLike,
+) {
 	// Visit a single argument rule.
 	var argument = arguments.GetArgument()
 	v.processor_.PreprocessArgument(argument)
@@ -168,9 +180,14 @@ func (v *visitor_) visitArguments(arguments ast.ArgumentsLike) {
 	}
 }
 
-func (v *visitor_) visitArray(array ast.ArrayLike) {}
+func (v *visitor_) visitArray(
+	array ast.ArrayLike,
+) {
+}
 
-func (v *visitor_) visitAspectDeclaration(aspectDeclaration ast.AspectDeclarationLike) {
+func (v *visitor_) visitAspectDeclaration(
+	aspectDeclaration ast.AspectDeclarationLike,
+) {
 	// Visit a single declaration rule.
 	var declaration = aspectDeclaration.GetDeclaration()
 	v.processor_.PreprocessDeclaration(declaration)
@@ -201,7 +218,9 @@ func (v *visitor_) visitAspectDeclaration(aspectDeclaration ast.AspectDeclaratio
 	}
 }
 
-func (v *visitor_) visitAspectInterface(aspectInterface ast.AspectInterfaceLike) {
+func (v *visitor_) visitAspectInterface(
+	aspectInterface ast.AspectInterfaceLike,
+) {
 	// Visit a single abstraction rule.
 	var abstraction = aspectInterface.GetAbstraction()
 	v.processor_.PreprocessAbstraction(abstraction)
@@ -209,7 +228,9 @@ func (v *visitor_) visitAspectInterface(aspectInterface ast.AspectInterfaceLike)
 	v.processor_.PostprocessAbstraction(abstraction)
 }
 
-func (v *visitor_) visitAspectMethod(aspectMethod ast.AspectMethodLike) {
+func (v *visitor_) visitAspectMethod(
+	aspectMethod ast.AspectMethodLike,
+) {
 	// Visit a single method rule.
 	var method = aspectMethod.GetMethod()
 	v.processor_.PreprocessMethod(method)
@@ -217,7 +238,9 @@ func (v *visitor_) visitAspectMethod(aspectMethod ast.AspectMethodLike) {
 	v.processor_.PostprocessMethod(method)
 }
 
-func (v *visitor_) visitAspectSection(aspectSection ast.AspectSectionLike) {
+func (v *visitor_) visitAspectSection(
+	aspectSection ast.AspectSectionLike,
+) {
 	// Visit each aspectDeclaration rule.
 	var aspectDeclarationIndex uint
 	var aspectDeclarations = aspectSection.GetAspectDeclarations().GetIterator()
@@ -239,7 +262,9 @@ func (v *visitor_) visitAspectSection(aspectSection ast.AspectSectionLike) {
 	}
 }
 
-func (v *visitor_) visitAspectSubsection(aspectSubsection ast.AspectSubsectionLike) {
+func (v *visitor_) visitAspectSubsection(
+	aspectSubsection ast.AspectSubsectionLike,
+) {
 	// Visit each aspectInterface rule.
 	var aspectInterfaceIndex uint
 	var aspectInterfaces = aspectSubsection.GetAspectInterfaces().GetIterator()
@@ -261,7 +286,9 @@ func (v *visitor_) visitAspectSubsection(aspectSubsection ast.AspectSubsectionLi
 	}
 }
 
-func (v *visitor_) visitAttributeMethod(attributeMethod ast.AttributeMethodLike) {
+func (v *visitor_) visitAttributeMethod(
+	attributeMethod ast.AttributeMethodLike,
+) {
 	// Visit the possible attributeMethod types.
 	switch actual := attributeMethod.GetAny().(type) {
 	case ast.GetterMethodLike:
@@ -282,7 +309,9 @@ func (v *visitor_) visitAttributeMethod(attributeMethod ast.AttributeMethodLike)
 	}
 }
 
-func (v *visitor_) visitAttributeSubsection(attributeSubsection ast.AttributeSubsectionLike) {
+func (v *visitor_) visitAttributeSubsection(
+	attributeSubsection ast.AttributeSubsectionLike,
+) {
 	// Visit each attributeMethod rule.
 	var attributeMethodIndex uint
 	var attributeMethods = attributeSubsection.GetAttributeMethods().GetIterator()
@@ -304,9 +333,14 @@ func (v *visitor_) visitAttributeSubsection(attributeSubsection ast.AttributeSub
 	}
 }
 
-func (v *visitor_) visitChannel(channel ast.ChannelLike) {}
+func (v *visitor_) visitChannel(
+	channel ast.ChannelLike,
+) {
+}
 
-func (v *visitor_) visitClassDeclaration(classDeclaration ast.ClassDeclarationLike) {
+func (v *visitor_) visitClassDeclaration(
+	classDeclaration ast.ClassDeclarationLike,
+) {
 	// Visit a single declaration rule.
 	var declaration = classDeclaration.GetDeclaration()
 	v.processor_.PreprocessDeclaration(declaration)
@@ -323,7 +357,9 @@ func (v *visitor_) visitClassDeclaration(classDeclaration ast.ClassDeclarationLi
 	v.processor_.PostprocessClassMethods(classMethods)
 }
 
-func (v *visitor_) visitClassMethods(classMethods ast.ClassMethodsLike) {
+func (v *visitor_) visitClassMethods(
+	classMethods ast.ClassMethodsLike,
+) {
 	// Visit a single constructorSubsection rule.
 	var constructorSubsection = classMethods.GetConstructorSubsection()
 	v.processor_.PreprocessConstructorSubsection(constructorSubsection)
@@ -353,7 +389,9 @@ func (v *visitor_) visitClassMethods(classMethods ast.ClassMethodsLike) {
 	}
 }
 
-func (v *visitor_) visitClassSection(classSection ast.ClassSectionLike) {
+func (v *visitor_) visitClassSection(
+	classSection ast.ClassSectionLike,
+) {
 	// Visit each classDeclaration rule.
 	var classDeclarationIndex uint
 	var classDeclarations = classSection.GetClassDeclarations().GetIterator()
@@ -375,7 +413,9 @@ func (v *visitor_) visitClassSection(classSection ast.ClassSectionLike) {
 	}
 }
 
-func (v *visitor_) visitConstantMethod(constantMethod ast.ConstantMethodLike) {
+func (v *visitor_) visitConstantMethod(
+	constantMethod ast.ConstantMethodLike,
+) {
 	// Visit a single name token.
 	var name = constantMethod.GetName()
 	v.processor_.ProcessName(name)
@@ -390,7 +430,9 @@ func (v *visitor_) visitConstantMethod(constantMethod ast.ConstantMethodLike) {
 	v.processor_.PostprocessAbstraction(abstraction)
 }
 
-func (v *visitor_) visitConstantSubsection(constantSubsection ast.ConstantSubsectionLike) {
+func (v *visitor_) visitConstantSubsection(
+	constantSubsection ast.ConstantSubsectionLike,
+) {
 	// Visit each constantMethod rule.
 	var constantMethodIndex uint
 	var constantMethods = constantSubsection.GetConstantMethods().GetIterator()
@@ -412,7 +454,9 @@ func (v *visitor_) visitConstantSubsection(constantSubsection ast.ConstantSubsec
 	}
 }
 
-func (v *visitor_) visitConstraint(constraint ast.ConstraintLike) {
+func (v *visitor_) visitConstraint(
+	constraint ast.ConstraintLike,
+) {
 	// Visit a single name token.
 	var name = constraint.GetName()
 	v.processor_.ProcessName(name)
@@ -427,7 +471,9 @@ func (v *visitor_) visitConstraint(constraint ast.ConstraintLike) {
 	v.processor_.PostprocessAbstraction(abstraction)
 }
 
-func (v *visitor_) visitConstraints(constraints ast.ConstraintsLike) {
+func (v *visitor_) visitConstraints(
+	constraints ast.ConstraintsLike,
+) {
 	// Visit a single constraint rule.
 	var constraint = constraints.GetConstraint()
 	v.processor_.PreprocessConstraint(constraint)
@@ -458,7 +504,9 @@ func (v *visitor_) visitConstraints(constraints ast.ConstraintsLike) {
 	}
 }
 
-func (v *visitor_) visitConstructorMethod(constructorMethod ast.ConstructorMethodLike) {
+func (v *visitor_) visitConstructorMethod(
+	constructorMethod ast.ConstructorMethodLike,
+) {
 	// Visit a single name token.
 	var name = constructorMethod.GetName()
 	v.processor_.ProcessName(name)
@@ -496,7 +544,9 @@ func (v *visitor_) visitConstructorMethod(constructorMethod ast.ConstructorMetho
 	v.processor_.PostprocessAbstraction(abstraction)
 }
 
-func (v *visitor_) visitConstructorSubsection(constructorSubsection ast.ConstructorSubsectionLike) {
+func (v *visitor_) visitConstructorSubsection(
+	constructorSubsection ast.ConstructorSubsectionLike,
+) {
 	// Visit each constructorMethod rule.
 	var constructorMethodIndex uint
 	var constructorMethods = constructorSubsection.GetConstructorMethods().GetIterator()
@@ -518,7 +568,9 @@ func (v *visitor_) visitConstructorSubsection(constructorSubsection ast.Construc
 	}
 }
 
-func (v *visitor_) visitDeclaration(declaration ast.DeclarationLike) {
+func (v *visitor_) visitDeclaration(
+	declaration ast.DeclarationLike,
+) {
 	// Visit a single comment token.
 	var comment = declaration.GetComment()
 	v.processor_.ProcessComment(comment)
@@ -542,7 +594,9 @@ func (v *visitor_) visitDeclaration(declaration ast.DeclarationLike) {
 	}
 }
 
-func (v *visitor_) visitEnumeration(enumeration ast.EnumerationLike) {
+func (v *visitor_) visitEnumeration(
+	enumeration ast.EnumerationLike,
+) {
 	// Visit a single value rule.
 	var value = enumeration.GetValue()
 	v.processor_.PreprocessValue(value)
@@ -573,7 +627,9 @@ func (v *visitor_) visitEnumeration(enumeration ast.EnumerationLike) {
 	}
 }
 
-func (v *visitor_) visitFunctionMethod(functionMethod ast.FunctionMethodLike) {
+func (v *visitor_) visitFunctionMethod(
+	functionMethod ast.FunctionMethodLike,
+) {
 	// Visit a single name token.
 	var name = functionMethod.GetName()
 	v.processor_.ProcessName(name)
@@ -611,7 +667,9 @@ func (v *visitor_) visitFunctionMethod(functionMethod ast.FunctionMethodLike) {
 	v.processor_.PostprocessResult(result)
 }
 
-func (v *visitor_) visitFunctionSubsection(functionSubsection ast.FunctionSubsectionLike) {
+func (v *visitor_) visitFunctionSubsection(
+	functionSubsection ast.FunctionSubsectionLike,
+) {
 	// Visit each functionMethod rule.
 	var functionMethodIndex uint
 	var functionMethods = functionSubsection.GetFunctionMethods().GetIterator()
@@ -633,7 +691,9 @@ func (v *visitor_) visitFunctionSubsection(functionSubsection ast.FunctionSubsec
 	}
 }
 
-func (v *visitor_) visitFunctionalDeclaration(functionalDeclaration ast.FunctionalDeclarationLike) {
+func (v *visitor_) visitFunctionalDeclaration(
+	functionalDeclaration ast.FunctionalDeclarationLike,
+) {
 	// Visit a single declaration rule.
 	var declaration = functionalDeclaration.GetDeclaration()
 	v.processor_.PreprocessDeclaration(declaration)
@@ -673,7 +733,9 @@ func (v *visitor_) visitFunctionalDeclaration(functionalDeclaration ast.Function
 	v.processor_.PostprocessResult(result)
 }
 
-func (v *visitor_) visitFunctionalSection(functionalSection ast.FunctionalSectionLike) {
+func (v *visitor_) visitFunctionalSection(
+	functionalSection ast.FunctionalSectionLike,
+) {
 	// Visit each functionalDeclaration rule.
 	var functionalDeclarationIndex uint
 	var functionalDeclarations = functionalSection.GetFunctionalDeclarations().GetIterator()
@@ -695,7 +757,9 @@ func (v *visitor_) visitFunctionalSection(functionalSection ast.FunctionalSectio
 	}
 }
 
-func (v *visitor_) visitGetterMethod(getterMethod ast.GetterMethodLike) {
+func (v *visitor_) visitGetterMethod(
+	getterMethod ast.GetterMethodLike,
+) {
 	// Visit a single name token.
 	var name = getterMethod.GetName()
 	v.processor_.ProcessName(name)
@@ -710,7 +774,9 @@ func (v *visitor_) visitGetterMethod(getterMethod ast.GetterMethodLike) {
 	v.processor_.PostprocessAbstraction(abstraction)
 }
 
-func (v *visitor_) visitImportedPackage(importedPackage ast.ImportedPackageLike) {
+func (v *visitor_) visitImportedPackage(
+	importedPackage ast.ImportedPackageLike,
+) {
 	// Visit a single name token.
 	var name = importedPackage.GetName()
 	v.processor_.ProcessName(name)
@@ -723,7 +789,9 @@ func (v *visitor_) visitImportedPackage(importedPackage ast.ImportedPackageLike)
 	v.processor_.ProcessPath(path)
 }
 
-func (v *visitor_) visitInstanceDeclaration(instanceDeclaration ast.InstanceDeclarationLike) {
+func (v *visitor_) visitInstanceDeclaration(
+	instanceDeclaration ast.InstanceDeclarationLike,
+) {
 	// Visit a single declaration rule.
 	var declaration = instanceDeclaration.GetDeclaration()
 	v.processor_.PreprocessDeclaration(declaration)
@@ -740,7 +808,9 @@ func (v *visitor_) visitInstanceDeclaration(instanceDeclaration ast.InstanceDecl
 	v.processor_.PostprocessInstanceMethods(instanceMethods)
 }
 
-func (v *visitor_) visitInstanceMethods(instanceMethods ast.InstanceMethodsLike) {
+func (v *visitor_) visitInstanceMethods(
+	instanceMethods ast.InstanceMethodsLike,
+) {
 	// Visit a single principalSubsection rule.
 	var principalSubsection = instanceMethods.GetPrincipalSubsection()
 	v.processor_.PreprocessPrincipalSubsection(principalSubsection)
@@ -770,7 +840,9 @@ func (v *visitor_) visitInstanceMethods(instanceMethods ast.InstanceMethodsLike)
 	}
 }
 
-func (v *visitor_) visitInstanceSection(instanceSection ast.InstanceSectionLike) {
+func (v *visitor_) visitInstanceSection(
+	instanceSection ast.InstanceSectionLike,
+) {
 	// Visit each instanceDeclaration rule.
 	var instanceDeclarationIndex uint
 	var instanceDeclarations = instanceSection.GetInstanceDeclarations().GetIterator()
@@ -792,7 +864,9 @@ func (v *visitor_) visitInstanceSection(instanceSection ast.InstanceSectionLike)
 	}
 }
 
-func (v *visitor_) visitInterfaceDeclarations(interfaceDeclarations ast.InterfaceDeclarationsLike) {
+func (v *visitor_) visitInterfaceDeclarations(
+	interfaceDeclarations ast.InterfaceDeclarationsLike,
+) {
 	// Visit a single classSection rule.
 	var classSection = interfaceDeclarations.GetClassSection()
 	v.processor_.PreprocessClassSection(classSection)
@@ -818,19 +892,25 @@ func (v *visitor_) visitInterfaceDeclarations(interfaceDeclarations ast.Interfac
 	v.processor_.PostprocessAspectSection(aspectSection)
 }
 
-func (v *visitor_) visitLegalNotice(legalNotice ast.LegalNoticeLike) {
+func (v *visitor_) visitLegalNotice(
+	legalNotice ast.LegalNoticeLike,
+) {
 	// Visit a single comment token.
 	var comment = legalNotice.GetComment()
 	v.processor_.ProcessComment(comment)
 }
 
-func (v *visitor_) visitMap(map_ ast.MapLike) {
+func (v *visitor_) visitMap(
+	map_ ast.MapLike,
+) {
 	// Visit a single name token.
 	var name = map_.GetName()
 	v.processor_.ProcessName(name)
 }
 
-func (v *visitor_) visitMethod(method ast.MethodLike) {
+func (v *visitor_) visitMethod(
+	method ast.MethodLike,
+) {
 	// Visit a single name token.
 	var name = method.GetName()
 	v.processor_.ProcessName(name)
@@ -870,7 +950,9 @@ func (v *visitor_) visitMethod(method ast.MethodLike) {
 	}
 }
 
-func (v *visitor_) visitModel(model ast.ModelLike) {
+func (v *visitor_) visitModel(
+	model ast.ModelLike,
+) {
 	// Visit a single packageDeclaration rule.
 	var packageDeclaration = model.GetPackageDeclaration()
 	v.processor_.PreprocessPackageDeclaration(packageDeclaration)
@@ -896,7 +978,9 @@ func (v *visitor_) visitModel(model ast.ModelLike) {
 	v.processor_.PostprocessInterfaceDeclarations(interfaceDeclarations)
 }
 
-func (v *visitor_) visitMultivalue(multivalue ast.MultivalueLike) {
+func (v *visitor_) visitMultivalue(
+	multivalue ast.MultivalueLike,
+) {
 	// Visit each parameter rule.
 	var parameterIndex uint
 	var parameters = multivalue.GetParameters().GetIterator()
@@ -918,13 +1002,17 @@ func (v *visitor_) visitMultivalue(multivalue ast.MultivalueLike) {
 	}
 }
 
-func (v *visitor_) visitNone(none ast.NoneLike) {
+func (v *visitor_) visitNone(
+	none ast.NoneLike,
+) {
 	// Visit a single newline token.
 	var newline = none.GetNewline()
 	v.processor_.ProcessNewline(newline)
 }
 
-func (v *visitor_) visitPackageDeclaration(packageDeclaration ast.PackageDeclarationLike) {
+func (v *visitor_) visitPackageDeclaration(
+	packageDeclaration ast.PackageDeclarationLike,
+) {
 	// Visit a single legalNotice rule.
 	var legalNotice = packageDeclaration.GetLegalNotice()
 	v.processor_.PreprocessLegalNotice(legalNotice)
@@ -950,7 +1038,9 @@ func (v *visitor_) visitPackageDeclaration(packageDeclaration ast.PackageDeclara
 	v.processor_.PostprocessPackageImports(packageImports)
 }
 
-func (v *visitor_) visitPackageHeader(packageHeader ast.PackageHeaderLike) {
+func (v *visitor_) visitPackageHeader(
+	packageHeader ast.PackageHeaderLike,
+) {
 	// Visit a single comment token.
 	var comment = packageHeader.GetComment()
 	v.processor_.ProcessComment(comment)
@@ -963,7 +1053,9 @@ func (v *visitor_) visitPackageHeader(packageHeader ast.PackageHeaderLike) {
 	v.processor_.ProcessName(name)
 }
 
-func (v *visitor_) visitPackageImports(packageImports ast.PackageImportsLike) {
+func (v *visitor_) visitPackageImports(
+	packageImports ast.PackageImportsLike,
+) {
 	// Visit each importedPackage rule.
 	var importedPackageIndex uint
 	var importedPackages = packageImports.GetImportedPackages().GetIterator()
@@ -985,7 +1077,9 @@ func (v *visitor_) visitPackageImports(packageImports ast.PackageImportsLike) {
 	}
 }
 
-func (v *visitor_) visitParameter(parameter ast.ParameterLike) {
+func (v *visitor_) visitParameter(
+	parameter ast.ParameterLike,
+) {
 	// Visit a single name token.
 	var name = parameter.GetName()
 	v.processor_.ProcessName(name)
@@ -1000,7 +1094,9 @@ func (v *visitor_) visitParameter(parameter ast.ParameterLike) {
 	v.processor_.PostprocessAbstraction(abstraction)
 }
 
-func (v *visitor_) visitPrefix(prefix ast.PrefixLike) {
+func (v *visitor_) visitPrefix(
+	prefix ast.PrefixLike,
+) {
 	// Visit the possible prefix types.
 	switch actual := prefix.GetAny().(type) {
 	case ast.ArrayLike:
@@ -1025,7 +1121,9 @@ func (v *visitor_) visitPrefix(prefix ast.PrefixLike) {
 	}
 }
 
-func (v *visitor_) visitPrimitiveDeclarations(primitiveDeclarations ast.PrimitiveDeclarationsLike) {
+func (v *visitor_) visitPrimitiveDeclarations(
+	primitiveDeclarations ast.PrimitiveDeclarationsLike,
+) {
 	// Visit a single typeSection rule.
 	var typeSection = primitiveDeclarations.GetTypeSection()
 	v.processor_.PreprocessTypeSection(typeSection)
@@ -1042,7 +1140,9 @@ func (v *visitor_) visitPrimitiveDeclarations(primitiveDeclarations ast.Primitiv
 	v.processor_.PostprocessFunctionalSection(functionalSection)
 }
 
-func (v *visitor_) visitPrincipalMethod(principalMethod ast.PrincipalMethodLike) {
+func (v *visitor_) visitPrincipalMethod(
+	principalMethod ast.PrincipalMethodLike,
+) {
 	// Visit a single method rule.
 	var method = principalMethod.GetMethod()
 	v.processor_.PreprocessMethod(method)
@@ -1050,7 +1150,9 @@ func (v *visitor_) visitPrincipalMethod(principalMethod ast.PrincipalMethodLike)
 	v.processor_.PostprocessMethod(method)
 }
 
-func (v *visitor_) visitPrincipalSubsection(principalSubsection ast.PrincipalSubsectionLike) {
+func (v *visitor_) visitPrincipalSubsection(
+	principalSubsection ast.PrincipalSubsectionLike,
+) {
 	// Visit each principalMethod rule.
 	var principalMethodIndex uint
 	var principalMethods = principalSubsection.GetPrincipalMethods().GetIterator()
@@ -1072,7 +1174,9 @@ func (v *visitor_) visitPrincipalSubsection(principalSubsection ast.PrincipalSub
 	}
 }
 
-func (v *visitor_) visitResult(result ast.ResultLike) {
+func (v *visitor_) visitResult(
+	result ast.ResultLike,
+) {
 	// Visit the possible result types.
 	switch actual := result.GetAny().(type) {
 	case ast.NoneLike:
@@ -1097,7 +1201,9 @@ func (v *visitor_) visitResult(result ast.ResultLike) {
 	}
 }
 
-func (v *visitor_) visitSetterMethod(setterMethod ast.SetterMethodLike) {
+func (v *visitor_) visitSetterMethod(
+	setterMethod ast.SetterMethodLike,
+) {
 	// Visit a single name token.
 	var name = setterMethod.GetName()
 	v.processor_.ProcessName(name)
@@ -1114,13 +1220,17 @@ func (v *visitor_) visitSetterMethod(setterMethod ast.SetterMethodLike) {
 	}
 }
 
-func (v *visitor_) visitSuffix(suffix ast.SuffixLike) {
+func (v *visitor_) visitSuffix(
+	suffix ast.SuffixLike,
+) {
 	// Visit a single name token.
 	var name = suffix.GetName()
 	v.processor_.ProcessName(name)
 }
 
-func (v *visitor_) visitTypeDeclaration(typeDeclaration ast.TypeDeclarationLike) {
+func (v *visitor_) visitTypeDeclaration(
+	typeDeclaration ast.TypeDeclarationLike,
+) {
 	// Visit a single declaration rule.
 	var declaration = typeDeclaration.GetDeclaration()
 	v.processor_.PreprocessDeclaration(declaration)
@@ -1148,7 +1258,9 @@ func (v *visitor_) visitTypeDeclaration(typeDeclaration ast.TypeDeclarationLike)
 	}
 }
 
-func (v *visitor_) visitTypeSection(typeSection ast.TypeSectionLike) {
+func (v *visitor_) visitTypeSection(
+	typeSection ast.TypeSectionLike,
+) {
 	// Visit each typeDeclaration rule.
 	var typeDeclarationIndex uint
 	var typeDeclarations = typeSection.GetTypeDeclarations().GetIterator()
@@ -1170,7 +1282,9 @@ func (v *visitor_) visitTypeSection(typeSection ast.TypeSectionLike) {
 	}
 }
 
-func (v *visitor_) visitValue(value ast.ValueLike) {
+func (v *visitor_) visitValue(
+	value ast.ValueLike,
+) {
 	// Visit a single name token.
 	var name = value.GetName()
 	v.processor_.ProcessName(name)

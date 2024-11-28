@@ -3738,7 +3738,9 @@ func (v *parser_) parseDelimiter(
 	return
 }
 
-func (v *parser_) parseToken(tokenType TokenType) (
+func (v *parser_) parseToken(
+	tokenType TokenType,
+) (
 	value string,
 	token TokenLike,
 	ok bool,
