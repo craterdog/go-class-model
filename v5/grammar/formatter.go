@@ -690,9 +690,9 @@ func (v *formatter_) appendNewline() {
 }
 
 func (v *formatter_) appendString(
-	s string,
+	string_ string,
 ) {
-	v.result_.WriteString(s)
+	v.result_.WriteString(string_)
 }
 
 func (v *formatter_) getResult() string {
