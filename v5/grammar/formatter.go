@@ -108,19 +108,27 @@ func (v *formatter_) PreprocessAdditionalValue(
 	v.appendNewline()
 }
 
-func (v *formatter_) PreprocessArguments(arguments ast.ArgumentsLike) {
+func (v *formatter_) PreprocessArguments(
+	arguments ast.ArgumentsLike,
+) {
 	v.appendString("[")
 }
 
-func (v *formatter_) PostprocessArguments(arguments ast.ArgumentsLike) {
+func (v *formatter_) PostprocessArguments(
+	arguments ast.ArgumentsLike,
+) {
 	v.appendString("]")
 }
 
-func (v *formatter_) PreprocessArray(array ast.ArrayLike) {
+func (v *formatter_) PreprocessArray(
+	array ast.ArrayLike,
+) {
 	v.appendString("[")
 }
 
-func (v *formatter_) PostprocessArray(array ast.ArrayLike) {
+func (v *formatter_) PostprocessArray(
+	array ast.ArrayLike,
+) {
 	v.appendString("]")
 }
 
@@ -132,7 +140,9 @@ func (v *formatter_) PreprocessAspectDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessAspectDeclarationSlot(slot uint) {
+func (v *formatter_) ProcessAspectDeclarationSlot(
+	slot uint,
+) {
 	switch slot {
 	case 1:
 		v.appendString(" interface {")
@@ -166,13 +176,17 @@ func (v *formatter_) PreprocessAspectMethod(
 ) {
 }
 
-func (v *formatter_) PreprocessAspectSection(aspectSection ast.AspectSectionLike) {
+func (v *formatter_) PreprocessAspectSection(
+	aspectSection ast.AspectSectionLike,
+) {
 	v.appendNewline()
 	v.appendString("// ASPECT DECLARATIONS")
 	v.appendNewline()
 }
 
-func (v *formatter_) PreprocessAspectSubsection(aspectSubsection ast.AspectSubsectionLike) {
+func (v *formatter_) PreprocessAspectSubsection(
+	aspectSubsection ast.AspectSubsectionLike,
+) {
 	v.appendString("\n")
 	v.appendNewline()
 	v.appendString("// Aspect Interfaces")
@@ -186,13 +200,17 @@ func (v *formatter_) PreprocessAttributeMethod(
 	v.appendNewline()
 }
 
-func (v *formatter_) PreprocessAttributeSubsection(attributeSubsection ast.AttributeSubsectionLike) {
+func (v *formatter_) PreprocessAttributeSubsection(
+	attributeSubsection ast.AttributeSubsectionLike,
+) {
 	v.appendString("\n")
 	v.appendNewline()
 	v.appendString("// Attribute Methods")
 }
 
-func (v *formatter_) PreprocessChannel(channel ast.ChannelLike) {
+func (v *formatter_) PreprocessChannel(
+	channel ast.ChannelLike,
+) {
 	v.appendString("chan ")
 }
 
@@ -204,7 +222,9 @@ func (v *formatter_) PreprocessClassDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessClassDeclarationSlot(slot uint) {
+func (v *formatter_) ProcessClassDeclarationSlot(
+	slot uint,
+) {
 	switch slot {
 	case 1:
 		v.appendString(" interface {")
@@ -223,7 +243,9 @@ func (v *formatter_) PostprocessClassDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) PreprocessClassSection(classSection ast.ClassSectionLike) {
+func (v *formatter_) PreprocessClassSection(
+	classSection ast.ClassSectionLike,
+) {
 	v.appendNewline()
 	v.appendString("// CLASS DECLARATIONS")
 	v.appendNewline()
@@ -237,32 +259,42 @@ func (v *formatter_) PreprocessConstantMethod(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessConstantMethodSlot(slot uint) {
+func (v *formatter_) ProcessConstantMethodSlot(
+	slot uint,
+) {
 	switch slot {
 	case 1:
 		v.appendString("() ")
 	}
 }
 
-func (v *formatter_) PreprocessConstantSubsection(constantSubsection ast.ConstantSubsectionLike) {
+func (v *formatter_) PreprocessConstantSubsection(
+	constantSubsection ast.ConstantSubsectionLike,
+) {
 	v.appendString("\n")
 	v.appendNewline()
 	v.appendString("// Constant Methods")
 }
 
-func (v *formatter_) ProcessConstraintSlot(slot uint) {
+func (v *formatter_) ProcessConstraintSlot(
+	slot uint,
+) {
 	switch slot {
 	case 1:
 		v.appendString(" ")
 	}
 }
 
-func (v *formatter_) PreprocessConstraints(constraints ast.ConstraintsLike) {
+func (v *formatter_) PreprocessConstraints(
+	constraints ast.ConstraintsLike,
+) {
 	v.appendString("[")
 	v.depth_++
 }
 
-func (v *formatter_) PostprocessConstraints(constraints ast.ConstraintsLike) {
+func (v *formatter_) PostprocessConstraints(
+	constraints ast.ConstraintsLike,
+) {
 	v.depth_--
 	v.appendString("]")
 }
@@ -275,7 +307,9 @@ func (v *formatter_) PreprocessConstructorMethod(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessConstructorMethodSlot(slot uint) {
+func (v *formatter_) ProcessConstructorMethodSlot(
+	slot uint,
+) {
 	switch slot {
 	case 1:
 		v.appendString("(")
@@ -284,26 +318,34 @@ func (v *formatter_) ProcessConstructorMethodSlot(slot uint) {
 	}
 }
 
-func (v *formatter_) PreprocessConstructorSubsection(constructorSubsection ast.ConstructorSubsectionLike) {
+func (v *formatter_) PreprocessConstructorSubsection(
+	constructorSubsection ast.ConstructorSubsectionLike,
+) {
 	v.appendNewline()
 	v.appendString("// Constructor Methods")
 }
 
-func (v *formatter_) ProcessDeclarationSlot(slot uint) {
+func (v *formatter_) ProcessDeclarationSlot(
+	slot uint,
+) {
 	switch slot {
 	case 1:
 		v.appendString("type ")
 	}
 }
 
-func (v *formatter_) PreprocessEnumeration(enumeration ast.EnumerationLike) {
+func (v *formatter_) PreprocessEnumeration(
+	enumeration ast.EnumerationLike,
+) {
 	v.appendNewline()
 	v.appendNewline()
 	v.appendString("const (")
 	v.depth_++
 }
 
-func (v *formatter_) PostprocessEnumeration(enumeration ast.EnumerationLike) {
+func (v *formatter_) PostprocessEnumeration(
+	enumeration ast.EnumerationLike,
+) {
 	v.depth_--
 	v.appendNewline()
 	v.appendString(")")
@@ -317,7 +359,9 @@ func (v *formatter_) PreprocessFunctionMethod(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessFunctionMethodSlot(slot uint) {
+func (v *formatter_) ProcessFunctionMethodSlot(
+	slot uint,
+) {
 	switch slot {
 	case 1:
 		v.appendString("(")
@@ -326,7 +370,9 @@ func (v *formatter_) ProcessFunctionMethodSlot(slot uint) {
 	}
 }
 
-func (v *formatter_) PreprocessFunctionSubsection(functionSubsection ast.FunctionSubsectionLike) {
+func (v *formatter_) PreprocessFunctionSubsection(
+	functionSubsection ast.FunctionSubsectionLike,
+) {
 	v.appendString("\n")
 	v.appendNewline()
 	v.appendString("// Function Methods")
@@ -340,7 +386,9 @@ func (v *formatter_) PreprocessFunctionalDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessFunctionalDeclarationSlot(slot uint) {
+func (v *formatter_) ProcessFunctionalDeclarationSlot(
+	slot uint,
+) {
 	switch slot {
 	case 1:
 		v.appendString(" func(")
@@ -357,13 +405,17 @@ func (v *formatter_) PostprocessFunctionalDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) PreprocessFunctionalSection(functionalSection ast.FunctionalSectionLike) {
+func (v *formatter_) PreprocessFunctionalSection(
+	functionalSection ast.FunctionalSectionLike,
+) {
 	v.appendNewline()
 	v.appendString("// FUNCTIONAL DECLARATIONS")
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessGetterMethodSlot(slot uint) {
+func (v *formatter_) ProcessGetterMethodSlot(
+	slot uint,
+) {
 	switch slot {
 	case 1:
 		v.appendString("() ")
@@ -378,7 +430,9 @@ func (v *formatter_) PreprocessImportedPackage(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessImportedPackageSlot(slot uint) {
+func (v *formatter_) ProcessImportedPackageSlot(
+	slot uint,
+) {
 	v.appendString(" ")
 }
 
@@ -390,7 +444,9 @@ func (v *formatter_) PreprocessInstanceDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessInstanceDeclarationSlot(slot uint) {
+func (v *formatter_) ProcessInstanceDeclarationSlot(
+	slot uint,
+) {
 	switch slot {
 	case 1:
 		v.appendString(" interface {")
@@ -409,21 +465,29 @@ func (v *formatter_) PostprocessInstanceDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) PreprocessInstanceSection(instanceSection ast.InstanceSectionLike) {
+func (v *formatter_) PreprocessInstanceSection(
+	instanceSection ast.InstanceSectionLike,
+) {
 	v.appendNewline()
 	v.appendString("// INSTANCE DECLARATIONS")
 	v.appendNewline()
 }
 
-func (v *formatter_) PostprocessLegalNotice(legalNotice ast.LegalNoticeLike) {
+func (v *formatter_) PostprocessLegalNotice(
+	legalNotice ast.LegalNoticeLike,
+) {
 	v.appendNewline()
 }
 
-func (v *formatter_) PreprocessMap(map_ ast.MapLike) {
+func (v *formatter_) PreprocessMap(
+	map_ ast.MapLike,
+) {
 	v.appendString("map[")
 }
 
-func (v *formatter_) PostprocessMap(map_ ast.MapLike) {
+func (v *formatter_) PostprocessMap(
+	map_ ast.MapLike,
+) {
 	v.appendString("]")
 }
 
@@ -433,7 +497,9 @@ func (v *formatter_) PreprocessMethod(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessMethodSlot(slot uint) {
+func (v *formatter_) ProcessMethodSlot(
+	slot uint,
+) {
 	switch slot {
 	case 1:
 		v.appendString("(")
@@ -442,22 +508,30 @@ func (v *formatter_) ProcessMethodSlot(slot uint) {
 	}
 }
 
-func (v *formatter_) PostprocessPackageDeclaration(packageDeclaration_ ast.PackageDeclarationLike) {
+func (v *formatter_) PostprocessPackageDeclaration(
+	packageDeclaration_ ast.PackageDeclarationLike,
+) {
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessPackageHeaderSlot(slot uint) {
+func (v *formatter_) ProcessPackageHeaderSlot(
+	slot uint,
+) {
 	v.appendString("package ")
 }
 
-func (v *formatter_) PreprocessPackageImports(packageImports ast.PackageImportsLike) {
+func (v *formatter_) PreprocessPackageImports(
+	packageImports ast.PackageImportsLike,
+) {
 	v.appendNewline()
 	v.appendNewline()
 	v.appendString("import (")
 	v.depth_++
 }
 
-func (v *formatter_) PostprocessPackageImports(packageImports ast.PackageImportsLike) {
+func (v *formatter_) PostprocessPackageImports(
+	packageImports ast.PackageImportsLike,
+) {
 	v.depth_--
 	if !packageImports.GetImportedPackages().IsEmpty() {
 		v.appendNewline()
@@ -465,11 +539,15 @@ func (v *formatter_) PostprocessPackageImports(packageImports ast.PackageImports
 	v.appendString(")")
 }
 
-func (v *formatter_) PreprocessMultivalue(multivalue ast.MultivalueLike) {
+func (v *formatter_) PreprocessMultivalue(
+	multivalue ast.MultivalueLike,
+) {
 	v.appendString("(")
 }
 
-func (v *formatter_) PostprocessMultivalue(multivalue ast.MultivalueLike) {
+func (v *formatter_) PostprocessMultivalue(
+	multivalue ast.MultivalueLike,
+) {
 	v.appendString(")")
 }
 
@@ -484,7 +562,9 @@ func (v *formatter_) PreprocessParameter(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessParameterSlot(slot uint) {
+func (v *formatter_) ProcessParameterSlot(
+	slot uint,
+) {
 	switch slot {
 	case 1:
 		v.appendString(" ")
@@ -503,12 +583,16 @@ func (v *formatter_) PostprocessParameter(
 	}
 }
 
-func (v *formatter_) PreprocessPrincipalSubsection(publicSubsection ast.PrincipalSubsectionLike) {
+func (v *formatter_) PreprocessPrincipalSubsection(
+	publicSubsection ast.PrincipalSubsectionLike,
+) {
 	v.appendNewline()
 	v.appendString("// Principal Methods")
 }
 
-func (v *formatter_) PreprocessResult(result ast.ResultLike) {
+func (v *formatter_) PreprocessResult(
+	result ast.ResultLike,
+) {
 	switch result.GetAny().(type) {
 	case ast.NoneLike:
 	default:
@@ -516,18 +600,24 @@ func (v *formatter_) PreprocessResult(result ast.ResultLike) {
 	}
 }
 
-func (v *formatter_) ProcessSetterMethodSlot(slot uint) {
+func (v *formatter_) ProcessSetterMethodSlot(
+	slot uint,
+) {
 	switch slot {
 	case 1:
 		v.appendString("(")
 	}
 }
 
-func (v *formatter_) PostprocessSetterMethod(setterMethod ast.SetterMethodLike) {
+func (v *formatter_) PostprocessSetterMethod(
+	setterMethod ast.SetterMethodLike,
+) {
 	v.appendString(")")
 }
 
-func (v *formatter_) PreprocessSuffix(suffix ast.SuffixLike) {
+func (v *formatter_) PreprocessSuffix(
+	suffix ast.SuffixLike,
+) {
 	v.appendString(".")
 }
 
@@ -539,7 +629,9 @@ func (v *formatter_) PreprocessTypeDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessTypeDeclarationSlot(slot uint) {
+func (v *formatter_) ProcessTypeDeclarationSlot(
+	slot uint,
+) {
 	switch slot {
 	case 1:
 		v.appendString(" ")
@@ -554,24 +646,32 @@ func (v *formatter_) PostprocessTypeDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) PreprocessTypeSection(typeSection ast.TypeSectionLike) {
+func (v *formatter_) PreprocessTypeSection(
+	typeSection ast.TypeSectionLike,
+) {
 	v.appendNewline()
 	v.appendString("// TYPE DECLARATIONS")
 	v.appendNewline()
 }
 
-func (v *formatter_) PreprocessValue(value ast.ValueLike) {
+func (v *formatter_) PreprocessValue(
+	value ast.ValueLike,
+) {
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessValueSlot(slot uint) {
+func (v *formatter_) ProcessValueSlot(
+	slot uint,
+) {
 	switch slot {
 	case 1:
 		v.appendString(" ")
 	}
 }
 
-func (v *formatter_) PostprocessValue(value ast.ValueLike) {
+func (v *formatter_) PostprocessValue(
+	value ast.ValueLike,
+) {
 	v.appendString(" = iota")
 }
 
@@ -589,7 +689,9 @@ func (v *formatter_) appendNewline() {
 	v.appendString(newline)
 }
 
-func (v *formatter_) appendString(s string) {
+func (v *formatter_) appendString(
+	s string,
+) {
 	v.result_.WriteString(s)
 }
 
