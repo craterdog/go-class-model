@@ -22,7 +22,7 @@ delegates the actual construction process to its corresponding concrete class
 declared in the corresponding package contained within this module.
 
 For detailed documentation on this entire module refer to the wiki:
-  - github.com/craterdog/go-class-model/wiki
+  - https://github.com/craterdog/go-class-model/wiki
 */
 package module
 
