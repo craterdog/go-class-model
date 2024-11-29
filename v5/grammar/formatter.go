@@ -13,7 +13,7 @@
 /*
 ┌────────────────────────────────── WARNING ───────────────────────────────────┐
 │                 This class file was automatically generated.                 │
-│   Updates to any section other than the Private Methods may be overwritten.  │
+│ Updates to any section other than the Methodical Methods may be overwritten. │
 └──────────────────────────────────────────────────────────────────────────────┘
 */
 

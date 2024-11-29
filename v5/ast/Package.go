@@ -15,6 +15,7 @@
 │              This "Package.go" file was automatically generated.             │
 │                     Any updates to it may be overwritten.                    │
 └──────────────────────────────────────────────────────────────────────────────┘
+
 Package "ast" provides the abstract syntax tree (AST) classes for this module
 based on the "Syntax.cdsn" grammar for the module.  Each AST class manages the
 attributes associated with its corresponding rule definition found in the
