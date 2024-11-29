@@ -15,6 +15,7 @@
 │              This "Module.go" file was automatically generated.              │
 │  Updates to any section other than the GLOBAL FUNCTIONS may be overwritten.  │
 └──────────────────────────────────────────────────────────────────────────────┘
+
 Package "module" declares type aliases for the commonly used types declared in
 the packages contained in this module.  It also provides a universal constructor
 for each commonly used class that is exported by the module.  Each constructor
