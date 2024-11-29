@@ -13,7 +13,8 @@
 /*
 ┌────────────────────────────────── WARNING ───────────────────────────────────┐
 │              This "Module.go" file was automatically generated.              │
-│  Updates to any section other than the GLOBAL FUNCTIONS may be overwritten.  │
+│      Updates to any part of this file—other than the Module Description      │
+│             and the Global Functions sections may be overwritten.            │
 └──────────────────────────────────────────────────────────────────────────────┘
 
 Package "module" declares type aliases for the commonly used types declared in
