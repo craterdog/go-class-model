@@ -18,7 +18,9 @@ This document contains a formal definition of the Go Class Model Notation™
 For more information on CDSN see the wiki at:
   - https://github.com/craterdog/go-syntax-notation/wiki
 
-RULE DEFINITIONS
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                               RULE DEFINITIONS                               │
+└──────────────────────────────────────────────────────────────────────────────┘
 <!
 $Model: PackageDeclaration PrimitiveDeclarations InterfaceDeclarations
 
@@ -141,7 +143,9 @@ $AspectDeclaration: Declaration "interface" "{" AspectMethod+ "}"
 $AspectMethod: Method
 
 !>
-EXPRESSION PATTERNS
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                            EXPRESSION DEFINITIONS                            │
+└──────────────────────────────────────────────────────────────────────────────┘
 <!
 $comment: "/*" EOL (ANY | EOL)* EOL "*/" EOL  ! Chooses the shortest possible match.
 
