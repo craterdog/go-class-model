@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -28,8 +21,8 @@ import (
 
 // Access Function
 
-func FunctionalSection() FunctionalSectionClassLike {
-	return functionalSectionReference()
+func FunctionalSectionClass() FunctionalSectionClassLike {
+	return functionalSectionClassReference()
 }
 
 // Constructor Methods
@@ -56,7 +49,7 @@ func (c *functionalSectionClass_) Make(
 // Principal Methods
 
 func (v *functionalSection_) GetClass() FunctionalSectionClassLike {
-	return functionalSectionReference()
+	return functionalSectionClassReference()
 }
 
 // Attribute Methods
@@ -84,10 +77,10 @@ type functionalSectionClass_ struct {
 
 // Class Reference
 
-func functionalSectionReference() *functionalSectionClass_ {
-	return functionalSectionReference_
+func functionalSectionClassReference() *functionalSectionClass_ {
+	return functionalSectionClassReference_
 }
 
-var functionalSectionReference_ = &functionalSectionClass_{
+var functionalSectionClassReference_ = &functionalSectionClass_{
 	// Initialize the class constants.
 }

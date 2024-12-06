@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -28,8 +21,8 @@ import (
 
 // Access Function
 
-func ConstantSubsection() ConstantSubsectionClassLike {
-	return constantSubsectionReference()
+func ConstantSubsectionClass() ConstantSubsectionClassLike {
+	return constantSubsectionClassReference()
 }
 
 // Constructor Methods
@@ -56,7 +49,7 @@ func (c *constantSubsectionClass_) Make(
 // Principal Methods
 
 func (v *constantSubsection_) GetClass() ConstantSubsectionClassLike {
-	return constantSubsectionReference()
+	return constantSubsectionClassReference()
 }
 
 // Attribute Methods
@@ -84,10 +77,10 @@ type constantSubsectionClass_ struct {
 
 // Class Reference
 
-func constantSubsectionReference() *constantSubsectionClass_ {
-	return constantSubsectionReference_
+func constantSubsectionClassReference() *constantSubsectionClass_ {
+	return constantSubsectionClassReference_
 }
 
-var constantSubsectionReference_ = &constantSubsectionClass_{
+var constantSubsectionClassReference_ = &constantSubsectionClass_{
 	// Initialize the class constants.
 }

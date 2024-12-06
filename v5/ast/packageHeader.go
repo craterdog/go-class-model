@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -27,8 +20,8 @@ import (
 
 // Access Function
 
-func PackageHeader() PackageHeaderClassLike {
-	return packageHeaderReference()
+func PackageHeaderClass() PackageHeaderClassLike {
+	return packageHeaderClassReference()
 }
 
 // Constructor Methods
@@ -60,7 +53,7 @@ func (c *packageHeaderClass_) Make(
 // Principal Methods
 
 func (v *packageHeader_) GetClass() PackageHeaderClassLike {
-	return packageHeaderReference()
+	return packageHeaderClassReference()
 }
 
 // Attribute Methods
@@ -93,10 +86,10 @@ type packageHeaderClass_ struct {
 
 // Class Reference
 
-func packageHeaderReference() *packageHeaderClass_ {
-	return packageHeaderReference_
+func packageHeaderClassReference() *packageHeaderClass_ {
+	return packageHeaderClassReference_
 }
 
-var packageHeaderReference_ = &packageHeaderClass_{
+var packageHeaderClassReference_ = &packageHeaderClass_{
 	// Initialize the class constants.
 }

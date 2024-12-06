@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import ()
@@ -25,8 +18,8 @@ import ()
 
 // Access Function
 
-func Array() ArrayClassLike {
-	return arrayReference()
+func ArrayClass() ArrayClassLike {
+	return arrayClassReference()
 }
 
 // Constructor Methods
@@ -47,7 +40,7 @@ func (c *arrayClass_) Make() ArrayLike {
 // Principal Methods
 
 func (v *array_) GetClass() ArrayClassLike {
-	return arrayReference()
+	return arrayClassReference()
 }
 
 // Attribute Methods
@@ -70,10 +63,10 @@ type arrayClass_ struct {
 
 // Class Reference
 
-func arrayReference() *arrayClass_ {
-	return arrayReference_
+func arrayClassReference() *arrayClass_ {
+	return arrayClassReference_
 }
 
-var arrayReference_ = &arrayClass_{
+var arrayClassReference_ = &arrayClass_{
 	// Initialize the class constants.
 }

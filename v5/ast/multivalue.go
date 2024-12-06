@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -28,8 +21,8 @@ import (
 
 // Access Function
 
-func Multivalue() MultivalueClassLike {
-	return multivalueReference()
+func MultivalueClass() MultivalueClassLike {
+	return multivalueClassReference()
 }
 
 // Constructor Methods
@@ -56,7 +49,7 @@ func (c *multivalueClass_) Make(
 // Principal Methods
 
 func (v *multivalue_) GetClass() MultivalueClassLike {
-	return multivalueReference()
+	return multivalueClassReference()
 }
 
 // Attribute Methods
@@ -84,10 +77,10 @@ type multivalueClass_ struct {
 
 // Class Reference
 
-func multivalueReference() *multivalueClass_ {
-	return multivalueReference_
+func multivalueClassReference() *multivalueClass_ {
+	return multivalueClassReference_
 }
 
-var multivalueReference_ = &multivalueClass_{
+var multivalueClassReference_ = &multivalueClass_{
 	// Initialize the class constants.
 }

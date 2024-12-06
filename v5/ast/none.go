@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -27,8 +20,8 @@ import (
 
 // Access Function
 
-func None() NoneClassLike {
-	return noneReference()
+func NoneClass() NoneClassLike {
+	return noneClassReference()
 }
 
 // Constructor Methods
@@ -55,7 +48,7 @@ func (c *noneClass_) Make(
 // Principal Methods
 
 func (v *none_) GetClass() NoneClassLike {
-	return noneReference()
+	return noneClassReference()
 }
 
 // Attribute Methods
@@ -83,10 +76,10 @@ type noneClass_ struct {
 
 // Class Reference
 
-func noneReference() *noneClass_ {
-	return noneReference_
+func noneClassReference() *noneClass_ {
+	return noneClassReference_
 }
 
-var noneReference_ = &noneClass_{
+var noneClassReference_ = &noneClass_{
 	// Initialize the class constants.
 }

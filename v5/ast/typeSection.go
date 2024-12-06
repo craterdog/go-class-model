@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -28,8 +21,8 @@ import (
 
 // Access Function
 
-func TypeSection() TypeSectionClassLike {
-	return typeSectionReference()
+func TypeSectionClass() TypeSectionClassLike {
+	return typeSectionClassReference()
 }
 
 // Constructor Methods
@@ -56,7 +49,7 @@ func (c *typeSectionClass_) Make(
 // Principal Methods
 
 func (v *typeSection_) GetClass() TypeSectionClassLike {
-	return typeSectionReference()
+	return typeSectionClassReference()
 }
 
 // Attribute Methods
@@ -84,10 +77,10 @@ type typeSectionClass_ struct {
 
 // Class Reference
 
-func typeSectionReference() *typeSectionClass_ {
-	return typeSectionReference_
+func typeSectionClassReference() *typeSectionClass_ {
+	return typeSectionClassReference_
 }
 
-var typeSectionReference_ = &typeSectionClass_{
+var typeSectionClassReference_ = &typeSectionClass_{
 	// Initialize the class constants.
 }

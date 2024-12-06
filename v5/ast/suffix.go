@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -27,8 +20,8 @@ import (
 
 // Access Function
 
-func Suffix() SuffixClassLike {
-	return suffixReference()
+func SuffixClass() SuffixClassLike {
+	return suffixClassReference()
 }
 
 // Constructor Methods
@@ -55,7 +48,7 @@ func (c *suffixClass_) Make(
 // Principal Methods
 
 func (v *suffix_) GetClass() SuffixClassLike {
-	return suffixReference()
+	return suffixClassReference()
 }
 
 // Attribute Methods
@@ -83,10 +76,10 @@ type suffixClass_ struct {
 
 // Class Reference
 
-func suffixReference() *suffixClass_ {
-	return suffixReference_
+func suffixClassReference() *suffixClass_ {
+	return suffixClassReference_
 }
 
-var suffixReference_ = &suffixClass_{
+var suffixClassReference_ = &suffixClass_{
 	// Initialize the class constants.
 }

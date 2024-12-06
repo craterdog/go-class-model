@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -27,8 +20,8 @@ import (
 
 // Access Function
 
-func ClassDeclaration() ClassDeclarationClassLike {
-	return classDeclarationReference()
+func ClassDeclarationClass() ClassDeclarationClassLike {
+	return classDeclarationClassReference()
 }
 
 // Constructor Methods
@@ -60,7 +53,7 @@ func (c *classDeclarationClass_) Make(
 // Principal Methods
 
 func (v *classDeclaration_) GetClass() ClassDeclarationClassLike {
-	return classDeclarationReference()
+	return classDeclarationClassReference()
 }
 
 // Attribute Methods
@@ -93,10 +86,10 @@ type classDeclarationClass_ struct {
 
 // Class Reference
 
-func classDeclarationReference() *classDeclarationClass_ {
-	return classDeclarationReference_
+func classDeclarationClassReference() *classDeclarationClass_ {
+	return classDeclarationClassReference_
 }
 
-var classDeclarationReference_ = &classDeclarationClass_{
+var classDeclarationClassReference_ = &classDeclarationClass_{
 	// Initialize the class constants.
 }

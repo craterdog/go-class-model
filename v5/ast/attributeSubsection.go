@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -28,8 +21,8 @@ import (
 
 // Access Function
 
-func AttributeSubsection() AttributeSubsectionClassLike {
-	return attributeSubsectionReference()
+func AttributeSubsectionClass() AttributeSubsectionClassLike {
+	return attributeSubsectionClassReference()
 }
 
 // Constructor Methods
@@ -56,7 +49,7 @@ func (c *attributeSubsectionClass_) Make(
 // Principal Methods
 
 func (v *attributeSubsection_) GetClass() AttributeSubsectionClassLike {
-	return attributeSubsectionReference()
+	return attributeSubsectionClassReference()
 }
 
 // Attribute Methods
@@ -84,10 +77,10 @@ type attributeSubsectionClass_ struct {
 
 // Class Reference
 
-func attributeSubsectionReference() *attributeSubsectionClass_ {
-	return attributeSubsectionReference_
+func attributeSubsectionClassReference() *attributeSubsectionClass_ {
+	return attributeSubsectionClassReference_
 }
 
-var attributeSubsectionReference_ = &attributeSubsectionClass_{
+var attributeSubsectionClassReference_ = &attributeSubsectionClass_{
 	// Initialize the class constants.
 }

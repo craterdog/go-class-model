@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -27,8 +20,8 @@ import (
 
 // Access Function
 
-func LegalNotice() LegalNoticeClassLike {
-	return legalNoticeReference()
+func LegalNoticeClass() LegalNoticeClassLike {
+	return legalNoticeClassReference()
 }
 
 // Constructor Methods
@@ -55,7 +48,7 @@ func (c *legalNoticeClass_) Make(
 // Principal Methods
 
 func (v *legalNotice_) GetClass() LegalNoticeClassLike {
-	return legalNoticeReference()
+	return legalNoticeClassReference()
 }
 
 // Attribute Methods
@@ -83,10 +76,10 @@ type legalNoticeClass_ struct {
 
 // Class Reference
 
-func legalNoticeReference() *legalNoticeClass_ {
-	return legalNoticeReference_
+func legalNoticeClassReference() *legalNoticeClass_ {
+	return legalNoticeClassReference_
 }
 
-var legalNoticeReference_ = &legalNoticeClass_{
+var legalNoticeClassReference_ = &legalNoticeClass_{
 	// Initialize the class constants.
 }

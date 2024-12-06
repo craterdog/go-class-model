@@ -27,8 +27,8 @@ import (
 
 // Access Function
 
-func Token() TokenClassLike {
-	return tokenReference()
+func TokenClass() TokenClassLike {
+	return tokenClassReference()
 }
 
 // Constructor Methods
@@ -66,7 +66,7 @@ func (c *tokenClass_) Make(
 // Principal Methods
 
 func (v *token_) GetClass() TokenClassLike {
-	return tokenReference()
+	return tokenClassReference()
 }
 
 // Attribute Methods
@@ -109,10 +109,10 @@ type tokenClass_ struct {
 
 // Class Reference
 
-func tokenReference() *tokenClass_ {
-	return tokenReference_
+func tokenClassReference() *tokenClass_ {
+	return tokenClassReference_
 }
 
-var tokenReference_ = &tokenClass_{
+var tokenClassReference_ = &tokenClass_{
 	// Initialize the class constants.
 }

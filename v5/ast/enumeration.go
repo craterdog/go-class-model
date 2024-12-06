@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -28,8 +21,8 @@ import (
 
 // Access Function
 
-func Enumeration() EnumerationClassLike {
-	return enumerationReference()
+func EnumerationClass() EnumerationClassLike {
+	return enumerationClassReference()
 }
 
 // Constructor Methods
@@ -61,7 +54,7 @@ func (c *enumerationClass_) Make(
 // Principal Methods
 
 func (v *enumeration_) GetClass() EnumerationClassLike {
-	return enumerationReference()
+	return enumerationClassReference()
 }
 
 // Attribute Methods
@@ -94,10 +87,10 @@ type enumerationClass_ struct {
 
 // Class Reference
 
-func enumerationReference() *enumerationClass_ {
-	return enumerationReference_
+func enumerationClassReference() *enumerationClass_ {
+	return enumerationClassReference_
 }
 
-var enumerationReference_ = &enumerationClass_{
+var enumerationClassReference_ = &enumerationClass_{
 	// Initialize the class constants.
 }

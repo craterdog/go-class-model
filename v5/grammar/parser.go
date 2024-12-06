@@ -33,8 +33,8 @@ import (
 
 // Access Function
 
-func Parser() ParserClassLike {
-	return parserReference()
+func ParserClass() ParserClassLike {
+	return parserClassReference()
 }
 
 // Constructor Methods
@@ -51,18 +51,18 @@ func (c *parserClass_) Make() ParserLike {
 // Principal Methods
 
 func (v *parser_) GetClass() ParserClassLike {
-	return parserReference()
+	return parserClassReference()
 }
 
 func (v *parser_) ParseSource(
 	source string,
 ) ast.ModelLike {
 	v.source_ = source
-	v.tokens_ = col.Queue[TokenLike](parserReference().queueSize_)
-	v.next_ = col.Stack[TokenLike](parserReference().stackSize_)
+	v.tokens_ = col.Queue[TokenLike](parserClassReference().queueSize_)
+	v.next_ = col.Stack[TokenLike](parserClassReference().stackSize_)
 
 	// The scanner runs in a separate Go routine.
-	Scanner().Make(v.source_, v.tokens_)
+	ScannerClass().Make(v.source_, v.tokens_)
 
 	// Attempt to parse the model.
 	var model, token, ok = v.parseModel()
@@ -129,7 +129,7 @@ func (v *parser_) parseAbstraction() (
 	// Found a single Abstraction rule.
 	ok = true
 	v.remove(tokens)
-	abstraction = ast.Abstraction().Make(
+	abstraction = ast.AbstractionClass().Make(
 		optionalPrefix,
 		name,
 		optionalSuffix,
@@ -182,7 +182,7 @@ func (v *parser_) parseAdditionalArgument() (
 	// Found a single AdditionalArgument rule.
 	ok = true
 	v.remove(tokens)
-	additionalArgument = ast.AdditionalArgument().Make(argument)
+	additionalArgument = ast.AdditionalArgumentClass().Make(argument)
 	return
 }
 
@@ -230,7 +230,7 @@ func (v *parser_) parseAdditionalConstraint() (
 	// Found a single AdditionalConstraint rule.
 	ok = true
 	v.remove(tokens)
-	additionalConstraint = ast.AdditionalConstraint().Make(constraint)
+	additionalConstraint = ast.AdditionalConstraintClass().Make(constraint)
 	return
 }
 
@@ -262,7 +262,7 @@ func (v *parser_) parseAdditionalValue() (
 	// Found a single AdditionalValue rule.
 	ok = true
 	v.remove(tokens)
-	additionalValue = ast.AdditionalValue().Make(name)
+	additionalValue = ast.AdditionalValueClass().Make(name)
 	return
 }
 
@@ -293,7 +293,7 @@ func (v *parser_) parseArgument() (
 	// Found a single Argument rule.
 	ok = true
 	v.remove(tokens)
-	argument = ast.Argument().Make(abstraction)
+	argument = ast.ArgumentClass().Make(abstraction)
 	return
 }
 
@@ -384,7 +384,7 @@ additionalArgumentsLoop:
 	// Found a single Arguments rule.
 	ok = true
 	v.remove(tokens)
-	arguments = ast.Arguments().Make(
+	arguments = ast.ArgumentsClass().Make(
 		argument,
 		additionalArguments,
 	)
@@ -435,7 +435,7 @@ func (v *parser_) parseArray() (
 	// Found a single Array rule.
 	ok = true
 	v.remove(tokens)
-	array = ast.Array().Make()
+	array = ast.ArrayClass().Make()
 	return
 }
 
@@ -543,7 +543,7 @@ aspectMethodsLoop:
 	// Found a single AspectDeclaration rule.
 	ok = true
 	v.remove(tokens)
-	aspectDeclaration = ast.AspectDeclaration().Make(
+	aspectDeclaration = ast.AspectDeclarationClass().Make(
 		declaration,
 		aspectMethods,
 	)
@@ -577,7 +577,7 @@ func (v *parser_) parseAspectInterface() (
 	// Found a single AspectInterface rule.
 	ok = true
 	v.remove(tokens)
-	aspectInterface = ast.AspectInterface().Make(abstraction)
+	aspectInterface = ast.AspectInterfaceClass().Make(abstraction)
 	return
 }
 
@@ -608,7 +608,7 @@ func (v *parser_) parseAspectMethod() (
 	// Found a single AspectMethod rule.
 	ok = true
 	v.remove(tokens)
-	aspectMethod = ast.AspectMethod().Make(method)
+	aspectMethod = ast.AspectMethodClass().Make(method)
 	return
 }
 
@@ -665,7 +665,7 @@ aspectDeclarationsLoop:
 	// Found a single AspectSection rule.
 	ok = true
 	v.remove(tokens)
-	aspectSection = ast.AspectSection().Make(aspectDeclarations)
+	aspectSection = ast.AspectSectionClass().Make(aspectDeclarations)
 	return
 }
 
@@ -722,7 +722,7 @@ aspectInterfacesLoop:
 	// Found a single AspectSubsection rule.
 	ok = true
 	v.remove(tokens)
-	aspectSubsection = ast.AspectSubsection().Make(aspectInterfaces)
+	aspectSubsection = ast.AspectSubsectionClass().Make(aspectInterfaces)
 	return
 }
 
@@ -736,7 +736,7 @@ func (v *parser_) parseAttributeMethod() (
 	getterMethod, token, ok = v.parseGetterMethod()
 	if ok {
 		// Found a single GetterMethod AttributeMethod.
-		attributeMethod = ast.AttributeMethod().Make(getterMethod)
+		attributeMethod = ast.AttributeMethodClass().Make(getterMethod)
 		return
 	}
 
@@ -745,7 +745,7 @@ func (v *parser_) parseAttributeMethod() (
 	setterMethod, token, ok = v.parseSetterMethod()
 	if ok {
 		// Found a single SetterMethod AttributeMethod.
-		attributeMethod = ast.AttributeMethod().Make(setterMethod)
+		attributeMethod = ast.AttributeMethodClass().Make(setterMethod)
 		return
 	}
 
@@ -806,7 +806,7 @@ attributeMethodsLoop:
 	// Found a single AttributeSubsection rule.
 	ok = true
 	v.remove(tokens)
-	attributeSubsection = ast.AttributeSubsection().Make(attributeMethods)
+	attributeSubsection = ast.AttributeSubsectionClass().Make(attributeMethods)
 	return
 }
 
@@ -837,7 +837,7 @@ func (v *parser_) parseChannel() (
 	// Found a single Channel rule.
 	ok = true
 	v.remove(tokens)
-	channel = ast.Channel().Make()
+	channel = ast.ChannelClass().Make()
 	return
 }
 
@@ -936,7 +936,7 @@ func (v *parser_) parseClassDeclaration() (
 	// Found a single ClassDeclaration rule.
 	ok = true
 	v.remove(tokens)
-	classDeclaration = ast.ClassDeclaration().Make(
+	classDeclaration = ast.ClassDeclarationClass().Make(
 		declaration,
 		classMethods,
 	)
@@ -986,7 +986,7 @@ func (v *parser_) parseClassMethods() (
 	// Found a single ClassMethods rule.
 	ok = true
 	v.remove(tokens)
-	classMethods = ast.ClassMethods().Make(
+	classMethods = ast.ClassMethodsClass().Make(
 		constructorSubsection,
 		optionalConstantSubsection,
 		optionalFunctionSubsection,
@@ -1047,7 +1047,7 @@ classDeclarationsLoop:
 	// Found a single ClassSection rule.
 	ok = true
 	v.remove(tokens)
-	classSection = ast.ClassSection().Make(classDeclarations)
+	classSection = ast.ClassSectionClass().Make(classDeclarations)
 	return
 }
 
@@ -1130,7 +1130,7 @@ func (v *parser_) parseConstantMethod() (
 	// Found a single ConstantMethod rule.
 	ok = true
 	v.remove(tokens)
-	constantMethod = ast.ConstantMethod().Make(
+	constantMethod = ast.ConstantMethodClass().Make(
 		name,
 		abstraction,
 	)
@@ -1190,7 +1190,7 @@ constantMethodsLoop:
 	// Found a single ConstantSubsection rule.
 	ok = true
 	v.remove(tokens)
-	constantSubsection = ast.ConstantSubsection().Make(constantMethods)
+	constantSubsection = ast.ConstantSubsectionClass().Make(constantMethods)
 	return
 }
 
@@ -1239,7 +1239,7 @@ func (v *parser_) parseConstraint() (
 	// Found a single Constraint rule.
 	ok = true
 	v.remove(tokens)
-	constraint = ast.Constraint().Make(
+	constraint = ast.ConstraintClass().Make(
 		name,
 		abstraction,
 	)
@@ -1333,7 +1333,7 @@ additionalConstraintsLoop:
 	// Found a single Constraints rule.
 	ok = true
 	v.remove(tokens)
-	constraints = ast.Constraints().Make(
+	constraints = ast.ConstraintsClass().Make(
 		constraint,
 		additionalConstraints,
 	)
@@ -1445,7 +1445,7 @@ parametersLoop:
 	// Found a single ConstructorMethod rule.
 	ok = true
 	v.remove(tokens)
-	constructorMethod = ast.ConstructorMethod().Make(
+	constructorMethod = ast.ConstructorMethodClass().Make(
 		name,
 		parameters,
 		abstraction,
@@ -1506,7 +1506,7 @@ constructorMethodsLoop:
 	// Found a single ConstructorSubsection rule.
 	ok = true
 	v.remove(tokens)
-	constructorSubsection = ast.ConstructorSubsection().Make(constructorMethods)
+	constructorSubsection = ast.ConstructorSubsectionClass().Make(constructorMethods)
 	return
 }
 
@@ -1581,7 +1581,7 @@ func (v *parser_) parseDeclaration() (
 	// Found a single Declaration rule.
 	ok = true
 	v.remove(tokens)
-	declaration = ast.Declaration().Make(
+	declaration = ast.DeclarationClass().Make(
 		comment,
 		name,
 		optionalConstraints,
@@ -1693,7 +1693,7 @@ additionalValuesLoop:
 	// Found a single Enumeration rule.
 	ok = true
 	v.remove(tokens)
-	enumeration = ast.Enumeration().Make(
+	enumeration = ast.EnumerationClass().Make(
 		value,
 		additionalValues,
 	)
@@ -1805,7 +1805,7 @@ parametersLoop:
 	// Found a single FunctionMethod rule.
 	ok = true
 	v.remove(tokens)
-	functionMethod = ast.FunctionMethod().Make(
+	functionMethod = ast.FunctionMethodClass().Make(
 		name,
 		parameters,
 		result,
@@ -1866,7 +1866,7 @@ functionMethodsLoop:
 	// Found a single FunctionSubsection rule.
 	ok = true
 	v.remove(tokens)
-	functionSubsection = ast.FunctionSubsection().Make(functionMethods)
+	functionSubsection = ast.FunctionSubsectionClass().Make(functionMethods)
 	return
 }
 
@@ -1991,7 +1991,7 @@ parametersLoop:
 	// Found a single FunctionalDeclaration rule.
 	ok = true
 	v.remove(tokens)
-	functionalDeclaration = ast.FunctionalDeclaration().Make(
+	functionalDeclaration = ast.FunctionalDeclarationClass().Make(
 		declaration,
 		parameters,
 		result,
@@ -2052,7 +2052,7 @@ functionalDeclarationsLoop:
 	// Found a single FunctionalSection rule.
 	ok = true
 	v.remove(tokens)
-	functionalSection = ast.FunctionalSection().Make(functionalDeclarations)
+	functionalSection = ast.FunctionalSectionClass().Make(functionalDeclarations)
 	return
 }
 
@@ -2135,7 +2135,7 @@ func (v *parser_) parseGetterMethod() (
 	// Found a single GetterMethod rule.
 	ok = true
 	v.remove(tokens)
-	getterMethod = ast.GetterMethod().Make(
+	getterMethod = ast.GetterMethodClass().Make(
 		name,
 		abstraction,
 	)
@@ -2188,7 +2188,7 @@ func (v *parser_) parseImportedPackage() (
 	// Found a single ImportedPackage rule.
 	ok = true
 	v.remove(tokens)
-	importedPackage = ast.ImportedPackage().Make(
+	importedPackage = ast.ImportedPackageClass().Make(
 		name,
 		path,
 	)
@@ -2290,7 +2290,7 @@ func (v *parser_) parseInstanceDeclaration() (
 	// Found a single InstanceDeclaration rule.
 	ok = true
 	v.remove(tokens)
-	instanceDeclaration = ast.InstanceDeclaration().Make(
+	instanceDeclaration = ast.InstanceDeclarationClass().Make(
 		declaration,
 		instanceMethods,
 	)
@@ -2340,7 +2340,7 @@ func (v *parser_) parseInstanceMethods() (
 	// Found a single InstanceMethods rule.
 	ok = true
 	v.remove(tokens)
-	instanceMethods = ast.InstanceMethods().Make(
+	instanceMethods = ast.InstanceMethodsClass().Make(
 		principalSubsection,
 		optionalAttributeSubsection,
 		optionalAspectSubsection,
@@ -2401,7 +2401,7 @@ instanceDeclarationsLoop:
 	// Found a single InstanceSection rule.
 	ok = true
 	v.remove(tokens)
-	instanceSection = ast.InstanceSection().Make(instanceDeclarations)
+	instanceSection = ast.InstanceSectionClass().Make(instanceDeclarations)
 	return
 }
 
@@ -2466,7 +2466,7 @@ func (v *parser_) parseInterfaceDeclarations() (
 	// Found a single InterfaceDeclarations rule.
 	ok = true
 	v.remove(tokens)
-	interfaceDeclarations = ast.InterfaceDeclarations().Make(
+	interfaceDeclarations = ast.InterfaceDeclarationsClass().Make(
 		classSection,
 		instanceSection,
 		aspectSection,
@@ -2502,7 +2502,7 @@ func (v *parser_) parseLegalNotice() (
 	// Found a single LegalNotice rule.
 	ok = true
 	v.remove(tokens)
-	legalNotice = ast.LegalNotice().Make(comment)
+	legalNotice = ast.LegalNoticeClass().Make(comment)
 	return
 }
 
@@ -2585,7 +2585,7 @@ func (v *parser_) parseMap() (
 	// Found a single Map rule.
 	ok = true
 	v.remove(tokens)
-	map_ = ast.Map().Make(name)
+	map_ = ast.MapClass().Make(name)
 	return
 }
 
@@ -2685,7 +2685,7 @@ parametersLoop:
 	// Found a single Method rule.
 	ok = true
 	v.remove(tokens)
-	method = ast.Method().Make(
+	method = ast.MethodClass().Make(
 		name,
 		parameters,
 		optionalResult,
@@ -2754,7 +2754,7 @@ func (v *parser_) parseModel() (
 	// Found a single Model rule.
 	ok = true
 	v.remove(tokens)
-	model = ast.Model().Make(
+	model = ast.ModelClass().Make(
 		packageDeclaration,
 		primitiveDeclarations,
 		interfaceDeclarations,
@@ -2832,7 +2832,7 @@ parametersLoop:
 	// Found a single Multivalue rule.
 	ok = true
 	v.remove(tokens)
-	multivalue = ast.Multivalue().Make(parameters)
+	multivalue = ast.MultivalueClass().Make(parameters)
 	return
 }
 
@@ -2864,7 +2864,7 @@ func (v *parser_) parseNone() (
 	// Found a single None rule.
 	ok = true
 	v.remove(tokens)
-	none = ast.None().Make(newline)
+	none = ast.NoneClass().Make(newline)
 	return
 }
 
@@ -2929,7 +2929,7 @@ func (v *parser_) parsePackageDeclaration() (
 	// Found a single PackageDeclaration rule.
 	ok = true
 	v.remove(tokens)
-	packageDeclaration = ast.PackageDeclaration().Make(
+	packageDeclaration = ast.PackageDeclarationClass().Make(
 		legalNotice,
 		packageHeader,
 		packageImports,
@@ -3000,7 +3000,7 @@ func (v *parser_) parsePackageHeader() (
 	// Found a single PackageHeader rule.
 	ok = true
 	v.remove(tokens)
-	packageHeader = ast.PackageHeader().Make(
+	packageHeader = ast.PackageHeaderClass().Make(
 		comment,
 		name,
 	)
@@ -3094,7 +3094,7 @@ importedPackagesLoop:
 	// Found a single PackageImports rule.
 	ok = true
 	v.remove(tokens)
-	packageImports = ast.PackageImports().Make(importedPackages)
+	packageImports = ast.PackageImportsClass().Make(importedPackages)
 	return
 }
 
@@ -3160,7 +3160,7 @@ func (v *parser_) parseParameter() (
 	// Found a single Parameter rule.
 	ok = true
 	v.remove(tokens)
-	parameter = ast.Parameter().Make(
+	parameter = ast.ParameterClass().Make(
 		name,
 		abstraction,
 	)
@@ -3177,7 +3177,7 @@ func (v *parser_) parsePrefix() (
 	array, token, ok = v.parseArray()
 	if ok {
 		// Found a single Array Prefix.
-		prefix = ast.Prefix().Make(array)
+		prefix = ast.PrefixClass().Make(array)
 		return
 	}
 
@@ -3186,7 +3186,7 @@ func (v *parser_) parsePrefix() (
 	map_, token, ok = v.parseMap()
 	if ok {
 		// Found a single Map Prefix.
-		prefix = ast.Prefix().Make(map_)
+		prefix = ast.PrefixClass().Make(map_)
 		return
 	}
 
@@ -3195,7 +3195,7 @@ func (v *parser_) parsePrefix() (
 	channel, token, ok = v.parseChannel()
 	if ok {
 		// Found a single Channel Prefix.
-		prefix = ast.Prefix().Make(channel)
+		prefix = ast.PrefixClass().Make(channel)
 		return
 	}
 
@@ -3247,7 +3247,7 @@ func (v *parser_) parsePrimitiveDeclarations() (
 	// Found a single PrimitiveDeclarations rule.
 	ok = true
 	v.remove(tokens)
-	primitiveDeclarations = ast.PrimitiveDeclarations().Make(
+	primitiveDeclarations = ast.PrimitiveDeclarationsClass().Make(
 		typeSection,
 		functionalSection,
 	)
@@ -3281,7 +3281,7 @@ func (v *parser_) parsePrincipalMethod() (
 	// Found a single PrincipalMethod rule.
 	ok = true
 	v.remove(tokens)
-	principalMethod = ast.PrincipalMethod().Make(method)
+	principalMethod = ast.PrincipalMethodClass().Make(method)
 	return
 }
 
@@ -3338,7 +3338,7 @@ principalMethodsLoop:
 	// Found a single PrincipalSubsection rule.
 	ok = true
 	v.remove(tokens)
-	principalSubsection = ast.PrincipalSubsection().Make(principalMethods)
+	principalSubsection = ast.PrincipalSubsectionClass().Make(principalMethods)
 	return
 }
 
@@ -3352,7 +3352,7 @@ func (v *parser_) parseResult() (
 	none, token, ok = v.parseNone()
 	if ok {
 		// Found a single None Result.
-		result = ast.Result().Make(none)
+		result = ast.ResultClass().Make(none)
 		return
 	}
 
@@ -3361,7 +3361,7 @@ func (v *parser_) parseResult() (
 	abstraction, token, ok = v.parseAbstraction()
 	if ok {
 		// Found a single Abstraction Result.
-		result = ast.Result().Make(abstraction)
+		result = ast.ResultClass().Make(abstraction)
 		return
 	}
 
@@ -3370,7 +3370,7 @@ func (v *parser_) parseResult() (
 	multivalue, token, ok = v.parseMultivalue()
 	if ok {
 		// Found a single Multivalue Result.
-		result = ast.Result().Make(multivalue)
+		result = ast.ResultClass().Make(multivalue)
 		return
 	}
 
@@ -3457,7 +3457,7 @@ func (v *parser_) parseSetterMethod() (
 	// Found a single SetterMethod rule.
 	ok = true
 	v.remove(tokens)
-	setterMethod = ast.SetterMethod().Make(
+	setterMethod = ast.SetterMethodClass().Make(
 		name,
 		parameter,
 	)
@@ -3509,7 +3509,7 @@ func (v *parser_) parseSuffix() (
 	// Found a single Suffix rule.
 	ok = true
 	v.remove(tokens)
-	suffix = ast.Suffix().Make(name)
+	suffix = ast.SuffixClass().Make(name)
 	return
 }
 
@@ -3565,7 +3565,7 @@ func (v *parser_) parseTypeDeclaration() (
 	// Found a single TypeDeclaration rule.
 	ok = true
 	v.remove(tokens)
-	typeDeclaration = ast.TypeDeclaration().Make(
+	typeDeclaration = ast.TypeDeclarationClass().Make(
 		declaration,
 		abstraction,
 		optionalEnumeration,
@@ -3626,7 +3626,7 @@ typeDeclarationsLoop:
 	// Found a single TypeSection rule.
 	ok = true
 	v.remove(tokens)
-	typeSection = ast.TypeSection().Make(typeDeclarations)
+	typeSection = ast.TypeSectionClass().Make(typeDeclarations)
 	return
 }
 
@@ -3709,7 +3709,7 @@ func (v *parser_) parseValue() (
 	// Found a single Value rule.
 	ok = true
 	v.remove(tokens)
-	value = ast.Value().Make(
+	value = ast.ValueClass().Make(
 		name,
 		abstraction,
 	)
@@ -3777,7 +3777,7 @@ func (v *parser_) formatError(
 	// Format the error message.
 	var message = fmt.Sprintf(
 		"An unexpected token was received by the parser: %v\n",
-		Scanner().FormatToken(token),
+		ScannerClass().FormatToken(token),
 	)
 	var line = token.GetLine()
 	var lines = sts.Split(v.source_, "\n")
@@ -3819,7 +3819,7 @@ func (v *parser_) formatError(
 func (v *parser_) getDefinition(
 	ruleName string,
 ) string {
-	return parserReference().syntax_.GetValue(ruleName)
+	return parserClassReference().syntax_.GetValue(ruleName)
 }
 
 func (v *parser_) getNextToken() TokenLike {
@@ -3879,11 +3879,11 @@ type parserClass_ struct {
 
 // Class Reference
 
-func parserReference() *parserClass_ {
-	return parserReference_
+func parserClassReference() *parserClass_ {
+	return parserClassReference_
 }
 
-var parserReference_ = &parserClass_{
+var parserClassReference_ = &parserClass_{
 	// Initialize the class constants.
 	queueSize_: 16,
 	stackSize_: 16,

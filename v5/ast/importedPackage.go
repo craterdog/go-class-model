@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -27,8 +20,8 @@ import (
 
 // Access Function
 
-func ImportedPackage() ImportedPackageClassLike {
-	return importedPackageReference()
+func ImportedPackageClass() ImportedPackageClassLike {
+	return importedPackageClassReference()
 }
 
 // Constructor Methods
@@ -60,7 +53,7 @@ func (c *importedPackageClass_) Make(
 // Principal Methods
 
 func (v *importedPackage_) GetClass() ImportedPackageClassLike {
-	return importedPackageReference()
+	return importedPackageClassReference()
 }
 
 // Attribute Methods
@@ -93,10 +86,10 @@ type importedPackageClass_ struct {
 
 // Class Reference
 
-func importedPackageReference() *importedPackageClass_ {
-	return importedPackageReference_
+func importedPackageClassReference() *importedPackageClass_ {
+	return importedPackageClassReference_
 }
 
-var importedPackageReference_ = &importedPackageClass_{
+var importedPackageClassReference_ = &importedPackageClass_{
 	// Initialize the class constants.
 }

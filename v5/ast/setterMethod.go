@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -27,8 +20,8 @@ import (
 
 // Access Function
 
-func SetterMethod() SetterMethodClassLike {
-	return setterMethodReference()
+func SetterMethodClass() SetterMethodClassLike {
+	return setterMethodClassReference()
 }
 
 // Constructor Methods
@@ -60,7 +53,7 @@ func (c *setterMethodClass_) Make(
 // Principal Methods
 
 func (v *setterMethod_) GetClass() SetterMethodClassLike {
-	return setterMethodReference()
+	return setterMethodClassReference()
 }
 
 // Attribute Methods
@@ -93,10 +86,10 @@ type setterMethodClass_ struct {
 
 // Class Reference
 
-func setterMethodReference() *setterMethodClass_ {
-	return setterMethodReference_
+func setterMethodClassReference() *setterMethodClass_ {
+	return setterMethodClassReference_
 }
 
-var setterMethodReference_ = &setterMethodClass_{
+var setterMethodClassReference_ = &setterMethodClass_{
 	// Initialize the class constants.
 }

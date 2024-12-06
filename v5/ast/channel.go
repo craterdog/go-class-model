@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import ()
@@ -25,8 +18,8 @@ import ()
 
 // Access Function
 
-func Channel() ChannelClassLike {
-	return channelReference()
+func ChannelClass() ChannelClassLike {
+	return channelClassReference()
 }
 
 // Constructor Methods
@@ -47,7 +40,7 @@ func (c *channelClass_) Make() ChannelLike {
 // Principal Methods
 
 func (v *channel_) GetClass() ChannelClassLike {
-	return channelReference()
+	return channelClassReference()
 }
 
 // Attribute Methods
@@ -70,10 +63,10 @@ type channelClass_ struct {
 
 // Class Reference
 
-func channelReference() *channelClass_ {
-	return channelReference_
+func channelClassReference() *channelClass_ {
+	return channelClassReference_
 }
 
-var channelReference_ = &channelClass_{
+var channelClassReference_ = &channelClass_{
 	// Initialize the class constants.
 }

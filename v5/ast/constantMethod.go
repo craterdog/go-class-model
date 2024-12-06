@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -27,8 +20,8 @@ import (
 
 // Access Function
 
-func ConstantMethod() ConstantMethodClassLike {
-	return constantMethodReference()
+func ConstantMethodClass() ConstantMethodClassLike {
+	return constantMethodClassReference()
 }
 
 // Constructor Methods
@@ -60,7 +53,7 @@ func (c *constantMethodClass_) Make(
 // Principal Methods
 
 func (v *constantMethod_) GetClass() ConstantMethodClassLike {
-	return constantMethodReference()
+	return constantMethodClassReference()
 }
 
 // Attribute Methods
@@ -93,10 +86,10 @@ type constantMethodClass_ struct {
 
 // Class Reference
 
-func constantMethodReference() *constantMethodClass_ {
-	return constantMethodReference_
+func constantMethodClassReference() *constantMethodClass_ {
+	return constantMethodClassReference_
 }
 
-var constantMethodReference_ = &constantMethodClass_{
+var constantMethodClassReference_ = &constantMethodClass_{
 	// Initialize the class constants.
 }

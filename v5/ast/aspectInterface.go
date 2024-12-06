@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -27,8 +20,8 @@ import (
 
 // Access Function
 
-func AspectInterface() AspectInterfaceClassLike {
-	return aspectInterfaceReference()
+func AspectInterfaceClass() AspectInterfaceClassLike {
+	return aspectInterfaceClassReference()
 }
 
 // Constructor Methods
@@ -55,7 +48,7 @@ func (c *aspectInterfaceClass_) Make(
 // Principal Methods
 
 func (v *aspectInterface_) GetClass() AspectInterfaceClassLike {
-	return aspectInterfaceReference()
+	return aspectInterfaceClassReference()
 }
 
 // Attribute Methods
@@ -83,10 +76,10 @@ type aspectInterfaceClass_ struct {
 
 // Class Reference
 
-func aspectInterfaceReference() *aspectInterfaceClass_ {
-	return aspectInterfaceReference_
+func aspectInterfaceClassReference() *aspectInterfaceClass_ {
+	return aspectInterfaceClassReference_
 }
 
-var aspectInterfaceReference_ = &aspectInterfaceClass_{
+var aspectInterfaceClassReference_ = &aspectInterfaceClass_{
 	// Initialize the class constants.
 }

@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -27,8 +20,8 @@ import (
 
 // Access Function
 
-func Argument() ArgumentClassLike {
-	return argumentReference()
+func ArgumentClass() ArgumentClassLike {
+	return argumentClassReference()
 }
 
 // Constructor Methods
@@ -55,7 +48,7 @@ func (c *argumentClass_) Make(
 // Principal Methods
 
 func (v *argument_) GetClass() ArgumentClassLike {
-	return argumentReference()
+	return argumentClassReference()
 }
 
 // Attribute Methods
@@ -83,10 +76,10 @@ type argumentClass_ struct {
 
 // Class Reference
 
-func argumentReference() *argumentClass_ {
-	return argumentReference_
+func argumentClassReference() *argumentClass_ {
+	return argumentClassReference_
 }
 
-var argumentReference_ = &argumentClass_{
+var argumentClassReference_ = &argumentClass_{
 	// Initialize the class constants.
 }

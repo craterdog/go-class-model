@@ -168,7 +168,7 @@ func Abstraction(arguments ...any) AbstractionLike {
 		var name = arguments[1].(string)
 		var optionalSuffix = arguments[2].(SuffixLike)
 		var optionalArguments = arguments[3].(ArgumentsLike)
-		instance_ = ast.Abstraction().Make(
+		instance_ = ast.AbstractionClass().Make(
 			optionalPrefix,
 			name,
 			optionalSuffix,
@@ -211,7 +211,7 @@ func AdditionalArgument(arguments ...any) AdditionalArgumentLike {
 	switch argumentTypes {
 	case "ArgumentLike":
 		var argument = arguments[0].(ArgumentLike)
-		instance_ = ast.AdditionalArgument().Make(
+		instance_ = ast.AdditionalArgumentClass().Make(
 			argument,
 		)
 	default:
@@ -251,7 +251,7 @@ func AdditionalConstraint(arguments ...any) AdditionalConstraintLike {
 	switch argumentTypes {
 	case "ConstraintLike":
 		var constraint = arguments[0].(ConstraintLike)
-		instance_ = ast.AdditionalConstraint().Make(
+		instance_ = ast.AdditionalConstraintClass().Make(
 			constraint,
 		)
 	default:
@@ -291,7 +291,7 @@ func AdditionalValue(arguments ...any) AdditionalValueLike {
 	switch argumentTypes {
 	case "string":
 		var name = arguments[0].(string)
-		instance_ = ast.AdditionalValue().Make(
+		instance_ = ast.AdditionalValueClass().Make(
 			name,
 		)
 	default:
@@ -331,7 +331,7 @@ func Argument(arguments ...any) ArgumentLike {
 	switch argumentTypes {
 	case "AbstractionLike":
 		var abstraction = arguments[0].(AbstractionLike)
-		instance_ = ast.Argument().Make(
+		instance_ = ast.ArgumentClass().Make(
 			abstraction,
 		)
 	default:
@@ -374,7 +374,7 @@ func Arguments(arguments ...any) ArgumentsLike {
 	case "ArgumentLike, abs.Sequential[AdditionalArgumentLike]":
 		var argument = arguments[0].(ArgumentLike)
 		var additionalArguments = arguments[1].(abs.Sequential[AdditionalArgumentLike])
-		instance_ = ast.Arguments().Make(
+		instance_ = ast.ArgumentsClass().Make(
 			argument,
 			additionalArguments,
 		)
@@ -412,7 +412,7 @@ func Array(arguments ...any) ArrayLike {
 	var instance_ ArrayLike
 	switch argumentTypes {
 	case "":
-		instance_ = ast.Array().Make()
+		instance_ = ast.ArrayClass().Make()
 	default:
 		var message = fmt.Sprintf(
 			"No Array constructor matching the arguments was found: %v\n",
@@ -453,7 +453,7 @@ func AspectDeclaration(arguments ...any) AspectDeclarationLike {
 	case "DeclarationLike, abs.Sequential[AspectMethodLike]":
 		var declaration = arguments[0].(DeclarationLike)
 		var aspectMethods = arguments[1].(abs.Sequential[AspectMethodLike])
-		instance_ = ast.AspectDeclaration().Make(
+		instance_ = ast.AspectDeclarationClass().Make(
 			declaration,
 			aspectMethods,
 		)
@@ -494,7 +494,7 @@ func AspectInterface(arguments ...any) AspectInterfaceLike {
 	switch argumentTypes {
 	case "AbstractionLike":
 		var abstraction = arguments[0].(AbstractionLike)
-		instance_ = ast.AspectInterface().Make(
+		instance_ = ast.AspectInterfaceClass().Make(
 			abstraction,
 		)
 	default:
@@ -534,7 +534,7 @@ func AspectMethod(arguments ...any) AspectMethodLike {
 	switch argumentTypes {
 	case "MethodLike":
 		var method = arguments[0].(MethodLike)
-		instance_ = ast.AspectMethod().Make(
+		instance_ = ast.AspectMethodClass().Make(
 			method,
 		)
 	default:
@@ -574,7 +574,7 @@ func AspectSection(arguments ...any) AspectSectionLike {
 	switch argumentTypes {
 	case "abs.Sequential[AspectDeclarationLike]":
 		var aspectDeclarations = arguments[0].(abs.Sequential[AspectDeclarationLike])
-		instance_ = ast.AspectSection().Make(
+		instance_ = ast.AspectSectionClass().Make(
 			aspectDeclarations,
 		)
 	default:
@@ -614,7 +614,7 @@ func AspectSubsection(arguments ...any) AspectSubsectionLike {
 	switch argumentTypes {
 	case "abs.Sequential[AspectInterfaceLike]":
 		var aspectInterfaces = arguments[0].(abs.Sequential[AspectInterfaceLike])
-		instance_ = ast.AspectSubsection().Make(
+		instance_ = ast.AspectSubsectionClass().Make(
 			aspectInterfaces,
 		)
 	default:
@@ -654,7 +654,7 @@ func AttributeMethod(arguments ...any) AttributeMethodLike {
 	switch argumentTypes {
 	case "any":
 		var any_ = arguments[0]
-		instance_ = ast.AttributeMethod().Make(
+		instance_ = ast.AttributeMethodClass().Make(
 			any_,
 		)
 	default:
@@ -694,7 +694,7 @@ func AttributeSubsection(arguments ...any) AttributeSubsectionLike {
 	switch argumentTypes {
 	case "abs.Sequential[AttributeMethodLike]":
 		var attributeMethods = arguments[0].(abs.Sequential[AttributeMethodLike])
-		instance_ = ast.AttributeSubsection().Make(
+		instance_ = ast.AttributeSubsectionClass().Make(
 			attributeMethods,
 		)
 	default:
@@ -731,7 +731,7 @@ func Channel(arguments ...any) ChannelLike {
 	var instance_ ChannelLike
 	switch argumentTypes {
 	case "":
-		instance_ = ast.Channel().Make()
+		instance_ = ast.ChannelClass().Make()
 	default:
 		var message = fmt.Sprintf(
 			"No Channel constructor matching the arguments was found: %v\n",
@@ -772,7 +772,7 @@ func ClassDeclaration(arguments ...any) ClassDeclarationLike {
 	case "DeclarationLike, ClassMethodsLike":
 		var declaration = arguments[0].(DeclarationLike)
 		var classMethods = arguments[1].(ClassMethodsLike)
-		instance_ = ast.ClassDeclaration().Make(
+		instance_ = ast.ClassDeclarationClass().Make(
 			declaration,
 			classMethods,
 		)
@@ -819,7 +819,7 @@ func ClassMethods(arguments ...any) ClassMethodsLike {
 		var constructorSubsection = arguments[0].(ConstructorSubsectionLike)
 		var optionalConstantSubsection = arguments[1].(ConstantSubsectionLike)
 		var optionalFunctionSubsection = arguments[2].(FunctionSubsectionLike)
-		instance_ = ast.ClassMethods().Make(
+		instance_ = ast.ClassMethodsClass().Make(
 			constructorSubsection,
 			optionalConstantSubsection,
 			optionalFunctionSubsection,
@@ -861,7 +861,7 @@ func ClassSection(arguments ...any) ClassSectionLike {
 	switch argumentTypes {
 	case "abs.Sequential[ClassDeclarationLike]":
 		var classDeclarations = arguments[0].(abs.Sequential[ClassDeclarationLike])
-		instance_ = ast.ClassSection().Make(
+		instance_ = ast.ClassSectionClass().Make(
 			classDeclarations,
 		)
 	default:
@@ -904,7 +904,7 @@ func ConstantMethod(arguments ...any) ConstantMethodLike {
 	case "string, AbstractionLike":
 		var name = arguments[0].(string)
 		var abstraction = arguments[1].(AbstractionLike)
-		instance_ = ast.ConstantMethod().Make(
+		instance_ = ast.ConstantMethodClass().Make(
 			name,
 			abstraction,
 		)
@@ -945,7 +945,7 @@ func ConstantSubsection(arguments ...any) ConstantSubsectionLike {
 	switch argumentTypes {
 	case "abs.Sequential[ConstantMethodLike]":
 		var constantMethods = arguments[0].(abs.Sequential[ConstantMethodLike])
-		instance_ = ast.ConstantSubsection().Make(
+		instance_ = ast.ConstantSubsectionClass().Make(
 			constantMethods,
 		)
 	default:
@@ -988,7 +988,7 @@ func Constraint(arguments ...any) ConstraintLike {
 	case "string, AbstractionLike":
 		var name = arguments[0].(string)
 		var abstraction = arguments[1].(AbstractionLike)
-		instance_ = ast.Constraint().Make(
+		instance_ = ast.ConstraintClass().Make(
 			name,
 			abstraction,
 		)
@@ -1032,7 +1032,7 @@ func Constraints(arguments ...any) ConstraintsLike {
 	case "ConstraintLike, abs.Sequential[AdditionalConstraintLike]":
 		var constraint = arguments[0].(ConstraintLike)
 		var additionalConstraints = arguments[1].(abs.Sequential[AdditionalConstraintLike])
-		instance_ = ast.Constraints().Make(
+		instance_ = ast.ConstraintsClass().Make(
 			constraint,
 			additionalConstraints,
 		)
@@ -1079,7 +1079,7 @@ func ConstructorMethod(arguments ...any) ConstructorMethodLike {
 		var name = arguments[0].(string)
 		var parameters = arguments[1].(abs.Sequential[ParameterLike])
 		var abstraction = arguments[2].(AbstractionLike)
-		instance_ = ast.ConstructorMethod().Make(
+		instance_ = ast.ConstructorMethodClass().Make(
 			name,
 			parameters,
 			abstraction,
@@ -1121,7 +1121,7 @@ func ConstructorSubsection(arguments ...any) ConstructorSubsectionLike {
 	switch argumentTypes {
 	case "abs.Sequential[ConstructorMethodLike]":
 		var constructorMethods = arguments[0].(abs.Sequential[ConstructorMethodLike])
-		instance_ = ast.ConstructorSubsection().Make(
+		instance_ = ast.ConstructorSubsectionClass().Make(
 			constructorMethods,
 		)
 	default:
@@ -1165,7 +1165,7 @@ func Declaration(arguments ...any) DeclarationLike {
 		var comment = arguments[0].(string)
 		var name = arguments[1].(string)
 		var optionalConstraints = arguments[2].(ConstraintsLike)
-		instance_ = ast.Declaration().Make(
+		instance_ = ast.DeclarationClass().Make(
 			comment,
 			name,
 			optionalConstraints,
@@ -1210,7 +1210,7 @@ func Enumeration(arguments ...any) EnumerationLike {
 	case "ValueLike, abs.Sequential[AdditionalValueLike]":
 		var value = arguments[0].(ValueLike)
 		var additionalValues = arguments[1].(abs.Sequential[AdditionalValueLike])
-		instance_ = ast.Enumeration().Make(
+		instance_ = ast.EnumerationClass().Make(
 			value,
 			additionalValues,
 		)
@@ -1257,7 +1257,7 @@ func FunctionMethod(arguments ...any) FunctionMethodLike {
 		var name = arguments[0].(string)
 		var parameters = arguments[1].(abs.Sequential[ParameterLike])
 		var result = arguments[2].(ResultLike)
-		instance_ = ast.FunctionMethod().Make(
+		instance_ = ast.FunctionMethodClass().Make(
 			name,
 			parameters,
 			result,
@@ -1299,7 +1299,7 @@ func FunctionSubsection(arguments ...any) FunctionSubsectionLike {
 	switch argumentTypes {
 	case "abs.Sequential[FunctionMethodLike]":
 		var functionMethods = arguments[0].(abs.Sequential[FunctionMethodLike])
-		instance_ = ast.FunctionSubsection().Make(
+		instance_ = ast.FunctionSubsectionClass().Make(
 			functionMethods,
 		)
 	default:
@@ -1345,7 +1345,7 @@ func FunctionalDeclaration(arguments ...any) FunctionalDeclarationLike {
 		var declaration = arguments[0].(DeclarationLike)
 		var parameters = arguments[1].(abs.Sequential[ParameterLike])
 		var result = arguments[2].(ResultLike)
-		instance_ = ast.FunctionalDeclaration().Make(
+		instance_ = ast.FunctionalDeclarationClass().Make(
 			declaration,
 			parameters,
 			result,
@@ -1387,7 +1387,7 @@ func FunctionalSection(arguments ...any) FunctionalSectionLike {
 	switch argumentTypes {
 	case "abs.Sequential[FunctionalDeclarationLike]":
 		var functionalDeclarations = arguments[0].(abs.Sequential[FunctionalDeclarationLike])
-		instance_ = ast.FunctionalSection().Make(
+		instance_ = ast.FunctionalSectionClass().Make(
 			functionalDeclarations,
 		)
 	default:
@@ -1430,7 +1430,7 @@ func GetterMethod(arguments ...any) GetterMethodLike {
 	case "string, AbstractionLike":
 		var name = arguments[0].(string)
 		var abstraction = arguments[1].(AbstractionLike)
-		instance_ = ast.GetterMethod().Make(
+		instance_ = ast.GetterMethodClass().Make(
 			name,
 			abstraction,
 		)
@@ -1472,7 +1472,7 @@ func ImportedPackage(arguments ...any) ImportedPackageLike {
 	case "string, string":
 		var name = arguments[0].(string)
 		var path = arguments[1].(string)
-		instance_ = ast.ImportedPackage().Make(
+		instance_ = ast.ImportedPackageClass().Make(
 			name,
 			path,
 		)
@@ -1516,7 +1516,7 @@ func InstanceDeclaration(arguments ...any) InstanceDeclarationLike {
 	case "DeclarationLike, InstanceMethodsLike":
 		var declaration = arguments[0].(DeclarationLike)
 		var instanceMethods = arguments[1].(InstanceMethodsLike)
-		instance_ = ast.InstanceDeclaration().Make(
+		instance_ = ast.InstanceDeclarationClass().Make(
 			declaration,
 			instanceMethods,
 		)
@@ -1563,7 +1563,7 @@ func InstanceMethods(arguments ...any) InstanceMethodsLike {
 		var principalSubsection = arguments[0].(PrincipalSubsectionLike)
 		var optionalAttributeSubsection = arguments[1].(AttributeSubsectionLike)
 		var optionalAspectSubsection = arguments[2].(AspectSubsectionLike)
-		instance_ = ast.InstanceMethods().Make(
+		instance_ = ast.InstanceMethodsClass().Make(
 			principalSubsection,
 			optionalAttributeSubsection,
 			optionalAspectSubsection,
@@ -1605,7 +1605,7 @@ func InstanceSection(arguments ...any) InstanceSectionLike {
 	switch argumentTypes {
 	case "abs.Sequential[InstanceDeclarationLike]":
 		var instanceDeclarations = arguments[0].(abs.Sequential[InstanceDeclarationLike])
-		instance_ = ast.InstanceSection().Make(
+		instance_ = ast.InstanceSectionClass().Make(
 			instanceDeclarations,
 		)
 	default:
@@ -1651,7 +1651,7 @@ func InterfaceDeclarations(arguments ...any) InterfaceDeclarationsLike {
 		var classSection = arguments[0].(ClassSectionLike)
 		var instanceSection = arguments[1].(InstanceSectionLike)
 		var aspectSection = arguments[2].(AspectSectionLike)
-		instance_ = ast.InterfaceDeclarations().Make(
+		instance_ = ast.InterfaceDeclarationsClass().Make(
 			classSection,
 			instanceSection,
 			aspectSection,
@@ -1693,7 +1693,7 @@ func LegalNotice(arguments ...any) LegalNoticeLike {
 	switch argumentTypes {
 	case "string":
 		var comment = arguments[0].(string)
-		instance_ = ast.LegalNotice().Make(
+		instance_ = ast.LegalNoticeClass().Make(
 			comment,
 		)
 	default:
@@ -1733,7 +1733,7 @@ func Map(arguments ...any) MapLike {
 	switch argumentTypes {
 	case "string":
 		var name = arguments[0].(string)
-		instance_ = ast.Map().Make(
+		instance_ = ast.MapClass().Make(
 			name,
 		)
 	default:
@@ -1779,7 +1779,7 @@ func Method(arguments ...any) MethodLike {
 		var name = arguments[0].(string)
 		var parameters = arguments[1].(abs.Sequential[ParameterLike])
 		var optionalResult = arguments[2].(ResultLike)
-		instance_ = ast.Method().Make(
+		instance_ = ast.MethodClass().Make(
 			name,
 			parameters,
 			optionalResult,
@@ -1827,7 +1827,7 @@ func Model(arguments ...any) ModelLike {
 		var packageDeclaration = arguments[0].(PackageDeclarationLike)
 		var primitiveDeclarations = arguments[1].(PrimitiveDeclarationsLike)
 		var interfaceDeclarations = arguments[2].(InterfaceDeclarationsLike)
-		instance_ = ast.Model().Make(
+		instance_ = ast.ModelClass().Make(
 			packageDeclaration,
 			primitiveDeclarations,
 			interfaceDeclarations,
@@ -1869,7 +1869,7 @@ func Multivalue(arguments ...any) MultivalueLike {
 	switch argumentTypes {
 	case "abs.Sequential[ParameterLike]":
 		var parameters = arguments[0].(abs.Sequential[ParameterLike])
-		instance_ = ast.Multivalue().Make(
+		instance_ = ast.MultivalueClass().Make(
 			parameters,
 		)
 	default:
@@ -1909,7 +1909,7 @@ func None(arguments ...any) NoneLike {
 	switch argumentTypes {
 	case "string":
 		var newline = arguments[0].(string)
-		instance_ = ast.None().Make(
+		instance_ = ast.NoneClass().Make(
 			newline,
 		)
 	default:
@@ -1955,7 +1955,7 @@ func PackageDeclaration(arguments ...any) PackageDeclarationLike {
 		var legalNotice = arguments[0].(LegalNoticeLike)
 		var packageHeader = arguments[1].(PackageHeaderLike)
 		var packageImports = arguments[2].(PackageImportsLike)
-		instance_ = ast.PackageDeclaration().Make(
+		instance_ = ast.PackageDeclarationClass().Make(
 			legalNotice,
 			packageHeader,
 			packageImports,
@@ -1998,7 +1998,7 @@ func PackageHeader(arguments ...any) PackageHeaderLike {
 	case "string, string":
 		var comment = arguments[0].(string)
 		var name = arguments[1].(string)
-		instance_ = ast.PackageHeader().Make(
+		instance_ = ast.PackageHeaderClass().Make(
 			comment,
 			name,
 		)
@@ -2039,7 +2039,7 @@ func PackageImports(arguments ...any) PackageImportsLike {
 	switch argumentTypes {
 	case "abs.Sequential[ImportedPackageLike]":
 		var importedPackages = arguments[0].(abs.Sequential[ImportedPackageLike])
-		instance_ = ast.PackageImports().Make(
+		instance_ = ast.PackageImportsClass().Make(
 			importedPackages,
 		)
 	default:
@@ -2082,7 +2082,7 @@ func Parameter(arguments ...any) ParameterLike {
 	case "string, AbstractionLike":
 		var name = arguments[0].(string)
 		var abstraction = arguments[1].(AbstractionLike)
-		instance_ = ast.Parameter().Make(
+		instance_ = ast.ParameterClass().Make(
 			name,
 			abstraction,
 		)
@@ -2123,7 +2123,7 @@ func Prefix(arguments ...any) PrefixLike {
 	switch argumentTypes {
 	case "any":
 		var any_ = arguments[0]
-		instance_ = ast.Prefix().Make(
+		instance_ = ast.PrefixClass().Make(
 			any_,
 		)
 	default:
@@ -2166,7 +2166,7 @@ func PrimitiveDeclarations(arguments ...any) PrimitiveDeclarationsLike {
 	case "TypeSectionLike, FunctionalSectionLike":
 		var typeSection = arguments[0].(TypeSectionLike)
 		var functionalSection = arguments[1].(FunctionalSectionLike)
-		instance_ = ast.PrimitiveDeclarations().Make(
+		instance_ = ast.PrimitiveDeclarationsClass().Make(
 			typeSection,
 			functionalSection,
 		)
@@ -2207,7 +2207,7 @@ func PrincipalMethod(arguments ...any) PrincipalMethodLike {
 	switch argumentTypes {
 	case "MethodLike":
 		var method = arguments[0].(MethodLike)
-		instance_ = ast.PrincipalMethod().Make(
+		instance_ = ast.PrincipalMethodClass().Make(
 			method,
 		)
 	default:
@@ -2247,7 +2247,7 @@ func PrincipalSubsection(arguments ...any) PrincipalSubsectionLike {
 	switch argumentTypes {
 	case "abs.Sequential[PrincipalMethodLike]":
 		var principalMethods = arguments[0].(abs.Sequential[PrincipalMethodLike])
-		instance_ = ast.PrincipalSubsection().Make(
+		instance_ = ast.PrincipalSubsectionClass().Make(
 			principalMethods,
 		)
 	default:
@@ -2287,7 +2287,7 @@ func Result(arguments ...any) ResultLike {
 	switch argumentTypes {
 	case "any":
 		var any_ = arguments[0]
-		instance_ = ast.Result().Make(
+		instance_ = ast.ResultClass().Make(
 			any_,
 		)
 	default:
@@ -2330,7 +2330,7 @@ func SetterMethod(arguments ...any) SetterMethodLike {
 	case "string, ParameterLike":
 		var name = arguments[0].(string)
 		var parameter = arguments[1].(ParameterLike)
-		instance_ = ast.SetterMethod().Make(
+		instance_ = ast.SetterMethodClass().Make(
 			name,
 			parameter,
 		)
@@ -2371,7 +2371,7 @@ func Suffix(arguments ...any) SuffixLike {
 	switch argumentTypes {
 	case "string":
 		var name = arguments[0].(string)
-		instance_ = ast.Suffix().Make(
+		instance_ = ast.SuffixClass().Make(
 			name,
 		)
 	default:
@@ -2417,7 +2417,7 @@ func TypeDeclaration(arguments ...any) TypeDeclarationLike {
 		var declaration = arguments[0].(DeclarationLike)
 		var abstraction = arguments[1].(AbstractionLike)
 		var optionalEnumeration = arguments[2].(EnumerationLike)
-		instance_ = ast.TypeDeclaration().Make(
+		instance_ = ast.TypeDeclarationClass().Make(
 			declaration,
 			abstraction,
 			optionalEnumeration,
@@ -2459,7 +2459,7 @@ func TypeSection(arguments ...any) TypeSectionLike {
 	switch argumentTypes {
 	case "abs.Sequential[TypeDeclarationLike]":
 		var typeDeclarations = arguments[0].(abs.Sequential[TypeDeclarationLike])
-		instance_ = ast.TypeSection().Make(
+		instance_ = ast.TypeSectionClass().Make(
 			typeDeclarations,
 		)
 	default:
@@ -2502,7 +2502,7 @@ func Value(arguments ...any) ValueLike {
 	case "string, AbstractionLike":
 		var name = arguments[0].(string)
 		var abstraction = arguments[1].(AbstractionLike)
-		instance_ = ast.Value().Make(
+		instance_ = ast.ValueClass().Make(
 			name,
 			abstraction,
 		)
@@ -2542,7 +2542,7 @@ func Formatter(arguments ...any) FormatterLike {
 	var instance_ FormatterLike
 	switch argumentTypes {
 	case "":
-		instance_ = gra.Formatter().Make()
+		instance_ = gra.FormatterClass().Make()
 	default:
 		var message = fmt.Sprintf(
 			"No Formatter constructor matching the arguments was found: %v\n",
@@ -2577,7 +2577,7 @@ func Parser(arguments ...any) ParserLike {
 	var instance_ ParserLike
 	switch argumentTypes {
 	case "":
-		instance_ = gra.Parser().Make()
+		instance_ = gra.ParserClass().Make()
 	default:
 		var message = fmt.Sprintf(
 			"No Parser constructor matching the arguments was found: %v\n",
@@ -2612,7 +2612,7 @@ func Processor(arguments ...any) ProcessorLike {
 	var instance_ ProcessorLike
 	switch argumentTypes {
 	case "":
-		instance_ = gra.Processor().Make()
+		instance_ = gra.ProcessorClass().Make()
 	default:
 		var message = fmt.Sprintf(
 			"No Processor constructor matching the arguments was found: %v\n",
@@ -2653,7 +2653,7 @@ func Scanner(arguments ...any) ScannerLike {
 	case "string, abs.QueueLike[TokenLike]":
 		var source = arguments[0].(string)
 		var tokens = arguments[1].(abs.QueueLike[TokenLike])
-		instance_ = gra.Scanner().Make(
+		instance_ = gra.ScannerClass().Make(
 			source,
 			tokens,
 		)
@@ -2701,7 +2701,7 @@ func Token(arguments ...any) TokenLike {
 		var position = arguments[1].(uint)
 		var type_ = arguments[2].(TokenType)
 		var value = arguments[3].(string)
-		instance_ = gra.Token().Make(
+		instance_ = gra.TokenClass().Make(
 			line,
 			position,
 			type_,
@@ -2741,7 +2741,7 @@ func Validator(arguments ...any) ValidatorLike {
 	var instance_ ValidatorLike
 	switch argumentTypes {
 	case "":
-		instance_ = gra.Validator().Make()
+		instance_ = gra.ValidatorClass().Make()
 	default:
 		var message = fmt.Sprintf(
 			"No Validator constructor matching the arguments was found: %v\n",
@@ -2779,7 +2779,7 @@ func Visitor(arguments ...any) VisitorLike {
 	switch argumentTypes {
 	case "Methodical":
 		var processor = arguments[0].(Methodical)
-		instance_ = gra.Visitor().Make(
+		instance_ = gra.VisitorClass().Make(
 			processor,
 		)
 	default:
@@ -2805,7 +2805,7 @@ func MatchesType(
 	tokenValue string,
 	tokenType TokenType,
 ) bool {
-	var scannerClass = gra.Scanner()
+	var scannerClass = gra.ScannerClass()
 	return scannerClass.MatchesType(tokenValue, tokenType)
 }
 

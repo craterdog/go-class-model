@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -27,8 +20,8 @@ import (
 
 // Access Function
 
-func AdditionalArgument() AdditionalArgumentClassLike {
-	return additionalArgumentReference()
+func AdditionalArgumentClass() AdditionalArgumentClassLike {
+	return additionalArgumentClassReference()
 }
 
 // Constructor Methods
@@ -55,7 +48,7 @@ func (c *additionalArgumentClass_) Make(
 // Principal Methods
 
 func (v *additionalArgument_) GetClass() AdditionalArgumentClassLike {
-	return additionalArgumentReference()
+	return additionalArgumentClassReference()
 }
 
 // Attribute Methods
@@ -83,10 +76,10 @@ type additionalArgumentClass_ struct {
 
 // Class Reference
 
-func additionalArgumentReference() *additionalArgumentClass_ {
-	return additionalArgumentReference_
+func additionalArgumentClassReference() *additionalArgumentClass_ {
+	return additionalArgumentClassReference_
 }
 
-var additionalArgumentReference_ = &additionalArgumentClass_{
+var additionalArgumentClassReference_ = &additionalArgumentClass_{
 	// Initialize the class constants.
 }

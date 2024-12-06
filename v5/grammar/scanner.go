@@ -32,8 +32,8 @@ import (
 
 // Access Function
 
-func Scanner() ScannerClassLike {
-	return scannerReference()
+func ScannerClass() ScannerClassLike {
+	return scannerClassReference()
 }
 
 // Constructor Methods
@@ -98,7 +98,7 @@ func (c *scannerClass_) MatchesType(
 // Principal Methods
 
 func (v *scanner_) GetClass() ScannerClassLike {
-	return scannerReference()
+	return scannerClassReference()
 }
 
 // PROTECTED INTERFACE
@@ -125,7 +125,7 @@ func (v *scanner_) emitToken(
 	case "\v":
 		value = "<VTAB>"
 	}
-	var token = Token().Make(v.line_, v.position_, tokenType, value)
+	var token = TokenClass().Make(v.line_, v.position_, tokenType, value)
 	//fmt.Println(Scanner().FormatToken(token)) // Uncomment when debugging.
 	v.tokens_.AddValue(token) // This will block if the queue is full.
 }
@@ -140,7 +140,7 @@ func (v *scanner_) foundToken(
 ) bool {
 	// Attempt to match the specified token type.
 	var text = string(v.runes_[v.next_:])
-	var matcher = scannerReference().matchers_[tokenType]
+	var matcher = scannerClassReference().matchers_[tokenType]
 	var match = matcher.FindString(text)
 	if uti.IsUndefined(match) {
 		return false
@@ -225,11 +225,11 @@ type scannerClass_ struct {
 
 // Class Reference
 
-func scannerReference() *scannerClass_ {
-	return scannerReference_
+func scannerClassReference() *scannerClass_ {
+	return scannerClassReference_
 }
 
-var scannerReference_ = &scannerClass_{
+var scannerClassReference_ = &scannerClass_{
 	// Initialize the class constants.
 	tokens_: map[TokenType]string{
 		// Define identifiers for each type of token.

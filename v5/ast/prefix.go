@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -27,8 +20,8 @@ import (
 
 // Access Function
 
-func Prefix() PrefixClassLike {
-	return prefixReference()
+func PrefixClass() PrefixClassLike {
+	return prefixClassReference()
 }
 
 // Constructor Methods
@@ -55,7 +48,7 @@ func (c *prefixClass_) Make(
 // Principal Methods
 
 func (v *prefix_) GetClass() PrefixClassLike {
-	return prefixReference()
+	return prefixClassReference()
 }
 
 // Attribute Methods
@@ -83,10 +76,10 @@ type prefixClass_ struct {
 
 // Class Reference
 
-func prefixReference() *prefixClass_ {
-	return prefixReference_
+func prefixClassReference() *prefixClass_ {
+	return prefixClassReference_
 }
 
-var prefixReference_ = &prefixClass_{
+var prefixClassReference_ = &prefixClass_{
 	// Initialize the class constants.
 }

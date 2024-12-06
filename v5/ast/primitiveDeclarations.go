@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -27,8 +20,8 @@ import (
 
 // Access Function
 
-func PrimitiveDeclarations() PrimitiveDeclarationsClassLike {
-	return primitiveDeclarationsReference()
+func PrimitiveDeclarationsClass() PrimitiveDeclarationsClassLike {
+	return primitiveDeclarationsClassReference()
 }
 
 // Constructor Methods
@@ -60,7 +53,7 @@ func (c *primitiveDeclarationsClass_) Make(
 // Principal Methods
 
 func (v *primitiveDeclarations_) GetClass() PrimitiveDeclarationsClassLike {
-	return primitiveDeclarationsReference()
+	return primitiveDeclarationsClassReference()
 }
 
 // Attribute Methods
@@ -93,10 +86,10 @@ type primitiveDeclarationsClass_ struct {
 
 // Class Reference
 
-func primitiveDeclarationsReference() *primitiveDeclarationsClass_ {
-	return primitiveDeclarationsReference_
+func primitiveDeclarationsClassReference() *primitiveDeclarationsClass_ {
+	return primitiveDeclarationsClassReference_
 }
 
-var primitiveDeclarationsReference_ = &primitiveDeclarationsClass_{
+var primitiveDeclarationsClassReference_ = &primitiveDeclarationsClass_{
 	// Initialize the class constants.
 }

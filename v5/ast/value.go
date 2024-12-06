@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -27,8 +20,8 @@ import (
 
 // Access Function
 
-func Value() ValueClassLike {
-	return valueReference()
+func ValueClass() ValueClassLike {
+	return valueClassReference()
 }
 
 // Constructor Methods
@@ -60,7 +53,7 @@ func (c *valueClass_) Make(
 // Principal Methods
 
 func (v *value_) GetClass() ValueClassLike {
-	return valueReference()
+	return valueClassReference()
 }
 
 // Attribute Methods
@@ -93,10 +86,10 @@ type valueClass_ struct {
 
 // Class Reference
 
-func valueReference() *valueClass_ {
-	return valueReference_
+func valueClassReference() *valueClass_ {
+	return valueClassReference_
 }
 
-var valueReference_ = &valueClass_{
+var valueClassReference_ = &valueClass_{
 	// Initialize the class constants.
 }

@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -28,8 +21,8 @@ import (
 
 // Access Function
 
-func AspectDeclaration() AspectDeclarationClassLike {
-	return aspectDeclarationReference()
+func AspectDeclarationClass() AspectDeclarationClassLike {
+	return aspectDeclarationClassReference()
 }
 
 // Constructor Methods
@@ -61,7 +54,7 @@ func (c *aspectDeclarationClass_) Make(
 // Principal Methods
 
 func (v *aspectDeclaration_) GetClass() AspectDeclarationClassLike {
-	return aspectDeclarationReference()
+	return aspectDeclarationClassReference()
 }
 
 // Attribute Methods
@@ -94,10 +87,10 @@ type aspectDeclarationClass_ struct {
 
 // Class Reference
 
-func aspectDeclarationReference() *aspectDeclarationClass_ {
-	return aspectDeclarationReference_
+func aspectDeclarationClassReference() *aspectDeclarationClass_ {
+	return aspectDeclarationClassReference_
 }
 
-var aspectDeclarationReference_ = &aspectDeclarationClass_{
+var aspectDeclarationClassReference_ = &aspectDeclarationClass_{
 	// Initialize the class constants.
 }

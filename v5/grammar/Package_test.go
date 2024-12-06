@@ -26,11 +26,11 @@ func TestRoundTrips(t *tes.T) {
 		panic(err)
 	}
 	var source = string(bytes)
-	var parser = gra.Parser().Make()
+	var parser = gra.ParserClass().Make()
 	var model = parser.ParseSource(source)
-	var validator = gra.Validator().Make()
+	var validator = gra.ValidatorClass().Make()
 	validator.ValidateModel(model)
-	var formatter = gra.Formatter().Make()
+	var formatter = gra.FormatterClass().Make()
 	var actual = formatter.FormatModel(model)
 	ass.Equal(t, source, actual)
 }

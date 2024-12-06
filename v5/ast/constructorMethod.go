@@ -10,13 +10,6 @@
 ................................................................................
 */
 
-/*
-┌────────────────────────────────── WARNING ───────────────────────────────────┐
-│                 This class file was automatically generated.                 │
-│                     Any updates to it may be overwritten.                    │
-└──────────────────────────────────────────────────────────────────────────────┘
-*/
-
 package ast
 
 import (
@@ -28,8 +21,8 @@ import (
 
 // Access Function
 
-func ConstructorMethod() ConstructorMethodClassLike {
-	return constructorMethodReference()
+func ConstructorMethodClass() ConstructorMethodClassLike {
+	return constructorMethodClassReference()
 }
 
 // Constructor Methods
@@ -66,7 +59,7 @@ func (c *constructorMethodClass_) Make(
 // Principal Methods
 
 func (v *constructorMethod_) GetClass() ConstructorMethodClassLike {
-	return constructorMethodReference()
+	return constructorMethodClassReference()
 }
 
 // Attribute Methods
@@ -104,10 +97,10 @@ type constructorMethodClass_ struct {
 
 // Class Reference
 
-func constructorMethodReference() *constructorMethodClass_ {
-	return constructorMethodReference_
+func constructorMethodClassReference() *constructorMethodClass_ {
+	return constructorMethodClassReference_
 }
 
-var constructorMethodReference_ = &constructorMethodClass_{
+var constructorMethodClassReference_ = &constructorMethodClass_{
 	// Initialize the class constants.
 }

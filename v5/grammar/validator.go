@@ -28,8 +28,8 @@ import (
 
 // Access Function
 
-func Validator() ValidatorClassLike {
-	return validatorReference()
+func ValidatorClass() ValidatorClassLike {
+	return validatorClassReference()
 }
 
 // Constructor Methods
@@ -39,9 +39,9 @@ func (c *validatorClass_) Make() ValidatorLike {
 		// Initialize the instance attributes.
 
 		// Initialize the inherited aspects.
-		Methodical: Processor().Make(),
+		Methodical: ProcessorClass().Make(),
 	}
-	instance.visitor_ = Visitor().Make(instance)
+	instance.visitor_ = VisitorClass().Make(instance)
 	return instance
 }
 
@@ -50,7 +50,7 @@ func (c *validatorClass_) Make() ValidatorLike {
 // Principal Methods
 
 func (v *validator_) GetClass() ValidatorClassLike {
-	return validatorReference()
+	return validatorClassReference()
 }
 
 func (v *validator_) ValidateModel(
@@ -1175,10 +1175,11 @@ func (v *validator_) validateToken(
 	tokenValue string,
 	tokenType TokenType,
 ) {
-	if !Scanner().MatchesType(tokenValue, tokenType) {
+	var scannerClass = ScannerClass()
+	if !scannerClass.MatchesType(tokenValue, tokenType) {
 		var message = fmt.Sprintf(
 			"The following token value is not of type %v: %v",
-			Scanner().FormatType(tokenType),
+			scannerClass.FormatType(tokenType),
 			tokenValue,
 		)
 		panic(message)
@@ -1203,10 +1204,10 @@ type validatorClass_ struct {
 
 // Class Reference
 
-func validatorReference() *validatorClass_ {
-	return validatorReference_
+func validatorClassReference() *validatorClass_ {
+	return validatorClassReference_
 }
 
-var validatorReference_ = &validatorClass_{
+var validatorClassReference_ = &validatorClass_{
 	// Initialize the class constants.
 }
