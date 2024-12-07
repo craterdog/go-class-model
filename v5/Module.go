@@ -18,7 +18,7 @@
 └──────────────────────────────────────────────────────────────────────────────┘
 
 Package "module" declares type aliases for the commonly used types declared in
-the packages contained in this module.  It also provides a universal constructor
+the packages contained in this module.  It also provides a default constructor
 for each commonly used class that is exported by the module.  Each constructor
 delegates the actual construction process to its corresponding concrete class
 declared in the corresponding package contained within this module.
@@ -29,7 +29,6 @@ For detailed documentation on this entire module refer to the wiki:
 package module
 
 import (
-	fmt "fmt"
 	ast "github.com/craterdog/go-class-model/v5/ast"
 	gra "github.com/craterdog/go-class-model/v5/grammar"
 	abs "github.com/craterdog/go-collection-framework/v4/collection"
@@ -128,2668 +127,578 @@ type (
 	Methodical = gra.Methodical
 )
 
-// UNIVERSAL CONSTRUCTORS
+// DEFAULT CONSTRUCTORS
 
 // Ast
 
-func Abstraction(arguments ...any) AbstractionLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case PrefixLike:
-			argumentTypes += "PrefixLike, "
-		case string:
-			argumentTypes += "string, "
-		case SuffixLike:
-			argumentTypes += "SuffixLike, "
-		case ArgumentsLike:
-			argumentTypes += "ArgumentsLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Abstraction constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ AbstractionLike
-	switch argumentTypes {
-	case "PrefixLike, string, SuffixLike, ArgumentsLike":
-		var optionalPrefix = arguments[0].(PrefixLike)
-		var name = arguments[1].(string)
-		var optionalSuffix = arguments[2].(SuffixLike)
-		var optionalArguments = arguments[3].(ArgumentsLike)
-		instance_ = ast.AbstractionClass().Make(
-			optionalPrefix,
-			name,
-			optionalSuffix,
-			optionalArguments,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Abstraction constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Abstraction(
+	optionalPrefix PrefixLike,
+	name string,
+	optionalSuffix SuffixLike,
+	optionalArguments ArgumentsLike,
+) AbstractionLike {
+	return ast.AbstractionClass().Make(
+		optionalPrefix,
+		name,
+		optionalSuffix,
+		optionalArguments,
+	)
 }
 
-func AdditionalArgument(arguments ...any) AdditionalArgumentLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case ArgumentLike:
-			argumentTypes += "ArgumentLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the AdditionalArgument constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ AdditionalArgumentLike
-	switch argumentTypes {
-	case "ArgumentLike":
-		var argument = arguments[0].(ArgumentLike)
-		instance_ = ast.AdditionalArgumentClass().Make(
-			argument,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No AdditionalArgument constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func AdditionalArgument(
+	argument ArgumentLike,
+) AdditionalArgumentLike {
+	return ast.AdditionalArgumentClass().Make(
+		argument,
+	)
 }
 
-func AdditionalConstraint(arguments ...any) AdditionalConstraintLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case ConstraintLike:
-			argumentTypes += "ConstraintLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the AdditionalConstraint constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ AdditionalConstraintLike
-	switch argumentTypes {
-	case "ConstraintLike":
-		var constraint = arguments[0].(ConstraintLike)
-		instance_ = ast.AdditionalConstraintClass().Make(
-			constraint,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No AdditionalConstraint constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func AdditionalConstraint(
+	constraint ConstraintLike,
+) AdditionalConstraintLike {
+	return ast.AdditionalConstraintClass().Make(
+		constraint,
+	)
 }
 
-func AdditionalValue(arguments ...any) AdditionalValueLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the AdditionalValue constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ AdditionalValueLike
-	switch argumentTypes {
-	case "string":
-		var name = arguments[0].(string)
-		instance_ = ast.AdditionalValueClass().Make(
-			name,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No AdditionalValue constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func AdditionalValue(
+	name string,
+) AdditionalValueLike {
+	return ast.AdditionalValueClass().Make(
+		name,
+	)
 }
 
-func Argument(arguments ...any) ArgumentLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case AbstractionLike:
-			argumentTypes += "AbstractionLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Argument constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ArgumentLike
-	switch argumentTypes {
-	case "AbstractionLike":
-		var abstraction = arguments[0].(AbstractionLike)
-		instance_ = ast.ArgumentClass().Make(
-			abstraction,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Argument constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Argument(
+	abstraction AbstractionLike,
+) ArgumentLike {
+	return ast.ArgumentClass().Make(
+		abstraction,
+	)
 }
 
-func Arguments(arguments ...any) ArgumentsLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case ArgumentLike:
-			argumentTypes += "ArgumentLike, "
-		case abs.Sequential[AdditionalArgumentLike]:
-			argumentTypes += "abs.Sequential[AdditionalArgumentLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Arguments constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ArgumentsLike
-	switch argumentTypes {
-	case "ArgumentLike, abs.Sequential[AdditionalArgumentLike]":
-		var argument = arguments[0].(ArgumentLike)
-		var additionalArguments = arguments[1].(abs.Sequential[AdditionalArgumentLike])
-		instance_ = ast.ArgumentsClass().Make(
-			argument,
-			additionalArguments,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Arguments constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Arguments(
+	argument ArgumentLike,
+	additionalArguments abs.Sequential[AdditionalArgumentLike],
+) ArgumentsLike {
+	return ast.ArgumentsClass().Make(
+		argument,
+		additionalArguments,
+	)
 }
 
-func Array(arguments ...any) ArrayLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Array constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ArrayLike
-	switch argumentTypes {
-	case "":
-		instance_ = ast.ArrayClass().Make()
-	default:
-		var message = fmt.Sprintf(
-			"No Array constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Array() ArrayLike {
+	return ast.ArrayClass().Make()
 }
 
-func AspectDeclaration(arguments ...any) AspectDeclarationLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case DeclarationLike:
-			argumentTypes += "DeclarationLike, "
-		case abs.Sequential[AspectMethodLike]:
-			argumentTypes += "abs.Sequential[AspectMethodLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the AspectDeclaration constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ AspectDeclarationLike
-	switch argumentTypes {
-	case "DeclarationLike, abs.Sequential[AspectMethodLike]":
-		var declaration = arguments[0].(DeclarationLike)
-		var aspectMethods = arguments[1].(abs.Sequential[AspectMethodLike])
-		instance_ = ast.AspectDeclarationClass().Make(
-			declaration,
-			aspectMethods,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No AspectDeclaration constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func AspectDeclaration(
+	declaration DeclarationLike,
+	aspectMethods abs.Sequential[AspectMethodLike],
+) AspectDeclarationLike {
+	return ast.AspectDeclarationClass().Make(
+		declaration,
+		aspectMethods,
+	)
 }
 
-func AspectInterface(arguments ...any) AspectInterfaceLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case AbstractionLike:
-			argumentTypes += "AbstractionLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the AspectInterface constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ AspectInterfaceLike
-	switch argumentTypes {
-	case "AbstractionLike":
-		var abstraction = arguments[0].(AbstractionLike)
-		instance_ = ast.AspectInterfaceClass().Make(
-			abstraction,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No AspectInterface constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func AspectInterface(
+	abstraction AbstractionLike,
+) AspectInterfaceLike {
+	return ast.AspectInterfaceClass().Make(
+		abstraction,
+	)
 }
 
-func AspectMethod(arguments ...any) AspectMethodLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case MethodLike:
-			argumentTypes += "MethodLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the AspectMethod constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ AspectMethodLike
-	switch argumentTypes {
-	case "MethodLike":
-		var method = arguments[0].(MethodLike)
-		instance_ = ast.AspectMethodClass().Make(
-			method,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No AspectMethod constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func AspectMethod(
+	method MethodLike,
+) AspectMethodLike {
+	return ast.AspectMethodClass().Make(
+		method,
+	)
 }
 
-func AspectSection(arguments ...any) AspectSectionLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case abs.Sequential[AspectDeclarationLike]:
-			argumentTypes += "abs.Sequential[AspectDeclarationLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the AspectSection constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ AspectSectionLike
-	switch argumentTypes {
-	case "abs.Sequential[AspectDeclarationLike]":
-		var aspectDeclarations = arguments[0].(abs.Sequential[AspectDeclarationLike])
-		instance_ = ast.AspectSectionClass().Make(
-			aspectDeclarations,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No AspectSection constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func AspectSection(
+	aspectDeclarations abs.Sequential[AspectDeclarationLike],
+) AspectSectionLike {
+	return ast.AspectSectionClass().Make(
+		aspectDeclarations,
+	)
 }
 
-func AspectSubsection(arguments ...any) AspectSubsectionLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case abs.Sequential[AspectInterfaceLike]:
-			argumentTypes += "abs.Sequential[AspectInterfaceLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the AspectSubsection constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ AspectSubsectionLike
-	switch argumentTypes {
-	case "abs.Sequential[AspectInterfaceLike]":
-		var aspectInterfaces = arguments[0].(abs.Sequential[AspectInterfaceLike])
-		instance_ = ast.AspectSubsectionClass().Make(
-			aspectInterfaces,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No AspectSubsection constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func AspectSubsection(
+	aspectInterfaces abs.Sequential[AspectInterfaceLike],
+) AspectSubsectionLike {
+	return ast.AspectSubsectionClass().Make(
+		aspectInterfaces,
+	)
 }
 
-func AttributeMethod(arguments ...any) AttributeMethodLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case any:
-			argumentTypes += "any, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the AttributeMethod constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ AttributeMethodLike
-	switch argumentTypes {
-	case "any":
-		var any_ = arguments[0]
-		instance_ = ast.AttributeMethodClass().Make(
-			any_,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No AttributeMethod constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func AttributeMethod(
+	any_ any,
+) AttributeMethodLike {
+	return ast.AttributeMethodClass().Make(
+		any_,
+	)
 }
 
-func AttributeSubsection(arguments ...any) AttributeSubsectionLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case abs.Sequential[AttributeMethodLike]:
-			argumentTypes += "abs.Sequential[AttributeMethodLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the AttributeSubsection constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ AttributeSubsectionLike
-	switch argumentTypes {
-	case "abs.Sequential[AttributeMethodLike]":
-		var attributeMethods = arguments[0].(abs.Sequential[AttributeMethodLike])
-		instance_ = ast.AttributeSubsectionClass().Make(
-			attributeMethods,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No AttributeSubsection constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func AttributeSubsection(
+	attributeMethods abs.Sequential[AttributeMethodLike],
+) AttributeSubsectionLike {
+	return ast.AttributeSubsectionClass().Make(
+		attributeMethods,
+	)
 }
 
-func Channel(arguments ...any) ChannelLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Channel constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ChannelLike
-	switch argumentTypes {
-	case "":
-		instance_ = ast.ChannelClass().Make()
-	default:
-		var message = fmt.Sprintf(
-			"No Channel constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Channel() ChannelLike {
+	return ast.ChannelClass().Make()
 }
 
-func ClassDeclaration(arguments ...any) ClassDeclarationLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case DeclarationLike:
-			argumentTypes += "DeclarationLike, "
-		case ClassMethodsLike:
-			argumentTypes += "ClassMethodsLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the ClassDeclaration constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ClassDeclarationLike
-	switch argumentTypes {
-	case "DeclarationLike, ClassMethodsLike":
-		var declaration = arguments[0].(DeclarationLike)
-		var classMethods = arguments[1].(ClassMethodsLike)
-		instance_ = ast.ClassDeclarationClass().Make(
-			declaration,
-			classMethods,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No ClassDeclaration constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func ClassDeclaration(
+	declaration DeclarationLike,
+	classMethods ClassMethodsLike,
+) ClassDeclarationLike {
+	return ast.ClassDeclarationClass().Make(
+		declaration,
+		classMethods,
+	)
 }
 
-func ClassMethods(arguments ...any) ClassMethodsLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case ConstructorSubsectionLike:
-			argumentTypes += "ConstructorSubsectionLike, "
-		case ConstantSubsectionLike:
-			argumentTypes += "ConstantSubsectionLike, "
-		case FunctionSubsectionLike:
-			argumentTypes += "FunctionSubsectionLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the ClassMethods constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ClassMethodsLike
-	switch argumentTypes {
-	case "ConstructorSubsectionLike, ConstantSubsectionLike, FunctionSubsectionLike":
-		var constructorSubsection = arguments[0].(ConstructorSubsectionLike)
-		var optionalConstantSubsection = arguments[1].(ConstantSubsectionLike)
-		var optionalFunctionSubsection = arguments[2].(FunctionSubsectionLike)
-		instance_ = ast.ClassMethodsClass().Make(
-			constructorSubsection,
-			optionalConstantSubsection,
-			optionalFunctionSubsection,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No ClassMethods constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func ClassMethods(
+	constructorSubsection ConstructorSubsectionLike,
+	optionalConstantSubsection ConstantSubsectionLike,
+	optionalFunctionSubsection FunctionSubsectionLike,
+) ClassMethodsLike {
+	return ast.ClassMethodsClass().Make(
+		constructorSubsection,
+		optionalConstantSubsection,
+		optionalFunctionSubsection,
+	)
 }
 
-func ClassSection(arguments ...any) ClassSectionLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case abs.Sequential[ClassDeclarationLike]:
-			argumentTypes += "abs.Sequential[ClassDeclarationLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the ClassSection constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ClassSectionLike
-	switch argumentTypes {
-	case "abs.Sequential[ClassDeclarationLike]":
-		var classDeclarations = arguments[0].(abs.Sequential[ClassDeclarationLike])
-		instance_ = ast.ClassSectionClass().Make(
-			classDeclarations,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No ClassSection constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func ClassSection(
+	classDeclarations abs.Sequential[ClassDeclarationLike],
+) ClassSectionLike {
+	return ast.ClassSectionClass().Make(
+		classDeclarations,
+	)
 }
 
-func ConstantMethod(arguments ...any) ConstantMethodLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		case AbstractionLike:
-			argumentTypes += "AbstractionLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the ConstantMethod constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ConstantMethodLike
-	switch argumentTypes {
-	case "string, AbstractionLike":
-		var name = arguments[0].(string)
-		var abstraction = arguments[1].(AbstractionLike)
-		instance_ = ast.ConstantMethodClass().Make(
-			name,
-			abstraction,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No ConstantMethod constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func ConstantMethod(
+	name string,
+	abstraction AbstractionLike,
+) ConstantMethodLike {
+	return ast.ConstantMethodClass().Make(
+		name,
+		abstraction,
+	)
 }
 
-func ConstantSubsection(arguments ...any) ConstantSubsectionLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case abs.Sequential[ConstantMethodLike]:
-			argumentTypes += "abs.Sequential[ConstantMethodLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the ConstantSubsection constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ConstantSubsectionLike
-	switch argumentTypes {
-	case "abs.Sequential[ConstantMethodLike]":
-		var constantMethods = arguments[0].(abs.Sequential[ConstantMethodLike])
-		instance_ = ast.ConstantSubsectionClass().Make(
-			constantMethods,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No ConstantSubsection constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func ConstantSubsection(
+	constantMethods abs.Sequential[ConstantMethodLike],
+) ConstantSubsectionLike {
+	return ast.ConstantSubsectionClass().Make(
+		constantMethods,
+	)
 }
 
-func Constraint(arguments ...any) ConstraintLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		case AbstractionLike:
-			argumentTypes += "AbstractionLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Constraint constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ConstraintLike
-	switch argumentTypes {
-	case "string, AbstractionLike":
-		var name = arguments[0].(string)
-		var abstraction = arguments[1].(AbstractionLike)
-		instance_ = ast.ConstraintClass().Make(
-			name,
-			abstraction,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Constraint constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Constraint(
+	name string,
+	abstraction AbstractionLike,
+) ConstraintLike {
+	return ast.ConstraintClass().Make(
+		name,
+		abstraction,
+	)
 }
 
-func Constraints(arguments ...any) ConstraintsLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case ConstraintLike:
-			argumentTypes += "ConstraintLike, "
-		case abs.Sequential[AdditionalConstraintLike]:
-			argumentTypes += "abs.Sequential[AdditionalConstraintLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Constraints constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ConstraintsLike
-	switch argumentTypes {
-	case "ConstraintLike, abs.Sequential[AdditionalConstraintLike]":
-		var constraint = arguments[0].(ConstraintLike)
-		var additionalConstraints = arguments[1].(abs.Sequential[AdditionalConstraintLike])
-		instance_ = ast.ConstraintsClass().Make(
-			constraint,
-			additionalConstraints,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Constraints constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Constraints(
+	constraint ConstraintLike,
+	additionalConstraints abs.Sequential[AdditionalConstraintLike],
+) ConstraintsLike {
+	return ast.ConstraintsClass().Make(
+		constraint,
+		additionalConstraints,
+	)
 }
 
-func ConstructorMethod(arguments ...any) ConstructorMethodLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		case abs.Sequential[ParameterLike]:
-			argumentTypes += "abs.Sequential[ParameterLike], "
-		case AbstractionLike:
-			argumentTypes += "AbstractionLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the ConstructorMethod constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ConstructorMethodLike
-	switch argumentTypes {
-	case "string, abs.Sequential[ParameterLike], AbstractionLike":
-		var name = arguments[0].(string)
-		var parameters = arguments[1].(abs.Sequential[ParameterLike])
-		var abstraction = arguments[2].(AbstractionLike)
-		instance_ = ast.ConstructorMethodClass().Make(
-			name,
-			parameters,
-			abstraction,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No ConstructorMethod constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func ConstructorMethod(
+	name string,
+	parameters abs.Sequential[ParameterLike],
+	abstraction AbstractionLike,
+) ConstructorMethodLike {
+	return ast.ConstructorMethodClass().Make(
+		name,
+		parameters,
+		abstraction,
+	)
 }
 
-func ConstructorSubsection(arguments ...any) ConstructorSubsectionLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case abs.Sequential[ConstructorMethodLike]:
-			argumentTypes += "abs.Sequential[ConstructorMethodLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the ConstructorSubsection constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ConstructorSubsectionLike
-	switch argumentTypes {
-	case "abs.Sequential[ConstructorMethodLike]":
-		var constructorMethods = arguments[0].(abs.Sequential[ConstructorMethodLike])
-		instance_ = ast.ConstructorSubsectionClass().Make(
-			constructorMethods,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No ConstructorSubsection constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func ConstructorSubsection(
+	constructorMethods abs.Sequential[ConstructorMethodLike],
+) ConstructorSubsectionLike {
+	return ast.ConstructorSubsectionClass().Make(
+		constructorMethods,
+	)
 }
 
-func Declaration(arguments ...any) DeclarationLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		case ConstraintsLike:
-			argumentTypes += "ConstraintsLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Declaration constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ DeclarationLike
-	switch argumentTypes {
-	case "string, string, ConstraintsLike":
-		var comment = arguments[0].(string)
-		var name = arguments[1].(string)
-		var optionalConstraints = arguments[2].(ConstraintsLike)
-		instance_ = ast.DeclarationClass().Make(
-			comment,
-			name,
-			optionalConstraints,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Declaration constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Declaration(
+	comment string,
+	name string,
+	optionalConstraints ConstraintsLike,
+) DeclarationLike {
+	return ast.DeclarationClass().Make(
+		comment,
+		name,
+		optionalConstraints,
+	)
 }
 
-func Enumeration(arguments ...any) EnumerationLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case ValueLike:
-			argumentTypes += "ValueLike, "
-		case abs.Sequential[AdditionalValueLike]:
-			argumentTypes += "abs.Sequential[AdditionalValueLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Enumeration constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ EnumerationLike
-	switch argumentTypes {
-	case "ValueLike, abs.Sequential[AdditionalValueLike]":
-		var value = arguments[0].(ValueLike)
-		var additionalValues = arguments[1].(abs.Sequential[AdditionalValueLike])
-		instance_ = ast.EnumerationClass().Make(
-			value,
-			additionalValues,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Enumeration constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Enumeration(
+	value ValueLike,
+	additionalValues abs.Sequential[AdditionalValueLike],
+) EnumerationLike {
+	return ast.EnumerationClass().Make(
+		value,
+		additionalValues,
+	)
 }
 
-func FunctionMethod(arguments ...any) FunctionMethodLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		case abs.Sequential[ParameterLike]:
-			argumentTypes += "abs.Sequential[ParameterLike], "
-		case ResultLike:
-			argumentTypes += "ResultLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the FunctionMethod constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ FunctionMethodLike
-	switch argumentTypes {
-	case "string, abs.Sequential[ParameterLike], ResultLike":
-		var name = arguments[0].(string)
-		var parameters = arguments[1].(abs.Sequential[ParameterLike])
-		var result = arguments[2].(ResultLike)
-		instance_ = ast.FunctionMethodClass().Make(
-			name,
-			parameters,
-			result,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No FunctionMethod constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func FunctionMethod(
+	name string,
+	parameters abs.Sequential[ParameterLike],
+	result ResultLike,
+) FunctionMethodLike {
+	return ast.FunctionMethodClass().Make(
+		name,
+		parameters,
+		result,
+	)
 }
 
-func FunctionSubsection(arguments ...any) FunctionSubsectionLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case abs.Sequential[FunctionMethodLike]:
-			argumentTypes += "abs.Sequential[FunctionMethodLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the FunctionSubsection constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ FunctionSubsectionLike
-	switch argumentTypes {
-	case "abs.Sequential[FunctionMethodLike]":
-		var functionMethods = arguments[0].(abs.Sequential[FunctionMethodLike])
-		instance_ = ast.FunctionSubsectionClass().Make(
-			functionMethods,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No FunctionSubsection constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func FunctionSubsection(
+	functionMethods abs.Sequential[FunctionMethodLike],
+) FunctionSubsectionLike {
+	return ast.FunctionSubsectionClass().Make(
+		functionMethods,
+	)
 }
 
-func FunctionalDeclaration(arguments ...any) FunctionalDeclarationLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case DeclarationLike:
-			argumentTypes += "DeclarationLike, "
-		case abs.Sequential[ParameterLike]:
-			argumentTypes += "abs.Sequential[ParameterLike], "
-		case ResultLike:
-			argumentTypes += "ResultLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the FunctionalDeclaration constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ FunctionalDeclarationLike
-	switch argumentTypes {
-	case "DeclarationLike, abs.Sequential[ParameterLike], ResultLike":
-		var declaration = arguments[0].(DeclarationLike)
-		var parameters = arguments[1].(abs.Sequential[ParameterLike])
-		var result = arguments[2].(ResultLike)
-		instance_ = ast.FunctionalDeclarationClass().Make(
-			declaration,
-			parameters,
-			result,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No FunctionalDeclaration constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func FunctionalDeclaration(
+	declaration DeclarationLike,
+	parameters abs.Sequential[ParameterLike],
+	result ResultLike,
+) FunctionalDeclarationLike {
+	return ast.FunctionalDeclarationClass().Make(
+		declaration,
+		parameters,
+		result,
+	)
 }
 
-func FunctionalSection(arguments ...any) FunctionalSectionLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case abs.Sequential[FunctionalDeclarationLike]:
-			argumentTypes += "abs.Sequential[FunctionalDeclarationLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the FunctionalSection constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ FunctionalSectionLike
-	switch argumentTypes {
-	case "abs.Sequential[FunctionalDeclarationLike]":
-		var functionalDeclarations = arguments[0].(abs.Sequential[FunctionalDeclarationLike])
-		instance_ = ast.FunctionalSectionClass().Make(
-			functionalDeclarations,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No FunctionalSection constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func FunctionalSection(
+	functionalDeclarations abs.Sequential[FunctionalDeclarationLike],
+) FunctionalSectionLike {
+	return ast.FunctionalSectionClass().Make(
+		functionalDeclarations,
+	)
 }
 
-func GetterMethod(arguments ...any) GetterMethodLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		case AbstractionLike:
-			argumentTypes += "AbstractionLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the GetterMethod constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ GetterMethodLike
-	switch argumentTypes {
-	case "string, AbstractionLike":
-		var name = arguments[0].(string)
-		var abstraction = arguments[1].(AbstractionLike)
-		instance_ = ast.GetterMethodClass().Make(
-			name,
-			abstraction,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No GetterMethod constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func GetterMethod(
+	name string,
+	abstraction AbstractionLike,
+) GetterMethodLike {
+	return ast.GetterMethodClass().Make(
+		name,
+		abstraction,
+	)
 }
 
-func ImportedPackage(arguments ...any) ImportedPackageLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the ImportedPackage constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ImportedPackageLike
-	switch argumentTypes {
-	case "string, string":
-		var name = arguments[0].(string)
-		var path = arguments[1].(string)
-		instance_ = ast.ImportedPackageClass().Make(
-			name,
-			path,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No ImportedPackage constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func ImportedPackage(
+	name string,
+	path string,
+) ImportedPackageLike {
+	return ast.ImportedPackageClass().Make(
+		name,
+		path,
+	)
 }
 
-func InstanceDeclaration(arguments ...any) InstanceDeclarationLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case DeclarationLike:
-			argumentTypes += "DeclarationLike, "
-		case InstanceMethodsLike:
-			argumentTypes += "InstanceMethodsLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the InstanceDeclaration constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ InstanceDeclarationLike
-	switch argumentTypes {
-	case "DeclarationLike, InstanceMethodsLike":
-		var declaration = arguments[0].(DeclarationLike)
-		var instanceMethods = arguments[1].(InstanceMethodsLike)
-		instance_ = ast.InstanceDeclarationClass().Make(
-			declaration,
-			instanceMethods,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No InstanceDeclaration constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func InstanceDeclaration(
+	declaration DeclarationLike,
+	instanceMethods InstanceMethodsLike,
+) InstanceDeclarationLike {
+	return ast.InstanceDeclarationClass().Make(
+		declaration,
+		instanceMethods,
+	)
 }
 
-func InstanceMethods(arguments ...any) InstanceMethodsLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case PrincipalSubsectionLike:
-			argumentTypes += "PrincipalSubsectionLike, "
-		case AttributeSubsectionLike:
-			argumentTypes += "AttributeSubsectionLike, "
-		case AspectSubsectionLike:
-			argumentTypes += "AspectSubsectionLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the InstanceMethods constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ InstanceMethodsLike
-	switch argumentTypes {
-	case "PrincipalSubsectionLike, AttributeSubsectionLike, AspectSubsectionLike":
-		var principalSubsection = arguments[0].(PrincipalSubsectionLike)
-		var optionalAttributeSubsection = arguments[1].(AttributeSubsectionLike)
-		var optionalAspectSubsection = arguments[2].(AspectSubsectionLike)
-		instance_ = ast.InstanceMethodsClass().Make(
-			principalSubsection,
-			optionalAttributeSubsection,
-			optionalAspectSubsection,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No InstanceMethods constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func InstanceMethods(
+	principalSubsection PrincipalSubsectionLike,
+	optionalAttributeSubsection AttributeSubsectionLike,
+	optionalAspectSubsection AspectSubsectionLike,
+) InstanceMethodsLike {
+	return ast.InstanceMethodsClass().Make(
+		principalSubsection,
+		optionalAttributeSubsection,
+		optionalAspectSubsection,
+	)
 }
 
-func InstanceSection(arguments ...any) InstanceSectionLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case abs.Sequential[InstanceDeclarationLike]:
-			argumentTypes += "abs.Sequential[InstanceDeclarationLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the InstanceSection constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ InstanceSectionLike
-	switch argumentTypes {
-	case "abs.Sequential[InstanceDeclarationLike]":
-		var instanceDeclarations = arguments[0].(abs.Sequential[InstanceDeclarationLike])
-		instance_ = ast.InstanceSectionClass().Make(
-			instanceDeclarations,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No InstanceSection constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func InstanceSection(
+	instanceDeclarations abs.Sequential[InstanceDeclarationLike],
+) InstanceSectionLike {
+	return ast.InstanceSectionClass().Make(
+		instanceDeclarations,
+	)
 }
 
-func InterfaceDeclarations(arguments ...any) InterfaceDeclarationsLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case ClassSectionLike:
-			argumentTypes += "ClassSectionLike, "
-		case InstanceSectionLike:
-			argumentTypes += "InstanceSectionLike, "
-		case AspectSectionLike:
-			argumentTypes += "AspectSectionLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the InterfaceDeclarations constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ InterfaceDeclarationsLike
-	switch argumentTypes {
-	case "ClassSectionLike, InstanceSectionLike, AspectSectionLike":
-		var classSection = arguments[0].(ClassSectionLike)
-		var instanceSection = arguments[1].(InstanceSectionLike)
-		var aspectSection = arguments[2].(AspectSectionLike)
-		instance_ = ast.InterfaceDeclarationsClass().Make(
-			classSection,
-			instanceSection,
-			aspectSection,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No InterfaceDeclarations constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func InterfaceDeclarations(
+	classSection ClassSectionLike,
+	instanceSection InstanceSectionLike,
+	aspectSection AspectSectionLike,
+) InterfaceDeclarationsLike {
+	return ast.InterfaceDeclarationsClass().Make(
+		classSection,
+		instanceSection,
+		aspectSection,
+	)
 }
 
-func LegalNotice(arguments ...any) LegalNoticeLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the LegalNotice constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ LegalNoticeLike
-	switch argumentTypes {
-	case "string":
-		var comment = arguments[0].(string)
-		instance_ = ast.LegalNoticeClass().Make(
-			comment,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No LegalNotice constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func LegalNotice(
+	comment string,
+) LegalNoticeLike {
+	return ast.LegalNoticeClass().Make(
+		comment,
+	)
 }
 
-func Map(arguments ...any) MapLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Map constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ MapLike
-	switch argumentTypes {
-	case "string":
-		var name = arguments[0].(string)
-		instance_ = ast.MapClass().Make(
-			name,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Map constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Map(
+	name string,
+) MapLike {
+	return ast.MapClass().Make(
+		name,
+	)
 }
 
-func Method(arguments ...any) MethodLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		case abs.Sequential[ParameterLike]:
-			argumentTypes += "abs.Sequential[ParameterLike], "
-		case ResultLike:
-			argumentTypes += "ResultLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Method constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ MethodLike
-	switch argumentTypes {
-	case "string, abs.Sequential[ParameterLike], ResultLike":
-		var name = arguments[0].(string)
-		var parameters = arguments[1].(abs.Sequential[ParameterLike])
-		var optionalResult = arguments[2].(ResultLike)
-		instance_ = ast.MethodClass().Make(
-			name,
-			parameters,
-			optionalResult,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Method constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Method(
+	name string,
+	parameters abs.Sequential[ParameterLike],
+	optionalResult ResultLike,
+) MethodLike {
+	return ast.MethodClass().Make(
+		name,
+		parameters,
+		optionalResult,
+	)
 }
 
-func Model(arguments ...any) ModelLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case PackageDeclarationLike:
-			argumentTypes += "PackageDeclarationLike, "
-		case PrimitiveDeclarationsLike:
-			argumentTypes += "PrimitiveDeclarationsLike, "
-		case InterfaceDeclarationsLike:
-			argumentTypes += "InterfaceDeclarationsLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Model constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ModelLike
-	switch argumentTypes {
-	case "PackageDeclarationLike, PrimitiveDeclarationsLike, InterfaceDeclarationsLike":
-		var packageDeclaration = arguments[0].(PackageDeclarationLike)
-		var primitiveDeclarations = arguments[1].(PrimitiveDeclarationsLike)
-		var interfaceDeclarations = arguments[2].(InterfaceDeclarationsLike)
-		instance_ = ast.ModelClass().Make(
-			packageDeclaration,
-			primitiveDeclarations,
-			interfaceDeclarations,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Model constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Model(
+	packageDeclaration PackageDeclarationLike,
+	primitiveDeclarations PrimitiveDeclarationsLike,
+	interfaceDeclarations InterfaceDeclarationsLike,
+) ModelLike {
+	return ast.ModelClass().Make(
+		packageDeclaration,
+		primitiveDeclarations,
+		interfaceDeclarations,
+	)
 }
 
-func Multivalue(arguments ...any) MultivalueLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case abs.Sequential[ParameterLike]:
-			argumentTypes += "abs.Sequential[ParameterLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Multivalue constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ MultivalueLike
-	switch argumentTypes {
-	case "abs.Sequential[ParameterLike]":
-		var parameters = arguments[0].(abs.Sequential[ParameterLike])
-		instance_ = ast.MultivalueClass().Make(
-			parameters,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Multivalue constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Multivalue(
+	parameters abs.Sequential[ParameterLike],
+) MultivalueLike {
+	return ast.MultivalueClass().Make(
+		parameters,
+	)
 }
 
-func None(arguments ...any) NoneLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the None constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ NoneLike
-	switch argumentTypes {
-	case "string":
-		var newline = arguments[0].(string)
-		instance_ = ast.NoneClass().Make(
-			newline,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No None constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func None(
+	newline string,
+) NoneLike {
+	return ast.NoneClass().Make(
+		newline,
+	)
 }
 
-func PackageDeclaration(arguments ...any) PackageDeclarationLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case LegalNoticeLike:
-			argumentTypes += "LegalNoticeLike, "
-		case PackageHeaderLike:
-			argumentTypes += "PackageHeaderLike, "
-		case PackageImportsLike:
-			argumentTypes += "PackageImportsLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the PackageDeclaration constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ PackageDeclarationLike
-	switch argumentTypes {
-	case "LegalNoticeLike, PackageHeaderLike, PackageImportsLike":
-		var legalNotice = arguments[0].(LegalNoticeLike)
-		var packageHeader = arguments[1].(PackageHeaderLike)
-		var packageImports = arguments[2].(PackageImportsLike)
-		instance_ = ast.PackageDeclarationClass().Make(
-			legalNotice,
-			packageHeader,
-			packageImports,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No PackageDeclaration constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func PackageDeclaration(
+	legalNotice LegalNoticeLike,
+	packageHeader PackageHeaderLike,
+	packageImports PackageImportsLike,
+) PackageDeclarationLike {
+	return ast.PackageDeclarationClass().Make(
+		legalNotice,
+		packageHeader,
+		packageImports,
+	)
 }
 
-func PackageHeader(arguments ...any) PackageHeaderLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the PackageHeader constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ PackageHeaderLike
-	switch argumentTypes {
-	case "string, string":
-		var comment = arguments[0].(string)
-		var name = arguments[1].(string)
-		instance_ = ast.PackageHeaderClass().Make(
-			comment,
-			name,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No PackageHeader constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func PackageHeader(
+	comment string,
+	name string,
+) PackageHeaderLike {
+	return ast.PackageHeaderClass().Make(
+		comment,
+		name,
+	)
 }
 
-func PackageImports(arguments ...any) PackageImportsLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case abs.Sequential[ImportedPackageLike]:
-			argumentTypes += "abs.Sequential[ImportedPackageLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the PackageImports constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ PackageImportsLike
-	switch argumentTypes {
-	case "abs.Sequential[ImportedPackageLike]":
-		var importedPackages = arguments[0].(abs.Sequential[ImportedPackageLike])
-		instance_ = ast.PackageImportsClass().Make(
-			importedPackages,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No PackageImports constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func PackageImports(
+	importedPackages abs.Sequential[ImportedPackageLike],
+) PackageImportsLike {
+	return ast.PackageImportsClass().Make(
+		importedPackages,
+	)
 }
 
-func Parameter(arguments ...any) ParameterLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		case AbstractionLike:
-			argumentTypes += "AbstractionLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Parameter constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ParameterLike
-	switch argumentTypes {
-	case "string, AbstractionLike":
-		var name = arguments[0].(string)
-		var abstraction = arguments[1].(AbstractionLike)
-		instance_ = ast.ParameterClass().Make(
-			name,
-			abstraction,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Parameter constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Parameter(
+	name string,
+	abstraction AbstractionLike,
+) ParameterLike {
+	return ast.ParameterClass().Make(
+		name,
+		abstraction,
+	)
 }
 
-func Prefix(arguments ...any) PrefixLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case any:
-			argumentTypes += "any, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Prefix constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ PrefixLike
-	switch argumentTypes {
-	case "any":
-		var any_ = arguments[0]
-		instance_ = ast.PrefixClass().Make(
-			any_,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Prefix constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Prefix(
+	any_ any,
+) PrefixLike {
+	return ast.PrefixClass().Make(
+		any_,
+	)
 }
 
-func PrimitiveDeclarations(arguments ...any) PrimitiveDeclarationsLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case TypeSectionLike:
-			argumentTypes += "TypeSectionLike, "
-		case FunctionalSectionLike:
-			argumentTypes += "FunctionalSectionLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the PrimitiveDeclarations constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ PrimitiveDeclarationsLike
-	switch argumentTypes {
-	case "TypeSectionLike, FunctionalSectionLike":
-		var typeSection = arguments[0].(TypeSectionLike)
-		var functionalSection = arguments[1].(FunctionalSectionLike)
-		instance_ = ast.PrimitiveDeclarationsClass().Make(
-			typeSection,
-			functionalSection,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No PrimitiveDeclarations constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func PrimitiveDeclarations(
+	typeSection TypeSectionLike,
+	functionalSection FunctionalSectionLike,
+) PrimitiveDeclarationsLike {
+	return ast.PrimitiveDeclarationsClass().Make(
+		typeSection,
+		functionalSection,
+	)
 }
 
-func PrincipalMethod(arguments ...any) PrincipalMethodLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case MethodLike:
-			argumentTypes += "MethodLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the PrincipalMethod constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ PrincipalMethodLike
-	switch argumentTypes {
-	case "MethodLike":
-		var method = arguments[0].(MethodLike)
-		instance_ = ast.PrincipalMethodClass().Make(
-			method,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No PrincipalMethod constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func PrincipalMethod(
+	method MethodLike,
+) PrincipalMethodLike {
+	return ast.PrincipalMethodClass().Make(
+		method,
+	)
 }
 
-func PrincipalSubsection(arguments ...any) PrincipalSubsectionLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case abs.Sequential[PrincipalMethodLike]:
-			argumentTypes += "abs.Sequential[PrincipalMethodLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the PrincipalSubsection constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ PrincipalSubsectionLike
-	switch argumentTypes {
-	case "abs.Sequential[PrincipalMethodLike]":
-		var principalMethods = arguments[0].(abs.Sequential[PrincipalMethodLike])
-		instance_ = ast.PrincipalSubsectionClass().Make(
-			principalMethods,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No PrincipalSubsection constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func PrincipalSubsection(
+	principalMethods abs.Sequential[PrincipalMethodLike],
+) PrincipalSubsectionLike {
+	return ast.PrincipalSubsectionClass().Make(
+		principalMethods,
+	)
 }
 
-func Result(arguments ...any) ResultLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case any:
-			argumentTypes += "any, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Result constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ResultLike
-	switch argumentTypes {
-	case "any":
-		var any_ = arguments[0]
-		instance_ = ast.ResultClass().Make(
-			any_,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Result constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Result(
+	any_ any,
+) ResultLike {
+	return ast.ResultClass().Make(
+		any_,
+	)
 }
 
-func SetterMethod(arguments ...any) SetterMethodLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		case ParameterLike:
-			argumentTypes += "ParameterLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the SetterMethod constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ SetterMethodLike
-	switch argumentTypes {
-	case "string, ParameterLike":
-		var name = arguments[0].(string)
-		var parameter = arguments[1].(ParameterLike)
-		instance_ = ast.SetterMethodClass().Make(
-			name,
-			parameter,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No SetterMethod constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func SetterMethod(
+	name string,
+	parameter ParameterLike,
+) SetterMethodLike {
+	return ast.SetterMethodClass().Make(
+		name,
+		parameter,
+	)
 }
 
-func Suffix(arguments ...any) SuffixLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Suffix constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ SuffixLike
-	switch argumentTypes {
-	case "string":
-		var name = arguments[0].(string)
-		instance_ = ast.SuffixClass().Make(
-			name,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Suffix constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Suffix(
+	name string,
+) SuffixLike {
+	return ast.SuffixClass().Make(
+		name,
+	)
 }
 
-func TypeDeclaration(arguments ...any) TypeDeclarationLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case DeclarationLike:
-			argumentTypes += "DeclarationLike, "
-		case AbstractionLike:
-			argumentTypes += "AbstractionLike, "
-		case EnumerationLike:
-			argumentTypes += "EnumerationLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the TypeDeclaration constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ TypeDeclarationLike
-	switch argumentTypes {
-	case "DeclarationLike, AbstractionLike, EnumerationLike":
-		var declaration = arguments[0].(DeclarationLike)
-		var abstraction = arguments[1].(AbstractionLike)
-		var optionalEnumeration = arguments[2].(EnumerationLike)
-		instance_ = ast.TypeDeclarationClass().Make(
-			declaration,
-			abstraction,
-			optionalEnumeration,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No TypeDeclaration constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func TypeDeclaration(
+	declaration DeclarationLike,
+	abstraction AbstractionLike,
+	optionalEnumeration EnumerationLike,
+) TypeDeclarationLike {
+	return ast.TypeDeclarationClass().Make(
+		declaration,
+		abstraction,
+		optionalEnumeration,
+	)
 }
 
-func TypeSection(arguments ...any) TypeSectionLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case abs.Sequential[TypeDeclarationLike]:
-			argumentTypes += "abs.Sequential[TypeDeclarationLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the TypeSection constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ TypeSectionLike
-	switch argumentTypes {
-	case "abs.Sequential[TypeDeclarationLike]":
-		var typeDeclarations = arguments[0].(abs.Sequential[TypeDeclarationLike])
-		instance_ = ast.TypeSectionClass().Make(
-			typeDeclarations,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No TypeSection constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func TypeSection(
+	typeDeclarations abs.Sequential[TypeDeclarationLike],
+) TypeSectionLike {
+	return ast.TypeSectionClass().Make(
+		typeDeclarations,
+	)
 }
 
-func Value(arguments ...any) ValueLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		case AbstractionLike:
-			argumentTypes += "AbstractionLike, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Value constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ValueLike
-	switch argumentTypes {
-	case "string, AbstractionLike":
-		var name = arguments[0].(string)
-		var abstraction = arguments[1].(AbstractionLike)
-		instance_ = ast.ValueClass().Make(
-			name,
-			abstraction,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Value constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Value(
+	name string,
+	abstraction AbstractionLike,
+) ValueLike {
+	return ast.ValueClass().Make(
+		name,
+		abstraction,
+	)
 }
 
 // Grammar
 
-func Formatter(arguments ...any) FormatterLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Formatter constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ FormatterLike
-	switch argumentTypes {
-	case "":
-		instance_ = gra.FormatterClass().Make()
-	default:
-		var message = fmt.Sprintf(
-			"No Formatter constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Formatter() FormatterLike {
+	return gra.FormatterClass().Make()
 }
 
-func Parser(arguments ...any) ParserLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Parser constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ParserLike
-	switch argumentTypes {
-	case "":
-		instance_ = gra.ParserClass().Make()
-	default:
-		var message = fmt.Sprintf(
-			"No Parser constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Parser() ParserLike {
+	return gra.ParserClass().Make()
 }
 
-func Processor(arguments ...any) ProcessorLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Processor constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ProcessorLike
-	switch argumentTypes {
-	case "":
-		instance_ = gra.ProcessorClass().Make()
-	default:
-		var message = fmt.Sprintf(
-			"No Processor constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Processor() ProcessorLike {
+	return gra.ProcessorClass().Make()
 }
 
-func Scanner(arguments ...any) ScannerLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case string:
-			argumentTypes += "string, "
-		case abs.QueueLike[TokenLike]:
-			argumentTypes += "abs.QueueLike[TokenLike], "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Scanner constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ScannerLike
-	switch argumentTypes {
-	case "string, abs.QueueLike[TokenLike]":
-		var source = arguments[0].(string)
-		var tokens = arguments[1].(abs.QueueLike[TokenLike])
-		instance_ = gra.ScannerClass().Make(
-			source,
-			tokens,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Scanner constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Scanner(
+	source string,
+	tokens abs.QueueLike[TokenLike],
+) ScannerLike {
+	return gra.ScannerClass().Make(
+		source,
+		tokens,
+	)
 }
 
-func Token(arguments ...any) TokenLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case uint:
-			argumentTypes += "uint, "
-		case TokenType:
-			argumentTypes += "TokenType, "
-		case string:
-			argumentTypes += "string, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Token constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ TokenLike
-	switch argumentTypes {
-	case "uint, uint, TokenType, string":
-		var line = arguments[0].(uint)
-		var position = arguments[1].(uint)
-		var type_ = arguments[2].(TokenType)
-		var value = arguments[3].(string)
-		instance_ = gra.TokenClass().Make(
-			line,
-			position,
-			type_,
-			value,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Token constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Token(
+	line uint,
+	position uint,
+	type_ TokenType,
+	value string,
+) TokenLike {
+	return gra.TokenClass().Make(
+		line,
+		position,
+		type_,
+		value,
+	)
 }
 
-func Validator(arguments ...any) ValidatorLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Validator constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ ValidatorLike
-	switch argumentTypes {
-	case "":
-		instance_ = gra.ValidatorClass().Make()
-	default:
-		var message = fmt.Sprintf(
-			"No Validator constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Validator() ValidatorLike {
+	return gra.ValidatorClass().Make()
 }
 
-func Visitor(arguments ...any) VisitorLike {
-	// Analyze the arguments.
-	var argumentTypes string
-	for _, argument := range arguments {
-		switch actual := argument.(type) {
-		case Methodical:
-			argumentTypes += "Methodical, "
-		default:
-			var message = fmt.Sprintf(
-				"An unexpected argument type was passed into the Visitor constructor: %v of type %T",
-				argument,
-				actual,
-			)
-			panic(message)
-		}
-	}
-	var length = len(argumentTypes)
-	if length > 0 {
-		// Remove the trailing comma and space.
-		argumentTypes = argumentTypes[:length-2]
-	}
-
-	// Call the corresponding constructor.
-	var instance_ VisitorLike
-	switch argumentTypes {
-	case "Methodical":
-		var processor = arguments[0].(Methodical)
-		instance_ = gra.VisitorClass().Make(
-			processor,
-		)
-	default:
-		var message = fmt.Sprintf(
-			"No Visitor constructor matching the arguments was found: %v\n",
-			arguments,
-		)
-		panic(message)
-	}
-	return instance_
+func Visitor(
+	processor Methodical,
+) VisitorLike {
+	return gra.VisitorClass().Make(
+		processor,
+	)
 }
 
 // GLOBAL FUNCTIONS

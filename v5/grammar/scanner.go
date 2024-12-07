@@ -126,7 +126,7 @@ func (v *scanner_) emitToken(
 		value = "<VTAB>"
 	}
 	var token = TokenClass().Make(v.line_, v.position_, tokenType, value)
-	//fmt.Println(Scanner().FormatToken(token)) // Uncomment when debugging.
+	//fmt.Println(ScannerClass().FormatToken(token)) // Uncomment when debugging.
 	v.tokens_.AddValue(token) // This will block if the queue is full.
 }
 
