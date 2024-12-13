@@ -21,7 +21,7 @@ package grammar
 
 import (
 	fmt "fmt"
-	abs "github.com/craterdog/go-collection-framework/v4/collection"
+	abs "github.com/craterdog/go-collection-framework/v5/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 	reg "regexp"
 	sts "strings"
@@ -200,7 +200,7 @@ loop:
 			break loop
 		}
 	}
-	v.tokens_.CloseQueue()
+	v.tokens_.CloseChannel()
 }
 
 // Instance Structure

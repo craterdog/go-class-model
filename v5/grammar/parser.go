@@ -22,8 +22,8 @@ package grammar
 import (
 	fmt "fmt"
 	ast "github.com/craterdog/go-class-model/v5/ast"
-	col "github.com/craterdog/go-collection-framework/v4"
-	abs "github.com/craterdog/go-collection-framework/v4/collection"
+	col "github.com/craterdog/go-collection-framework/v5"
+	abs "github.com/craterdog/go-collection-framework/v5/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 	mat "math"
 	sts "strings"
@@ -57,9 +57,10 @@ func (v *parser_) GetClass() ParserClassLike {
 func (v *parser_) ParseSource(
 	source string,
 ) ast.ModelLike {
+	var class = parserClassReference()
 	v.source_ = source
-	v.tokens_ = col.Queue[TokenLike](parserClassReference().queueSize_)
-	v.next_ = col.Stack[TokenLike](parserClassReference().stackSize_)
+	v.tokens_ = col.AnyQueue[TokenLike](class.queueSize_)
+	v.next_ = col.AnyStack[TokenLike](class.stackSize_)
 
 	// The scanner runs in a separate Go routine.
 	ScannerClass().Make(v.source_, v.tokens_)
@@ -3825,11 +3826,11 @@ func (v *parser_) getDefinition(
 func (v *parser_) getNextToken() TokenLike {
 	// Check for any read, but unprocessed tokens.
 	if !v.next_.IsEmpty() {
-		return v.next_.RemoveTop()
+		return v.next_.RemoveLast()
 	}
 
 	// Read a new token from the token stream.
-	var token, ok = v.tokens_.RemoveHead() // This will wait for a token.
+	var token, ok = v.tokens_.RemoveFirst() // This will wait for a token.
 	if !ok {
 		// The token channel has been closed.
 		return nil
@@ -3887,7 +3888,7 @@ var parserClassReference_ = &parserClass_{
 	// Initialize the class constants.
 	queueSize_: 16,
 	stackSize_: 16,
-	syntax_: col.Catalog[string, string](
+	syntax_: col.AnyCatalog[string, string](
 		map[string]string{
 			"$Model":                 `PackageDeclaration PrimitiveDeclarations InterfaceDeclarations`,
 			"$PackageDeclaration":    `LegalNotice PackageHeader PackageImports`,

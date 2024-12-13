@@ -31,7 +31,7 @@ package module
 import (
 	ast "github.com/craterdog/go-class-model/v5/ast"
 	gra "github.com/craterdog/go-class-model/v5/grammar"
-	abs "github.com/craterdog/go-collection-framework/v4/collection"
+	abs "github.com/craterdog/go-collection-framework/v5/collection"
 )
 
 // TYPE ALIASES

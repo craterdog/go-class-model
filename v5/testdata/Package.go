@@ -14,7 +14,7 @@
 Package "example" provides...
 
 For detailed documentation on this package refer to the wiki:
-  - https://github.com/craterdog/go-syntax-notation/wiki
+  - https://github.com/craterdog/go-package-example/wiki
 
 This package follows the Crater Dog Technologies™ Go Coding Conventions located
 here:
@@ -32,12 +32,21 @@ import ()
 // TYPE DECLARATIONS
 
 /*
-Size is a constrained type representing the size of a collection or index.
+Identifier is a constrained type representing a generic identifier that can be
+used to label things.  An Identifier cannot contain any whitespace and should
+match the following regular expression: [a-zA-Z][a-zA-Z0-9]*
 */
-type Size uint
+type Identifier string
 
 /*
-Rank is a constrained type representing the possible rankings for two values.
+Ordinal is a constrained type representing an ordinal number in the range [1..∞).
+The value 0 is used to represent infinity.
+*/
+type Ordinal uint64
+
+/*
+Rank is a constrained type representing the possible relative ranking of two
+values.
 */
 type Rank uint8
 
@@ -72,9 +81,9 @@ type RankingFunction[V any] func(
 // CLASS DECLARATIONS
 
 /*
-AngleClassLike is a class interface that declares the set of class constants,
-constructors and functions that must be supported by each angle-like concrete
-class.
+AngleClassLike is a class interface that declares the complete set of class
+constructors, constants and functions that must be supported by each concrete
+angle-like class.
 */
 type AngleClassLike interface {
 	// Constructor Methods
@@ -103,7 +112,7 @@ type AngleClassLike interface {
 
 /*
 ArrayClassLike[V any] is a class interface that declares the complete set of
-class constants, constructors and functions that must be supported by each
+class constructors, constants and functions that must be supported by each
 concrete array-like class.
 */
 type ArrayClassLike[V any] interface {
@@ -112,19 +121,22 @@ type ArrayClassLike[V any] interface {
 		intrinsic []V,
 	) ArrayLike[V]
 	MakeWithSize(
-		size Size,
+		size Ordinal,
 	) ArrayLike[V]
 	MakeFromSequence(
 		values Sequential[V],
 	) ArrayLike[V]
 
-	// Constant Methods
-	DefaultRanker() RankingFunction[V]
+	// Function Methods
+	Merge(
+		first ArrayLike[V],
+		second ArrayLike[V],
+	) ArrayLike[V]
 }
 
 /*
 AssociationClassLike[K comparable, V any] is a class interface that declares
-the complete set of class constants, constructors and functions that must be
+the complete set of class constructors, constants and functions that must be
 supported by each concrete association-like class.
 */
 type AssociationClassLike[K comparable, V any] interface {
@@ -136,9 +148,9 @@ type AssociationClassLike[K comparable, V any] interface {
 }
 
 /*
-CatalogClassLike[K comparable, V any] is a class interface that declares the
-complete set of class constants, constructors and functions that must be
-supported by each concrete catalog-like class.
+CatalogClassLike[V any] is a class interface that declares the complete set of
+class constructors, constants and functions that must be supported by each
+concrete catalog-like class.
 
 The following functions are supported:
 
@@ -151,39 +163,39 @@ the specified catalogs in the order that they appear in each catalog.  If a
 key is present in both catalogs, the value of the key from the second
 catalog takes precedence.
 */
-type CatalogClassLike[K comparable, V any] interface {
+type CatalogClassLike[V any] interface {
 	// Constructor Methods
-	Make() CatalogLike[K, V]
+	Make() CatalogLike[V]
 	MakeFromArray(
-		associations []AssociationLike[K, V],
-	) CatalogLike[K, V]
+		associations []AssociationLike[Identifier, V],
+	) CatalogLike[V]
 	MakeFromMap(
-		associations map[K]V,
-	) CatalogLike[K, V]
+		associations map[Identifier]V,
+	) CatalogLike[V]
 	MakeFromSequence(
-		associations Sequential[AssociationLike[K, V]],
-	) CatalogLike[K, V]
+		associations Sequential[AssociationLike[Identifier, V]],
+	) CatalogLike[V]
 
 	// Constant Methods
-	DefaultRanker() RankingFunction[AssociationLike[K, V]]
+	Ranker() RankingFunction[AssociationLike[Identifier, V]]
 
 	// Function Methods
 	Extract(
-		catalog CatalogLike[K, V],
-		keys Sequential[K],
-	) CatalogLike[K, V]
+		catalog CatalogLike[V],
+		keys Sequential[Identifier],
+	) CatalogLike[V]
 	Merge(
-		first CatalogLike[K, V],
-		second CatalogLike[K, V],
-	) CatalogLike[K, V]
+		first CatalogLike[V],
+		second CatalogLike[V],
+	) CatalogLike[V]
 }
 
 // INSTANCE DECLARATIONS
 
 /*
-AngleLike is an instance interface that declares the complete set of attributes,
-abstractions and methods that must be supported by each instance of a concrete
-angle-like class.
+AngleLike is an instance interface that declares the complete set of
+principal, attribute and aspect methods that must be supported by each
+instance of a concrete angle-like class.
 */
 type AngleLike interface {
 	// Principal Methods
@@ -197,7 +209,7 @@ type AngleLike interface {
 
 /*
 ArrayLike[V any] is an instance interface that declares the complete set of
-instance attributes, abstractions and methods that must be supported by each
+principal, attribute and aspect methods that must be supported by each
 instance of a concrete array-like class.
 
 An array-like class maintains a fixed length indexed sequence of values.  Each
@@ -209,7 +221,6 @@ type ArrayLike[V any] interface {
 	// Principal Methods
 	GetClass() ArrayClassLike[V]
 	GetIntrinsic() []V
-	SortValues()
 	SortValuesWithRanker(
 		ranker RankingFunction[V],
 	)
@@ -222,8 +233,8 @@ type ArrayLike[V any] interface {
 
 /*
 AssociationLike[K comparable, V any] is an instance interface that declares the
-complete set of instance attributes, abstractions and methods that must be
-supported by each instance of a concrete association-like class.
+complete set of principal, attribute and aspect methods that must be supported
+by each instance of a concrete association-like class.
 */
 type AssociationLike[K comparable, V any] interface {
 	// Principal Methods
@@ -238,45 +249,42 @@ type AssociationLike[K comparable, V any] interface {
 }
 
 /*
-CatalogLike[K comparable, V any] is an instance interface that declares the
-complete set of instance attributes, abstractions and methods that must be
-supported by each instance of a concrete catalog-like class.
+CatalogLike[V any] is an instance interface that declares the complete set of
+principal, attribute and aspect methods that must be supported by each
+instance of a concrete catalog-like class.
 */
-type CatalogLike[K comparable, V any] interface {
+type CatalogLike[V any] interface {
 	// Principal Methods
-	GetClass() CatalogClassLike[K, V]
+	GetClass() CatalogClassLike[V]
 	SortValues()
-	SortValuesWithRanker(
-		ranker RankingFunction[AssociationLike[K, V]],
-	)
 
 	// Aspect Interfaces
-	Associative[K, V]
-	Sequential[AssociationLike[K, V]]
+	Associative[Identifier, V]
+	Sequential[AssociationLike[Identifier, V]]
 }
 
 // ASPECT DECLARATIONS
 
 /*
-Accessible[V any] is an aspect interface that declares a set of method signatures
-that must be supported by each instance of an accessible concrete class.  The
-values in an accessible class are accessed using indices. The indices of an
-accessible class are ORDINAL rather than ZERO based—which never really made
-sense except for pointer offsets:
+Accessible[V any] is an aspect interface that declares a set of method
+signatures that must be supported by each instance of an accessible concrete
+class.  The values in an accessible class are accessed using indices. The
+indices of an accessible class are ORDINAL rather than ZERO based—which never
+really made sense except for pointer offsets:
 
 |      1           2           3             N      |
 |  [value 1] . [value 2] . [value 3] ... [value N]  |
 
-Because the indices are ordinal the range of allowed indices for a collection is
-[1..N] instead of [0..N-1].
+Because the indices are ordinal the range of allowed indices for a collection
+is [1..N] instead of [0..N-1].
 */
 type Accessible[V any] interface {
 	GetValue(
-		index Size,
+		index Ordinal,
 	) V
 	GetValues(
-		first Size,
-		last Size,
+		first Ordinal,
+		last Ordinal,
 	) Sequential[V]
 }
 
@@ -289,6 +297,10 @@ type Angular interface {
 	InUnits(
 		units Units,
 	) float64
+	GetParts() (
+		x float64,
+		y float64,
+	)
 }
 
 /*
@@ -317,27 +329,28 @@ type Continuous interface {
 }
 
 /*
-Sequential[V any] is an aspect interface that declares a set of method signatures
-that must be supported by each instance of a sequential concrete class.
+Sequential[V any] is an aspect interface that declares a set of method
+signatures that must be supported by each instance of a sequential concrete
+class.
 */
 type Sequential[V any] interface {
 	IsEmpty() bool
-	GetSize() Size
+	GetSize() Ordinal
 	AsArray() []V
 }
 
 /*
-Updatable[V any] is an aspect interface that declares a set of method signatures
-that must be supported by each instance of an updatable concrete class.  It uses
-the same indexing scheme as the Accessible[V any] interface.
+Updatable[V any] is an aspect interface that declares a set of method
+signatures that must be supported by each instance of an updatable concrete
+class.  It uses the same indexing scheme as the Accessible[V any] interface.
 */
 type Updatable[V any] interface {
 	SetValue(
-		index Size,
+		index Ordinal,
 		value V,
 	)
 	SetValues(
-		index Size,
+		index Ordinal,
 		values Sequential[V],
 	)
 }
