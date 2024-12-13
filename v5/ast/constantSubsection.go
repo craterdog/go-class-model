@@ -27,7 +27,7 @@ func ConstantSubsectionClass() ConstantSubsectionClassLike {
 
 // Constructor Methods
 
-func (c *constantSubsectionClass_) Make(
+func (c *constantSubsectionClass_) ConstantSubsection(
 	constantMethods abs.Sequential[ConstantMethodLike],
 ) ConstantSubsectionLike {
 	if uti.IsUndefined(constantMethods) {

@@ -26,7 +26,7 @@ func AspectMethodClass() AspectMethodClassLike {
 
 // Constructor Methods
 
-func (c *aspectMethodClass_) Make(
+func (c *aspectMethodClass_) AspectMethod(
 	method MethodLike,
 ) AspectMethodLike {
 	if uti.IsUndefined(method) {

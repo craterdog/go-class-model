@@ -87,10 +87,10 @@ angle-like class.
 */
 type AngleClassLike interface {
 	// Constructor Methods
-	Make(
+	Angle(
 		intrinsic float64,
 	) AngleLike
-	MakeFromString(
+	AngleFromString(
 		value string,
 	) AngleLike
 
@@ -117,13 +117,13 @@ concrete array-like class.
 */
 type ArrayClassLike[V any] interface {
 	// Constructor Methods
-	Make(
+	Array(
 		intrinsic []V,
 	) ArrayLike[V]
-	MakeWithSize(
+	ArrayWithSize(
 		size Ordinal,
 	) ArrayLike[V]
-	MakeFromSequence(
+	ArrayFromSequence(
 		values Sequential[V],
 	) ArrayLike[V]
 
@@ -141,7 +141,7 @@ supported by each concrete association-like class.
 */
 type AssociationClassLike[K comparable, V any] interface {
 	// Constructor Methods
-	Make(
+	Association(
 		key K,
 		value V,
 	) AssociationLike[K, V]
@@ -165,14 +165,14 @@ catalog takes precedence.
 */
 type CatalogClassLike[V any] interface {
 	// Constructor Methods
-	Make() CatalogLike[V]
-	MakeFromArray(
+	Catalog() CatalogLike[V]
+	CatalogFromArray(
 		associations []AssociationLike[Identifier, V],
 	) CatalogLike[V]
-	MakeFromMap(
+	CatalogFromMap(
 		associations map[Identifier]V,
 	) CatalogLike[V]
-	MakeFromSequence(
+	CatalogFromSequence(
 		associations Sequential[AssociationLike[Identifier, V]],
 	) CatalogLike[V]
 

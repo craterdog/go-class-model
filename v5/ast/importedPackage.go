@@ -26,7 +26,7 @@ func ImportedPackageClass() ImportedPackageClassLike {
 
 // Constructor Methods
 
-func (c *importedPackageClass_) Make(
+func (c *importedPackageClass_) ImportedPackage(
 	name string,
 	path string,
 ) ImportedPackageLike {

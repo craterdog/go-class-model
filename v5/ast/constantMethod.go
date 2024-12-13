@@ -26,7 +26,7 @@ func ConstantMethodClass() ConstantMethodClassLike {
 
 // Constructor Methods
 
-func (c *constantMethodClass_) Make(
+func (c *constantMethodClass_) ConstantMethod(
 	name string,
 	abstraction AbstractionLike,
 ) ConstantMethodLike {

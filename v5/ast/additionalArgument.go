@@ -26,7 +26,7 @@ func AdditionalArgumentClass() AdditionalArgumentClassLike {
 
 // Constructor Methods
 
-func (c *additionalArgumentClass_) Make(
+func (c *additionalArgumentClass_) AdditionalArgument(
 	argument ArgumentLike,
 ) AdditionalArgumentLike {
 	if uti.IsUndefined(argument) {

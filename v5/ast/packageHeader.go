@@ -26,7 +26,7 @@ func PackageHeaderClass() PackageHeaderClassLike {
 
 // Constructor Methods
 
-func (c *packageHeaderClass_) Make(
+func (c *packageHeaderClass_) PackageHeader(
 	comment string,
 	name string,
 ) PackageHeaderLike {

@@ -27,7 +27,7 @@ func ArgumentsClass() ArgumentsClassLike {
 
 // Constructor Methods
 
-func (c *argumentsClass_) Make(
+func (c *argumentsClass_) Arguments(
 	argument ArgumentLike,
 	additionalArguments abs.Sequential[AdditionalArgumentLike],
 ) ArgumentsLike {

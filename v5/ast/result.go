@@ -26,7 +26,7 @@ func ResultClass() ResultClassLike {
 
 // Constructor Methods
 
-func (c *resultClass_) Make(
+func (c *resultClass_) Result(
 	any_ any,
 ) ResultLike {
 	if uti.IsUndefined(any_) {

@@ -26,7 +26,7 @@ func AdditionalValueClass() AdditionalValueClassLike {
 
 // Constructor Methods
 
-func (c *additionalValueClass_) Make(
+func (c *additionalValueClass_) AdditionalValue(
 	name string,
 ) AdditionalValueLike {
 	if uti.IsUndefined(name) {

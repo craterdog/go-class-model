@@ -52,7 +52,7 @@ supported by each concrete abstraction-like class.
 */
 type AbstractionClassLike interface {
 	// Constructor Methods
-	Make(
+	Abstraction(
 		optionalPrefix PrefixLike,
 		name string,
 		optionalSuffix SuffixLike,
@@ -67,7 +67,7 @@ supported by each concrete additional-argument-like class.
 */
 type AdditionalArgumentClassLike interface {
 	// Constructor Methods
-	Make(
+	AdditionalArgument(
 		argument ArgumentLike,
 	) AdditionalArgumentLike
 }
@@ -79,7 +79,7 @@ supported by each concrete additional-constraint-like class.
 */
 type AdditionalConstraintClassLike interface {
 	// Constructor Methods
-	Make(
+	AdditionalConstraint(
 		constraint ConstraintLike,
 	) AdditionalConstraintLike
 }
@@ -91,7 +91,7 @@ supported by each concrete additional-value-like class.
 */
 type AdditionalValueClassLike interface {
 	// Constructor Methods
-	Make(
+	AdditionalValue(
 		name string,
 	) AdditionalValueLike
 }
@@ -103,7 +103,7 @@ supported by each concrete argument-like class.
 */
 type ArgumentClassLike interface {
 	// Constructor Methods
-	Make(
+	Argument(
 		abstraction AbstractionLike,
 	) ArgumentLike
 }
@@ -115,7 +115,7 @@ supported by each concrete arguments-like class.
 */
 type ArgumentsClassLike interface {
 	// Constructor Methods
-	Make(
+	Arguments(
 		argument ArgumentLike,
 		additionalArguments abs.Sequential[AdditionalArgumentLike],
 	) ArgumentsLike
@@ -128,7 +128,7 @@ supported by each concrete array-like class.
 */
 type ArrayClassLike interface {
 	// Constructor Methods
-	Make() ArrayLike
+	Array() ArrayLike
 }
 
 /*
@@ -138,7 +138,7 @@ supported by each concrete aspect-declaration-like class.
 */
 type AspectDeclarationClassLike interface {
 	// Constructor Methods
-	Make(
+	AspectDeclaration(
 		declaration DeclarationLike,
 		aspectMethods abs.Sequential[AspectMethodLike],
 	) AspectDeclarationLike
@@ -151,7 +151,7 @@ supported by each concrete aspect-interface-like class.
 */
 type AspectInterfaceClassLike interface {
 	// Constructor Methods
-	Make(
+	AspectInterface(
 		abstraction AbstractionLike,
 	) AspectInterfaceLike
 }
@@ -163,7 +163,7 @@ supported by each concrete aspect-method-like class.
 */
 type AspectMethodClassLike interface {
 	// Constructor Methods
-	Make(
+	AspectMethod(
 		method MethodLike,
 	) AspectMethodLike
 }
@@ -175,7 +175,7 @@ supported by each concrete aspect-section-like class.
 */
 type AspectSectionClassLike interface {
 	// Constructor Methods
-	Make(
+	AspectSection(
 		aspectDeclarations abs.Sequential[AspectDeclarationLike],
 	) AspectSectionLike
 }
@@ -187,7 +187,7 @@ supported by each concrete aspect-subsection-like class.
 */
 type AspectSubsectionClassLike interface {
 	// Constructor Methods
-	Make(
+	AspectSubsection(
 		aspectInterfaces abs.Sequential[AspectInterfaceLike],
 	) AspectSubsectionLike
 }
@@ -199,7 +199,7 @@ supported by each concrete attribute-method-like class.
 */
 type AttributeMethodClassLike interface {
 	// Constructor Methods
-	Make(
+	AttributeMethod(
 		any_ any,
 	) AttributeMethodLike
 }
@@ -211,7 +211,7 @@ supported by each concrete attribute-subsection-like class.
 */
 type AttributeSubsectionClassLike interface {
 	// Constructor Methods
-	Make(
+	AttributeSubsection(
 		attributeMethods abs.Sequential[AttributeMethodLike],
 	) AttributeSubsectionLike
 }
@@ -223,7 +223,7 @@ supported by each concrete channel-like class.
 */
 type ChannelClassLike interface {
 	// Constructor Methods
-	Make() ChannelLike
+	Channel() ChannelLike
 }
 
 /*
@@ -233,7 +233,7 @@ supported by each concrete class-declaration-like class.
 */
 type ClassDeclarationClassLike interface {
 	// Constructor Methods
-	Make(
+	ClassDeclaration(
 		declaration DeclarationLike,
 		classMethods ClassMethodsLike,
 	) ClassDeclarationLike
@@ -246,7 +246,7 @@ supported by each concrete class-methods-like class.
 */
 type ClassMethodsClassLike interface {
 	// Constructor Methods
-	Make(
+	ClassMethods(
 		constructorSubsection ConstructorSubsectionLike,
 		optionalConstantSubsection ConstantSubsectionLike,
 		optionalFunctionSubsection FunctionSubsectionLike,
@@ -260,7 +260,7 @@ supported by each concrete class-section-like class.
 */
 type ClassSectionClassLike interface {
 	// Constructor Methods
-	Make(
+	ClassSection(
 		classDeclarations abs.Sequential[ClassDeclarationLike],
 	) ClassSectionLike
 }
@@ -272,7 +272,7 @@ supported by each concrete constant-method-like class.
 */
 type ConstantMethodClassLike interface {
 	// Constructor Methods
-	Make(
+	ConstantMethod(
 		name string,
 		abstraction AbstractionLike,
 	) ConstantMethodLike
@@ -285,7 +285,7 @@ supported by each concrete constant-subsection-like class.
 */
 type ConstantSubsectionClassLike interface {
 	// Constructor Methods
-	Make(
+	ConstantSubsection(
 		constantMethods abs.Sequential[ConstantMethodLike],
 	) ConstantSubsectionLike
 }
@@ -297,7 +297,7 @@ supported by each concrete constraint-like class.
 */
 type ConstraintClassLike interface {
 	// Constructor Methods
-	Make(
+	Constraint(
 		name string,
 		abstraction AbstractionLike,
 	) ConstraintLike
@@ -310,7 +310,7 @@ supported by each concrete constraints-like class.
 */
 type ConstraintsClassLike interface {
 	// Constructor Methods
-	Make(
+	Constraints(
 		constraint ConstraintLike,
 		additionalConstraints abs.Sequential[AdditionalConstraintLike],
 	) ConstraintsLike
@@ -323,7 +323,7 @@ supported by each concrete constructor-method-like class.
 */
 type ConstructorMethodClassLike interface {
 	// Constructor Methods
-	Make(
+	ConstructorMethod(
 		name string,
 		parameters abs.Sequential[ParameterLike],
 		abstraction AbstractionLike,
@@ -337,7 +337,7 @@ supported by each concrete constructor-subsection-like class.
 */
 type ConstructorSubsectionClassLike interface {
 	// Constructor Methods
-	Make(
+	ConstructorSubsection(
 		constructorMethods abs.Sequential[ConstructorMethodLike],
 	) ConstructorSubsectionLike
 }
@@ -349,7 +349,7 @@ supported by each concrete declaration-like class.
 */
 type DeclarationClassLike interface {
 	// Constructor Methods
-	Make(
+	Declaration(
 		comment string,
 		name string,
 		optionalConstraints ConstraintsLike,
@@ -363,7 +363,7 @@ supported by each concrete enumeration-like class.
 */
 type EnumerationClassLike interface {
 	// Constructor Methods
-	Make(
+	Enumeration(
 		value ValueLike,
 		additionalValues abs.Sequential[AdditionalValueLike],
 	) EnumerationLike
@@ -376,7 +376,7 @@ supported by each concrete function-method-like class.
 */
 type FunctionMethodClassLike interface {
 	// Constructor Methods
-	Make(
+	FunctionMethod(
 		name string,
 		parameters abs.Sequential[ParameterLike],
 		result ResultLike,
@@ -390,7 +390,7 @@ supported by each concrete function-subsection-like class.
 */
 type FunctionSubsectionClassLike interface {
 	// Constructor Methods
-	Make(
+	FunctionSubsection(
 		functionMethods abs.Sequential[FunctionMethodLike],
 	) FunctionSubsectionLike
 }
@@ -402,7 +402,7 @@ supported by each concrete functional-declaration-like class.
 */
 type FunctionalDeclarationClassLike interface {
 	// Constructor Methods
-	Make(
+	FunctionalDeclaration(
 		declaration DeclarationLike,
 		parameters abs.Sequential[ParameterLike],
 		result ResultLike,
@@ -416,7 +416,7 @@ supported by each concrete functional-section-like class.
 */
 type FunctionalSectionClassLike interface {
 	// Constructor Methods
-	Make(
+	FunctionalSection(
 		functionalDeclarations abs.Sequential[FunctionalDeclarationLike],
 	) FunctionalSectionLike
 }
@@ -428,7 +428,7 @@ supported by each concrete getter-method-like class.
 */
 type GetterMethodClassLike interface {
 	// Constructor Methods
-	Make(
+	GetterMethod(
 		name string,
 		abstraction AbstractionLike,
 	) GetterMethodLike
@@ -441,7 +441,7 @@ supported by each concrete imported-package-like class.
 */
 type ImportedPackageClassLike interface {
 	// Constructor Methods
-	Make(
+	ImportedPackage(
 		name string,
 		path string,
 	) ImportedPackageLike
@@ -454,7 +454,7 @@ supported by each concrete instance-declaration-like class.
 */
 type InstanceDeclarationClassLike interface {
 	// Constructor Methods
-	Make(
+	InstanceDeclaration(
 		declaration DeclarationLike,
 		instanceMethods InstanceMethodsLike,
 	) InstanceDeclarationLike
@@ -467,7 +467,7 @@ supported by each concrete instance-methods-like class.
 */
 type InstanceMethodsClassLike interface {
 	// Constructor Methods
-	Make(
+	InstanceMethods(
 		principalSubsection PrincipalSubsectionLike,
 		optionalAttributeSubsection AttributeSubsectionLike,
 		optionalAspectSubsection AspectSubsectionLike,
@@ -481,7 +481,7 @@ supported by each concrete instance-section-like class.
 */
 type InstanceSectionClassLike interface {
 	// Constructor Methods
-	Make(
+	InstanceSection(
 		instanceDeclarations abs.Sequential[InstanceDeclarationLike],
 	) InstanceSectionLike
 }
@@ -493,7 +493,7 @@ supported by each concrete interface-declarations-like class.
 */
 type InterfaceDeclarationsClassLike interface {
 	// Constructor Methods
-	Make(
+	InterfaceDeclarations(
 		classSection ClassSectionLike,
 		instanceSection InstanceSectionLike,
 		aspectSection AspectSectionLike,
@@ -507,7 +507,7 @@ supported by each concrete legal-notice-like class.
 */
 type LegalNoticeClassLike interface {
 	// Constructor Methods
-	Make(
+	LegalNotice(
 		comment string,
 	) LegalNoticeLike
 }
@@ -519,7 +519,7 @@ supported by each concrete map-like class.
 */
 type MapClassLike interface {
 	// Constructor Methods
-	Make(
+	Map(
 		name string,
 	) MapLike
 }
@@ -531,7 +531,7 @@ supported by each concrete method-like class.
 */
 type MethodClassLike interface {
 	// Constructor Methods
-	Make(
+	Method(
 		name string,
 		parameters abs.Sequential[ParameterLike],
 		optionalResult ResultLike,
@@ -545,7 +545,7 @@ supported by each concrete model-like class.
 */
 type ModelClassLike interface {
 	// Constructor Methods
-	Make(
+	Model(
 		packageDeclaration PackageDeclarationLike,
 		primitiveDeclarations PrimitiveDeclarationsLike,
 		interfaceDeclarations InterfaceDeclarationsLike,
@@ -559,7 +559,7 @@ supported by each concrete multivalue-like class.
 */
 type MultivalueClassLike interface {
 	// Constructor Methods
-	Make(
+	Multivalue(
 		parameters abs.Sequential[ParameterLike],
 	) MultivalueLike
 }
@@ -571,7 +571,7 @@ supported by each concrete none-like class.
 */
 type NoneClassLike interface {
 	// Constructor Methods
-	Make(
+	None(
 		newline string,
 	) NoneLike
 }
@@ -583,7 +583,7 @@ supported by each concrete package-declaration-like class.
 */
 type PackageDeclarationClassLike interface {
 	// Constructor Methods
-	Make(
+	PackageDeclaration(
 		legalNotice LegalNoticeLike,
 		packageHeader PackageHeaderLike,
 		packageImports PackageImportsLike,
@@ -597,7 +597,7 @@ supported by each concrete package-header-like class.
 */
 type PackageHeaderClassLike interface {
 	// Constructor Methods
-	Make(
+	PackageHeader(
 		comment string,
 		name string,
 	) PackageHeaderLike
@@ -610,7 +610,7 @@ supported by each concrete package-imports-like class.
 */
 type PackageImportsClassLike interface {
 	// Constructor Methods
-	Make(
+	PackageImports(
 		importedPackages abs.Sequential[ImportedPackageLike],
 	) PackageImportsLike
 }
@@ -622,7 +622,7 @@ supported by each concrete parameter-like class.
 */
 type ParameterClassLike interface {
 	// Constructor Methods
-	Make(
+	Parameter(
 		name string,
 		abstraction AbstractionLike,
 	) ParameterLike
@@ -635,7 +635,7 @@ supported by each concrete prefix-like class.
 */
 type PrefixClassLike interface {
 	// Constructor Methods
-	Make(
+	Prefix(
 		any_ any,
 	) PrefixLike
 }
@@ -647,7 +647,7 @@ supported by each concrete primitive-declarations-like class.
 */
 type PrimitiveDeclarationsClassLike interface {
 	// Constructor Methods
-	Make(
+	PrimitiveDeclarations(
 		typeSection TypeSectionLike,
 		functionalSection FunctionalSectionLike,
 	) PrimitiveDeclarationsLike
@@ -660,7 +660,7 @@ supported by each concrete principal-method-like class.
 */
 type PrincipalMethodClassLike interface {
 	// Constructor Methods
-	Make(
+	PrincipalMethod(
 		method MethodLike,
 	) PrincipalMethodLike
 }
@@ -672,7 +672,7 @@ supported by each concrete principal-subsection-like class.
 */
 type PrincipalSubsectionClassLike interface {
 	// Constructor Methods
-	Make(
+	PrincipalSubsection(
 		principalMethods abs.Sequential[PrincipalMethodLike],
 	) PrincipalSubsectionLike
 }
@@ -684,7 +684,7 @@ supported by each concrete result-like class.
 */
 type ResultClassLike interface {
 	// Constructor Methods
-	Make(
+	Result(
 		any_ any,
 	) ResultLike
 }
@@ -696,7 +696,7 @@ supported by each concrete setter-method-like class.
 */
 type SetterMethodClassLike interface {
 	// Constructor Methods
-	Make(
+	SetterMethod(
 		name string,
 		parameter ParameterLike,
 	) SetterMethodLike
@@ -709,7 +709,7 @@ supported by each concrete suffix-like class.
 */
 type SuffixClassLike interface {
 	// Constructor Methods
-	Make(
+	Suffix(
 		name string,
 	) SuffixLike
 }
@@ -721,7 +721,7 @@ supported by each concrete type-declaration-like class.
 */
 type TypeDeclarationClassLike interface {
 	// Constructor Methods
-	Make(
+	TypeDeclaration(
 		declaration DeclarationLike,
 		abstraction AbstractionLike,
 		optionalEnumeration EnumerationLike,
@@ -735,7 +735,7 @@ supported by each concrete type-section-like class.
 */
 type TypeSectionClassLike interface {
 	// Constructor Methods
-	Make(
+	TypeSection(
 		typeDeclarations abs.Sequential[TypeDeclarationLike],
 	) TypeSectionLike
 }
@@ -747,7 +747,7 @@ supported by each concrete value-like class.
 */
 type ValueClassLike interface {
 	// Constructor Methods
-	Make(
+	Value(
 		name string,
 		abstraction AbstractionLike,
 	) ValueLike

@@ -27,7 +27,7 @@ func PackageImportsClass() PackageImportsClassLike {
 
 // Constructor Methods
 
-func (c *packageImportsClass_) Make(
+func (c *packageImportsClass_) PackageImports(
 	importedPackages abs.Sequential[ImportedPackageLike],
 ) PackageImportsLike {
 	if uti.IsUndefined(importedPackages) {

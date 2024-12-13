@@ -27,7 +27,7 @@ func InstanceSectionClass() InstanceSectionClassLike {
 
 // Constructor Methods
 
-func (c *instanceSectionClass_) Make(
+func (c *instanceSectionClass_) InstanceSection(
 	instanceDeclarations abs.Sequential[InstanceDeclarationLike],
 ) InstanceSectionLike {
 	if uti.IsUndefined(instanceDeclarations) {

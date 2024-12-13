@@ -26,7 +26,7 @@ func GetterMethodClass() GetterMethodClassLike {
 
 // Constructor Methods
 
-func (c *getterMethodClass_) Make(
+func (c *getterMethodClass_) GetterMethod(
 	name string,
 	abstraction AbstractionLike,
 ) GetterMethodLike {

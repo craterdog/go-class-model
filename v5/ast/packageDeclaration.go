@@ -26,7 +26,7 @@ func PackageDeclarationClass() PackageDeclarationClassLike {
 
 // Constructor Methods
 
-func (c *packageDeclarationClass_) Make(
+func (c *packageDeclarationClass_) PackageDeclaration(
 	legalNotice LegalNoticeLike,
 	packageHeader PackageHeaderLike,
 	packageImports PackageImportsLike,

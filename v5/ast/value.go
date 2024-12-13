@@ -26,7 +26,7 @@ func ValueClass() ValueClassLike {
 
 // Constructor Methods
 
-func (c *valueClass_) Make(
+func (c *valueClass_) Value(
 	name string,
 	abstraction AbstractionLike,
 ) ValueLike {

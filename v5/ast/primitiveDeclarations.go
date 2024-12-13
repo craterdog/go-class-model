@@ -26,7 +26,7 @@ func PrimitiveDeclarationsClass() PrimitiveDeclarationsClassLike {
 
 // Constructor Methods
 
-func (c *primitiveDeclarationsClass_) Make(
+func (c *primitiveDeclarationsClass_) PrimitiveDeclarations(
 	typeSection TypeSectionLike,
 	functionalSection FunctionalSectionLike,
 ) PrimitiveDeclarationsLike {

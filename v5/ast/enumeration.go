@@ -27,7 +27,7 @@ func EnumerationClass() EnumerationClassLike {
 
 // Constructor Methods
 
-func (c *enumerationClass_) Make(
+func (c *enumerationClass_) Enumeration(
 	value ValueLike,
 	additionalValues abs.Sequential[AdditionalValueLike],
 ) EnumerationLike {

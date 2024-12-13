@@ -27,7 +27,7 @@ func FunctionSubsectionClass() FunctionSubsectionClassLike {
 
 // Constructor Methods
 
-func (c *functionSubsectionClass_) Make(
+func (c *functionSubsectionClass_) FunctionSubsection(
 	functionMethods abs.Sequential[FunctionMethodLike],
 ) FunctionSubsectionLike {
 	if uti.IsUndefined(functionMethods) {

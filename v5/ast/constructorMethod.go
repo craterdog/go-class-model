@@ -27,7 +27,7 @@ func ConstructorMethodClass() ConstructorMethodClassLike {
 
 // Constructor Methods
 
-func (c *constructorMethodClass_) Make(
+func (c *constructorMethodClass_) ConstructorMethod(
 	name string,
 	parameters abs.Sequential[ParameterLike],
 	abstraction AbstractionLike,

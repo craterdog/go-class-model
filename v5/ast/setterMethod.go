@@ -26,7 +26,7 @@ func SetterMethodClass() SetterMethodClassLike {
 
 // Constructor Methods
 
-func (c *setterMethodClass_) Make(
+func (c *setterMethodClass_) SetterMethod(
 	name string,
 	parameter ParameterLike,
 ) SetterMethodLike {

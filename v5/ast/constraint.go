@@ -26,7 +26,7 @@ func ConstraintClass() ConstraintClassLike {
 
 // Constructor Methods
 
-func (c *constraintClass_) Make(
+func (c *constraintClass_) Constraint(
 	name string,
 	abstraction AbstractionLike,
 ) ConstraintLike {

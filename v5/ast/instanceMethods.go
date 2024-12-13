@@ -26,7 +26,7 @@ func InstanceMethodsClass() InstanceMethodsClassLike {
 
 // Constructor Methods
 
-func (c *instanceMethodsClass_) Make(
+func (c *instanceMethodsClass_) InstanceMethods(
 	principalSubsection PrincipalSubsectionLike,
 	optionalAttributeSubsection AttributeSubsectionLike,
 	optionalAspectSubsection AspectSubsectionLike,

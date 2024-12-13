@@ -34,14 +34,14 @@ func ValidatorClass() ValidatorClassLike {
 
 // Constructor Methods
 
-func (c *validatorClass_) Make() ValidatorLike {
+func (c *validatorClass_) Validator() ValidatorLike {
 	var instance = &validator_{
 		// Initialize the instance attributes.
 
 		// Initialize the inherited aspects.
-		Methodical: ProcessorClass().Make(),
+		Methodical: ProcessorClass().Processor(),
 	}
-	instance.visitor_ = VisitorClass().Make(instance)
+	instance.visitor_ = VisitorClass().Visitor(instance)
 	return instance
 }
 

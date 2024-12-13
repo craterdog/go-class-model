@@ -26,7 +26,7 @@ func PrefixClass() PrefixClassLike {
 
 // Constructor Methods
 
-func (c *prefixClass_) Make(
+func (c *prefixClass_) Prefix(
 	any_ any,
 ) PrefixLike {
 	if uti.IsUndefined(any_) {

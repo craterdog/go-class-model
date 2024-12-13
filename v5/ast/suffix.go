@@ -26,7 +26,7 @@ func SuffixClass() SuffixClassLike {
 
 // Constructor Methods
 
-func (c *suffixClass_) Make(
+func (c *suffixClass_) Suffix(
 	name string,
 ) SuffixLike {
 	if uti.IsUndefined(name) {

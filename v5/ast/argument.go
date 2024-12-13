@@ -26,7 +26,7 @@ func ArgumentClass() ArgumentClassLike {
 
 // Constructor Methods
 
-func (c *argumentClass_) Make(
+func (c *argumentClass_) Argument(
 	abstraction AbstractionLike,
 ) ArgumentLike {
 	if uti.IsUndefined(abstraction) {

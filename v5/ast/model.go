@@ -26,7 +26,7 @@ func ModelClass() ModelClassLike {
 
 // Constructor Methods
 
-func (c *modelClass_) Make(
+func (c *modelClass_) Model(
 	packageDeclaration PackageDeclarationLike,
 	primitiveDeclarations PrimitiveDeclarationsLike,
 	interfaceDeclarations InterfaceDeclarationsLike,

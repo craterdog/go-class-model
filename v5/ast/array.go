@@ -24,7 +24,7 @@ func ArrayClass() ArrayClassLike {
 
 // Constructor Methods
 
-func (c *arrayClass_) Make() ArrayLike {
+func (c *arrayClass_) Array() ArrayLike {
 	var instance = &array_{
 		// Initialize the instance attributes.
 	}

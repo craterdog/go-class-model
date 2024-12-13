@@ -26,7 +26,7 @@ func NoneClass() NoneClassLike {
 
 // Constructor Methods
 
-func (c *noneClass_) Make(
+func (c *noneClass_) None(
 	newline string,
 ) NoneLike {
 	if uti.IsUndefined(newline) {

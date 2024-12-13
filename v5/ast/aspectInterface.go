@@ -26,7 +26,7 @@ func AspectInterfaceClass() AspectInterfaceClassLike {
 
 // Constructor Methods
 
-func (c *aspectInterfaceClass_) Make(
+func (c *aspectInterfaceClass_) AspectInterface(
 	abstraction AbstractionLike,
 ) AspectInterfaceLike {
 	if uti.IsUndefined(abstraction) {

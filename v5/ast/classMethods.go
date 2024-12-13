@@ -26,7 +26,7 @@ func ClassMethodsClass() ClassMethodsClassLike {
 
 // Constructor Methods
 
-func (c *classMethodsClass_) Make(
+func (c *classMethodsClass_) ClassMethods(
 	constructorSubsection ConstructorSubsectionLike,
 	optionalConstantSubsection ConstantSubsectionLike,
 	optionalFunctionSubsection FunctionSubsectionLike,

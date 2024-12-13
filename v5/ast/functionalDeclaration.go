@@ -27,7 +27,7 @@ func FunctionalDeclarationClass() FunctionalDeclarationClassLike {
 
 // Constructor Methods
 
-func (c *functionalDeclarationClass_) Make(
+func (c *functionalDeclarationClass_) FunctionalDeclaration(
 	declaration DeclarationLike,
 	parameters abs.Sequential[ParameterLike],
 	result ResultLike,

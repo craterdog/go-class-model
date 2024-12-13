@@ -27,7 +27,7 @@ func ClassSectionClass() ClassSectionClassLike {
 
 // Constructor Methods
 
-func (c *classSectionClass_) Make(
+func (c *classSectionClass_) ClassSection(
 	classDeclarations abs.Sequential[ClassDeclarationLike],
 ) ClassSectionLike {
 	if uti.IsUndefined(classDeclarations) {

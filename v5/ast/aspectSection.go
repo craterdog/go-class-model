@@ -27,7 +27,7 @@ func AspectSectionClass() AspectSectionClassLike {
 
 // Constructor Methods
 
-func (c *aspectSectionClass_) Make(
+func (c *aspectSectionClass_) AspectSection(
 	aspectDeclarations abs.Sequential[AspectDeclarationLike],
 ) AspectSectionLike {
 	if uti.IsUndefined(aspectDeclarations) {

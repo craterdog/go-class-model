@@ -26,7 +26,7 @@ func PrincipalMethodClass() PrincipalMethodClassLike {
 
 // Constructor Methods
 
-func (c *principalMethodClass_) Make(
+func (c *principalMethodClass_) PrincipalMethod(
 	method MethodLike,
 ) PrincipalMethodLike {
 	if uti.IsUndefined(method) {

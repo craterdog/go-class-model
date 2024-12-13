@@ -27,7 +27,7 @@ func ConstructorSubsectionClass() ConstructorSubsectionClassLike {
 
 // Constructor Methods
 
-func (c *constructorSubsectionClass_) Make(
+func (c *constructorSubsectionClass_) ConstructorSubsection(
 	constructorMethods abs.Sequential[ConstructorMethodLike],
 ) ConstructorSubsectionLike {
 	if uti.IsUndefined(constructorMethods) {

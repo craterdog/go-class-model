@@ -27,7 +27,7 @@ func FunctionalSectionClass() FunctionalSectionClassLike {
 
 // Constructor Methods
 
-func (c *functionalSectionClass_) Make(
+func (c *functionalSectionClass_) FunctionalSection(
 	functionalDeclarations abs.Sequential[FunctionalDeclarationLike],
 ) FunctionalSectionLike {
 	if uti.IsUndefined(functionalDeclarations) {

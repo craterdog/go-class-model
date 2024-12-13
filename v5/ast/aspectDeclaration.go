@@ -27,7 +27,7 @@ func AspectDeclarationClass() AspectDeclarationClassLike {
 
 // Constructor Methods
 
-func (c *aspectDeclarationClass_) Make(
+func (c *aspectDeclarationClass_) AspectDeclaration(
 	declaration DeclarationLike,
 	aspectMethods abs.Sequential[AspectMethodLike],
 ) AspectDeclarationLike {

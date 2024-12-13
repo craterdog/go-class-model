@@ -26,7 +26,7 @@ func AdditionalConstraintClass() AdditionalConstraintClassLike {
 
 // Constructor Methods
 
-func (c *additionalConstraintClass_) Make(
+func (c *additionalConstraintClass_) AdditionalConstraint(
 	constraint ConstraintLike,
 ) AdditionalConstraintLike {
 	if uti.IsUndefined(constraint) {

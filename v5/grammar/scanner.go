@@ -38,7 +38,7 @@ func ScannerClass() ScannerClassLike {
 
 // Constructor Methods
 
-func (c *scannerClass_) Make(
+func (c *scannerClass_) Scanner(
 	source string,
 	tokens abs.QueueLike[TokenLike],
 ) ScannerLike {
@@ -125,7 +125,7 @@ func (v *scanner_) emitToken(
 	case "\v":
 		value = "<VTAB>"
 	}
-	var token = TokenClass().Make(v.line_, v.position_, tokenType, value)
+	var token = TokenClass().Token(v.line_, v.position_, tokenType, value)
 	//fmt.Println(ScannerClass().FormatToken(token)) // Uncomment when debugging.
 	v.tokens_.AddValue(token) // This will block if the queue is full.
 }

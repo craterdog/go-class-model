@@ -26,7 +26,7 @@ func AbstractionClass() AbstractionClassLike {
 
 // Constructor Methods
 
-func (c *abstractionClass_) Make(
+func (c *abstractionClass_) Abstraction(
 	optionalPrefix PrefixLike,
 	name string,
 	optionalSuffix SuffixLike,

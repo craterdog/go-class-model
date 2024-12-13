@@ -33,7 +33,7 @@ func TokenClass() TokenClassLike {
 
 // Constructor Methods
 
-func (c *tokenClass_) Make(
+func (c *tokenClass_) Token(
 	line uint,
 	position uint,
 	type_ TokenType,

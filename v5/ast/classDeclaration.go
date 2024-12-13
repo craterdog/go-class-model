@@ -26,7 +26,7 @@ func ClassDeclarationClass() ClassDeclarationClassLike {
 
 // Constructor Methods
 
-func (c *classDeclarationClass_) Make(
+func (c *classDeclarationClass_) ClassDeclaration(
 	declaration DeclarationLike,
 	classMethods ClassMethodsLike,
 ) ClassDeclarationLike {

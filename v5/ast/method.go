@@ -27,7 +27,7 @@ func MethodClass() MethodClassLike {
 
 // Constructor Methods
 
-func (c *methodClass_) Make(
+func (c *methodClass_) Method(
 	name string,
 	parameters abs.Sequential[ParameterLike],
 	optionalResult ResultLike,

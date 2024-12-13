@@ -27,7 +27,7 @@ func MultivalueClass() MultivalueClassLike {
 
 // Constructor Methods
 
-func (c *multivalueClass_) Make(
+func (c *multivalueClass_) Multivalue(
 	parameters abs.Sequential[ParameterLike],
 ) MultivalueLike {
 	if uti.IsUndefined(parameters) {

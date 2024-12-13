@@ -27,7 +27,7 @@ func AspectSubsectionClass() AspectSubsectionClassLike {
 
 // Constructor Methods
 
-func (c *aspectSubsectionClass_) Make(
+func (c *aspectSubsectionClass_) AspectSubsection(
 	aspectInterfaces abs.Sequential[AspectInterfaceLike],
 ) AspectSubsectionLike {
 	if uti.IsUndefined(aspectInterfaces) {
