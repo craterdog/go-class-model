@@ -57,10 +57,9 @@ func (v *parser_) GetClass() ParserClassLike {
 func (v *parser_) ParseSource(
 	source string,
 ) ast.ModelLike {
-	var class = parserClassReference()
 	v.source_ = source
-	v.tokens_ = col.AnyQueue[TokenLike](class.queueSize_)
-	v.next_ = col.AnyStack[TokenLike](class.stackSize_)
+	v.tokens_ = col.Queue[TokenLike]()
+	v.next_ = col.Stack[TokenLike]()
 
 	// The scanner runs in a separate Go routine.
 	ScannerClass().Make(v.source_, v.tokens_)
@@ -3820,7 +3819,9 @@ func (v *parser_) formatError(
 func (v *parser_) getDefinition(
 	ruleName string,
 ) string {
-	return parserClassReference().syntax_.GetValue(ruleName)
+	var syntax = parserClassReference().syntax_
+	var definition = syntax.GetValue(ruleName)
+	return definition
 }
 
 func (v *parser_) getNextToken() TokenLike {
@@ -3873,9 +3874,7 @@ type parser_ struct {
 
 type parserClass_ struct {
 	// Declare the class constants.
-	queueSize_ uint
-	stackSize_ uint
-	syntax_    abs.CatalogLike[string, string]
+	syntax_ abs.CatalogLike[string, string]
 }
 
 // Class Reference
@@ -3886,8 +3885,6 @@ func parserClassReference() *parserClass_ {
 
 var parserClassReference_ = &parserClass_{
 	// Initialize the class constants.
-	queueSize_: 16,
-	stackSize_: 16,
 	syntax_: col.AnyCatalog[string, string](
 		map[string]string{
 			"$Model":                 `PackageDeclaration PrimitiveDeclarations InterfaceDeclarations`,
