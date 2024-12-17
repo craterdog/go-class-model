@@ -60,6 +60,7 @@ const (
 	NameToken
 	NewlineToken
 	PathToken
+	PrefixToken
 	SpaceToken
 )
 
@@ -282,6 +283,9 @@ type Methodical interface {
 	)
 	ProcessPath(
 		path string,
+	)
+	ProcessPrefix(
+		prefix string,
 	)
 	ProcessSpace(
 		space string,
@@ -760,15 +764,6 @@ type Methodical interface {
 		index uint,
 		size uint,
 	)
-	PreprocessPrefix(
-		prefix ast.PrefixLike,
-	)
-	ProcessPrefixSlot(
-		slot uint,
-	)
-	PostprocessPrefix(
-		prefix ast.PrefixLike,
-	)
 	PreprocessPrimitiveDeclarations(
 		primitiveDeclarations ast.PrimitiveDeclarationsLike,
 	)
@@ -818,15 +813,6 @@ type Methodical interface {
 	PostprocessSetterMethod(
 		setterMethod ast.SetterMethodLike,
 	)
-	PreprocessSuffix(
-		suffix ast.SuffixLike,
-	)
-	ProcessSuffixSlot(
-		slot uint,
-	)
-	PostprocessSuffix(
-		suffix ast.SuffixLike,
-	)
 	PreprocessTypeDeclaration(
 		typeDeclaration ast.TypeDeclarationLike,
 		index uint,
@@ -857,5 +843,14 @@ type Methodical interface {
 	)
 	PostprocessValue(
 		value ast.ValueLike,
+	)
+	PreprocessWrapper(
+		wrapper ast.WrapperLike,
+	)
+	ProcessWrapperSlot(
+		slot uint,
+	)
+	PostprocessWrapper(
+		wrapper ast.WrapperLike,
 	)
 }

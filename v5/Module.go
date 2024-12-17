@@ -85,16 +85,15 @@ type (
 	PackageHeaderLike         = ast.PackageHeaderLike
 	PackageImportsLike        = ast.PackageImportsLike
 	ParameterLike             = ast.ParameterLike
-	PrefixLike                = ast.PrefixLike
 	PrimitiveDeclarationsLike = ast.PrimitiveDeclarationsLike
 	PrincipalMethodLike       = ast.PrincipalMethodLike
 	PrincipalSubsectionLike   = ast.PrincipalSubsectionLike
 	ResultLike                = ast.ResultLike
 	SetterMethodLike          = ast.SetterMethodLike
-	SuffixLike                = ast.SuffixLike
 	TypeDeclarationLike       = ast.TypeDeclarationLike
 	TypeSectionLike           = ast.TypeSectionLike
 	ValueLike                 = ast.ValueLike
+	WrapperLike               = ast.WrapperLike
 )
 
 // Grammar
@@ -110,6 +109,7 @@ const (
 	NameToken      = gra.NameToken
 	NewlineToken   = gra.NewlineToken
 	PathToken      = gra.PathToken
+	PrefixToken    = gra.PrefixToken
 	SpaceToken     = gra.SpaceToken
 )
 
@@ -132,15 +132,15 @@ type (
 // Ast/Abstraction
 
 func Abstraction(
-	optionalPrefix PrefixLike,
+	optionalWrapper WrapperLike,
+	optionalPrefix string,
 	name string,
-	optionalSuffix SuffixLike,
 	optionalArguments ArgumentsLike,
 ) ast.AbstractionLike {
 	return ast.AbstractionClass().Abstraction(
+		optionalWrapper,
 		optionalPrefix,
 		name,
-		optionalSuffix,
 		optionalArguments,
 	)
 }
@@ -651,16 +651,6 @@ func Parameter(
 	)
 }
 
-// Ast/Prefix
-
-func Prefix(
-	any_ any,
-) ast.PrefixLike {
-	return ast.PrefixClass().Prefix(
-		any_,
-	)
-}
-
 // Ast/PrimitiveDeclarations
 
 func PrimitiveDeclarations(
@@ -715,16 +705,6 @@ func SetterMethod(
 	)
 }
 
-// Ast/Suffix
-
-func Suffix(
-	name string,
-) ast.SuffixLike {
-	return ast.SuffixClass().Suffix(
-		name,
-	)
-}
-
 // Ast/TypeDeclaration
 
 func TypeDeclaration(
@@ -758,6 +738,16 @@ func Value(
 	return ast.ValueClass().Value(
 		name,
 		abstraction,
+	)
+}
+
+// Ast/Wrapper
+
+func Wrapper(
+	any_ any,
+) ast.WrapperLike {
+	return ast.WrapperClass().Wrapper(
+		any_,
 	)
 }
 

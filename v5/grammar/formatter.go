@@ -78,6 +78,12 @@ func (v *formatter_) ProcessPath(
 	v.appendString(path)
 }
 
+func (v *formatter_) ProcessPrefix(
+	prefix string,
+) {
+	v.appendString(prefix)
+}
+
 func (v *formatter_) ProcessSpace(
 	space string,
 ) {
@@ -613,12 +619,6 @@ func (v *formatter_) PostprocessSetterMethod(
 	setterMethod ast.SetterMethodLike,
 ) {
 	v.appendString(")")
-}
-
-func (v *formatter_) PreprocessSuffix(
-	suffix ast.SuffixLike,
-) {
-	v.appendString(".")
 }
 
 func (v *formatter_) PreprocessTypeDeclaration(

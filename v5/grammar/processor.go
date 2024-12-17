@@ -70,6 +70,11 @@ func (v *processor_) ProcessPath(
 ) {
 }
 
+func (v *processor_) ProcessPrefix(
+	prefix string,
+) {
+}
+
 func (v *processor_) ProcessSpace(
 	space string,
 ) {
@@ -825,21 +830,6 @@ func (v *processor_) PostprocessParameter(
 ) {
 }
 
-func (v *processor_) PreprocessPrefix(
-	prefix ast.PrefixLike,
-) {
-}
-
-func (v *processor_) ProcessPrefixSlot(
-	slot uint,
-) {
-}
-
-func (v *processor_) PostprocessPrefix(
-	prefix ast.PrefixLike,
-) {
-}
-
 func (v *processor_) PreprocessPrimitiveDeclarations(
 	primitiveDeclarations ast.PrimitiveDeclarationsLike,
 ) {
@@ -919,21 +909,6 @@ func (v *processor_) PostprocessSetterMethod(
 ) {
 }
 
-func (v *processor_) PreprocessSuffix(
-	suffix ast.SuffixLike,
-) {
-}
-
-func (v *processor_) ProcessSuffixSlot(
-	slot uint,
-) {
-}
-
-func (v *processor_) PostprocessSuffix(
-	suffix ast.SuffixLike,
-) {
-}
-
 func (v *processor_) PreprocessTypeDeclaration(
 	typeDeclaration ast.TypeDeclarationLike,
 	index uint,
@@ -980,6 +955,21 @@ func (v *processor_) ProcessValueSlot(
 
 func (v *processor_) PostprocessValue(
 	value ast.ValueLike,
+) {
+}
+
+func (v *processor_) PreprocessWrapper(
+	wrapper ast.WrapperLike,
+) {
+}
+
+func (v *processor_) ProcessWrapperSlot(
+	slot uint,
+) {
+}
+
+func (v *processor_) PostprocessWrapper(
+	wrapper ast.WrapperLike,
 ) {
 }
 

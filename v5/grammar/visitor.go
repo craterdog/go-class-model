@@ -71,31 +71,29 @@ func (v *visitor_) VisitModel(
 func (v *visitor_) visitAbstraction(
 	abstraction ast.AbstractionLike,
 ) {
-	// Visit an optional prefix rule.
-	var optionalPrefix = abstraction.GetOptionalPrefix()
-	if uti.IsDefined(optionalPrefix) {
-		v.processor_.PreprocessPrefix(optionalPrefix)
-		v.visitPrefix(optionalPrefix)
-		v.processor_.PostprocessPrefix(optionalPrefix)
+	// Visit an optional wrapper rule.
+	var optionalWrapper = abstraction.GetOptionalWrapper()
+	if uti.IsDefined(optionalWrapper) {
+		v.processor_.PreprocessWrapper(optionalWrapper)
+		v.visitWrapper(optionalWrapper)
+		v.processor_.PostprocessWrapper(optionalWrapper)
 	}
 
 	// Visit slot 1 between references.
 	v.processor_.ProcessAbstractionSlot(1)
 
-	// Visit a single name token.
-	var name = abstraction.GetName()
-	v.processor_.ProcessName(name)
+	// Visit an optional prefix token.
+	var optionalPrefix = abstraction.GetOptionalPrefix()
+	if uti.IsDefined(optionalPrefix) {
+		v.processor_.ProcessPrefix(optionalPrefix)
+	}
 
 	// Visit slot 2 between references.
 	v.processor_.ProcessAbstractionSlot(2)
 
-	// Visit an optional suffix rule.
-	var optionalSuffix = abstraction.GetOptionalSuffix()
-	if uti.IsDefined(optionalSuffix) {
-		v.processor_.PreprocessSuffix(optionalSuffix)
-		v.visitSuffix(optionalSuffix)
-		v.processor_.PostprocessSuffix(optionalSuffix)
-	}
+	// Visit a single name token.
+	var name = abstraction.GetName()
+	v.processor_.ProcessName(name)
 
 	// Visit slot 3 between references.
 	v.processor_.ProcessAbstractionSlot(3)
@@ -1094,33 +1092,6 @@ func (v *visitor_) visitParameter(
 	v.processor_.PostprocessAbstraction(abstraction)
 }
 
-func (v *visitor_) visitPrefix(
-	prefix ast.PrefixLike,
-) {
-	// Visit the possible prefix types.
-	switch actual := prefix.GetAny().(type) {
-	case ast.ArrayLike:
-		v.processor_.PreprocessArray(actual)
-		v.visitArray(actual)
-		v.processor_.PostprocessArray(actual)
-	case ast.MapLike:
-		v.processor_.PreprocessMap(actual)
-		v.visitMap(actual)
-		v.processor_.PostprocessMap(actual)
-	case ast.ChannelLike:
-		v.processor_.PreprocessChannel(actual)
-		v.visitChannel(actual)
-		v.processor_.PostprocessChannel(actual)
-	case string:
-		switch {
-		default:
-			panic(fmt.Sprintf("Invalid token: %v", actual))
-		}
-	default:
-		panic(fmt.Sprintf("Invalid rule type: %T", actual))
-	}
-}
-
 func (v *visitor_) visitPrimitiveDeclarations(
 	primitiveDeclarations ast.PrimitiveDeclarationsLike,
 ) {
@@ -1220,14 +1191,6 @@ func (v *visitor_) visitSetterMethod(
 	}
 }
 
-func (v *visitor_) visitSuffix(
-	suffix ast.SuffixLike,
-) {
-	// Visit a single name token.
-	var name = suffix.GetName()
-	v.processor_.ProcessName(name)
-}
-
 func (v *visitor_) visitTypeDeclaration(
 	typeDeclaration ast.TypeDeclarationLike,
 ) {
@@ -1297,6 +1260,33 @@ func (v *visitor_) visitValue(
 	v.processor_.PreprocessAbstraction(abstraction)
 	v.visitAbstraction(abstraction)
 	v.processor_.PostprocessAbstraction(abstraction)
+}
+
+func (v *visitor_) visitWrapper(
+	wrapper ast.WrapperLike,
+) {
+	// Visit the possible wrapper types.
+	switch actual := wrapper.GetAny().(type) {
+	case ast.ArrayLike:
+		v.processor_.PreprocessArray(actual)
+		v.visitArray(actual)
+		v.processor_.PostprocessArray(actual)
+	case ast.MapLike:
+		v.processor_.PreprocessMap(actual)
+		v.visitMap(actual)
+		v.processor_.PostprocessMap(actual)
+	case ast.ChannelLike:
+		v.processor_.PreprocessChannel(actual)
+		v.visitChannel(actual)
+		v.processor_.PostprocessChannel(actual)
+	case string:
+		switch {
+		default:
+			panic(fmt.Sprintf("Invalid token: %v", actual))
+		}
+	default:
+		panic(fmt.Sprintf("Invalid rule type: %T", actual))
+	}
 }
 
 // Instance Structure

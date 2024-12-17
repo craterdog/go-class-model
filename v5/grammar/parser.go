@@ -57,7 +57,7 @@ func (v *parser_) GetClass() ParserClassLike {
 func (v *parser_) ParseSource(
 	source string,
 ) ast.ModelLike {
-	v.source_ = source
+	v.source_ = sts.ReplaceAll(source, "\t", "    ")
 	v.tokens_ = col.Queue[TokenLike]()
 	v.next_ = col.Stack[TokenLike]()
 
@@ -84,12 +84,19 @@ func (v *parser_) parseAbstraction() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse an optional Prefix rule.
-	var optionalPrefix ast.PrefixLike
-	optionalPrefix, _, ok = v.parsePrefix()
+	// Attempt to parse an optional Wrapper rule.
+	var optionalWrapper ast.WrapperLike
+	optionalWrapper, _, ok = v.parseWrapper()
 	if ok {
 		// No additional put backs allowed at this point.
 		tokens = nil
+	}
+
+	// Attempt to parse an optional prefix token.
+	var optionalPrefix string
+	optionalPrefix, token, ok = v.parseToken(PrefixToken)
+	if ok && uti.IsDefined(tokens) {
+		tokens.AppendValue(token)
 	}
 
 	// Attempt to parse a single name token.
@@ -110,14 +117,6 @@ func (v *parser_) parseAbstraction() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse an optional Suffix rule.
-	var optionalSuffix ast.SuffixLike
-	optionalSuffix, _, ok = v.parseSuffix()
-	if ok {
-		// No additional put backs allowed at this point.
-		tokens = nil
-	}
-
 	// Attempt to parse an optional Arguments rule.
 	var optionalArguments ast.ArgumentsLike
 	optionalArguments, _, ok = v.parseArguments()
@@ -130,9 +129,9 @@ func (v *parser_) parseAbstraction() (
 	ok = true
 	v.remove(tokens)
 	abstraction = ast.AbstractionClass().Abstraction(
+		optionalWrapper,
 		optionalPrefix,
 		name,
-		optionalSuffix,
 		optionalArguments,
 	)
 	return
@@ -3167,42 +3166,6 @@ func (v *parser_) parseParameter() (
 	return
 }
 
-func (v *parser_) parsePrefix() (
-	prefix ast.PrefixLike,
-	token TokenLike,
-	ok bool,
-) {
-	// Attempt to parse a single Array Prefix.
-	var array ast.ArrayLike
-	array, token, ok = v.parseArray()
-	if ok {
-		// Found a single Array Prefix.
-		prefix = ast.PrefixClass().Prefix(array)
-		return
-	}
-
-	// Attempt to parse a single Map Prefix.
-	var map_ ast.MapLike
-	map_, token, ok = v.parseMap()
-	if ok {
-		// Found a single Map Prefix.
-		prefix = ast.PrefixClass().Prefix(map_)
-		return
-	}
-
-	// Attempt to parse a single Channel Prefix.
-	var channel ast.ChannelLike
-	channel, token, ok = v.parseChannel()
-	if ok {
-		// Found a single Channel Prefix.
-		prefix = ast.PrefixClass().Prefix(channel)
-		return
-	}
-
-	// This is not a single Prefix rule.
-	return
-}
-
 func (v *parser_) parsePrimitiveDeclarations() (
 	primitiveDeclarations ast.PrimitiveDeclarationsLike,
 	token TokenLike,
@@ -3464,55 +3427,6 @@ func (v *parser_) parseSetterMethod() (
 	return
 }
 
-func (v *parser_) parseSuffix() (
-	suffix ast.SuffixLike,
-	token TokenLike,
-	ok bool,
-) {
-	var tokens = col.List[TokenLike]()
-
-	// Attempt to parse a single "." delimiter.
-	_, token, ok = v.parseDelimiter(".")
-	if !ok {
-		if uti.IsDefined(tokens) {
-			// This is not a single Suffix rule.
-			v.putBack(tokens)
-			return
-		} else {
-			// Found a syntax error.
-			var message = v.formatError("$Suffix", token)
-			panic(message)
-		}
-	}
-	if uti.IsDefined(tokens) {
-		tokens.AppendValue(token)
-	}
-
-	// Attempt to parse a single name token.
-	var name string
-	name, token, ok = v.parseToken(NameToken)
-	if !ok {
-		if uti.IsDefined(tokens) {
-			// This is not a single Suffix rule.
-			v.putBack(tokens)
-			return
-		} else {
-			// Found a syntax error.
-			var message = v.formatError("$Suffix", token)
-			panic(message)
-		}
-	}
-	if uti.IsDefined(tokens) {
-		tokens.AppendValue(token)
-	}
-
-	// Found a single Suffix rule.
-	ok = true
-	v.remove(tokens)
-	suffix = ast.SuffixClass().Suffix(name)
-	return
-}
-
 func (v *parser_) parseTypeDeclaration() (
 	typeDeclaration ast.TypeDeclarationLike,
 	token TokenLike,
@@ -3716,6 +3630,42 @@ func (v *parser_) parseValue() (
 	return
 }
 
+func (v *parser_) parseWrapper() (
+	wrapper ast.WrapperLike,
+	token TokenLike,
+	ok bool,
+) {
+	// Attempt to parse a single Array Wrapper.
+	var array ast.ArrayLike
+	array, token, ok = v.parseArray()
+	if ok {
+		// Found a single Array Wrapper.
+		wrapper = ast.WrapperClass().Wrapper(array)
+		return
+	}
+
+	// Attempt to parse a single Map Wrapper.
+	var map_ ast.MapLike
+	map_, token, ok = v.parseMap()
+	if ok {
+		// Found a single Map Wrapper.
+		wrapper = ast.WrapperClass().Wrapper(map_)
+		return
+	}
+
+	// Attempt to parse a single Channel Wrapper.
+	var channel ast.ChannelLike
+	channel, token, ok = v.parseChannel()
+	if ok {
+		// Found a single Channel Wrapper.
+		wrapper = ast.WrapperClass().Wrapper(channel)
+		return
+	}
+
+	// This is not a single Wrapper rule.
+	return
+}
+
 func (v *parser_) parseDelimiter(
 	expectedValue string,
 ) (
@@ -3901,15 +3851,14 @@ var parserClassReference_ = &parserClass_{
 			"$Constraints":           `"[" Constraint AdditionalConstraint* "]"`,
 			"$Constraint":            `name Abstraction`,
 			"$AdditionalConstraint":  `"," Constraint`,
-			"$Abstraction":           `Prefix? name Suffix? Arguments?`,
-			"$Prefix": `
+			"$Abstraction":           `Wrapper? prefix? name Arguments?`,
+			"$Wrapper": `
   - Array
   - Map
   - Channel`,
 			"$Array":                 `"[" "]"`,
 			"$Map":                   `"map" "[" name "]"`,
 			"$Channel":               `"chan"`,
-			"$Suffix":                `"." name`,
 			"$Arguments":             `"[" Argument AdditionalArgument* "]"`,
 			"$Argument":              `Abstraction`,
 			"$AdditionalArgument":    `"," Argument`,

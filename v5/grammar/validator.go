@@ -85,6 +85,12 @@ func (v *validator_) ProcessPath(
 	v.validateToken(path, PathToken)
 }
 
+func (v *validator_) ProcessPrefix(
+	prefix string,
+) {
+	v.validateToken(prefix, PrefixToken)
+}
+
 func (v *validator_) ProcessSpace(
 	space string,
 ) {
@@ -979,24 +985,6 @@ func (v *validator_) PostprocessParameter(
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessPrefix(
-	prefix ast.PrefixLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessPrefixSlot(
-	slot uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) PostprocessPrefix(
-	prefix ast.PrefixLike,
-) {
-	// TBD - Add any validation checks.
-}
-
 func (v *validator_) PreprocessPrincipalMethod(
 	principalMethod ast.PrincipalMethodLike,
 	index uint,
@@ -1091,24 +1079,6 @@ func (v *validator_) PostprocessSetterMethod(
 	// TBD - Add any validation checks.
 }
 
-func (v *validator_) PreprocessSuffix(
-	suffix ast.SuffixLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessSuffixSlot(
-	slot uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) PostprocessSuffix(
-	suffix ast.SuffixLike,
-) {
-	// TBD - Add any validation checks.
-}
-
 func (v *validator_) PreprocessTypeDeclaration(
 	typeDeclaration ast.TypeDeclarationLike,
 	index uint,
@@ -1163,6 +1133,24 @@ func (v *validator_) ProcessValueSlot(
 
 func (v *validator_) PostprocessValue(
 	value ast.ValueLike,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) PreprocessWrapper(
+	prefix ast.WrapperLike,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) ProcessWrapperSlot(
+	slot uint,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) PostprocessWrapper(
+	prefix ast.WrapperLike,
 ) {
 	// TBD - Add any validation checks.
 }

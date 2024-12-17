@@ -53,9 +53,9 @@ supported by each concrete abstraction-like class.
 type AbstractionClassLike interface {
 	// Constructor Methods
 	Abstraction(
-		optionalPrefix PrefixLike,
+		optionalWrapper WrapperLike,
+		optionalPrefix string,
 		name string,
-		optionalSuffix SuffixLike,
 		optionalArguments ArgumentsLike,
 	) AbstractionLike
 }
@@ -629,18 +629,6 @@ type ParameterClassLike interface {
 }
 
 /*
-PrefixClassLike is a class interface that declares the
-complete set of class constructors, constants and functions that must be
-supported by each concrete prefix-like class.
-*/
-type PrefixClassLike interface {
-	// Constructor Methods
-	Prefix(
-		any_ any,
-	) PrefixLike
-}
-
-/*
 PrimitiveDeclarationsClassLike is a class interface that declares the
 complete set of class constructors, constants and functions that must be
 supported by each concrete primitive-declarations-like class.
@@ -703,18 +691,6 @@ type SetterMethodClassLike interface {
 }
 
 /*
-SuffixClassLike is a class interface that declares the
-complete set of class constructors, constants and functions that must be
-supported by each concrete suffix-like class.
-*/
-type SuffixClassLike interface {
-	// Constructor Methods
-	Suffix(
-		name string,
-	) SuffixLike
-}
-
-/*
 TypeDeclarationClassLike is a class interface that declares the
 complete set of class constructors, constants and functions that must be
 supported by each concrete type-declaration-like class.
@@ -753,6 +729,18 @@ type ValueClassLike interface {
 	) ValueLike
 }
 
+/*
+WrapperClassLike is a class interface that declares the
+complete set of class constructors, constants and functions that must be
+supported by each concrete wrapper-like class.
+*/
+type WrapperClassLike interface {
+	// Constructor Methods
+	Wrapper(
+		any_ any,
+	) WrapperLike
+}
+
 // INSTANCE DECLARATIONS
 
 /*
@@ -765,9 +753,9 @@ type AbstractionLike interface {
 	GetClass() AbstractionClassLike
 
 	// Attribute Methods
-	GetOptionalPrefix() PrefixLike
+	GetOptionalWrapper() WrapperLike
+	GetOptionalPrefix() string
 	GetName() string
-	GetOptionalSuffix() SuffixLike
 	GetOptionalArguments() ArgumentsLike
 }
 
@@ -1383,19 +1371,6 @@ type ParameterLike interface {
 }
 
 /*
-PrefixLike is an instance interface that declares the
-complete set of principal, attribute and aspect methods that must be supported
-by each instance of a concrete prefix-like class.
-*/
-type PrefixLike interface {
-	// Principal Methods
-	GetClass() PrefixClassLike
-
-	// Attribute Methods
-	GetAny() any
-}
-
-/*
 PrimitiveDeclarationsLike is an instance interface that declares the
 complete set of principal, attribute and aspect methods that must be supported
 by each instance of a concrete primitive-declarations-like class.
@@ -1463,19 +1438,6 @@ type SetterMethodLike interface {
 }
 
 /*
-SuffixLike is an instance interface that declares the
-complete set of principal, attribute and aspect methods that must be supported
-by each instance of a concrete suffix-like class.
-*/
-type SuffixLike interface {
-	// Principal Methods
-	GetClass() SuffixClassLike
-
-	// Attribute Methods
-	GetName() string
-}
-
-/*
 TypeDeclarationLike is an instance interface that declares the
 complete set of principal, attribute and aspect methods that must be supported
 by each instance of a concrete type-declaration-like class.
@@ -1515,6 +1477,19 @@ type ValueLike interface {
 	// Attribute Methods
 	GetName() string
 	GetAbstraction() AbstractionLike
+}
+
+/*
+WrapperLike is an instance interface that declares the
+complete set of principal, attribute and aspect methods that must be supported
+by each instance of a concrete wrapper-like class.
+*/
+type WrapperLike interface {
+	// Principal Methods
+	GetClass() WrapperClassLike
+
+	// Attribute Methods
+	GetAny() any
 }
 
 // ASPECT DECLARATIONS

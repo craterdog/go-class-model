@@ -20,21 +20,21 @@ import (
 
 // Access Function
 
-func SuffixClass() SuffixClassLike {
-	return suffixClassReference()
+func WrapperClass() WrapperClassLike {
+	return wrapperClassReference()
 }
 
 // Constructor Methods
 
-func (c *suffixClass_) Suffix(
-	name string,
-) SuffixLike {
-	if uti.IsUndefined(name) {
-		panic("The \"name\" attribute is required by this class.")
+func (c *wrapperClass_) Wrapper(
+	any_ any,
+) WrapperLike {
+	if uti.IsUndefined(any_) {
+		panic("The \"any\" attribute is required by this class.")
 	}
-	var instance = &suffix_{
+	var instance = &wrapper_{
 		// Initialize the instance attributes.
-		name_: name,
+		any_: any_,
 	}
 	return instance
 }
@@ -47,14 +47,14 @@ func (c *suffixClass_) Suffix(
 
 // Principal Methods
 
-func (v *suffix_) GetClass() SuffixClassLike {
-	return suffixClassReference()
+func (v *wrapper_) GetClass() WrapperClassLike {
+	return wrapperClassReference()
 }
 
 // Attribute Methods
 
-func (v *suffix_) GetName() string {
-	return v.name_
+func (v *wrapper_) GetAny() any {
+	return v.any_
 }
 
 // PROTECTED INTERFACE
@@ -63,23 +63,23 @@ func (v *suffix_) GetName() string {
 
 // Instance Structure
 
-type suffix_ struct {
+type wrapper_ struct {
 	// Declare the instance attributes.
-	name_ string
+	any_ any
 }
 
 // Class Structure
 
-type suffixClass_ struct {
+type wrapperClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func suffixClassReference() *suffixClass_ {
-	return suffixClassReference_
+func wrapperClassReference() *wrapperClass_ {
+	return wrapperClassReference_
 }
 
-var suffixClassReference_ = &suffixClass_{
+var wrapperClassReference_ = &wrapperClass_{
 	// Initialize the class constants.
 }

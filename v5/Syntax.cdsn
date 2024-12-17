@@ -50,9 +50,9 @@ $Constraint: name Abstraction
 
 $AdditionalConstraint: "," Constraint
 
-$Abstraction: Prefix? name Suffix? Arguments?
+$Abstraction: Wrapper? prefix? name Arguments?
 
-$Prefix:
+$Wrapper:
   - Array
   - Map
   - Channel
@@ -62,8 +62,6 @@ $Array: "[" "]"
 $Map: "map" "[" name "]"
 
 $Channel: "chan"
-
-$Suffix: "." name
 
 $Arguments: "[" Argument AdditionalArgument* "]"
 
@@ -147,9 +145,15 @@ $AspectMethod: Method
 │                            EXPRESSION DEFINITIONS                            │
 └──────────────────────────────────────────────────────────────────────────────┘
 <!
+$alphanumeric: LOWER | UPPER | DIGIT
+
+$character: LOWER | UPPER
+
 $comment: "/*" EOL (ANY | EOL)* EOL "*/" EOL  ! Chooses the shortest possible match.
 
-$name: (LOWER | UPPER) (LOWER | UPPER | DIGIT)* "_"?
+$prefix: character alphanumeric{2} '.'
+
+$name: character alphanumeric* "_"?
 
 $path: '"' ANY* '"'  ! Chooses the shortest possible match.
 
