@@ -190,9 +190,9 @@ loop:
 	for v.next_ < uint(len(v.runes_)) {
 		switch {
 		// Find the next token type.
-		case v.foundToken(DelimiterToken):
 		case v.foundToken(NewlineToken):
 		case v.foundToken(SpaceToken):
+		case v.foundToken(DelimiterToken):
 		case v.foundToken(CommentToken):
 		case v.foundToken(PrefixToken):
 		case v.foundToken(NameToken):
@@ -276,9 +276,9 @@ const (
 	upper_   = "\\p{Lu}"
 
 	// Define the regular expression patterns for each token type.
-	delimiter_    = "(?:type|package|map|iota|interface|import|func|const|chan|\\}|\\{|\\]|\\[|\\)|\\(|=|// TYPE DECLARATIONS|// Principal Methods|// INSTANCE DECLARATIONS|// Function Methods|// FUNCTIONAL DECLARATIONS|// Constructor Methods|// Constant Methods|// CLASS DECLARATIONS|// Attribute Methods|// Aspect Interfaces|// ASPECT DECLARATIONS|,)"
 	newline_      = "(?:" + eol_ + ")"
 	space_        = "(?:[ \\t]+)"
+	delimiter_    = "(?:type|package|map|iota|interface|import|func|const|chan|\\}|\\{|\\]|\\[|\\)|\\(|=|// TYPE DECLARATIONS|// Principal Methods|// INSTANCE DECLARATIONS|// Function Methods|// FUNCTIONAL DECLARATIONS|// Constructor Methods|// Constant Methods|// CLASS DECLARATIONS|// Attribute Methods|// Aspect Interfaces|// ASPECT DECLARATIONS|,)"
 	alphanumeric_ = "(?:" + lower_ + "|" + upper_ + "|" + digit_ + ")"
 	character_    = "(?:" + lower_ + "|" + upper_ + ")"
 	comment_      = "(?:/\\*" + eol_ + "(" + any_ + "|" + eol_ + ")*?" + eol_ + "\\*/" + eol_ + ")"
