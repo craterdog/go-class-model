@@ -10,6 +10,13 @@
 ................................................................................
 */
 
+/*
+┌────────────────────────────────── WARNING ───────────────────────────────────┐
+│                 This class file was automatically generated.                 │
+│                     Any updates to it may be overwritten.                    │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
 package ast
 
 import (
@@ -45,10 +52,6 @@ func (c *enumerationClass_) Enumeration(
 	return instance
 }
 
-// Constant Methods
-
-// Function Methods
-
 // INSTANCE INTERFACE
 
 // Principal Methods
@@ -68,8 +71,6 @@ func (v *enumeration_) GetAdditionalValues() abs.Sequential[AdditionalValueLike]
 }
 
 // PROTECTED INTERFACE
-
-// Private Methods
 
 // Instance Structure
 

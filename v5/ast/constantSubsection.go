@@ -10,6 +10,13 @@
 ................................................................................
 */
 
+/*
+┌────────────────────────────────── WARNING ───────────────────────────────────┐
+│                 This class file was automatically generated.                 │
+│                     Any updates to it may be overwritten.                    │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
 package ast
 
 import (
@@ -40,10 +47,6 @@ func (c *constantSubsectionClass_) ConstantSubsection(
 	return instance
 }
 
-// Constant Methods
-
-// Function Methods
-
 // INSTANCE INTERFACE
 
 // Principal Methods
@@ -59,8 +62,6 @@ func (v *constantSubsection_) GetConstantMethods() abs.Sequential[ConstantMethod
 }
 
 // PROTECTED INTERFACE
-
-// Private Methods
 
 // Instance Structure
 

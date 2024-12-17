@@ -10,6 +10,13 @@
 ................................................................................
 */
 
+/*
+┌────────────────────────────────── WARNING ───────────────────────────────────┐
+│                 This class file was automatically generated.                 │
+│                     Any updates to it may be overwritten.                    │
+└──────────────────────────────────────────────────────────────────────────────┘
+*/
+
 package ast
 
 import ()
@@ -31,10 +38,6 @@ func (c *arrayClass_) Array() ArrayLike {
 	return instance
 }
 
-// Constant Methods
-
-// Function Methods
-
 // INSTANCE INTERFACE
 
 // Principal Methods
@@ -46,8 +49,6 @@ func (v *array_) GetClass() ArrayClassLike {
 // Attribute Methods
 
 // PROTECTED INTERFACE
-
-// Private Methods
 
 // Instance Structure
 
