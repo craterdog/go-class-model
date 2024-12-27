@@ -36,7 +36,7 @@ on interfaces, not on each other.
 package ast
 
 import (
-	abs "github.com/craterdog/go-collection-framework/v5/collection"
+	col "github.com/craterdog/go-collection-framework/v5/collection"
 )
 
 // TYPE DECLARATIONS
@@ -117,7 +117,7 @@ type ArgumentsClassLike interface {
 	// Constructor Methods
 	Arguments(
 		argument ArgumentLike,
-		additionalArguments abs.Sequential[AdditionalArgumentLike],
+		additionalArguments col.Sequential[AdditionalArgumentLike],
 	) ArgumentsLike
 }
 
@@ -140,7 +140,7 @@ type AspectDeclarationClassLike interface {
 	// Constructor Methods
 	AspectDeclaration(
 		declaration DeclarationLike,
-		aspectMethods abs.Sequential[AspectMethodLike],
+		aspectMethods col.Sequential[AspectMethodLike],
 	) AspectDeclarationLike
 }
 
@@ -176,7 +176,7 @@ supported by each concrete aspect-section-like class.
 type AspectSectionClassLike interface {
 	// Constructor Methods
 	AspectSection(
-		aspectDeclarations abs.Sequential[AspectDeclarationLike],
+		aspectDeclarations col.Sequential[AspectDeclarationLike],
 	) AspectSectionLike
 }
 
@@ -188,7 +188,7 @@ supported by each concrete aspect-subsection-like class.
 type AspectSubsectionClassLike interface {
 	// Constructor Methods
 	AspectSubsection(
-		aspectInterfaces abs.Sequential[AspectInterfaceLike],
+		aspectInterfaces col.Sequential[AspectInterfaceLike],
 	) AspectSubsectionLike
 }
 
@@ -212,7 +212,7 @@ supported by each concrete attribute-subsection-like class.
 type AttributeSubsectionClassLike interface {
 	// Constructor Methods
 	AttributeSubsection(
-		attributeMethods abs.Sequential[AttributeMethodLike],
+		attributeMethods col.Sequential[AttributeMethodLike],
 	) AttributeSubsectionLike
 }
 
@@ -261,7 +261,7 @@ supported by each concrete class-section-like class.
 type ClassSectionClassLike interface {
 	// Constructor Methods
 	ClassSection(
-		classDeclarations abs.Sequential[ClassDeclarationLike],
+		classDeclarations col.Sequential[ClassDeclarationLike],
 	) ClassSectionLike
 }
 
@@ -286,7 +286,7 @@ supported by each concrete constant-subsection-like class.
 type ConstantSubsectionClassLike interface {
 	// Constructor Methods
 	ConstantSubsection(
-		constantMethods abs.Sequential[ConstantMethodLike],
+		constantMethods col.Sequential[ConstantMethodLike],
 	) ConstantSubsectionLike
 }
 
@@ -312,7 +312,7 @@ type ConstraintsClassLike interface {
 	// Constructor Methods
 	Constraints(
 		constraint ConstraintLike,
-		additionalConstraints abs.Sequential[AdditionalConstraintLike],
+		additionalConstraints col.Sequential[AdditionalConstraintLike],
 	) ConstraintsLike
 }
 
@@ -325,7 +325,7 @@ type ConstructorMethodClassLike interface {
 	// Constructor Methods
 	ConstructorMethod(
 		name string,
-		parameters abs.Sequential[ParameterLike],
+		parameters col.Sequential[ParameterLike],
 		abstraction AbstractionLike,
 	) ConstructorMethodLike
 }
@@ -338,7 +338,7 @@ supported by each concrete constructor-subsection-like class.
 type ConstructorSubsectionClassLike interface {
 	// Constructor Methods
 	ConstructorSubsection(
-		constructorMethods abs.Sequential[ConstructorMethodLike],
+		constructorMethods col.Sequential[ConstructorMethodLike],
 	) ConstructorSubsectionLike
 }
 
@@ -365,7 +365,7 @@ type EnumerationClassLike interface {
 	// Constructor Methods
 	Enumeration(
 		value ValueLike,
-		additionalValues abs.Sequential[AdditionalValueLike],
+		additionalValues col.Sequential[AdditionalValueLike],
 	) EnumerationLike
 }
 
@@ -378,7 +378,7 @@ type FunctionMethodClassLike interface {
 	// Constructor Methods
 	FunctionMethod(
 		name string,
-		parameters abs.Sequential[ParameterLike],
+		parameters col.Sequential[ParameterLike],
 		result ResultLike,
 	) FunctionMethodLike
 }
@@ -391,7 +391,7 @@ supported by each concrete function-subsection-like class.
 type FunctionSubsectionClassLike interface {
 	// Constructor Methods
 	FunctionSubsection(
-		functionMethods abs.Sequential[FunctionMethodLike],
+		functionMethods col.Sequential[FunctionMethodLike],
 	) FunctionSubsectionLike
 }
 
@@ -404,7 +404,7 @@ type FunctionalDeclarationClassLike interface {
 	// Constructor Methods
 	FunctionalDeclaration(
 		declaration DeclarationLike,
-		parameters abs.Sequential[ParameterLike],
+		parameters col.Sequential[ParameterLike],
 		result ResultLike,
 	) FunctionalDeclarationLike
 }
@@ -417,7 +417,7 @@ supported by each concrete functional-section-like class.
 type FunctionalSectionClassLike interface {
 	// Constructor Methods
 	FunctionalSection(
-		functionalDeclarations abs.Sequential[FunctionalDeclarationLike],
+		functionalDeclarations col.Sequential[FunctionalDeclarationLike],
 	) FunctionalSectionLike
 }
 
@@ -482,7 +482,7 @@ supported by each concrete instance-section-like class.
 type InstanceSectionClassLike interface {
 	// Constructor Methods
 	InstanceSection(
-		instanceDeclarations abs.Sequential[InstanceDeclarationLike],
+		instanceDeclarations col.Sequential[InstanceDeclarationLike],
 	) InstanceSectionLike
 }
 
@@ -533,7 +533,7 @@ type MethodClassLike interface {
 	// Constructor Methods
 	Method(
 		name string,
-		parameters abs.Sequential[ParameterLike],
+		parameters col.Sequential[ParameterLike],
 		optionalResult ResultLike,
 	) MethodLike
 }
@@ -560,7 +560,7 @@ supported by each concrete multivalue-like class.
 type MultivalueClassLike interface {
 	// Constructor Methods
 	Multivalue(
-		parameters abs.Sequential[ParameterLike],
+		parameters col.Sequential[ParameterLike],
 	) MultivalueLike
 }
 
@@ -611,7 +611,7 @@ supported by each concrete package-imports-like class.
 type PackageImportsClassLike interface {
 	// Constructor Methods
 	PackageImports(
-		importedPackages abs.Sequential[ImportedPackageLike],
+		importedPackages col.Sequential[ImportedPackageLike],
 	) PackageImportsLike
 }
 
@@ -661,7 +661,7 @@ supported by each concrete principal-subsection-like class.
 type PrincipalSubsectionClassLike interface {
 	// Constructor Methods
 	PrincipalSubsection(
-		principalMethods abs.Sequential[PrincipalMethodLike],
+		principalMethods col.Sequential[PrincipalMethodLike],
 	) PrincipalSubsectionLike
 }
 
@@ -712,7 +712,7 @@ supported by each concrete type-section-like class.
 type TypeSectionClassLike interface {
 	// Constructor Methods
 	TypeSection(
-		typeDeclarations abs.Sequential[TypeDeclarationLike],
+		typeDeclarations col.Sequential[TypeDeclarationLike],
 	) TypeSectionLike
 }
 
@@ -822,7 +822,7 @@ type ArgumentsLike interface {
 
 	// Attribute Methods
 	GetArgument() ArgumentLike
-	GetAdditionalArguments() abs.Sequential[AdditionalArgumentLike]
+	GetAdditionalArguments() col.Sequential[AdditionalArgumentLike]
 }
 
 /*
@@ -846,7 +846,7 @@ type AspectDeclarationLike interface {
 
 	// Attribute Methods
 	GetDeclaration() DeclarationLike
-	GetAspectMethods() abs.Sequential[AspectMethodLike]
+	GetAspectMethods() col.Sequential[AspectMethodLike]
 }
 
 /*
@@ -885,7 +885,7 @@ type AspectSectionLike interface {
 	GetClass() AspectSectionClassLike
 
 	// Attribute Methods
-	GetAspectDeclarations() abs.Sequential[AspectDeclarationLike]
+	GetAspectDeclarations() col.Sequential[AspectDeclarationLike]
 }
 
 /*
@@ -898,7 +898,7 @@ type AspectSubsectionLike interface {
 	GetClass() AspectSubsectionClassLike
 
 	// Attribute Methods
-	GetAspectInterfaces() abs.Sequential[AspectInterfaceLike]
+	GetAspectInterfaces() col.Sequential[AspectInterfaceLike]
 }
 
 /*
@@ -924,7 +924,7 @@ type AttributeSubsectionLike interface {
 	GetClass() AttributeSubsectionClassLike
 
 	// Attribute Methods
-	GetAttributeMethods() abs.Sequential[AttributeMethodLike]
+	GetAttributeMethods() col.Sequential[AttributeMethodLike]
 }
 
 /*
@@ -976,7 +976,7 @@ type ClassSectionLike interface {
 	GetClass() ClassSectionClassLike
 
 	// Attribute Methods
-	GetClassDeclarations() abs.Sequential[ClassDeclarationLike]
+	GetClassDeclarations() col.Sequential[ClassDeclarationLike]
 }
 
 /*
@@ -1003,7 +1003,7 @@ type ConstantSubsectionLike interface {
 	GetClass() ConstantSubsectionClassLike
 
 	// Attribute Methods
-	GetConstantMethods() abs.Sequential[ConstantMethodLike]
+	GetConstantMethods() col.Sequential[ConstantMethodLike]
 }
 
 /*
@@ -1031,7 +1031,7 @@ type ConstraintsLike interface {
 
 	// Attribute Methods
 	GetConstraint() ConstraintLike
-	GetAdditionalConstraints() abs.Sequential[AdditionalConstraintLike]
+	GetAdditionalConstraints() col.Sequential[AdditionalConstraintLike]
 }
 
 /*
@@ -1045,7 +1045,7 @@ type ConstructorMethodLike interface {
 
 	// Attribute Methods
 	GetName() string
-	GetParameters() abs.Sequential[ParameterLike]
+	GetParameters() col.Sequential[ParameterLike]
 	GetAbstraction() AbstractionLike
 }
 
@@ -1059,7 +1059,7 @@ type ConstructorSubsectionLike interface {
 	GetClass() ConstructorSubsectionClassLike
 
 	// Attribute Methods
-	GetConstructorMethods() abs.Sequential[ConstructorMethodLike]
+	GetConstructorMethods() col.Sequential[ConstructorMethodLike]
 }
 
 /*
@@ -1088,7 +1088,7 @@ type EnumerationLike interface {
 
 	// Attribute Methods
 	GetValue() ValueLike
-	GetAdditionalValues() abs.Sequential[AdditionalValueLike]
+	GetAdditionalValues() col.Sequential[AdditionalValueLike]
 }
 
 /*
@@ -1102,7 +1102,7 @@ type FunctionMethodLike interface {
 
 	// Attribute Methods
 	GetName() string
-	GetParameters() abs.Sequential[ParameterLike]
+	GetParameters() col.Sequential[ParameterLike]
 	GetResult() ResultLike
 }
 
@@ -1116,7 +1116,7 @@ type FunctionSubsectionLike interface {
 	GetClass() FunctionSubsectionClassLike
 
 	// Attribute Methods
-	GetFunctionMethods() abs.Sequential[FunctionMethodLike]
+	GetFunctionMethods() col.Sequential[FunctionMethodLike]
 }
 
 /*
@@ -1130,7 +1130,7 @@ type FunctionalDeclarationLike interface {
 
 	// Attribute Methods
 	GetDeclaration() DeclarationLike
-	GetParameters() abs.Sequential[ParameterLike]
+	GetParameters() col.Sequential[ParameterLike]
 	GetResult() ResultLike
 }
 
@@ -1144,7 +1144,7 @@ type FunctionalSectionLike interface {
 	GetClass() FunctionalSectionClassLike
 
 	// Attribute Methods
-	GetFunctionalDeclarations() abs.Sequential[FunctionalDeclarationLike]
+	GetFunctionalDeclarations() col.Sequential[FunctionalDeclarationLike]
 }
 
 /*
@@ -1214,7 +1214,7 @@ type InstanceSectionLike interface {
 	GetClass() InstanceSectionClassLike
 
 	// Attribute Methods
-	GetInstanceDeclarations() abs.Sequential[InstanceDeclarationLike]
+	GetInstanceDeclarations() col.Sequential[InstanceDeclarationLike]
 }
 
 /*
@@ -1269,7 +1269,7 @@ type MethodLike interface {
 
 	// Attribute Methods
 	GetName() string
-	GetParameters() abs.Sequential[ParameterLike]
+	GetParameters() col.Sequential[ParameterLike]
 	GetOptionalResult() ResultLike
 }
 
@@ -1298,7 +1298,7 @@ type MultivalueLike interface {
 	GetClass() MultivalueClassLike
 
 	// Attribute Methods
-	GetParameters() abs.Sequential[ParameterLike]
+	GetParameters() col.Sequential[ParameterLike]
 }
 
 /*
@@ -1353,7 +1353,7 @@ type PackageImportsLike interface {
 	GetClass() PackageImportsClassLike
 
 	// Attribute Methods
-	GetImportedPackages() abs.Sequential[ImportedPackageLike]
+	GetImportedPackages() col.Sequential[ImportedPackageLike]
 }
 
 /*
@@ -1407,7 +1407,7 @@ type PrincipalSubsectionLike interface {
 	GetClass() PrincipalSubsectionClassLike
 
 	// Attribute Methods
-	GetPrincipalMethods() abs.Sequential[PrincipalMethodLike]
+	GetPrincipalMethods() col.Sequential[PrincipalMethodLike]
 }
 
 /*
@@ -1462,7 +1462,7 @@ type TypeSectionLike interface {
 	GetClass() TypeSectionClassLike
 
 	// Attribute Methods
-	GetTypeDeclarations() abs.Sequential[TypeDeclarationLike]
+	GetTypeDeclarations() col.Sequential[TypeDeclarationLike]
 }
 
 /*

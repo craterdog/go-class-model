@@ -20,7 +20,7 @@
 package ast
 
 import (
-	abs "github.com/craterdog/go-collection-framework/v5/collection"
+	col "github.com/craterdog/go-collection-framework/v5/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 )
 
@@ -35,7 +35,7 @@ func PrincipalSubsectionClass() PrincipalSubsectionClassLike {
 // Constructor Methods
 
 func (c *principalSubsectionClass_) PrincipalSubsection(
-	principalMethods abs.Sequential[PrincipalMethodLike],
+	principalMethods col.Sequential[PrincipalMethodLike],
 ) PrincipalSubsectionLike {
 	if uti.IsUndefined(principalMethods) {
 		panic("The \"principalMethods\" attribute is required by this class.")
@@ -57,7 +57,7 @@ func (v *principalSubsection_) GetClass() PrincipalSubsectionClassLike {
 
 // Attribute Methods
 
-func (v *principalSubsection_) GetPrincipalMethods() abs.Sequential[PrincipalMethodLike] {
+func (v *principalSubsection_) GetPrincipalMethods() col.Sequential[PrincipalMethodLike] {
 	return v.principalMethods_
 }
 
@@ -67,7 +67,7 @@ func (v *principalSubsection_) GetPrincipalMethods() abs.Sequential[PrincipalMet
 
 type principalSubsection_ struct {
 	// Declare the instance attributes.
-	principalMethods_ abs.Sequential[PrincipalMethodLike]
+	principalMethods_ col.Sequential[PrincipalMethodLike]
 }
 
 // Class Structure

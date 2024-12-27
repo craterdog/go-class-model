@@ -42,7 +42,7 @@ package grammar
 
 import (
 	ast "github.com/craterdog/go-class-model/v5/ast"
-	abs "github.com/craterdog/go-collection-framework/v5/collection"
+	col "github.com/craterdog/go-collection-framework/v5/collection"
 )
 
 // TYPE DECLARATIONS
@@ -113,7 +113,7 @@ type ScannerClassLike interface {
 	// Constructor Methods
 	Scanner(
 		source string,
-		tokens abs.QueueLike[TokenLike],
+		tokens col.QueueLike[TokenLike],
 	) ScannerLike
 
 	// Function Methods

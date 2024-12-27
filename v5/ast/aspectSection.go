@@ -20,7 +20,7 @@
 package ast
 
 import (
-	abs "github.com/craterdog/go-collection-framework/v5/collection"
+	col "github.com/craterdog/go-collection-framework/v5/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 )
 
@@ -35,7 +35,7 @@ func AspectSectionClass() AspectSectionClassLike {
 // Constructor Methods
 
 func (c *aspectSectionClass_) AspectSection(
-	aspectDeclarations abs.Sequential[AspectDeclarationLike],
+	aspectDeclarations col.Sequential[AspectDeclarationLike],
 ) AspectSectionLike {
 	if uti.IsUndefined(aspectDeclarations) {
 		panic("The \"aspectDeclarations\" attribute is required by this class.")
@@ -57,7 +57,7 @@ func (v *aspectSection_) GetClass() AspectSectionClassLike {
 
 // Attribute Methods
 
-func (v *aspectSection_) GetAspectDeclarations() abs.Sequential[AspectDeclarationLike] {
+func (v *aspectSection_) GetAspectDeclarations() col.Sequential[AspectDeclarationLike] {
 	return v.aspectDeclarations_
 }
 
@@ -67,7 +67,7 @@ func (v *aspectSection_) GetAspectDeclarations() abs.Sequential[AspectDeclaratio
 
 type aspectSection_ struct {
 	// Declare the instance attributes.
-	aspectDeclarations_ abs.Sequential[AspectDeclarationLike]
+	aspectDeclarations_ col.Sequential[AspectDeclarationLike]
 }
 
 // Class Structure

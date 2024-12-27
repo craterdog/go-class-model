@@ -20,7 +20,7 @@
 package ast
 
 import (
-	abs "github.com/craterdog/go-collection-framework/v5/collection"
+	col "github.com/craterdog/go-collection-framework/v5/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 )
 
@@ -36,7 +36,7 @@ func EnumerationClass() EnumerationClassLike {
 
 func (c *enumerationClass_) Enumeration(
 	value ValueLike,
-	additionalValues abs.Sequential[AdditionalValueLike],
+	additionalValues col.Sequential[AdditionalValueLike],
 ) EnumerationLike {
 	if uti.IsUndefined(value) {
 		panic("The \"value\" attribute is required by this class.")
@@ -66,7 +66,7 @@ func (v *enumeration_) GetValue() ValueLike {
 	return v.value_
 }
 
-func (v *enumeration_) GetAdditionalValues() abs.Sequential[AdditionalValueLike] {
+func (v *enumeration_) GetAdditionalValues() col.Sequential[AdditionalValueLike] {
 	return v.additionalValues_
 }
 
@@ -77,7 +77,7 @@ func (v *enumeration_) GetAdditionalValues() abs.Sequential[AdditionalValueLike]
 type enumeration_ struct {
 	// Declare the instance attributes.
 	value_            ValueLike
-	additionalValues_ abs.Sequential[AdditionalValueLike]
+	additionalValues_ col.Sequential[AdditionalValueLike]
 }
 
 // Class Structure

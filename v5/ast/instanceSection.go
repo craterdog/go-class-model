@@ -20,7 +20,7 @@
 package ast
 
 import (
-	abs "github.com/craterdog/go-collection-framework/v5/collection"
+	col "github.com/craterdog/go-collection-framework/v5/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 )
 
@@ -35,7 +35,7 @@ func InstanceSectionClass() InstanceSectionClassLike {
 // Constructor Methods
 
 func (c *instanceSectionClass_) InstanceSection(
-	instanceDeclarations abs.Sequential[InstanceDeclarationLike],
+	instanceDeclarations col.Sequential[InstanceDeclarationLike],
 ) InstanceSectionLike {
 	if uti.IsUndefined(instanceDeclarations) {
 		panic("The \"instanceDeclarations\" attribute is required by this class.")
@@ -57,7 +57,7 @@ func (v *instanceSection_) GetClass() InstanceSectionClassLike {
 
 // Attribute Methods
 
-func (v *instanceSection_) GetInstanceDeclarations() abs.Sequential[InstanceDeclarationLike] {
+func (v *instanceSection_) GetInstanceDeclarations() col.Sequential[InstanceDeclarationLike] {
 	return v.instanceDeclarations_
 }
 
@@ -67,7 +67,7 @@ func (v *instanceSection_) GetInstanceDeclarations() abs.Sequential[InstanceDecl
 
 type instanceSection_ struct {
 	// Declare the instance attributes.
-	instanceDeclarations_ abs.Sequential[InstanceDeclarationLike]
+	instanceDeclarations_ col.Sequential[InstanceDeclarationLike]
 }
 
 // Class Structure

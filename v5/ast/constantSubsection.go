@@ -20,7 +20,7 @@
 package ast
 
 import (
-	abs "github.com/craterdog/go-collection-framework/v5/collection"
+	col "github.com/craterdog/go-collection-framework/v5/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 )
 
@@ -35,7 +35,7 @@ func ConstantSubsectionClass() ConstantSubsectionClassLike {
 // Constructor Methods
 
 func (c *constantSubsectionClass_) ConstantSubsection(
-	constantMethods abs.Sequential[ConstantMethodLike],
+	constantMethods col.Sequential[ConstantMethodLike],
 ) ConstantSubsectionLike {
 	if uti.IsUndefined(constantMethods) {
 		panic("The \"constantMethods\" attribute is required by this class.")
@@ -57,7 +57,7 @@ func (v *constantSubsection_) GetClass() ConstantSubsectionClassLike {
 
 // Attribute Methods
 
-func (v *constantSubsection_) GetConstantMethods() abs.Sequential[ConstantMethodLike] {
+func (v *constantSubsection_) GetConstantMethods() col.Sequential[ConstantMethodLike] {
 	return v.constantMethods_
 }
 
@@ -67,7 +67,7 @@ func (v *constantSubsection_) GetConstantMethods() abs.Sequential[ConstantMethod
 
 type constantSubsection_ struct {
 	// Declare the instance attributes.
-	constantMethods_ abs.Sequential[ConstantMethodLike]
+	constantMethods_ col.Sequential[ConstantMethodLike]
 }
 
 // Class Structure

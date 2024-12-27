@@ -20,7 +20,7 @@
 package ast
 
 import (
-	abs "github.com/craterdog/go-collection-framework/v5/collection"
+	col "github.com/craterdog/go-collection-framework/v5/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 )
 
@@ -35,7 +35,7 @@ func AttributeSubsectionClass() AttributeSubsectionClassLike {
 // Constructor Methods
 
 func (c *attributeSubsectionClass_) AttributeSubsection(
-	attributeMethods abs.Sequential[AttributeMethodLike],
+	attributeMethods col.Sequential[AttributeMethodLike],
 ) AttributeSubsectionLike {
 	if uti.IsUndefined(attributeMethods) {
 		panic("The \"attributeMethods\" attribute is required by this class.")
@@ -57,7 +57,7 @@ func (v *attributeSubsection_) GetClass() AttributeSubsectionClassLike {
 
 // Attribute Methods
 
-func (v *attributeSubsection_) GetAttributeMethods() abs.Sequential[AttributeMethodLike] {
+func (v *attributeSubsection_) GetAttributeMethods() col.Sequential[AttributeMethodLike] {
 	return v.attributeMethods_
 }
 
@@ -67,7 +67,7 @@ func (v *attributeSubsection_) GetAttributeMethods() abs.Sequential[AttributeMet
 
 type attributeSubsection_ struct {
 	// Declare the instance attributes.
-	attributeMethods_ abs.Sequential[AttributeMethodLike]
+	attributeMethods_ col.Sequential[AttributeMethodLike]
 }
 
 // Class Structure

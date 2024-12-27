@@ -20,7 +20,7 @@
 package ast
 
 import (
-	abs "github.com/craterdog/go-collection-framework/v5/collection"
+	col "github.com/craterdog/go-collection-framework/v5/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 )
 
@@ -35,7 +35,7 @@ func TypeSectionClass() TypeSectionClassLike {
 // Constructor Methods
 
 func (c *typeSectionClass_) TypeSection(
-	typeDeclarations abs.Sequential[TypeDeclarationLike],
+	typeDeclarations col.Sequential[TypeDeclarationLike],
 ) TypeSectionLike {
 	if uti.IsUndefined(typeDeclarations) {
 		panic("The \"typeDeclarations\" attribute is required by this class.")
@@ -57,7 +57,7 @@ func (v *typeSection_) GetClass() TypeSectionClassLike {
 
 // Attribute Methods
 
-func (v *typeSection_) GetTypeDeclarations() abs.Sequential[TypeDeclarationLike] {
+func (v *typeSection_) GetTypeDeclarations() col.Sequential[TypeDeclarationLike] {
 	return v.typeDeclarations_
 }
 
@@ -67,7 +67,7 @@ func (v *typeSection_) GetTypeDeclarations() abs.Sequential[TypeDeclarationLike]
 
 type typeSection_ struct {
 	// Declare the instance attributes.
-	typeDeclarations_ abs.Sequential[TypeDeclarationLike]
+	typeDeclarations_ col.Sequential[TypeDeclarationLike]
 }
 
 // Class Structure

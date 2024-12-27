@@ -31,7 +31,7 @@ package module
 import (
 	ast "github.com/craterdog/go-class-model/v5/ast"
 	gra "github.com/craterdog/go-class-model/v5/grammar"
-	abs "github.com/craterdog/go-collection-framework/v5/collection"
+	col "github.com/craterdog/go-collection-framework/v5/collection"
 )
 
 // TYPE ALIASES
@@ -257,7 +257,7 @@ func Argument(
 
 func Arguments(
 	argument ast.ArgumentLike,
-	additionalArguments abs.Sequential[ast.AdditionalArgumentLike],
+	additionalArguments col.Sequential[ast.AdditionalArgumentLike],
 ) ast.ArgumentsLike {
 	return ast.ArgumentsClass().Arguments(
 		argument,
@@ -275,7 +275,7 @@ func Array() ast.ArrayLike {
 
 func AspectDeclaration(
 	declaration ast.DeclarationLike,
-	aspectMethods abs.Sequential[ast.AspectMethodLike],
+	aspectMethods col.Sequential[ast.AspectMethodLike],
 ) ast.AspectDeclarationLike {
 	return ast.AspectDeclarationClass().AspectDeclaration(
 		declaration,
@@ -306,7 +306,7 @@ func AspectMethod(
 // Ast/AspectSection
 
 func AspectSection(
-	aspectDeclarations abs.Sequential[ast.AspectDeclarationLike],
+	aspectDeclarations col.Sequential[ast.AspectDeclarationLike],
 ) ast.AspectSectionLike {
 	return ast.AspectSectionClass().AspectSection(
 		aspectDeclarations,
@@ -316,7 +316,7 @@ func AspectSection(
 // Ast/AspectSubsection
 
 func AspectSubsection(
-	aspectInterfaces abs.Sequential[ast.AspectInterfaceLike],
+	aspectInterfaces col.Sequential[ast.AspectInterfaceLike],
 ) ast.AspectSubsectionLike {
 	return ast.AspectSubsectionClass().AspectSubsection(
 		aspectInterfaces,
@@ -336,7 +336,7 @@ func AttributeMethod(
 // Ast/AttributeSubsection
 
 func AttributeSubsection(
-	attributeMethods abs.Sequential[ast.AttributeMethodLike],
+	attributeMethods col.Sequential[ast.AttributeMethodLike],
 ) ast.AttributeSubsectionLike {
 	return ast.AttributeSubsectionClass().AttributeSubsection(
 		attributeMethods,
@@ -378,7 +378,7 @@ func ClassMethods(
 // Ast/ClassSection
 
 func ClassSection(
-	classDeclarations abs.Sequential[ast.ClassDeclarationLike],
+	classDeclarations col.Sequential[ast.ClassDeclarationLike],
 ) ast.ClassSectionLike {
 	return ast.ClassSectionClass().ClassSection(
 		classDeclarations,
@@ -400,7 +400,7 @@ func ConstantMethod(
 // Ast/ConstantSubsection
 
 func ConstantSubsection(
-	constantMethods abs.Sequential[ast.ConstantMethodLike],
+	constantMethods col.Sequential[ast.ConstantMethodLike],
 ) ast.ConstantSubsectionLike {
 	return ast.ConstantSubsectionClass().ConstantSubsection(
 		constantMethods,
@@ -423,7 +423,7 @@ func Constraint(
 
 func Constraints(
 	constraint ast.ConstraintLike,
-	additionalConstraints abs.Sequential[ast.AdditionalConstraintLike],
+	additionalConstraints col.Sequential[ast.AdditionalConstraintLike],
 ) ast.ConstraintsLike {
 	return ast.ConstraintsClass().Constraints(
 		constraint,
@@ -435,7 +435,7 @@ func Constraints(
 
 func ConstructorMethod(
 	name string,
-	parameters abs.Sequential[ast.ParameterLike],
+	parameters col.Sequential[ast.ParameterLike],
 	abstraction ast.AbstractionLike,
 ) ast.ConstructorMethodLike {
 	return ast.ConstructorMethodClass().ConstructorMethod(
@@ -448,7 +448,7 @@ func ConstructorMethod(
 // Ast/ConstructorSubsection
 
 func ConstructorSubsection(
-	constructorMethods abs.Sequential[ast.ConstructorMethodLike],
+	constructorMethods col.Sequential[ast.ConstructorMethodLike],
 ) ast.ConstructorSubsectionLike {
 	return ast.ConstructorSubsectionClass().ConstructorSubsection(
 		constructorMethods,
@@ -473,7 +473,7 @@ func Declaration(
 
 func Enumeration(
 	value ast.ValueLike,
-	additionalValues abs.Sequential[ast.AdditionalValueLike],
+	additionalValues col.Sequential[ast.AdditionalValueLike],
 ) ast.EnumerationLike {
 	return ast.EnumerationClass().Enumeration(
 		value,
@@ -485,7 +485,7 @@ func Enumeration(
 
 func FunctionMethod(
 	name string,
-	parameters abs.Sequential[ast.ParameterLike],
+	parameters col.Sequential[ast.ParameterLike],
 	result ast.ResultLike,
 ) ast.FunctionMethodLike {
 	return ast.FunctionMethodClass().FunctionMethod(
@@ -498,7 +498,7 @@ func FunctionMethod(
 // Ast/FunctionSubsection
 
 func FunctionSubsection(
-	functionMethods abs.Sequential[ast.FunctionMethodLike],
+	functionMethods col.Sequential[ast.FunctionMethodLike],
 ) ast.FunctionSubsectionLike {
 	return ast.FunctionSubsectionClass().FunctionSubsection(
 		functionMethods,
@@ -509,7 +509,7 @@ func FunctionSubsection(
 
 func FunctionalDeclaration(
 	declaration ast.DeclarationLike,
-	parameters abs.Sequential[ast.ParameterLike],
+	parameters col.Sequential[ast.ParameterLike],
 	result ast.ResultLike,
 ) ast.FunctionalDeclarationLike {
 	return ast.FunctionalDeclarationClass().FunctionalDeclaration(
@@ -522,7 +522,7 @@ func FunctionalDeclaration(
 // Ast/FunctionalSection
 
 func FunctionalSection(
-	functionalDeclarations abs.Sequential[ast.FunctionalDeclarationLike],
+	functionalDeclarations col.Sequential[ast.FunctionalDeclarationLike],
 ) ast.FunctionalSectionLike {
 	return ast.FunctionalSectionClass().FunctionalSection(
 		functionalDeclarations,
@@ -582,7 +582,7 @@ func InstanceMethods(
 // Ast/InstanceSection
 
 func InstanceSection(
-	instanceDeclarations abs.Sequential[ast.InstanceDeclarationLike],
+	instanceDeclarations col.Sequential[ast.InstanceDeclarationLike],
 ) ast.InstanceSectionLike {
 	return ast.InstanceSectionClass().InstanceSection(
 		instanceDeclarations,
@@ -627,7 +627,7 @@ func Map(
 
 func Method(
 	name string,
-	parameters abs.Sequential[ast.ParameterLike],
+	parameters col.Sequential[ast.ParameterLike],
 	optionalResult ast.ResultLike,
 ) ast.MethodLike {
 	return ast.MethodClass().Method(
@@ -654,7 +654,7 @@ func Model(
 // Ast/Multivalue
 
 func Multivalue(
-	parameters abs.Sequential[ast.ParameterLike],
+	parameters col.Sequential[ast.ParameterLike],
 ) ast.MultivalueLike {
 	return ast.MultivalueClass().Multivalue(
 		parameters,
@@ -700,7 +700,7 @@ func PackageHeader(
 // Ast/PackageImports
 
 func PackageImports(
-	importedPackages abs.Sequential[ast.ImportedPackageLike],
+	importedPackages col.Sequential[ast.ImportedPackageLike],
 ) ast.PackageImportsLike {
 	return ast.PackageImportsClass().PackageImports(
 		importedPackages,
@@ -744,7 +744,7 @@ func PrincipalMethod(
 // Ast/PrincipalSubsection
 
 func PrincipalSubsection(
-	principalMethods abs.Sequential[ast.PrincipalMethodLike],
+	principalMethods col.Sequential[ast.PrincipalMethodLike],
 ) ast.PrincipalSubsectionLike {
 	return ast.PrincipalSubsectionClass().PrincipalSubsection(
 		principalMethods,
@@ -790,7 +790,7 @@ func TypeDeclaration(
 // Ast/TypeSection
 
 func TypeSection(
-	typeDeclarations abs.Sequential[ast.TypeDeclarationLike],
+	typeDeclarations col.Sequential[ast.TypeDeclarationLike],
 ) ast.TypeSectionLike {
 	return ast.TypeSectionClass().TypeSection(
 		typeDeclarations,
@@ -841,7 +841,7 @@ func Processor() gra.ProcessorLike {
 
 func Scanner(
 	source string,
-	tokens abs.QueueLike[gra.TokenLike],
+	tokens col.QueueLike[gra.TokenLike],
 ) gra.ScannerLike {
 	return gra.ScannerClass().Scanner(
 		source,

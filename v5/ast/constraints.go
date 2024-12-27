@@ -20,7 +20,7 @@
 package ast
 
 import (
-	abs "github.com/craterdog/go-collection-framework/v5/collection"
+	col "github.com/craterdog/go-collection-framework/v5/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 )
 
@@ -36,7 +36,7 @@ func ConstraintsClass() ConstraintsClassLike {
 
 func (c *constraintsClass_) Constraints(
 	constraint ConstraintLike,
-	additionalConstraints abs.Sequential[AdditionalConstraintLike],
+	additionalConstraints col.Sequential[AdditionalConstraintLike],
 ) ConstraintsLike {
 	if uti.IsUndefined(constraint) {
 		panic("The \"constraint\" attribute is required by this class.")
@@ -66,7 +66,7 @@ func (v *constraints_) GetConstraint() ConstraintLike {
 	return v.constraint_
 }
 
-func (v *constraints_) GetAdditionalConstraints() abs.Sequential[AdditionalConstraintLike] {
+func (v *constraints_) GetAdditionalConstraints() col.Sequential[AdditionalConstraintLike] {
 	return v.additionalConstraints_
 }
 
@@ -77,7 +77,7 @@ func (v *constraints_) GetAdditionalConstraints() abs.Sequential[AdditionalConst
 type constraints_ struct {
 	// Declare the instance attributes.
 	constraint_            ConstraintLike
-	additionalConstraints_ abs.Sequential[AdditionalConstraintLike]
+	additionalConstraints_ col.Sequential[AdditionalConstraintLike]
 }
 
 // Class Structure

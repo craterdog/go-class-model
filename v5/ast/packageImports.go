@@ -20,7 +20,7 @@
 package ast
 
 import (
-	abs "github.com/craterdog/go-collection-framework/v5/collection"
+	col "github.com/craterdog/go-collection-framework/v5/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 )
 
@@ -35,7 +35,7 @@ func PackageImportsClass() PackageImportsClassLike {
 // Constructor Methods
 
 func (c *packageImportsClass_) PackageImports(
-	importedPackages abs.Sequential[ImportedPackageLike],
+	importedPackages col.Sequential[ImportedPackageLike],
 ) PackageImportsLike {
 	if uti.IsUndefined(importedPackages) {
 		panic("The \"importedPackages\" attribute is required by this class.")
@@ -57,7 +57,7 @@ func (v *packageImports_) GetClass() PackageImportsClassLike {
 
 // Attribute Methods
 
-func (v *packageImports_) GetImportedPackages() abs.Sequential[ImportedPackageLike] {
+func (v *packageImports_) GetImportedPackages() col.Sequential[ImportedPackageLike] {
 	return v.importedPackages_
 }
 
@@ -67,7 +67,7 @@ func (v *packageImports_) GetImportedPackages() abs.Sequential[ImportedPackageLi
 
 type packageImports_ struct {
 	// Declare the instance attributes.
-	importedPackages_ abs.Sequential[ImportedPackageLike]
+	importedPackages_ col.Sequential[ImportedPackageLike]
 }
 
 // Class Structure

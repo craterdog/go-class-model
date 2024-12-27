@@ -22,8 +22,8 @@ package grammar
 import (
 	fmt "fmt"
 	ast "github.com/craterdog/go-class-model/v5/ast"
-	col "github.com/craterdog/go-collection-framework/v5"
-	abs "github.com/craterdog/go-collection-framework/v5/collection"
+	fra "github.com/craterdog/go-collection-framework/v5"
+	col "github.com/craterdog/go-collection-framework/v5/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 	mat "math"
 	sts "strings"
@@ -58,8 +58,8 @@ func (v *parser_) ParseSource(
 	source string,
 ) ast.ModelLike {
 	v.source_ = sts.ReplaceAll(source, "\t", "    ")
-	v.tokens_ = col.Queue[TokenLike]()
-	v.next_ = col.Stack[TokenLike]()
+	v.tokens_ = fra.Queue[TokenLike]()
+	v.next_ = fra.Stack[TokenLike]()
 
 	// The scanner runs in a separate Go routine.
 	ScannerClass().Scanner(v.source_, v.tokens_)
@@ -82,7 +82,7 @@ func (v *parser_) parseAbstraction() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse an optional Wrapper rule.
 	var optionalWrapper ast.WrapperLike
@@ -142,7 +142,7 @@ func (v *parser_) parseAdditionalArgument() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "," delimiter.
 	_, token, ok = v.parseDelimiter(",")
@@ -190,7 +190,7 @@ func (v *parser_) parseAdditionalConstraint() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "," delimiter.
 	_, token, ok = v.parseDelimiter(",")
@@ -238,7 +238,7 @@ func (v *parser_) parseAdditionalValue() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single name token.
 	var name string
@@ -270,7 +270,7 @@ func (v *parser_) parseArgument() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single Abstraction rule.
 	var abstraction ast.AbstractionLike
@@ -301,7 +301,7 @@ func (v *parser_) parseArguments() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "[" delimiter.
 	_, token, ok = v.parseDelimiter("[")
@@ -338,7 +338,7 @@ func (v *parser_) parseArguments() (
 	}
 
 	// Attempt to parse multiple AdditionalArgument rules.
-	var additionalArguments = col.List[ast.AdditionalArgumentLike]()
+	var additionalArguments = fra.List[ast.AdditionalArgumentLike]()
 additionalArgumentsLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var additionalArgument ast.AdditionalArgumentLike
@@ -395,7 +395,7 @@ func (v *parser_) parseArray() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "[" delimiter.
 	_, token, ok = v.parseDelimiter("[")
@@ -443,7 +443,7 @@ func (v *parser_) parseAspectDeclaration() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single Declaration rule.
 	var declaration ast.DeclarationLike
@@ -497,7 +497,7 @@ func (v *parser_) parseAspectDeclaration() (
 	}
 
 	// Attempt to parse multiple AspectMethod rules.
-	var aspectMethods = col.List[ast.AspectMethodLike]()
+	var aspectMethods = fra.List[ast.AspectMethodLike]()
 aspectMethodsLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var aspectMethod ast.AspectMethodLike
@@ -554,7 +554,7 @@ func (v *parser_) parseAspectInterface() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single Abstraction rule.
 	var abstraction ast.AbstractionLike
@@ -585,7 +585,7 @@ func (v *parser_) parseAspectMethod() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single Method rule.
 	var method ast.MethodLike
@@ -616,7 +616,7 @@ func (v *parser_) parseAspectSection() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "// ASPECT DECLARATIONS" delimiter.
 	_, token, ok = v.parseDelimiter("// ASPECT DECLARATIONS")
@@ -636,7 +636,7 @@ func (v *parser_) parseAspectSection() (
 	}
 
 	// Attempt to parse multiple AspectDeclaration rules.
-	var aspectDeclarations = col.List[ast.AspectDeclarationLike]()
+	var aspectDeclarations = fra.List[ast.AspectDeclarationLike]()
 aspectDeclarationsLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var aspectDeclaration ast.AspectDeclarationLike
@@ -673,7 +673,7 @@ func (v *parser_) parseAspectSubsection() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "// Aspect Interfaces" delimiter.
 	_, token, ok = v.parseDelimiter("// Aspect Interfaces")
@@ -693,7 +693,7 @@ func (v *parser_) parseAspectSubsection() (
 	}
 
 	// Attempt to parse multiple AspectInterface rules.
-	var aspectInterfaces = col.List[ast.AspectInterfaceLike]()
+	var aspectInterfaces = fra.List[ast.AspectInterfaceLike]()
 aspectInterfacesLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var aspectInterface ast.AspectInterfaceLike
@@ -757,7 +757,7 @@ func (v *parser_) parseAttributeSubsection() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "// Attribute Methods" delimiter.
 	_, token, ok = v.parseDelimiter("// Attribute Methods")
@@ -777,7 +777,7 @@ func (v *parser_) parseAttributeSubsection() (
 	}
 
 	// Attempt to parse multiple AttributeMethod rules.
-	var attributeMethods = col.List[ast.AttributeMethodLike]()
+	var attributeMethods = fra.List[ast.AttributeMethodLike]()
 attributeMethodsLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var attributeMethod ast.AttributeMethodLike
@@ -814,7 +814,7 @@ func (v *parser_) parseChannel() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "chan" delimiter.
 	_, token, ok = v.parseDelimiter("chan")
@@ -845,7 +845,7 @@ func (v *parser_) parseClassDeclaration() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single Declaration rule.
 	var declaration ast.DeclarationLike
@@ -947,7 +947,7 @@ func (v *parser_) parseClassMethods() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single ConstructorSubsection rule.
 	var constructorSubsection ast.ConstructorSubsectionLike
@@ -998,7 +998,7 @@ func (v *parser_) parseClassSection() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "// CLASS DECLARATIONS" delimiter.
 	_, token, ok = v.parseDelimiter("// CLASS DECLARATIONS")
@@ -1018,7 +1018,7 @@ func (v *parser_) parseClassSection() (
 	}
 
 	// Attempt to parse multiple ClassDeclaration rules.
-	var classDeclarations = col.List[ast.ClassDeclarationLike]()
+	var classDeclarations = fra.List[ast.ClassDeclarationLike]()
 classDeclarationsLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var classDeclaration ast.ClassDeclarationLike
@@ -1055,7 +1055,7 @@ func (v *parser_) parseConstantMethod() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single name token.
 	var name string
@@ -1141,7 +1141,7 @@ func (v *parser_) parseConstantSubsection() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "// Constant Methods" delimiter.
 	_, token, ok = v.parseDelimiter("// Constant Methods")
@@ -1161,7 +1161,7 @@ func (v *parser_) parseConstantSubsection() (
 	}
 
 	// Attempt to parse multiple ConstantMethod rules.
-	var constantMethods = col.List[ast.ConstantMethodLike]()
+	var constantMethods = fra.List[ast.ConstantMethodLike]()
 constantMethodsLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var constantMethod ast.ConstantMethodLike
@@ -1198,7 +1198,7 @@ func (v *parser_) parseConstraint() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single name token.
 	var name string
@@ -1250,7 +1250,7 @@ func (v *parser_) parseConstraints() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "[" delimiter.
 	_, token, ok = v.parseDelimiter("[")
@@ -1287,7 +1287,7 @@ func (v *parser_) parseConstraints() (
 	}
 
 	// Attempt to parse multiple AdditionalConstraint rules.
-	var additionalConstraints = col.List[ast.AdditionalConstraintLike]()
+	var additionalConstraints = fra.List[ast.AdditionalConstraintLike]()
 additionalConstraintsLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var additionalConstraint ast.AdditionalConstraintLike
@@ -1344,7 +1344,7 @@ func (v *parser_) parseConstructorMethod() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single name token.
 	var name string
@@ -1382,7 +1382,7 @@ func (v *parser_) parseConstructorMethod() (
 	}
 
 	// Attempt to parse multiple Parameter rules.
-	var parameters = col.List[ast.ParameterLike]()
+	var parameters = fra.List[ast.ParameterLike]()
 parametersLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var parameter ast.ParameterLike
@@ -1457,7 +1457,7 @@ func (v *parser_) parseConstructorSubsection() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "// Constructor Methods" delimiter.
 	_, token, ok = v.parseDelimiter("// Constructor Methods")
@@ -1477,7 +1477,7 @@ func (v *parser_) parseConstructorSubsection() (
 	}
 
 	// Attempt to parse multiple ConstructorMethod rules.
-	var constructorMethods = col.List[ast.ConstructorMethodLike]()
+	var constructorMethods = fra.List[ast.ConstructorMethodLike]()
 constructorMethodsLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var constructorMethod ast.ConstructorMethodLike
@@ -1514,7 +1514,7 @@ func (v *parser_) parseDeclaration() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single comment token.
 	var comment string
@@ -1593,7 +1593,7 @@ func (v *parser_) parseEnumeration() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "const" delimiter.
 	_, token, ok = v.parseDelimiter("const")
@@ -1647,7 +1647,7 @@ func (v *parser_) parseEnumeration() (
 	}
 
 	// Attempt to parse multiple AdditionalValue rules.
-	var additionalValues = col.List[ast.AdditionalValueLike]()
+	var additionalValues = fra.List[ast.AdditionalValueLike]()
 additionalValuesLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var additionalValue ast.AdditionalValueLike
@@ -1704,7 +1704,7 @@ func (v *parser_) parseFunctionMethod() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single name token.
 	var name string
@@ -1742,7 +1742,7 @@ func (v *parser_) parseFunctionMethod() (
 	}
 
 	// Attempt to parse multiple Parameter rules.
-	var parameters = col.List[ast.ParameterLike]()
+	var parameters = fra.List[ast.ParameterLike]()
 parametersLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var parameter ast.ParameterLike
@@ -1817,7 +1817,7 @@ func (v *parser_) parseFunctionSubsection() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "// Function Methods" delimiter.
 	_, token, ok = v.parseDelimiter("// Function Methods")
@@ -1837,7 +1837,7 @@ func (v *parser_) parseFunctionSubsection() (
 	}
 
 	// Attempt to parse multiple FunctionMethod rules.
-	var functionMethods = col.List[ast.FunctionMethodLike]()
+	var functionMethods = fra.List[ast.FunctionMethodLike]()
 functionMethodsLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var functionMethod ast.FunctionMethodLike
@@ -1874,7 +1874,7 @@ func (v *parser_) parseFunctionalDeclaration() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single Declaration rule.
 	var declaration ast.DeclarationLike
@@ -1928,7 +1928,7 @@ func (v *parser_) parseFunctionalDeclaration() (
 	}
 
 	// Attempt to parse multiple Parameter rules.
-	var parameters = col.List[ast.ParameterLike]()
+	var parameters = fra.List[ast.ParameterLike]()
 parametersLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var parameter ast.ParameterLike
@@ -2003,7 +2003,7 @@ func (v *parser_) parseFunctionalSection() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "// FUNCTIONAL DECLARATIONS" delimiter.
 	_, token, ok = v.parseDelimiter("// FUNCTIONAL DECLARATIONS")
@@ -2023,7 +2023,7 @@ func (v *parser_) parseFunctionalSection() (
 	}
 
 	// Attempt to parse multiple FunctionalDeclaration rules.
-	var functionalDeclarations = col.List[ast.FunctionalDeclarationLike]()
+	var functionalDeclarations = fra.List[ast.FunctionalDeclarationLike]()
 functionalDeclarationsLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var functionalDeclaration ast.FunctionalDeclarationLike
@@ -2060,7 +2060,7 @@ func (v *parser_) parseGetterMethod() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single name token.
 	var name string
@@ -2146,7 +2146,7 @@ func (v *parser_) parseImportedPackage() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single name token.
 	var name string
@@ -2199,7 +2199,7 @@ func (v *parser_) parseInstanceDeclaration() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single Declaration rule.
 	var declaration ast.DeclarationLike
@@ -2301,7 +2301,7 @@ func (v *parser_) parseInstanceMethods() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single PrincipalSubsection rule.
 	var principalSubsection ast.PrincipalSubsectionLike
@@ -2352,7 +2352,7 @@ func (v *parser_) parseInstanceSection() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "// INSTANCE DECLARATIONS" delimiter.
 	_, token, ok = v.parseDelimiter("// INSTANCE DECLARATIONS")
@@ -2372,7 +2372,7 @@ func (v *parser_) parseInstanceSection() (
 	}
 
 	// Attempt to parse multiple InstanceDeclaration rules.
-	var instanceDeclarations = col.List[ast.InstanceDeclarationLike]()
+	var instanceDeclarations = fra.List[ast.InstanceDeclarationLike]()
 instanceDeclarationsLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var instanceDeclaration ast.InstanceDeclarationLike
@@ -2409,7 +2409,7 @@ func (v *parser_) parseInterfaceDeclarations() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single ClassSection rule.
 	var classSection ast.ClassSectionLike
@@ -2478,7 +2478,7 @@ func (v *parser_) parseLegalNotice() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single comment token.
 	var comment string
@@ -2510,7 +2510,7 @@ func (v *parser_) parseMap() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "map" delimiter.
 	_, token, ok = v.parseDelimiter("map")
@@ -2593,7 +2593,7 @@ func (v *parser_) parseMethod() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single name token.
 	var name string
@@ -2631,7 +2631,7 @@ func (v *parser_) parseMethod() (
 	}
 
 	// Attempt to parse multiple Parameter rules.
-	var parameters = col.List[ast.ParameterLike]()
+	var parameters = fra.List[ast.ParameterLike]()
 parametersLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var parameter ast.ParameterLike
@@ -2697,7 +2697,7 @@ func (v *parser_) parseModel() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single PackageDeclaration rule.
 	var packageDeclaration ast.PackageDeclarationLike
@@ -2766,7 +2766,7 @@ func (v *parser_) parseMultivalue() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "(" delimiter.
 	_, token, ok = v.parseDelimiter("(")
@@ -2786,7 +2786,7 @@ func (v *parser_) parseMultivalue() (
 	}
 
 	// Attempt to parse multiple Parameter rules.
-	var parameters = col.List[ast.ParameterLike]()
+	var parameters = fra.List[ast.ParameterLike]()
 parametersLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var parameter ast.ParameterLike
@@ -2840,7 +2840,7 @@ func (v *parser_) parseNone() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single newline token.
 	var newline string
@@ -2872,7 +2872,7 @@ func (v *parser_) parsePackageDeclaration() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single LegalNotice rule.
 	var legalNotice ast.LegalNoticeLike
@@ -2941,7 +2941,7 @@ func (v *parser_) parsePackageHeader() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single comment token.
 	var comment string
@@ -3011,7 +3011,7 @@ func (v *parser_) parsePackageImports() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "import" delimiter.
 	_, token, ok = v.parseDelimiter("import")
@@ -3048,7 +3048,7 @@ func (v *parser_) parsePackageImports() (
 	}
 
 	// Attempt to parse multiple ImportedPackage rules.
-	var importedPackages = col.List[ast.ImportedPackageLike]()
+	var importedPackages = fra.List[ast.ImportedPackageLike]()
 importedPackagesLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var importedPackage ast.ImportedPackageLike
@@ -3102,7 +3102,7 @@ func (v *parser_) parseParameter() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single name token.
 	var name string
@@ -3171,7 +3171,7 @@ func (v *parser_) parsePrimitiveDeclarations() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single TypeSection rule.
 	var typeSection ast.TypeSectionLike
@@ -3222,7 +3222,7 @@ func (v *parser_) parsePrincipalMethod() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single Method rule.
 	var method ast.MethodLike
@@ -3253,7 +3253,7 @@ func (v *parser_) parsePrincipalSubsection() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "// Principal Methods" delimiter.
 	_, token, ok = v.parseDelimiter("// Principal Methods")
@@ -3273,7 +3273,7 @@ func (v *parser_) parsePrincipalSubsection() (
 	}
 
 	// Attempt to parse multiple PrincipalMethod rules.
-	var principalMethods = col.List[ast.PrincipalMethodLike]()
+	var principalMethods = fra.List[ast.PrincipalMethodLike]()
 principalMethodsLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var principalMethod ast.PrincipalMethodLike
@@ -3346,7 +3346,7 @@ func (v *parser_) parseSetterMethod() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single name token.
 	var name string
@@ -3432,7 +3432,7 @@ func (v *parser_) parseTypeDeclaration() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single Declaration rule.
 	var declaration ast.DeclarationLike
@@ -3492,7 +3492,7 @@ func (v *parser_) parseTypeSection() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single "// TYPE DECLARATIONS" delimiter.
 	_, token, ok = v.parseDelimiter("// TYPE DECLARATIONS")
@@ -3512,7 +3512,7 @@ func (v *parser_) parseTypeSection() (
 	}
 
 	// Attempt to parse multiple TypeDeclaration rules.
-	var typeDeclarations = col.List[ast.TypeDeclarationLike]()
+	var typeDeclarations = fra.List[ast.TypeDeclarationLike]()
 typeDeclarationsLoop:
 	for count := 0; count < mat.MaxInt; count++ {
 		var typeDeclaration ast.TypeDeclarationLike
@@ -3549,7 +3549,7 @@ func (v *parser_) parseValue() (
 	token TokenLike,
 	ok bool,
 ) {
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 
 	// Attempt to parse a single name token.
 	var name string
@@ -3696,7 +3696,7 @@ func (v *parser_) parseToken(
 	ok bool,
 ) {
 	// Attempt to parse a specific token type.
-	var tokens = col.List[TokenLike]()
+	var tokens = fra.List[TokenLike]()
 	token = v.getNextToken()
 	for token != nil {
 		tokens.AppendValue(token)
@@ -3797,7 +3797,7 @@ func (v *parser_) getNextToken() TokenLike {
 }
 
 func (v *parser_) putBack(
-	tokens abs.Sequential[TokenLike],
+	tokens col.Sequential[TokenLike],
 ) {
 	var iterator = tokens.GetIterator()
 	for iterator.ToEnd(); iterator.HasPrevious(); {
@@ -3807,7 +3807,7 @@ func (v *parser_) putBack(
 }
 
 func (v *parser_) remove(
-	tokens abs.Sequential[TokenLike],
+	tokens col.Sequential[TokenLike],
 ) {
 	// NOTE: This method does nothing but must exist to satisfy the lint
 	// check on the generated parser code.
@@ -3818,15 +3818,15 @@ func (v *parser_) remove(
 type parser_ struct {
 	// Declare the instance attributes.
 	source_ string                   // The original source code.
-	tokens_ abs.QueueLike[TokenLike] // A queue of unread tokens from the scanner.
-	next_   abs.StackLike[TokenLike] // A stack of read, but unprocessed tokens.
+	tokens_ col.QueueLike[TokenLike] // A queue of unread tokens from the scanner.
+	next_   col.StackLike[TokenLike] // A stack of read, but unprocessed tokens.
 }
 
 // Class Structure
 
 type parserClass_ struct {
 	// Declare the class constants.
-	syntax_ abs.CatalogLike[string, string]
+	syntax_ col.CatalogLike[string, string]
 }
 
 // Class Reference
@@ -3837,7 +3837,7 @@ func parserClass() *parserClass_ {
 
 var parserClassReference_ = &parserClass_{
 	// Initialize the class constants.
-	syntax_: col.CatalogFromMap[string, string](
+	syntax_: fra.CatalogFromMap[string, string](
 		map[string]string{
 			"$Model":                 `PackageDeclaration PrimitiveDeclarations InterfaceDeclarations`,
 			"$PackageDeclaration":    `LegalNotice PackageHeader PackageImports`,

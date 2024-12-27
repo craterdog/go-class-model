@@ -20,7 +20,7 @@
 package ast
 
 import (
-	abs "github.com/craterdog/go-collection-framework/v5/collection"
+	col "github.com/craterdog/go-collection-framework/v5/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 )
 
@@ -36,7 +36,7 @@ func ConstructorMethodClass() ConstructorMethodClassLike {
 
 func (c *constructorMethodClass_) ConstructorMethod(
 	name string,
-	parameters abs.Sequential[ParameterLike],
+	parameters col.Sequential[ParameterLike],
 	abstraction AbstractionLike,
 ) ConstructorMethodLike {
 	if uti.IsUndefined(name) {
@@ -71,7 +71,7 @@ func (v *constructorMethod_) GetName() string {
 	return v.name_
 }
 
-func (v *constructorMethod_) GetParameters() abs.Sequential[ParameterLike] {
+func (v *constructorMethod_) GetParameters() col.Sequential[ParameterLike] {
 	return v.parameters_
 }
 
@@ -86,7 +86,7 @@ func (v *constructorMethod_) GetAbstraction() AbstractionLike {
 type constructorMethod_ struct {
 	// Declare the instance attributes.
 	name_        string
-	parameters_  abs.Sequential[ParameterLike]
+	parameters_  col.Sequential[ParameterLike]
 	abstraction_ AbstractionLike
 }
 

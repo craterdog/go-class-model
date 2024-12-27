@@ -20,7 +20,7 @@
 package ast
 
 import (
-	abs "github.com/craterdog/go-collection-framework/v5/collection"
+	col "github.com/craterdog/go-collection-framework/v5/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 )
 
@@ -36,7 +36,7 @@ func ArgumentsClass() ArgumentsClassLike {
 
 func (c *argumentsClass_) Arguments(
 	argument ArgumentLike,
-	additionalArguments abs.Sequential[AdditionalArgumentLike],
+	additionalArguments col.Sequential[AdditionalArgumentLike],
 ) ArgumentsLike {
 	if uti.IsUndefined(argument) {
 		panic("The \"argument\" attribute is required by this class.")
@@ -66,7 +66,7 @@ func (v *arguments_) GetArgument() ArgumentLike {
 	return v.argument_
 }
 
-func (v *arguments_) GetAdditionalArguments() abs.Sequential[AdditionalArgumentLike] {
+func (v *arguments_) GetAdditionalArguments() col.Sequential[AdditionalArgumentLike] {
 	return v.additionalArguments_
 }
 
@@ -77,7 +77,7 @@ func (v *arguments_) GetAdditionalArguments() abs.Sequential[AdditionalArgumentL
 type arguments_ struct {
 	// Declare the instance attributes.
 	argument_            ArgumentLike
-	additionalArguments_ abs.Sequential[AdditionalArgumentLike]
+	additionalArguments_ col.Sequential[AdditionalArgumentLike]
 }
 
 // Class Structure

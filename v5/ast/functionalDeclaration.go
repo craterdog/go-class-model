@@ -20,7 +20,7 @@
 package ast
 
 import (
-	abs "github.com/craterdog/go-collection-framework/v5/collection"
+	col "github.com/craterdog/go-collection-framework/v5/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 )
 
@@ -36,7 +36,7 @@ func FunctionalDeclarationClass() FunctionalDeclarationClassLike {
 
 func (c *functionalDeclarationClass_) FunctionalDeclaration(
 	declaration DeclarationLike,
-	parameters abs.Sequential[ParameterLike],
+	parameters col.Sequential[ParameterLike],
 	result ResultLike,
 ) FunctionalDeclarationLike {
 	if uti.IsUndefined(declaration) {
@@ -71,7 +71,7 @@ func (v *functionalDeclaration_) GetDeclaration() DeclarationLike {
 	return v.declaration_
 }
 
-func (v *functionalDeclaration_) GetParameters() abs.Sequential[ParameterLike] {
+func (v *functionalDeclaration_) GetParameters() col.Sequential[ParameterLike] {
 	return v.parameters_
 }
 
@@ -86,7 +86,7 @@ func (v *functionalDeclaration_) GetResult() ResultLike {
 type functionalDeclaration_ struct {
 	// Declare the instance attributes.
 	declaration_ DeclarationLike
-	parameters_  abs.Sequential[ParameterLike]
+	parameters_  col.Sequential[ParameterLike]
 	result_      ResultLike
 }
 

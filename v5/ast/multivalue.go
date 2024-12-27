@@ -20,7 +20,7 @@
 package ast
 
 import (
-	abs "github.com/craterdog/go-collection-framework/v5/collection"
+	col "github.com/craterdog/go-collection-framework/v5/collection"
 	uti "github.com/craterdog/go-missing-utilities/v2"
 )
 
@@ -35,7 +35,7 @@ func MultivalueClass() MultivalueClassLike {
 // Constructor Methods
 
 func (c *multivalueClass_) Multivalue(
-	parameters abs.Sequential[ParameterLike],
+	parameters col.Sequential[ParameterLike],
 ) MultivalueLike {
 	if uti.IsUndefined(parameters) {
 		panic("The \"parameters\" attribute is required by this class.")
@@ -57,7 +57,7 @@ func (v *multivalue_) GetClass() MultivalueClassLike {
 
 // Attribute Methods
 
-func (v *multivalue_) GetParameters() abs.Sequential[ParameterLike] {
+func (v *multivalue_) GetParameters() col.Sequential[ParameterLike] {
 	return v.parameters_
 }
 
@@ -67,7 +67,7 @@ func (v *multivalue_) GetParameters() abs.Sequential[ParameterLike] {
 
 type multivalue_ struct {
 	// Declare the instance attributes.
-	parameters_ abs.Sequential[ParameterLike]
+	parameters_ col.Sequential[ParameterLike]
 }
 
 // Class Structure
