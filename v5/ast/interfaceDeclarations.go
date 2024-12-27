@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func InterfaceDeclarationsClass() InterfaceDeclarationsClassLike {
-	return interfaceDeclarationsClassReference()
+	return interfaceDeclarationsClass()
 }
 
 // Constructor Methods
@@ -61,7 +61,7 @@ func (c *interfaceDeclarationsClass_) InterfaceDeclarations(
 // Principal Methods
 
 func (v *interfaceDeclarations_) GetClass() InterfaceDeclarationsClassLike {
-	return interfaceDeclarationsClassReference()
+	return interfaceDeclarationsClass()
 }
 
 // Attribute Methods
@@ -97,7 +97,7 @@ type interfaceDeclarationsClass_ struct {
 
 // Class Reference
 
-func interfaceDeclarationsClassReference() *interfaceDeclarationsClass_ {
+func interfaceDeclarationsClass() *interfaceDeclarationsClass_ {
 	return interfaceDeclarationsClassReference_
 }
 

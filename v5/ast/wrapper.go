@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func WrapperClass() WrapperClassLike {
-	return wrapperClassReference()
+	return wrapperClass()
 }
 
 // Constructor Methods
@@ -51,7 +51,7 @@ func (c *wrapperClass_) Wrapper(
 // Principal Methods
 
 func (v *wrapper_) GetClass() WrapperClassLike {
-	return wrapperClassReference()
+	return wrapperClass()
 }
 
 // Attribute Methods
@@ -77,7 +77,7 @@ type wrapperClass_ struct {
 
 // Class Reference
 
-func wrapperClassReference() *wrapperClass_ {
+func wrapperClass() *wrapperClass_ {
 	return wrapperClassReference_
 }
 

@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func ClassDeclarationClass() ClassDeclarationClassLike {
-	return classDeclarationClassReference()
+	return classDeclarationClass()
 }
 
 // Constructor Methods
@@ -56,7 +56,7 @@ func (c *classDeclarationClass_) ClassDeclaration(
 // Principal Methods
 
 func (v *classDeclaration_) GetClass() ClassDeclarationClassLike {
-	return classDeclarationClassReference()
+	return classDeclarationClass()
 }
 
 // Attribute Methods
@@ -87,7 +87,7 @@ type classDeclarationClass_ struct {
 
 // Class Reference
 
-func classDeclarationClassReference() *classDeclarationClass_ {
+func classDeclarationClass() *classDeclarationClass_ {
 	return classDeclarationClassReference_
 }
 

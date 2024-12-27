@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func AbstractionClass() AbstractionClassLike {
-	return abstractionClassReference()
+	return abstractionClass()
 }
 
 // Constructor Methods
@@ -57,7 +57,7 @@ func (c *abstractionClass_) Abstraction(
 // Principal Methods
 
 func (v *abstraction_) GetClass() AbstractionClassLike {
-	return abstractionClassReference()
+	return abstractionClass()
 }
 
 // Attribute Methods
@@ -98,7 +98,7 @@ type abstractionClass_ struct {
 
 // Class Reference
 
-func abstractionClassReference() *abstractionClass_ {
+func abstractionClass() *abstractionClass_ {
 	return abstractionClassReference_
 }
 

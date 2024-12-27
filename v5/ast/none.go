@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func NoneClass() NoneClassLike {
-	return noneClassReference()
+	return noneClass()
 }
 
 // Constructor Methods
@@ -51,7 +51,7 @@ func (c *noneClass_) None(
 // Principal Methods
 
 func (v *none_) GetClass() NoneClassLike {
-	return noneClassReference()
+	return noneClass()
 }
 
 // Attribute Methods
@@ -77,7 +77,7 @@ type noneClass_ struct {
 
 // Class Reference
 
-func noneClassReference() *noneClass_ {
+func noneClass() *noneClass_ {
 	return noneClassReference_
 }
 

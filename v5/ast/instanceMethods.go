@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func InstanceMethodsClass() InstanceMethodsClassLike {
-	return instanceMethodsClassReference()
+	return instanceMethodsClass()
 }
 
 // Constructor Methods
@@ -55,7 +55,7 @@ func (c *instanceMethodsClass_) InstanceMethods(
 // Principal Methods
 
 func (v *instanceMethods_) GetClass() InstanceMethodsClassLike {
-	return instanceMethodsClassReference()
+	return instanceMethodsClass()
 }
 
 // Attribute Methods
@@ -91,7 +91,7 @@ type instanceMethodsClass_ struct {
 
 // Class Reference
 
-func instanceMethodsClassReference() *instanceMethodsClass_ {
+func instanceMethodsClass() *instanceMethodsClass_ {
 	return instanceMethodsClassReference_
 }
 

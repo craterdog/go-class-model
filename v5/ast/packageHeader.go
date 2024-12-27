@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func PackageHeaderClass() PackageHeaderClassLike {
-	return packageHeaderClassReference()
+	return packageHeaderClass()
 }
 
 // Constructor Methods
@@ -56,7 +56,7 @@ func (c *packageHeaderClass_) PackageHeader(
 // Principal Methods
 
 func (v *packageHeader_) GetClass() PackageHeaderClassLike {
-	return packageHeaderClassReference()
+	return packageHeaderClass()
 }
 
 // Attribute Methods
@@ -87,7 +87,7 @@ type packageHeaderClass_ struct {
 
 // Class Reference
 
-func packageHeaderClassReference() *packageHeaderClass_ {
+func packageHeaderClass() *packageHeaderClass_ {
 	return packageHeaderClassReference_
 }
 

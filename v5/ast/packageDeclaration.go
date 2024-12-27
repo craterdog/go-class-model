@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func PackageDeclarationClass() PackageDeclarationClassLike {
-	return packageDeclarationClassReference()
+	return packageDeclarationClass()
 }
 
 // Constructor Methods
@@ -61,7 +61,7 @@ func (c *packageDeclarationClass_) PackageDeclaration(
 // Principal Methods
 
 func (v *packageDeclaration_) GetClass() PackageDeclarationClassLike {
-	return packageDeclarationClassReference()
+	return packageDeclarationClass()
 }
 
 // Attribute Methods
@@ -97,7 +97,7 @@ type packageDeclarationClass_ struct {
 
 // Class Reference
 
-func packageDeclarationClassReference() *packageDeclarationClass_ {
+func packageDeclarationClass() *packageDeclarationClass_ {
 	return packageDeclarationClassReference_
 }
 

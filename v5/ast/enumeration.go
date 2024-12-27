@@ -29,7 +29,7 @@ import (
 // Access Function
 
 func EnumerationClass() EnumerationClassLike {
-	return enumerationClassReference()
+	return enumerationClass()
 }
 
 // Constructor Methods
@@ -57,7 +57,7 @@ func (c *enumerationClass_) Enumeration(
 // Principal Methods
 
 func (v *enumeration_) GetClass() EnumerationClassLike {
-	return enumerationClassReference()
+	return enumerationClass()
 }
 
 // Attribute Methods
@@ -88,7 +88,7 @@ type enumerationClass_ struct {
 
 // Class Reference
 
-func enumerationClassReference() *enumerationClass_ {
+func enumerationClass() *enumerationClass_ {
 	return enumerationClassReference_
 }
 

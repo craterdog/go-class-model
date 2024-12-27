@@ -29,7 +29,7 @@ import (
 // Access Function
 
 func AttributeSubsectionClass() AttributeSubsectionClassLike {
-	return attributeSubsectionClassReference()
+	return attributeSubsectionClass()
 }
 
 // Constructor Methods
@@ -52,7 +52,7 @@ func (c *attributeSubsectionClass_) AttributeSubsection(
 // Principal Methods
 
 func (v *attributeSubsection_) GetClass() AttributeSubsectionClassLike {
-	return attributeSubsectionClassReference()
+	return attributeSubsectionClass()
 }
 
 // Attribute Methods
@@ -78,7 +78,7 @@ type attributeSubsectionClass_ struct {
 
 // Class Reference
 
-func attributeSubsectionClassReference() *attributeSubsectionClass_ {
+func attributeSubsectionClass() *attributeSubsectionClass_ {
 	return attributeSubsectionClassReference_
 }
 

@@ -29,7 +29,7 @@ import (
 // Access Function
 
 func ConstantSubsectionClass() ConstantSubsectionClassLike {
-	return constantSubsectionClassReference()
+	return constantSubsectionClass()
 }
 
 // Constructor Methods
@@ -52,7 +52,7 @@ func (c *constantSubsectionClass_) ConstantSubsection(
 // Principal Methods
 
 func (v *constantSubsection_) GetClass() ConstantSubsectionClassLike {
-	return constantSubsectionClassReference()
+	return constantSubsectionClass()
 }
 
 // Attribute Methods
@@ -78,7 +78,7 @@ type constantSubsectionClass_ struct {
 
 // Class Reference
 
-func constantSubsectionClassReference() *constantSubsectionClass_ {
+func constantSubsectionClass() *constantSubsectionClass_ {
 	return constantSubsectionClassReference_
 }
 

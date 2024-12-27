@@ -29,7 +29,7 @@ import (
 // Access Function
 
 func PrincipalSubsectionClass() PrincipalSubsectionClassLike {
-	return principalSubsectionClassReference()
+	return principalSubsectionClass()
 }
 
 // Constructor Methods
@@ -52,7 +52,7 @@ func (c *principalSubsectionClass_) PrincipalSubsection(
 // Principal Methods
 
 func (v *principalSubsection_) GetClass() PrincipalSubsectionClassLike {
-	return principalSubsectionClassReference()
+	return principalSubsectionClass()
 }
 
 // Attribute Methods
@@ -78,7 +78,7 @@ type principalSubsectionClass_ struct {
 
 // Class Reference
 
-func principalSubsectionClassReference() *principalSubsectionClass_ {
+func principalSubsectionClass() *principalSubsectionClass_ {
 	return principalSubsectionClassReference_
 }
 

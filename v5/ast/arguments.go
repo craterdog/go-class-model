@@ -29,7 +29,7 @@ import (
 // Access Function
 
 func ArgumentsClass() ArgumentsClassLike {
-	return argumentsClassReference()
+	return argumentsClass()
 }
 
 // Constructor Methods
@@ -57,7 +57,7 @@ func (c *argumentsClass_) Arguments(
 // Principal Methods
 
 func (v *arguments_) GetClass() ArgumentsClassLike {
-	return argumentsClassReference()
+	return argumentsClass()
 }
 
 // Attribute Methods
@@ -88,7 +88,7 @@ type argumentsClass_ struct {
 
 // Class Reference
 
-func argumentsClassReference() *argumentsClass_ {
+func argumentsClass() *argumentsClass_ {
 	return argumentsClassReference_
 }
 

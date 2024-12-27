@@ -26,7 +26,7 @@ import ()
 // Access Function
 
 func ChannelClass() ChannelClassLike {
-	return channelClassReference()
+	return channelClass()
 }
 
 // Constructor Methods
@@ -43,7 +43,7 @@ func (c *channelClass_) Channel() ChannelLike {
 // Principal Methods
 
 func (v *channel_) GetClass() ChannelClassLike {
-	return channelClassReference()
+	return channelClass()
 }
 
 // Attribute Methods
@@ -64,7 +64,7 @@ type channelClass_ struct {
 
 // Class Reference
 
-func channelClassReference() *channelClass_ {
+func channelClass() *channelClass_ {
 	return channelClassReference_
 }
 

@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func ModelClass() ModelClassLike {
-	return modelClassReference()
+	return modelClass()
 }
 
 // Constructor Methods
@@ -61,7 +61,7 @@ func (c *modelClass_) Model(
 // Principal Methods
 
 func (v *model_) GetClass() ModelClassLike {
-	return modelClassReference()
+	return modelClass()
 }
 
 // Attribute Methods
@@ -97,7 +97,7 @@ type modelClass_ struct {
 
 // Class Reference
 
-func modelClassReference() *modelClass_ {
+func modelClass() *modelClass_ {
 	return modelClassReference_
 }
 

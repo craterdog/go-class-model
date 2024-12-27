@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func ValueClass() ValueClassLike {
-	return valueClassReference()
+	return valueClass()
 }
 
 // Constructor Methods
@@ -56,7 +56,7 @@ func (c *valueClass_) Value(
 // Principal Methods
 
 func (v *value_) GetClass() ValueClassLike {
-	return valueClassReference()
+	return valueClass()
 }
 
 // Attribute Methods
@@ -87,7 +87,7 @@ type valueClass_ struct {
 
 // Class Reference
 
-func valueClassReference() *valueClass_ {
+func valueClass() *valueClass_ {
 	return valueClassReference_
 }
 

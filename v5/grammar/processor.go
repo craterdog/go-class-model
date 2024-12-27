@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func ProcessorClass() ProcessorClassLike {
-	return processorClassReference()
+	return processorClass()
 }
 
 // Constructor Methods
@@ -45,7 +45,7 @@ func (c *processorClass_) Processor() ProcessorLike {
 // Principal Methods
 
 func (v *processor_) GetClass() ProcessorClassLike {
-	return processorClassReference()
+	return processorClass()
 }
 
 // Methodical Methods
@@ -991,7 +991,7 @@ type processorClass_ struct {
 
 // Class Reference
 
-func processorClassReference() *processorClass_ {
+func processorClass() *processorClass_ {
 	return processorClassReference_
 }
 

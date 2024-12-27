@@ -26,7 +26,7 @@ import ()
 // Access Function
 
 func ArrayClass() ArrayClassLike {
-	return arrayClassReference()
+	return arrayClass()
 }
 
 // Constructor Methods
@@ -43,7 +43,7 @@ func (c *arrayClass_) Array() ArrayLike {
 // Principal Methods
 
 func (v *array_) GetClass() ArrayClassLike {
-	return arrayClassReference()
+	return arrayClass()
 }
 
 // Attribute Methods
@@ -64,7 +64,7 @@ type arrayClass_ struct {
 
 // Class Reference
 
-func arrayClassReference() *arrayClass_ {
+func arrayClass() *arrayClass_ {
 	return arrayClassReference_
 }
 

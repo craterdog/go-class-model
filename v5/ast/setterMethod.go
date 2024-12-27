@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func SetterMethodClass() SetterMethodClassLike {
-	return setterMethodClassReference()
+	return setterMethodClass()
 }
 
 // Constructor Methods
@@ -56,7 +56,7 @@ func (c *setterMethodClass_) SetterMethod(
 // Principal Methods
 
 func (v *setterMethod_) GetClass() SetterMethodClassLike {
-	return setterMethodClassReference()
+	return setterMethodClass()
 }
 
 // Attribute Methods
@@ -87,7 +87,7 @@ type setterMethodClass_ struct {
 
 // Class Reference
 
-func setterMethodClassReference() *setterMethodClass_ {
+func setterMethodClass() *setterMethodClass_ {
 	return setterMethodClassReference_
 }
 

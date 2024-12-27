@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func LegalNoticeClass() LegalNoticeClassLike {
-	return legalNoticeClassReference()
+	return legalNoticeClass()
 }
 
 // Constructor Methods
@@ -51,7 +51,7 @@ func (c *legalNoticeClass_) LegalNotice(
 // Principal Methods
 
 func (v *legalNotice_) GetClass() LegalNoticeClassLike {
-	return legalNoticeClassReference()
+	return legalNoticeClass()
 }
 
 // Attribute Methods
@@ -77,7 +77,7 @@ type legalNoticeClass_ struct {
 
 // Class Reference
 
-func legalNoticeClassReference() *legalNoticeClass_ {
+func legalNoticeClass() *legalNoticeClass_ {
 	return legalNoticeClassReference_
 }
 

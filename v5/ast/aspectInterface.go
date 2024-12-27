@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func AspectInterfaceClass() AspectInterfaceClassLike {
-	return aspectInterfaceClassReference()
+	return aspectInterfaceClass()
 }
 
 // Constructor Methods
@@ -51,7 +51,7 @@ func (c *aspectInterfaceClass_) AspectInterface(
 // Principal Methods
 
 func (v *aspectInterface_) GetClass() AspectInterfaceClassLike {
-	return aspectInterfaceClassReference()
+	return aspectInterfaceClass()
 }
 
 // Attribute Methods
@@ -77,7 +77,7 @@ type aspectInterfaceClass_ struct {
 
 // Class Reference
 
-func aspectInterfaceClassReference() *aspectInterfaceClass_ {
+func aspectInterfaceClass() *aspectInterfaceClass_ {
 	return aspectInterfaceClassReference_
 }
 

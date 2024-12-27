@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func AdditionalValueClass() AdditionalValueClassLike {
-	return additionalValueClassReference()
+	return additionalValueClass()
 }
 
 // Constructor Methods
@@ -51,7 +51,7 @@ func (c *additionalValueClass_) AdditionalValue(
 // Principal Methods
 
 func (v *additionalValue_) GetClass() AdditionalValueClassLike {
-	return additionalValueClassReference()
+	return additionalValueClass()
 }
 
 // Attribute Methods
@@ -77,7 +77,7 @@ type additionalValueClass_ struct {
 
 // Class Reference
 
-func additionalValueClassReference() *additionalValueClass_ {
+func additionalValueClass() *additionalValueClass_ {
 	return additionalValueClassReference_
 }
 

@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func MapClass() MapClassLike {
-	return mapClassReference()
+	return mapClass()
 }
 
 // Constructor Methods
@@ -51,7 +51,7 @@ func (c *mapClass_) Map(
 // Principal Methods
 
 func (v *map_) GetClass() MapClassLike {
-	return mapClassReference()
+	return mapClass()
 }
 
 // Attribute Methods
@@ -77,7 +77,7 @@ type mapClass_ struct {
 
 // Class Reference
 
-func mapClassReference() *mapClass_ {
+func mapClass() *mapClass_ {
 	return mapClassReference_
 }
 

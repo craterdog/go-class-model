@@ -29,7 +29,7 @@ import (
 // Access Function
 
 func MethodClass() MethodClassLike {
-	return methodClassReference()
+	return methodClass()
 }
 
 // Constructor Methods
@@ -59,7 +59,7 @@ func (c *methodClass_) Method(
 // Principal Methods
 
 func (v *method_) GetClass() MethodClassLike {
-	return methodClassReference()
+	return methodClass()
 }
 
 // Attribute Methods
@@ -95,7 +95,7 @@ type methodClass_ struct {
 
 // Class Reference
 
-func methodClassReference() *methodClass_ {
+func methodClass() *methodClass_ {
 	return methodClassReference_
 }
 

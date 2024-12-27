@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func ConstraintClass() ConstraintClassLike {
-	return constraintClassReference()
+	return constraintClass()
 }
 
 // Constructor Methods
@@ -56,7 +56,7 @@ func (c *constraintClass_) Constraint(
 // Principal Methods
 
 func (v *constraint_) GetClass() ConstraintClassLike {
-	return constraintClassReference()
+	return constraintClass()
 }
 
 // Attribute Methods
@@ -87,7 +87,7 @@ type constraintClass_ struct {
 
 // Class Reference
 
-func constraintClassReference() *constraintClass_ {
+func constraintClass() *constraintClass_ {
 	return constraintClassReference_
 }
 

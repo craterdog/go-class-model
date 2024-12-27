@@ -29,7 +29,7 @@ import (
 // Access Function
 
 func ValidatorClass() ValidatorClassLike {
-	return validatorClassReference()
+	return validatorClass()
 }
 
 // Constructor Methods
@@ -50,7 +50,7 @@ func (c *validatorClass_) Validator() ValidatorLike {
 // Principal Methods
 
 func (v *validator_) GetClass() ValidatorClassLike {
-	return validatorClassReference()
+	return validatorClass()
 }
 
 func (v *validator_) ValidateModel(
@@ -1192,7 +1192,7 @@ type validatorClass_ struct {
 
 // Class Reference
 
-func validatorClassReference() *validatorClass_ {
+func validatorClass() *validatorClass_ {
 	return validatorClassReference_
 }
 

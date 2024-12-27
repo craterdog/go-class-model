@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func ImportedPackageClass() ImportedPackageClassLike {
-	return importedPackageClassReference()
+	return importedPackageClass()
 }
 
 // Constructor Methods
@@ -56,7 +56,7 @@ func (c *importedPackageClass_) ImportedPackage(
 // Principal Methods
 
 func (v *importedPackage_) GetClass() ImportedPackageClassLike {
-	return importedPackageClassReference()
+	return importedPackageClass()
 }
 
 // Attribute Methods
@@ -87,7 +87,7 @@ type importedPackageClass_ struct {
 
 // Class Reference
 
-func importedPackageClassReference() *importedPackageClass_ {
+func importedPackageClass() *importedPackageClass_ {
 	return importedPackageClassReference_
 }
 

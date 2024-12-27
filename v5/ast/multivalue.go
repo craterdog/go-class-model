@@ -29,7 +29,7 @@ import (
 // Access Function
 
 func MultivalueClass() MultivalueClassLike {
-	return multivalueClassReference()
+	return multivalueClass()
 }
 
 // Constructor Methods
@@ -52,7 +52,7 @@ func (c *multivalueClass_) Multivalue(
 // Principal Methods
 
 func (v *multivalue_) GetClass() MultivalueClassLike {
-	return multivalueClassReference()
+	return multivalueClass()
 }
 
 // Attribute Methods
@@ -78,7 +78,7 @@ type multivalueClass_ struct {
 
 // Class Reference
 
-func multivalueClassReference() *multivalueClass_ {
+func multivalueClass() *multivalueClass_ {
 	return multivalueClassReference_
 }
 

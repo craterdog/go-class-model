@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func PrimitiveDeclarationsClass() PrimitiveDeclarationsClassLike {
-	return primitiveDeclarationsClassReference()
+	return primitiveDeclarationsClass()
 }
 
 // Constructor Methods
@@ -56,7 +56,7 @@ func (c *primitiveDeclarationsClass_) PrimitiveDeclarations(
 // Principal Methods
 
 func (v *primitiveDeclarations_) GetClass() PrimitiveDeclarationsClassLike {
-	return primitiveDeclarationsClassReference()
+	return primitiveDeclarationsClass()
 }
 
 // Attribute Methods
@@ -87,7 +87,7 @@ type primitiveDeclarationsClass_ struct {
 
 // Class Reference
 
-func primitiveDeclarationsClassReference() *primitiveDeclarationsClass_ {
+func primitiveDeclarationsClass() *primitiveDeclarationsClass_ {
 	return primitiveDeclarationsClassReference_
 }
 

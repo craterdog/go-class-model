@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func ResultClass() ResultClassLike {
-	return resultClassReference()
+	return resultClass()
 }
 
 // Constructor Methods
@@ -51,7 +51,7 @@ func (c *resultClass_) Result(
 // Principal Methods
 
 func (v *result_) GetClass() ResultClassLike {
-	return resultClassReference()
+	return resultClass()
 }
 
 // Attribute Methods
@@ -77,7 +77,7 @@ type resultClass_ struct {
 
 // Class Reference
 
-func resultClassReference() *resultClass_ {
+func resultClass() *resultClass_ {
 	return resultClassReference_
 }
 

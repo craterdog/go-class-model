@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func AspectMethodClass() AspectMethodClassLike {
-	return aspectMethodClassReference()
+	return aspectMethodClass()
 }
 
 // Constructor Methods
@@ -51,7 +51,7 @@ func (c *aspectMethodClass_) AspectMethod(
 // Principal Methods
 
 func (v *aspectMethod_) GetClass() AspectMethodClassLike {
-	return aspectMethodClassReference()
+	return aspectMethodClass()
 }
 
 // Attribute Methods
@@ -77,7 +77,7 @@ type aspectMethodClass_ struct {
 
 // Class Reference
 
-func aspectMethodClassReference() *aspectMethodClass_ {
+func aspectMethodClass() *aspectMethodClass_ {
 	return aspectMethodClassReference_
 }
 

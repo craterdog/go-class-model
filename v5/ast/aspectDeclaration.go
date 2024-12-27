@@ -29,7 +29,7 @@ import (
 // Access Function
 
 func AspectDeclarationClass() AspectDeclarationClassLike {
-	return aspectDeclarationClassReference()
+	return aspectDeclarationClass()
 }
 
 // Constructor Methods
@@ -57,7 +57,7 @@ func (c *aspectDeclarationClass_) AspectDeclaration(
 // Principal Methods
 
 func (v *aspectDeclaration_) GetClass() AspectDeclarationClassLike {
-	return aspectDeclarationClassReference()
+	return aspectDeclarationClass()
 }
 
 // Attribute Methods
@@ -88,7 +88,7 @@ type aspectDeclarationClass_ struct {
 
 // Class Reference
 
-func aspectDeclarationClassReference() *aspectDeclarationClass_ {
+func aspectDeclarationClass() *aspectDeclarationClass_ {
 	return aspectDeclarationClassReference_
 }
 

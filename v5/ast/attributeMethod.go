@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func AttributeMethodClass() AttributeMethodClassLike {
-	return attributeMethodClassReference()
+	return attributeMethodClass()
 }
 
 // Constructor Methods
@@ -51,7 +51,7 @@ func (c *attributeMethodClass_) AttributeMethod(
 // Principal Methods
 
 func (v *attributeMethod_) GetClass() AttributeMethodClassLike {
-	return attributeMethodClassReference()
+	return attributeMethodClass()
 }
 
 // Attribute Methods
@@ -77,7 +77,7 @@ type attributeMethodClass_ struct {
 
 // Class Reference
 
-func attributeMethodClassReference() *attributeMethodClass_ {
+func attributeMethodClass() *attributeMethodClass_ {
 	return attributeMethodClassReference_
 }
 

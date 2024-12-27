@@ -29,7 +29,7 @@ import (
 // Access Function
 
 func AspectSubsectionClass() AspectSubsectionClassLike {
-	return aspectSubsectionClassReference()
+	return aspectSubsectionClass()
 }
 
 // Constructor Methods
@@ -52,7 +52,7 @@ func (c *aspectSubsectionClass_) AspectSubsection(
 // Principal Methods
 
 func (v *aspectSubsection_) GetClass() AspectSubsectionClassLike {
-	return aspectSubsectionClassReference()
+	return aspectSubsectionClass()
 }
 
 // Attribute Methods
@@ -78,7 +78,7 @@ type aspectSubsectionClass_ struct {
 
 // Class Reference
 
-func aspectSubsectionClassReference() *aspectSubsectionClass_ {
+func aspectSubsectionClass() *aspectSubsectionClass_ {
 	return aspectSubsectionClassReference_
 }
 

@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func AdditionalArgumentClass() AdditionalArgumentClassLike {
-	return additionalArgumentClassReference()
+	return additionalArgumentClass()
 }
 
 // Constructor Methods
@@ -51,7 +51,7 @@ func (c *additionalArgumentClass_) AdditionalArgument(
 // Principal Methods
 
 func (v *additionalArgument_) GetClass() AdditionalArgumentClassLike {
-	return additionalArgumentClassReference()
+	return additionalArgumentClass()
 }
 
 // Attribute Methods
@@ -77,7 +77,7 @@ type additionalArgumentClass_ struct {
 
 // Class Reference
 
-func additionalArgumentClassReference() *additionalArgumentClass_ {
+func additionalArgumentClass() *additionalArgumentClass_ {
 	return additionalArgumentClassReference_
 }
 

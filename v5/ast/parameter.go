@@ -28,7 +28,7 @@ import (
 // Access Function
 
 func ParameterClass() ParameterClassLike {
-	return parameterClassReference()
+	return parameterClass()
 }
 
 // Constructor Methods
@@ -56,7 +56,7 @@ func (c *parameterClass_) Parameter(
 // Principal Methods
 
 func (v *parameter_) GetClass() ParameterClassLike {
-	return parameterClassReference()
+	return parameterClass()
 }
 
 // Attribute Methods
@@ -87,7 +87,7 @@ type parameterClass_ struct {
 
 // Class Reference
 
-func parameterClassReference() *parameterClass_ {
+func parameterClass() *parameterClass_ {
 	return parameterClassReference_
 }
 

@@ -29,7 +29,7 @@ import (
 // Access Function
 
 func FunctionalDeclarationClass() FunctionalDeclarationClassLike {
-	return functionalDeclarationClassReference()
+	return functionalDeclarationClass()
 }
 
 // Constructor Methods
@@ -62,7 +62,7 @@ func (c *functionalDeclarationClass_) FunctionalDeclaration(
 // Principal Methods
 
 func (v *functionalDeclaration_) GetClass() FunctionalDeclarationClassLike {
-	return functionalDeclarationClassReference()
+	return functionalDeclarationClass()
 }
 
 // Attribute Methods
@@ -98,7 +98,7 @@ type functionalDeclarationClass_ struct {
 
 // Class Reference
 
-func functionalDeclarationClassReference() *functionalDeclarationClass_ {
+func functionalDeclarationClass() *functionalDeclarationClass_ {
 	return functionalDeclarationClassReference_
 }
 
