@@ -66,7 +66,7 @@ func (v *parser_) ParseSource(
 
 	// Attempt to parse the model.
 	var model, token, ok = v.parseModel()
-	if !ok {
+	if !ok || !v.tokens_.IsEmpty() {
 		var message = v.formatError("$Model", token)
 		panic(message)
 	}
