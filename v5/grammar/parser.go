@@ -3855,9 +3855,9 @@ var parserClassReference_ = &parserClass_{
 			"$AdditionalConstraint":  `"," Constraint`,
 			"$Abstraction":           `Wrapper? prefix? name Arguments?`,
 			"$Wrapper": `
-  - Array
-  - Map
-  - Channel`,
+    Array
+    Map
+    Channel`,
 			"$Array":                 `"[" "]"`,
 			"$Map":                   `"map" "[" name "]"`,
 			"$Channel":               `"chan"`,
@@ -3871,9 +3871,9 @@ var parserClassReference_ = &parserClass_{
 			"$FunctionalDeclaration": `Declaration "func" "(" Parameter* ")" Result`,
 			"$Parameter":             `name Abstraction ","`,
 			"$Result": `
-  - None
-  - Abstraction
-  - Multivalue`,
+    None
+    Abstraction
+    Multivalue`,
 			"$None":                  `newline`,
 			"$Multivalue":            `"(" Parameter+ ")"`,
 			"$ClassSection":          `"// CLASS DECLARATIONS" ClassDeclaration+`,
@@ -3893,8 +3893,8 @@ var parserClassReference_ = &parserClass_{
 			"$Method":                `name "(" Parameter* ")" Result?`,
 			"$AttributeSubsection":   `"// Attribute Methods" AttributeMethod+`,
 			"$AttributeMethod": `
-  - GetterMethod
-  - SetterMethod`,
+    GetterMethod
+    SetterMethod`,
 			"$GetterMethod":      `name "(" ")" Abstraction`,
 			"$SetterMethod":      `name "(" Parameter ")"`,
 			"$AspectSubsection":  `"// Aspect Interfaces" AspectInterface+`,
