@@ -675,16 +675,17 @@ func (v *formatter_) PostprocessValue(
 	v.appendString(" = iota")
 }
 
+const _indentation = "\t"
+
 // PROTECTED INTERFACE
 
 // Private Methods
 
 func (v *formatter_) appendNewline() {
 	var newline = "\n"
-	var indentation = "\t"
 	var level uint
 	for ; level < v.depth_; level++ {
-		newline += indentation
+		newline += _indentation
 	}
 	v.appendString(newline)
 }
