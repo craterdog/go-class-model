@@ -104,7 +104,7 @@ func (v *parser_) parseAbstraction() (
 	name, token, ok = v.parseToken(NameToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single Abstraction rule.
+			// This is not a single name token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -169,7 +169,7 @@ func (v *parser_) parseAdditionalArgument() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single AdditionalArgument rule.
+		// This is not a single Argument rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -217,7 +217,7 @@ func (v *parser_) parseAdditionalConstraint() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single AdditionalConstraint rule.
+		// This is not a single Constraint rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -245,7 +245,7 @@ func (v *parser_) parseAdditionalValue() (
 	name, token, ok = v.parseToken(NameToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single AdditionalValue rule.
+			// This is not a single name token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -280,7 +280,7 @@ func (v *parser_) parseArgument() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single Argument rule.
+		// This is not a single Abstraction rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -328,7 +328,7 @@ func (v *parser_) parseArguments() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single Arguments rule.
+		// This is not a single Argument rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -453,7 +453,7 @@ func (v *parser_) parseAspectDeclaration() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single AspectDeclaration rule.
+		// This is not a single Declaration rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -564,7 +564,7 @@ func (v *parser_) parseAspectInterface() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single AspectInterface rule.
+		// This is not a single Abstraction rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -595,7 +595,7 @@ func (v *parser_) parseAspectMethod() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single AspectMethod rule.
+		// This is not a single Method rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -855,7 +855,7 @@ func (v *parser_) parseClassDeclaration() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single ClassDeclaration rule.
+		// This is not a single Declaration rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -906,7 +906,7 @@ func (v *parser_) parseClassDeclaration() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single ClassDeclaration rule.
+		// This is not a single ClassMethods rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -957,7 +957,7 @@ func (v *parser_) parseClassMethods() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single ClassMethods rule.
+		// This is not a single ConstructorSubsection rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -1062,7 +1062,7 @@ func (v *parser_) parseConstantMethod() (
 	name, token, ok = v.parseToken(NameToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single ConstantMethod rule.
+			// This is not a single name token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -1117,7 +1117,7 @@ func (v *parser_) parseConstantMethod() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single ConstantMethod rule.
+		// This is not a single Abstraction rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -1205,7 +1205,7 @@ func (v *parser_) parseConstraint() (
 	name, token, ok = v.parseToken(NameToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single Constraint rule.
+			// This is not a single name token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -1226,7 +1226,7 @@ func (v *parser_) parseConstraint() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single Constraint rule.
+		// This is not a single Abstraction rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -1277,7 +1277,7 @@ func (v *parser_) parseConstraints() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single Constraints rule.
+		// This is not a single Constraint rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -1351,7 +1351,7 @@ func (v *parser_) parseConstructorMethod() (
 	name, token, ok = v.parseToken(NameToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single ConstructorMethod rule.
+			// This is not a single name token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -1432,7 +1432,7 @@ parametersLoop:
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single ConstructorMethod rule.
+		// This is not a single Abstraction rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -1521,7 +1521,7 @@ func (v *parser_) parseDeclaration() (
 	comment, token, ok = v.parseToken(CommentToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single Declaration rule.
+			// This is not a single comment token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -1556,7 +1556,7 @@ func (v *parser_) parseDeclaration() (
 	name, token, ok = v.parseToken(NameToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single Declaration rule.
+			// This is not a single name token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -1637,7 +1637,7 @@ func (v *parser_) parseEnumeration() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single Enumeration rule.
+		// This is not a single Value rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -1711,7 +1711,7 @@ func (v *parser_) parseFunctionMethod() (
 	name, token, ok = v.parseToken(NameToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single FunctionMethod rule.
+			// This is not a single name token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -1792,7 +1792,7 @@ parametersLoop:
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single FunctionMethod rule.
+		// This is not a single Result rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -1884,7 +1884,7 @@ func (v *parser_) parseFunctionalDeclaration() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single FunctionalDeclaration rule.
+		// This is not a single Declaration rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -1978,7 +1978,7 @@ parametersLoop:
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single FunctionalDeclaration rule.
+		// This is not a single Result rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -2067,7 +2067,7 @@ func (v *parser_) parseGetterMethod() (
 	name, token, ok = v.parseToken(NameToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single GetterMethod rule.
+			// This is not a single name token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -2122,7 +2122,7 @@ func (v *parser_) parseGetterMethod() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single GetterMethod rule.
+		// This is not a single Abstraction rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -2153,7 +2153,7 @@ func (v *parser_) parseImportedPackage() (
 	name, token, ok = v.parseToken(NameToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single ImportedPackage rule.
+			// This is not a single name token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -2171,7 +2171,7 @@ func (v *parser_) parseImportedPackage() (
 	path, token, ok = v.parseToken(PathToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single ImportedPackage rule.
+			// This is not a single path token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -2209,7 +2209,7 @@ func (v *parser_) parseInstanceDeclaration() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single InstanceDeclaration rule.
+		// This is not a single Declaration rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -2260,7 +2260,7 @@ func (v *parser_) parseInstanceDeclaration() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single InstanceDeclaration rule.
+		// This is not a single InstanceMethods rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -2311,7 +2311,7 @@ func (v *parser_) parseInstanceMethods() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single InstanceMethods rule.
+		// This is not a single PrincipalSubsection rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -2419,7 +2419,7 @@ func (v *parser_) parseInterfaceDeclarations() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single InterfaceDeclarations rule.
+		// This is not a single ClassSection rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -2436,7 +2436,7 @@ func (v *parser_) parseInterfaceDeclarations() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single InterfaceDeclarations rule.
+		// This is not a single InstanceSection rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -2453,7 +2453,7 @@ func (v *parser_) parseInterfaceDeclarations() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single InterfaceDeclarations rule.
+		// This is not a single AspectSection rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -2485,7 +2485,7 @@ func (v *parser_) parseLegalNotice() (
 	comment, token, ok = v.parseToken(CommentToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single LegalNotice rule.
+			// This is not a single comment token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -2551,7 +2551,7 @@ func (v *parser_) parseMap() (
 	name, token, ok = v.parseToken(NameToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single Map rule.
+			// This is not a single name token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -2600,7 +2600,7 @@ func (v *parser_) parseMethod() (
 	name, token, ok = v.parseToken(NameToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single Method rule.
+			// This is not a single name token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -2707,7 +2707,7 @@ func (v *parser_) parseModel() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single Model rule.
+		// This is not a single PackageDeclaration rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -2724,7 +2724,7 @@ func (v *parser_) parseModel() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single Model rule.
+		// This is not a single PrimitiveDeclarations rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -2741,7 +2741,7 @@ func (v *parser_) parseModel() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single Model rule.
+		// This is not a single InterfaceDeclarations rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -2847,7 +2847,7 @@ func (v *parser_) parseNone() (
 	newline, token, ok = v.parseToken(NewlineToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single None rule.
+			// This is not a single newline token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -2882,7 +2882,7 @@ func (v *parser_) parsePackageDeclaration() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single PackageDeclaration rule.
+		// This is not a single LegalNotice rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -2899,7 +2899,7 @@ func (v *parser_) parsePackageDeclaration() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single PackageDeclaration rule.
+		// This is not a single PackageHeader rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -2916,7 +2916,7 @@ func (v *parser_) parsePackageDeclaration() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single PackageDeclaration rule.
+		// This is not a single PackageImports rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -2948,7 +2948,7 @@ func (v *parser_) parsePackageHeader() (
 	comment, token, ok = v.parseToken(CommentToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single PackageHeader rule.
+			// This is not a single comment token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -2983,7 +2983,7 @@ func (v *parser_) parsePackageHeader() (
 	name, token, ok = v.parseToken(NameToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single PackageHeader rule.
+			// This is not a single name token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -3109,7 +3109,7 @@ func (v *parser_) parseParameter() (
 	name, token, ok = v.parseToken(NameToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single Parameter rule.
+			// This is not a single name token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -3130,7 +3130,7 @@ func (v *parser_) parseParameter() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single Parameter rule.
+		// This is not a single Abstraction rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -3181,7 +3181,7 @@ func (v *parser_) parsePrimitiveDeclarations() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single PrimitiveDeclarations rule.
+		// This is not a single TypeSection rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -3198,7 +3198,7 @@ func (v *parser_) parsePrimitiveDeclarations() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single PrimitiveDeclarations rule.
+		// This is not a single FunctionalSection rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -3232,7 +3232,7 @@ func (v *parser_) parsePrincipalMethod() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single PrincipalMethod rule.
+		// This is not a single Method rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -3353,7 +3353,7 @@ func (v *parser_) parseSetterMethod() (
 	name, token, ok = v.parseToken(NameToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single SetterMethod rule.
+			// This is not a single name token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -3391,7 +3391,7 @@ func (v *parser_) parseSetterMethod() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single SetterMethod rule.
+		// This is not a single Parameter rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -3442,7 +3442,7 @@ func (v *parser_) parseTypeDeclaration() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single TypeDeclaration rule.
+		// This is not a single Declaration rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -3459,7 +3459,7 @@ func (v *parser_) parseTypeDeclaration() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single TypeDeclaration rule.
+		// This is not a single Abstraction rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -3556,7 +3556,7 @@ func (v *parser_) parseValue() (
 	name, token, ok = v.parseToken(NameToken)
 	if !ok {
 		if uti.IsDefined(tokens) {
-			// This is not a single Value rule.
+			// This is not a single name token.
 			v.putBack(tokens)
 			return
 		} else {
@@ -3577,7 +3577,7 @@ func (v *parser_) parseValue() (
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single Value rule.
+		// This is not a single Abstraction rule.
 		v.putBack(tokens)
 		return
 	default:
