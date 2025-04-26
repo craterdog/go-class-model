@@ -9,8 +9,8 @@ development.  It can be used to up-level typically low-level Go code.
 ### Quick Links
 For more information on this project click on the following links:
  * [project documentation](https://github.com/craterdog/go-class-model/wiki)
- * [coding conventions](https://github.com/craterdog/go-class-model/wiki)
- * [command-line tools](https://github.com/craterdog/go-class-tools/wiki)
+ * [coding conventions](https://github.com/craterdog/go-development-tools/wiki/Coding-Conventions)
+ * [command-line tools](https://github.com/craterdog/go-development-tools/wiki)
 
 ### Getting Started
 To include the Go packages for this module use the following import statement:
