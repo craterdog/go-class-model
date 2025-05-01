@@ -12,14 +12,6 @@ For more information on this project click on the following links:
  * [coding conventions](https://github.com/craterdog/go-development-tools/wiki/Coding-Conventions)
  * [command-line tools](https://github.com/craterdog/go-development-tools/wiki)
 
-### Getting Started
-To include the Go packages for this module use the following import statement:
-```go
-import (
-	mod "github.com/craterdog/go-class-model/v5"
-)
-```
-
 ### Contributing
 Project contributors are always welcome. Check out the contributing guidelines
 [here](https://github.com/craterdog/go-class-model/blob/main/.github/CONTRIBUTING.md).
