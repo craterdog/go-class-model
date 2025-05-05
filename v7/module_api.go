@@ -195,17 +195,21 @@ type (
 	Methodical = gra.Methodical
 )
 
-// CLASS CONSTRUCTORS
+// CLASS ACCESSORS
 
-// Ast/Abstraction
+// Ast
+
+func AbstractionClass() AbstractionClassLike {
+	return ast.AbstractionClass()
+}
 
 func Abstraction(
 	optionalWrapper ast.WrapperLike,
 	optionalPrefix string,
 	name string,
 	optionalArguments ast.ArgumentsLike,
-) ast.AbstractionLike {
-	return ast.AbstractionClass().Abstraction(
+) AbstractionLike {
+	return AbstractionClass().Abstraction(
 		optionalWrapper,
 		optionalPrefix,
 		name,
@@ -213,651 +217,771 @@ func Abstraction(
 	)
 }
 
-// Ast/AdditionalArgument
+func AdditionalArgumentClass() AdditionalArgumentClassLike {
+	return ast.AdditionalArgumentClass()
+}
 
 func AdditionalArgument(
 	argument ast.ArgumentLike,
-) ast.AdditionalArgumentLike {
-	return ast.AdditionalArgumentClass().AdditionalArgument(
+) AdditionalArgumentLike {
+	return AdditionalArgumentClass().AdditionalArgument(
 		argument,
 	)
 }
 
-// Ast/AdditionalConstraint
+func AdditionalConstraintClass() AdditionalConstraintClassLike {
+	return ast.AdditionalConstraintClass()
+}
 
 func AdditionalConstraint(
 	constraint ast.ConstraintLike,
-) ast.AdditionalConstraintLike {
-	return ast.AdditionalConstraintClass().AdditionalConstraint(
+) AdditionalConstraintLike {
+	return AdditionalConstraintClass().AdditionalConstraint(
 		constraint,
 	)
 }
 
-// Ast/AdditionalValue
+func AdditionalValueClass() AdditionalValueClassLike {
+	return ast.AdditionalValueClass()
+}
 
 func AdditionalValue(
 	name string,
-) ast.AdditionalValueLike {
-	return ast.AdditionalValueClass().AdditionalValue(
+) AdditionalValueLike {
+	return AdditionalValueClass().AdditionalValue(
 		name,
 	)
 }
 
-// Ast/Argument
+func ArgumentClass() ArgumentClassLike {
+	return ast.ArgumentClass()
+}
 
 func Argument(
 	abstraction ast.AbstractionLike,
-) ast.ArgumentLike {
-	return ast.ArgumentClass().Argument(
+) ArgumentLike {
+	return ArgumentClass().Argument(
 		abstraction,
 	)
 }
 
-// Ast/Arguments
+func ArgumentsClass() ArgumentsClassLike {
+	return ast.ArgumentsClass()
+}
 
 func Arguments(
 	argument ast.ArgumentLike,
 	additionalArguments col.Sequential[ast.AdditionalArgumentLike],
-) ast.ArgumentsLike {
-	return ast.ArgumentsClass().Arguments(
+) ArgumentsLike {
+	return ArgumentsClass().Arguments(
 		argument,
 		additionalArguments,
 	)
 }
 
-// Ast/Array
-
-func Array() ast.ArrayLike {
-	return ast.ArrayClass().Array()
+func ArrayClass() ArrayClassLike {
+	return ast.ArrayClass()
 }
 
-// Ast/AspectDeclaration
+func Array() ArrayLike {
+	return ArrayClass().Array()
+}
+
+func AspectDeclarationClass() AspectDeclarationClassLike {
+	return ast.AspectDeclarationClass()
+}
 
 func AspectDeclaration(
 	declaration ast.DeclarationLike,
 	aspectMethods col.Sequential[ast.AspectMethodLike],
-) ast.AspectDeclarationLike {
-	return ast.AspectDeclarationClass().AspectDeclaration(
+) AspectDeclarationLike {
+	return AspectDeclarationClass().AspectDeclaration(
 		declaration,
 		aspectMethods,
 	)
 }
 
-// Ast/AspectInterface
+func AspectInterfaceClass() AspectInterfaceClassLike {
+	return ast.AspectInterfaceClass()
+}
 
 func AspectInterface(
 	abstraction ast.AbstractionLike,
-) ast.AspectInterfaceLike {
-	return ast.AspectInterfaceClass().AspectInterface(
+) AspectInterfaceLike {
+	return AspectInterfaceClass().AspectInterface(
 		abstraction,
 	)
 }
 
-// Ast/AspectMethod
+func AspectMethodClass() AspectMethodClassLike {
+	return ast.AspectMethodClass()
+}
 
 func AspectMethod(
 	method ast.MethodLike,
-) ast.AspectMethodLike {
-	return ast.AspectMethodClass().AspectMethod(
+) AspectMethodLike {
+	return AspectMethodClass().AspectMethod(
 		method,
 	)
 }
 
-// Ast/AspectSection
+func AspectSectionClass() AspectSectionClassLike {
+	return ast.AspectSectionClass()
+}
 
 func AspectSection(
 	aspectDeclarations col.Sequential[ast.AspectDeclarationLike],
-) ast.AspectSectionLike {
-	return ast.AspectSectionClass().AspectSection(
+) AspectSectionLike {
+	return AspectSectionClass().AspectSection(
 		aspectDeclarations,
 	)
 }
 
-// Ast/AspectSubsection
+func AspectSubsectionClass() AspectSubsectionClassLike {
+	return ast.AspectSubsectionClass()
+}
 
 func AspectSubsection(
 	aspectInterfaces col.Sequential[ast.AspectInterfaceLike],
-) ast.AspectSubsectionLike {
-	return ast.AspectSubsectionClass().AspectSubsection(
+) AspectSubsectionLike {
+	return AspectSubsectionClass().AspectSubsection(
 		aspectInterfaces,
 	)
 }
 
-// Ast/AttributeMethod
+func AttributeMethodClass() AttributeMethodClassLike {
+	return ast.AttributeMethodClass()
+}
 
 func AttributeMethod(
 	any_ any,
-) ast.AttributeMethodLike {
-	return ast.AttributeMethodClass().AttributeMethod(
+) AttributeMethodLike {
+	return AttributeMethodClass().AttributeMethod(
 		any_,
 	)
 }
 
-// Ast/AttributeSubsection
+func AttributeSubsectionClass() AttributeSubsectionClassLike {
+	return ast.AttributeSubsectionClass()
+}
 
 func AttributeSubsection(
 	attributeMethods col.Sequential[ast.AttributeMethodLike],
-) ast.AttributeSubsectionLike {
-	return ast.AttributeSubsectionClass().AttributeSubsection(
+) AttributeSubsectionLike {
+	return AttributeSubsectionClass().AttributeSubsection(
 		attributeMethods,
 	)
 }
 
-// Ast/Channel
-
-func Channel() ast.ChannelLike {
-	return ast.ChannelClass().Channel()
+func ChannelClass() ChannelClassLike {
+	return ast.ChannelClass()
 }
 
-// Ast/ClassDeclaration
+func Channel() ChannelLike {
+	return ChannelClass().Channel()
+}
+
+func ClassDeclarationClass() ClassDeclarationClassLike {
+	return ast.ClassDeclarationClass()
+}
 
 func ClassDeclaration(
 	declaration ast.DeclarationLike,
 	classMethods ast.ClassMethodsLike,
-) ast.ClassDeclarationLike {
-	return ast.ClassDeclarationClass().ClassDeclaration(
+) ClassDeclarationLike {
+	return ClassDeclarationClass().ClassDeclaration(
 		declaration,
 		classMethods,
 	)
 }
 
-// Ast/ClassMethods
+func ClassMethodsClass() ClassMethodsClassLike {
+	return ast.ClassMethodsClass()
+}
 
 func ClassMethods(
 	constructorSubsection ast.ConstructorSubsectionLike,
 	optionalConstantSubsection ast.ConstantSubsectionLike,
 	optionalFunctionSubsection ast.FunctionSubsectionLike,
-) ast.ClassMethodsLike {
-	return ast.ClassMethodsClass().ClassMethods(
+) ClassMethodsLike {
+	return ClassMethodsClass().ClassMethods(
 		constructorSubsection,
 		optionalConstantSubsection,
 		optionalFunctionSubsection,
 	)
 }
 
-// Ast/ClassSection
+func ClassSectionClass() ClassSectionClassLike {
+	return ast.ClassSectionClass()
+}
 
 func ClassSection(
 	classDeclarations col.Sequential[ast.ClassDeclarationLike],
-) ast.ClassSectionLike {
-	return ast.ClassSectionClass().ClassSection(
+) ClassSectionLike {
+	return ClassSectionClass().ClassSection(
 		classDeclarations,
 	)
 }
 
-// Ast/ConstantMethod
+func ConstantMethodClass() ConstantMethodClassLike {
+	return ast.ConstantMethodClass()
+}
 
 func ConstantMethod(
 	name string,
 	abstraction ast.AbstractionLike,
-) ast.ConstantMethodLike {
-	return ast.ConstantMethodClass().ConstantMethod(
+) ConstantMethodLike {
+	return ConstantMethodClass().ConstantMethod(
 		name,
 		abstraction,
 	)
 }
 
-// Ast/ConstantSubsection
+func ConstantSubsectionClass() ConstantSubsectionClassLike {
+	return ast.ConstantSubsectionClass()
+}
 
 func ConstantSubsection(
 	constantMethods col.Sequential[ast.ConstantMethodLike],
-) ast.ConstantSubsectionLike {
-	return ast.ConstantSubsectionClass().ConstantSubsection(
+) ConstantSubsectionLike {
+	return ConstantSubsectionClass().ConstantSubsection(
 		constantMethods,
 	)
 }
 
-// Ast/Constraint
+func ConstraintClass() ConstraintClassLike {
+	return ast.ConstraintClass()
+}
 
 func Constraint(
 	name string,
 	abstraction ast.AbstractionLike,
-) ast.ConstraintLike {
-	return ast.ConstraintClass().Constraint(
+) ConstraintLike {
+	return ConstraintClass().Constraint(
 		name,
 		abstraction,
 	)
 }
 
-// Ast/Constraints
+func ConstraintsClass() ConstraintsClassLike {
+	return ast.ConstraintsClass()
+}
 
 func Constraints(
 	constraint ast.ConstraintLike,
 	additionalConstraints col.Sequential[ast.AdditionalConstraintLike],
-) ast.ConstraintsLike {
-	return ast.ConstraintsClass().Constraints(
+) ConstraintsLike {
+	return ConstraintsClass().Constraints(
 		constraint,
 		additionalConstraints,
 	)
 }
 
-// Ast/ConstructorMethod
+func ConstructorMethodClass() ConstructorMethodClassLike {
+	return ast.ConstructorMethodClass()
+}
 
 func ConstructorMethod(
 	name string,
 	parameters col.Sequential[ast.ParameterLike],
 	abstraction ast.AbstractionLike,
-) ast.ConstructorMethodLike {
-	return ast.ConstructorMethodClass().ConstructorMethod(
+) ConstructorMethodLike {
+	return ConstructorMethodClass().ConstructorMethod(
 		name,
 		parameters,
 		abstraction,
 	)
 }
 
-// Ast/ConstructorSubsection
+func ConstructorSubsectionClass() ConstructorSubsectionClassLike {
+	return ast.ConstructorSubsectionClass()
+}
 
 func ConstructorSubsection(
 	constructorMethods col.Sequential[ast.ConstructorMethodLike],
-) ast.ConstructorSubsectionLike {
-	return ast.ConstructorSubsectionClass().ConstructorSubsection(
+) ConstructorSubsectionLike {
+	return ConstructorSubsectionClass().ConstructorSubsection(
 		constructorMethods,
 	)
 }
 
-// Ast/Declaration
+func DeclarationClass() DeclarationClassLike {
+	return ast.DeclarationClass()
+}
 
 func Declaration(
 	comment string,
 	name string,
 	optionalConstraints ast.ConstraintsLike,
-) ast.DeclarationLike {
-	return ast.DeclarationClass().Declaration(
+) DeclarationLike {
+	return DeclarationClass().Declaration(
 		comment,
 		name,
 		optionalConstraints,
 	)
 }
 
-// Ast/Enumeration
+func EnumerationClass() EnumerationClassLike {
+	return ast.EnumerationClass()
+}
 
 func Enumeration(
 	value ast.ValueLike,
 	additionalValues col.Sequential[ast.AdditionalValueLike],
-) ast.EnumerationLike {
-	return ast.EnumerationClass().Enumeration(
+) EnumerationLike {
+	return EnumerationClass().Enumeration(
 		value,
 		additionalValues,
 	)
 }
 
-// Ast/FunctionMethod
+func FunctionMethodClass() FunctionMethodClassLike {
+	return ast.FunctionMethodClass()
+}
 
 func FunctionMethod(
 	name string,
 	parameters col.Sequential[ast.ParameterLike],
 	result ast.ResultLike,
-) ast.FunctionMethodLike {
-	return ast.FunctionMethodClass().FunctionMethod(
+) FunctionMethodLike {
+	return FunctionMethodClass().FunctionMethod(
 		name,
 		parameters,
 		result,
 	)
 }
 
-// Ast/FunctionSubsection
+func FunctionSubsectionClass() FunctionSubsectionClassLike {
+	return ast.FunctionSubsectionClass()
+}
 
 func FunctionSubsection(
 	functionMethods col.Sequential[ast.FunctionMethodLike],
-) ast.FunctionSubsectionLike {
-	return ast.FunctionSubsectionClass().FunctionSubsection(
+) FunctionSubsectionLike {
+	return FunctionSubsectionClass().FunctionSubsection(
 		functionMethods,
 	)
 }
 
-// Ast/FunctionalDeclaration
+func FunctionalDeclarationClass() FunctionalDeclarationClassLike {
+	return ast.FunctionalDeclarationClass()
+}
 
 func FunctionalDeclaration(
 	declaration ast.DeclarationLike,
 	parameters col.Sequential[ast.ParameterLike],
 	result ast.ResultLike,
-) ast.FunctionalDeclarationLike {
-	return ast.FunctionalDeclarationClass().FunctionalDeclaration(
+) FunctionalDeclarationLike {
+	return FunctionalDeclarationClass().FunctionalDeclaration(
 		declaration,
 		parameters,
 		result,
 	)
 }
 
-// Ast/FunctionalSection
+func FunctionalSectionClass() FunctionalSectionClassLike {
+	return ast.FunctionalSectionClass()
+}
 
 func FunctionalSection(
 	functionalDeclarations col.Sequential[ast.FunctionalDeclarationLike],
-) ast.FunctionalSectionLike {
-	return ast.FunctionalSectionClass().FunctionalSection(
+) FunctionalSectionLike {
+	return FunctionalSectionClass().FunctionalSection(
 		functionalDeclarations,
 	)
 }
 
-// Ast/GetterMethod
+func GetterMethodClass() GetterMethodClassLike {
+	return ast.GetterMethodClass()
+}
 
 func GetterMethod(
 	name string,
 	abstraction ast.AbstractionLike,
-) ast.GetterMethodLike {
-	return ast.GetterMethodClass().GetterMethod(
+) GetterMethodLike {
+	return GetterMethodClass().GetterMethod(
 		name,
 		abstraction,
 	)
 }
 
-// Ast/ImportedPackage
+func ImportedPackageClass() ImportedPackageClassLike {
+	return ast.ImportedPackageClass()
+}
 
 func ImportedPackage(
 	name string,
 	path string,
-) ast.ImportedPackageLike {
-	return ast.ImportedPackageClass().ImportedPackage(
+) ImportedPackageLike {
+	return ImportedPackageClass().ImportedPackage(
 		name,
 		path,
 	)
 }
 
-// Ast/InstanceDeclaration
+func InstanceDeclarationClass() InstanceDeclarationClassLike {
+	return ast.InstanceDeclarationClass()
+}
 
 func InstanceDeclaration(
 	declaration ast.DeclarationLike,
 	instanceMethods ast.InstanceMethodsLike,
-) ast.InstanceDeclarationLike {
-	return ast.InstanceDeclarationClass().InstanceDeclaration(
+) InstanceDeclarationLike {
+	return InstanceDeclarationClass().InstanceDeclaration(
 		declaration,
 		instanceMethods,
 	)
 }
 
-// Ast/InstanceMethods
+func InstanceMethodsClass() InstanceMethodsClassLike {
+	return ast.InstanceMethodsClass()
+}
 
 func InstanceMethods(
 	principalSubsection ast.PrincipalSubsectionLike,
 	optionalAttributeSubsection ast.AttributeSubsectionLike,
 	optionalAspectSubsection ast.AspectSubsectionLike,
-) ast.InstanceMethodsLike {
-	return ast.InstanceMethodsClass().InstanceMethods(
+) InstanceMethodsLike {
+	return InstanceMethodsClass().InstanceMethods(
 		principalSubsection,
 		optionalAttributeSubsection,
 		optionalAspectSubsection,
 	)
 }
 
-// Ast/InstanceSection
+func InstanceSectionClass() InstanceSectionClassLike {
+	return ast.InstanceSectionClass()
+}
 
 func InstanceSection(
 	instanceDeclarations col.Sequential[ast.InstanceDeclarationLike],
-) ast.InstanceSectionLike {
-	return ast.InstanceSectionClass().InstanceSection(
+) InstanceSectionLike {
+	return InstanceSectionClass().InstanceSection(
 		instanceDeclarations,
 	)
 }
 
-// Ast/InterfaceDeclarations
+func InterfaceDeclarationsClass() InterfaceDeclarationsClassLike {
+	return ast.InterfaceDeclarationsClass()
+}
 
 func InterfaceDeclarations(
 	classSection ast.ClassSectionLike,
 	instanceSection ast.InstanceSectionLike,
 	aspectSection ast.AspectSectionLike,
-) ast.InterfaceDeclarationsLike {
-	return ast.InterfaceDeclarationsClass().InterfaceDeclarations(
+) InterfaceDeclarationsLike {
+	return InterfaceDeclarationsClass().InterfaceDeclarations(
 		classSection,
 		instanceSection,
 		aspectSection,
 	)
 }
 
-// Ast/LegalNotice
+func LegalNoticeClass() LegalNoticeClassLike {
+	return ast.LegalNoticeClass()
+}
 
 func LegalNotice(
 	comment string,
-) ast.LegalNoticeLike {
-	return ast.LegalNoticeClass().LegalNotice(
+) LegalNoticeLike {
+	return LegalNoticeClass().LegalNotice(
 		comment,
 	)
 }
 
-// Ast/Map
+func MapClass() MapClassLike {
+	return ast.MapClass()
+}
 
 func Map(
 	name string,
-) ast.MapLike {
-	return ast.MapClass().Map(
+) MapLike {
+	return MapClass().Map(
 		name,
 	)
 }
 
-// Ast/Method
+func MethodClass() MethodClassLike {
+	return ast.MethodClass()
+}
 
 func Method(
 	name string,
 	parameters col.Sequential[ast.ParameterLike],
 	optionalResult ast.ResultLike,
-) ast.MethodLike {
-	return ast.MethodClass().Method(
+) MethodLike {
+	return MethodClass().Method(
 		name,
 		parameters,
 		optionalResult,
 	)
 }
 
-// Ast/Model
+func ModelClass() ModelClassLike {
+	return ast.ModelClass()
+}
 
 func Model(
 	packageDeclaration ast.PackageDeclarationLike,
 	primitiveDeclarations ast.PrimitiveDeclarationsLike,
 	interfaceDeclarations ast.InterfaceDeclarationsLike,
-) ast.ModelLike {
-	return ast.ModelClass().Model(
+) ModelLike {
+	return ModelClass().Model(
 		packageDeclaration,
 		primitiveDeclarations,
 		interfaceDeclarations,
 	)
 }
 
-// Ast/Multivalue
+func MultivalueClass() MultivalueClassLike {
+	return ast.MultivalueClass()
+}
 
 func Multivalue(
 	parameters col.Sequential[ast.ParameterLike],
-) ast.MultivalueLike {
-	return ast.MultivalueClass().Multivalue(
+) MultivalueLike {
+	return MultivalueClass().Multivalue(
 		parameters,
 	)
 }
 
-// Ast/None
+func NoneClass() NoneClassLike {
+	return ast.NoneClass()
+}
 
 func None(
 	newline string,
-) ast.NoneLike {
-	return ast.NoneClass().None(
+) NoneLike {
+	return NoneClass().None(
 		newline,
 	)
 }
 
-// Ast/PackageDeclaration
+func PackageDeclarationClass() PackageDeclarationClassLike {
+	return ast.PackageDeclarationClass()
+}
 
 func PackageDeclaration(
 	legalNotice ast.LegalNoticeLike,
 	packageHeader ast.PackageHeaderLike,
 	packageImports ast.PackageImportsLike,
-) ast.PackageDeclarationLike {
-	return ast.PackageDeclarationClass().PackageDeclaration(
+) PackageDeclarationLike {
+	return PackageDeclarationClass().PackageDeclaration(
 		legalNotice,
 		packageHeader,
 		packageImports,
 	)
 }
 
-// Ast/PackageHeader
+func PackageHeaderClass() PackageHeaderClassLike {
+	return ast.PackageHeaderClass()
+}
 
 func PackageHeader(
 	comment string,
 	name string,
-) ast.PackageHeaderLike {
-	return ast.PackageHeaderClass().PackageHeader(
+) PackageHeaderLike {
+	return PackageHeaderClass().PackageHeader(
 		comment,
 		name,
 	)
 }
 
-// Ast/PackageImports
+func PackageImportsClass() PackageImportsClassLike {
+	return ast.PackageImportsClass()
+}
 
 func PackageImports(
 	importedPackages col.Sequential[ast.ImportedPackageLike],
-) ast.PackageImportsLike {
-	return ast.PackageImportsClass().PackageImports(
+) PackageImportsLike {
+	return PackageImportsClass().PackageImports(
 		importedPackages,
 	)
 }
 
-// Ast/Parameter
+func ParameterClass() ParameterClassLike {
+	return ast.ParameterClass()
+}
 
 func Parameter(
 	name string,
 	abstraction ast.AbstractionLike,
-) ast.ParameterLike {
-	return ast.ParameterClass().Parameter(
+) ParameterLike {
+	return ParameterClass().Parameter(
 		name,
 		abstraction,
 	)
 }
 
-// Ast/PrimitiveDeclarations
+func PrimitiveDeclarationsClass() PrimitiveDeclarationsClassLike {
+	return ast.PrimitiveDeclarationsClass()
+}
 
 func PrimitiveDeclarations(
 	typeSection ast.TypeSectionLike,
 	functionalSection ast.FunctionalSectionLike,
-) ast.PrimitiveDeclarationsLike {
-	return ast.PrimitiveDeclarationsClass().PrimitiveDeclarations(
+) PrimitiveDeclarationsLike {
+	return PrimitiveDeclarationsClass().PrimitiveDeclarations(
 		typeSection,
 		functionalSection,
 	)
 }
 
-// Ast/PrincipalMethod
+func PrincipalMethodClass() PrincipalMethodClassLike {
+	return ast.PrincipalMethodClass()
+}
 
 func PrincipalMethod(
 	method ast.MethodLike,
-) ast.PrincipalMethodLike {
-	return ast.PrincipalMethodClass().PrincipalMethod(
+) PrincipalMethodLike {
+	return PrincipalMethodClass().PrincipalMethod(
 		method,
 	)
 }
 
-// Ast/PrincipalSubsection
+func PrincipalSubsectionClass() PrincipalSubsectionClassLike {
+	return ast.PrincipalSubsectionClass()
+}
 
 func PrincipalSubsection(
 	principalMethods col.Sequential[ast.PrincipalMethodLike],
-) ast.PrincipalSubsectionLike {
-	return ast.PrincipalSubsectionClass().PrincipalSubsection(
+) PrincipalSubsectionLike {
+	return PrincipalSubsectionClass().PrincipalSubsection(
 		principalMethods,
 	)
 }
 
-// Ast/Result
+func ResultClass() ResultClassLike {
+	return ast.ResultClass()
+}
 
 func Result(
 	any_ any,
-) ast.ResultLike {
-	return ast.ResultClass().Result(
+) ResultLike {
+	return ResultClass().Result(
 		any_,
 	)
 }
 
-// Ast/SetterMethod
+func SetterMethodClass() SetterMethodClassLike {
+	return ast.SetterMethodClass()
+}
 
 func SetterMethod(
 	name string,
 	parameter ast.ParameterLike,
-) ast.SetterMethodLike {
-	return ast.SetterMethodClass().SetterMethod(
+) SetterMethodLike {
+	return SetterMethodClass().SetterMethod(
 		name,
 		parameter,
 	)
 }
 
-// Ast/TypeDeclaration
+func TypeDeclarationClass() TypeDeclarationClassLike {
+	return ast.TypeDeclarationClass()
+}
 
 func TypeDeclaration(
 	declaration ast.DeclarationLike,
 	abstraction ast.AbstractionLike,
 	optionalEnumeration ast.EnumerationLike,
-) ast.TypeDeclarationLike {
-	return ast.TypeDeclarationClass().TypeDeclaration(
+) TypeDeclarationLike {
+	return TypeDeclarationClass().TypeDeclaration(
 		declaration,
 		abstraction,
 		optionalEnumeration,
 	)
 }
 
-// Ast/TypeSection
+func TypeSectionClass() TypeSectionClassLike {
+	return ast.TypeSectionClass()
+}
 
 func TypeSection(
 	typeDeclarations col.Sequential[ast.TypeDeclarationLike],
-) ast.TypeSectionLike {
-	return ast.TypeSectionClass().TypeSection(
+) TypeSectionLike {
+	return TypeSectionClass().TypeSection(
 		typeDeclarations,
 	)
 }
 
-// Ast/Value
+func ValueClass() ValueClassLike {
+	return ast.ValueClass()
+}
 
 func Value(
 	name string,
 	abstraction ast.AbstractionLike,
-) ast.ValueLike {
-	return ast.ValueClass().Value(
+) ValueLike {
+	return ValueClass().Value(
 		name,
 		abstraction,
 	)
 }
 
-// Ast/Wrapper
+func WrapperClass() WrapperClassLike {
+	return ast.WrapperClass()
+}
 
 func Wrapper(
 	any_ any,
-) ast.WrapperLike {
-	return ast.WrapperClass().Wrapper(
+) WrapperLike {
+	return WrapperClass().Wrapper(
 		any_,
 	)
 }
 
-// Grammar/Formatter
+// Grammar
 
-func Formatter() gra.FormatterLike {
-	return gra.FormatterClass().Formatter()
+func FormatterClass() FormatterClassLike {
+	return gra.FormatterClass()
 }
 
-// Grammar/Parser
-
-func Parser() gra.ParserLike {
-	return gra.ParserClass().Parser()
+func Formatter() FormatterLike {
+	return FormatterClass().Formatter()
 }
 
-// Grammar/Processor
-
-func Processor() gra.ProcessorLike {
-	return gra.ProcessorClass().Processor()
+func ParserClass() ParserClassLike {
+	return gra.ParserClass()
 }
 
-// Grammar/Scanner
+func Parser() ParserLike {
+	return ParserClass().Parser()
+}
+
+func ProcessorClass() ProcessorClassLike {
+	return gra.ProcessorClass()
+}
+
+func Processor() ProcessorLike {
+	return ProcessorClass().Processor()
+}
+
+func ScannerClass() ScannerClassLike {
+	return gra.ScannerClass()
+}
 
 func Scanner(
 	source string,
 	tokens col.QueueLike[gra.TokenLike],
-) gra.ScannerLike {
-	return gra.ScannerClass().Scanner(
+) ScannerLike {
+	return ScannerClass().Scanner(
 		source,
 		tokens,
 	)
 }
 
-// Grammar/Token
+func TokenClass() TokenClassLike {
+	return gra.TokenClass()
+}
 
 func Token(
 	line uint,
 	position uint,
 	type_ gra.TokenType,
 	value string,
-) gra.TokenLike {
-	return gra.TokenClass().Token(
+) TokenLike {
+	return TokenClass().Token(
 		line,
 		position,
 		type_,
@@ -865,18 +989,22 @@ func Token(
 	)
 }
 
-// Grammar/Validator
-
-func Validator() gra.ValidatorLike {
-	return gra.ValidatorClass().Validator()
+func ValidatorClass() ValidatorClassLike {
+	return gra.ValidatorClass()
 }
 
-// Grammar/Visitor
+func Validator() ValidatorLike {
+	return ValidatorClass().Validator()
+}
+
+func VisitorClass() VisitorClassLike {
+	return gra.VisitorClass()
+}
 
 func Visitor(
 	processor gra.Methodical,
-) gra.VisitorLike {
-	return gra.VisitorClass().Visitor(
+) VisitorLike {
+	return VisitorClass().Visitor(
 		processor,
 	)
 }
