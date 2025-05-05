@@ -42,7 +42,7 @@ package grammar
 
 import (
 	ast "github.com/craterdog/go-class-model/v7/ast"
-	col "github.com/craterdog/go-collection-framework/v7/collection"
+	col "github.com/craterdog/go-collection-framework/v7"
 )
 
 // TYPE DECLARATIONS
