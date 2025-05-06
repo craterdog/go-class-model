@@ -3,8 +3,8 @@ module github.com/craterdog/go-class-model/v7
 go 1.24
 
 require (
-	github.com/craterdog/go-collection-framework/v7 v7.2.0
-	github.com/craterdog/go-missing-utilities/v7 v7.2.0
+	github.com/craterdog/go-collection-framework/v7 v7.3.0
+	github.com/craterdog/go-missing-utilities/v7 v7.3.0
 	github.com/stretchr/testify v1.10.0
 )
 
