@@ -893,6 +893,18 @@ func (v *formatter_) PreprocessSetterMethod(
 	v.appendNewline()
 }
 
+func (v *formatter_) ProcessSetterMethodSlot(
+	slot uint,
+) {
+	switch slot {
+	case 2:
+		v.depth_++
+	case 3:
+		v.depth_--
+		v.appendNewline()
+	}
+}
+
 func (v *formatter_) PreprocessTypeDeclaration(
 	typeDeclaration ast.TypeDeclarationLike,
 	index uint,
