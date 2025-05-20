@@ -96,22 +96,6 @@ func (v *formatter_) ProcessSpace(
 	v.appendString(space)
 }
 
-func (v *formatter_) PreprocessAbstraction(
-	abstraction ast.AbstractionLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PostprocessAbstraction(
-	abstraction ast.AbstractionLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
 func (v *formatter_) ProcessAdditionalArgumentSlot(
 	slot uint,
 ) {
@@ -136,62 +120,6 @@ func (v *formatter_) PreprocessAdditionalValue(
 	count uint,
 ) {
 	v.appendNewline()
-}
-
-func (v *formatter_) PostprocessAdditionalValue(
-	additionalValue ast.AdditionalValueLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PreprocessArgument(
-	argument ast.ArgumentLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PostprocessArgument(
-	argument ast.ArgumentLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PreprocessArguments(
-	arguments ast.ArgumentsLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PostprocessArguments(
-	arguments ast.ArgumentsLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PreprocessArray(
-	array ast.ArrayLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PostprocessArray(
-	array ast.ArrayLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
 }
 
 func (v *formatter_) PreprocessAspectDeclaration(
@@ -272,22 +200,6 @@ func (v *formatter_) PostprocessAspectSubsection(
 	v.appendNewline()
 }
 
-func (v *formatter_) PreprocessAttributeMethod(
-	attributeMethod ast.AttributeMethodLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PostprocessAttributeMethod(
-	attributeMethod ast.AttributeMethodLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
 func (v *formatter_) PreprocessAttributeSubsection(
 	attributeSubsection ast.AttributeSubsectionLike,
 	index uint,
@@ -304,22 +216,6 @@ func (v *formatter_) PostprocessAttributeSubsection(
 ) {
 	v.depth_--
 	v.appendNewline()
-}
-
-func (v *formatter_) PreprocessChannel(
-	channel ast.ChannelLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PostprocessChannel(
-	channel ast.ChannelLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
 }
 
 func (v *formatter_) PreprocessClassDeclaration(
@@ -389,22 +285,6 @@ func (v *formatter_) PostprocessConstantSubsection(
 ) {
 	v.depth_--
 	v.appendNewline()
-}
-
-func (v *formatter_) PreprocessConstraint(
-	constraint ast.ConstraintLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PostprocessConstraint(
-	constraint ast.ConstraintLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
 }
 
 func (v *formatter_) ProcessConstraintSlot(
@@ -653,92 +533,12 @@ func (v *formatter_) ProcessInterfaceDeclarationsSlot(
 	}
 }
 
-func (v *formatter_) PostprocessInterfaceDeclarations(
-	interfaceDeclarations ast.InterfaceDeclarationsLike,
-	index uint,
-	count uint,
-) {
-	//v.appendNewline()
-}
-
-func (v *formatter_) PreprocessLegalNotice(
-	legalNotice ast.LegalNoticeLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PostprocessLegalNotice(
-	legalNotice ast.LegalNoticeLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PreprocessMap(
-	map_ ast.MapLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PostprocessMap(
-	map_ ast.MapLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
 func (v *formatter_) PreprocessMethod(
 	method ast.MethodLike,
 	index uint,
 	count uint,
 ) {
 	v.appendNewline()
-}
-
-func (v *formatter_) PreprocessMultivalue(
-	multivalue ast.MultivalueLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PostprocessMultivalue(
-	multivalue ast.MultivalueLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PreprocessNone(
-	none ast.NoneLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PostprocessNone(
-	none ast.NoneLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PreprocessPackageDeclaration(
-	packageDeclaration ast.PackageDeclarationLike,
-	index uint,
-	count uint,
-) {
-	//v.appendNewline()
 }
 
 func (v *formatter_) ProcessPackageDeclarationSlot(
@@ -758,14 +558,6 @@ func (v *formatter_) PostprocessPackageDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) PreprocessPackageHeader(
-	packageHeader ast.PackageHeaderLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
 func (v *formatter_) ProcessPackageHeaderSlot(
 	slot uint,
 ) {
@@ -773,14 +565,6 @@ func (v *formatter_) ProcessPackageHeaderSlot(
 	case 2:
 		v.appendString(" ")
 	}
-}
-
-func (v *formatter_) PostprocessPackageHeader(
-	packageHeader ast.PackageHeaderLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
 }
 
 func (v *formatter_) PreprocessPackageImports(
@@ -849,14 +633,6 @@ func (v *formatter_) ProcessPrimitiveDeclarationsSlot(
 	default:
 		v.appendNewline()
 	}
-}
-
-func (v *formatter_) PostprocessPrimitiveDeclarations(
-	primitiveDeclarations ast.PrimitiveDeclarationsLike,
-	index uint,
-	count uint,
-) {
-	//v.appendNewline()
 }
 
 func (v *formatter_) PreprocessPrincipalSubsection(
@@ -928,14 +704,6 @@ func (v *formatter_) ProcessTypeDeclarationSlot(
 	}
 }
 
-func (v *formatter_) PostprocessTypeDeclaration(
-	typeDeclaration ast.TypeDeclarationLike,
-	index uint,
-	count uint,
-) {
-	//v.appendNewline()
-}
-
 func (v *formatter_) ProcessTypeSectionSlot(
 	slot uint,
 ) {
@@ -945,14 +713,6 @@ func (v *formatter_) ProcessTypeSectionSlot(
 	}
 }
 
-func (v *formatter_) PreprocessValue(
-	value ast.ValueLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
 func (v *formatter_) ProcessValueSlot(
 	slot uint,
 ) {
@@ -960,30 +720,6 @@ func (v *formatter_) ProcessValueSlot(
 	default:
 		v.appendString(" ")
 	}
-}
-
-func (v *formatter_) PostprocessValue(
-	value ast.ValueLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PreprocessWrapper(
-	wrapper ast.WrapperLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
-}
-
-func (v *formatter_) PostprocessWrapper(
-	wrapper ast.WrapperLike,
-	index uint,
-	count uint,
-) {
-	// TBD - Add formatting of the rule.
 }
 
 const _indentation = "\t"
