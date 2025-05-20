@@ -882,7 +882,11 @@ func (v *formatter_) PreprocessResult(
 	index uint,
 	count uint,
 ) {
-	v.appendString(" ")
+	switch result.GetAny().(type) {
+	case ast.NoneLike:
+	default:
+		v.appendString(" ")
+	}
 }
 
 func (v *formatter_) PreprocessSetterMethod(
