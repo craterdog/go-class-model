@@ -34,13 +34,18 @@ func AdditionalConstraintClass() AdditionalConstraintClassLike {
 // Constructor Methods
 
 func (c *additionalConstraintClass_) AdditionalConstraint(
+	delimiter string,
 	constraint ConstraintLike,
 ) AdditionalConstraintLike {
+	if uti.IsUndefined(delimiter) {
+		panic("The \"delimiter\" attribute is required by this class.")
+	}
 	if uti.IsUndefined(constraint) {
 		panic("The \"constraint\" attribute is required by this class.")
 	}
 	var instance = &additionalConstraint_{
 		// Initialize the instance attributes.
+		delimiter_:  delimiter,
 		constraint_: constraint,
 	}
 	return instance
@@ -56,6 +61,10 @@ func (v *additionalConstraint_) GetClass() AdditionalConstraintClassLike {
 
 // Attribute Methods
 
+func (v *additionalConstraint_) GetDelimiter() string {
+	return v.delimiter_
+}
+
 func (v *additionalConstraint_) GetConstraint() ConstraintLike {
 	return v.constraint_
 }
@@ -66,6 +75,7 @@ func (v *additionalConstraint_) GetConstraint() ConstraintLike {
 
 type additionalConstraint_ struct {
 	// Declare the instance attributes.
+	delimiter_  string
 	constraint_ ConstraintLike
 }
 

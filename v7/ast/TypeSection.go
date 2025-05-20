@@ -35,13 +35,18 @@ func TypeSectionClass() TypeSectionClassLike {
 // Constructor Methods
 
 func (c *typeSectionClass_) TypeSection(
+	delimiter string,
 	typeDeclarations col.Sequential[TypeDeclarationLike],
 ) TypeSectionLike {
+	if uti.IsUndefined(delimiter) {
+		panic("The \"delimiter\" attribute is required by this class.")
+	}
 	if uti.IsUndefined(typeDeclarations) {
 		panic("The \"typeDeclarations\" attribute is required by this class.")
 	}
 	var instance = &typeSection_{
 		// Initialize the instance attributes.
+		delimiter_:        delimiter,
 		typeDeclarations_: typeDeclarations,
 	}
 	return instance
@@ -57,6 +62,10 @@ func (v *typeSection_) GetClass() TypeSectionClassLike {
 
 // Attribute Methods
 
+func (v *typeSection_) GetDelimiter() string {
+	return v.delimiter_
+}
+
 func (v *typeSection_) GetTypeDeclarations() col.Sequential[TypeDeclarationLike] {
 	return v.typeDeclarations_
 }
@@ -67,6 +76,7 @@ func (v *typeSection_) GetTypeDeclarations() col.Sequential[TypeDeclarationLike]
 
 type typeSection_ struct {
 	// Declare the instance attributes.
+	delimiter_        string
 	typeDeclarations_ col.Sequential[TypeDeclarationLike]
 }
 

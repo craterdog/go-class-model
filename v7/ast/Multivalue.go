@@ -20,7 +20,6 @@
 package ast
 
 import (
-	col "github.com/craterdog/go-collection-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -35,14 +34,24 @@ func MultivalueClass() MultivalueClassLike {
 // Constructor Methods
 
 func (c *multivalueClass_) Multivalue(
-	parameters col.Sequential[ParameterLike],
+	delimiter1 string,
+	parameterList ParameterListLike,
+	delimiter2 string,
 ) MultivalueLike {
-	if uti.IsUndefined(parameters) {
-		panic("The \"parameters\" attribute is required by this class.")
+	if uti.IsUndefined(delimiter1) {
+		panic("The \"delimiter1\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(parameterList) {
+		panic("The \"parameterList\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter2) {
+		panic("The \"delimiter2\" attribute is required by this class.")
 	}
 	var instance = &multivalue_{
 		// Initialize the instance attributes.
-		parameters_: parameters,
+		delimiter1_:    delimiter1,
+		parameterList_: parameterList,
+		delimiter2_:    delimiter2,
 	}
 	return instance
 }
@@ -57,8 +66,16 @@ func (v *multivalue_) GetClass() MultivalueClassLike {
 
 // Attribute Methods
 
-func (v *multivalue_) GetParameters() col.Sequential[ParameterLike] {
-	return v.parameters_
+func (v *multivalue_) GetDelimiter1() string {
+	return v.delimiter1_
+}
+
+func (v *multivalue_) GetParameterList() ParameterListLike {
+	return v.parameterList_
+}
+
+func (v *multivalue_) GetDelimiter2() string {
+	return v.delimiter2_
 }
 
 // PROTECTED INTERFACE
@@ -67,7 +84,9 @@ func (v *multivalue_) GetParameters() col.Sequential[ParameterLike] {
 
 type multivalue_ struct {
 	// Declare the instance attributes.
-	parameters_ col.Sequential[ParameterLike]
+	delimiter1_    string
+	parameterList_ ParameterListLike
+	delimiter2_    string
 }
 
 // Class Structure

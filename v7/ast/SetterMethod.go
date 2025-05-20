@@ -35,18 +35,28 @@ func SetterMethodClass() SetterMethodClassLike {
 
 func (c *setterMethodClass_) SetterMethod(
 	name string,
+	delimiter1 string,
 	parameter ParameterLike,
+	delimiter2 string,
 ) SetterMethodLike {
 	if uti.IsUndefined(name) {
 		panic("The \"name\" attribute is required by this class.")
 	}
+	if uti.IsUndefined(delimiter1) {
+		panic("The \"delimiter1\" attribute is required by this class.")
+	}
 	if uti.IsUndefined(parameter) {
 		panic("The \"parameter\" attribute is required by this class.")
 	}
+	if uti.IsUndefined(delimiter2) {
+		panic("The \"delimiter2\" attribute is required by this class.")
+	}
 	var instance = &setterMethod_{
 		// Initialize the instance attributes.
-		name_:      name,
-		parameter_: parameter,
+		name_:       name,
+		delimiter1_: delimiter1,
+		parameter_:  parameter,
+		delimiter2_: delimiter2,
 	}
 	return instance
 }
@@ -65,8 +75,16 @@ func (v *setterMethod_) GetName() string {
 	return v.name_
 }
 
+func (v *setterMethod_) GetDelimiter1() string {
+	return v.delimiter1_
+}
+
 func (v *setterMethod_) GetParameter() ParameterLike {
 	return v.parameter_
+}
+
+func (v *setterMethod_) GetDelimiter2() string {
+	return v.delimiter2_
 }
 
 // PROTECTED INTERFACE
@@ -75,8 +93,10 @@ func (v *setterMethod_) GetParameter() ParameterLike {
 
 type setterMethod_ struct {
 	// Declare the instance attributes.
-	name_      string
-	parameter_ ParameterLike
+	name_       string
+	delimiter1_ string
+	parameter_  ParameterLike
+	delimiter2_ string
 }
 
 // Class Structure

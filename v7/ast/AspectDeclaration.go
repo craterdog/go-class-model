@@ -36,18 +36,33 @@ func AspectDeclarationClass() AspectDeclarationClassLike {
 
 func (c *aspectDeclarationClass_) AspectDeclaration(
 	declaration DeclarationLike,
+	delimiter1 string,
+	delimiter2 string,
 	aspectMethods col.Sequential[AspectMethodLike],
+	delimiter3 string,
 ) AspectDeclarationLike {
 	if uti.IsUndefined(declaration) {
 		panic("The \"declaration\" attribute is required by this class.")
 	}
+	if uti.IsUndefined(delimiter1) {
+		panic("The \"delimiter1\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter2) {
+		panic("The \"delimiter2\" attribute is required by this class.")
+	}
 	if uti.IsUndefined(aspectMethods) {
 		panic("The \"aspectMethods\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter3) {
+		panic("The \"delimiter3\" attribute is required by this class.")
 	}
 	var instance = &aspectDeclaration_{
 		// Initialize the instance attributes.
 		declaration_:   declaration,
+		delimiter1_:    delimiter1,
+		delimiter2_:    delimiter2,
 		aspectMethods_: aspectMethods,
+		delimiter3_:    delimiter3,
 	}
 	return instance
 }
@@ -66,8 +81,20 @@ func (v *aspectDeclaration_) GetDeclaration() DeclarationLike {
 	return v.declaration_
 }
 
+func (v *aspectDeclaration_) GetDelimiter1() string {
+	return v.delimiter1_
+}
+
+func (v *aspectDeclaration_) GetDelimiter2() string {
+	return v.delimiter2_
+}
+
 func (v *aspectDeclaration_) GetAspectMethods() col.Sequential[AspectMethodLike] {
 	return v.aspectMethods_
+}
+
+func (v *aspectDeclaration_) GetDelimiter3() string {
+	return v.delimiter3_
 }
 
 // PROTECTED INTERFACE
@@ -77,7 +104,10 @@ func (v *aspectDeclaration_) GetAspectMethods() col.Sequential[AspectMethodLike]
 type aspectDeclaration_ struct {
 	// Declare the instance attributes.
 	declaration_   DeclarationLike
+	delimiter1_    string
+	delimiter2_    string
 	aspectMethods_ col.Sequential[AspectMethodLike]
+	delimiter3_    string
 }
 
 // Class Structure

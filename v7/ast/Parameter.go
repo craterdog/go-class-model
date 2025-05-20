@@ -36,6 +36,7 @@ func ParameterClass() ParameterClassLike {
 func (c *parameterClass_) Parameter(
 	name string,
 	abstraction AbstractionLike,
+	delimiter string,
 ) ParameterLike {
 	if uti.IsUndefined(name) {
 		panic("The \"name\" attribute is required by this class.")
@@ -43,10 +44,14 @@ func (c *parameterClass_) Parameter(
 	if uti.IsUndefined(abstraction) {
 		panic("The \"abstraction\" attribute is required by this class.")
 	}
+	if uti.IsUndefined(delimiter) {
+		panic("The \"delimiter\" attribute is required by this class.")
+	}
 	var instance = &parameter_{
 		// Initialize the instance attributes.
 		name_:        name,
 		abstraction_: abstraction,
+		delimiter_:   delimiter,
 	}
 	return instance
 }
@@ -69,6 +74,10 @@ func (v *parameter_) GetAbstraction() AbstractionLike {
 	return v.abstraction_
 }
 
+func (v *parameter_) GetDelimiter() string {
+	return v.delimiter_
+}
+
 // PROTECTED INTERFACE
 
 // Instance Structure
@@ -77,6 +86,7 @@ type parameter_ struct {
 	// Declare the instance attributes.
 	name_        string
 	abstraction_ AbstractionLike
+	delimiter_   string
 }
 
 // Class Structure

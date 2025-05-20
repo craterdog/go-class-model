@@ -20,7 +20,6 @@
 package ast
 
 import (
-	col "github.com/craterdog/go-collection-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -35,14 +34,26 @@ func PackageImportsClass() PackageImportsClassLike {
 // Constructor Methods
 
 func (c *packageImportsClass_) PackageImports(
-	importedPackages col.Sequential[ImportedPackageLike],
+	delimiter1 string,
+	delimiter2 string,
+	optionalImportList ImportListLike,
+	delimiter3 string,
 ) PackageImportsLike {
-	if uti.IsUndefined(importedPackages) {
-		panic("The \"importedPackages\" attribute is required by this class.")
+	if uti.IsUndefined(delimiter1) {
+		panic("The \"delimiter1\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter2) {
+		panic("The \"delimiter2\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter3) {
+		panic("The \"delimiter3\" attribute is required by this class.")
 	}
 	var instance = &packageImports_{
 		// Initialize the instance attributes.
-		importedPackages_: importedPackages,
+		delimiter1_:         delimiter1,
+		delimiter2_:         delimiter2,
+		optionalImportList_: optionalImportList,
+		delimiter3_:         delimiter3,
 	}
 	return instance
 }
@@ -57,8 +68,20 @@ func (v *packageImports_) GetClass() PackageImportsClassLike {
 
 // Attribute Methods
 
-func (v *packageImports_) GetImportedPackages() col.Sequential[ImportedPackageLike] {
-	return v.importedPackages_
+func (v *packageImports_) GetDelimiter1() string {
+	return v.delimiter1_
+}
+
+func (v *packageImports_) GetDelimiter2() string {
+	return v.delimiter2_
+}
+
+func (v *packageImports_) GetOptionalImportList() ImportListLike {
+	return v.optionalImportList_
+}
+
+func (v *packageImports_) GetDelimiter3() string {
+	return v.delimiter3_
 }
 
 // PROTECTED INTERFACE
@@ -67,7 +90,10 @@ func (v *packageImports_) GetImportedPackages() col.Sequential[ImportedPackageLi
 
 type packageImports_ struct {
 	// Declare the instance attributes.
-	importedPackages_ col.Sequential[ImportedPackageLike]
+	delimiter1_         string
+	delimiter2_         string
+	optionalImportList_ ImportListLike
+	delimiter3_         string
 }
 
 // Class Structure

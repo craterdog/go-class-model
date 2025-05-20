@@ -20,7 +20,6 @@
 package ast
 
 import (
-	col "github.com/craterdog/go-collection-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -36,23 +35,30 @@ func FunctionMethodClass() FunctionMethodClassLike {
 
 func (c *functionMethodClass_) FunctionMethod(
 	name string,
-	parameters col.Sequential[ParameterLike],
+	delimiter1 string,
+	optionalParameterList ParameterListLike,
+	delimiter2 string,
 	result ResultLike,
 ) FunctionMethodLike {
 	if uti.IsUndefined(name) {
 		panic("The \"name\" attribute is required by this class.")
 	}
-	if uti.IsUndefined(parameters) {
-		panic("The \"parameters\" attribute is required by this class.")
+	if uti.IsUndefined(delimiter1) {
+		panic("The \"delimiter1\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter2) {
+		panic("The \"delimiter2\" attribute is required by this class.")
 	}
 	if uti.IsUndefined(result) {
 		panic("The \"result\" attribute is required by this class.")
 	}
 	var instance = &functionMethod_{
 		// Initialize the instance attributes.
-		name_:       name,
-		parameters_: parameters,
-		result_:     result,
+		name_:                  name,
+		delimiter1_:            delimiter1,
+		optionalParameterList_: optionalParameterList,
+		delimiter2_:            delimiter2,
+		result_:                result,
 	}
 	return instance
 }
@@ -71,8 +77,16 @@ func (v *functionMethod_) GetName() string {
 	return v.name_
 }
 
-func (v *functionMethod_) GetParameters() col.Sequential[ParameterLike] {
-	return v.parameters_
+func (v *functionMethod_) GetDelimiter1() string {
+	return v.delimiter1_
+}
+
+func (v *functionMethod_) GetOptionalParameterList() ParameterListLike {
+	return v.optionalParameterList_
+}
+
+func (v *functionMethod_) GetDelimiter2() string {
+	return v.delimiter2_
 }
 
 func (v *functionMethod_) GetResult() ResultLike {
@@ -85,9 +99,11 @@ func (v *functionMethod_) GetResult() ResultLike {
 
 type functionMethod_ struct {
 	// Declare the instance attributes.
-	name_       string
-	parameters_ col.Sequential[ParameterLike]
-	result_     ResultLike
+	name_                  string
+	delimiter1_            string
+	optionalParameterList_ ParameterListLike
+	delimiter2_            string
+	result_                ResultLike
 }
 
 // Class Structure

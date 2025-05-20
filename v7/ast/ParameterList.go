@@ -20,6 +20,7 @@
 package ast
 
 import (
+	col "github.com/craterdog/go-collection-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -27,21 +28,21 @@ import (
 
 // Access Function
 
-func ChannelClass() ChannelClassLike {
-	return channelClass()
+func ParameterListClass() ParameterListClassLike {
+	return parameterListClass()
 }
 
 // Constructor Methods
 
-func (c *channelClass_) Channel(
-	delimiter string,
-) ChannelLike {
-	if uti.IsUndefined(delimiter) {
-		panic("The \"delimiter\" attribute is required by this class.")
+func (c *parameterListClass_) ParameterList(
+	parameters col.Sequential[ParameterLike],
+) ParameterListLike {
+	if uti.IsUndefined(parameters) {
+		panic("The \"parameters\" attribute is required by this class.")
 	}
-	var instance = &channel_{
+	var instance = &parameterList_{
 		// Initialize the instance attributes.
-		delimiter_: delimiter,
+		parameters_: parameters,
 	}
 	return instance
 }
@@ -50,37 +51,37 @@ func (c *channelClass_) Channel(
 
 // Principal Methods
 
-func (v *channel_) GetClass() ChannelClassLike {
-	return channelClass()
+func (v *parameterList_) GetClass() ParameterListClassLike {
+	return parameterListClass()
 }
 
 // Attribute Methods
 
-func (v *channel_) GetDelimiter() string {
-	return v.delimiter_
+func (v *parameterList_) GetParameters() col.Sequential[ParameterLike] {
+	return v.parameters_
 }
 
 // PROTECTED INTERFACE
 
 // Instance Structure
 
-type channel_ struct {
+type parameterList_ struct {
 	// Declare the instance attributes.
-	delimiter_ string
+	parameters_ col.Sequential[ParameterLike]
 }
 
 // Class Structure
 
-type channelClass_ struct {
+type parameterListClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func channelClass() *channelClass_ {
-	return channelClassReference_
+func parameterListClass() *parameterListClass_ {
+	return parameterListClassReference_
 }
 
-var channelClassReference_ = &channelClass_{
+var parameterListClassReference_ = &parameterListClass_{
 	// Initialize the class constants.
 }

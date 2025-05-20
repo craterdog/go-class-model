@@ -35,13 +35,18 @@ func PrincipalSubsectionClass() PrincipalSubsectionClassLike {
 // Constructor Methods
 
 func (c *principalSubsectionClass_) PrincipalSubsection(
+	delimiter string,
 	principalMethods col.Sequential[PrincipalMethodLike],
 ) PrincipalSubsectionLike {
+	if uti.IsUndefined(delimiter) {
+		panic("The \"delimiter\" attribute is required by this class.")
+	}
 	if uti.IsUndefined(principalMethods) {
 		panic("The \"principalMethods\" attribute is required by this class.")
 	}
 	var instance = &principalSubsection_{
 		// Initialize the instance attributes.
+		delimiter_:        delimiter,
 		principalMethods_: principalMethods,
 	}
 	return instance
@@ -57,6 +62,10 @@ func (v *principalSubsection_) GetClass() PrincipalSubsectionClassLike {
 
 // Attribute Methods
 
+func (v *principalSubsection_) GetDelimiter() string {
+	return v.delimiter_
+}
+
 func (v *principalSubsection_) GetPrincipalMethods() col.Sequential[PrincipalMethodLike] {
 	return v.principalMethods_
 }
@@ -67,6 +76,7 @@ func (v *principalSubsection_) GetPrincipalMethods() col.Sequential[PrincipalMet
 
 type principalSubsection_ struct {
 	// Declare the instance attributes.
+	delimiter_        string
 	principalMethods_ col.Sequential[PrincipalMethodLike]
 }
 

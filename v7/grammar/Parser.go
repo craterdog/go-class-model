@@ -94,8 +94,12 @@ func (v *parser_) parseAbstraction() (
 	// Attempt to parse an optional prefix token.
 	var optionalPrefix string
 	optionalPrefix, token, ok = v.parseToken(PrefixToken)
-	if ok && uti.IsDefined(tokens) {
-		tokens.AppendValue(token)
+	if ok {
+		if uti.IsDefined(tokens) {
+			tokens.AppendValue(token)
+		}
+	} else {
+		optionalPrefix = "" // Reset this to undefined.
 	}
 
 	// Attempt to parse a single name token.
@@ -143,8 +147,9 @@ func (v *parser_) parseAdditionalArgument() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "," delimiter.
-	_, token, ok = v.parseDelimiter(",")
+	// Attempt to parse a single "," literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter(",")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single AdditionalArgument rule.
@@ -180,7 +185,10 @@ func (v *parser_) parseAdditionalArgument() (
 	// Found a single AdditionalArgument rule.
 	ok = true
 	v.remove(tokens)
-	additionalArgument = ast.AdditionalArgumentClass().AdditionalArgument(argument)
+	additionalArgument = ast.AdditionalArgumentClass().AdditionalArgument(
+		delimiter,
+		argument,
+	)
 	return
 }
 
@@ -191,8 +199,9 @@ func (v *parser_) parseAdditionalConstraint() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "," delimiter.
-	_, token, ok = v.parseDelimiter(",")
+	// Attempt to parse a single "," literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter(",")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single AdditionalConstraint rule.
@@ -228,7 +237,10 @@ func (v *parser_) parseAdditionalConstraint() (
 	// Found a single AdditionalConstraint rule.
 	ok = true
 	v.remove(tokens)
-	additionalConstraint = ast.AdditionalConstraintClass().AdditionalConstraint(constraint)
+	additionalConstraint = ast.AdditionalConstraintClass().AdditionalConstraint(
+		delimiter,
+		constraint,
+	)
 	return
 }
 
@@ -302,8 +314,9 @@ func (v *parser_) parseArguments() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "[" delimiter.
-	_, token, ok = v.parseDelimiter("[")
+	// Attempt to parse a single "[" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("[")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Arguments rule.
@@ -362,8 +375,9 @@ additionalArgumentsLoop:
 		additionalArguments.AppendValue(additionalArgument)
 	}
 
-	// Attempt to parse a single "]" delimiter.
-	_, token, ok = v.parseDelimiter("]")
+	// Attempt to parse a single "]" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter("]")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Arguments rule.
@@ -383,8 +397,10 @@ additionalArgumentsLoop:
 	ok = true
 	v.remove(tokens)
 	arguments = ast.ArgumentsClass().Arguments(
+		delimiter1,
 		argument,
 		additionalArguments,
+		delimiter2,
 	)
 	return
 }
@@ -396,8 +412,9 @@ func (v *parser_) parseArray() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "[" delimiter.
-	_, token, ok = v.parseDelimiter("[")
+	// Attempt to parse a single "[" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("[")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Array rule.
@@ -413,8 +430,9 @@ func (v *parser_) parseArray() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "]" delimiter.
-	_, token, ok = v.parseDelimiter("]")
+	// Attempt to parse a single "]" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter("]")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Array rule.
@@ -433,7 +451,10 @@ func (v *parser_) parseArray() (
 	// Found a single Array rule.
 	ok = true
 	v.remove(tokens)
-	array = ast.ArrayClass().Array()
+	array = ast.ArrayClass().Array(
+		delimiter1,
+		delimiter2,
+	)
 	return
 }
 
@@ -461,8 +482,9 @@ func (v *parser_) parseAspectDeclaration() (
 		panic(message)
 	}
 
-	// Attempt to parse a single "interface" delimiter.
-	_, token, ok = v.parseDelimiter("interface")
+	// Attempt to parse a single "interface" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("interface")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single AspectDeclaration rule.
@@ -478,8 +500,9 @@ func (v *parser_) parseAspectDeclaration() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "{" delimiter.
-	_, token, ok = v.parseDelimiter("{")
+	// Attempt to parse a single "{" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter("{")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single AspectDeclaration rule.
@@ -521,8 +544,9 @@ aspectMethodsLoop:
 		aspectMethods.AppendValue(aspectMethod)
 	}
 
-	// Attempt to parse a single "}" delimiter.
-	_, token, ok = v.parseDelimiter("}")
+	// Attempt to parse a single "}" literal.
+	var delimiter3 string
+	delimiter3, token, ok = v.parseDelimiter("}")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single AspectDeclaration rule.
@@ -543,7 +567,10 @@ aspectMethodsLoop:
 	v.remove(tokens)
 	aspectDeclaration = ast.AspectDeclarationClass().AspectDeclaration(
 		declaration,
+		delimiter1,
+		delimiter2,
 		aspectMethods,
+		delimiter3,
 	)
 	return
 }
@@ -617,8 +644,9 @@ func (v *parser_) parseAspectSection() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "// ASPECT DECLARATIONS" delimiter.
-	_, token, ok = v.parseDelimiter("// ASPECT DECLARATIONS")
+	// Attempt to parse a single "// ASPECT DECLARATIONS" literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter("// ASPECT DECLARATIONS")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single AspectSection rule.
@@ -663,7 +691,10 @@ aspectDeclarationsLoop:
 	// Found a single AspectSection rule.
 	ok = true
 	v.remove(tokens)
-	aspectSection = ast.AspectSectionClass().AspectSection(aspectDeclarations)
+	aspectSection = ast.AspectSectionClass().AspectSection(
+		delimiter,
+		aspectDeclarations,
+	)
 	return
 }
 
@@ -674,8 +705,9 @@ func (v *parser_) parseAspectSubsection() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "// Aspect Interfaces" delimiter.
-	_, token, ok = v.parseDelimiter("// Aspect Interfaces")
+	// Attempt to parse a single "// Aspect Interfaces" literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter("// Aspect Interfaces")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single AspectSubsection rule.
@@ -720,7 +752,10 @@ aspectInterfacesLoop:
 	// Found a single AspectSubsection rule.
 	ok = true
 	v.remove(tokens)
-	aspectSubsection = ast.AspectSubsectionClass().AspectSubsection(aspectInterfaces)
+	aspectSubsection = ast.AspectSubsectionClass().AspectSubsection(
+		delimiter,
+		aspectInterfaces,
+	)
 	return
 }
 
@@ -758,8 +793,9 @@ func (v *parser_) parseAttributeSubsection() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "// Attribute Methods" delimiter.
-	_, token, ok = v.parseDelimiter("// Attribute Methods")
+	// Attempt to parse a single "// Attribute Methods" literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter("// Attribute Methods")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single AttributeSubsection rule.
@@ -804,7 +840,10 @@ attributeMethodsLoop:
 	// Found a single AttributeSubsection rule.
 	ok = true
 	v.remove(tokens)
-	attributeSubsection = ast.AttributeSubsectionClass().AttributeSubsection(attributeMethods)
+	attributeSubsection = ast.AttributeSubsectionClass().AttributeSubsection(
+		delimiter,
+		attributeMethods,
+	)
 	return
 }
 
@@ -815,8 +854,9 @@ func (v *parser_) parseChannel() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "chan" delimiter.
-	_, token, ok = v.parseDelimiter("chan")
+	// Attempt to parse a single "chan" literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter("chan")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Channel rule.
@@ -835,7 +875,7 @@ func (v *parser_) parseChannel() (
 	// Found a single Channel rule.
 	ok = true
 	v.remove(tokens)
-	channel = ast.ChannelClass().Channel()
+	channel = ast.ChannelClass().Channel(delimiter)
 	return
 }
 
@@ -863,8 +903,9 @@ func (v *parser_) parseClassDeclaration() (
 		panic(message)
 	}
 
-	// Attempt to parse a single "interface" delimiter.
-	_, token, ok = v.parseDelimiter("interface")
+	// Attempt to parse a single "interface" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("interface")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single ClassDeclaration rule.
@@ -880,8 +921,9 @@ func (v *parser_) parseClassDeclaration() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "{" delimiter.
-	_, token, ok = v.parseDelimiter("{")
+	// Attempt to parse a single "{" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter("{")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single ClassDeclaration rule.
@@ -914,8 +956,9 @@ func (v *parser_) parseClassDeclaration() (
 		panic(message)
 	}
 
-	// Attempt to parse a single "}" delimiter.
-	_, token, ok = v.parseDelimiter("}")
+	// Attempt to parse a single "}" literal.
+	var delimiter3 string
+	delimiter3, token, ok = v.parseDelimiter("}")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single ClassDeclaration rule.
@@ -936,7 +979,10 @@ func (v *parser_) parseClassDeclaration() (
 	v.remove(tokens)
 	classDeclaration = ast.ClassDeclarationClass().ClassDeclaration(
 		declaration,
+		delimiter1,
+		delimiter2,
 		classMethods,
+		delimiter3,
 	)
 	return
 }
@@ -999,8 +1045,9 @@ func (v *parser_) parseClassSection() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "// CLASS DECLARATIONS" delimiter.
-	_, token, ok = v.parseDelimiter("// CLASS DECLARATIONS")
+	// Attempt to parse a single "// CLASS DECLARATIONS" literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter("// CLASS DECLARATIONS")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single ClassSection rule.
@@ -1045,7 +1092,10 @@ classDeclarationsLoop:
 	// Found a single ClassSection rule.
 	ok = true
 	v.remove(tokens)
-	classSection = ast.ClassSectionClass().ClassSection(classDeclarations)
+	classSection = ast.ClassSectionClass().ClassSection(
+		delimiter,
+		classDeclarations,
+	)
 	return
 }
 
@@ -1074,8 +1124,9 @@ func (v *parser_) parseConstantMethod() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "(" delimiter.
-	_, token, ok = v.parseDelimiter("(")
+	// Attempt to parse a single "(" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("(")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single ConstantMethod rule.
@@ -1091,8 +1142,9 @@ func (v *parser_) parseConstantMethod() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single ")" delimiter.
-	_, token, ok = v.parseDelimiter(")")
+	// Attempt to parse a single ")" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter(")")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single ConstantMethod rule.
@@ -1130,6 +1182,8 @@ func (v *parser_) parseConstantMethod() (
 	v.remove(tokens)
 	constantMethod = ast.ConstantMethodClass().ConstantMethod(
 		name,
+		delimiter1,
+		delimiter2,
 		abstraction,
 	)
 	return
@@ -1142,8 +1196,9 @@ func (v *parser_) parseConstantSubsection() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "// Constant Methods" delimiter.
-	_, token, ok = v.parseDelimiter("// Constant Methods")
+	// Attempt to parse a single "// Constant Methods" literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter("// Constant Methods")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single ConstantSubsection rule.
@@ -1188,7 +1243,10 @@ constantMethodsLoop:
 	// Found a single ConstantSubsection rule.
 	ok = true
 	v.remove(tokens)
-	constantSubsection = ast.ConstantSubsectionClass().ConstantSubsection(constantMethods)
+	constantSubsection = ast.ConstantSubsectionClass().ConstantSubsection(
+		delimiter,
+		constantMethods,
+	)
 	return
 }
 
@@ -1251,8 +1309,9 @@ func (v *parser_) parseConstraints() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "[" delimiter.
-	_, token, ok = v.parseDelimiter("[")
+	// Attempt to parse a single "[" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("[")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Constraints rule.
@@ -1311,8 +1370,9 @@ additionalConstraintsLoop:
 		additionalConstraints.AppendValue(additionalConstraint)
 	}
 
-	// Attempt to parse a single "]" delimiter.
-	_, token, ok = v.parseDelimiter("]")
+	// Attempt to parse a single "]" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter("]")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Constraints rule.
@@ -1332,8 +1392,10 @@ additionalConstraintsLoop:
 	ok = true
 	v.remove(tokens)
 	constraints = ast.ConstraintsClass().Constraints(
+		delimiter1,
 		constraint,
 		additionalConstraints,
+		delimiter2,
 	)
 	return
 }
@@ -1363,8 +1425,9 @@ func (v *parser_) parseConstructorMethod() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "(" delimiter.
-	_, token, ok = v.parseDelimiter("(")
+	// Attempt to parse a single "(" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("(")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single ConstructorMethod rule.
@@ -1380,34 +1443,17 @@ func (v *parser_) parseConstructorMethod() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse multiple Parameter rules.
-	var parameters = col.List[ast.ParameterLike]()
-parametersLoop:
-	for count := 0; count < mat.MaxInt; count++ {
-		var parameter ast.ParameterLike
-		parameter, token, ok = v.parseParameter()
-		if !ok {
-			switch {
-			case count >= 0:
-				break parametersLoop
-			case uti.IsDefined(tokens):
-				// This is not multiple Parameter rules.
-				v.putBack(tokens)
-				return
-			default:
-				// Found a syntax error.
-				var message = v.formatError("$ConstructorMethod", token)
-				message += "0 or more Parameter rules are required."
-				panic(message)
-			}
-		}
+	// Attempt to parse an optional ParameterList rule.
+	var optionalParameterList ast.ParameterListLike
+	optionalParameterList, _, ok = v.parseParameterList()
+	if ok {
 		// No additional put backs allowed at this point.
 		tokens = nil
-		parameters.AppendValue(parameter)
 	}
 
-	// Attempt to parse a single ")" delimiter.
-	_, token, ok = v.parseDelimiter(")")
+	// Attempt to parse a single ")" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter(")")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single ConstructorMethod rule.
@@ -1445,7 +1491,9 @@ parametersLoop:
 	v.remove(tokens)
 	constructorMethod = ast.ConstructorMethodClass().ConstructorMethod(
 		name,
-		parameters,
+		delimiter1,
+		optionalParameterList,
+		delimiter2,
 		abstraction,
 	)
 	return
@@ -1458,8 +1506,9 @@ func (v *parser_) parseConstructorSubsection() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "// Constructor Methods" delimiter.
-	_, token, ok = v.parseDelimiter("// Constructor Methods")
+	// Attempt to parse a single "// Constructor Methods" literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter("// Constructor Methods")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single ConstructorSubsection rule.
@@ -1504,7 +1553,10 @@ constructorMethodsLoop:
 	// Found a single ConstructorSubsection rule.
 	ok = true
 	v.remove(tokens)
-	constructorSubsection = ast.ConstructorSubsectionClass().ConstructorSubsection(constructorMethods)
+	constructorSubsection = ast.ConstructorSubsectionClass().ConstructorSubsection(
+		delimiter,
+		constructorMethods,
+	)
 	return
 }
 
@@ -1533,8 +1585,9 @@ func (v *parser_) parseDeclaration() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "type" delimiter.
-	_, token, ok = v.parseDelimiter("type")
+	// Attempt to parse a single "type" literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter("type")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Declaration rule.
@@ -1581,6 +1634,7 @@ func (v *parser_) parseDeclaration() (
 	v.remove(tokens)
 	declaration = ast.DeclarationClass().Declaration(
 		comment,
+		delimiter,
 		name,
 		optionalConstraints,
 	)
@@ -1594,8 +1648,9 @@ func (v *parser_) parseEnumeration() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "const" delimiter.
-	_, token, ok = v.parseDelimiter("const")
+	// Attempt to parse a single "const" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("const")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Enumeration rule.
@@ -1611,8 +1666,9 @@ func (v *parser_) parseEnumeration() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "(" delimiter.
-	_, token, ok = v.parseDelimiter("(")
+	// Attempt to parse a single "(" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter("(")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Enumeration rule.
@@ -1671,8 +1727,9 @@ additionalValuesLoop:
 		additionalValues.AppendValue(additionalValue)
 	}
 
-	// Attempt to parse a single ")" delimiter.
-	_, token, ok = v.parseDelimiter(")")
+	// Attempt to parse a single ")" literal.
+	var delimiter3 string
+	delimiter3, token, ok = v.parseDelimiter(")")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Enumeration rule.
@@ -1692,8 +1749,11 @@ additionalValuesLoop:
 	ok = true
 	v.remove(tokens)
 	enumeration = ast.EnumerationClass().Enumeration(
+		delimiter1,
+		delimiter2,
 		value,
 		additionalValues,
+		delimiter3,
 	)
 	return
 }
@@ -1723,8 +1783,9 @@ func (v *parser_) parseFunctionMethod() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "(" delimiter.
-	_, token, ok = v.parseDelimiter("(")
+	// Attempt to parse a single "(" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("(")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single FunctionMethod rule.
@@ -1740,34 +1801,17 @@ func (v *parser_) parseFunctionMethod() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse multiple Parameter rules.
-	var parameters = col.List[ast.ParameterLike]()
-parametersLoop:
-	for count := 0; count < mat.MaxInt; count++ {
-		var parameter ast.ParameterLike
-		parameter, token, ok = v.parseParameter()
-		if !ok {
-			switch {
-			case count >= 0:
-				break parametersLoop
-			case uti.IsDefined(tokens):
-				// This is not multiple Parameter rules.
-				v.putBack(tokens)
-				return
-			default:
-				// Found a syntax error.
-				var message = v.formatError("$FunctionMethod", token)
-				message += "0 or more Parameter rules are required."
-				panic(message)
-			}
-		}
+	// Attempt to parse an optional ParameterList rule.
+	var optionalParameterList ast.ParameterListLike
+	optionalParameterList, _, ok = v.parseParameterList()
+	if ok {
 		// No additional put backs allowed at this point.
 		tokens = nil
-		parameters.AppendValue(parameter)
 	}
 
-	// Attempt to parse a single ")" delimiter.
-	_, token, ok = v.parseDelimiter(")")
+	// Attempt to parse a single ")" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter(")")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single FunctionMethod rule.
@@ -1805,7 +1849,9 @@ parametersLoop:
 	v.remove(tokens)
 	functionMethod = ast.FunctionMethodClass().FunctionMethod(
 		name,
-		parameters,
+		delimiter1,
+		optionalParameterList,
+		delimiter2,
 		result,
 	)
 	return
@@ -1818,8 +1864,9 @@ func (v *parser_) parseFunctionSubsection() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "// Function Methods" delimiter.
-	_, token, ok = v.parseDelimiter("// Function Methods")
+	// Attempt to parse a single "// Function Methods" literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter("// Function Methods")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single FunctionSubsection rule.
@@ -1864,7 +1911,10 @@ functionMethodsLoop:
 	// Found a single FunctionSubsection rule.
 	ok = true
 	v.remove(tokens)
-	functionSubsection = ast.FunctionSubsectionClass().FunctionSubsection(functionMethods)
+	functionSubsection = ast.FunctionSubsectionClass().FunctionSubsection(
+		delimiter,
+		functionMethods,
+	)
 	return
 }
 
@@ -1892,8 +1942,9 @@ func (v *parser_) parseFunctionalDeclaration() (
 		panic(message)
 	}
 
-	// Attempt to parse a single "func" delimiter.
-	_, token, ok = v.parseDelimiter("func")
+	// Attempt to parse a single "func" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("func")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single FunctionalDeclaration rule.
@@ -1909,8 +1960,9 @@ func (v *parser_) parseFunctionalDeclaration() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "(" delimiter.
-	_, token, ok = v.parseDelimiter("(")
+	// Attempt to parse a single "(" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter("(")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single FunctionalDeclaration rule.
@@ -1926,34 +1978,17 @@ func (v *parser_) parseFunctionalDeclaration() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse multiple Parameter rules.
-	var parameters = col.List[ast.ParameterLike]()
-parametersLoop:
-	for count := 0; count < mat.MaxInt; count++ {
-		var parameter ast.ParameterLike
-		parameter, token, ok = v.parseParameter()
-		if !ok {
-			switch {
-			case count >= 0:
-				break parametersLoop
-			case uti.IsDefined(tokens):
-				// This is not multiple Parameter rules.
-				v.putBack(tokens)
-				return
-			default:
-				// Found a syntax error.
-				var message = v.formatError("$FunctionalDeclaration", token)
-				message += "0 or more Parameter rules are required."
-				panic(message)
-			}
-		}
+	// Attempt to parse an optional ParameterList rule.
+	var optionalParameterList ast.ParameterListLike
+	optionalParameterList, _, ok = v.parseParameterList()
+	if ok {
 		// No additional put backs allowed at this point.
 		tokens = nil
-		parameters.AppendValue(parameter)
 	}
 
-	// Attempt to parse a single ")" delimiter.
-	_, token, ok = v.parseDelimiter(")")
+	// Attempt to parse a single ")" literal.
+	var delimiter3 string
+	delimiter3, token, ok = v.parseDelimiter(")")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single FunctionalDeclaration rule.
@@ -1991,7 +2026,10 @@ parametersLoop:
 	v.remove(tokens)
 	functionalDeclaration = ast.FunctionalDeclarationClass().FunctionalDeclaration(
 		declaration,
-		parameters,
+		delimiter1,
+		delimiter2,
+		optionalParameterList,
+		delimiter3,
 		result,
 	)
 	return
@@ -2004,8 +2042,9 @@ func (v *parser_) parseFunctionalSection() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "// FUNCTIONAL DECLARATIONS" delimiter.
-	_, token, ok = v.parseDelimiter("// FUNCTIONAL DECLARATIONS")
+	// Attempt to parse a single "// FUNCTIONAL DECLARATIONS" literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter("// FUNCTIONAL DECLARATIONS")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single FunctionalSection rule.
@@ -2050,7 +2089,10 @@ functionalDeclarationsLoop:
 	// Found a single FunctionalSection rule.
 	ok = true
 	v.remove(tokens)
-	functionalSection = ast.FunctionalSectionClass().FunctionalSection(functionalDeclarations)
+	functionalSection = ast.FunctionalSectionClass().FunctionalSection(
+		delimiter,
+		functionalDeclarations,
+	)
 	return
 }
 
@@ -2079,8 +2121,9 @@ func (v *parser_) parseGetterMethod() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "(" delimiter.
-	_, token, ok = v.parseDelimiter("(")
+	// Attempt to parse a single "(" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("(")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single GetterMethod rule.
@@ -2096,8 +2139,9 @@ func (v *parser_) parseGetterMethod() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single ")" delimiter.
-	_, token, ok = v.parseDelimiter(")")
+	// Attempt to parse a single ")" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter(")")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single GetterMethod rule.
@@ -2135,8 +2179,50 @@ func (v *parser_) parseGetterMethod() (
 	v.remove(tokens)
 	getterMethod = ast.GetterMethodClass().GetterMethod(
 		name,
+		delimiter1,
+		delimiter2,
 		abstraction,
 	)
+	return
+}
+
+func (v *parser_) parseImportList() (
+	importList ast.ImportListLike,
+	token TokenLike,
+	ok bool,
+) {
+	var tokens = col.List[TokenLike]()
+
+	// Attempt to parse multiple ImportedPackage rules.
+	var importedPackages = col.List[ast.ImportedPackageLike]()
+importedPackagesLoop:
+	for count := 0; count < mat.MaxInt; count++ {
+		var importedPackage ast.ImportedPackageLike
+		importedPackage, token, ok = v.parseImportedPackage()
+		if !ok {
+			switch {
+			case count >= 1:
+				break importedPackagesLoop
+			case uti.IsDefined(tokens):
+				// This is not multiple ImportedPackage rules.
+				v.putBack(tokens)
+				return
+			default:
+				// Found a syntax error.
+				var message = v.formatError("$ImportList", token)
+				message += "1 or more ImportedPackage rules are required."
+				panic(message)
+			}
+		}
+		// No additional put backs allowed at this point.
+		tokens = nil
+		importedPackages.AppendValue(importedPackage)
+	}
+
+	// Found a single ImportList rule.
+	ok = true
+	v.remove(tokens)
+	importList = ast.ImportListClass().ImportList(importedPackages)
 	return
 }
 
@@ -2217,8 +2303,9 @@ func (v *parser_) parseInstanceDeclaration() (
 		panic(message)
 	}
 
-	// Attempt to parse a single "interface" delimiter.
-	_, token, ok = v.parseDelimiter("interface")
+	// Attempt to parse a single "interface" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("interface")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single InstanceDeclaration rule.
@@ -2234,8 +2321,9 @@ func (v *parser_) parseInstanceDeclaration() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "{" delimiter.
-	_, token, ok = v.parseDelimiter("{")
+	// Attempt to parse a single "{" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter("{")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single InstanceDeclaration rule.
@@ -2268,8 +2356,9 @@ func (v *parser_) parseInstanceDeclaration() (
 		panic(message)
 	}
 
-	// Attempt to parse a single "}" delimiter.
-	_, token, ok = v.parseDelimiter("}")
+	// Attempt to parse a single "}" literal.
+	var delimiter3 string
+	delimiter3, token, ok = v.parseDelimiter("}")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single InstanceDeclaration rule.
@@ -2290,7 +2379,10 @@ func (v *parser_) parseInstanceDeclaration() (
 	v.remove(tokens)
 	instanceDeclaration = ast.InstanceDeclarationClass().InstanceDeclaration(
 		declaration,
+		delimiter1,
+		delimiter2,
 		instanceMethods,
+		delimiter3,
 	)
 	return
 }
@@ -2353,8 +2445,9 @@ func (v *parser_) parseInstanceSection() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "// INSTANCE DECLARATIONS" delimiter.
-	_, token, ok = v.parseDelimiter("// INSTANCE DECLARATIONS")
+	// Attempt to parse a single "// INSTANCE DECLARATIONS" literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter("// INSTANCE DECLARATIONS")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single InstanceSection rule.
@@ -2399,7 +2492,10 @@ instanceDeclarationsLoop:
 	// Found a single InstanceSection rule.
 	ok = true
 	v.remove(tokens)
-	instanceSection = ast.InstanceSectionClass().InstanceSection(instanceDeclarations)
+	instanceSection = ast.InstanceSectionClass().InstanceSection(
+		delimiter,
+		instanceDeclarations,
+	)
 	return
 }
 
@@ -2511,8 +2607,9 @@ func (v *parser_) parseMap() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "map" delimiter.
-	_, token, ok = v.parseDelimiter("map")
+	// Attempt to parse a single "map" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("map")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Map rule.
@@ -2528,8 +2625,9 @@ func (v *parser_) parseMap() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "[" delimiter.
-	_, token, ok = v.parseDelimiter("[")
+	// Attempt to parse a single "[" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter("[")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Map rule.
@@ -2563,8 +2661,9 @@ func (v *parser_) parseMap() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "]" delimiter.
-	_, token, ok = v.parseDelimiter("]")
+	// Attempt to parse a single "]" literal.
+	var delimiter3 string
+	delimiter3, token, ok = v.parseDelimiter("]")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Map rule.
@@ -2583,7 +2682,12 @@ func (v *parser_) parseMap() (
 	// Found a single Map rule.
 	ok = true
 	v.remove(tokens)
-	map_ = ast.MapClass().Map(name)
+	map_ = ast.MapClass().Map(
+		delimiter1,
+		delimiter2,
+		name,
+		delimiter3,
+	)
 	return
 }
 
@@ -2612,8 +2716,9 @@ func (v *parser_) parseMethod() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "(" delimiter.
-	_, token, ok = v.parseDelimiter("(")
+	// Attempt to parse a single "(" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("(")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Method rule.
@@ -2629,34 +2734,17 @@ func (v *parser_) parseMethod() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse multiple Parameter rules.
-	var parameters = col.List[ast.ParameterLike]()
-parametersLoop:
-	for count := 0; count < mat.MaxInt; count++ {
-		var parameter ast.ParameterLike
-		parameter, token, ok = v.parseParameter()
-		if !ok {
-			switch {
-			case count >= 0:
-				break parametersLoop
-			case uti.IsDefined(tokens):
-				// This is not multiple Parameter rules.
-				v.putBack(tokens)
-				return
-			default:
-				// Found a syntax error.
-				var message = v.formatError("$Method", token)
-				message += "0 or more Parameter rules are required."
-				panic(message)
-			}
-		}
+	// Attempt to parse an optional ParameterList rule.
+	var optionalParameterList ast.ParameterListLike
+	optionalParameterList, _, ok = v.parseParameterList()
+	if ok {
 		// No additional put backs allowed at this point.
 		tokens = nil
-		parameters.AppendValue(parameter)
 	}
 
-	// Attempt to parse a single ")" delimiter.
-	_, token, ok = v.parseDelimiter(")")
+	// Attempt to parse a single ")" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter(")")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Method rule.
@@ -2685,7 +2773,9 @@ parametersLoop:
 	v.remove(tokens)
 	method = ast.MethodClass().Method(
 		name,
-		parameters,
+		delimiter1,
+		optionalParameterList,
+		delimiter2,
 		optionalResult,
 	)
 	return
@@ -2767,8 +2857,9 @@ func (v *parser_) parseMultivalue() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "(" delimiter.
-	_, token, ok = v.parseDelimiter("(")
+	// Attempt to parse a single "(" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("(")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Multivalue rule.
@@ -2784,34 +2875,26 @@ func (v *parser_) parseMultivalue() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse multiple Parameter rules.
-	var parameters = col.List[ast.ParameterLike]()
-parametersLoop:
-	for count := 0; count < mat.MaxInt; count++ {
-		var parameter ast.ParameterLike
-		parameter, token, ok = v.parseParameter()
-		if !ok {
-			switch {
-			case count >= 1:
-				break parametersLoop
-			case uti.IsDefined(tokens):
-				// This is not multiple Parameter rules.
-				v.putBack(tokens)
-				return
-			default:
-				// Found a syntax error.
-				var message = v.formatError("$Multivalue", token)
-				message += "1 or more Parameter rules are required."
-				panic(message)
-			}
-		}
+	// Attempt to parse a single ParameterList rule.
+	var parameterList ast.ParameterListLike
+	parameterList, token, ok = v.parseParameterList()
+	switch {
+	case ok:
 		// No additional put backs allowed at this point.
 		tokens = nil
-		parameters.AppendValue(parameter)
+	case uti.IsDefined(tokens):
+		// This is not a single ParameterList rule.
+		v.putBack(tokens)
+		return
+	default:
+		// Found a syntax error.
+		var message = v.formatError("$Multivalue", token)
+		panic(message)
 	}
 
-	// Attempt to parse a single ")" delimiter.
-	_, token, ok = v.parseDelimiter(")")
+	// Attempt to parse a single ")" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter(")")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Multivalue rule.
@@ -2830,7 +2913,11 @@ parametersLoop:
 	// Found a single Multivalue rule.
 	ok = true
 	v.remove(tokens)
-	multivalue = ast.MultivalueClass().Multivalue(parameters)
+	multivalue = ast.MultivalueClass().Multivalue(
+		delimiter1,
+		parameterList,
+		delimiter2,
+	)
 	return
 }
 
@@ -2960,8 +3047,9 @@ func (v *parser_) parsePackageHeader() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "package" delimiter.
-	_, token, ok = v.parseDelimiter("package")
+	// Attempt to parse a single "package" literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter("package")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single PackageHeader rule.
@@ -3000,6 +3088,7 @@ func (v *parser_) parsePackageHeader() (
 	v.remove(tokens)
 	packageHeader = ast.PackageHeaderClass().PackageHeader(
 		comment,
+		delimiter,
 		name,
 	)
 	return
@@ -3012,8 +3101,9 @@ func (v *parser_) parsePackageImports() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "import" delimiter.
-	_, token, ok = v.parseDelimiter("import")
+	// Attempt to parse a single "import" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("import")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single PackageImports rule.
@@ -3029,8 +3119,9 @@ func (v *parser_) parsePackageImports() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "(" delimiter.
-	_, token, ok = v.parseDelimiter("(")
+	// Attempt to parse a single "(" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter("(")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single PackageImports rule.
@@ -3046,34 +3137,17 @@ func (v *parser_) parsePackageImports() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse multiple ImportedPackage rules.
-	var importedPackages = col.List[ast.ImportedPackageLike]()
-importedPackagesLoop:
-	for count := 0; count < mat.MaxInt; count++ {
-		var importedPackage ast.ImportedPackageLike
-		importedPackage, token, ok = v.parseImportedPackage()
-		if !ok {
-			switch {
-			case count >= 0:
-				break importedPackagesLoop
-			case uti.IsDefined(tokens):
-				// This is not multiple ImportedPackage rules.
-				v.putBack(tokens)
-				return
-			default:
-				// Found a syntax error.
-				var message = v.formatError("$PackageImports", token)
-				message += "0 or more ImportedPackage rules are required."
-				panic(message)
-			}
-		}
+	// Attempt to parse an optional ImportList rule.
+	var optionalImportList ast.ImportListLike
+	optionalImportList, _, ok = v.parseImportList()
+	if ok {
 		// No additional put backs allowed at this point.
 		tokens = nil
-		importedPackages.AppendValue(importedPackage)
 	}
 
-	// Attempt to parse a single ")" delimiter.
-	_, token, ok = v.parseDelimiter(")")
+	// Attempt to parse a single ")" literal.
+	var delimiter3 string
+	delimiter3, token, ok = v.parseDelimiter(")")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single PackageImports rule.
@@ -3092,7 +3166,12 @@ importedPackagesLoop:
 	// Found a single PackageImports rule.
 	ok = true
 	v.remove(tokens)
-	packageImports = ast.PackageImportsClass().PackageImports(importedPackages)
+	packageImports = ast.PackageImportsClass().PackageImports(
+		delimiter1,
+		delimiter2,
+		optionalImportList,
+		delimiter3,
+	)
 	return
 }
 
@@ -3138,8 +3217,9 @@ func (v *parser_) parseParameter() (
 		panic(message)
 	}
 
-	// Attempt to parse a single "," delimiter.
-	_, token, ok = v.parseDelimiter(",")
+	// Attempt to parse a single "," literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter(",")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Parameter rule.
@@ -3161,7 +3241,48 @@ func (v *parser_) parseParameter() (
 	parameter = ast.ParameterClass().Parameter(
 		name,
 		abstraction,
+		delimiter,
 	)
+	return
+}
+
+func (v *parser_) parseParameterList() (
+	parameterList ast.ParameterListLike,
+	token TokenLike,
+	ok bool,
+) {
+	var tokens = col.List[TokenLike]()
+
+	// Attempt to parse multiple Parameter rules.
+	var parameters = col.List[ast.ParameterLike]()
+parametersLoop:
+	for count := 0; count < mat.MaxInt; count++ {
+		var parameter ast.ParameterLike
+		parameter, token, ok = v.parseParameter()
+		if !ok {
+			switch {
+			case count >= 1:
+				break parametersLoop
+			case uti.IsDefined(tokens):
+				// This is not multiple Parameter rules.
+				v.putBack(tokens)
+				return
+			default:
+				// Found a syntax error.
+				var message = v.formatError("$ParameterList", token)
+				message += "1 or more Parameter rules are required."
+				panic(message)
+			}
+		}
+		// No additional put backs allowed at this point.
+		tokens = nil
+		parameters.AppendValue(parameter)
+	}
+
+	// Found a single ParameterList rule.
+	ok = true
+	v.remove(tokens)
+	parameterList = ast.ParameterListClass().ParameterList(parameters)
 	return
 }
 
@@ -3254,8 +3375,9 @@ func (v *parser_) parsePrincipalSubsection() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "// Principal Methods" delimiter.
-	_, token, ok = v.parseDelimiter("// Principal Methods")
+	// Attempt to parse a single "// Principal Methods" literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter("// Principal Methods")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single PrincipalSubsection rule.
@@ -3300,7 +3422,10 @@ principalMethodsLoop:
 	// Found a single PrincipalSubsection rule.
 	ok = true
 	v.remove(tokens)
-	principalSubsection = ast.PrincipalSubsectionClass().PrincipalSubsection(principalMethods)
+	principalSubsection = ast.PrincipalSubsectionClass().PrincipalSubsection(
+		delimiter,
+		principalMethods,
+	)
 	return
 }
 
@@ -3365,8 +3490,9 @@ func (v *parser_) parseSetterMethod() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "(" delimiter.
-	_, token, ok = v.parseDelimiter("(")
+	// Attempt to parse a single "(" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("(")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single SetterMethod rule.
@@ -3399,8 +3525,9 @@ func (v *parser_) parseSetterMethod() (
 		panic(message)
 	}
 
-	// Attempt to parse a single ")" delimiter.
-	_, token, ok = v.parseDelimiter(")")
+	// Attempt to parse a single ")" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter(")")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single SetterMethod rule.
@@ -3421,7 +3548,9 @@ func (v *parser_) parseSetterMethod() (
 	v.remove(tokens)
 	setterMethod = ast.SetterMethodClass().SetterMethod(
 		name,
+		delimiter1,
 		parameter,
+		delimiter2,
 	)
 	return
 }
@@ -3493,8 +3622,9 @@ func (v *parser_) parseTypeSection() (
 ) {
 	var tokens = col.List[TokenLike]()
 
-	// Attempt to parse a single "// TYPE DECLARATIONS" delimiter.
-	_, token, ok = v.parseDelimiter("// TYPE DECLARATIONS")
+	// Attempt to parse a single "// TYPE DECLARATIONS" literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter("// TYPE DECLARATIONS")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single TypeSection rule.
@@ -3539,7 +3669,10 @@ typeDeclarationsLoop:
 	// Found a single TypeSection rule.
 	ok = true
 	v.remove(tokens)
-	typeSection = ast.TypeSectionClass().TypeSection(typeDeclarations)
+	typeSection = ast.TypeSectionClass().TypeSection(
+		delimiter,
+		typeDeclarations,
+	)
 	return
 }
 
@@ -3585,8 +3718,9 @@ func (v *parser_) parseValue() (
 		panic(message)
 	}
 
-	// Attempt to parse a single "=" delimiter.
-	_, token, ok = v.parseDelimiter("=")
+	// Attempt to parse a single "=" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("=")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Value rule.
@@ -3602,8 +3736,9 @@ func (v *parser_) parseValue() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse a single "iota" delimiter.
-	_, token, ok = v.parseDelimiter("iota")
+	// Attempt to parse a single "iota" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter("iota")
 	if !ok {
 		if uti.IsDefined(tokens) {
 			// This is not a single Value rule.
@@ -3625,6 +3760,8 @@ func (v *parser_) parseValue() (
 	value = ast.ValueClass().Value(
 		name,
 		abstraction,
+		delimiter1,
+		delimiter2,
 	)
 	return
 }
@@ -3666,7 +3803,7 @@ func (v *parser_) parseWrapper() (
 }
 
 func (v *parser_) parseDelimiter(
-	expectedValue string,
+	literal string,
 ) (
 	value string,
 	token TokenLike,
@@ -3675,7 +3812,7 @@ func (v *parser_) parseDelimiter(
 	// Attempt to parse a single delimiter.
 	value, token, ok = v.parseToken(DelimiterToken)
 	if ok {
-		if value == expectedValue {
+		if value == literal {
 			// Found the desired delimiter.
 			return
 		}
@@ -3805,11 +3942,13 @@ func (v *parser_) putBack(
 	}
 }
 
+// NOTE:
+// This method does nothing but must exist to satisfy the lint check on the
+// generated parser code.  The generated code must call this method is some
+// cases to make it look that the tokens variable is being used somewhere.
 func (v *parser_) remove(
 	tokens col.Sequential[TokenLike],
 ) {
-	// NOTE: This method does nothing but must exist to satisfy the lint
-	// check on the generated parser code.
 }
 
 // Instance Structure
@@ -3844,7 +3983,8 @@ var parserClassReference_ = &parserClass_{
 			"$InterfaceDeclarations": `ClassSection InstanceSection AspectSection`,
 			"$LegalNotice":           `comment`,
 			"$PackageHeader":         `comment "package" name`,
-			"$PackageImports":        `"import" "(" ImportedPackage* ")"`,
+			"$PackageImports":        `"import" "(" ImportList? ")"`,
+			"$ImportList":            `ImportedPackage+`,
 			"$ImportedPackage":       `name path`,
 			"$TypeSection":           `"// TYPE DECLARATIONS" TypeDeclaration*`,
 			"$TypeDeclaration":       `Declaration Abstraction Enumeration?`,
@@ -3867,29 +4007,30 @@ var parserClassReference_ = &parserClass_{
 			"$Value":                 `name Abstraction "=" "iota"`,
 			"$AdditionalValue":       `name`,
 			"$FunctionalSection":     `"// FUNCTIONAL DECLARATIONS" FunctionalDeclaration*`,
-			"$FunctionalDeclaration": `Declaration "func" "(" Parameter* ")" Result`,
+			"$FunctionalDeclaration": `Declaration "func" "(" ParameterList? ")" Result`,
+			"$ParameterList":         `Parameter+`,
 			"$Parameter":             `name Abstraction ","`,
 			"$Result": `
     None
     Abstraction
     Multivalue`,
 			"$None":                  `newline`,
-			"$Multivalue":            `"(" Parameter+ ")"`,
+			"$Multivalue":            `"(" ParameterList ")"`,
 			"$ClassSection":          `"// CLASS DECLARATIONS" ClassDeclaration+`,
 			"$ClassDeclaration":      `Declaration "interface" "{" ClassMethods "}"`,
 			"$ClassMethods":          `ConstructorSubsection ConstantSubsection? FunctionSubsection?`,
 			"$ConstructorSubsection": `"// Constructor Methods" ConstructorMethod+`,
-			"$ConstructorMethod":     `name "(" Parameter* ")" Abstraction`,
+			"$ConstructorMethod":     `name "(" ParameterList? ")" Abstraction`,
 			"$ConstantSubsection":    `"// Constant Methods" ConstantMethod+`,
 			"$ConstantMethod":        `name "(" ")" Abstraction`,
 			"$FunctionSubsection":    `"// Function Methods" FunctionMethod+`,
-			"$FunctionMethod":        `name "(" Parameter* ")" Result`,
+			"$FunctionMethod":        `name "(" ParameterList? ")" Result`,
 			"$InstanceSection":       `"// INSTANCE DECLARATIONS" InstanceDeclaration+`,
 			"$InstanceDeclaration":   `Declaration "interface" "{" InstanceMethods "}"`,
 			"$InstanceMethods":       `PrincipalSubsection AttributeSubsection? AspectSubsection?`,
 			"$PrincipalSubsection":   `"// Principal Methods" PrincipalMethod+`,
 			"$PrincipalMethod":       `Method`,
-			"$Method":                `name "(" Parameter* ")" Result?`,
+			"$Method":                `name "(" ParameterList? ")" Result?`,
 			"$AttributeSubsection":   `"// Attribute Methods" AttributeMethod+`,
 			"$AttributeMethod": `
     GetterMethod

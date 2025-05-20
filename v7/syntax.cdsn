@@ -34,7 +34,9 @@ $LegalNotice: comment
 
 $PackageHeader: comment "package" name
 
-$PackageImports: "import" "(" ImportedPackage* ")"
+$PackageImports: "import" "(" ImportList? ")"
+
+$ImportList: ImportedPackage+
 
 $ImportedPackage: name path
 
@@ -77,7 +79,9 @@ $AdditionalValue: name
 
 $FunctionalSection: "// FUNCTIONAL DECLARATIONS" FunctionalDeclaration*
 
-$FunctionalDeclaration: Declaration "func" "(" Parameter* ")" Result
+$FunctionalDeclaration: Declaration "func" "(" ParameterList? ")" Result
+
+$ParameterList: Parameter+
 
 $Parameter: name Abstraction ","
 
@@ -88,7 +92,7 @@ $Result:
 
 $None: newline
 
-$Multivalue: "(" Parameter+ ")"
+$Multivalue: "(" ParameterList ")"
 
 $ClassSection: "// CLASS DECLARATIONS" ClassDeclaration+
 
@@ -98,7 +102,7 @@ $ClassMethods: ConstructorSubsection ConstantSubsection? FunctionSubsection?
 
 $ConstructorSubsection: "// Constructor Methods" ConstructorMethod+
 
-$ConstructorMethod: name "(" Parameter* ")" Abstraction
+$ConstructorMethod: name "(" ParameterList? ")" Abstraction
 
 $ConstantSubsection: "// Constant Methods" ConstantMethod+
 
@@ -106,7 +110,7 @@ $ConstantMethod: name "(" ")" Abstraction
 
 $FunctionSubsection: "// Function Methods" FunctionMethod+
 
-$FunctionMethod: name "(" Parameter* ")" Result
+$FunctionMethod: name "(" ParameterList? ")" Result
 
 $InstanceSection: "// INSTANCE DECLARATIONS" InstanceDeclaration+
 
@@ -118,7 +122,7 @@ $PrincipalSubsection: "// Principal Methods" PrincipalMethod+
 
 $PrincipalMethod: Method
 
-$Method: name "(" Parameter* ")" Result?
+$Method: name "(" ParameterList? ")" Result?
 
 $AttributeSubsection: "// Attribute Methods" AttributeMethod+
 

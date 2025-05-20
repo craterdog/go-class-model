@@ -20,7 +20,6 @@
 package ast
 
 import (
-	col "github.com/craterdog/go-collection-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -36,23 +35,35 @@ func FunctionalDeclarationClass() FunctionalDeclarationClassLike {
 
 func (c *functionalDeclarationClass_) FunctionalDeclaration(
 	declaration DeclarationLike,
-	parameters col.Sequential[ParameterLike],
+	delimiter1 string,
+	delimiter2 string,
+	optionalParameterList ParameterListLike,
+	delimiter3 string,
 	result ResultLike,
 ) FunctionalDeclarationLike {
 	if uti.IsUndefined(declaration) {
 		panic("The \"declaration\" attribute is required by this class.")
 	}
-	if uti.IsUndefined(parameters) {
-		panic("The \"parameters\" attribute is required by this class.")
+	if uti.IsUndefined(delimiter1) {
+		panic("The \"delimiter1\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter2) {
+		panic("The \"delimiter2\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter3) {
+		panic("The \"delimiter3\" attribute is required by this class.")
 	}
 	if uti.IsUndefined(result) {
 		panic("The \"result\" attribute is required by this class.")
 	}
 	var instance = &functionalDeclaration_{
 		// Initialize the instance attributes.
-		declaration_: declaration,
-		parameters_:  parameters,
-		result_:      result,
+		declaration_:           declaration,
+		delimiter1_:            delimiter1,
+		delimiter2_:            delimiter2,
+		optionalParameterList_: optionalParameterList,
+		delimiter3_:            delimiter3,
+		result_:                result,
 	}
 	return instance
 }
@@ -71,8 +82,20 @@ func (v *functionalDeclaration_) GetDeclaration() DeclarationLike {
 	return v.declaration_
 }
 
-func (v *functionalDeclaration_) GetParameters() col.Sequential[ParameterLike] {
-	return v.parameters_
+func (v *functionalDeclaration_) GetDelimiter1() string {
+	return v.delimiter1_
+}
+
+func (v *functionalDeclaration_) GetDelimiter2() string {
+	return v.delimiter2_
+}
+
+func (v *functionalDeclaration_) GetOptionalParameterList() ParameterListLike {
+	return v.optionalParameterList_
+}
+
+func (v *functionalDeclaration_) GetDelimiter3() string {
+	return v.delimiter3_
 }
 
 func (v *functionalDeclaration_) GetResult() ResultLike {
@@ -85,9 +108,12 @@ func (v *functionalDeclaration_) GetResult() ResultLike {
 
 type functionalDeclaration_ struct {
 	// Declare the instance attributes.
-	declaration_ DeclarationLike
-	parameters_  col.Sequential[ParameterLike]
-	result_      ResultLike
+	declaration_           DeclarationLike
+	delimiter1_            string
+	delimiter2_            string
+	optionalParameterList_ ParameterListLike
+	delimiter3_            string
+	result_                ResultLike
 }
 
 // Class Structure

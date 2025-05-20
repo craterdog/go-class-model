@@ -35,19 +35,34 @@ func EnumerationClass() EnumerationClassLike {
 // Constructor Methods
 
 func (c *enumerationClass_) Enumeration(
+	delimiter1 string,
+	delimiter2 string,
 	value ValueLike,
 	additionalValues col.Sequential[AdditionalValueLike],
+	delimiter3 string,
 ) EnumerationLike {
+	if uti.IsUndefined(delimiter1) {
+		panic("The \"delimiter1\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter2) {
+		panic("The \"delimiter2\" attribute is required by this class.")
+	}
 	if uti.IsUndefined(value) {
 		panic("The \"value\" attribute is required by this class.")
 	}
 	if uti.IsUndefined(additionalValues) {
 		panic("The \"additionalValues\" attribute is required by this class.")
 	}
+	if uti.IsUndefined(delimiter3) {
+		panic("The \"delimiter3\" attribute is required by this class.")
+	}
 	var instance = &enumeration_{
 		// Initialize the instance attributes.
+		delimiter1_:       delimiter1,
+		delimiter2_:       delimiter2,
 		value_:            value,
 		additionalValues_: additionalValues,
+		delimiter3_:       delimiter3,
 	}
 	return instance
 }
@@ -62,6 +77,14 @@ func (v *enumeration_) GetClass() EnumerationClassLike {
 
 // Attribute Methods
 
+func (v *enumeration_) GetDelimiter1() string {
+	return v.delimiter1_
+}
+
+func (v *enumeration_) GetDelimiter2() string {
+	return v.delimiter2_
+}
+
 func (v *enumeration_) GetValue() ValueLike {
 	return v.value_
 }
@@ -70,14 +93,21 @@ func (v *enumeration_) GetAdditionalValues() col.Sequential[AdditionalValueLike]
 	return v.additionalValues_
 }
 
+func (v *enumeration_) GetDelimiter3() string {
+	return v.delimiter3_
+}
+
 // PROTECTED INTERFACE
 
 // Instance Structure
 
 type enumeration_ struct {
 	// Declare the instance attributes.
+	delimiter1_       string
+	delimiter2_       string
 	value_            ValueLike
 	additionalValues_ col.Sequential[AdditionalValueLike]
+	delimiter3_       string
 }
 
 // Class Structure

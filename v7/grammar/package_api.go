@@ -275,6 +275,9 @@ type Methodical interface {
 	ProcessComment(
 		comment string,
 	)
+	ProcessDelimiter(
+		delimiter string,
+	)
 	ProcessName(
 		name string,
 	)
@@ -292,17 +295,21 @@ type Methodical interface {
 	)
 	PreprocessAbstraction(
 		abstraction ast.AbstractionLike,
+		index uint,
+		count uint,
 	)
 	ProcessAbstractionSlot(
 		slot uint,
 	)
 	PostprocessAbstraction(
 		abstraction ast.AbstractionLike,
+		index uint,
+		count uint,
 	)
 	PreprocessAdditionalArgument(
 		additionalArgument ast.AdditionalArgumentLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	ProcessAdditionalArgumentSlot(
 		slot uint,
@@ -310,12 +317,12 @@ type Methodical interface {
 	PostprocessAdditionalArgument(
 		additionalArgument ast.AdditionalArgumentLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	PreprocessAdditionalConstraint(
 		additionalConstraint ast.AdditionalConstraintLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	ProcessAdditionalConstraintSlot(
 		slot uint,
@@ -323,12 +330,12 @@ type Methodical interface {
 	PostprocessAdditionalConstraint(
 		additionalConstraint ast.AdditionalConstraintLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	PreprocessAdditionalValue(
 		additionalValue ast.AdditionalValueLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	ProcessAdditionalValueSlot(
 		slot uint,
@@ -336,39 +343,51 @@ type Methodical interface {
 	PostprocessAdditionalValue(
 		additionalValue ast.AdditionalValueLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	PreprocessArgument(
 		argument ast.ArgumentLike,
+		index uint,
+		count uint,
 	)
 	ProcessArgumentSlot(
 		slot uint,
 	)
 	PostprocessArgument(
 		argument ast.ArgumentLike,
+		index uint,
+		count uint,
 	)
 	PreprocessArguments(
 		arguments ast.ArgumentsLike,
+		index uint,
+		count uint,
 	)
 	ProcessArgumentsSlot(
 		slot uint,
 	)
 	PostprocessArguments(
 		arguments ast.ArgumentsLike,
+		index uint,
+		count uint,
 	)
 	PreprocessArray(
 		array ast.ArrayLike,
+		index uint,
+		count uint,
 	)
 	ProcessArraySlot(
 		slot uint,
 	)
 	PostprocessArray(
 		array ast.ArrayLike,
+		index uint,
+		count uint,
 	)
 	PreprocessAspectDeclaration(
 		aspectDeclaration ast.AspectDeclarationLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	ProcessAspectDeclarationSlot(
 		slot uint,
@@ -376,12 +395,12 @@ type Methodical interface {
 	PostprocessAspectDeclaration(
 		aspectDeclaration ast.AspectDeclarationLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	PreprocessAspectInterface(
 		aspectInterface ast.AspectInterfaceLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	ProcessAspectInterfaceSlot(
 		slot uint,
@@ -389,12 +408,12 @@ type Methodical interface {
 	PostprocessAspectInterface(
 		aspectInterface ast.AspectInterfaceLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	PreprocessAspectMethod(
 		aspectMethod ast.AspectMethodLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	ProcessAspectMethodSlot(
 		slot uint,
@@ -402,30 +421,38 @@ type Methodical interface {
 	PostprocessAspectMethod(
 		aspectMethod ast.AspectMethodLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	PreprocessAspectSection(
 		aspectSection ast.AspectSectionLike,
+		index uint,
+		count uint,
 	)
 	ProcessAspectSectionSlot(
 		slot uint,
 	)
 	PostprocessAspectSection(
 		aspectSection ast.AspectSectionLike,
+		index uint,
+		count uint,
 	)
 	PreprocessAspectSubsection(
 		aspectSubsection ast.AspectSubsectionLike,
+		index uint,
+		count uint,
 	)
 	ProcessAspectSubsectionSlot(
 		slot uint,
 	)
 	PostprocessAspectSubsection(
 		aspectSubsection ast.AspectSubsectionLike,
+		index uint,
+		count uint,
 	)
 	PreprocessAttributeMethod(
 		attributeMethod ast.AttributeMethodLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	ProcessAttributeMethodSlot(
 		slot uint,
@@ -433,30 +460,38 @@ type Methodical interface {
 	PostprocessAttributeMethod(
 		attributeMethod ast.AttributeMethodLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	PreprocessAttributeSubsection(
 		attributeSubsection ast.AttributeSubsectionLike,
+		index uint,
+		count uint,
 	)
 	ProcessAttributeSubsectionSlot(
 		slot uint,
 	)
 	PostprocessAttributeSubsection(
 		attributeSubsection ast.AttributeSubsectionLike,
+		index uint,
+		count uint,
 	)
 	PreprocessChannel(
 		channel ast.ChannelLike,
+		index uint,
+		count uint,
 	)
 	ProcessChannelSlot(
 		slot uint,
 	)
 	PostprocessChannel(
 		channel ast.ChannelLike,
+		index uint,
+		count uint,
 	)
 	PreprocessClassDeclaration(
 		classDeclaration ast.ClassDeclarationLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	ProcessClassDeclarationSlot(
 		slot uint,
@@ -464,30 +499,38 @@ type Methodical interface {
 	PostprocessClassDeclaration(
 		classDeclaration ast.ClassDeclarationLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	PreprocessClassMethods(
 		classMethods ast.ClassMethodsLike,
+		index uint,
+		count uint,
 	)
 	ProcessClassMethodsSlot(
 		slot uint,
 	)
 	PostprocessClassMethods(
 		classMethods ast.ClassMethodsLike,
+		index uint,
+		count uint,
 	)
 	PreprocessClassSection(
 		classSection ast.ClassSectionLike,
+		index uint,
+		count uint,
 	)
 	ProcessClassSectionSlot(
 		slot uint,
 	)
 	PostprocessClassSection(
 		classSection ast.ClassSectionLike,
+		index uint,
+		count uint,
 	)
 	PreprocessConstantMethod(
 		constantMethod ast.ConstantMethodLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	ProcessConstantMethodSlot(
 		slot uint,
@@ -495,39 +538,51 @@ type Methodical interface {
 	PostprocessConstantMethod(
 		constantMethod ast.ConstantMethodLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	PreprocessConstantSubsection(
 		constantSubsection ast.ConstantSubsectionLike,
+		index uint,
+		count uint,
 	)
 	ProcessConstantSubsectionSlot(
 		slot uint,
 	)
 	PostprocessConstantSubsection(
 		constantSubsection ast.ConstantSubsectionLike,
+		index uint,
+		count uint,
 	)
 	PreprocessConstraint(
 		constraint ast.ConstraintLike,
+		index uint,
+		count uint,
 	)
 	ProcessConstraintSlot(
 		slot uint,
 	)
 	PostprocessConstraint(
 		constraint ast.ConstraintLike,
+		index uint,
+		count uint,
 	)
 	PreprocessConstraints(
 		constraints ast.ConstraintsLike,
+		index uint,
+		count uint,
 	)
 	ProcessConstraintsSlot(
 		slot uint,
 	)
 	PostprocessConstraints(
 		constraints ast.ConstraintsLike,
+		index uint,
+		count uint,
 	)
 	PreprocessConstructorMethod(
 		constructorMethod ast.ConstructorMethodLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	ProcessConstructorMethodSlot(
 		slot uint,
@@ -535,39 +590,51 @@ type Methodical interface {
 	PostprocessConstructorMethod(
 		constructorMethod ast.ConstructorMethodLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	PreprocessConstructorSubsection(
 		constructorSubsection ast.ConstructorSubsectionLike,
+		index uint,
+		count uint,
 	)
 	ProcessConstructorSubsectionSlot(
 		slot uint,
 	)
 	PostprocessConstructorSubsection(
 		constructorSubsection ast.ConstructorSubsectionLike,
+		index uint,
+		count uint,
 	)
 	PreprocessDeclaration(
 		declaration ast.DeclarationLike,
+		index uint,
+		count uint,
 	)
 	ProcessDeclarationSlot(
 		slot uint,
 	)
 	PostprocessDeclaration(
 		declaration ast.DeclarationLike,
+		index uint,
+		count uint,
 	)
 	PreprocessEnumeration(
 		enumeration ast.EnumerationLike,
+		index uint,
+		count uint,
 	)
 	ProcessEnumerationSlot(
 		slot uint,
 	)
 	PostprocessEnumeration(
 		enumeration ast.EnumerationLike,
+		index uint,
+		count uint,
 	)
 	PreprocessFunctionMethod(
 		functionMethod ast.FunctionMethodLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	ProcessFunctionMethodSlot(
 		slot uint,
@@ -575,21 +642,25 @@ type Methodical interface {
 	PostprocessFunctionMethod(
 		functionMethod ast.FunctionMethodLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	PreprocessFunctionSubsection(
 		functionSubsection ast.FunctionSubsectionLike,
+		index uint,
+		count uint,
 	)
 	ProcessFunctionSubsectionSlot(
 		slot uint,
 	)
 	PostprocessFunctionSubsection(
 		functionSubsection ast.FunctionSubsectionLike,
+		index uint,
+		count uint,
 	)
 	PreprocessFunctionalDeclaration(
 		functionalDeclaration ast.FunctionalDeclarationLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	ProcessFunctionalDeclarationSlot(
 		slot uint,
@@ -597,30 +668,51 @@ type Methodical interface {
 	PostprocessFunctionalDeclaration(
 		functionalDeclaration ast.FunctionalDeclarationLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	PreprocessFunctionalSection(
 		functionalSection ast.FunctionalSectionLike,
+		index uint,
+		count uint,
 	)
 	ProcessFunctionalSectionSlot(
 		slot uint,
 	)
 	PostprocessFunctionalSection(
 		functionalSection ast.FunctionalSectionLike,
+		index uint,
+		count uint,
 	)
 	PreprocessGetterMethod(
 		getterMethod ast.GetterMethodLike,
+		index uint,
+		count uint,
 	)
 	ProcessGetterMethodSlot(
 		slot uint,
 	)
 	PostprocessGetterMethod(
 		getterMethod ast.GetterMethodLike,
+		index uint,
+		count uint,
+	)
+	PreprocessImportList(
+		importList ast.ImportListLike,
+		index uint,
+		count uint,
+	)
+	ProcessImportListSlot(
+		slot uint,
+	)
+	PostprocessImportList(
+		importList ast.ImportListLike,
+		index uint,
+		count uint,
 	)
 	PreprocessImportedPackage(
 		importedPackage ast.ImportedPackageLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	ProcessImportedPackageSlot(
 		slot uint,
@@ -628,12 +720,12 @@ type Methodical interface {
 	PostprocessImportedPackage(
 		importedPackage ast.ImportedPackageLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	PreprocessInstanceDeclaration(
 		instanceDeclaration ast.InstanceDeclarationLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	ProcessInstanceDeclarationSlot(
 		slot uint,
@@ -641,120 +733,168 @@ type Methodical interface {
 	PostprocessInstanceDeclaration(
 		instanceDeclaration ast.InstanceDeclarationLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	PreprocessInstanceMethods(
 		instanceMethods ast.InstanceMethodsLike,
+		index uint,
+		count uint,
 	)
 	ProcessInstanceMethodsSlot(
 		slot uint,
 	)
 	PostprocessInstanceMethods(
 		instanceMethods ast.InstanceMethodsLike,
+		index uint,
+		count uint,
 	)
 	PreprocessInstanceSection(
 		instanceSection ast.InstanceSectionLike,
+		index uint,
+		count uint,
 	)
 	ProcessInstanceSectionSlot(
 		slot uint,
 	)
 	PostprocessInstanceSection(
 		instanceSection ast.InstanceSectionLike,
+		index uint,
+		count uint,
 	)
 	PreprocessInterfaceDeclarations(
 		interfaceDeclarations ast.InterfaceDeclarationsLike,
+		index uint,
+		count uint,
 	)
 	ProcessInterfaceDeclarationsSlot(
 		slot uint,
 	)
 	PostprocessInterfaceDeclarations(
 		interfaceDeclarations ast.InterfaceDeclarationsLike,
+		index uint,
+		count uint,
 	)
 	PreprocessLegalNotice(
 		legalNotice ast.LegalNoticeLike,
+		index uint,
+		count uint,
 	)
 	ProcessLegalNoticeSlot(
 		slot uint,
 	)
 	PostprocessLegalNotice(
 		legalNotice ast.LegalNoticeLike,
+		index uint,
+		count uint,
 	)
 	PreprocessMap(
 		map_ ast.MapLike,
+		index uint,
+		count uint,
 	)
 	ProcessMapSlot(
 		slot uint,
 	)
 	PostprocessMap(
 		map_ ast.MapLike,
+		index uint,
+		count uint,
 	)
 	PreprocessMethod(
 		method ast.MethodLike,
+		index uint,
+		count uint,
 	)
 	ProcessMethodSlot(
 		slot uint,
 	)
 	PostprocessMethod(
 		method ast.MethodLike,
+		index uint,
+		count uint,
 	)
 	PreprocessModel(
 		model ast.ModelLike,
+		index uint,
+		count uint,
 	)
 	ProcessModelSlot(
 		slot uint,
 	)
 	PostprocessModel(
 		model ast.ModelLike,
+		index uint,
+		count uint,
 	)
 	PreprocessMultivalue(
 		multivalue ast.MultivalueLike,
+		index uint,
+		count uint,
 	)
 	ProcessMultivalueSlot(
 		slot uint,
 	)
 	PostprocessMultivalue(
 		multivalue ast.MultivalueLike,
+		index uint,
+		count uint,
 	)
 	PreprocessNone(
 		none ast.NoneLike,
+		index uint,
+		count uint,
 	)
 	ProcessNoneSlot(
 		slot uint,
 	)
 	PostprocessNone(
 		none ast.NoneLike,
+		index uint,
+		count uint,
 	)
 	PreprocessPackageDeclaration(
 		packageDeclaration ast.PackageDeclarationLike,
+		index uint,
+		count uint,
 	)
 	ProcessPackageDeclarationSlot(
 		slot uint,
 	)
 	PostprocessPackageDeclaration(
 		packageDeclaration ast.PackageDeclarationLike,
+		index uint,
+		count uint,
 	)
 	PreprocessPackageHeader(
 		packageHeader ast.PackageHeaderLike,
+		index uint,
+		count uint,
 	)
 	ProcessPackageHeaderSlot(
 		slot uint,
 	)
 	PostprocessPackageHeader(
 		packageHeader ast.PackageHeaderLike,
+		index uint,
+		count uint,
 	)
 	PreprocessPackageImports(
 		packageImports ast.PackageImportsLike,
+		index uint,
+		count uint,
 	)
 	ProcessPackageImportsSlot(
 		slot uint,
 	)
 	PostprocessPackageImports(
 		packageImports ast.PackageImportsLike,
+		index uint,
+		count uint,
 	)
 	PreprocessParameter(
 		parameter ast.ParameterLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	ProcessParameterSlot(
 		slot uint,
@@ -762,21 +902,38 @@ type Methodical interface {
 	PostprocessParameter(
 		parameter ast.ParameterLike,
 		index uint,
-		size uint,
+		count uint,
+	)
+	PreprocessParameterList(
+		parameterList ast.ParameterListLike,
+		index uint,
+		count uint,
+	)
+	ProcessParameterListSlot(
+		slot uint,
+	)
+	PostprocessParameterList(
+		parameterList ast.ParameterListLike,
+		index uint,
+		count uint,
 	)
 	PreprocessPrimitiveDeclarations(
 		primitiveDeclarations ast.PrimitiveDeclarationsLike,
+		index uint,
+		count uint,
 	)
 	ProcessPrimitiveDeclarationsSlot(
 		slot uint,
 	)
 	PostprocessPrimitiveDeclarations(
 		primitiveDeclarations ast.PrimitiveDeclarationsLike,
+		index uint,
+		count uint,
 	)
 	PreprocessPrincipalMethod(
 		principalMethod ast.PrincipalMethodLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	ProcessPrincipalMethodSlot(
 		slot uint,
@@ -784,39 +941,51 @@ type Methodical interface {
 	PostprocessPrincipalMethod(
 		principalMethod ast.PrincipalMethodLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	PreprocessPrincipalSubsection(
 		principalSubsection ast.PrincipalSubsectionLike,
+		index uint,
+		count uint,
 	)
 	ProcessPrincipalSubsectionSlot(
 		slot uint,
 	)
 	PostprocessPrincipalSubsection(
 		principalSubsection ast.PrincipalSubsectionLike,
+		index uint,
+		count uint,
 	)
 	PreprocessResult(
 		result ast.ResultLike,
+		index uint,
+		count uint,
 	)
 	ProcessResultSlot(
 		slot uint,
 	)
 	PostprocessResult(
 		result ast.ResultLike,
+		index uint,
+		count uint,
 	)
 	PreprocessSetterMethod(
 		setterMethod ast.SetterMethodLike,
+		index uint,
+		count uint,
 	)
 	ProcessSetterMethodSlot(
 		slot uint,
 	)
 	PostprocessSetterMethod(
 		setterMethod ast.SetterMethodLike,
+		index uint,
+		count uint,
 	)
 	PreprocessTypeDeclaration(
 		typeDeclaration ast.TypeDeclarationLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	ProcessTypeDeclarationSlot(
 		slot uint,
@@ -824,33 +993,45 @@ type Methodical interface {
 	PostprocessTypeDeclaration(
 		typeDeclaration ast.TypeDeclarationLike,
 		index uint,
-		size uint,
+		count uint,
 	)
 	PreprocessTypeSection(
 		typeSection ast.TypeSectionLike,
+		index uint,
+		count uint,
 	)
 	ProcessTypeSectionSlot(
 		slot uint,
 	)
 	PostprocessTypeSection(
 		typeSection ast.TypeSectionLike,
+		index uint,
+		count uint,
 	)
 	PreprocessValue(
 		value ast.ValueLike,
+		index uint,
+		count uint,
 	)
 	ProcessValueSlot(
 		slot uint,
 	)
 	PostprocessValue(
 		value ast.ValueLike,
+		index uint,
+		count uint,
 	)
 	PreprocessWrapper(
 		wrapper ast.WrapperLike,
+		index uint,
+		count uint,
 	)
 	ProcessWrapperSlot(
 		slot uint,
 	)
 	PostprocessWrapper(
 		wrapper ast.WrapperLike,
+		index uint,
+		count uint,
 	)
 }

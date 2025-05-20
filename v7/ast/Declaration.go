@@ -35,11 +35,15 @@ func DeclarationClass() DeclarationClassLike {
 
 func (c *declarationClass_) Declaration(
 	comment string,
+	delimiter string,
 	name string,
 	optionalConstraints ConstraintsLike,
 ) DeclarationLike {
 	if uti.IsUndefined(comment) {
 		panic("The \"comment\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter) {
+		panic("The \"delimiter\" attribute is required by this class.")
 	}
 	if uti.IsUndefined(name) {
 		panic("The \"name\" attribute is required by this class.")
@@ -47,6 +51,7 @@ func (c *declarationClass_) Declaration(
 	var instance = &declaration_{
 		// Initialize the instance attributes.
 		comment_:             comment,
+		delimiter_:           delimiter,
 		name_:                name,
 		optionalConstraints_: optionalConstraints,
 	}
@@ -67,6 +72,10 @@ func (v *declaration_) GetComment() string {
 	return v.comment_
 }
 
+func (v *declaration_) GetDelimiter() string {
+	return v.delimiter_
+}
+
 func (v *declaration_) GetName() string {
 	return v.name_
 }
@@ -82,6 +91,7 @@ func (v *declaration_) GetOptionalConstraints() ConstraintsLike {
 type declaration_ struct {
 	// Declare the instance attributes.
 	comment_             string
+	delimiter_           string
 	name_                string
 	optionalConstraints_ ConstraintsLike
 }

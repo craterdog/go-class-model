@@ -35,19 +35,29 @@ func ArgumentsClass() ArgumentsClassLike {
 // Constructor Methods
 
 func (c *argumentsClass_) Arguments(
+	delimiter1 string,
 	argument ArgumentLike,
 	additionalArguments col.Sequential[AdditionalArgumentLike],
+	delimiter2 string,
 ) ArgumentsLike {
+	if uti.IsUndefined(delimiter1) {
+		panic("The \"delimiter1\" attribute is required by this class.")
+	}
 	if uti.IsUndefined(argument) {
 		panic("The \"argument\" attribute is required by this class.")
 	}
 	if uti.IsUndefined(additionalArguments) {
 		panic("The \"additionalArguments\" attribute is required by this class.")
 	}
+	if uti.IsUndefined(delimiter2) {
+		panic("The \"delimiter2\" attribute is required by this class.")
+	}
 	var instance = &arguments_{
 		// Initialize the instance attributes.
+		delimiter1_:          delimiter1,
 		argument_:            argument,
 		additionalArguments_: additionalArguments,
+		delimiter2_:          delimiter2,
 	}
 	return instance
 }
@@ -62,6 +72,10 @@ func (v *arguments_) GetClass() ArgumentsClassLike {
 
 // Attribute Methods
 
+func (v *arguments_) GetDelimiter1() string {
+	return v.delimiter1_
+}
+
 func (v *arguments_) GetArgument() ArgumentLike {
 	return v.argument_
 }
@@ -70,14 +84,20 @@ func (v *arguments_) GetAdditionalArguments() col.Sequential[AdditionalArgumentL
 	return v.additionalArguments_
 }
 
+func (v *arguments_) GetDelimiter2() string {
+	return v.delimiter2_
+}
+
 // PROTECTED INTERFACE
 
 // Instance Structure
 
 type arguments_ struct {
 	// Declare the instance attributes.
+	delimiter1_          string
 	argument_            ArgumentLike
 	additionalArguments_ col.Sequential[AdditionalArgumentLike]
+	delimiter2_          string
 }
 
 // Class Structure

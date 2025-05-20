@@ -34,14 +34,29 @@ func MapClass() MapClassLike {
 // Constructor Methods
 
 func (c *mapClass_) Map(
+	delimiter1 string,
+	delimiter2 string,
 	name string,
+	delimiter3 string,
 ) MapLike {
+	if uti.IsUndefined(delimiter1) {
+		panic("The \"delimiter1\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter2) {
+		panic("The \"delimiter2\" attribute is required by this class.")
+	}
 	if uti.IsUndefined(name) {
 		panic("The \"name\" attribute is required by this class.")
 	}
+	if uti.IsUndefined(delimiter3) {
+		panic("The \"delimiter3\" attribute is required by this class.")
+	}
 	var instance = &map_{
 		// Initialize the instance attributes.
-		name_: name,
+		delimiter1_: delimiter1,
+		delimiter2_: delimiter2,
+		name_:       name,
+		delimiter3_: delimiter3,
 	}
 	return instance
 }
@@ -56,8 +71,20 @@ func (v *map_) GetClass() MapClassLike {
 
 // Attribute Methods
 
+func (v *map_) GetDelimiter1() string {
+	return v.delimiter1_
+}
+
+func (v *map_) GetDelimiter2() string {
+	return v.delimiter2_
+}
+
 func (v *map_) GetName() string {
 	return v.name_
+}
+
+func (v *map_) GetDelimiter3() string {
+	return v.delimiter3_
 }
 
 // PROTECTED INTERFACE
@@ -66,7 +93,10 @@ func (v *map_) GetName() string {
 
 type map_ struct {
 	// Declare the instance attributes.
-	name_ string
+	delimiter1_ string
+	delimiter2_ string
+	name_       string
+	delimiter3_ string
 }
 
 // Class Structure

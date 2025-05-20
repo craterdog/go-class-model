@@ -70,6 +70,7 @@ type (
 	FunctionalDeclarationClassLike = ast.FunctionalDeclarationClassLike
 	FunctionalSectionClassLike     = ast.FunctionalSectionClassLike
 	GetterMethodClassLike          = ast.GetterMethodClassLike
+	ImportListClassLike            = ast.ImportListClassLike
 	ImportedPackageClassLike       = ast.ImportedPackageClassLike
 	InstanceDeclarationClassLike   = ast.InstanceDeclarationClassLike
 	InstanceMethodsClassLike       = ast.InstanceMethodsClassLike
@@ -85,6 +86,7 @@ type (
 	PackageHeaderClassLike         = ast.PackageHeaderClassLike
 	PackageImportsClassLike        = ast.PackageImportsClassLike
 	ParameterClassLike             = ast.ParameterClassLike
+	ParameterListClassLike         = ast.ParameterListClassLike
 	PrimitiveDeclarationsClassLike = ast.PrimitiveDeclarationsClassLike
 	PrincipalMethodClassLike       = ast.PrincipalMethodClassLike
 	PrincipalSubsectionClassLike   = ast.PrincipalSubsectionClassLike
@@ -128,6 +130,7 @@ type (
 	FunctionalDeclarationLike = ast.FunctionalDeclarationLike
 	FunctionalSectionLike     = ast.FunctionalSectionLike
 	GetterMethodLike          = ast.GetterMethodLike
+	ImportListLike            = ast.ImportListLike
 	ImportedPackageLike       = ast.ImportedPackageLike
 	InstanceDeclarationLike   = ast.InstanceDeclarationLike
 	InstanceMethodsLike       = ast.InstanceMethodsLike
@@ -143,6 +146,7 @@ type (
 	PackageHeaderLike         = ast.PackageHeaderLike
 	PackageImportsLike        = ast.PackageImportsLike
 	ParameterLike             = ast.ParameterLike
+	ParameterListLike         = ast.ParameterListLike
 	PrimitiveDeclarationsLike = ast.PrimitiveDeclarationsLike
 	PrincipalMethodLike       = ast.PrincipalMethodLike
 	PrincipalSubsectionLike   = ast.PrincipalSubsectionLike
@@ -222,9 +226,11 @@ func AdditionalArgumentClass() AdditionalArgumentClassLike {
 }
 
 func AdditionalArgument(
+	delimiter string,
 	argument ast.ArgumentLike,
 ) AdditionalArgumentLike {
 	return AdditionalArgumentClass().AdditionalArgument(
+		delimiter,
 		argument,
 	)
 }
@@ -234,9 +240,11 @@ func AdditionalConstraintClass() AdditionalConstraintClassLike {
 }
 
 func AdditionalConstraint(
+	delimiter string,
 	constraint ast.ConstraintLike,
 ) AdditionalConstraintLike {
 	return AdditionalConstraintClass().AdditionalConstraint(
+		delimiter,
 		constraint,
 	)
 }
@@ -270,12 +278,16 @@ func ArgumentsClass() ArgumentsClassLike {
 }
 
 func Arguments(
+	delimiter1 string,
 	argument ast.ArgumentLike,
 	additionalArguments col.Sequential[ast.AdditionalArgumentLike],
+	delimiter2 string,
 ) ArgumentsLike {
 	return ArgumentsClass().Arguments(
+		delimiter1,
 		argument,
 		additionalArguments,
+		delimiter2,
 	)
 }
 
@@ -283,8 +295,14 @@ func ArrayClass() ArrayClassLike {
 	return ast.ArrayClass()
 }
 
-func Array() ArrayLike {
-	return ArrayClass().Array()
+func Array(
+	delimiter1 string,
+	delimiter2 string,
+) ArrayLike {
+	return ArrayClass().Array(
+		delimiter1,
+		delimiter2,
+	)
 }
 
 func AspectDeclarationClass() AspectDeclarationClassLike {
@@ -293,11 +311,17 @@ func AspectDeclarationClass() AspectDeclarationClassLike {
 
 func AspectDeclaration(
 	declaration ast.DeclarationLike,
+	delimiter1 string,
+	delimiter2 string,
 	aspectMethods col.Sequential[ast.AspectMethodLike],
+	delimiter3 string,
 ) AspectDeclarationLike {
 	return AspectDeclarationClass().AspectDeclaration(
 		declaration,
+		delimiter1,
+		delimiter2,
 		aspectMethods,
+		delimiter3,
 	)
 }
 
@@ -330,9 +354,11 @@ func AspectSectionClass() AspectSectionClassLike {
 }
 
 func AspectSection(
+	delimiter string,
 	aspectDeclarations col.Sequential[ast.AspectDeclarationLike],
 ) AspectSectionLike {
 	return AspectSectionClass().AspectSection(
+		delimiter,
 		aspectDeclarations,
 	)
 }
@@ -342,9 +368,11 @@ func AspectSubsectionClass() AspectSubsectionClassLike {
 }
 
 func AspectSubsection(
+	delimiter string,
 	aspectInterfaces col.Sequential[ast.AspectInterfaceLike],
 ) AspectSubsectionLike {
 	return AspectSubsectionClass().AspectSubsection(
+		delimiter,
 		aspectInterfaces,
 	)
 }
@@ -366,9 +394,11 @@ func AttributeSubsectionClass() AttributeSubsectionClassLike {
 }
 
 func AttributeSubsection(
+	delimiter string,
 	attributeMethods col.Sequential[ast.AttributeMethodLike],
 ) AttributeSubsectionLike {
 	return AttributeSubsectionClass().AttributeSubsection(
+		delimiter,
 		attributeMethods,
 	)
 }
@@ -377,8 +407,12 @@ func ChannelClass() ChannelClassLike {
 	return ast.ChannelClass()
 }
 
-func Channel() ChannelLike {
-	return ChannelClass().Channel()
+func Channel(
+	delimiter string,
+) ChannelLike {
+	return ChannelClass().Channel(
+		delimiter,
+	)
 }
 
 func ClassDeclarationClass() ClassDeclarationClassLike {
@@ -387,11 +421,17 @@ func ClassDeclarationClass() ClassDeclarationClassLike {
 
 func ClassDeclaration(
 	declaration ast.DeclarationLike,
+	delimiter1 string,
+	delimiter2 string,
 	classMethods ast.ClassMethodsLike,
+	delimiter3 string,
 ) ClassDeclarationLike {
 	return ClassDeclarationClass().ClassDeclaration(
 		declaration,
+		delimiter1,
+		delimiter2,
 		classMethods,
+		delimiter3,
 	)
 }
 
@@ -416,9 +456,11 @@ func ClassSectionClass() ClassSectionClassLike {
 }
 
 func ClassSection(
+	delimiter string,
 	classDeclarations col.Sequential[ast.ClassDeclarationLike],
 ) ClassSectionLike {
 	return ClassSectionClass().ClassSection(
+		delimiter,
 		classDeclarations,
 	)
 }
@@ -429,10 +471,14 @@ func ConstantMethodClass() ConstantMethodClassLike {
 
 func ConstantMethod(
 	name string,
+	delimiter1 string,
+	delimiter2 string,
 	abstraction ast.AbstractionLike,
 ) ConstantMethodLike {
 	return ConstantMethodClass().ConstantMethod(
 		name,
+		delimiter1,
+		delimiter2,
 		abstraction,
 	)
 }
@@ -442,9 +488,11 @@ func ConstantSubsectionClass() ConstantSubsectionClassLike {
 }
 
 func ConstantSubsection(
+	delimiter string,
 	constantMethods col.Sequential[ast.ConstantMethodLike],
 ) ConstantSubsectionLike {
 	return ConstantSubsectionClass().ConstantSubsection(
+		delimiter,
 		constantMethods,
 	)
 }
@@ -468,12 +516,16 @@ func ConstraintsClass() ConstraintsClassLike {
 }
 
 func Constraints(
+	delimiter1 string,
 	constraint ast.ConstraintLike,
 	additionalConstraints col.Sequential[ast.AdditionalConstraintLike],
+	delimiter2 string,
 ) ConstraintsLike {
 	return ConstraintsClass().Constraints(
+		delimiter1,
 		constraint,
 		additionalConstraints,
+		delimiter2,
 	)
 }
 
@@ -483,12 +535,16 @@ func ConstructorMethodClass() ConstructorMethodClassLike {
 
 func ConstructorMethod(
 	name string,
-	parameters col.Sequential[ast.ParameterLike],
+	delimiter1 string,
+	optionalParameterList ast.ParameterListLike,
+	delimiter2 string,
 	abstraction ast.AbstractionLike,
 ) ConstructorMethodLike {
 	return ConstructorMethodClass().ConstructorMethod(
 		name,
-		parameters,
+		delimiter1,
+		optionalParameterList,
+		delimiter2,
 		abstraction,
 	)
 }
@@ -498,9 +554,11 @@ func ConstructorSubsectionClass() ConstructorSubsectionClassLike {
 }
 
 func ConstructorSubsection(
+	delimiter string,
 	constructorMethods col.Sequential[ast.ConstructorMethodLike],
 ) ConstructorSubsectionLike {
 	return ConstructorSubsectionClass().ConstructorSubsection(
+		delimiter,
 		constructorMethods,
 	)
 }
@@ -511,11 +569,13 @@ func DeclarationClass() DeclarationClassLike {
 
 func Declaration(
 	comment string,
+	delimiter string,
 	name string,
 	optionalConstraints ast.ConstraintsLike,
 ) DeclarationLike {
 	return DeclarationClass().Declaration(
 		comment,
+		delimiter,
 		name,
 		optionalConstraints,
 	)
@@ -526,12 +586,18 @@ func EnumerationClass() EnumerationClassLike {
 }
 
 func Enumeration(
+	delimiter1 string,
+	delimiter2 string,
 	value ast.ValueLike,
 	additionalValues col.Sequential[ast.AdditionalValueLike],
+	delimiter3 string,
 ) EnumerationLike {
 	return EnumerationClass().Enumeration(
+		delimiter1,
+		delimiter2,
 		value,
 		additionalValues,
+		delimiter3,
 	)
 }
 
@@ -541,12 +607,16 @@ func FunctionMethodClass() FunctionMethodClassLike {
 
 func FunctionMethod(
 	name string,
-	parameters col.Sequential[ast.ParameterLike],
+	delimiter1 string,
+	optionalParameterList ast.ParameterListLike,
+	delimiter2 string,
 	result ast.ResultLike,
 ) FunctionMethodLike {
 	return FunctionMethodClass().FunctionMethod(
 		name,
-		parameters,
+		delimiter1,
+		optionalParameterList,
+		delimiter2,
 		result,
 	)
 }
@@ -556,9 +626,11 @@ func FunctionSubsectionClass() FunctionSubsectionClassLike {
 }
 
 func FunctionSubsection(
+	delimiter string,
 	functionMethods col.Sequential[ast.FunctionMethodLike],
 ) FunctionSubsectionLike {
 	return FunctionSubsectionClass().FunctionSubsection(
+		delimiter,
 		functionMethods,
 	)
 }
@@ -569,12 +641,18 @@ func FunctionalDeclarationClass() FunctionalDeclarationClassLike {
 
 func FunctionalDeclaration(
 	declaration ast.DeclarationLike,
-	parameters col.Sequential[ast.ParameterLike],
+	delimiter1 string,
+	delimiter2 string,
+	optionalParameterList ast.ParameterListLike,
+	delimiter3 string,
 	result ast.ResultLike,
 ) FunctionalDeclarationLike {
 	return FunctionalDeclarationClass().FunctionalDeclaration(
 		declaration,
-		parameters,
+		delimiter1,
+		delimiter2,
+		optionalParameterList,
+		delimiter3,
 		result,
 	)
 }
@@ -584,9 +662,11 @@ func FunctionalSectionClass() FunctionalSectionClassLike {
 }
 
 func FunctionalSection(
+	delimiter string,
 	functionalDeclarations col.Sequential[ast.FunctionalDeclarationLike],
 ) FunctionalSectionLike {
 	return FunctionalSectionClass().FunctionalSection(
+		delimiter,
 		functionalDeclarations,
 	)
 }
@@ -597,11 +677,27 @@ func GetterMethodClass() GetterMethodClassLike {
 
 func GetterMethod(
 	name string,
+	delimiter1 string,
+	delimiter2 string,
 	abstraction ast.AbstractionLike,
 ) GetterMethodLike {
 	return GetterMethodClass().GetterMethod(
 		name,
+		delimiter1,
+		delimiter2,
 		abstraction,
+	)
+}
+
+func ImportListClass() ImportListClassLike {
+	return ast.ImportListClass()
+}
+
+func ImportList(
+	importedPackages col.Sequential[ast.ImportedPackageLike],
+) ImportListLike {
+	return ImportListClass().ImportList(
+		importedPackages,
 	)
 }
 
@@ -625,11 +721,17 @@ func InstanceDeclarationClass() InstanceDeclarationClassLike {
 
 func InstanceDeclaration(
 	declaration ast.DeclarationLike,
+	delimiter1 string,
+	delimiter2 string,
 	instanceMethods ast.InstanceMethodsLike,
+	delimiter3 string,
 ) InstanceDeclarationLike {
 	return InstanceDeclarationClass().InstanceDeclaration(
 		declaration,
+		delimiter1,
+		delimiter2,
 		instanceMethods,
+		delimiter3,
 	)
 }
 
@@ -654,9 +756,11 @@ func InstanceSectionClass() InstanceSectionClassLike {
 }
 
 func InstanceSection(
+	delimiter string,
 	instanceDeclarations col.Sequential[ast.InstanceDeclarationLike],
 ) InstanceSectionLike {
 	return InstanceSectionClass().InstanceSection(
+		delimiter,
 		instanceDeclarations,
 	)
 }
@@ -694,10 +798,16 @@ func MapClass() MapClassLike {
 }
 
 func Map(
+	delimiter1 string,
+	delimiter2 string,
 	name string,
+	delimiter3 string,
 ) MapLike {
 	return MapClass().Map(
+		delimiter1,
+		delimiter2,
 		name,
+		delimiter3,
 	)
 }
 
@@ -707,12 +817,16 @@ func MethodClass() MethodClassLike {
 
 func Method(
 	name string,
-	parameters col.Sequential[ast.ParameterLike],
+	delimiter1 string,
+	optionalParameterList ast.ParameterListLike,
+	delimiter2 string,
 	optionalResult ast.ResultLike,
 ) MethodLike {
 	return MethodClass().Method(
 		name,
-		parameters,
+		delimiter1,
+		optionalParameterList,
+		delimiter2,
 		optionalResult,
 	)
 }
@@ -738,10 +852,14 @@ func MultivalueClass() MultivalueClassLike {
 }
 
 func Multivalue(
-	parameters col.Sequential[ast.ParameterLike],
+	delimiter1 string,
+	parameterList ast.ParameterListLike,
+	delimiter2 string,
 ) MultivalueLike {
 	return MultivalueClass().Multivalue(
-		parameters,
+		delimiter1,
+		parameterList,
+		delimiter2,
 	)
 }
 
@@ -779,10 +897,12 @@ func PackageHeaderClass() PackageHeaderClassLike {
 
 func PackageHeader(
 	comment string,
+	delimiter string,
 	name string,
 ) PackageHeaderLike {
 	return PackageHeaderClass().PackageHeader(
 		comment,
+		delimiter,
 		name,
 	)
 }
@@ -792,10 +912,16 @@ func PackageImportsClass() PackageImportsClassLike {
 }
 
 func PackageImports(
-	importedPackages col.Sequential[ast.ImportedPackageLike],
+	delimiter1 string,
+	delimiter2 string,
+	optionalImportList ast.ImportListLike,
+	delimiter3 string,
 ) PackageImportsLike {
 	return PackageImportsClass().PackageImports(
-		importedPackages,
+		delimiter1,
+		delimiter2,
+		optionalImportList,
+		delimiter3,
 	)
 }
 
@@ -806,10 +932,24 @@ func ParameterClass() ParameterClassLike {
 func Parameter(
 	name string,
 	abstraction ast.AbstractionLike,
+	delimiter string,
 ) ParameterLike {
 	return ParameterClass().Parameter(
 		name,
 		abstraction,
+		delimiter,
+	)
+}
+
+func ParameterListClass() ParameterListClassLike {
+	return ast.ParameterListClass()
+}
+
+func ParameterList(
+	parameters col.Sequential[ast.ParameterLike],
+) ParameterListLike {
+	return ParameterListClass().ParameterList(
+		parameters,
 	)
 }
 
@@ -844,9 +984,11 @@ func PrincipalSubsectionClass() PrincipalSubsectionClassLike {
 }
 
 func PrincipalSubsection(
+	delimiter string,
 	principalMethods col.Sequential[ast.PrincipalMethodLike],
 ) PrincipalSubsectionLike {
 	return PrincipalSubsectionClass().PrincipalSubsection(
+		delimiter,
 		principalMethods,
 	)
 }
@@ -869,11 +1011,15 @@ func SetterMethodClass() SetterMethodClassLike {
 
 func SetterMethod(
 	name string,
+	delimiter1 string,
 	parameter ast.ParameterLike,
+	delimiter2 string,
 ) SetterMethodLike {
 	return SetterMethodClass().SetterMethod(
 		name,
+		delimiter1,
 		parameter,
+		delimiter2,
 	)
 }
 
@@ -898,9 +1044,11 @@ func TypeSectionClass() TypeSectionClassLike {
 }
 
 func TypeSection(
+	delimiter string,
 	typeDeclarations col.Sequential[ast.TypeDeclarationLike],
 ) TypeSectionLike {
 	return TypeSectionClass().TypeSection(
+		delimiter,
 		typeDeclarations,
 	)
 }
@@ -912,10 +1060,14 @@ func ValueClass() ValueClassLike {
 func Value(
 	name string,
 	abstraction ast.AbstractionLike,
+	delimiter1 string,
+	delimiter2 string,
 ) ValueLike {
 	return ValueClass().Value(
 		name,
 		abstraction,
+		delimiter1,
+		delimiter2,
 	)
 }
 

@@ -262,16 +262,15 @@ var scannerClassReference_ = &scannerClass_{
 
 // Private Constants
 
-/*
-NOTE:
-These private constants define the regular expression sub-patterns that make up
-the intrinsic types and token types.  Unfortunately there is no way to make them
-private to the scanner class since they must be TRUE Go constants to be used in
-this way.  We append an underscore to each name to lessen the chance of a name
-collision with other private Go class constants in this package.
-*/
+// NOTE:
+// These private constants define the regular expression sub-patterns that make
+// up the intrinsic types and token types.  Unfortunately there is no way to
+// make them private to the scanner class since they must be TRUE Go constants
+// to be used in this way.  We append an underscore to each name to lessen the
+// chance of a name collision with other private Go class constants in this
+// package.
 const (
-	// Define the regular expression patterns for each intrinsic type.
+	// Define the regular expressions for each intrinsic type.
 	any_     = "." // This does NOT include newline characters.
 	control_ = "\\p{Cc}"
 	digit_   = "\\p{Nd}"
@@ -279,7 +278,7 @@ const (
 	lower_   = "\\p{Ll}"
 	upper_   = "\\p{Lu}"
 
-	// Define the regular expression patterns for each token type.
+	// Define the regular expressions for each token type.
 	delimiter_    = "(?:type|package|map|iota|interface|import|func|const|chan|\\}|\\{|\\]|\\[|\\)|\\(|=|// TYPE DECLARATIONS|// Principal Methods|// INSTANCE DECLARATIONS|// Function Methods|// FUNCTIONAL DECLARATIONS|// Constructor Methods|// Constant Methods|// CLASS DECLARATIONS|// Attribute Methods|// Aspect Interfaces|// ASPECT DECLARATIONS|,)"
 	newline_      = "(?:" + eol_ + ")"
 	space_        = "(?:[ \\t]+)"

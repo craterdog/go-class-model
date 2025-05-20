@@ -35,19 +35,29 @@ func ConstraintsClass() ConstraintsClassLike {
 // Constructor Methods
 
 func (c *constraintsClass_) Constraints(
+	delimiter1 string,
 	constraint ConstraintLike,
 	additionalConstraints col.Sequential[AdditionalConstraintLike],
+	delimiter2 string,
 ) ConstraintsLike {
+	if uti.IsUndefined(delimiter1) {
+		panic("The \"delimiter1\" attribute is required by this class.")
+	}
 	if uti.IsUndefined(constraint) {
 		panic("The \"constraint\" attribute is required by this class.")
 	}
 	if uti.IsUndefined(additionalConstraints) {
 		panic("The \"additionalConstraints\" attribute is required by this class.")
 	}
+	if uti.IsUndefined(delimiter2) {
+		panic("The \"delimiter2\" attribute is required by this class.")
+	}
 	var instance = &constraints_{
 		// Initialize the instance attributes.
+		delimiter1_:            delimiter1,
 		constraint_:            constraint,
 		additionalConstraints_: additionalConstraints,
+		delimiter2_:            delimiter2,
 	}
 	return instance
 }
@@ -62,6 +72,10 @@ func (v *constraints_) GetClass() ConstraintsClassLike {
 
 // Attribute Methods
 
+func (v *constraints_) GetDelimiter1() string {
+	return v.delimiter1_
+}
+
 func (v *constraints_) GetConstraint() ConstraintLike {
 	return v.constraint_
 }
@@ -70,14 +84,20 @@ func (v *constraints_) GetAdditionalConstraints() col.Sequential[AdditionalConst
 	return v.additionalConstraints_
 }
 
+func (v *constraints_) GetDelimiter2() string {
+	return v.delimiter2_
+}
+
 // PROTECTED INTERFACE
 
 // Instance Structure
 
 type constraints_ struct {
 	// Declare the instance attributes.
+	delimiter1_            string
 	constraint_            ConstraintLike
 	additionalConstraints_ col.Sequential[AdditionalConstraintLike]
+	delimiter2_            string
 }
 
 // Class Structure

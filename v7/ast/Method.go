@@ -20,7 +20,6 @@
 package ast
 
 import (
-	col "github.com/craterdog/go-collection-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -36,20 +35,27 @@ func MethodClass() MethodClassLike {
 
 func (c *methodClass_) Method(
 	name string,
-	parameters col.Sequential[ParameterLike],
+	delimiter1 string,
+	optionalParameterList ParameterListLike,
+	delimiter2 string,
 	optionalResult ResultLike,
 ) MethodLike {
 	if uti.IsUndefined(name) {
 		panic("The \"name\" attribute is required by this class.")
 	}
-	if uti.IsUndefined(parameters) {
-		panic("The \"parameters\" attribute is required by this class.")
+	if uti.IsUndefined(delimiter1) {
+		panic("The \"delimiter1\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter2) {
+		panic("The \"delimiter2\" attribute is required by this class.")
 	}
 	var instance = &method_{
 		// Initialize the instance attributes.
-		name_:           name,
-		parameters_:     parameters,
-		optionalResult_: optionalResult,
+		name_:                  name,
+		delimiter1_:            delimiter1,
+		optionalParameterList_: optionalParameterList,
+		delimiter2_:            delimiter2,
+		optionalResult_:        optionalResult,
 	}
 	return instance
 }
@@ -68,8 +74,16 @@ func (v *method_) GetName() string {
 	return v.name_
 }
 
-func (v *method_) GetParameters() col.Sequential[ParameterLike] {
-	return v.parameters_
+func (v *method_) GetDelimiter1() string {
+	return v.delimiter1_
+}
+
+func (v *method_) GetOptionalParameterList() ParameterListLike {
+	return v.optionalParameterList_
+}
+
+func (v *method_) GetDelimiter2() string {
+	return v.delimiter2_
 }
 
 func (v *method_) GetOptionalResult() ResultLike {
@@ -82,9 +96,11 @@ func (v *method_) GetOptionalResult() ResultLike {
 
 type method_ struct {
 	// Declare the instance attributes.
-	name_           string
-	parameters_     col.Sequential[ParameterLike]
-	optionalResult_ ResultLike
+	name_                  string
+	delimiter1_            string
+	optionalParameterList_ ParameterListLike
+	delimiter2_            string
+	optionalResult_        ResultLike
 }
 
 // Class Structure

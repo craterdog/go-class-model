@@ -34,14 +34,19 @@ func AdditionalArgumentClass() AdditionalArgumentClassLike {
 // Constructor Methods
 
 func (c *additionalArgumentClass_) AdditionalArgument(
+	delimiter string,
 	argument ArgumentLike,
 ) AdditionalArgumentLike {
+	if uti.IsUndefined(delimiter) {
+		panic("The \"delimiter\" attribute is required by this class.")
+	}
 	if uti.IsUndefined(argument) {
 		panic("The \"argument\" attribute is required by this class.")
 	}
 	var instance = &additionalArgument_{
 		// Initialize the instance attributes.
-		argument_: argument,
+		delimiter_: delimiter,
+		argument_:  argument,
 	}
 	return instance
 }
@@ -56,6 +61,10 @@ func (v *additionalArgument_) GetClass() AdditionalArgumentClassLike {
 
 // Attribute Methods
 
+func (v *additionalArgument_) GetDelimiter() string {
+	return v.delimiter_
+}
+
 func (v *additionalArgument_) GetArgument() ArgumentLike {
 	return v.argument_
 }
@@ -66,7 +75,8 @@ func (v *additionalArgument_) GetArgument() ArgumentLike {
 
 type additionalArgument_ struct {
 	// Declare the instance attributes.
-	argument_ ArgumentLike
+	delimiter_ string
+	argument_  ArgumentLike
 }
 
 // Class Structure

@@ -35,10 +35,18 @@ func GetterMethodClass() GetterMethodClassLike {
 
 func (c *getterMethodClass_) GetterMethod(
 	name string,
+	delimiter1 string,
+	delimiter2 string,
 	abstraction AbstractionLike,
 ) GetterMethodLike {
 	if uti.IsUndefined(name) {
 		panic("The \"name\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter1) {
+		panic("The \"delimiter1\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter2) {
+		panic("The \"delimiter2\" attribute is required by this class.")
 	}
 	if uti.IsUndefined(abstraction) {
 		panic("The \"abstraction\" attribute is required by this class.")
@@ -46,6 +54,8 @@ func (c *getterMethodClass_) GetterMethod(
 	var instance = &getterMethod_{
 		// Initialize the instance attributes.
 		name_:        name,
+		delimiter1_:  delimiter1,
+		delimiter2_:  delimiter2,
 		abstraction_: abstraction,
 	}
 	return instance
@@ -65,6 +75,14 @@ func (v *getterMethod_) GetName() string {
 	return v.name_
 }
 
+func (v *getterMethod_) GetDelimiter1() string {
+	return v.delimiter1_
+}
+
+func (v *getterMethod_) GetDelimiter2() string {
+	return v.delimiter2_
+}
+
 func (v *getterMethod_) GetAbstraction() AbstractionLike {
 	return v.abstraction_
 }
@@ -76,6 +94,8 @@ func (v *getterMethod_) GetAbstraction() AbstractionLike {
 type getterMethod_ struct {
 	// Declare the instance attributes.
 	name_        string
+	delimiter1_  string
+	delimiter2_  string
 	abstraction_ AbstractionLike
 }
 

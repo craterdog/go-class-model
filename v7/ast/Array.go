@@ -19,7 +19,9 @@
 
 package ast
 
-import ()
+import (
+	uti "github.com/craterdog/go-missing-utilities/v7"
+)
 
 // CLASS INTERFACE
 
@@ -31,9 +33,20 @@ func ArrayClass() ArrayClassLike {
 
 // Constructor Methods
 
-func (c *arrayClass_) Array() ArrayLike {
+func (c *arrayClass_) Array(
+	delimiter1 string,
+	delimiter2 string,
+) ArrayLike {
+	if uti.IsUndefined(delimiter1) {
+		panic("The \"delimiter1\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter2) {
+		panic("The \"delimiter2\" attribute is required by this class.")
+	}
 	var instance = &array_{
 		// Initialize the instance attributes.
+		delimiter1_: delimiter1,
+		delimiter2_: delimiter2,
 	}
 	return instance
 }
@@ -48,12 +61,22 @@ func (v *array_) GetClass() ArrayClassLike {
 
 // Attribute Methods
 
+func (v *array_) GetDelimiter1() string {
+	return v.delimiter1_
+}
+
+func (v *array_) GetDelimiter2() string {
+	return v.delimiter2_
+}
+
 // PROTECTED INTERFACE
 
 // Instance Structure
 
 type array_ struct {
 	// Declare the instance attributes.
+	delimiter1_ string
+	delimiter2_ string
 }
 
 // Class Structure

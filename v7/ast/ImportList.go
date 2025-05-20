@@ -20,6 +20,7 @@
 package ast
 
 import (
+	col "github.com/craterdog/go-collection-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -27,21 +28,21 @@ import (
 
 // Access Function
 
-func ChannelClass() ChannelClassLike {
-	return channelClass()
+func ImportListClass() ImportListClassLike {
+	return importListClass()
 }
 
 // Constructor Methods
 
-func (c *channelClass_) Channel(
-	delimiter string,
-) ChannelLike {
-	if uti.IsUndefined(delimiter) {
-		panic("The \"delimiter\" attribute is required by this class.")
+func (c *importListClass_) ImportList(
+	importedPackages col.Sequential[ImportedPackageLike],
+) ImportListLike {
+	if uti.IsUndefined(importedPackages) {
+		panic("The \"importedPackages\" attribute is required by this class.")
 	}
-	var instance = &channel_{
+	var instance = &importList_{
 		// Initialize the instance attributes.
-		delimiter_: delimiter,
+		importedPackages_: importedPackages,
 	}
 	return instance
 }
@@ -50,37 +51,37 @@ func (c *channelClass_) Channel(
 
 // Principal Methods
 
-func (v *channel_) GetClass() ChannelClassLike {
-	return channelClass()
+func (v *importList_) GetClass() ImportListClassLike {
+	return importListClass()
 }
 
 // Attribute Methods
 
-func (v *channel_) GetDelimiter() string {
-	return v.delimiter_
+func (v *importList_) GetImportedPackages() col.Sequential[ImportedPackageLike] {
+	return v.importedPackages_
 }
 
 // PROTECTED INTERFACE
 
 // Instance Structure
 
-type channel_ struct {
+type importList_ struct {
 	// Declare the instance attributes.
-	delimiter_ string
+	importedPackages_ col.Sequential[ImportedPackageLike]
 }
 
 // Class Structure
 
-type channelClass_ struct {
+type importListClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func channelClass() *channelClass_ {
-	return channelClassReference_
+func importListClass() *importListClass_ {
+	return importListClassReference_
 }
 
-var channelClassReference_ = &channelClass_{
+var importListClassReference_ = &importListClass_{
 	// Initialize the class constants.
 }

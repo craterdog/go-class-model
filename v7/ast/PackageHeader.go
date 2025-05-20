@@ -35,18 +35,23 @@ func PackageHeaderClass() PackageHeaderClassLike {
 
 func (c *packageHeaderClass_) PackageHeader(
 	comment string,
+	delimiter string,
 	name string,
 ) PackageHeaderLike {
 	if uti.IsUndefined(comment) {
 		panic("The \"comment\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter) {
+		panic("The \"delimiter\" attribute is required by this class.")
 	}
 	if uti.IsUndefined(name) {
 		panic("The \"name\" attribute is required by this class.")
 	}
 	var instance = &packageHeader_{
 		// Initialize the instance attributes.
-		comment_: comment,
-		name_:    name,
+		comment_:   comment,
+		delimiter_: delimiter,
+		name_:      name,
 	}
 	return instance
 }
@@ -65,6 +70,10 @@ func (v *packageHeader_) GetComment() string {
 	return v.comment_
 }
 
+func (v *packageHeader_) GetDelimiter() string {
+	return v.delimiter_
+}
+
 func (v *packageHeader_) GetName() string {
 	return v.name_
 }
@@ -75,8 +84,9 @@ func (v *packageHeader_) GetName() string {
 
 type packageHeader_ struct {
 	// Declare the instance attributes.
-	comment_ string
-	name_    string
+	comment_   string
+	delimiter_ string
+	name_      string
 }
 
 // Class Structure

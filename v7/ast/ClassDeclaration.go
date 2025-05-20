@@ -35,18 +35,33 @@ func ClassDeclarationClass() ClassDeclarationClassLike {
 
 func (c *classDeclarationClass_) ClassDeclaration(
 	declaration DeclarationLike,
+	delimiter1 string,
+	delimiter2 string,
 	classMethods ClassMethodsLike,
+	delimiter3 string,
 ) ClassDeclarationLike {
 	if uti.IsUndefined(declaration) {
 		panic("The \"declaration\" attribute is required by this class.")
 	}
+	if uti.IsUndefined(delimiter1) {
+		panic("The \"delimiter1\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter2) {
+		panic("The \"delimiter2\" attribute is required by this class.")
+	}
 	if uti.IsUndefined(classMethods) {
 		panic("The \"classMethods\" attribute is required by this class.")
+	}
+	if uti.IsUndefined(delimiter3) {
+		panic("The \"delimiter3\" attribute is required by this class.")
 	}
 	var instance = &classDeclaration_{
 		// Initialize the instance attributes.
 		declaration_:  declaration,
+		delimiter1_:   delimiter1,
+		delimiter2_:   delimiter2,
 		classMethods_: classMethods,
+		delimiter3_:   delimiter3,
 	}
 	return instance
 }
@@ -65,8 +80,20 @@ func (v *classDeclaration_) GetDeclaration() DeclarationLike {
 	return v.declaration_
 }
 
+func (v *classDeclaration_) GetDelimiter1() string {
+	return v.delimiter1_
+}
+
+func (v *classDeclaration_) GetDelimiter2() string {
+	return v.delimiter2_
+}
+
 func (v *classDeclaration_) GetClassMethods() ClassMethodsLike {
 	return v.classMethods_
+}
+
+func (v *classDeclaration_) GetDelimiter3() string {
+	return v.delimiter3_
 }
 
 // PROTECTED INTERFACE
@@ -76,7 +103,10 @@ func (v *classDeclaration_) GetClassMethods() ClassMethodsLike {
 type classDeclaration_ struct {
 	// Declare the instance attributes.
 	declaration_  DeclarationLike
+	delimiter1_   string
+	delimiter2_   string
 	classMethods_ ClassMethodsLike
+	delimiter3_   string
 }
 
 // Class Structure

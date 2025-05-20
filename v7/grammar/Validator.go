@@ -99,18 +99,16 @@ func (v *validator_) ProcessSpace(
 
 func (v *validator_) PreprocessAbstraction(
 	abstraction ast.AbstractionLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessAbstractionSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessAbstraction(
 	abstraction ast.AbstractionLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -118,13 +116,7 @@ func (v *validator_) PostprocessAbstraction(
 func (v *validator_) PreprocessAdditionalArgument(
 	additionalArgument ast.AdditionalArgumentLike,
 	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessAdditionalArgumentSlot(
-	slot uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -132,7 +124,7 @@ func (v *validator_) ProcessAdditionalArgumentSlot(
 func (v *validator_) PostprocessAdditionalArgument(
 	additionalArgument ast.AdditionalArgumentLike,
 	index uint,
-	size uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -140,13 +132,7 @@ func (v *validator_) PostprocessAdditionalArgument(
 func (v *validator_) PreprocessAdditionalConstraint(
 	additionalConstraint ast.AdditionalConstraintLike,
 	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessAdditionalConstraintSlot(
-	slot uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -154,7 +140,7 @@ func (v *validator_) ProcessAdditionalConstraintSlot(
 func (v *validator_) PostprocessAdditionalConstraint(
 	additionalConstraint ast.AdditionalConstraintLike,
 	index uint,
-	size uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -162,13 +148,7 @@ func (v *validator_) PostprocessAdditionalConstraint(
 func (v *validator_) PreprocessAdditionalValue(
 	additionalValue ast.AdditionalValueLike,
 	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessAdditionalValueSlot(
-	slot uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -176,61 +156,55 @@ func (v *validator_) ProcessAdditionalValueSlot(
 func (v *validator_) PostprocessAdditionalValue(
 	additionalValue ast.AdditionalValueLike,
 	index uint,
-	size uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessArgument(
 	argument ast.ArgumentLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessArgumentSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessArgument(
 	argument ast.ArgumentLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessArguments(
 	arguments ast.ArgumentsLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessArgumentsSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessArguments(
 	arguments ast.ArgumentsLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessArray(
 	array ast.ArrayLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessArraySlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessArray(
 	array ast.ArrayLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -238,13 +212,7 @@ func (v *validator_) PostprocessArray(
 func (v *validator_) PreprocessAspectDeclaration(
 	aspectDeclaration ast.AspectDeclarationLike,
 	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessAspectDeclarationSlot(
-	slot uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -252,7 +220,7 @@ func (v *validator_) ProcessAspectDeclarationSlot(
 func (v *validator_) PostprocessAspectDeclaration(
 	aspectDeclaration ast.AspectDeclarationLike,
 	index uint,
-	size uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -260,13 +228,7 @@ func (v *validator_) PostprocessAspectDeclaration(
 func (v *validator_) PreprocessAspectInterface(
 	aspectInterface ast.AspectInterfaceLike,
 	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessAspectInterfaceSlot(
-	slot uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -274,7 +236,7 @@ func (v *validator_) ProcessAspectInterfaceSlot(
 func (v *validator_) PostprocessAspectInterface(
 	aspectInterface ast.AspectInterfaceLike,
 	index uint,
-	size uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -282,13 +244,7 @@ func (v *validator_) PostprocessAspectInterface(
 func (v *validator_) PreprocessAspectMethod(
 	aspectMethod ast.AspectMethodLike,
 	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessAspectMethodSlot(
-	slot uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -296,43 +252,39 @@ func (v *validator_) ProcessAspectMethodSlot(
 func (v *validator_) PostprocessAspectMethod(
 	aspectMethod ast.AspectMethodLike,
 	index uint,
-	size uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessAspectSection(
 	aspectSection ast.AspectSectionLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessAspectSectionSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessAspectSection(
 	aspectSection ast.AspectSectionLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessAspectSubsection(
 	aspectSubsection ast.AspectSubsectionLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessAspectSubsectionSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessAspectSubsection(
 	aspectSubsection ast.AspectSubsectionLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -340,13 +292,7 @@ func (v *validator_) PostprocessAspectSubsection(
 func (v *validator_) PreprocessAttributeMethod(
 	attributeMethod ast.AttributeMethodLike,
 	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessAttributeMethodSlot(
-	slot uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -354,43 +300,39 @@ func (v *validator_) ProcessAttributeMethodSlot(
 func (v *validator_) PostprocessAttributeMethod(
 	attributeMethod ast.AttributeMethodLike,
 	index uint,
-	size uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessAttributeSubsection(
 	attributeSubsection ast.AttributeSubsectionLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessAttributeSubsectionSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessAttributeSubsection(
 	attributeSubsection ast.AttributeSubsectionLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessChannel(
 	channel ast.ChannelLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessChannelSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessChannel(
 	channel ast.ChannelLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -398,13 +340,7 @@ func (v *validator_) PostprocessChannel(
 func (v *validator_) PreprocessClassDeclaration(
 	classDeclaration ast.ClassDeclarationLike,
 	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessClassDeclarationSlot(
-	slot uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -412,43 +348,39 @@ func (v *validator_) ProcessClassDeclarationSlot(
 func (v *validator_) PostprocessClassDeclaration(
 	classDeclaration ast.ClassDeclarationLike,
 	index uint,
-	size uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessClassMethods(
 	classMethods ast.ClassMethodsLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessClassMethodsSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessClassMethods(
 	classMethods ast.ClassMethodsLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessClassSection(
 	classSection ast.ClassSectionLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessClassSectionSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessClassSection(
 	classSection ast.ClassSectionLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -456,13 +388,7 @@ func (v *validator_) PostprocessClassSection(
 func (v *validator_) PreprocessConstantMethod(
 	constantMethod ast.ConstantMethodLike,
 	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessConstantMethodSlot(
-	slot uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -470,61 +396,55 @@ func (v *validator_) ProcessConstantMethodSlot(
 func (v *validator_) PostprocessConstantMethod(
 	constantMethod ast.ConstantMethodLike,
 	index uint,
-	size uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessConstantSubsection(
 	constantSubsection ast.ConstantSubsectionLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessConstantSubsectionSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessConstantSubsection(
 	constantSubsection ast.ConstantSubsectionLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessConstraint(
 	constraint ast.ConstraintLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessConstraintSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessConstraint(
 	constraint ast.ConstraintLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessConstraints(
 	constraints ast.ConstraintsLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessConstraintsSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessConstraints(
 	constraints ast.ConstraintsLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -532,13 +452,7 @@ func (v *validator_) PostprocessConstraints(
 func (v *validator_) PreprocessConstructorMethod(
 	constructorMethod ast.ConstructorMethodLike,
 	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessConstructorMethodSlot(
-	slot uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -546,61 +460,55 @@ func (v *validator_) ProcessConstructorMethodSlot(
 func (v *validator_) PostprocessConstructorMethod(
 	constructorMethod ast.ConstructorMethodLike,
 	index uint,
-	size uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessConstructorSubsection(
 	constructorSubsection ast.ConstructorSubsectionLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessConstructorSubsectionSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessConstructorSubsection(
 	constructorSubsection ast.ConstructorSubsectionLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessDeclaration(
 	declaration ast.DeclarationLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessDeclarationSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessDeclaration(
 	declaration ast.DeclarationLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessEnumeration(
 	enumeration ast.EnumerationLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessEnumerationSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessEnumeration(
 	enumeration ast.EnumerationLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -608,13 +516,7 @@ func (v *validator_) PostprocessEnumeration(
 func (v *validator_) PreprocessFunctionMethod(
 	functionMethod ast.FunctionMethodLike,
 	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessFunctionMethodSlot(
-	slot uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -622,25 +524,23 @@ func (v *validator_) ProcessFunctionMethodSlot(
 func (v *validator_) PostprocessFunctionMethod(
 	functionMethod ast.FunctionMethodLike,
 	index uint,
-	size uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessFunctionSubsection(
 	functionSubsection ast.FunctionSubsectionLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessFunctionSubsectionSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessFunctionSubsection(
 	functionSubsection ast.FunctionSubsectionLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -648,13 +548,7 @@ func (v *validator_) PostprocessFunctionSubsection(
 func (v *validator_) PreprocessFunctionalDeclaration(
 	functionalDeclaration ast.FunctionalDeclarationLike,
 	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessFunctionalDeclarationSlot(
-	slot uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -662,43 +556,55 @@ func (v *validator_) ProcessFunctionalDeclarationSlot(
 func (v *validator_) PostprocessFunctionalDeclaration(
 	functionalDeclaration ast.FunctionalDeclarationLike,
 	index uint,
-	size uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessFunctionalSection(
 	functionalSection ast.FunctionalSectionLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessFunctionalSectionSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessFunctionalSection(
 	functionalSection ast.FunctionalSectionLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessGetterMethod(
 	getterMethod ast.GetterMethodLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessGetterMethodSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessGetterMethod(
 	getterMethod ast.GetterMethodLike,
+	index uint,
+	count uint,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) PreprocessImportList(
+	importList ast.ImportListLike,
+	index uint,
+	count uint,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) PostprocessImportList(
+	importList ast.ImportListLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -706,13 +612,7 @@ func (v *validator_) PostprocessGetterMethod(
 func (v *validator_) PreprocessImportedPackage(
 	importedPackage ast.ImportedPackageLike,
 	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessImportedPackageSlot(
-	slot uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -720,7 +620,7 @@ func (v *validator_) ProcessImportedPackageSlot(
 func (v *validator_) PostprocessImportedPackage(
 	importedPackage ast.ImportedPackageLike,
 	index uint,
-	size uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -728,13 +628,7 @@ func (v *validator_) PostprocessImportedPackage(
 func (v *validator_) PreprocessInstanceDeclaration(
 	instanceDeclaration ast.InstanceDeclarationLike,
 	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessInstanceDeclarationSlot(
-	slot uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -742,223 +636,199 @@ func (v *validator_) ProcessInstanceDeclarationSlot(
 func (v *validator_) PostprocessInstanceDeclaration(
 	instanceDeclaration ast.InstanceDeclarationLike,
 	index uint,
-	size uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessInstanceMethods(
 	instanceMethods ast.InstanceMethodsLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessInstanceMethodsSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessInstanceMethods(
 	instanceMethods ast.InstanceMethodsLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessInstanceSection(
 	instanceSection ast.InstanceSectionLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessInstanceSectionSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessInstanceSection(
 	instanceSection ast.InstanceSectionLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessInterfaceDeclarations(
 	interfaceDeclarations ast.InterfaceDeclarationsLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessInterfaceDeclarationsSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessInterfaceDeclarations(
 	interfaceDeclarations ast.InterfaceDeclarationsLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessLegalNotice(
 	legalNotice ast.LegalNoticeLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessLegalNoticeSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessLegalNotice(
 	legalNotice ast.LegalNoticeLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessMap(
 	map_ ast.MapLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessMapSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessMap(
 	map_ ast.MapLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessMethod(
 	method ast.MethodLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessMethodSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessMethod(
 	method ast.MethodLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessModel(
 	model ast.ModelLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessModelSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessModel(
 	model ast.ModelLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessMultivalue(
 	multivalue ast.MultivalueLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessMultivalueSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessMultivalue(
 	multivalue ast.MultivalueLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessNone(
 	none ast.NoneLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessNoneSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessNone(
 	none ast.NoneLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessPackageDeclaration(
 	packageDeclaration ast.PackageDeclarationLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessPackageDeclarationSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessPackageDeclaration(
 	packageDeclaration ast.PackageDeclarationLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessPackageHeader(
 	packageHeader ast.PackageHeaderLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessPackageHeaderSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessPackageHeader(
 	packageHeader ast.PackageHeaderLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessPackageImports(
 	packageImports ast.PackageImportsLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessPackageImportsSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessPackageImports(
 	packageImports ast.PackageImportsLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -966,13 +836,7 @@ func (v *validator_) PostprocessPackageImports(
 func (v *validator_) PreprocessParameter(
 	parameter ast.ParameterLike,
 	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessParameterSlot(
-	slot uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -980,25 +844,39 @@ func (v *validator_) ProcessParameterSlot(
 func (v *validator_) PostprocessParameter(
 	parameter ast.ParameterLike,
 	index uint,
-	size uint,
+	count uint,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) PreprocessParameterList(
+	parameterList ast.ParameterListLike,
+	index uint,
+	count uint,
+) {
+	// TBD - Add any validation checks.
+}
+
+func (v *validator_) PostprocessParameterList(
+	parameterList ast.ParameterListLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessPrimitiveDeclarations(
 	primitiveDeclarations ast.PrimitiveDeclarationsLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessPrimitiveDeclarationsSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessPrimitiveDeclarations(
 	primitiveDeclarations ast.PrimitiveDeclarationsLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -1006,13 +884,7 @@ func (v *validator_) PostprocessPrimitiveDeclarations(
 func (v *validator_) PreprocessPrincipalMethod(
 	principalMethod ast.PrincipalMethodLike,
 	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessPrincipalMethodSlot(
-	slot uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -1020,61 +892,55 @@ func (v *validator_) ProcessPrincipalMethodSlot(
 func (v *validator_) PostprocessPrincipalMethod(
 	principalMethod ast.PrincipalMethodLike,
 	index uint,
-	size uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessPrincipalSubsection(
 	principalSubsection ast.PrincipalSubsectionLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessPrincipalSubsectionSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessPrincipalSubsection(
 	principalSubsection ast.PrincipalSubsectionLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessResult(
 	result ast.ResultLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessResultSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessResult(
 	result ast.ResultLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessSetterMethod(
 	setterMethod ast.SetterMethodLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessSetterMethodSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessSetterMethod(
 	setterMethod ast.SetterMethodLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -1082,13 +948,7 @@ func (v *validator_) PostprocessSetterMethod(
 func (v *validator_) PreprocessTypeDeclaration(
 	typeDeclaration ast.TypeDeclarationLike,
 	index uint,
-	size uint,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessTypeDeclarationSlot(
-	slot uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
@@ -1096,61 +956,55 @@ func (v *validator_) ProcessTypeDeclarationSlot(
 func (v *validator_) PostprocessTypeDeclaration(
 	typeDeclaration ast.TypeDeclarationLike,
 	index uint,
-	size uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessTypeSection(
 	typeSection ast.TypeSectionLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessTypeSectionSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessTypeSection(
 	typeSection ast.TypeSectionLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessValue(
 	value ast.ValueLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessValueSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessValue(
 	value ast.ValueLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PreprocessWrapper(
 	wrapper ast.WrapperLike,
-) {
-	// TBD - Add any validation checks.
-}
-
-func (v *validator_) ProcessWrapperSlot(
-	slot uint,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }
 
 func (v *validator_) PostprocessWrapper(
 	wrapper ast.WrapperLike,
+	index uint,
+	count uint,
 ) {
 	// TBD - Add any validation checks.
 }

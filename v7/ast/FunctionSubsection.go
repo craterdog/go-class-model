@@ -35,13 +35,18 @@ func FunctionSubsectionClass() FunctionSubsectionClassLike {
 // Constructor Methods
 
 func (c *functionSubsectionClass_) FunctionSubsection(
+	delimiter string,
 	functionMethods col.Sequential[FunctionMethodLike],
 ) FunctionSubsectionLike {
+	if uti.IsUndefined(delimiter) {
+		panic("The \"delimiter\" attribute is required by this class.")
+	}
 	if uti.IsUndefined(functionMethods) {
 		panic("The \"functionMethods\" attribute is required by this class.")
 	}
 	var instance = &functionSubsection_{
 		// Initialize the instance attributes.
+		delimiter_:       delimiter,
 		functionMethods_: functionMethods,
 	}
 	return instance
@@ -57,6 +62,10 @@ func (v *functionSubsection_) GetClass() FunctionSubsectionClassLike {
 
 // Attribute Methods
 
+func (v *functionSubsection_) GetDelimiter() string {
+	return v.delimiter_
+}
+
 func (v *functionSubsection_) GetFunctionMethods() col.Sequential[FunctionMethodLike] {
 	return v.functionMethods_
 }
@@ -67,6 +76,7 @@ func (v *functionSubsection_) GetFunctionMethods() col.Sequential[FunctionMethod
 
 type functionSubsection_ struct {
 	// Declare the instance attributes.
+	delimiter_       string
 	functionMethods_ col.Sequential[FunctionMethodLike]
 }
 
