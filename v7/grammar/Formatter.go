@@ -116,16 +116,16 @@ func (v *formatter_) ProcessAdditionalConstraintSlot(
 
 func (v *formatter_) PreprocessAdditionalValue(
 	additionalValue ast.AdditionalValueLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
 
 func (v *formatter_) PreprocessAspectDeclaration(
 	aspectDeclaration ast.AspectDeclarationLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -143,32 +143,32 @@ func (v *formatter_) ProcessAspectDeclarationSlot(
 
 func (v *formatter_) PostprocessAspectDeclaration(
 	aspectDeclaration ast.AspectDeclarationLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
 
 func (v *formatter_) PreprocessAspectInterface(
 	aspectInterface ast.AspectInterfaceLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
 
 func (v *formatter_) PreprocessAspectMethod(
 	aspectMethod ast.AspectMethodLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_++
 }
 
 func (v *formatter_) PostprocessAspectMethod(
 	aspectMethod ast.AspectMethodLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_--
 }
@@ -184,8 +184,8 @@ func (v *formatter_) ProcessAspectSectionSlot(
 
 func (v *formatter_) PreprocessAspectSubsection(
 	aspectSubsection ast.AspectSubsectionLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_++
 	v.appendNewline()
@@ -193,8 +193,8 @@ func (v *formatter_) PreprocessAspectSubsection(
 
 func (v *formatter_) PostprocessAspectSubsection(
 	aspectSubsection ast.AspectSubsectionLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_--
 	v.appendNewline()
@@ -202,8 +202,8 @@ func (v *formatter_) PostprocessAspectSubsection(
 
 func (v *formatter_) PreprocessAttributeSubsection(
 	attributeSubsection ast.AttributeSubsectionLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_++
 	v.appendNewline()
@@ -211,8 +211,8 @@ func (v *formatter_) PreprocessAttributeSubsection(
 
 func (v *formatter_) PostprocessAttributeSubsection(
 	attributeSubsection ast.AttributeSubsectionLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_--
 	v.appendNewline()
@@ -220,8 +220,8 @@ func (v *formatter_) PostprocessAttributeSubsection(
 
 func (v *formatter_) PreprocessClassDeclaration(
 	classDeclaration ast.ClassDeclarationLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -237,8 +237,8 @@ func (v *formatter_) ProcessClassDeclarationSlot(
 
 func (v *formatter_) PostprocessClassDeclaration(
 	classDeclaration ast.ClassDeclarationLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -254,8 +254,8 @@ func (v *formatter_) ProcessClassSectionSlot(
 
 func (v *formatter_) PreprocessConstantMethod(
 	constantMethod ast.ConstantMethodLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -271,8 +271,8 @@ func (v *formatter_) ProcessConstantMethodSlot(
 
 func (v *formatter_) PreprocessConstantSubsection(
 	constantSubsection ast.ConstantSubsectionLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_++
 	v.appendNewline()
@@ -280,8 +280,8 @@ func (v *formatter_) PreprocessConstantSubsection(
 
 func (v *formatter_) PostprocessConstantSubsection(
 	constantSubsection ast.ConstantSubsectionLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_--
 	v.appendNewline()
@@ -298,8 +298,8 @@ func (v *formatter_) ProcessConstraintSlot(
 
 func (v *formatter_) PreprocessConstructorMethod(
 	constructorMethod ast.ConstructorMethodLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -315,8 +315,8 @@ func (v *formatter_) ProcessConstructorMethodSlot(
 
 func (v *formatter_) PreprocessConstructorSubsection(
 	constructorSubsection ast.ConstructorSubsectionLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_++
 	v.appendNewline()
@@ -324,8 +324,8 @@ func (v *formatter_) PreprocessConstructorSubsection(
 
 func (v *formatter_) PostprocessConstructorSubsection(
 	constructorSubsection ast.ConstructorSubsectionLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_--
 	v.appendNewline()
@@ -342,8 +342,8 @@ func (v *formatter_) ProcessDeclarationSlot(
 
 func (v *formatter_) PreprocessEnumeration(
 	enumeration ast.EnumerationLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -365,24 +365,24 @@ func (v *formatter_) ProcessEnumerationSlot(
 
 func (v *formatter_) PostprocessEnumeration(
 	enumeration ast.EnumerationLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
 
 func (v *formatter_) PreprocessFunctionMethod(
 	functionMethod ast.FunctionMethodLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
 
 func (v *formatter_) PreprocessFunctionSubsection(
 	functionSubsection ast.FunctionSubsectionLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_++
 	v.appendNewline()
@@ -390,8 +390,8 @@ func (v *formatter_) PreprocessFunctionSubsection(
 
 func (v *formatter_) PostprocessFunctionSubsection(
 	functionSubsection ast.FunctionSubsectionLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_--
 	v.appendNewline()
@@ -399,8 +399,8 @@ func (v *formatter_) PostprocessFunctionSubsection(
 
 func (v *formatter_) PreprocessFunctionalDeclaration(
 	functionalDeclaration ast.FunctionalDeclarationLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -416,8 +416,8 @@ func (v *formatter_) ProcessFunctionalDeclarationSlot(
 
 func (v *formatter_) PostprocessFunctionalDeclaration(
 	functionalDeclaration ast.FunctionalDeclarationLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -433,8 +433,8 @@ func (v *formatter_) ProcessFunctionalSectionSlot(
 
 func (v *formatter_) PreprocessGetterMethod(
 	getterMethod ast.GetterMethodLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -450,8 +450,8 @@ func (v *formatter_) ProcessGetterMethodSlot(
 
 func (v *formatter_) PreprocessImportedPackage(
 	importedPackage ast.ImportedPackageLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -467,16 +467,16 @@ func (v *formatter_) ProcessImportedPackageSlot(
 
 func (v *formatter_) PreprocessImportList(
 	parameterList ast.ImportListLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_++
 }
 
 func (v *formatter_) PostprocessImportList(
 	parameterList ast.ImportListLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_--
 	v.appendNewline()
@@ -484,8 +484,8 @@ func (v *formatter_) PostprocessImportList(
 
 func (v *formatter_) PreprocessInstanceDeclaration(
 	instanceDeclaration ast.InstanceDeclarationLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -501,8 +501,8 @@ func (v *formatter_) ProcessInstanceDeclarationSlot(
 
 func (v *formatter_) PostprocessInstanceDeclaration(
 	instanceDeclaration ast.InstanceDeclarationLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -518,8 +518,8 @@ func (v *formatter_) ProcessInstanceSectionSlot(
 
 func (v *formatter_) PreprocessInterfaceDeclarations(
 	interfaceDeclarations ast.InterfaceDeclarationsLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -535,8 +535,8 @@ func (v *formatter_) ProcessInterfaceDeclarationsSlot(
 
 func (v *formatter_) PreprocessMethod(
 	method ast.MethodLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -552,8 +552,8 @@ func (v *formatter_) ProcessPackageDeclarationSlot(
 
 func (v *formatter_) PostprocessPackageDeclaration(
 	packageDeclaration ast.PackageDeclarationLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -569,8 +569,8 @@ func (v *formatter_) ProcessPackageHeaderSlot(
 
 func (v *formatter_) PreprocessPackageImports(
 	packageImports ast.PackageImportsLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -586,8 +586,8 @@ func (v *formatter_) ProcessPackageImportsSlot(
 
 func (v *formatter_) PreprocessParameter(
 	parameter ast.ParameterLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -603,16 +603,16 @@ func (v *formatter_) ProcessParameterSlot(
 
 func (v *formatter_) PreprocessParameterList(
 	parameterList ast.ParameterListLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_++
 }
 
 func (v *formatter_) PostprocessParameterList(
 	parameterList ast.ParameterListLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_--
 	v.appendNewline()
@@ -620,8 +620,8 @@ func (v *formatter_) PostprocessParameterList(
 
 func (v *formatter_) PreprocessPrimitiveDeclarations(
 	primitiveDeclarations ast.PrimitiveDeclarationsLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -637,8 +637,8 @@ func (v *formatter_) ProcessPrimitiveDeclarationsSlot(
 
 func (v *formatter_) PreprocessPrincipalSubsection(
 	principalSubsection ast.PrincipalSubsectionLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_++
 	v.appendNewline()
@@ -646,8 +646,8 @@ func (v *formatter_) PreprocessPrincipalSubsection(
 
 func (v *formatter_) PostprocessPrincipalSubsection(
 	principalSubsection ast.PrincipalSubsectionLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.depth_--
 	v.appendNewline()
@@ -655,8 +655,8 @@ func (v *formatter_) PostprocessPrincipalSubsection(
 
 func (v *formatter_) PreprocessResult(
 	result ast.ResultLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	switch result.GetAny().(type) {
 	case ast.NoneLike:
@@ -667,8 +667,8 @@ func (v *formatter_) PreprocessResult(
 
 func (v *formatter_) PreprocessSetterMethod(
 	setterMethod ast.SetterMethodLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }
@@ -687,8 +687,8 @@ func (v *formatter_) ProcessSetterMethodSlot(
 
 func (v *formatter_) PreprocessTypeDeclaration(
 	typeDeclaration ast.TypeDeclarationLike,
-	index uint,
-	count uint,
+	index_ uint,
+	count_ uint,
 ) {
 	v.appendNewline()
 }

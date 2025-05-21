@@ -352,12 +352,12 @@ func (v *parser_) parseArguments() (
 	// Attempt to parse multiple AdditionalArgument rules.
 	var additionalArguments = col.List[ast.AdditionalArgumentLike]()
 additionalArgumentsLoop:
-	for count := 0; count < mat.MaxInt; count++ {
+	for count_ := 0; count_ < mat.MaxInt; count_++ {
 		var additionalArgument ast.AdditionalArgumentLike
 		additionalArgument, token, ok = v.parseAdditionalArgument()
 		if !ok {
 			switch {
-			case count >= 0:
+			case count_ >= 0:
 				break additionalArgumentsLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple AdditionalArgument rules.
@@ -521,12 +521,12 @@ func (v *parser_) parseAspectDeclaration() (
 	// Attempt to parse multiple AspectMethod rules.
 	var aspectMethods = col.List[ast.AspectMethodLike]()
 aspectMethodsLoop:
-	for count := 0; count < mat.MaxInt; count++ {
+	for count_ := 0; count_ < mat.MaxInt; count_++ {
 		var aspectMethod ast.AspectMethodLike
 		aspectMethod, token, ok = v.parseAspectMethod()
 		if !ok {
 			switch {
-			case count >= 1:
+			case count_ >= 1:
 				break aspectMethodsLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple AspectMethod rules.
@@ -665,12 +665,12 @@ func (v *parser_) parseAspectSection() (
 	// Attempt to parse multiple AspectDeclaration rules.
 	var aspectDeclarations = col.List[ast.AspectDeclarationLike]()
 aspectDeclarationsLoop:
-	for count := 0; count < mat.MaxInt; count++ {
+	for count_ := 0; count_ < mat.MaxInt; count_++ {
 		var aspectDeclaration ast.AspectDeclarationLike
 		aspectDeclaration, token, ok = v.parseAspectDeclaration()
 		if !ok {
 			switch {
-			case count >= 0:
+			case count_ >= 0:
 				break aspectDeclarationsLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple AspectDeclaration rules.
@@ -726,12 +726,12 @@ func (v *parser_) parseAspectSubsection() (
 	// Attempt to parse multiple AspectInterface rules.
 	var aspectInterfaces = col.List[ast.AspectInterfaceLike]()
 aspectInterfacesLoop:
-	for count := 0; count < mat.MaxInt; count++ {
+	for count_ := 0; count_ < mat.MaxInt; count_++ {
 		var aspectInterface ast.AspectInterfaceLike
 		aspectInterface, token, ok = v.parseAspectInterface()
 		if !ok {
 			switch {
-			case count >= 1:
+			case count_ >= 1:
 				break aspectInterfacesLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple AspectInterface rules.
@@ -814,12 +814,12 @@ func (v *parser_) parseAttributeSubsection() (
 	// Attempt to parse multiple AttributeMethod rules.
 	var attributeMethods = col.List[ast.AttributeMethodLike]()
 attributeMethodsLoop:
-	for count := 0; count < mat.MaxInt; count++ {
+	for count_ := 0; count_ < mat.MaxInt; count_++ {
 		var attributeMethod ast.AttributeMethodLike
 		attributeMethod, token, ok = v.parseAttributeMethod()
 		if !ok {
 			switch {
-			case count >= 1:
+			case count_ >= 1:
 				break attributeMethodsLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple AttributeMethod rules.
@@ -1066,12 +1066,12 @@ func (v *parser_) parseClassSection() (
 	// Attempt to parse multiple ClassDeclaration rules.
 	var classDeclarations = col.List[ast.ClassDeclarationLike]()
 classDeclarationsLoop:
-	for count := 0; count < mat.MaxInt; count++ {
+	for count_ := 0; count_ < mat.MaxInt; count_++ {
 		var classDeclaration ast.ClassDeclarationLike
 		classDeclaration, token, ok = v.parseClassDeclaration()
 		if !ok {
 			switch {
-			case count >= 1:
+			case count_ >= 1:
 				break classDeclarationsLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple ClassDeclaration rules.
@@ -1217,12 +1217,12 @@ func (v *parser_) parseConstantSubsection() (
 	// Attempt to parse multiple ConstantMethod rules.
 	var constantMethods = col.List[ast.ConstantMethodLike]()
 constantMethodsLoop:
-	for count := 0; count < mat.MaxInt; count++ {
+	for count_ := 0; count_ < mat.MaxInt; count_++ {
 		var constantMethod ast.ConstantMethodLike
 		constantMethod, token, ok = v.parseConstantMethod()
 		if !ok {
 			switch {
-			case count >= 1:
+			case count_ >= 1:
 				break constantMethodsLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple ConstantMethod rules.
@@ -1347,12 +1347,12 @@ func (v *parser_) parseConstraints() (
 	// Attempt to parse multiple AdditionalConstraint rules.
 	var additionalConstraints = col.List[ast.AdditionalConstraintLike]()
 additionalConstraintsLoop:
-	for count := 0; count < mat.MaxInt; count++ {
+	for count_ := 0; count_ < mat.MaxInt; count_++ {
 		var additionalConstraint ast.AdditionalConstraintLike
 		additionalConstraint, token, ok = v.parseAdditionalConstraint()
 		if !ok {
 			switch {
-			case count >= 0:
+			case count_ >= 0:
 				break additionalConstraintsLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple AdditionalConstraint rules.
@@ -1527,12 +1527,12 @@ func (v *parser_) parseConstructorSubsection() (
 	// Attempt to parse multiple ConstructorMethod rules.
 	var constructorMethods = col.List[ast.ConstructorMethodLike]()
 constructorMethodsLoop:
-	for count := 0; count < mat.MaxInt; count++ {
+	for count_ := 0; count_ < mat.MaxInt; count_++ {
 		var constructorMethod ast.ConstructorMethodLike
 		constructorMethod, token, ok = v.parseConstructorMethod()
 		if !ok {
 			switch {
-			case count >= 1:
+			case count_ >= 1:
 				break constructorMethodsLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple ConstructorMethod rules.
@@ -1704,12 +1704,12 @@ func (v *parser_) parseEnumeration() (
 	// Attempt to parse multiple AdditionalValue rules.
 	var additionalValues = col.List[ast.AdditionalValueLike]()
 additionalValuesLoop:
-	for count := 0; count < mat.MaxInt; count++ {
+	for count_ := 0; count_ < mat.MaxInt; count_++ {
 		var additionalValue ast.AdditionalValueLike
 		additionalValue, token, ok = v.parseAdditionalValue()
 		if !ok {
 			switch {
-			case count >= 0:
+			case count_ >= 0:
 				break additionalValuesLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple AdditionalValue rules.
@@ -1885,12 +1885,12 @@ func (v *parser_) parseFunctionSubsection() (
 	// Attempt to parse multiple FunctionMethod rules.
 	var functionMethods = col.List[ast.FunctionMethodLike]()
 functionMethodsLoop:
-	for count := 0; count < mat.MaxInt; count++ {
+	for count_ := 0; count_ < mat.MaxInt; count_++ {
 		var functionMethod ast.FunctionMethodLike
 		functionMethod, token, ok = v.parseFunctionMethod()
 		if !ok {
 			switch {
-			case count >= 1:
+			case count_ >= 1:
 				break functionMethodsLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple FunctionMethod rules.
@@ -2063,12 +2063,12 @@ func (v *parser_) parseFunctionalSection() (
 	// Attempt to parse multiple FunctionalDeclaration rules.
 	var functionalDeclarations = col.List[ast.FunctionalDeclarationLike]()
 functionalDeclarationsLoop:
-	for count := 0; count < mat.MaxInt; count++ {
+	for count_ := 0; count_ < mat.MaxInt; count_++ {
 		var functionalDeclaration ast.FunctionalDeclarationLike
 		functionalDeclaration, token, ok = v.parseFunctionalDeclaration()
 		if !ok {
 			switch {
-			case count >= 0:
+			case count_ >= 0:
 				break functionalDeclarationsLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple FunctionalDeclaration rules.
@@ -2196,12 +2196,12 @@ func (v *parser_) parseImportList() (
 	// Attempt to parse multiple ImportedPackage rules.
 	var importedPackages = col.List[ast.ImportedPackageLike]()
 importedPackagesLoop:
-	for count := 0; count < mat.MaxInt; count++ {
+	for count_ := 0; count_ < mat.MaxInt; count_++ {
 		var importedPackage ast.ImportedPackageLike
 		importedPackage, token, ok = v.parseImportedPackage()
 		if !ok {
 			switch {
-			case count >= 1:
+			case count_ >= 1:
 				break importedPackagesLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple ImportedPackage rules.
@@ -2466,12 +2466,12 @@ func (v *parser_) parseInstanceSection() (
 	// Attempt to parse multiple InstanceDeclaration rules.
 	var instanceDeclarations = col.List[ast.InstanceDeclarationLike]()
 instanceDeclarationsLoop:
-	for count := 0; count < mat.MaxInt; count++ {
+	for count_ := 0; count_ < mat.MaxInt; count_++ {
 		var instanceDeclaration ast.InstanceDeclarationLike
 		instanceDeclaration, token, ok = v.parseInstanceDeclaration()
 		if !ok {
 			switch {
-			case count >= 1:
+			case count_ >= 1:
 				break instanceDeclarationsLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple InstanceDeclaration rules.
@@ -3256,12 +3256,12 @@ func (v *parser_) parseParameterList() (
 	// Attempt to parse multiple Parameter rules.
 	var parameters = col.List[ast.ParameterLike]()
 parametersLoop:
-	for count := 0; count < mat.MaxInt; count++ {
+	for count_ := 0; count_ < mat.MaxInt; count_++ {
 		var parameter ast.ParameterLike
 		parameter, token, ok = v.parseParameter()
 		if !ok {
 			switch {
-			case count >= 1:
+			case count_ >= 1:
 				break parametersLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple Parameter rules.
@@ -3396,12 +3396,12 @@ func (v *parser_) parsePrincipalSubsection() (
 	// Attempt to parse multiple PrincipalMethod rules.
 	var principalMethods = col.List[ast.PrincipalMethodLike]()
 principalMethodsLoop:
-	for count := 0; count < mat.MaxInt; count++ {
+	for count_ := 0; count_ < mat.MaxInt; count_++ {
 		var principalMethod ast.PrincipalMethodLike
 		principalMethod, token, ok = v.parsePrincipalMethod()
 		if !ok {
 			switch {
-			case count >= 1:
+			case count_ >= 1:
 				break principalMethodsLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple PrincipalMethod rules.
@@ -3643,12 +3643,12 @@ func (v *parser_) parseTypeSection() (
 	// Attempt to parse multiple TypeDeclaration rules.
 	var typeDeclarations = col.List[ast.TypeDeclarationLike]()
 typeDeclarationsLoop:
-	for count := 0; count < mat.MaxInt; count++ {
+	for count_ := 0; count_ < mat.MaxInt; count_++ {
 		var typeDeclaration ast.TypeDeclarationLike
 		typeDeclaration, token, ok = v.parseTypeDeclaration()
 		if !ok {
 			switch {
-			case count >= 0:
+			case count_ >= 0:
 				break typeDeclarationsLoop
 			case uti.IsDefined(tokens):
 				// This is not multiple TypeDeclaration rules.
