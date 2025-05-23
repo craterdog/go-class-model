@@ -93,19 +93,28 @@ func (v *visitor_) visitAbstraction(
 		)
 	}
 	// Visit slot 1 between terms.
-	v.processor_.ProcessAbstractionSlot(1)
+	v.processor_.ProcessAbstractionSlot(
+		abstraction,
+		1,
+	)
 
 	var optionalPrefix = abstraction.GetOptionalPrefix()
 	if uti.IsDefined(optionalPrefix) {
 		v.processor_.ProcessPrefix(optionalPrefix)
 	}
 	// Visit slot 2 between terms.
-	v.processor_.ProcessAbstractionSlot(2)
+	v.processor_.ProcessAbstractionSlot(
+		abstraction,
+		2,
+	)
 
 	var name = abstraction.GetName()
 	v.processor_.ProcessName(name)
 	// Visit slot 3 between terms.
-	v.processor_.ProcessAbstractionSlot(3)
+	v.processor_.ProcessAbstractionSlot(
+		abstraction,
+		3,
+	)
 
 	var optionalArguments = abstraction.GetOptionalArguments()
 	if uti.IsDefined(optionalArguments) {
@@ -129,7 +138,10 @@ func (v *visitor_) visitAdditionalArgument(
 	var delimiter = additionalArgument.GetDelimiter()
 	v.processor_.ProcessDelimiter(delimiter)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessAdditionalArgumentSlot(1)
+	v.processor_.ProcessAdditionalArgumentSlot(
+		additionalArgument,
+		1,
+	)
 
 	var argument = additionalArgument.GetArgument()
 	v.processor_.PreprocessArgument(
@@ -151,7 +163,10 @@ func (v *visitor_) visitAdditionalConstraint(
 	var delimiter = additionalConstraint.GetDelimiter()
 	v.processor_.ProcessDelimiter(delimiter)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessAdditionalConstraintSlot(1)
+	v.processor_.ProcessAdditionalConstraintSlot(
+		additionalConstraint,
+		1,
+	)
 
 	var constraint = additionalConstraint.GetConstraint()
 	v.processor_.PreprocessConstraint(
@@ -197,7 +212,10 @@ func (v *visitor_) visitArguments(
 	var delimiter1 = arguments.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessArgumentsSlot(1)
+	v.processor_.ProcessArgumentsSlot(
+		arguments,
+		1,
+	)
 
 	var argument = arguments.GetArgument()
 	v.processor_.PreprocessArgument(
@@ -212,7 +230,10 @@ func (v *visitor_) visitArguments(
 		1,
 	)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessArgumentsSlot(2)
+	v.processor_.ProcessArgumentsSlot(
+		arguments,
+		2,
+	)
 
 	var additionalArgumentsIndex uint
 	var additionalArguments = arguments.GetAdditionalArguments().GetIterator()
@@ -233,7 +254,10 @@ func (v *visitor_) visitArguments(
 		)
 	}
 	// Visit slot 3 between terms.
-	v.processor_.ProcessArgumentsSlot(3)
+	v.processor_.ProcessArgumentsSlot(
+		arguments,
+		3,
+	)
 
 	var delimiter2 = arguments.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)
@@ -245,7 +269,10 @@ func (v *visitor_) visitArray(
 	var delimiter1 = array.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessArraySlot(1)
+	v.processor_.ProcessArraySlot(
+		array,
+		1,
+	)
 
 	var delimiter2 = array.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)
@@ -267,17 +294,26 @@ func (v *visitor_) visitAspectDeclaration(
 		1,
 	)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessAspectDeclarationSlot(1)
+	v.processor_.ProcessAspectDeclarationSlot(
+		aspectDeclaration,
+		1,
+	)
 
 	var delimiter1 = aspectDeclaration.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessAspectDeclarationSlot(2)
+	v.processor_.ProcessAspectDeclarationSlot(
+		aspectDeclaration,
+		2,
+	)
 
 	var delimiter2 = aspectDeclaration.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)
 	// Visit slot 3 between terms.
-	v.processor_.ProcessAspectDeclarationSlot(3)
+	v.processor_.ProcessAspectDeclarationSlot(
+		aspectDeclaration,
+		3,
+	)
 
 	var aspectMethodsIndex uint
 	var aspectMethods = aspectDeclaration.GetAspectMethods().GetIterator()
@@ -298,7 +334,10 @@ func (v *visitor_) visitAspectDeclaration(
 		)
 	}
 	// Visit slot 4 between terms.
-	v.processor_.ProcessAspectDeclarationSlot(4)
+	v.processor_.ProcessAspectDeclarationSlot(
+		aspectDeclaration,
+		4,
+	)
 
 	var delimiter3 = aspectDeclaration.GetDelimiter3()
 	v.processor_.ProcessDelimiter(delimiter3)
@@ -344,7 +383,10 @@ func (v *visitor_) visitAspectSection(
 	var delimiter = aspectSection.GetDelimiter()
 	v.processor_.ProcessDelimiter(delimiter)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessAspectSectionSlot(1)
+	v.processor_.ProcessAspectSectionSlot(
+		aspectSection,
+		1,
+	)
 
 	var aspectDeclarationsIndex uint
 	var aspectDeclarations = aspectSection.GetAspectDeclarations().GetIterator()
@@ -372,7 +414,10 @@ func (v *visitor_) visitAspectSubsection(
 	var delimiter = aspectSubsection.GetDelimiter()
 	v.processor_.ProcessDelimiter(delimiter)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessAspectSubsectionSlot(1)
+	v.processor_.ProcessAspectSubsectionSlot(
+		aspectSubsection,
+		1,
+	)
 
 	var aspectInterfacesIndex uint
 	var aspectInterfaces = aspectSubsection.GetAspectInterfaces().GetIterator()
@@ -432,7 +477,10 @@ func (v *visitor_) visitAttributeSubsection(
 	var delimiter = attributeSubsection.GetDelimiter()
 	v.processor_.ProcessDelimiter(delimiter)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessAttributeSubsectionSlot(1)
+	v.processor_.ProcessAttributeSubsectionSlot(
+		attributeSubsection,
+		1,
+	)
 
 	var attributeMethodsIndex uint
 	var attributeMethods = attributeSubsection.GetAttributeMethods().GetIterator()
@@ -477,17 +525,26 @@ func (v *visitor_) visitClassDeclaration(
 		1,
 	)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessClassDeclarationSlot(1)
+	v.processor_.ProcessClassDeclarationSlot(
+		classDeclaration,
+		1,
+	)
 
 	var delimiter1 = classDeclaration.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessClassDeclarationSlot(2)
+	v.processor_.ProcessClassDeclarationSlot(
+		classDeclaration,
+		2,
+	)
 
 	var delimiter2 = classDeclaration.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)
 	// Visit slot 3 between terms.
-	v.processor_.ProcessClassDeclarationSlot(3)
+	v.processor_.ProcessClassDeclarationSlot(
+		classDeclaration,
+		3,
+	)
 
 	var classMethods = classDeclaration.GetClassMethods()
 	v.processor_.PreprocessClassMethods(
@@ -502,7 +559,10 @@ func (v *visitor_) visitClassDeclaration(
 		1,
 	)
 	// Visit slot 4 between terms.
-	v.processor_.ProcessClassDeclarationSlot(4)
+	v.processor_.ProcessClassDeclarationSlot(
+		classDeclaration,
+		4,
+	)
 
 	var delimiter3 = classDeclaration.GetDelimiter3()
 	v.processor_.ProcessDelimiter(delimiter3)
@@ -524,7 +584,10 @@ func (v *visitor_) visitClassMethods(
 		1,
 	)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessClassMethodsSlot(1)
+	v.processor_.ProcessClassMethodsSlot(
+		classMethods,
+		1,
+	)
 
 	var optionalConstantSubsection = classMethods.GetOptionalConstantSubsection()
 	if uti.IsDefined(optionalConstantSubsection) {
@@ -541,7 +604,10 @@ func (v *visitor_) visitClassMethods(
 		)
 	}
 	// Visit slot 2 between terms.
-	v.processor_.ProcessClassMethodsSlot(2)
+	v.processor_.ProcessClassMethodsSlot(
+		classMethods,
+		2,
+	)
 
 	var optionalFunctionSubsection = classMethods.GetOptionalFunctionSubsection()
 	if uti.IsDefined(optionalFunctionSubsection) {
@@ -565,7 +631,10 @@ func (v *visitor_) visitClassSection(
 	var delimiter = classSection.GetDelimiter()
 	v.processor_.ProcessDelimiter(delimiter)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessClassSectionSlot(1)
+	v.processor_.ProcessClassSectionSlot(
+		classSection,
+		1,
+	)
 
 	var classDeclarationsIndex uint
 	var classDeclarations = classSection.GetClassDeclarations().GetIterator()
@@ -593,17 +662,26 @@ func (v *visitor_) visitConstantMethod(
 	var name = constantMethod.GetName()
 	v.processor_.ProcessName(name)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessConstantMethodSlot(1)
+	v.processor_.ProcessConstantMethodSlot(
+		constantMethod,
+		1,
+	)
 
 	var delimiter1 = constantMethod.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessConstantMethodSlot(2)
+	v.processor_.ProcessConstantMethodSlot(
+		constantMethod,
+		2,
+	)
 
 	var delimiter2 = constantMethod.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)
 	// Visit slot 3 between terms.
-	v.processor_.ProcessConstantMethodSlot(3)
+	v.processor_.ProcessConstantMethodSlot(
+		constantMethod,
+		3,
+	)
 
 	var abstraction = constantMethod.GetAbstraction()
 	v.processor_.PreprocessAbstraction(
@@ -625,7 +703,10 @@ func (v *visitor_) visitConstantSubsection(
 	var delimiter = constantSubsection.GetDelimiter()
 	v.processor_.ProcessDelimiter(delimiter)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessConstantSubsectionSlot(1)
+	v.processor_.ProcessConstantSubsectionSlot(
+		constantSubsection,
+		1,
+	)
 
 	var constantMethodsIndex uint
 	var constantMethods = constantSubsection.GetConstantMethods().GetIterator()
@@ -653,7 +734,10 @@ func (v *visitor_) visitConstraint(
 	var name = constraint.GetName()
 	v.processor_.ProcessName(name)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessConstraintSlot(1)
+	v.processor_.ProcessConstraintSlot(
+		constraint,
+		1,
+	)
 
 	var abstraction = constraint.GetAbstraction()
 	v.processor_.PreprocessAbstraction(
@@ -675,7 +759,10 @@ func (v *visitor_) visitConstraints(
 	var delimiter1 = constraints.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessConstraintsSlot(1)
+	v.processor_.ProcessConstraintsSlot(
+		constraints,
+		1,
+	)
 
 	var constraint = constraints.GetConstraint()
 	v.processor_.PreprocessConstraint(
@@ -690,7 +777,10 @@ func (v *visitor_) visitConstraints(
 		1,
 	)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessConstraintsSlot(2)
+	v.processor_.ProcessConstraintsSlot(
+		constraints,
+		2,
+	)
 
 	var additionalConstraintsIndex uint
 	var additionalConstraints = constraints.GetAdditionalConstraints().GetIterator()
@@ -711,7 +801,10 @@ func (v *visitor_) visitConstraints(
 		)
 	}
 	// Visit slot 3 between terms.
-	v.processor_.ProcessConstraintsSlot(3)
+	v.processor_.ProcessConstraintsSlot(
+		constraints,
+		3,
+	)
 
 	var delimiter2 = constraints.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)
@@ -723,12 +816,18 @@ func (v *visitor_) visitConstructorMethod(
 	var name = constructorMethod.GetName()
 	v.processor_.ProcessName(name)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessConstructorMethodSlot(1)
+	v.processor_.ProcessConstructorMethodSlot(
+		constructorMethod,
+		1,
+	)
 
 	var delimiter1 = constructorMethod.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessConstructorMethodSlot(2)
+	v.processor_.ProcessConstructorMethodSlot(
+		constructorMethod,
+		2,
+	)
 
 	var optionalParameterList = constructorMethod.GetOptionalParameterList()
 	if uti.IsDefined(optionalParameterList) {
@@ -745,12 +844,18 @@ func (v *visitor_) visitConstructorMethod(
 		)
 	}
 	// Visit slot 3 between terms.
-	v.processor_.ProcessConstructorMethodSlot(3)
+	v.processor_.ProcessConstructorMethodSlot(
+		constructorMethod,
+		3,
+	)
 
 	var delimiter2 = constructorMethod.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)
 	// Visit slot 4 between terms.
-	v.processor_.ProcessConstructorMethodSlot(4)
+	v.processor_.ProcessConstructorMethodSlot(
+		constructorMethod,
+		4,
+	)
 
 	var abstraction = constructorMethod.GetAbstraction()
 	v.processor_.PreprocessAbstraction(
@@ -772,7 +877,10 @@ func (v *visitor_) visitConstructorSubsection(
 	var delimiter = constructorSubsection.GetDelimiter()
 	v.processor_.ProcessDelimiter(delimiter)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessConstructorSubsectionSlot(1)
+	v.processor_.ProcessConstructorSubsectionSlot(
+		constructorSubsection,
+		1,
+	)
 
 	var constructorMethodsIndex uint
 	var constructorMethods = constructorSubsection.GetConstructorMethods().GetIterator()
@@ -800,17 +908,26 @@ func (v *visitor_) visitDeclaration(
 	var comment = declaration.GetComment()
 	v.processor_.ProcessComment(comment)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessDeclarationSlot(1)
+	v.processor_.ProcessDeclarationSlot(
+		declaration,
+		1,
+	)
 
 	var delimiter = declaration.GetDelimiter()
 	v.processor_.ProcessDelimiter(delimiter)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessDeclarationSlot(2)
+	v.processor_.ProcessDeclarationSlot(
+		declaration,
+		2,
+	)
 
 	var name = declaration.GetName()
 	v.processor_.ProcessName(name)
 	// Visit slot 3 between terms.
-	v.processor_.ProcessDeclarationSlot(3)
+	v.processor_.ProcessDeclarationSlot(
+		declaration,
+		3,
+	)
 
 	var optionalConstraints = declaration.GetOptionalConstraints()
 	if uti.IsDefined(optionalConstraints) {
@@ -834,12 +951,18 @@ func (v *visitor_) visitEnumeration(
 	var delimiter1 = enumeration.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessEnumerationSlot(1)
+	v.processor_.ProcessEnumerationSlot(
+		enumeration,
+		1,
+	)
 
 	var delimiter2 = enumeration.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessEnumerationSlot(2)
+	v.processor_.ProcessEnumerationSlot(
+		enumeration,
+		2,
+	)
 
 	var value = enumeration.GetValue()
 	v.processor_.PreprocessValue(
@@ -854,7 +977,10 @@ func (v *visitor_) visitEnumeration(
 		1,
 	)
 	// Visit slot 3 between terms.
-	v.processor_.ProcessEnumerationSlot(3)
+	v.processor_.ProcessEnumerationSlot(
+		enumeration,
+		3,
+	)
 
 	var additionalValuesIndex uint
 	var additionalValues = enumeration.GetAdditionalValues().GetIterator()
@@ -875,7 +1001,10 @@ func (v *visitor_) visitEnumeration(
 		)
 	}
 	// Visit slot 4 between terms.
-	v.processor_.ProcessEnumerationSlot(4)
+	v.processor_.ProcessEnumerationSlot(
+		enumeration,
+		4,
+	)
 
 	var delimiter3 = enumeration.GetDelimiter3()
 	v.processor_.ProcessDelimiter(delimiter3)
@@ -887,12 +1016,18 @@ func (v *visitor_) visitFunctionMethod(
 	var name = functionMethod.GetName()
 	v.processor_.ProcessName(name)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessFunctionMethodSlot(1)
+	v.processor_.ProcessFunctionMethodSlot(
+		functionMethod,
+		1,
+	)
 
 	var delimiter1 = functionMethod.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessFunctionMethodSlot(2)
+	v.processor_.ProcessFunctionMethodSlot(
+		functionMethod,
+		2,
+	)
 
 	var optionalParameterList = functionMethod.GetOptionalParameterList()
 	if uti.IsDefined(optionalParameterList) {
@@ -909,12 +1044,18 @@ func (v *visitor_) visitFunctionMethod(
 		)
 	}
 	// Visit slot 3 between terms.
-	v.processor_.ProcessFunctionMethodSlot(3)
+	v.processor_.ProcessFunctionMethodSlot(
+		functionMethod,
+		3,
+	)
 
 	var delimiter2 = functionMethod.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)
 	// Visit slot 4 between terms.
-	v.processor_.ProcessFunctionMethodSlot(4)
+	v.processor_.ProcessFunctionMethodSlot(
+		functionMethod,
+		4,
+	)
 
 	var result = functionMethod.GetResult()
 	v.processor_.PreprocessResult(
@@ -936,7 +1077,10 @@ func (v *visitor_) visitFunctionSubsection(
 	var delimiter = functionSubsection.GetDelimiter()
 	v.processor_.ProcessDelimiter(delimiter)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessFunctionSubsectionSlot(1)
+	v.processor_.ProcessFunctionSubsectionSlot(
+		functionSubsection,
+		1,
+	)
 
 	var functionMethodsIndex uint
 	var functionMethods = functionSubsection.GetFunctionMethods().GetIterator()
@@ -974,17 +1118,26 @@ func (v *visitor_) visitFunctionalDeclaration(
 		1,
 	)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessFunctionalDeclarationSlot(1)
+	v.processor_.ProcessFunctionalDeclarationSlot(
+		functionalDeclaration,
+		1,
+	)
 
 	var delimiter1 = functionalDeclaration.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessFunctionalDeclarationSlot(2)
+	v.processor_.ProcessFunctionalDeclarationSlot(
+		functionalDeclaration,
+		2,
+	)
 
 	var delimiter2 = functionalDeclaration.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)
 	// Visit slot 3 between terms.
-	v.processor_.ProcessFunctionalDeclarationSlot(3)
+	v.processor_.ProcessFunctionalDeclarationSlot(
+		functionalDeclaration,
+		3,
+	)
 
 	var optionalParameterList = functionalDeclaration.GetOptionalParameterList()
 	if uti.IsDefined(optionalParameterList) {
@@ -1001,12 +1154,18 @@ func (v *visitor_) visitFunctionalDeclaration(
 		)
 	}
 	// Visit slot 4 between terms.
-	v.processor_.ProcessFunctionalDeclarationSlot(4)
+	v.processor_.ProcessFunctionalDeclarationSlot(
+		functionalDeclaration,
+		4,
+	)
 
 	var delimiter3 = functionalDeclaration.GetDelimiter3()
 	v.processor_.ProcessDelimiter(delimiter3)
 	// Visit slot 5 between terms.
-	v.processor_.ProcessFunctionalDeclarationSlot(5)
+	v.processor_.ProcessFunctionalDeclarationSlot(
+		functionalDeclaration,
+		5,
+	)
 
 	var result = functionalDeclaration.GetResult()
 	v.processor_.PreprocessResult(
@@ -1028,7 +1187,10 @@ func (v *visitor_) visitFunctionalSection(
 	var delimiter = functionalSection.GetDelimiter()
 	v.processor_.ProcessDelimiter(delimiter)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessFunctionalSectionSlot(1)
+	v.processor_.ProcessFunctionalSectionSlot(
+		functionalSection,
+		1,
+	)
 
 	var functionalDeclarationsIndex uint
 	var functionalDeclarations = functionalSection.GetFunctionalDeclarations().GetIterator()
@@ -1056,17 +1218,26 @@ func (v *visitor_) visitGetterMethod(
 	var name = getterMethod.GetName()
 	v.processor_.ProcessName(name)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessGetterMethodSlot(1)
+	v.processor_.ProcessGetterMethodSlot(
+		getterMethod,
+		1,
+	)
 
 	var delimiter1 = getterMethod.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessGetterMethodSlot(2)
+	v.processor_.ProcessGetterMethodSlot(
+		getterMethod,
+		2,
+	)
 
 	var delimiter2 = getterMethod.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)
 	// Visit slot 3 between terms.
-	v.processor_.ProcessGetterMethodSlot(3)
+	v.processor_.ProcessGetterMethodSlot(
+		getterMethod,
+		3,
+	)
 
 	var abstraction = getterMethod.GetAbstraction()
 	v.processor_.PreprocessAbstraction(
@@ -1111,7 +1282,10 @@ func (v *visitor_) visitImportedPackage(
 	var name = importedPackage.GetName()
 	v.processor_.ProcessName(name)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessImportedPackageSlot(1)
+	v.processor_.ProcessImportedPackageSlot(
+		importedPackage,
+		1,
+	)
 
 	var path = importedPackage.GetPath()
 	v.processor_.ProcessPath(path)
@@ -1133,17 +1307,26 @@ func (v *visitor_) visitInstanceDeclaration(
 		1,
 	)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessInstanceDeclarationSlot(1)
+	v.processor_.ProcessInstanceDeclarationSlot(
+		instanceDeclaration,
+		1,
+	)
 
 	var delimiter1 = instanceDeclaration.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessInstanceDeclarationSlot(2)
+	v.processor_.ProcessInstanceDeclarationSlot(
+		instanceDeclaration,
+		2,
+	)
 
 	var delimiter2 = instanceDeclaration.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)
 	// Visit slot 3 between terms.
-	v.processor_.ProcessInstanceDeclarationSlot(3)
+	v.processor_.ProcessInstanceDeclarationSlot(
+		instanceDeclaration,
+		3,
+	)
 
 	var instanceMethods = instanceDeclaration.GetInstanceMethods()
 	v.processor_.PreprocessInstanceMethods(
@@ -1158,7 +1341,10 @@ func (v *visitor_) visitInstanceDeclaration(
 		1,
 	)
 	// Visit slot 4 between terms.
-	v.processor_.ProcessInstanceDeclarationSlot(4)
+	v.processor_.ProcessInstanceDeclarationSlot(
+		instanceDeclaration,
+		4,
+	)
 
 	var delimiter3 = instanceDeclaration.GetDelimiter3()
 	v.processor_.ProcessDelimiter(delimiter3)
@@ -1180,7 +1366,10 @@ func (v *visitor_) visitInstanceMethods(
 		1,
 	)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessInstanceMethodsSlot(1)
+	v.processor_.ProcessInstanceMethodsSlot(
+		instanceMethods,
+		1,
+	)
 
 	var optionalAttributeSubsection = instanceMethods.GetOptionalAttributeSubsection()
 	if uti.IsDefined(optionalAttributeSubsection) {
@@ -1197,7 +1386,10 @@ func (v *visitor_) visitInstanceMethods(
 		)
 	}
 	// Visit slot 2 between terms.
-	v.processor_.ProcessInstanceMethodsSlot(2)
+	v.processor_.ProcessInstanceMethodsSlot(
+		instanceMethods,
+		2,
+	)
 
 	var optionalAspectSubsection = instanceMethods.GetOptionalAspectSubsection()
 	if uti.IsDefined(optionalAspectSubsection) {
@@ -1221,7 +1413,10 @@ func (v *visitor_) visitInstanceSection(
 	var delimiter = instanceSection.GetDelimiter()
 	v.processor_.ProcessDelimiter(delimiter)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessInstanceSectionSlot(1)
+	v.processor_.ProcessInstanceSectionSlot(
+		instanceSection,
+		1,
+	)
 
 	var instanceDeclarationsIndex uint
 	var instanceDeclarations = instanceSection.GetInstanceDeclarations().GetIterator()
@@ -1259,7 +1454,10 @@ func (v *visitor_) visitInterfaceDeclarations(
 		1,
 	)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessInterfaceDeclarationsSlot(1)
+	v.processor_.ProcessInterfaceDeclarationsSlot(
+		interfaceDeclarations,
+		1,
+	)
 
 	var instanceSection = interfaceDeclarations.GetInstanceSection()
 	v.processor_.PreprocessInstanceSection(
@@ -1274,7 +1472,10 @@ func (v *visitor_) visitInterfaceDeclarations(
 		1,
 	)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessInterfaceDeclarationsSlot(2)
+	v.processor_.ProcessInterfaceDeclarationsSlot(
+		interfaceDeclarations,
+		2,
+	)
 
 	var aspectSection = interfaceDeclarations.GetAspectSection()
 	v.processor_.PreprocessAspectSection(
@@ -1303,17 +1504,26 @@ func (v *visitor_) visitMap(
 	var delimiter1 = map_.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessMapSlot(1)
+	v.processor_.ProcessMapSlot(
+		map_,
+		1,
+	)
 
 	var delimiter2 = map_.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessMapSlot(2)
+	v.processor_.ProcessMapSlot(
+		map_,
+		2,
+	)
 
 	var name = map_.GetName()
 	v.processor_.ProcessName(name)
 	// Visit slot 3 between terms.
-	v.processor_.ProcessMapSlot(3)
+	v.processor_.ProcessMapSlot(
+		map_,
+		3,
+	)
 
 	var delimiter3 = map_.GetDelimiter3()
 	v.processor_.ProcessDelimiter(delimiter3)
@@ -1325,12 +1535,18 @@ func (v *visitor_) visitMethod(
 	var name = method.GetName()
 	v.processor_.ProcessName(name)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessMethodSlot(1)
+	v.processor_.ProcessMethodSlot(
+		method,
+		1,
+	)
 
 	var delimiter1 = method.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessMethodSlot(2)
+	v.processor_.ProcessMethodSlot(
+		method,
+		2,
+	)
 
 	var optionalParameterList = method.GetOptionalParameterList()
 	if uti.IsDefined(optionalParameterList) {
@@ -1347,12 +1563,18 @@ func (v *visitor_) visitMethod(
 		)
 	}
 	// Visit slot 3 between terms.
-	v.processor_.ProcessMethodSlot(3)
+	v.processor_.ProcessMethodSlot(
+		method,
+		3,
+	)
 
 	var delimiter2 = method.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)
 	// Visit slot 4 between terms.
-	v.processor_.ProcessMethodSlot(4)
+	v.processor_.ProcessMethodSlot(
+		method,
+		4,
+	)
 
 	var optionalResult = method.GetOptionalResult()
 	if uti.IsDefined(optionalResult) {
@@ -1386,7 +1608,10 @@ func (v *visitor_) visitModel(
 		1,
 	)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessModelSlot(1)
+	v.processor_.ProcessModelSlot(
+		model,
+		1,
+	)
 
 	var primitiveDeclarations = model.GetPrimitiveDeclarations()
 	v.processor_.PreprocessPrimitiveDeclarations(
@@ -1401,7 +1626,10 @@ func (v *visitor_) visitModel(
 		1,
 	)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessModelSlot(2)
+	v.processor_.ProcessModelSlot(
+		model,
+		2,
+	)
 
 	var interfaceDeclarations = model.GetInterfaceDeclarations()
 	v.processor_.PreprocessInterfaceDeclarations(
@@ -1423,7 +1651,10 @@ func (v *visitor_) visitMultivalue(
 	var delimiter1 = multivalue.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessMultivalueSlot(1)
+	v.processor_.ProcessMultivalueSlot(
+		multivalue,
+		1,
+	)
 
 	var parameterList = multivalue.GetParameterList()
 	v.processor_.PreprocessParameterList(
@@ -1438,7 +1669,10 @@ func (v *visitor_) visitMultivalue(
 		1,
 	)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessMultivalueSlot(2)
+	v.processor_.ProcessMultivalueSlot(
+		multivalue,
+		2,
+	)
 
 	var delimiter2 = multivalue.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)
@@ -1467,7 +1701,10 @@ func (v *visitor_) visitPackageDeclaration(
 		1,
 	)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessPackageDeclarationSlot(1)
+	v.processor_.ProcessPackageDeclarationSlot(
+		packageDeclaration,
+		1,
+	)
 
 	var packageHeader = packageDeclaration.GetPackageHeader()
 	v.processor_.PreprocessPackageHeader(
@@ -1482,7 +1719,10 @@ func (v *visitor_) visitPackageDeclaration(
 		1,
 	)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessPackageDeclarationSlot(2)
+	v.processor_.ProcessPackageDeclarationSlot(
+		packageDeclaration,
+		2,
+	)
 
 	var packageImports = packageDeclaration.GetPackageImports()
 	v.processor_.PreprocessPackageImports(
@@ -1504,12 +1744,18 @@ func (v *visitor_) visitPackageHeader(
 	var comment = packageHeader.GetComment()
 	v.processor_.ProcessComment(comment)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessPackageHeaderSlot(1)
+	v.processor_.ProcessPackageHeaderSlot(
+		packageHeader,
+		1,
+	)
 
 	var delimiter = packageHeader.GetDelimiter()
 	v.processor_.ProcessDelimiter(delimiter)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessPackageHeaderSlot(2)
+	v.processor_.ProcessPackageHeaderSlot(
+		packageHeader,
+		2,
+	)
 
 	var name = packageHeader.GetName()
 	v.processor_.ProcessName(name)
@@ -1521,12 +1767,18 @@ func (v *visitor_) visitPackageImports(
 	var delimiter1 = packageImports.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessPackageImportsSlot(1)
+	v.processor_.ProcessPackageImportsSlot(
+		packageImports,
+		1,
+	)
 
 	var delimiter2 = packageImports.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessPackageImportsSlot(2)
+	v.processor_.ProcessPackageImportsSlot(
+		packageImports,
+		2,
+	)
 
 	var optionalImportList = packageImports.GetOptionalImportList()
 	if uti.IsDefined(optionalImportList) {
@@ -1543,7 +1795,10 @@ func (v *visitor_) visitPackageImports(
 		)
 	}
 	// Visit slot 3 between terms.
-	v.processor_.ProcessPackageImportsSlot(3)
+	v.processor_.ProcessPackageImportsSlot(
+		packageImports,
+		3,
+	)
 
 	var delimiter3 = packageImports.GetDelimiter3()
 	v.processor_.ProcessDelimiter(delimiter3)
@@ -1555,7 +1810,10 @@ func (v *visitor_) visitParameter(
 	var name = parameter.GetName()
 	v.processor_.ProcessName(name)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessParameterSlot(1)
+	v.processor_.ProcessParameterSlot(
+		parameter,
+		1,
+	)
 
 	var abstraction = parameter.GetAbstraction()
 	v.processor_.PreprocessAbstraction(
@@ -1570,7 +1828,10 @@ func (v *visitor_) visitParameter(
 		1,
 	)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessParameterSlot(2)
+	v.processor_.ProcessParameterSlot(
+		parameter,
+		2,
+	)
 
 	var delimiter = parameter.GetDelimiter()
 	v.processor_.ProcessDelimiter(delimiter)
@@ -1615,7 +1876,10 @@ func (v *visitor_) visitPrimitiveDeclarations(
 		1,
 	)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessPrimitiveDeclarationsSlot(1)
+	v.processor_.ProcessPrimitiveDeclarationsSlot(
+		primitiveDeclarations,
+		1,
+	)
 
 	var functionalSection = primitiveDeclarations.GetFunctionalSection()
 	v.processor_.PreprocessFunctionalSection(
@@ -1654,7 +1918,10 @@ func (v *visitor_) visitPrincipalSubsection(
 	var delimiter = principalSubsection.GetDelimiter()
 	v.processor_.ProcessDelimiter(delimiter)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessPrincipalSubsectionSlot(1)
+	v.processor_.ProcessPrincipalSubsectionSlot(
+		principalSubsection,
+		1,
+	)
 
 	var principalMethodsIndex uint
 	var principalMethods = principalSubsection.GetPrincipalMethods().GetIterator()
@@ -1726,12 +1993,18 @@ func (v *visitor_) visitSetterMethod(
 	var name = setterMethod.GetName()
 	v.processor_.ProcessName(name)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessSetterMethodSlot(1)
+	v.processor_.ProcessSetterMethodSlot(
+		setterMethod,
+		1,
+	)
 
 	var delimiter1 = setterMethod.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessSetterMethodSlot(2)
+	v.processor_.ProcessSetterMethodSlot(
+		setterMethod,
+		2,
+	)
 
 	var parameter = setterMethod.GetParameter()
 	v.processor_.PreprocessParameter(
@@ -1746,7 +2019,10 @@ func (v *visitor_) visitSetterMethod(
 		1,
 	)
 	// Visit slot 3 between terms.
-	v.processor_.ProcessSetterMethodSlot(3)
+	v.processor_.ProcessSetterMethodSlot(
+		setterMethod,
+		3,
+	)
 
 	var delimiter2 = setterMethod.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)
@@ -1768,7 +2044,10 @@ func (v *visitor_) visitTypeDeclaration(
 		1,
 	)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessTypeDeclarationSlot(1)
+	v.processor_.ProcessTypeDeclarationSlot(
+		typeDeclaration,
+		1,
+	)
 
 	var abstraction = typeDeclaration.GetAbstraction()
 	v.processor_.PreprocessAbstraction(
@@ -1783,7 +2062,10 @@ func (v *visitor_) visitTypeDeclaration(
 		1,
 	)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessTypeDeclarationSlot(2)
+	v.processor_.ProcessTypeDeclarationSlot(
+		typeDeclaration,
+		2,
+	)
 
 	var optionalEnumeration = typeDeclaration.GetOptionalEnumeration()
 	if uti.IsDefined(optionalEnumeration) {
@@ -1807,7 +2089,10 @@ func (v *visitor_) visitTypeSection(
 	var delimiter = typeSection.GetDelimiter()
 	v.processor_.ProcessDelimiter(delimiter)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessTypeSectionSlot(1)
+	v.processor_.ProcessTypeSectionSlot(
+		typeSection,
+		1,
+	)
 
 	var typeDeclarationsIndex uint
 	var typeDeclarations = typeSection.GetTypeDeclarations().GetIterator()
@@ -1835,7 +2120,10 @@ func (v *visitor_) visitValue(
 	var name = value.GetName()
 	v.processor_.ProcessName(name)
 	// Visit slot 1 between terms.
-	v.processor_.ProcessValueSlot(1)
+	v.processor_.ProcessValueSlot(
+		value,
+		1,
+	)
 
 	var abstraction = value.GetAbstraction()
 	v.processor_.PreprocessAbstraction(
@@ -1850,12 +2138,18 @@ func (v *visitor_) visitValue(
 		1,
 	)
 	// Visit slot 2 between terms.
-	v.processor_.ProcessValueSlot(2)
+	v.processor_.ProcessValueSlot(
+		value,
+		2,
+	)
 
 	var delimiter1 = value.GetDelimiter1()
 	v.processor_.ProcessDelimiter(delimiter1)
 	// Visit slot 3 between terms.
-	v.processor_.ProcessValueSlot(3)
+	v.processor_.ProcessValueSlot(
+		value,
+		3,
+	)
 
 	var delimiter2 = value.GetDelimiter2()
 	v.processor_.ProcessDelimiter(delimiter2)

@@ -97,18 +97,20 @@ func (v *formatter_) ProcessSpace(
 }
 
 func (v *formatter_) ProcessAdditionalArgumentSlot(
-	slot uint,
+	additionalArgument ast.AdditionalArgumentLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
 	case 1:
 		v.appendString(" ")
 	}
 }
 
 func (v *formatter_) ProcessAdditionalConstraintSlot(
-	slot uint,
+	additionalConstraint ast.AdditionalConstraintLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
 	case 1:
 		v.appendString(" ")
 	}
@@ -130,23 +132,24 @@ func (v *formatter_) PreprocessAspectDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessAspectDeclarationSlot(
-	slot uint,
-) {
-	switch slot {
-	case 1, 2:
-		v.appendString(" ")
-	case 4:
-		v.appendNewline()
-	}
-}
-
 func (v *formatter_) PostprocessAspectDeclaration(
 	aspectDeclaration ast.AspectDeclarationLike,
 	index_ uint,
 	count_ uint,
 ) {
 	v.appendNewline()
+}
+
+func (v *formatter_) ProcessAspectDeclarationSlot(
+	aspectDeclaration ast.AspectDeclarationLike,
+	slot_ uint,
+) {
+	switch slot_ {
+	case 1, 2:
+		v.appendString(" ")
+	case 4:
+		v.appendNewline()
+	}
 }
 
 func (v *formatter_) PreprocessAspectInterface(
@@ -174,9 +177,10 @@ func (v *formatter_) PostprocessAspectMethod(
 }
 
 func (v *formatter_) ProcessAspectSectionSlot(
-	slot uint,
+	aspectSection ast.AspectSectionLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
 	default:
 		v.appendNewline()
 	}
@@ -226,15 +230,6 @@ func (v *formatter_) PreprocessClassDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessClassDeclarationSlot(
-	slot uint,
-) {
-	switch slot {
-	case 1, 2:
-		v.appendString(" ")
-	}
-}
-
 func (v *formatter_) PostprocessClassDeclaration(
 	classDeclaration ast.ClassDeclarationLike,
 	index_ uint,
@@ -243,10 +238,21 @@ func (v *formatter_) PostprocessClassDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessClassSectionSlot(
-	slot uint,
+func (v *formatter_) ProcessClassDeclarationSlot(
+	classDeclaration ast.ClassDeclarationLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
+	case 1, 2:
+		v.appendString(" ")
+	}
+}
+
+func (v *formatter_) ProcessClassSectionSlot(
+	classSection ast.ClassSectionLike,
+	slot_ uint,
+) {
+	switch slot_ {
 	default:
 		v.appendNewline()
 	}
@@ -261,9 +267,10 @@ func (v *formatter_) PreprocessConstantMethod(
 }
 
 func (v *formatter_) ProcessConstantMethodSlot(
-	slot uint,
+	constantMethod ast.ConstantMethodLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
 	case 3:
 		v.appendString(" ")
 	}
@@ -288,9 +295,10 @@ func (v *formatter_) PostprocessConstantSubsection(
 }
 
 func (v *formatter_) ProcessConstraintSlot(
-	slot uint,
+	constraint ast.ConstraintLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
 	case 1:
 		v.appendString(" ")
 	}
@@ -305,9 +313,10 @@ func (v *formatter_) PreprocessConstructorMethod(
 }
 
 func (v *formatter_) ProcessConstructorMethodSlot(
-	slot uint,
+	constructorMethod ast.ConstructorMethodLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
 	case 4:
 		v.appendString(" ")
 	}
@@ -332,9 +341,10 @@ func (v *formatter_) PostprocessConstructorSubsection(
 }
 
 func (v *formatter_) ProcessDeclarationSlot(
-	slot uint,
+	declaration ast.DeclarationLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
 	case 2:
 		v.appendString(" ")
 	}
@@ -348,10 +358,19 @@ func (v *formatter_) PreprocessEnumeration(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessEnumerationSlot(
-	slot uint,
+func (v *formatter_) PostprocessEnumeration(
+	enumeration ast.EnumerationLike,
+	index_ uint,
+	count_ uint,
 ) {
-	switch slot {
+	v.appendNewline()
+}
+
+func (v *formatter_) ProcessEnumerationSlot(
+	enumeration ast.EnumerationLike,
+	slot_ uint,
+) {
+	switch slot_ {
 	case 1:
 		v.appendString(" ")
 	case 2:
@@ -361,14 +380,6 @@ func (v *formatter_) ProcessEnumerationSlot(
 		v.depth_--
 		v.appendNewline()
 	}
-}
-
-func (v *formatter_) PostprocessEnumeration(
-	enumeration ast.EnumerationLike,
-	index_ uint,
-	count_ uint,
-) {
-	v.appendNewline()
 }
 
 func (v *formatter_) PreprocessFunctionMethod(
@@ -405,15 +416,6 @@ func (v *formatter_) PreprocessFunctionalDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessFunctionalDeclarationSlot(
-	slot uint,
-) {
-	switch slot {
-	case 1:
-		v.appendString(" ")
-	}
-}
-
 func (v *formatter_) PostprocessFunctionalDeclaration(
 	functionalDeclaration ast.FunctionalDeclarationLike,
 	index_ uint,
@@ -422,10 +424,21 @@ func (v *formatter_) PostprocessFunctionalDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessFunctionalSectionSlot(
-	slot uint,
+func (v *formatter_) ProcessFunctionalDeclarationSlot(
+	functionalDeclaration ast.FunctionalDeclarationLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
+	case 1:
+		v.appendString(" ")
+	}
+}
+
+func (v *formatter_) ProcessFunctionalSectionSlot(
+	functionalSection ast.FunctionalSectionLike,
+	slot_ uint,
+) {
+	switch slot_ {
 	default:
 		v.appendNewline()
 	}
@@ -440,9 +453,10 @@ func (v *formatter_) PreprocessGetterMethod(
 }
 
 func (v *formatter_) ProcessGetterMethodSlot(
-	slot uint,
+	getterMethod ast.GetterMethodLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
 	case 3:
 		v.appendString(" ")
 	}
@@ -457,9 +471,10 @@ func (v *formatter_) PreprocessImportedPackage(
 }
 
 func (v *formatter_) ProcessImportedPackageSlot(
-	slot uint,
+	importedPackage ast.ImportedPackageLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
 	case 1:
 		v.appendString(" ")
 	}
@@ -490,15 +505,6 @@ func (v *formatter_) PreprocessInstanceDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessInstanceDeclarationSlot(
-	slot uint,
-) {
-	switch slot {
-	case 1, 2:
-		v.appendString(" ")
-	}
-}
-
 func (v *formatter_) PostprocessInstanceDeclaration(
 	instanceDeclaration ast.InstanceDeclarationLike,
 	index_ uint,
@@ -507,10 +513,21 @@ func (v *formatter_) PostprocessInstanceDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessInstanceSectionSlot(
-	slot uint,
+func (v *formatter_) ProcessInstanceDeclarationSlot(
+	instanceDeclaration ast.InstanceDeclarationLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
+	case 1, 2:
+		v.appendString(" ")
+	}
+}
+
+func (v *formatter_) ProcessInstanceSectionSlot(
+	instanceSection ast.InstanceSectionLike,
+	slot_ uint,
+) {
+	switch slot_ {
 	default:
 		v.appendNewline()
 	}
@@ -525,9 +542,10 @@ func (v *formatter_) PreprocessInterfaceDeclarations(
 }
 
 func (v *formatter_) ProcessInterfaceDeclarationsSlot(
-	slot uint,
+	interfaceDeclarations ast.InterfaceDeclarationsLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
 	default:
 		v.appendNewline()
 	}
@@ -541,15 +559,6 @@ func (v *formatter_) PreprocessMethod(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessPackageDeclarationSlot(
-	slot uint,
-) {
-	switch slot {
-	default:
-		v.appendNewline()
-	}
-}
-
 func (v *formatter_) PostprocessPackageDeclaration(
 	packageDeclaration ast.PackageDeclarationLike,
 	index_ uint,
@@ -558,10 +567,21 @@ func (v *formatter_) PostprocessPackageDeclaration(
 	v.appendNewline()
 }
 
-func (v *formatter_) ProcessPackageHeaderSlot(
-	slot uint,
+func (v *formatter_) ProcessPackageDeclarationSlot(
+	packageDeclaration ast.PackageDeclarationLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
+	default:
+		v.appendNewline()
+	}
+}
+
+func (v *formatter_) ProcessPackageHeaderSlot(
+	packageHeader ast.PackageHeaderLike,
+	slot_ uint,
+) {
+	switch slot_ {
 	case 2:
 		v.appendString(" ")
 	}
@@ -576,9 +596,10 @@ func (v *formatter_) PreprocessPackageImports(
 }
 
 func (v *formatter_) ProcessPackageImportsSlot(
-	slot uint,
+	packageImports ast.PackageImportsLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
 	case 1:
 		v.appendString(" ")
 	}
@@ -593,9 +614,10 @@ func (v *formatter_) PreprocessParameter(
 }
 
 func (v *formatter_) ProcessParameterSlot(
-	slot uint,
+	parameter ast.ParameterLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
 	case 1:
 		v.appendString(" ")
 	}
@@ -627,9 +649,10 @@ func (v *formatter_) PreprocessPrimitiveDeclarations(
 }
 
 func (v *formatter_) ProcessPrimitiveDeclarationsSlot(
-	slot uint,
+	primitiveDeclarations ast.PrimitiveDeclarationsLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
 	default:
 		v.appendNewline()
 	}
@@ -674,9 +697,10 @@ func (v *formatter_) PreprocessSetterMethod(
 }
 
 func (v *formatter_) ProcessSetterMethodSlot(
-	slot uint,
+	setterMethod ast.SetterMethodLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
 	case 2:
 		v.depth_++
 	case 3:
@@ -694,9 +718,10 @@ func (v *formatter_) PreprocessTypeDeclaration(
 }
 
 func (v *formatter_) ProcessTypeDeclarationSlot(
-	slot uint,
+	typeDeclaration ast.TypeDeclarationLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
 	case 1:
 		v.appendString(" ")
 	case 2:
@@ -705,18 +730,20 @@ func (v *formatter_) ProcessTypeDeclarationSlot(
 }
 
 func (v *formatter_) ProcessTypeSectionSlot(
-	slot uint,
+	typeSection ast.TypeSectionLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
 	default:
 		v.appendNewline()
 	}
 }
 
 func (v *formatter_) ProcessValueSlot(
-	slot uint,
+	value ast.ValueLike,
+	slot_ uint,
 ) {
-	switch slot {
+	switch slot_ {
 	default:
 		v.appendString(" ")
 	}

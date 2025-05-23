@@ -92,15 +92,16 @@ func (v *processor_) PreprocessAbstraction(
 ) {
 }
 
-func (v *processor_) ProcessAbstractionSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessAbstraction(
 	abstraction ast.AbstractionLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessAbstractionSlot(
+	abstraction ast.AbstractionLike,
+	slot_ uint,
 ) {
 }
 
@@ -111,15 +112,16 @@ func (v *processor_) PreprocessAdditionalArgument(
 ) {
 }
 
-func (v *processor_) ProcessAdditionalArgumentSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessAdditionalArgument(
 	additionalArgument ast.AdditionalArgumentLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessAdditionalArgumentSlot(
+	additionalArgument ast.AdditionalArgumentLike,
+	slot_ uint,
 ) {
 }
 
@@ -130,15 +132,16 @@ func (v *processor_) PreprocessAdditionalConstraint(
 ) {
 }
 
-func (v *processor_) ProcessAdditionalConstraintSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessAdditionalConstraint(
 	additionalConstraint ast.AdditionalConstraintLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessAdditionalConstraintSlot(
+	additionalConstraint ast.AdditionalConstraintLike,
+	slot_ uint,
 ) {
 }
 
@@ -149,15 +152,16 @@ func (v *processor_) PreprocessAdditionalValue(
 ) {
 }
 
-func (v *processor_) ProcessAdditionalValueSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessAdditionalValue(
 	additionalValue ast.AdditionalValueLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessAdditionalValueSlot(
+	additionalValue ast.AdditionalValueLike,
+	slot_ uint,
 ) {
 }
 
@@ -168,15 +172,16 @@ func (v *processor_) PreprocessArgument(
 ) {
 }
 
-func (v *processor_) ProcessArgumentSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessArgument(
 	argument ast.ArgumentLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessArgumentSlot(
+	argument ast.ArgumentLike,
+	slot_ uint,
 ) {
 }
 
@@ -187,15 +192,16 @@ func (v *processor_) PreprocessArguments(
 ) {
 }
 
-func (v *processor_) ProcessArgumentsSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessArguments(
 	arguments ast.ArgumentsLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessArgumentsSlot(
+	arguments ast.ArgumentsLike,
+	slot_ uint,
 ) {
 }
 
@@ -206,15 +212,16 @@ func (v *processor_) PreprocessArray(
 ) {
 }
 
-func (v *processor_) ProcessArraySlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessArray(
 	array ast.ArrayLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessArraySlot(
+	array ast.ArrayLike,
+	slot_ uint,
 ) {
 }
 
@@ -225,15 +232,16 @@ func (v *processor_) PreprocessAspectDeclaration(
 ) {
 }
 
-func (v *processor_) ProcessAspectDeclarationSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessAspectDeclaration(
 	aspectDeclaration ast.AspectDeclarationLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessAspectDeclarationSlot(
+	aspectDeclaration ast.AspectDeclarationLike,
+	slot_ uint,
 ) {
 }
 
@@ -244,15 +252,16 @@ func (v *processor_) PreprocessAspectInterface(
 ) {
 }
 
-func (v *processor_) ProcessAspectInterfaceSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessAspectInterface(
 	aspectInterface ast.AspectInterfaceLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessAspectInterfaceSlot(
+	aspectInterface ast.AspectInterfaceLike,
+	slot_ uint,
 ) {
 }
 
@@ -263,15 +272,16 @@ func (v *processor_) PreprocessAspectMethod(
 ) {
 }
 
-func (v *processor_) ProcessAspectMethodSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessAspectMethod(
 	aspectMethod ast.AspectMethodLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessAspectMethodSlot(
+	aspectMethod ast.AspectMethodLike,
+	slot_ uint,
 ) {
 }
 
@@ -282,15 +292,16 @@ func (v *processor_) PreprocessAspectSection(
 ) {
 }
 
-func (v *processor_) ProcessAspectSectionSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessAspectSection(
 	aspectSection ast.AspectSectionLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessAspectSectionSlot(
+	aspectSection ast.AspectSectionLike,
+	slot_ uint,
 ) {
 }
 
@@ -301,15 +312,16 @@ func (v *processor_) PreprocessAspectSubsection(
 ) {
 }
 
-func (v *processor_) ProcessAspectSubsectionSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessAspectSubsection(
 	aspectSubsection ast.AspectSubsectionLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessAspectSubsectionSlot(
+	aspectSubsection ast.AspectSubsectionLike,
+	slot_ uint,
 ) {
 }
 
@@ -320,15 +332,16 @@ func (v *processor_) PreprocessAttributeMethod(
 ) {
 }
 
-func (v *processor_) ProcessAttributeMethodSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessAttributeMethod(
 	attributeMethod ast.AttributeMethodLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessAttributeMethodSlot(
+	attributeMethod ast.AttributeMethodLike,
+	slot_ uint,
 ) {
 }
 
@@ -339,15 +352,16 @@ func (v *processor_) PreprocessAttributeSubsection(
 ) {
 }
 
-func (v *processor_) ProcessAttributeSubsectionSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessAttributeSubsection(
 	attributeSubsection ast.AttributeSubsectionLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessAttributeSubsectionSlot(
+	attributeSubsection ast.AttributeSubsectionLike,
+	slot_ uint,
 ) {
 }
 
@@ -358,15 +372,16 @@ func (v *processor_) PreprocessChannel(
 ) {
 }
 
-func (v *processor_) ProcessChannelSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessChannel(
 	channel ast.ChannelLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessChannelSlot(
+	channel ast.ChannelLike,
+	slot_ uint,
 ) {
 }
 
@@ -377,15 +392,16 @@ func (v *processor_) PreprocessClassDeclaration(
 ) {
 }
 
-func (v *processor_) ProcessClassDeclarationSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessClassDeclaration(
 	classDeclaration ast.ClassDeclarationLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessClassDeclarationSlot(
+	classDeclaration ast.ClassDeclarationLike,
+	slot_ uint,
 ) {
 }
 
@@ -396,15 +412,16 @@ func (v *processor_) PreprocessClassMethods(
 ) {
 }
 
-func (v *processor_) ProcessClassMethodsSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessClassMethods(
 	classMethods ast.ClassMethodsLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessClassMethodsSlot(
+	classMethods ast.ClassMethodsLike,
+	slot_ uint,
 ) {
 }
 
@@ -415,15 +432,16 @@ func (v *processor_) PreprocessClassSection(
 ) {
 }
 
-func (v *processor_) ProcessClassSectionSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessClassSection(
 	classSection ast.ClassSectionLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessClassSectionSlot(
+	classSection ast.ClassSectionLike,
+	slot_ uint,
 ) {
 }
 
@@ -434,15 +452,16 @@ func (v *processor_) PreprocessConstantMethod(
 ) {
 }
 
-func (v *processor_) ProcessConstantMethodSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessConstantMethod(
 	constantMethod ast.ConstantMethodLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessConstantMethodSlot(
+	constantMethod ast.ConstantMethodLike,
+	slot_ uint,
 ) {
 }
 
@@ -453,15 +472,16 @@ func (v *processor_) PreprocessConstantSubsection(
 ) {
 }
 
-func (v *processor_) ProcessConstantSubsectionSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessConstantSubsection(
 	constantSubsection ast.ConstantSubsectionLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessConstantSubsectionSlot(
+	constantSubsection ast.ConstantSubsectionLike,
+	slot_ uint,
 ) {
 }
 
@@ -472,15 +492,16 @@ func (v *processor_) PreprocessConstraint(
 ) {
 }
 
-func (v *processor_) ProcessConstraintSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessConstraint(
 	constraint ast.ConstraintLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessConstraintSlot(
+	constraint ast.ConstraintLike,
+	slot_ uint,
 ) {
 }
 
@@ -491,15 +512,16 @@ func (v *processor_) PreprocessConstraints(
 ) {
 }
 
-func (v *processor_) ProcessConstraintsSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessConstraints(
 	constraints ast.ConstraintsLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessConstraintsSlot(
+	constraints ast.ConstraintsLike,
+	slot_ uint,
 ) {
 }
 
@@ -510,15 +532,16 @@ func (v *processor_) PreprocessConstructorMethod(
 ) {
 }
 
-func (v *processor_) ProcessConstructorMethodSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessConstructorMethod(
 	constructorMethod ast.ConstructorMethodLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessConstructorMethodSlot(
+	constructorMethod ast.ConstructorMethodLike,
+	slot_ uint,
 ) {
 }
 
@@ -529,15 +552,16 @@ func (v *processor_) PreprocessConstructorSubsection(
 ) {
 }
 
-func (v *processor_) ProcessConstructorSubsectionSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessConstructorSubsection(
 	constructorSubsection ast.ConstructorSubsectionLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessConstructorSubsectionSlot(
+	constructorSubsection ast.ConstructorSubsectionLike,
+	slot_ uint,
 ) {
 }
 
@@ -548,15 +572,16 @@ func (v *processor_) PreprocessDeclaration(
 ) {
 }
 
-func (v *processor_) ProcessDeclarationSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessDeclaration(
 	declaration ast.DeclarationLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessDeclarationSlot(
+	declaration ast.DeclarationLike,
+	slot_ uint,
 ) {
 }
 
@@ -567,15 +592,16 @@ func (v *processor_) PreprocessEnumeration(
 ) {
 }
 
-func (v *processor_) ProcessEnumerationSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessEnumeration(
 	enumeration ast.EnumerationLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessEnumerationSlot(
+	enumeration ast.EnumerationLike,
+	slot_ uint,
 ) {
 }
 
@@ -586,15 +612,16 @@ func (v *processor_) PreprocessFunctionMethod(
 ) {
 }
 
-func (v *processor_) ProcessFunctionMethodSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessFunctionMethod(
 	functionMethod ast.FunctionMethodLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessFunctionMethodSlot(
+	functionMethod ast.FunctionMethodLike,
+	slot_ uint,
 ) {
 }
 
@@ -605,15 +632,16 @@ func (v *processor_) PreprocessFunctionSubsection(
 ) {
 }
 
-func (v *processor_) ProcessFunctionSubsectionSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessFunctionSubsection(
 	functionSubsection ast.FunctionSubsectionLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessFunctionSubsectionSlot(
+	functionSubsection ast.FunctionSubsectionLike,
+	slot_ uint,
 ) {
 }
 
@@ -624,15 +652,16 @@ func (v *processor_) PreprocessFunctionalDeclaration(
 ) {
 }
 
-func (v *processor_) ProcessFunctionalDeclarationSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessFunctionalDeclaration(
 	functionalDeclaration ast.FunctionalDeclarationLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessFunctionalDeclarationSlot(
+	functionalDeclaration ast.FunctionalDeclarationLike,
+	slot_ uint,
 ) {
 }
 
@@ -643,15 +672,16 @@ func (v *processor_) PreprocessFunctionalSection(
 ) {
 }
 
-func (v *processor_) ProcessFunctionalSectionSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessFunctionalSection(
 	functionalSection ast.FunctionalSectionLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessFunctionalSectionSlot(
+	functionalSection ast.FunctionalSectionLike,
+	slot_ uint,
 ) {
 }
 
@@ -662,15 +692,16 @@ func (v *processor_) PreprocessGetterMethod(
 ) {
 }
 
-func (v *processor_) ProcessGetterMethodSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessGetterMethod(
 	getterMethod ast.GetterMethodLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessGetterMethodSlot(
+	getterMethod ast.GetterMethodLike,
+	slot_ uint,
 ) {
 }
 
@@ -681,15 +712,16 @@ func (v *processor_) PreprocessImportList(
 ) {
 }
 
-func (v *processor_) ProcessImportListSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessImportList(
 	importList ast.ImportListLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessImportListSlot(
+	importList ast.ImportListLike,
+	slot_ uint,
 ) {
 }
 
@@ -700,15 +732,16 @@ func (v *processor_) PreprocessImportedPackage(
 ) {
 }
 
-func (v *processor_) ProcessImportedPackageSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessImportedPackage(
 	importedPackage ast.ImportedPackageLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessImportedPackageSlot(
+	importedPackage ast.ImportedPackageLike,
+	slot_ uint,
 ) {
 }
 
@@ -719,15 +752,16 @@ func (v *processor_) PreprocessInstanceDeclaration(
 ) {
 }
 
-func (v *processor_) ProcessInstanceDeclarationSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessInstanceDeclaration(
 	instanceDeclaration ast.InstanceDeclarationLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessInstanceDeclarationSlot(
+	instanceDeclaration ast.InstanceDeclarationLike,
+	slot_ uint,
 ) {
 }
 
@@ -738,15 +772,16 @@ func (v *processor_) PreprocessInstanceMethods(
 ) {
 }
 
-func (v *processor_) ProcessInstanceMethodsSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessInstanceMethods(
 	instanceMethods ast.InstanceMethodsLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessInstanceMethodsSlot(
+	instanceMethods ast.InstanceMethodsLike,
+	slot_ uint,
 ) {
 }
 
@@ -757,15 +792,16 @@ func (v *processor_) PreprocessInstanceSection(
 ) {
 }
 
-func (v *processor_) ProcessInstanceSectionSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessInstanceSection(
 	instanceSection ast.InstanceSectionLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessInstanceSectionSlot(
+	instanceSection ast.InstanceSectionLike,
+	slot_ uint,
 ) {
 }
 
@@ -776,15 +812,16 @@ func (v *processor_) PreprocessInterfaceDeclarations(
 ) {
 }
 
-func (v *processor_) ProcessInterfaceDeclarationsSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessInterfaceDeclarations(
 	interfaceDeclarations ast.InterfaceDeclarationsLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessInterfaceDeclarationsSlot(
+	interfaceDeclarations ast.InterfaceDeclarationsLike,
+	slot_ uint,
 ) {
 }
 
@@ -795,15 +832,16 @@ func (v *processor_) PreprocessLegalNotice(
 ) {
 }
 
-func (v *processor_) ProcessLegalNoticeSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessLegalNotice(
 	legalNotice ast.LegalNoticeLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessLegalNoticeSlot(
+	legalNotice ast.LegalNoticeLike,
+	slot_ uint,
 ) {
 }
 
@@ -814,15 +852,16 @@ func (v *processor_) PreprocessMap(
 ) {
 }
 
-func (v *processor_) ProcessMapSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessMap(
 	map_ ast.MapLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessMapSlot(
+	map_ ast.MapLike,
+	slot_ uint,
 ) {
 }
 
@@ -833,15 +872,16 @@ func (v *processor_) PreprocessMethod(
 ) {
 }
 
-func (v *processor_) ProcessMethodSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessMethod(
 	method ast.MethodLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessMethodSlot(
+	method ast.MethodLike,
+	slot_ uint,
 ) {
 }
 
@@ -852,15 +892,16 @@ func (v *processor_) PreprocessModel(
 ) {
 }
 
-func (v *processor_) ProcessModelSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessModel(
 	model ast.ModelLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessModelSlot(
+	model ast.ModelLike,
+	slot_ uint,
 ) {
 }
 
@@ -871,15 +912,16 @@ func (v *processor_) PreprocessMultivalue(
 ) {
 }
 
-func (v *processor_) ProcessMultivalueSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessMultivalue(
 	multivalue ast.MultivalueLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessMultivalueSlot(
+	multivalue ast.MultivalueLike,
+	slot_ uint,
 ) {
 }
 
@@ -890,15 +932,16 @@ func (v *processor_) PreprocessNone(
 ) {
 }
 
-func (v *processor_) ProcessNoneSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessNone(
 	none ast.NoneLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessNoneSlot(
+	none ast.NoneLike,
+	slot_ uint,
 ) {
 }
 
@@ -909,15 +952,16 @@ func (v *processor_) PreprocessPackageDeclaration(
 ) {
 }
 
-func (v *processor_) ProcessPackageDeclarationSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessPackageDeclaration(
 	packageDeclaration ast.PackageDeclarationLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessPackageDeclarationSlot(
+	packageDeclaration ast.PackageDeclarationLike,
+	slot_ uint,
 ) {
 }
 
@@ -928,15 +972,16 @@ func (v *processor_) PreprocessPackageHeader(
 ) {
 }
 
-func (v *processor_) ProcessPackageHeaderSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessPackageHeader(
 	packageHeader ast.PackageHeaderLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessPackageHeaderSlot(
+	packageHeader ast.PackageHeaderLike,
+	slot_ uint,
 ) {
 }
 
@@ -947,15 +992,16 @@ func (v *processor_) PreprocessPackageImports(
 ) {
 }
 
-func (v *processor_) ProcessPackageImportsSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessPackageImports(
 	packageImports ast.PackageImportsLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessPackageImportsSlot(
+	packageImports ast.PackageImportsLike,
+	slot_ uint,
 ) {
 }
 
@@ -966,15 +1012,16 @@ func (v *processor_) PreprocessParameter(
 ) {
 }
 
-func (v *processor_) ProcessParameterSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessParameter(
 	parameter ast.ParameterLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessParameterSlot(
+	parameter ast.ParameterLike,
+	slot_ uint,
 ) {
 }
 
@@ -985,15 +1032,16 @@ func (v *processor_) PreprocessParameterList(
 ) {
 }
 
-func (v *processor_) ProcessParameterListSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessParameterList(
 	parameterList ast.ParameterListLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessParameterListSlot(
+	parameterList ast.ParameterListLike,
+	slot_ uint,
 ) {
 }
 
@@ -1004,15 +1052,16 @@ func (v *processor_) PreprocessPrimitiveDeclarations(
 ) {
 }
 
-func (v *processor_) ProcessPrimitiveDeclarationsSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessPrimitiveDeclarations(
 	primitiveDeclarations ast.PrimitiveDeclarationsLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessPrimitiveDeclarationsSlot(
+	primitiveDeclarations ast.PrimitiveDeclarationsLike,
+	slot_ uint,
 ) {
 }
 
@@ -1023,15 +1072,16 @@ func (v *processor_) PreprocessPrincipalMethod(
 ) {
 }
 
-func (v *processor_) ProcessPrincipalMethodSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessPrincipalMethod(
 	principalMethod ast.PrincipalMethodLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessPrincipalMethodSlot(
+	principalMethod ast.PrincipalMethodLike,
+	slot_ uint,
 ) {
 }
 
@@ -1042,15 +1092,16 @@ func (v *processor_) PreprocessPrincipalSubsection(
 ) {
 }
 
-func (v *processor_) ProcessPrincipalSubsectionSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessPrincipalSubsection(
 	principalSubsection ast.PrincipalSubsectionLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessPrincipalSubsectionSlot(
+	principalSubsection ast.PrincipalSubsectionLike,
+	slot_ uint,
 ) {
 }
 
@@ -1061,15 +1112,16 @@ func (v *processor_) PreprocessResult(
 ) {
 }
 
-func (v *processor_) ProcessResultSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessResult(
 	result ast.ResultLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessResultSlot(
+	result ast.ResultLike,
+	slot_ uint,
 ) {
 }
 
@@ -1080,15 +1132,16 @@ func (v *processor_) PreprocessSetterMethod(
 ) {
 }
 
-func (v *processor_) ProcessSetterMethodSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessSetterMethod(
 	setterMethod ast.SetterMethodLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessSetterMethodSlot(
+	setterMethod ast.SetterMethodLike,
+	slot_ uint,
 ) {
 }
 
@@ -1099,15 +1152,16 @@ func (v *processor_) PreprocessTypeDeclaration(
 ) {
 }
 
-func (v *processor_) ProcessTypeDeclarationSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessTypeDeclaration(
 	typeDeclaration ast.TypeDeclarationLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessTypeDeclarationSlot(
+	typeDeclaration ast.TypeDeclarationLike,
+	slot_ uint,
 ) {
 }
 
@@ -1118,15 +1172,16 @@ func (v *processor_) PreprocessTypeSection(
 ) {
 }
 
-func (v *processor_) ProcessTypeSectionSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessTypeSection(
 	typeSection ast.TypeSectionLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessTypeSectionSlot(
+	typeSection ast.TypeSectionLike,
+	slot_ uint,
 ) {
 }
 
@@ -1137,15 +1192,16 @@ func (v *processor_) PreprocessValue(
 ) {
 }
 
-func (v *processor_) ProcessValueSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessValue(
 	value ast.ValueLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessValueSlot(
+	value ast.ValueLike,
+	slot_ uint,
 ) {
 }
 
@@ -1156,15 +1212,16 @@ func (v *processor_) PreprocessWrapper(
 ) {
 }
 
-func (v *processor_) ProcessWrapperSlot(
-	slot uint,
-) {
-}
-
 func (v *processor_) PostprocessWrapper(
 	wrapper ast.WrapperLike,
 	index_ uint,
 	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessWrapperSlot(
+	wrapper ast.WrapperLike,
+	slot_ uint,
 ) {
 }
 
