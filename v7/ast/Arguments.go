@@ -37,7 +37,7 @@ func ArgumentsClass() ArgumentsClassLike {
 func (c *argumentsClass_) Arguments(
 	delimiter1 string,
 	argument ArgumentLike,
-	additionalArguments col.Sequential[AdditionalArgumentLike],
+	additionalArguments col.ListLike[AdditionalArgumentLike],
 	delimiter2 string,
 ) ArgumentsLike {
 	if uti.IsUndefined(delimiter1) {
@@ -80,7 +80,7 @@ func (v *arguments_) GetArgument() ArgumentLike {
 	return v.argument_
 }
 
-func (v *arguments_) GetAdditionalArguments() col.Sequential[AdditionalArgumentLike] {
+func (v *arguments_) GetAdditionalArguments() col.ListLike[AdditionalArgumentLike] {
 	return v.additionalArguments_
 }
 
@@ -96,7 +96,7 @@ type arguments_ struct {
 	// Declare the instance attributes.
 	delimiter1_          string
 	argument_            ArgumentLike
-	additionalArguments_ col.Sequential[AdditionalArgumentLike]
+	additionalArguments_ col.ListLike[AdditionalArgumentLike]
 	delimiter2_          string
 }
 

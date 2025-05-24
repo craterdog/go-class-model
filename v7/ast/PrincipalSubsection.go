@@ -36,7 +36,7 @@ func PrincipalSubsectionClass() PrincipalSubsectionClassLike {
 
 func (c *principalSubsectionClass_) PrincipalSubsection(
 	delimiter string,
-	principalMethods col.Sequential[PrincipalMethodLike],
+	principalMethods col.ListLike[PrincipalMethodLike],
 ) PrincipalSubsectionLike {
 	if uti.IsUndefined(delimiter) {
 		panic("The \"delimiter\" attribute is required by this class.")
@@ -66,7 +66,7 @@ func (v *principalSubsection_) GetDelimiter() string {
 	return v.delimiter_
 }
 
-func (v *principalSubsection_) GetPrincipalMethods() col.Sequential[PrincipalMethodLike] {
+func (v *principalSubsection_) GetPrincipalMethods() col.ListLike[PrincipalMethodLike] {
 	return v.principalMethods_
 }
 
@@ -77,7 +77,7 @@ func (v *principalSubsection_) GetPrincipalMethods() col.Sequential[PrincipalMet
 type principalSubsection_ struct {
 	// Declare the instance attributes.
 	delimiter_        string
-	principalMethods_ col.Sequential[PrincipalMethodLike]
+	principalMethods_ col.ListLike[PrincipalMethodLike]
 }
 
 // Class Structure

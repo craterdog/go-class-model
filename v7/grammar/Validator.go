@@ -22,6 +22,7 @@ package grammar
 import (
 	fmt "fmt"
 	ast "github.com/craterdog/go-class-model/v7/ast"
+	col "github.com/craterdog/go-collection-framework/v7"
 	utf "unicode/utf8"
 )
 
@@ -92,6 +93,56 @@ func (v *validator_) ProcessPrefix(
 	v.validateToken(prefix, PrefixToken)
 }
 
+func (v *validator_) PreprocessAspectSection(
+	aspectSection ast.AspectSectionLike,
+	index_ uint,
+	count_ uint,
+) {
+	var aspectDeclarations = aspectSection.GetAspectDeclarations()
+	aspectDeclarations.SortValuesWithRanker(
+		func(
+			first ast.AspectDeclarationLike,
+			second ast.AspectDeclarationLike,
+		) col.Rank {
+			var firstName = first.GetDeclaration().GetName()
+			var secondName = second.GetDeclaration().GetName()
+			switch {
+			case firstName < secondName:
+				return col.LesserRank
+			case firstName > secondName:
+				return col.GreaterRank
+			default:
+				return col.EqualRank
+			}
+		},
+	)
+}
+
+func (v *validator_) PreprocessClassSection(
+	classSection ast.ClassSectionLike,
+	index_ uint,
+	count_ uint,
+) {
+	var classDeclarations = classSection.GetClassDeclarations()
+	classDeclarations.SortValuesWithRanker(
+		func(
+			first ast.ClassDeclarationLike,
+			second ast.ClassDeclarationLike,
+		) col.Rank {
+			var firstName = first.GetDeclaration().GetName()
+			var secondName = second.GetDeclaration().GetName()
+			switch {
+			case firstName < secondName:
+				return col.LesserRank
+			case firstName > secondName:
+				return col.GreaterRank
+			default:
+				return col.EqualRank
+			}
+		},
+	)
+}
+
 func (v *validator_) PreprocessFunctionalDeclaration(
 	functionalDeclaration ast.FunctionalDeclarationLike,
 	index_ uint,
@@ -108,6 +159,31 @@ func (v *validator_) PreprocessFunctionalDeclaration(
 		)
 		panic(message)
 	}
+}
+
+func (v *validator_) PreprocessFunctionalSection(
+	functionalSection ast.FunctionalSectionLike,
+	index_ uint,
+	count_ uint,
+) {
+	var functionalDeclarations = functionalSection.GetFunctionalDeclarations()
+	functionalDeclarations.SortValuesWithRanker(
+		func(
+			first ast.FunctionalDeclarationLike,
+			second ast.FunctionalDeclarationLike,
+		) col.Rank {
+			var firstName = first.GetDeclaration().GetName()
+			var secondName = second.GetDeclaration().GetName()
+			switch {
+			case firstName < secondName:
+				return col.LesserRank
+			case firstName > secondName:
+				return col.GreaterRank
+			default:
+				return col.EqualRank
+			}
+		},
+	)
 }
 
 func (v *validator_) PreprocessFunctionMethod(
@@ -140,6 +216,31 @@ func (v *validator_) PreprocessImportedPackage(
 		)
 		panic(message)
 	}
+}
+
+func (v *validator_) PreprocessInstanceSection(
+	instanceSection ast.InstanceSectionLike,
+	index_ uint,
+	count_ uint,
+) {
+	var instanceDeclarations = instanceSection.GetInstanceDeclarations()
+	instanceDeclarations.SortValuesWithRanker(
+		func(
+			first ast.InstanceDeclarationLike,
+			second ast.InstanceDeclarationLike,
+		) col.Rank {
+			var firstName = first.GetDeclaration().GetName()
+			var secondName = second.GetDeclaration().GetName()
+			switch {
+			case firstName < secondName:
+				return col.LesserRank
+			case firstName > secondName:
+				return col.GreaterRank
+			default:
+				return col.EqualRank
+			}
+		},
+	)
 }
 
 // PROTECTED INTERFACE

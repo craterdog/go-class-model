@@ -35,7 +35,7 @@ func ParameterListClass() ParameterListClassLike {
 // Constructor Methods
 
 func (c *parameterListClass_) ParameterList(
-	parameters col.Sequential[ParameterLike],
+	parameters col.ListLike[ParameterLike],
 ) ParameterListLike {
 	if uti.IsUndefined(parameters) {
 		panic("The \"parameters\" attribute is required by this class.")
@@ -57,7 +57,7 @@ func (v *parameterList_) GetClass() ParameterListClassLike {
 
 // Attribute Methods
 
-func (v *parameterList_) GetParameters() col.Sequential[ParameterLike] {
+func (v *parameterList_) GetParameters() col.ListLike[ParameterLike] {
 	return v.parameters_
 }
 
@@ -67,7 +67,7 @@ func (v *parameterList_) GetParameters() col.Sequential[ParameterLike] {
 
 type parameterList_ struct {
 	// Declare the instance attributes.
-	parameters_ col.Sequential[ParameterLike]
+	parameters_ col.ListLike[ParameterLike]
 }
 
 // Class Structure

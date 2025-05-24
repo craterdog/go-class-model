@@ -36,7 +36,7 @@ func FunctionalSectionClass() FunctionalSectionClassLike {
 
 func (c *functionalSectionClass_) FunctionalSection(
 	delimiter string,
-	functionalDeclarations col.Sequential[FunctionalDeclarationLike],
+	functionalDeclarations col.ListLike[FunctionalDeclarationLike],
 ) FunctionalSectionLike {
 	if uti.IsUndefined(delimiter) {
 		panic("The \"delimiter\" attribute is required by this class.")
@@ -66,7 +66,7 @@ func (v *functionalSection_) GetDelimiter() string {
 	return v.delimiter_
 }
 
-func (v *functionalSection_) GetFunctionalDeclarations() col.Sequential[FunctionalDeclarationLike] {
+func (v *functionalSection_) GetFunctionalDeclarations() col.ListLike[FunctionalDeclarationLike] {
 	return v.functionalDeclarations_
 }
 
@@ -77,7 +77,7 @@ func (v *functionalSection_) GetFunctionalDeclarations() col.Sequential[Function
 type functionalSection_ struct {
 	// Declare the instance attributes.
 	delimiter_              string
-	functionalDeclarations_ col.Sequential[FunctionalDeclarationLike]
+	functionalDeclarations_ col.ListLike[FunctionalDeclarationLike]
 }
 
 // Class Structure

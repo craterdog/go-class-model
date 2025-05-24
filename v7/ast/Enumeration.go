@@ -38,7 +38,7 @@ func (c *enumerationClass_) Enumeration(
 	delimiter1 string,
 	delimiter2 string,
 	value ValueLike,
-	additionalValues col.Sequential[AdditionalValueLike],
+	additionalValues col.ListLike[AdditionalValueLike],
 	delimiter3 string,
 ) EnumerationLike {
 	if uti.IsUndefined(delimiter1) {
@@ -89,7 +89,7 @@ func (v *enumeration_) GetValue() ValueLike {
 	return v.value_
 }
 
-func (v *enumeration_) GetAdditionalValues() col.Sequential[AdditionalValueLike] {
+func (v *enumeration_) GetAdditionalValues() col.ListLike[AdditionalValueLike] {
 	return v.additionalValues_
 }
 
@@ -106,7 +106,7 @@ type enumeration_ struct {
 	delimiter1_       string
 	delimiter2_       string
 	value_            ValueLike
-	additionalValues_ col.Sequential[AdditionalValueLike]
+	additionalValues_ col.ListLike[AdditionalValueLike]
 	delimiter3_       string
 }
 
