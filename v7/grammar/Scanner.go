@@ -287,5 +287,5 @@ const (
 	comment_      = "(?:/\\*" + eol_ + "(" + any_ + "|" + eol_ + ")*?" + eol_ + "\\*/" + eol_ + ")"
 	prefix_       = "(?:(?:" + character_ + ")(?:" + alphanumeric_ + "){2}\\.)"
 	name_         = "(?:(?:" + character_ + ")(?:" + alphanumeric_ + ")*_?)"
-	path_         = "(?:\"" + any_ + "*?\")"
+	path_         = "(?:\"[^" + control_ + "]*\")"
 )

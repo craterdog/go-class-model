@@ -159,5 +159,5 @@ $prefix: character alphanumeric{2} '.'
 
 $name: character alphanumeric* '_'?
 
-$path: '"' ANY* '"'  ! Chooses the shortest possible match.
+$path: '"' ~[CONTROL]* '"'
 
