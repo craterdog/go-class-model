@@ -820,14 +820,14 @@ func Method(
 	delimiter1 string,
 	optionalParameterList ast.ParameterListLike,
 	delimiter2 string,
-	optionalResult ast.ResultLike,
+	result ast.ResultLike,
 ) MethodLike {
 	return MethodClass().Method(
 		name,
 		delimiter1,
 		optionalParameterList,
 		delimiter2,
-		optionalResult,
+		result,
 	)
 }
 

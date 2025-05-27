@@ -595,7 +595,7 @@ type MethodClassLike interface {
 		delimiter1 string,
 		optionalParameterList ParameterListLike,
 		delimiter2 string,
-		optionalResult ResultLike,
+		result ResultLike,
 	) MethodLike
 }
 
@@ -1420,7 +1420,7 @@ type MethodLike interface {
 	GetDelimiter1() string
 	GetOptionalParameterList() ParameterListLike
 	GetDelimiter2() string
-	GetOptionalResult() ResultLike
+	GetResult() ResultLike
 }
 
 /*

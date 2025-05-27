@@ -122,7 +122,7 @@ $PrincipalSubsection: "// Principal Methods" PrincipalMethod+
 
 $PrincipalMethod: Method
 
-$Method: name "(" ParameterList? ")" Result?
+$Method: name "(" ParameterList? ")" Result
 
 $AttributeSubsection: "// Attribute Methods" AttributeMethod+
 

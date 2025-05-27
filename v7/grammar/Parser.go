@@ -2760,12 +2760,21 @@ func (v *parser_) parseMethod() (
 		tokens.AppendValue(token)
 	}
 
-	// Attempt to parse an optional Result rule.
-	var optionalResult ast.ResultLike
-	optionalResult, _, ok = v.parseResult()
-	if ok {
+	// Attempt to parse a single Result rule.
+	var result ast.ResultLike
+	result, token, ok = v.parseResult()
+	switch {
+	case ok:
 		// No additional put backs allowed at this point.
 		tokens = nil
+	case uti.IsDefined(tokens):
+		// This is not a single Result rule.
+		v.putBack(tokens)
+		return
+	default:
+		// Found a syntax error.
+		var message = v.formatError("$Method", token)
+		panic(message)
 	}
 
 	// Found a single Method rule.
@@ -2776,7 +2785,7 @@ func (v *parser_) parseMethod() (
 		delimiter1,
 		optionalParameterList,
 		delimiter2,
-		optionalResult,
+		result,
 	)
 	return
 }
@@ -4030,7 +4039,7 @@ var parserClassReference_ = &parserClass_{
 			"$InstanceMethods":       `PrincipalSubsection AttributeSubsection? AspectSubsection?`,
 			"$PrincipalSubsection":   `"// Principal Methods" PrincipalMethod+`,
 			"$PrincipalMethod":       `Method`,
-			"$Method":                `name "(" ParameterList? ")" Result?`,
+			"$Method":                `name "(" ParameterList? ")" Result`,
 			"$AttributeSubsection":   `"// Attribute Methods" AttributeMethod+`,
 			"$AttributeMethod": `
     GetterMethod

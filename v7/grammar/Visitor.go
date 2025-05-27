@@ -1576,20 +1576,18 @@ func (v *visitor_) visitMethod(
 		4,
 	)
 
-	var optionalResult = method.GetOptionalResult()
-	if uti.IsDefined(optionalResult) {
-		v.processor_.PreprocessResult(
-			optionalResult,
-			1,
-			1,
-		)
-		v.visitResult(optionalResult)
-		v.processor_.PostprocessResult(
-			optionalResult,
-			1,
-			1,
-		)
-	}
+	var result = method.GetResult()
+	v.processor_.PreprocessResult(
+		result,
+		1,
+		1,
+	)
+	v.visitResult(result)
+	v.processor_.PostprocessResult(
+		result,
+		1,
+		1,
+	)
 }
 
 func (v *visitor_) visitModel(

@@ -38,7 +38,7 @@ func (c *methodClass_) Method(
 	delimiter1 string,
 	optionalParameterList ParameterListLike,
 	delimiter2 string,
-	optionalResult ResultLike,
+	result ResultLike,
 ) MethodLike {
 	if uti.IsUndefined(name) {
 		panic("The \"name\" attribute is required by this class.")
@@ -49,13 +49,16 @@ func (c *methodClass_) Method(
 	if uti.IsUndefined(delimiter2) {
 		panic("The \"delimiter2\" attribute is required by this class.")
 	}
+	if uti.IsUndefined(result) {
+		panic("The \"result\" attribute is required by this class.")
+	}
 	var instance = &method_{
 		// Initialize the instance attributes.
 		name_:                  name,
 		delimiter1_:            delimiter1,
 		optionalParameterList_: optionalParameterList,
 		delimiter2_:            delimiter2,
-		optionalResult_:        optionalResult,
+		result_:                result,
 	}
 	return instance
 }
@@ -86,8 +89,8 @@ func (v *method_) GetDelimiter2() string {
 	return v.delimiter2_
 }
 
-func (v *method_) GetOptionalResult() ResultLike {
-	return v.optionalResult_
+func (v *method_) GetResult() ResultLike {
+	return v.result_
 }
 
 // PROTECTED INTERFACE
@@ -100,7 +103,7 @@ type method_ struct {
 	delimiter1_            string
 	optionalParameterList_ ParameterListLike
 	delimiter2_            string
-	optionalResult_        ResultLike
+	result_                ResultLike
 }
 
 // Class Structure
