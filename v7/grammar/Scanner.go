@@ -151,7 +151,7 @@ func (v *scanner_) foundToken(
 	var token = []rune(match)
 	var length = uint(len(token))
 	var previous = token[length-1]
-	if tokenType == DelimiterToken && uint(len(v.runes_)) > v.next_+length {
+	if uint(len(v.runes_)) > v.next_+length {
 		var next = v.runes_[v.next_+length]
 		if (uni.IsLetter(previous) || uni.IsNumber(previous)) &&
 			(uni.IsLetter(next) || uni.IsNumber(next) || next == '_') {

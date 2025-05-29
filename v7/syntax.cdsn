@@ -155,7 +155,7 @@ $character: LOWER | UPPER
 
 $comment: "/*" EOL (ANY | EOL)* EOL "*/" EOL  ! Chooses the shortest possible match.
 
-$prefix: character alphanumeric{2} '.'
+$prefix: character alphanumeric{2} '.'  ! Must be declared before name.
 
 $name: character alphanumeric* '_'?
 
