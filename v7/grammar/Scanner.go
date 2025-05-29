@@ -147,7 +147,7 @@ func (v *scanner_) foundToken(
 		return false
 	}
 
-	// Check for false delimiter matches.
+	// Check for partial identifier matches.
 	var token = []rune(match)
 	var length = uint(len(token))
 	var previous = token[length-1]
@@ -279,13 +279,13 @@ const (
 	upper_   = "\\p{Lu}"
 
 	// Define the regular expressions for each token type.
-	delimiter_    = "(?:type|package|map|iota|interface|import|func|const|chan|\\}|\\{|\\]|\\[|\\)|\\(|=|// TYPE DECLARATIONS|// Principal Methods|// INSTANCE DECLARATIONS|// Function Methods|// FUNCTIONAL DECLARATIONS|// Constructor Methods|// Constant Methods|// CLASS DECLARATIONS|// Attribute Methods|// Aspect Interfaces|// ASPECT DECLARATIONS|,)"
-	newline_      = "(?:" + eol_ + ")"
-	space_        = "(?:[ \\t]+)"
 	alphanumeric_ = "(?:" + lower_ + "|" + upper_ + "|" + digit_ + ")"
 	character_    = "(?:" + lower_ + "|" + upper_ + ")"
 	comment_      = "(?:/\\*" + eol_ + "(" + any_ + "|" + eol_ + ")*?" + eol_ + "\\*/" + eol_ + ")"
-	prefix_       = "(?:(?:" + character_ + ")(?:" + alphanumeric_ + "){2}\\.)"
+	delimiter_    = "(?:type|package|map|iota|interface|import|func|const|chan|\\}|\\{|\\]|\\[|\\)|\\(|=|// TYPE DECLARATIONS|// Principal Methods|// INSTANCE DECLARATIONS|// Function Methods|// FUNCTIONAL DECLARATIONS|// Constructor Methods|// Constant Methods|// CLASS DECLARATIONS|// Attribute Methods|// Aspect Interfaces|// ASPECT DECLARATIONS|,)"
 	name_         = "(?:(?:" + character_ + ")(?:" + alphanumeric_ + ")*_?)"
+	newline_      = "(?:" + eol_ + ")"
 	path_         = "(?:\"[^" + control_ + "]*\")"
+	prefix_       = "(?:(?:" + character_ + ")(?:" + alphanumeric_ + "){2}\\.)"
+	space_        = "(?:[ \\t]+)"
 )
