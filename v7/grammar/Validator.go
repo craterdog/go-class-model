@@ -23,6 +23,7 @@ import (
 	fmt "fmt"
 	ast "github.com/craterdog/go-class-model/v7/ast"
 	col "github.com/craterdog/go-collection-framework/v7"
+	sts "strings"
 	utf "unicode/utf8"
 )
 
@@ -129,8 +130,14 @@ func (v *validator_) PreprocessClassSection(
 			first ast.ClassDeclarationLike,
 			second ast.ClassDeclarationLike,
 		) col.Rank {
-			var firstName = first.GetDeclaration().GetName()
-			var secondName = second.GetDeclaration().GetName()
+			var firstName = sts.TrimSuffix(
+				first.GetDeclaration().GetName(),
+				"ClassLike",
+			)
+			var secondName = sts.TrimSuffix(
+				second.GetDeclaration().GetName(),
+				"ClassLike",
+			)
 			switch {
 			case firstName < secondName:
 				return col.LesserRank
@@ -172,8 +179,14 @@ func (v *validator_) PreprocessFunctionalSection(
 			first ast.FunctionalDeclarationLike,
 			second ast.FunctionalDeclarationLike,
 		) col.Rank {
-			var firstName = first.GetDeclaration().GetName()
-			var secondName = second.GetDeclaration().GetName()
+			var firstName = sts.TrimSuffix(
+				first.GetDeclaration().GetName(),
+				"Function",
+			)
+			var secondName = sts.TrimSuffix(
+				second.GetDeclaration().GetName(),
+				"Function",
+			)
 			switch {
 			case firstName < secondName:
 				return col.LesserRank
@@ -229,8 +242,14 @@ func (v *validator_) PreprocessInstanceSection(
 			first ast.InstanceDeclarationLike,
 			second ast.InstanceDeclarationLike,
 		) col.Rank {
-			var firstName = first.GetDeclaration().GetName()
-			var secondName = second.GetDeclaration().GetName()
+			var firstName = sts.TrimSuffix(
+				first.GetDeclaration().GetName(),
+				"Like",
+			)
+			var secondName = sts.TrimSuffix(
+				second.GetDeclaration().GetName(),
+				"Like",
+			)
 			switch {
 			case firstName < secondName:
 				return col.LesserRank
