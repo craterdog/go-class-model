@@ -149,15 +149,20 @@ $AspectMethod: Method
 │                            EXPRESSION DEFINITIONS                            │
 └──────────────────────────────────────────────────────────────────────────────┘
 <!
-$alphanumeric: LOWER | UPPER | DIGIT
-
 $character: LOWER | UPPER
 
 $comment: "/*" EOL (ANY | EOL)* EOL "*/" EOL  ! Chooses the shortest possible match.
 
-$prefix: character alphanumeric{2} '.'  ! Must be declared before name.
-
-$name: character alphanumeric* '_'?
-
 $path: '"' ~[CONTROL]* '"'
+
+$prefix: character ALPHANUMERIC{2} '.'
+
+$name: character ALPHANUMERIC* '_'?  ! Must be declared after prefix.
+
+!>
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                             FRAGMENT DEFINITIONS                             │
+└──────────────────────────────────────────────────────────────────────────────┘
+<!
+$ALPHANUMERIC: LOWER | UPPER | DIGIT
 

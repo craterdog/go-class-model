@@ -194,9 +194,9 @@ loop:
 		case v.foundToken(NewlineToken):
 		case v.foundToken(SpaceToken):
 		case v.foundToken(CommentToken):
+		case v.foundToken(PathToken):
 		case v.foundToken(PrefixToken):
 		case v.foundToken(NameToken):
-		case v.foundToken(PathToken):
 		default:
 			v.foundError()
 			break loop
