@@ -1145,6 +1145,26 @@ func (v *processor_) ProcessSetterMethodSlot(
 ) {
 }
 
+func (v *processor_) PreprocessStar(
+	star ast.StarLike,
+	index_ uint,
+	count_ uint,
+) {
+}
+
+func (v *processor_) PostprocessStar(
+	star ast.StarLike,
+	index_ uint,
+	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessStarSlot(
+	star ast.StarLike,
+	slot_ uint,
+) {
+}
+
 func (v *processor_) PreprocessTypeDeclaration(
 	typeDeclaration ast.TypeDeclarationLike,
 	index_ uint,

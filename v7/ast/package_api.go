@@ -774,6 +774,18 @@ type SetterMethodClassLike interface {
 }
 
 /*
+StarClassLike is a class interface that declares the
+complete set of class constructors, constants and functions that must be
+supported by each concrete star-like class.
+*/
+type StarClassLike interface {
+	// Constructor Methods
+	Star(
+		delimiter string,
+	) StarLike
+}
+
+/*
 TypeDeclarationClassLike is a class interface that declares the
 complete set of class constructors, constants and functions that must be
 supported by each concrete type-declaration-like class.
@@ -1608,6 +1620,19 @@ type SetterMethodLike interface {
 	GetDelimiter1() string
 	GetParameter() ParameterLike
 	GetDelimiter2() string
+}
+
+/*
+StarLike is an instance interface that declares the
+complete set of principal, attribute and aspect methods that must be supported
+by each instance of a concrete star-like class.
+*/
+type StarLike interface {
+	// Principal Methods
+	GetClass() StarClassLike
+
+	// Attribute Methods
+	GetDelimiter() string
 }
 
 /*

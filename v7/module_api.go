@@ -92,6 +92,7 @@ type (
 	PrincipalSubsectionClassLike   = ast.PrincipalSubsectionClassLike
 	ResultClassLike                = ast.ResultClassLike
 	SetterMethodClassLike          = ast.SetterMethodClassLike
+	StarClassLike                  = ast.StarClassLike
 	TypeDeclarationClassLike       = ast.TypeDeclarationClassLike
 	TypeSectionClassLike           = ast.TypeSectionClassLike
 	ValueClassLike                 = ast.ValueClassLike
@@ -152,6 +153,7 @@ type (
 	PrincipalSubsectionLike   = ast.PrincipalSubsectionLike
 	ResultLike                = ast.ResultLike
 	SetterMethodLike          = ast.SetterMethodLike
+	StarLike                  = ast.StarLike
 	TypeDeclarationLike       = ast.TypeDeclarationLike
 	TypeSectionLike           = ast.TypeSectionLike
 	ValueLike                 = ast.ValueLike
@@ -1020,6 +1022,18 @@ func SetterMethod(
 		delimiter1,
 		parameter,
 		delimiter2,
+	)
+}
+
+func StarClass() StarClassLike {
+	return ast.StarClass()
+}
+
+func Star(
+	delimiter string,
+) StarLike {
+	return StarClass().Star(
+		delimiter,
 	)
 }
 

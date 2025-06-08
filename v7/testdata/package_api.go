@@ -27,7 +27,9 @@ on interfaces, not on each other.
 */
 package example
 
-import ()
+import (
+	reg "regexp"
+)
 
 // TYPE DECLARATIONS
 
@@ -77,6 +79,11 @@ const (
 	Radians
 	Gradians
 )
+
+/*
+Regexp is a constrained type representing a compiled regular expression.
+*/
+type Regexp *reg.Regexp
 
 // FUNCTIONAL DECLARATIONS
 

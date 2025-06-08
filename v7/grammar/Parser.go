@@ -3564,6 +3564,38 @@ func (v *parser_) parseSetterMethod() (
 	return
 }
 
+func (v *parser_) parseStar() (
+	star ast.StarLike,
+	token TokenLike,
+	ok bool,
+) {
+	var tokens = com.List[TokenLike]()
+
+	// Attempt to parse a single "*" literal.
+	var delimiter string
+	delimiter, token, ok = v.parseDelimiter("*")
+	if !ok {
+		if uti.IsDefined(tokens) {
+			// This is not a single Star rule.
+			v.putBack(tokens)
+			return
+		} else {
+			// Found a syntax error.
+			var message = v.formatError("$Star", token)
+			panic(message)
+		}
+	}
+	if uti.IsDefined(tokens) {
+		tokens.AppendValue(token)
+	}
+
+	// Found a single Star rule.
+	ok = true
+	v.remove(tokens)
+	star = ast.StarClass().Star(delimiter)
+	return
+}
+
 func (v *parser_) parseTypeDeclaration() (
 	typeDeclaration ast.TypeDeclarationLike,
 	token TokenLike,
@@ -3780,6 +3812,15 @@ func (v *parser_) parseWrapper() (
 	token TokenLike,
 	ok bool,
 ) {
+	// Attempt to parse a single Star Wrapper.
+	var star ast.StarLike
+	star, token, ok = v.parseStar()
+	if ok {
+		// Found a single Star Wrapper.
+		wrapper = ast.WrapperClass().Wrapper(star)
+		return
+	}
+
 	// Attempt to parse a single Array Wrapper.
 	var array ast.ArrayLike
 	array, token, ok = v.parseArray()
@@ -4003,9 +4044,11 @@ var parserClassReference_ = &parserClass_{
 			"$AdditionalConstraint":  `"," Constraint`,
 			"$Abstraction":           `Wrapper? prefix? name Arguments?`,
 			"$Wrapper": `
+    Star
     Array
     Map
     Channel`,
+			"$Star":                  `"*"`,
 			"$Array":                 `"[" "]"`,
 			"$Map":                   `"map" "[" name "]"`,
 			"$Channel":               `"chan"`,

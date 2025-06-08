@@ -2026,6 +2026,13 @@ func (v *visitor_) visitSetterMethod(
 	v.processor_.ProcessDelimiter(delimiter2)
 }
 
+func (v *visitor_) visitStar(
+	star ast.StarLike,
+) {
+	var delimiter = star.GetDelimiter()
+	v.processor_.ProcessDelimiter(delimiter)
+}
+
 func (v *visitor_) visitTypeDeclaration(
 	typeDeclaration ast.TypeDeclarationLike,
 ) {
@@ -2158,6 +2165,18 @@ func (v *visitor_) visitWrapper(
 ) {
 	// Visit the possible wrapper rule types.
 	switch actual := wrapper.GetAny().(type) {
+	case ast.StarLike:
+		v.processor_.PreprocessStar(
+			actual,
+			1,
+			1,
+		)
+		v.visitStar(actual)
+		v.processor_.PostprocessStar(
+			actual,
+			1,
+			1,
+		)
 	case ast.ArrayLike:
 		v.processor_.PreprocessArray(
 			actual,

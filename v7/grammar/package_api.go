@@ -1035,6 +1035,20 @@ type Methodical interface {
 		setterMethod ast.SetterMethodLike,
 		slot_ uint,
 	)
+	PreprocessStar(
+		star ast.StarLike,
+		index_ uint,
+		count_ uint,
+	)
+	PostprocessStar(
+		star ast.StarLike,
+		index_ uint,
+		count_ uint,
+	)
+	ProcessStarSlot(
+		star ast.StarLike,
+		slot_ uint,
+	)
 	PreprocessTypeDeclaration(
 		typeDeclaration ast.TypeDeclarationLike,
 		index_ uint,
