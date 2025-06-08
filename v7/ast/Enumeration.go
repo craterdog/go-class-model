@@ -20,7 +20,7 @@
 package ast
 
 import (
-	col "github.com/craterdog/go-collection-framework/v7"
+	com "github.com/craterdog/go-component-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -38,7 +38,7 @@ func (c *enumerationClass_) Enumeration(
 	delimiter1 string,
 	delimiter2 string,
 	value ValueLike,
-	additionalValues col.ListLike[AdditionalValueLike],
+	additionalValues com.ListLike[AdditionalValueLike],
 	delimiter3 string,
 ) EnumerationLike {
 	if uti.IsUndefined(delimiter1) {
@@ -89,7 +89,7 @@ func (v *enumeration_) GetValue() ValueLike {
 	return v.value_
 }
 
-func (v *enumeration_) GetAdditionalValues() col.ListLike[AdditionalValueLike] {
+func (v *enumeration_) GetAdditionalValues() com.ListLike[AdditionalValueLike] {
 	return v.additionalValues_
 }
 
@@ -106,7 +106,7 @@ type enumeration_ struct {
 	delimiter1_       string
 	delimiter2_       string
 	value_            ValueLike
-	additionalValues_ col.ListLike[AdditionalValueLike]
+	additionalValues_ com.ListLike[AdditionalValueLike]
 	delimiter3_       string
 }
 

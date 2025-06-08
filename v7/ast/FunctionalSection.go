@@ -20,7 +20,7 @@
 package ast
 
 import (
-	col "github.com/craterdog/go-collection-framework/v7"
+	com "github.com/craterdog/go-component-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -36,7 +36,7 @@ func FunctionalSectionClass() FunctionalSectionClassLike {
 
 func (c *functionalSectionClass_) FunctionalSection(
 	delimiter string,
-	functionalDeclarations col.ListLike[FunctionalDeclarationLike],
+	functionalDeclarations com.ListLike[FunctionalDeclarationLike],
 ) FunctionalSectionLike {
 	if uti.IsUndefined(delimiter) {
 		panic("The \"delimiter\" attribute is required by this class.")
@@ -66,7 +66,7 @@ func (v *functionalSection_) GetDelimiter() string {
 	return v.delimiter_
 }
 
-func (v *functionalSection_) GetFunctionalDeclarations() col.ListLike[FunctionalDeclarationLike] {
+func (v *functionalSection_) GetFunctionalDeclarations() com.ListLike[FunctionalDeclarationLike] {
 	return v.functionalDeclarations_
 }
 
@@ -77,7 +77,7 @@ func (v *functionalSection_) GetFunctionalDeclarations() col.ListLike[Functional
 type functionalSection_ struct {
 	// Declare the instance attributes.
 	delimiter_              string
-	functionalDeclarations_ col.ListLike[FunctionalDeclarationLike]
+	functionalDeclarations_ com.ListLike[FunctionalDeclarationLike]
 }
 
 // Class Structure

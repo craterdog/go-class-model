@@ -39,8 +39,14 @@ match the following regular expression: [a-zA-Z][a-zA-Z0-9]*
 type Identifier string
 
 /*
-Ordinal is a constrained type representing an ordinal number in the range [1..∞).
-The value 0 is used to represent infinity.
+Cardinal is a constrained type representing a cardinal number in the range
+[0..MaxUint].  The value 0 is used to represent infinity.
+*/
+type Cardinal uint64
+
+/*
+Ordinal is a constrained type representing an ordinal number in the range
+[1..MaxUint].  The value 0 is invalid.
 */
 type Ordinal uint64
 
@@ -55,6 +61,11 @@ const (
 	EqualRank
 	GreaterRank
 )
+
+/*
+Slot is a constrained type representing a slot between values in a sequence.
+*/
+type Slot uint
 
 /*
 Units is a constrained type representing the possible units for an angle.
@@ -84,11 +95,22 @@ type RankingFunction[V any] func(
 AngleClassLike is a class interface that declares the complete set of class
 constructors, constants and functions that must be supported by each concrete
 angle-like class.
+
+An angle-like class provides the functionality required by the concept of a
+mathematical angle.
+
+The following class functions are supported:
+
+Sine() returns the mathematical ratio of y/r for the angle.
+
+Cosine() returns the mathematical ratio of x/r for the angle.
+
+Tangent() returns the mathematical ratio of y/x for the angle.
 */
 type AngleClassLike interface {
 	// Constructor Methods
 	Angle(
-		intrinsic float64,
+		radians float64,
 	) AngleLike
 	AngleFromString(
 		value string,
@@ -114,14 +136,24 @@ type AngleClassLike interface {
 ArrayClassLike[V any] is a class interface that declares the complete set of
 class constructors, constants and functions that must be supported by each
 concrete array-like class.
+
+An array-like class maintains a fixed length indexed sequence of values.  Each
+value is associated with an implicit positive integer index. An array-like class
+uses ORDINAL based indexing rather than the more common—and nonsensical—ZERO
+based indexing scheme.
+
+The following class functions are supported:
+
+Merge() returns a new array containing all of the values that are in the
+specified arrays in the order that they appear in each array.
 */
 type ArrayClassLike[V any] interface {
 	// Constructor Methods
 	Array(
-		intrinsic []V,
+		array []V,
 	) ArrayLike[V]
 	ArrayWithSize(
-		size Ordinal,
+		size Cardinal,
 	) ArrayLike[V]
 	ArrayFromSequence(
 		values Sequential[V],
@@ -135,8 +167,8 @@ type ArrayClassLike[V any] interface {
 }
 
 /*
-AssociationClassLike[K comparable, V any] is a class interface that declares
-the complete set of class constructors, constants and functions that must be
+AssociationClassLike[K comparable, V any] is a class interface that declares the
+complete set of class constructors, constants and functions that must be
 supported by each concrete association-like class.
 */
 type AssociationClassLike[K comparable, V any] interface {
@@ -152,16 +184,16 @@ CatalogClassLike[V any] is a class interface that declares the complete set of
 class constructors, constants and functions that must be supported by each
 concrete catalog-like class.
 
-The following functions are supported:
+The following class functions are supported:
 
-Extract() returns a new catalog containing only the associations that are in
-the specified catalog that have the specified keys.  The associations in the
+Extract() returns a new catalog containing only the associations that are in the
+specified catalog that have the specified keys.  The associations in the
 resulting catalog will be in the same order as the specified keys.
 
-Merge() returns a new catalog containing all of the associations that are in
-the specified catalogs in the order that they appear in each catalog.  If a
-key is present in both catalogs, the value of the key from the second
-catalog takes precedence.
+Merge() returns a new catalog containing all of the associations that are in the
+specified catalogs in the order that they appear in each catalog.  If a key is
+present in both catalogs, the value of the key from the second catalog takes
+precedence.
 */
 type CatalogClassLike[V any] interface {
 	// Constructor Methods
@@ -190,12 +222,42 @@ type CatalogClassLike[V any] interface {
 	) CatalogLike[V]
 }
 
+/*
+IteratorClassLike[V any] is a class interface that declares the complete set
+of class constructors, constants and functions that must be supported by each
+concrete iterator-like class.
+
+An iterator-like class can be used to move forward and backward over the values
+in an array.  It implements the Gang of Four (GoF) Iterator Design Pattern:
+  - https://en.wikipedia.org/wiki/Iterator_pattern
+
+An iterator agent locks into the slots that reside between each value in the
+sequence:
+
+      . [value 1] . [value 2] . [value 3] ... [value N] .
+      ^           ^           ^                         ^
+    slot 0      slot 1      slot 2                    slot N
+
+It moves from slot to slot and has access to the values (if they exist) on each
+side of the slot.  At each slot an iterator has access to the previous value
+and next value in the array (assuming they exist). The slot at the start of
+the array has no PREVIOUS value, and the slot at the end of the array has no
+NEXT value.  The size of the array is static so that its values can be modified
+during iteration.
+*/
+type IteratorClassLike[V any] interface {
+	// Constructor Methods
+	Iterator(
+		array []V,
+	) IteratorLike[V]
+}
+
 // INSTANCE DECLARATIONS
 
 /*
-AngleLike is an instance interface that declares the complete set of
-principal, attribute and aspect methods that must be supported by each
-instance of a concrete angle-like class.
+AngleLike is an instance interface that declares the complete set of principal,
+attribute and aspect methods that must be supported by each instance of a
+concrete angle-like class.
 */
 type AngleLike interface {
 	// Principal Methods
@@ -211,11 +273,6 @@ type AngleLike interface {
 ArrayLike[V any] is an instance interface that declares the complete set of
 principal, attribute and aspect methods that must be supported by each
 instance of a concrete array-like class.
-
-An array-like class maintains a fixed length indexed sequence of values.  Each
-value is associated with an implicit positive integer index. An array-like class
-uses ORDINAL based indexing rather than the more common—and nonsensical—ZERO
-based indexing scheme.
 */
 type ArrayLike[V any] interface {
 	// Principal Methods
@@ -256,11 +313,36 @@ instance of a concrete catalog-like class.
 type CatalogLike[V any] interface {
 	// Principal Methods
 	GetClass() CatalogClassLike[V]
+	AsMap() map[Identifier]V
 	SortValues()
 
 	// Aspect Interfaces
 	Associative[Identifier, V]
 	Sequential[AssociationLike[Identifier, V]]
+}
+
+/*
+IteratorLike[V any] is an instance interface that declares the complete set of
+principal, attribute and aspect methods that must be supported by each
+instance of a concrete iterator-like class.
+*/
+type IteratorLike[V any] interface {
+	// Principal Methods
+	GetClass() IteratorClassLike[V]
+	IsEmpty() bool
+	ToStart()
+	ToEnd()
+	HasPrevious() bool
+	GetPrevious() V
+	HasNext() bool
+	GetNext() V
+
+	// Attribute Methods
+	GetSize() Cardinal
+	GetSlot() Slot
+	SetSlot(
+		slot Slot,
+	)
 }
 
 // ASPECT DECLARATIONS
@@ -335,8 +417,9 @@ class.
 */
 type Sequential[V any] interface {
 	IsEmpty() bool
-	GetSize() Ordinal
+	GetSize() Cardinal
 	AsArray() []V
+	GetIterator() IteratorLike[V]
 }
 
 /*

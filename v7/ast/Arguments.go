@@ -20,7 +20,7 @@
 package ast
 
 import (
-	col "github.com/craterdog/go-collection-framework/v7"
+	com "github.com/craterdog/go-component-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -37,7 +37,7 @@ func ArgumentsClass() ArgumentsClassLike {
 func (c *argumentsClass_) Arguments(
 	delimiter1 string,
 	argument ArgumentLike,
-	additionalArguments col.ListLike[AdditionalArgumentLike],
+	additionalArguments com.ListLike[AdditionalArgumentLike],
 	delimiter2 string,
 ) ArgumentsLike {
 	if uti.IsUndefined(delimiter1) {
@@ -80,7 +80,7 @@ func (v *arguments_) GetArgument() ArgumentLike {
 	return v.argument_
 }
 
-func (v *arguments_) GetAdditionalArguments() col.ListLike[AdditionalArgumentLike] {
+func (v *arguments_) GetAdditionalArguments() com.ListLike[AdditionalArgumentLike] {
 	return v.additionalArguments_
 }
 
@@ -96,7 +96,7 @@ type arguments_ struct {
 	// Declare the instance attributes.
 	delimiter1_          string
 	argument_            ArgumentLike
-	additionalArguments_ col.ListLike[AdditionalArgumentLike]
+	additionalArguments_ com.ListLike[AdditionalArgumentLike]
 	delimiter2_          string
 }
 

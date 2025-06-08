@@ -20,7 +20,7 @@
 package ast
 
 import (
-	col "github.com/craterdog/go-collection-framework/v7"
+	com "github.com/craterdog/go-component-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -37,7 +37,7 @@ func ConstraintsClass() ConstraintsClassLike {
 func (c *constraintsClass_) Constraints(
 	delimiter1 string,
 	constraint ConstraintLike,
-	additionalConstraints col.ListLike[AdditionalConstraintLike],
+	additionalConstraints com.ListLike[AdditionalConstraintLike],
 	delimiter2 string,
 ) ConstraintsLike {
 	if uti.IsUndefined(delimiter1) {
@@ -80,7 +80,7 @@ func (v *constraints_) GetConstraint() ConstraintLike {
 	return v.constraint_
 }
 
-func (v *constraints_) GetAdditionalConstraints() col.ListLike[AdditionalConstraintLike] {
+func (v *constraints_) GetAdditionalConstraints() com.ListLike[AdditionalConstraintLike] {
 	return v.additionalConstraints_
 }
 
@@ -96,7 +96,7 @@ type constraints_ struct {
 	// Declare the instance attributes.
 	delimiter1_            string
 	constraint_            ConstraintLike
-	additionalConstraints_ col.ListLike[AdditionalConstraintLike]
+	additionalConstraints_ com.ListLike[AdditionalConstraintLike]
 	delimiter2_            string
 }
 

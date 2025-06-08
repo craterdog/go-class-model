@@ -22,7 +22,7 @@ package grammar
 import (
 	fmt "fmt"
 	ast "github.com/craterdog/go-class-model/v7/ast"
-	col "github.com/craterdog/go-collection-framework/v7"
+	com "github.com/craterdog/go-component-framework/v7"
 	sts "strings"
 	utf "unicode/utf8"
 )
@@ -104,16 +104,16 @@ func (v *validator_) PreprocessAspectSection(
 		func(
 			first ast.AspectDeclarationLike,
 			second ast.AspectDeclarationLike,
-		) col.Rank {
+		) com.Rank {
 			var firstName = first.GetDeclaration().GetName()
 			var secondName = second.GetDeclaration().GetName()
 			switch {
 			case firstName < secondName:
-				return col.LesserRank
+				return com.LesserRank
 			case firstName > secondName:
-				return col.GreaterRank
+				return com.GreaterRank
 			default:
-				return col.EqualRank
+				return com.EqualRank
 			}
 		},
 	)
@@ -129,7 +129,7 @@ func (v *validator_) PreprocessClassSection(
 		func(
 			first ast.ClassDeclarationLike,
 			second ast.ClassDeclarationLike,
-		) col.Rank {
+		) com.Rank {
 			var firstName = sts.TrimSuffix(
 				first.GetDeclaration().GetName(),
 				"ClassLike",
@@ -140,11 +140,11 @@ func (v *validator_) PreprocessClassSection(
 			)
 			switch {
 			case firstName < secondName:
-				return col.LesserRank
+				return com.LesserRank
 			case firstName > secondName:
-				return col.GreaterRank
+				return com.GreaterRank
 			default:
-				return col.EqualRank
+				return com.EqualRank
 			}
 		},
 	)
@@ -178,7 +178,7 @@ func (v *validator_) PreprocessFunctionalSection(
 		func(
 			first ast.FunctionalDeclarationLike,
 			second ast.FunctionalDeclarationLike,
-		) col.Rank {
+		) com.Rank {
 			var firstName = sts.TrimSuffix(
 				first.GetDeclaration().GetName(),
 				"Function",
@@ -189,11 +189,11 @@ func (v *validator_) PreprocessFunctionalSection(
 			)
 			switch {
 			case firstName < secondName:
-				return col.LesserRank
+				return com.LesserRank
 			case firstName > secondName:
-				return col.GreaterRank
+				return com.GreaterRank
 			default:
-				return col.EqualRank
+				return com.EqualRank
 			}
 		},
 	)
@@ -241,7 +241,7 @@ func (v *validator_) PreprocessInstanceSection(
 		func(
 			first ast.InstanceDeclarationLike,
 			second ast.InstanceDeclarationLike,
-		) col.Rank {
+		) com.Rank {
 			var firstName = sts.TrimSuffix(
 				first.GetDeclaration().GetName(),
 				"Like",
@@ -252,11 +252,11 @@ func (v *validator_) PreprocessInstanceSection(
 			)
 			switch {
 			case firstName < secondName:
-				return col.LesserRank
+				return com.LesserRank
 			case firstName > secondName:
-				return col.GreaterRank
+				return com.GreaterRank
 			default:
-				return col.EqualRank
+				return com.EqualRank
 			}
 		},
 	)

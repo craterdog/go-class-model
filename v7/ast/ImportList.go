@@ -20,7 +20,7 @@
 package ast
 
 import (
-	col "github.com/craterdog/go-collection-framework/v7"
+	com "github.com/craterdog/go-component-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -35,7 +35,7 @@ func ImportListClass() ImportListClassLike {
 // Constructor Methods
 
 func (c *importListClass_) ImportList(
-	importedPackages col.ListLike[ImportedPackageLike],
+	importedPackages com.ListLike[ImportedPackageLike],
 ) ImportListLike {
 	if uti.IsUndefined(importedPackages) {
 		panic("The \"importedPackages\" attribute is required by this class.")
@@ -57,7 +57,7 @@ func (v *importList_) GetClass() ImportListClassLike {
 
 // Attribute Methods
 
-func (v *importList_) GetImportedPackages() col.ListLike[ImportedPackageLike] {
+func (v *importList_) GetImportedPackages() com.ListLike[ImportedPackageLike] {
 	return v.importedPackages_
 }
 
@@ -67,7 +67,7 @@ func (v *importList_) GetImportedPackages() col.ListLike[ImportedPackageLike] {
 
 type importList_ struct {
 	// Declare the instance attributes.
-	importedPackages_ col.ListLike[ImportedPackageLike]
+	importedPackages_ com.ListLike[ImportedPackageLike]
 }
 
 // Class Structure

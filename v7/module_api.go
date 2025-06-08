@@ -31,7 +31,7 @@ package module
 import (
 	ast "github.com/craterdog/go-class-model/v7/ast"
 	gra "github.com/craterdog/go-class-model/v7/grammar"
-	col "github.com/craterdog/go-collection-framework/v7"
+	com "github.com/craterdog/go-component-framework/v7"
 )
 
 // TYPE ALIASES
@@ -280,7 +280,7 @@ func ArgumentsClass() ArgumentsClassLike {
 func Arguments(
 	delimiter1 string,
 	argument ast.ArgumentLike,
-	additionalArguments col.ListLike[ast.AdditionalArgumentLike],
+	additionalArguments com.ListLike[ast.AdditionalArgumentLike],
 	delimiter2 string,
 ) ArgumentsLike {
 	return ArgumentsClass().Arguments(
@@ -313,7 +313,7 @@ func AspectDeclaration(
 	declaration ast.DeclarationLike,
 	delimiter1 string,
 	delimiter2 string,
-	aspectMethods col.ListLike[ast.AspectMethodLike],
+	aspectMethods com.ListLike[ast.AspectMethodLike],
 	delimiter3 string,
 ) AspectDeclarationLike {
 	return AspectDeclarationClass().AspectDeclaration(
@@ -355,7 +355,7 @@ func AspectSectionClass() AspectSectionClassLike {
 
 func AspectSection(
 	delimiter string,
-	aspectDeclarations col.ListLike[ast.AspectDeclarationLike],
+	aspectDeclarations com.ListLike[ast.AspectDeclarationLike],
 ) AspectSectionLike {
 	return AspectSectionClass().AspectSection(
 		delimiter,
@@ -369,7 +369,7 @@ func AspectSubsectionClass() AspectSubsectionClassLike {
 
 func AspectSubsection(
 	delimiter string,
-	aspectInterfaces col.ListLike[ast.AspectInterfaceLike],
+	aspectInterfaces com.ListLike[ast.AspectInterfaceLike],
 ) AspectSubsectionLike {
 	return AspectSubsectionClass().AspectSubsection(
 		delimiter,
@@ -395,7 +395,7 @@ func AttributeSubsectionClass() AttributeSubsectionClassLike {
 
 func AttributeSubsection(
 	delimiter string,
-	attributeMethods col.ListLike[ast.AttributeMethodLike],
+	attributeMethods com.ListLike[ast.AttributeMethodLike],
 ) AttributeSubsectionLike {
 	return AttributeSubsectionClass().AttributeSubsection(
 		delimiter,
@@ -457,7 +457,7 @@ func ClassSectionClass() ClassSectionClassLike {
 
 func ClassSection(
 	delimiter string,
-	classDeclarations col.ListLike[ast.ClassDeclarationLike],
+	classDeclarations com.ListLike[ast.ClassDeclarationLike],
 ) ClassSectionLike {
 	return ClassSectionClass().ClassSection(
 		delimiter,
@@ -489,7 +489,7 @@ func ConstantSubsectionClass() ConstantSubsectionClassLike {
 
 func ConstantSubsection(
 	delimiter string,
-	constantMethods col.ListLike[ast.ConstantMethodLike],
+	constantMethods com.ListLike[ast.ConstantMethodLike],
 ) ConstantSubsectionLike {
 	return ConstantSubsectionClass().ConstantSubsection(
 		delimiter,
@@ -518,7 +518,7 @@ func ConstraintsClass() ConstraintsClassLike {
 func Constraints(
 	delimiter1 string,
 	constraint ast.ConstraintLike,
-	additionalConstraints col.ListLike[ast.AdditionalConstraintLike],
+	additionalConstraints com.ListLike[ast.AdditionalConstraintLike],
 	delimiter2 string,
 ) ConstraintsLike {
 	return ConstraintsClass().Constraints(
@@ -555,7 +555,7 @@ func ConstructorSubsectionClass() ConstructorSubsectionClassLike {
 
 func ConstructorSubsection(
 	delimiter string,
-	constructorMethods col.ListLike[ast.ConstructorMethodLike],
+	constructorMethods com.ListLike[ast.ConstructorMethodLike],
 ) ConstructorSubsectionLike {
 	return ConstructorSubsectionClass().ConstructorSubsection(
 		delimiter,
@@ -589,7 +589,7 @@ func Enumeration(
 	delimiter1 string,
 	delimiter2 string,
 	value ast.ValueLike,
-	additionalValues col.ListLike[ast.AdditionalValueLike],
+	additionalValues com.ListLike[ast.AdditionalValueLike],
 	delimiter3 string,
 ) EnumerationLike {
 	return EnumerationClass().Enumeration(
@@ -627,7 +627,7 @@ func FunctionSubsectionClass() FunctionSubsectionClassLike {
 
 func FunctionSubsection(
 	delimiter string,
-	functionMethods col.ListLike[ast.FunctionMethodLike],
+	functionMethods com.ListLike[ast.FunctionMethodLike],
 ) FunctionSubsectionLike {
 	return FunctionSubsectionClass().FunctionSubsection(
 		delimiter,
@@ -663,7 +663,7 @@ func FunctionalSectionClass() FunctionalSectionClassLike {
 
 func FunctionalSection(
 	delimiter string,
-	functionalDeclarations col.ListLike[ast.FunctionalDeclarationLike],
+	functionalDeclarations com.ListLike[ast.FunctionalDeclarationLike],
 ) FunctionalSectionLike {
 	return FunctionalSectionClass().FunctionalSection(
 		delimiter,
@@ -694,7 +694,7 @@ func ImportListClass() ImportListClassLike {
 }
 
 func ImportList(
-	importedPackages col.ListLike[ast.ImportedPackageLike],
+	importedPackages com.ListLike[ast.ImportedPackageLike],
 ) ImportListLike {
 	return ImportListClass().ImportList(
 		importedPackages,
@@ -757,7 +757,7 @@ func InstanceSectionClass() InstanceSectionClassLike {
 
 func InstanceSection(
 	delimiter string,
-	instanceDeclarations col.ListLike[ast.InstanceDeclarationLike],
+	instanceDeclarations com.ListLike[ast.InstanceDeclarationLike],
 ) InstanceSectionLike {
 	return InstanceSectionClass().InstanceSection(
 		delimiter,
@@ -946,7 +946,7 @@ func ParameterListClass() ParameterListClassLike {
 }
 
 func ParameterList(
-	parameters col.ListLike[ast.ParameterLike],
+	parameters com.ListLike[ast.ParameterLike],
 ) ParameterListLike {
 	return ParameterListClass().ParameterList(
 		parameters,
@@ -985,7 +985,7 @@ func PrincipalSubsectionClass() PrincipalSubsectionClassLike {
 
 func PrincipalSubsection(
 	delimiter string,
-	principalMethods col.ListLike[ast.PrincipalMethodLike],
+	principalMethods com.ListLike[ast.PrincipalMethodLike],
 ) PrincipalSubsectionLike {
 	return PrincipalSubsectionClass().PrincipalSubsection(
 		delimiter,
@@ -1045,7 +1045,7 @@ func TypeSectionClass() TypeSectionClassLike {
 
 func TypeSection(
 	delimiter string,
-	typeDeclarations col.ListLike[ast.TypeDeclarationLike],
+	typeDeclarations com.ListLike[ast.TypeDeclarationLike],
 ) TypeSectionLike {
 	return TypeSectionClass().TypeSection(
 		delimiter,
@@ -1115,7 +1115,7 @@ func ScannerClass() ScannerClassLike {
 
 func Scanner(
 	source string,
-	tokens col.QueueLike[gra.TokenLike],
+	tokens com.QueueLike[gra.TokenLike],
 ) ScannerLike {
 	return ScannerClass().Scanner(
 		source,

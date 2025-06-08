@@ -20,7 +20,7 @@
 package ast
 
 import (
-	col "github.com/craterdog/go-collection-framework/v7"
+	com "github.com/craterdog/go-component-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -36,7 +36,7 @@ func ConstantSubsectionClass() ConstantSubsectionClassLike {
 
 func (c *constantSubsectionClass_) ConstantSubsection(
 	delimiter string,
-	constantMethods col.ListLike[ConstantMethodLike],
+	constantMethods com.ListLike[ConstantMethodLike],
 ) ConstantSubsectionLike {
 	if uti.IsUndefined(delimiter) {
 		panic("The \"delimiter\" attribute is required by this class.")
@@ -66,7 +66,7 @@ func (v *constantSubsection_) GetDelimiter() string {
 	return v.delimiter_
 }
 
-func (v *constantSubsection_) GetConstantMethods() col.ListLike[ConstantMethodLike] {
+func (v *constantSubsection_) GetConstantMethods() com.ListLike[ConstantMethodLike] {
 	return v.constantMethods_
 }
 
@@ -77,7 +77,7 @@ func (v *constantSubsection_) GetConstantMethods() col.ListLike[ConstantMethodLi
 type constantSubsection_ struct {
 	// Declare the instance attributes.
 	delimiter_       string
-	constantMethods_ col.ListLike[ConstantMethodLike]
+	constantMethods_ com.ListLike[ConstantMethodLike]
 }
 
 // Class Structure
