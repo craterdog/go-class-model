@@ -241,9 +241,9 @@ in an array.  It implements the Gang of Four (GoF) Iterator Design Pattern:
 An iterator agent locks into the slots that reside between each value in the
 sequence:
 
-      . [value 1] . [value 2] . [value 3] ... [value N] .
-      ^           ^           ^                         ^
-    slot 0      slot 1      slot 2                    slot N
+	  . [value 1] . [value 2] . [value 3] ... [value N] .
+	  ^           ^           ^                         ^
+	slot 0      slot 1      slot 2                    slot N
 
 It moves from slot to slot and has access to the values (if they exist) on each
 side of the slot.  At each slot an iterator has access to the previous value
