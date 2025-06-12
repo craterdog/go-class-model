@@ -17,6 +17,7 @@ import (
 	mod "github.com/craterdog/go-class-model/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 	ass "github.com/stretchr/testify/assert"
+	sts "strings"
 	tes "testing"
 )
 
@@ -34,7 +35,8 @@ func TestRoundTrips(t *tes.T) {
 		var model = mod.ParseSource(source)
 		mod.ValidateModel(model)
 		var actual = mod.FormatModel(model)
-		//fmt.Println(actual)
+		source = sts.ReplaceAll(source, "\t", "    ")
+		actual = sts.ReplaceAll(actual, "\t", "    ")
 		ass.Equal(t, source, actual)
 	}
 	fmt.Println("Done.")

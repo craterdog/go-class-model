@@ -1,7 +1,7 @@
-github.com/craterdog/go-component-framework/v7 v7.0.0 h1:S0hZ42F9FTB94jzKOGYVo1SCCcUDgoEzN408Qt1tF5Y=
-github.com/craterdog/go-component-framework/v7 v7.0.0/go.mod h1:DlTqX1ew9gDHQ67DkbGPbA9kKqxmH5bXfPC5n16r8d8=
-github.com/craterdog/go-missing-utilities/v7 v7.6.0 h1:imeECuGCGgiMloTrs7DmuLThS73Qw2YG/LfxmsgpZXQ=
-github.com/craterdog/go-missing-utilities/v7 v7.6.0/go.mod h1:uEyTYeiSq4hzoJn9dPPZxGUKVjKU90v0xh0WhTnhRVs=
+github.com/craterdog/go-component-framework/v7 v7.1.0 h1:jaZtCFISDWNxUDwWUx6PUkA1ZLTpUxkakAi9yzYJ/s4=
+github.com/craterdog/go-component-framework/v7 v7.1.0/go.mod h1:Rqr3qgYMbQpf6nLTCO5UWWgCW5x6qYDG8ShdhYZznII=
+github.com/craterdog/go-missing-utilities/v7 v7.7.0 h1:RnCFYG5QI8z5TyTrQadO6MyqLNKBZxisgLMFVMRHKbw=
+github.com/craterdog/go-missing-utilities/v7 v7.7.0/go.mod h1:uEyTYeiSq4hzoJn9dPPZxGUKVjKU90v0xh0WhTnhRVs=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
