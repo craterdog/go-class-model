@@ -21,7 +21,7 @@ package grammar
 
 import (
 	fmt "fmt"
-	com "github.com/craterdog/go-component-framework/v7"
+	fra "github.com/craterdog/go-component-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 	reg "regexp"
 	sts "strings"
@@ -40,7 +40,7 @@ func ScannerClass() ScannerClassLike {
 
 func (c *scannerClass_) Scanner(
 	source string,
-	tokens com.QueueLike[TokenLike],
+	tokens fra.QueueLike[TokenLike],
 ) ScannerLike {
 	if uti.IsUndefined(source) {
 		panic("The \"source\" attribute is required by this class.")
@@ -214,15 +214,15 @@ type scanner_ struct {
 	line_     uint // The line number in the source string of the next rune.
 	position_ uint // The position in the current line of the next rune.
 	runes_    []rune
-	tokens_   com.QueueLike[TokenLike]
+	tokens_   fra.QueueLike[TokenLike]
 }
 
 // Class Structure
 
 type scannerClass_ struct {
 	// Declare the class constants.
-	tokens_   com.CatalogLike[TokenType, string]
-	matchers_ com.CatalogLike[TokenType, *reg.Regexp]
+	tokens_   fra.CatalogLike[TokenType, string]
+	matchers_ fra.CatalogLike[TokenType, *reg.Regexp]
 }
 
 // Class Reference
@@ -233,7 +233,7 @@ func scannerClass() *scannerClass_ {
 
 var scannerClassReference_ = &scannerClass_{
 	// Initialize the class constants.
-	tokens_: com.CatalogFromMap[TokenType, string](
+	tokens_: fra.CatalogFromMap[TokenType, string](
 		map[TokenType]string{
 			// Define token identifiers for each type of expression.
 			ErrorToken:     "error",
@@ -246,7 +246,7 @@ var scannerClassReference_ = &scannerClass_{
 			SpaceToken:     "space",
 		},
 	),
-	matchers_: com.CatalogFromMap[TokenType, *reg.Regexp](
+	matchers_: fra.CatalogFromMap[TokenType, *reg.Regexp](
 		map[TokenType]*reg.Regexp{
 			// Define pattern matchers for each type of expression.
 			CommentToken:   reg.MustCompile("^" + comment_),

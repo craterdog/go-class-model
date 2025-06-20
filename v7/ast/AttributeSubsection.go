@@ -20,7 +20,7 @@
 package ast
 
 import (
-	com "github.com/craterdog/go-component-framework/v7"
+	fra "github.com/craterdog/go-component-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -36,7 +36,7 @@ func AttributeSubsectionClass() AttributeSubsectionClassLike {
 
 func (c *attributeSubsectionClass_) AttributeSubsection(
 	delimiter string,
-	attributeMethods com.ListLike[AttributeMethodLike],
+	attributeMethods fra.ListLike[AttributeMethodLike],
 ) AttributeSubsectionLike {
 	if uti.IsUndefined(delimiter) {
 		panic("The \"delimiter\" attribute is required by this class.")
@@ -66,7 +66,7 @@ func (v *attributeSubsection_) GetDelimiter() string {
 	return v.delimiter_
 }
 
-func (v *attributeSubsection_) GetAttributeMethods() com.ListLike[AttributeMethodLike] {
+func (v *attributeSubsection_) GetAttributeMethods() fra.ListLike[AttributeMethodLike] {
 	return v.attributeMethods_
 }
 
@@ -77,7 +77,7 @@ func (v *attributeSubsection_) GetAttributeMethods() com.ListLike[AttributeMetho
 type attributeSubsection_ struct {
 	// Declare the instance attributes.
 	delimiter_        string
-	attributeMethods_ com.ListLike[AttributeMethodLike]
+	attributeMethods_ fra.ListLike[AttributeMethodLike]
 }
 
 // Class Structure

@@ -20,7 +20,7 @@
 package ast
 
 import (
-	com "github.com/craterdog/go-component-framework/v7"
+	fra "github.com/craterdog/go-component-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -38,7 +38,7 @@ func (c *aspectDeclarationClass_) AspectDeclaration(
 	declaration DeclarationLike,
 	delimiter1 string,
 	delimiter2 string,
-	aspectMethods com.ListLike[AspectMethodLike],
+	aspectMethods fra.ListLike[AspectMethodLike],
 	delimiter3 string,
 ) AspectDeclarationLike {
 	if uti.IsUndefined(declaration) {
@@ -89,7 +89,7 @@ func (v *aspectDeclaration_) GetDelimiter2() string {
 	return v.delimiter2_
 }
 
-func (v *aspectDeclaration_) GetAspectMethods() com.ListLike[AspectMethodLike] {
+func (v *aspectDeclaration_) GetAspectMethods() fra.ListLike[AspectMethodLike] {
 	return v.aspectMethods_
 }
 
@@ -106,7 +106,7 @@ type aspectDeclaration_ struct {
 	declaration_   DeclarationLike
 	delimiter1_    string
 	delimiter2_    string
-	aspectMethods_ com.ListLike[AspectMethodLike]
+	aspectMethods_ fra.ListLike[AspectMethodLike]
 	delimiter3_    string
 }
 

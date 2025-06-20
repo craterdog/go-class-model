@@ -20,7 +20,7 @@
 package ast
 
 import (
-	com "github.com/craterdog/go-component-framework/v7"
+	fra "github.com/craterdog/go-component-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -36,7 +36,7 @@ func InstanceSectionClass() InstanceSectionClassLike {
 
 func (c *instanceSectionClass_) InstanceSection(
 	delimiter string,
-	instanceDeclarations com.ListLike[InstanceDeclarationLike],
+	instanceDeclarations fra.ListLike[InstanceDeclarationLike],
 ) InstanceSectionLike {
 	if uti.IsUndefined(delimiter) {
 		panic("The \"delimiter\" attribute is required by this class.")
@@ -66,7 +66,7 @@ func (v *instanceSection_) GetDelimiter() string {
 	return v.delimiter_
 }
 
-func (v *instanceSection_) GetInstanceDeclarations() com.ListLike[InstanceDeclarationLike] {
+func (v *instanceSection_) GetInstanceDeclarations() fra.ListLike[InstanceDeclarationLike] {
 	return v.instanceDeclarations_
 }
 
@@ -77,7 +77,7 @@ func (v *instanceSection_) GetInstanceDeclarations() com.ListLike[InstanceDeclar
 type instanceSection_ struct {
 	// Declare the instance attributes.
 	delimiter_            string
-	instanceDeclarations_ com.ListLike[InstanceDeclarationLike]
+	instanceDeclarations_ fra.ListLike[InstanceDeclarationLike]
 }
 
 // Class Structure

@@ -20,7 +20,7 @@
 package ast
 
 import (
-	com "github.com/craterdog/go-component-framework/v7"
+	fra "github.com/craterdog/go-component-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -36,7 +36,7 @@ func PrincipalSubsectionClass() PrincipalSubsectionClassLike {
 
 func (c *principalSubsectionClass_) PrincipalSubsection(
 	delimiter string,
-	principalMethods com.ListLike[PrincipalMethodLike],
+	principalMethods fra.ListLike[PrincipalMethodLike],
 ) PrincipalSubsectionLike {
 	if uti.IsUndefined(delimiter) {
 		panic("The \"delimiter\" attribute is required by this class.")
@@ -66,7 +66,7 @@ func (v *principalSubsection_) GetDelimiter() string {
 	return v.delimiter_
 }
 
-func (v *principalSubsection_) GetPrincipalMethods() com.ListLike[PrincipalMethodLike] {
+func (v *principalSubsection_) GetPrincipalMethods() fra.ListLike[PrincipalMethodLike] {
 	return v.principalMethods_
 }
 
@@ -77,7 +77,7 @@ func (v *principalSubsection_) GetPrincipalMethods() com.ListLike[PrincipalMetho
 type principalSubsection_ struct {
 	// Declare the instance attributes.
 	delimiter_        string
-	principalMethods_ com.ListLike[PrincipalMethodLike]
+	principalMethods_ fra.ListLike[PrincipalMethodLike]
 }
 
 // Class Structure

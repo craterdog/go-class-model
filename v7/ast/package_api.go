@@ -36,7 +36,7 @@ on interfaces, not on each other.
 package ast
 
 import (
-	com "github.com/craterdog/go-component-framework/v7"
+	fra "github.com/craterdog/go-component-framework/v7"
 )
 
 // TYPE DECLARATIONS
@@ -120,7 +120,7 @@ type ArgumentsClassLike interface {
 	Arguments(
 		delimiter1 string,
 		argument ArgumentLike,
-		additionalArguments com.ListLike[AdditionalArgumentLike],
+		additionalArguments fra.ListLike[AdditionalArgumentLike],
 		delimiter2 string,
 	) ArgumentsLike
 }
@@ -149,7 +149,7 @@ type AspectDeclarationClassLike interface {
 		declaration DeclarationLike,
 		delimiter1 string,
 		delimiter2 string,
-		aspectMethods com.ListLike[AspectMethodLike],
+		aspectMethods fra.ListLike[AspectMethodLike],
 		delimiter3 string,
 	) AspectDeclarationLike
 }
@@ -187,7 +187,7 @@ type AspectSectionClassLike interface {
 	// Constructor Methods
 	AspectSection(
 		delimiter string,
-		aspectDeclarations com.ListLike[AspectDeclarationLike],
+		aspectDeclarations fra.ListLike[AspectDeclarationLike],
 	) AspectSectionLike
 }
 
@@ -200,7 +200,7 @@ type AspectSubsectionClassLike interface {
 	// Constructor Methods
 	AspectSubsection(
 		delimiter string,
-		aspectInterfaces com.ListLike[AspectInterfaceLike],
+		aspectInterfaces fra.ListLike[AspectInterfaceLike],
 	) AspectSubsectionLike
 }
 
@@ -225,7 +225,7 @@ type AttributeSubsectionClassLike interface {
 	// Constructor Methods
 	AttributeSubsection(
 		delimiter string,
-		attributeMethods com.ListLike[AttributeMethodLike],
+		attributeMethods fra.ListLike[AttributeMethodLike],
 	) AttributeSubsectionLike
 }
 
@@ -280,7 +280,7 @@ type ClassSectionClassLike interface {
 	// Constructor Methods
 	ClassSection(
 		delimiter string,
-		classDeclarations com.ListLike[ClassDeclarationLike],
+		classDeclarations fra.ListLike[ClassDeclarationLike],
 	) ClassSectionLike
 }
 
@@ -308,7 +308,7 @@ type ConstantSubsectionClassLike interface {
 	// Constructor Methods
 	ConstantSubsection(
 		delimiter string,
-		constantMethods com.ListLike[ConstantMethodLike],
+		constantMethods fra.ListLike[ConstantMethodLike],
 	) ConstantSubsectionLike
 }
 
@@ -335,7 +335,7 @@ type ConstraintsClassLike interface {
 	Constraints(
 		delimiter1 string,
 		constraint ConstraintLike,
-		additionalConstraints com.ListLike[AdditionalConstraintLike],
+		additionalConstraints fra.ListLike[AdditionalConstraintLike],
 		delimiter2 string,
 	) ConstraintsLike
 }
@@ -365,7 +365,7 @@ type ConstructorSubsectionClassLike interface {
 	// Constructor Methods
 	ConstructorSubsection(
 		delimiter string,
-		constructorMethods com.ListLike[ConstructorMethodLike],
+		constructorMethods fra.ListLike[ConstructorMethodLike],
 	) ConstructorSubsectionLike
 }
 
@@ -395,7 +395,7 @@ type EnumerationClassLike interface {
 		delimiter1 string,
 		delimiter2 string,
 		value ValueLike,
-		additionalValues com.ListLike[AdditionalValueLike],
+		additionalValues fra.ListLike[AdditionalValueLike],
 		delimiter3 string,
 	) EnumerationLike
 }
@@ -425,7 +425,7 @@ type FunctionSubsectionClassLike interface {
 	// Constructor Methods
 	FunctionSubsection(
 		delimiter string,
-		functionMethods com.ListLike[FunctionMethodLike],
+		functionMethods fra.ListLike[FunctionMethodLike],
 	) FunctionSubsectionLike
 }
 
@@ -455,7 +455,7 @@ type FunctionalSectionClassLike interface {
 	// Constructor Methods
 	FunctionalSection(
 		delimiter string,
-		functionalDeclarations com.ListLike[FunctionalDeclarationLike],
+		functionalDeclarations fra.ListLike[FunctionalDeclarationLike],
 	) FunctionalSectionLike
 }
 
@@ -482,7 +482,7 @@ supported by each concrete import-list-like class.
 type ImportListClassLike interface {
 	// Constructor Methods
 	ImportList(
-		importedPackages com.ListLike[ImportedPackageLike],
+		importedPackages fra.ListLike[ImportedPackageLike],
 	) ImportListLike
 }
 
@@ -538,7 +538,7 @@ type InstanceSectionClassLike interface {
 	// Constructor Methods
 	InstanceSection(
 		delimiter string,
-		instanceDeclarations com.ListLike[InstanceDeclarationLike],
+		instanceDeclarations fra.ListLike[InstanceDeclarationLike],
 	) InstanceSectionLike
 }
 
@@ -704,7 +704,7 @@ supported by each concrete parameter-list-like class.
 type ParameterListClassLike interface {
 	// Constructor Methods
 	ParameterList(
-		parameters com.ListLike[ParameterLike],
+		parameters fra.ListLike[ParameterLike],
 	) ParameterListLike
 }
 
@@ -742,7 +742,7 @@ type PrincipalSubsectionClassLike interface {
 	// Constructor Methods
 	PrincipalSubsection(
 		delimiter string,
-		principalMethods com.ListLike[PrincipalMethodLike],
+		principalMethods fra.ListLike[PrincipalMethodLike],
 	) PrincipalSubsectionLike
 }
 
@@ -808,7 +808,7 @@ type TypeSectionClassLike interface {
 	// Constructor Methods
 	TypeSection(
 		delimiter string,
-		typeDeclarations com.ListLike[TypeDeclarationLike],
+		typeDeclarations fra.ListLike[TypeDeclarationLike],
 	) TypeSectionLike
 }
 
@@ -923,7 +923,7 @@ type ArgumentsLike interface {
 	// Attribute Methods
 	GetDelimiter1() string
 	GetArgument() ArgumentLike
-	GetAdditionalArguments() com.ListLike[AdditionalArgumentLike]
+	GetAdditionalArguments() fra.ListLike[AdditionalArgumentLike]
 	GetDelimiter2() string
 }
 
@@ -954,7 +954,7 @@ type AspectDeclarationLike interface {
 	GetDeclaration() DeclarationLike
 	GetDelimiter1() string
 	GetDelimiter2() string
-	GetAspectMethods() com.ListLike[AspectMethodLike]
+	GetAspectMethods() fra.ListLike[AspectMethodLike]
 	GetDelimiter3() string
 }
 
@@ -995,7 +995,7 @@ type AspectSectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetAspectDeclarations() com.ListLike[AspectDeclarationLike]
+	GetAspectDeclarations() fra.ListLike[AspectDeclarationLike]
 }
 
 /*
@@ -1009,7 +1009,7 @@ type AspectSubsectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetAspectInterfaces() com.ListLike[AspectInterfaceLike]
+	GetAspectInterfaces() fra.ListLike[AspectInterfaceLike]
 }
 
 /*
@@ -1036,7 +1036,7 @@ type AttributeSubsectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetAttributeMethods() com.ListLike[AttributeMethodLike]
+	GetAttributeMethods() fra.ListLike[AttributeMethodLike]
 }
 
 /*
@@ -1095,7 +1095,7 @@ type ClassSectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetClassDeclarations() com.ListLike[ClassDeclarationLike]
+	GetClassDeclarations() fra.ListLike[ClassDeclarationLike]
 }
 
 /*
@@ -1125,7 +1125,7 @@ type ConstantSubsectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetConstantMethods() com.ListLike[ConstantMethodLike]
+	GetConstantMethods() fra.ListLike[ConstantMethodLike]
 }
 
 /*
@@ -1154,7 +1154,7 @@ type ConstraintsLike interface {
 	// Attribute Methods
 	GetDelimiter1() string
 	GetConstraint() ConstraintLike
-	GetAdditionalConstraints() com.ListLike[AdditionalConstraintLike]
+	GetAdditionalConstraints() fra.ListLike[AdditionalConstraintLike]
 	GetDelimiter2() string
 }
 
@@ -1186,7 +1186,7 @@ type ConstructorSubsectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetConstructorMethods() com.ListLike[ConstructorMethodLike]
+	GetConstructorMethods() fra.ListLike[ConstructorMethodLike]
 }
 
 /*
@@ -1218,7 +1218,7 @@ type EnumerationLike interface {
 	GetDelimiter1() string
 	GetDelimiter2() string
 	GetValue() ValueLike
-	GetAdditionalValues() com.ListLike[AdditionalValueLike]
+	GetAdditionalValues() fra.ListLike[AdditionalValueLike]
 	GetDelimiter3() string
 }
 
@@ -1250,7 +1250,7 @@ type FunctionSubsectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetFunctionMethods() com.ListLike[FunctionMethodLike]
+	GetFunctionMethods() fra.ListLike[FunctionMethodLike]
 }
 
 /*
@@ -1282,7 +1282,7 @@ type FunctionalSectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetFunctionalDeclarations() com.ListLike[FunctionalDeclarationLike]
+	GetFunctionalDeclarations() fra.ListLike[FunctionalDeclarationLike]
 }
 
 /*
@@ -1311,7 +1311,7 @@ type ImportListLike interface {
 	GetClass() ImportListClassLike
 
 	// Attribute Methods
-	GetImportedPackages() com.ListLike[ImportedPackageLike]
+	GetImportedPackages() fra.ListLike[ImportedPackageLike]
 }
 
 /*
@@ -1371,7 +1371,7 @@ type InstanceSectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetInstanceDeclarations() com.ListLike[InstanceDeclarationLike]
+	GetInstanceDeclarations() fra.ListLike[InstanceDeclarationLike]
 }
 
 /*
@@ -1549,7 +1549,7 @@ type ParameterListLike interface {
 	GetClass() ParameterListClassLike
 
 	// Attribute Methods
-	GetParameters() com.ListLike[ParameterLike]
+	GetParameters() fra.ListLike[ParameterLike]
 }
 
 /*
@@ -1590,7 +1590,7 @@ type PrincipalSubsectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetPrincipalMethods() com.ListLike[PrincipalMethodLike]
+	GetPrincipalMethods() fra.ListLike[PrincipalMethodLike]
 }
 
 /*
@@ -1661,7 +1661,7 @@ type TypeSectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetTypeDeclarations() com.ListLike[TypeDeclarationLike]
+	GetTypeDeclarations() fra.ListLike[TypeDeclarationLike]
 }
 
 /*

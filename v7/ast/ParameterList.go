@@ -20,7 +20,7 @@
 package ast
 
 import (
-	com "github.com/craterdog/go-component-framework/v7"
+	fra "github.com/craterdog/go-component-framework/v7"
 	uti "github.com/craterdog/go-missing-utilities/v7"
 )
 
@@ -35,7 +35,7 @@ func ParameterListClass() ParameterListClassLike {
 // Constructor Methods
 
 func (c *parameterListClass_) ParameterList(
-	parameters com.ListLike[ParameterLike],
+	parameters fra.ListLike[ParameterLike],
 ) ParameterListLike {
 	if uti.IsUndefined(parameters) {
 		panic("The \"parameters\" attribute is required by this class.")
@@ -57,7 +57,7 @@ func (v *parameterList_) GetClass() ParameterListClassLike {
 
 // Attribute Methods
 
-func (v *parameterList_) GetParameters() com.ListLike[ParameterLike] {
+func (v *parameterList_) GetParameters() fra.ListLike[ParameterLike] {
 	return v.parameters_
 }
 
@@ -67,7 +67,7 @@ func (v *parameterList_) GetParameters() com.ListLike[ParameterLike] {
 
 type parameterList_ struct {
 	// Declare the instance attributes.
-	parameters_ com.ListLike[ParameterLike]
+	parameters_ fra.ListLike[ParameterLike]
 }
 
 // Class Structure
