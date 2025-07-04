@@ -24,7 +24,7 @@ import (
 var modelFiles = []string{
 	"./ast/package_api.go",
 	"./grammar/package_api.go",
-	"./testdata/package_api.go",
+	"./test/package_api.go",
 }
 
 func TestRoundTrips(t *tes.T) {
