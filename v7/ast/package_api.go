@@ -122,7 +122,7 @@ type ArgumentsClassLike interface {
 	Arguments(
 		delimiter1 string,
 		argument ArgumentLike,
-		additionalArguments fra.ListLike[AdditionalArgumentLike],
+		additionalArguments fra.Sequential[AdditionalArgumentLike],
 		delimiter2 string,
 	) ArgumentsLike
 }
@@ -151,7 +151,7 @@ type AspectDeclarationClassLike interface {
 		declaration DeclarationLike,
 		delimiter1 string,
 		delimiter2 string,
-		aspectMethods fra.ListLike[AspectMethodLike],
+		aspectMethods fra.Sequential[AspectMethodLike],
 		delimiter3 string,
 	) AspectDeclarationLike
 }
@@ -189,7 +189,7 @@ type AspectSectionClassLike interface {
 	// Constructor Methods
 	AspectSection(
 		delimiter string,
-		aspectDeclarations fra.ListLike[AspectDeclarationLike],
+		aspectDeclarations fra.Sequential[AspectDeclarationLike],
 	) AspectSectionLike
 }
 
@@ -202,7 +202,7 @@ type AspectSubsectionClassLike interface {
 	// Constructor Methods
 	AspectSubsection(
 		delimiter string,
-		aspectInterfaces fra.ListLike[AspectInterfaceLike],
+		aspectInterfaces fra.Sequential[AspectInterfaceLike],
 	) AspectSubsectionLike
 }
 
@@ -227,7 +227,7 @@ type AttributeSubsectionClassLike interface {
 	// Constructor Methods
 	AttributeSubsection(
 		delimiter string,
-		attributeMethods fra.ListLike[AttributeMethodLike],
+		attributeMethods fra.Sequential[AttributeMethodLike],
 	) AttributeSubsectionLike
 }
 
@@ -282,7 +282,7 @@ type ClassSectionClassLike interface {
 	// Constructor Methods
 	ClassSection(
 		delimiter string,
-		classDeclarations fra.ListLike[ClassDeclarationLike],
+		classDeclarations fra.Sequential[ClassDeclarationLike],
 	) ClassSectionLike
 }
 
@@ -310,7 +310,7 @@ type ConstantSubsectionClassLike interface {
 	// Constructor Methods
 	ConstantSubsection(
 		delimiter string,
-		constantMethods fra.ListLike[ConstantMethodLike],
+		constantMethods fra.Sequential[ConstantMethodLike],
 	) ConstantSubsectionLike
 }
 
@@ -337,7 +337,7 @@ type ConstraintsClassLike interface {
 	Constraints(
 		delimiter1 string,
 		constraint ConstraintLike,
-		additionalConstraints fra.ListLike[AdditionalConstraintLike],
+		additionalConstraints fra.Sequential[AdditionalConstraintLike],
 		delimiter2 string,
 	) ConstraintsLike
 }
@@ -367,7 +367,7 @@ type ConstructorSubsectionClassLike interface {
 	// Constructor Methods
 	ConstructorSubsection(
 		delimiter string,
-		constructorMethods fra.ListLike[ConstructorMethodLike],
+		constructorMethods fra.Sequential[ConstructorMethodLike],
 	) ConstructorSubsectionLike
 }
 
@@ -397,7 +397,7 @@ type EnumerationClassLike interface {
 		delimiter1 string,
 		delimiter2 string,
 		value ValueLike,
-		additionalValues fra.ListLike[AdditionalValueLike],
+		additionalValues fra.Sequential[AdditionalValueLike],
 		delimiter3 string,
 	) EnumerationLike
 }
@@ -427,7 +427,7 @@ type FunctionSubsectionClassLike interface {
 	// Constructor Methods
 	FunctionSubsection(
 		delimiter string,
-		functionMethods fra.ListLike[FunctionMethodLike],
+		functionMethods fra.Sequential[FunctionMethodLike],
 	) FunctionSubsectionLike
 }
 
@@ -457,7 +457,7 @@ type FunctionalSectionClassLike interface {
 	// Constructor Methods
 	FunctionalSection(
 		delimiter string,
-		functionalDeclarations fra.ListLike[FunctionalDeclarationLike],
+		functionalDeclarations fra.Sequential[FunctionalDeclarationLike],
 	) FunctionalSectionLike
 }
 
@@ -484,7 +484,7 @@ supported by each concrete import-list-like class.
 type ImportListClassLike interface {
 	// Constructor Methods
 	ImportList(
-		importedPackages fra.ListLike[ImportedPackageLike],
+		importedPackages fra.Sequential[ImportedPackageLike],
 	) ImportListLike
 }
 
@@ -540,7 +540,7 @@ type InstanceSectionClassLike interface {
 	// Constructor Methods
 	InstanceSection(
 		delimiter string,
-		instanceDeclarations fra.ListLike[InstanceDeclarationLike],
+		instanceDeclarations fra.Sequential[InstanceDeclarationLike],
 	) InstanceSectionLike
 }
 
@@ -706,7 +706,7 @@ supported by each concrete parameter-list-like class.
 type ParameterListClassLike interface {
 	// Constructor Methods
 	ParameterList(
-		parameters fra.ListLike[ParameterLike],
+		parameters fra.Sequential[ParameterLike],
 	) ParameterListLike
 }
 
@@ -744,7 +744,7 @@ type PrincipalSubsectionClassLike interface {
 	// Constructor Methods
 	PrincipalSubsection(
 		delimiter string,
-		principalMethods fra.ListLike[PrincipalMethodLike],
+		principalMethods fra.Sequential[PrincipalMethodLike],
 	) PrincipalSubsectionLike
 }
 
@@ -810,7 +810,7 @@ type TypeSectionClassLike interface {
 	// Constructor Methods
 	TypeSection(
 		delimiter string,
-		typeDeclarations fra.ListLike[TypeDeclarationLike],
+		typeDeclarations fra.Sequential[TypeDeclarationLike],
 	) TypeSectionLike
 }
 
@@ -925,7 +925,7 @@ type ArgumentsLike interface {
 	// Attribute Methods
 	GetDelimiter1() string
 	GetArgument() ArgumentLike
-	GetAdditionalArguments() fra.ListLike[AdditionalArgumentLike]
+	GetAdditionalArguments() fra.Sequential[AdditionalArgumentLike]
 	GetDelimiter2() string
 }
 
@@ -956,7 +956,7 @@ type AspectDeclarationLike interface {
 	GetDeclaration() DeclarationLike
 	GetDelimiter1() string
 	GetDelimiter2() string
-	GetAspectMethods() fra.ListLike[AspectMethodLike]
+	GetAspectMethods() fra.Sequential[AspectMethodLike]
 	GetDelimiter3() string
 }
 
@@ -997,7 +997,7 @@ type AspectSectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetAspectDeclarations() fra.ListLike[AspectDeclarationLike]
+	GetAspectDeclarations() fra.Sequential[AspectDeclarationLike]
 }
 
 /*
@@ -1011,7 +1011,7 @@ type AspectSubsectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetAspectInterfaces() fra.ListLike[AspectInterfaceLike]
+	GetAspectInterfaces() fra.Sequential[AspectInterfaceLike]
 }
 
 /*
@@ -1038,7 +1038,7 @@ type AttributeSubsectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetAttributeMethods() fra.ListLike[AttributeMethodLike]
+	GetAttributeMethods() fra.Sequential[AttributeMethodLike]
 }
 
 /*
@@ -1097,7 +1097,7 @@ type ClassSectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetClassDeclarations() fra.ListLike[ClassDeclarationLike]
+	GetClassDeclarations() fra.Sequential[ClassDeclarationLike]
 }
 
 /*
@@ -1127,7 +1127,7 @@ type ConstantSubsectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetConstantMethods() fra.ListLike[ConstantMethodLike]
+	GetConstantMethods() fra.Sequential[ConstantMethodLike]
 }
 
 /*
@@ -1156,7 +1156,7 @@ type ConstraintsLike interface {
 	// Attribute Methods
 	GetDelimiter1() string
 	GetConstraint() ConstraintLike
-	GetAdditionalConstraints() fra.ListLike[AdditionalConstraintLike]
+	GetAdditionalConstraints() fra.Sequential[AdditionalConstraintLike]
 	GetDelimiter2() string
 }
 
@@ -1188,7 +1188,7 @@ type ConstructorSubsectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetConstructorMethods() fra.ListLike[ConstructorMethodLike]
+	GetConstructorMethods() fra.Sequential[ConstructorMethodLike]
 }
 
 /*
@@ -1220,7 +1220,7 @@ type EnumerationLike interface {
 	GetDelimiter1() string
 	GetDelimiter2() string
 	GetValue() ValueLike
-	GetAdditionalValues() fra.ListLike[AdditionalValueLike]
+	GetAdditionalValues() fra.Sequential[AdditionalValueLike]
 	GetDelimiter3() string
 }
 
@@ -1252,7 +1252,7 @@ type FunctionSubsectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetFunctionMethods() fra.ListLike[FunctionMethodLike]
+	GetFunctionMethods() fra.Sequential[FunctionMethodLike]
 }
 
 /*
@@ -1284,7 +1284,7 @@ type FunctionalSectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetFunctionalDeclarations() fra.ListLike[FunctionalDeclarationLike]
+	GetFunctionalDeclarations() fra.Sequential[FunctionalDeclarationLike]
 }
 
 /*
@@ -1313,7 +1313,7 @@ type ImportListLike interface {
 	GetClass() ImportListClassLike
 
 	// Attribute Methods
-	GetImportedPackages() fra.ListLike[ImportedPackageLike]
+	GetImportedPackages() fra.Sequential[ImportedPackageLike]
 }
 
 /*
@@ -1373,7 +1373,7 @@ type InstanceSectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetInstanceDeclarations() fra.ListLike[InstanceDeclarationLike]
+	GetInstanceDeclarations() fra.Sequential[InstanceDeclarationLike]
 }
 
 /*
@@ -1551,7 +1551,7 @@ type ParameterListLike interface {
 	GetClass() ParameterListClassLike
 
 	// Attribute Methods
-	GetParameters() fra.ListLike[ParameterLike]
+	GetParameters() fra.Sequential[ParameterLike]
 }
 
 /*
@@ -1592,7 +1592,7 @@ type PrincipalSubsectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetPrincipalMethods() fra.ListLike[PrincipalMethodLike]
+	GetPrincipalMethods() fra.Sequential[PrincipalMethodLike]
 }
 
 /*
@@ -1663,7 +1663,7 @@ type TypeSectionLike interface {
 
 	// Attribute Methods
 	GetDelimiter() string
-	GetTypeDeclarations() fra.ListLike[TypeDeclarationLike]
+	GetTypeDeclarations() fra.Sequential[TypeDeclarationLike]
 }
 
 /*

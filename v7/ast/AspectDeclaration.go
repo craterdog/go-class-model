@@ -40,7 +40,7 @@ func (c *aspectDeclarationClass_) AspectDeclaration(
 	declaration DeclarationLike,
 	delimiter1 string,
 	delimiter2 string,
-	aspectMethods fra.ListLike[AspectMethodLike],
+	aspectMethods fra.Sequential[AspectMethodLike],
 	delimiter3 string,
 ) AspectDeclarationLike {
 	if uti.IsUndefined(declaration) {
@@ -91,7 +91,7 @@ func (v *aspectDeclaration_) GetDelimiter2() string {
 	return v.delimiter2_
 }
 
-func (v *aspectDeclaration_) GetAspectMethods() fra.ListLike[AspectMethodLike] {
+func (v *aspectDeclaration_) GetAspectMethods() fra.Sequential[AspectMethodLike] {
 	return v.aspectMethods_
 }
 
@@ -108,7 +108,7 @@ type aspectDeclaration_ struct {
 	declaration_   DeclarationLike
 	delimiter1_    string
 	delimiter2_    string
-	aspectMethods_ fra.ListLike[AspectMethodLike]
+	aspectMethods_ fra.Sequential[AspectMethodLike]
 	delimiter3_    string
 }
 

@@ -37,7 +37,7 @@ func ImportListClass() ImportListClassLike {
 // Constructor Methods
 
 func (c *importListClass_) ImportList(
-	importedPackages fra.ListLike[ImportedPackageLike],
+	importedPackages fra.Sequential[ImportedPackageLike],
 ) ImportListLike {
 	if uti.IsUndefined(importedPackages) {
 		panic("The \"importedPackages\" attribute is required by this class.")
@@ -59,7 +59,7 @@ func (v *importList_) GetClass() ImportListClassLike {
 
 // Attribute Methods
 
-func (v *importList_) GetImportedPackages() fra.ListLike[ImportedPackageLike] {
+func (v *importList_) GetImportedPackages() fra.Sequential[ImportedPackageLike] {
 	return v.importedPackages_
 }
 
@@ -69,7 +69,7 @@ func (v *importList_) GetImportedPackages() fra.ListLike[ImportedPackageLike] {
 
 type importList_ struct {
 	// Declare the instance attributes.
-	importedPackages_ fra.ListLike[ImportedPackageLike]
+	importedPackages_ fra.Sequential[ImportedPackageLike]
 }
 
 // Class Structure

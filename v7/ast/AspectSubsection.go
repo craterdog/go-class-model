@@ -38,7 +38,7 @@ func AspectSubsectionClass() AspectSubsectionClassLike {
 
 func (c *aspectSubsectionClass_) AspectSubsection(
 	delimiter string,
-	aspectInterfaces fra.ListLike[AspectInterfaceLike],
+	aspectInterfaces fra.Sequential[AspectInterfaceLike],
 ) AspectSubsectionLike {
 	if uti.IsUndefined(delimiter) {
 		panic("The \"delimiter\" attribute is required by this class.")
@@ -68,7 +68,7 @@ func (v *aspectSubsection_) GetDelimiter() string {
 	return v.delimiter_
 }
 
-func (v *aspectSubsection_) GetAspectInterfaces() fra.ListLike[AspectInterfaceLike] {
+func (v *aspectSubsection_) GetAspectInterfaces() fra.Sequential[AspectInterfaceLike] {
 	return v.aspectInterfaces_
 }
 
@@ -79,7 +79,7 @@ func (v *aspectSubsection_) GetAspectInterfaces() fra.ListLike[AspectInterfaceLi
 type aspectSubsection_ struct {
 	// Declare the instance attributes.
 	delimiter_        string
-	aspectInterfaces_ fra.ListLike[AspectInterfaceLike]
+	aspectInterfaces_ fra.Sequential[AspectInterfaceLike]
 }
 
 // Class Structure

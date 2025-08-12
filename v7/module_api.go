@@ -284,7 +284,7 @@ func ArgumentsClass() ArgumentsClassLike {
 func Arguments(
 	delimiter1 string,
 	argument ast.ArgumentLike,
-	additionalArguments fra.ListLike[ast.AdditionalArgumentLike],
+	additionalArguments fra.Sequential[ast.AdditionalArgumentLike],
 	delimiter2 string,
 ) ArgumentsLike {
 	return ArgumentsClass().Arguments(
@@ -317,7 +317,7 @@ func AspectDeclaration(
 	declaration ast.DeclarationLike,
 	delimiter1 string,
 	delimiter2 string,
-	aspectMethods fra.ListLike[ast.AspectMethodLike],
+	aspectMethods fra.Sequential[ast.AspectMethodLike],
 	delimiter3 string,
 ) AspectDeclarationLike {
 	return AspectDeclarationClass().AspectDeclaration(
@@ -359,7 +359,7 @@ func AspectSectionClass() AspectSectionClassLike {
 
 func AspectSection(
 	delimiter string,
-	aspectDeclarations fra.ListLike[ast.AspectDeclarationLike],
+	aspectDeclarations fra.Sequential[ast.AspectDeclarationLike],
 ) AspectSectionLike {
 	return AspectSectionClass().AspectSection(
 		delimiter,
@@ -373,7 +373,7 @@ func AspectSubsectionClass() AspectSubsectionClassLike {
 
 func AspectSubsection(
 	delimiter string,
-	aspectInterfaces fra.ListLike[ast.AspectInterfaceLike],
+	aspectInterfaces fra.Sequential[ast.AspectInterfaceLike],
 ) AspectSubsectionLike {
 	return AspectSubsectionClass().AspectSubsection(
 		delimiter,
@@ -399,7 +399,7 @@ func AttributeSubsectionClass() AttributeSubsectionClassLike {
 
 func AttributeSubsection(
 	delimiter string,
-	attributeMethods fra.ListLike[ast.AttributeMethodLike],
+	attributeMethods fra.Sequential[ast.AttributeMethodLike],
 ) AttributeSubsectionLike {
 	return AttributeSubsectionClass().AttributeSubsection(
 		delimiter,
@@ -461,7 +461,7 @@ func ClassSectionClass() ClassSectionClassLike {
 
 func ClassSection(
 	delimiter string,
-	classDeclarations fra.ListLike[ast.ClassDeclarationLike],
+	classDeclarations fra.Sequential[ast.ClassDeclarationLike],
 ) ClassSectionLike {
 	return ClassSectionClass().ClassSection(
 		delimiter,
@@ -493,7 +493,7 @@ func ConstantSubsectionClass() ConstantSubsectionClassLike {
 
 func ConstantSubsection(
 	delimiter string,
-	constantMethods fra.ListLike[ast.ConstantMethodLike],
+	constantMethods fra.Sequential[ast.ConstantMethodLike],
 ) ConstantSubsectionLike {
 	return ConstantSubsectionClass().ConstantSubsection(
 		delimiter,
@@ -522,7 +522,7 @@ func ConstraintsClass() ConstraintsClassLike {
 func Constraints(
 	delimiter1 string,
 	constraint ast.ConstraintLike,
-	additionalConstraints fra.ListLike[ast.AdditionalConstraintLike],
+	additionalConstraints fra.Sequential[ast.AdditionalConstraintLike],
 	delimiter2 string,
 ) ConstraintsLike {
 	return ConstraintsClass().Constraints(
@@ -559,7 +559,7 @@ func ConstructorSubsectionClass() ConstructorSubsectionClassLike {
 
 func ConstructorSubsection(
 	delimiter string,
-	constructorMethods fra.ListLike[ast.ConstructorMethodLike],
+	constructorMethods fra.Sequential[ast.ConstructorMethodLike],
 ) ConstructorSubsectionLike {
 	return ConstructorSubsectionClass().ConstructorSubsection(
 		delimiter,
@@ -593,7 +593,7 @@ func Enumeration(
 	delimiter1 string,
 	delimiter2 string,
 	value ast.ValueLike,
-	additionalValues fra.ListLike[ast.AdditionalValueLike],
+	additionalValues fra.Sequential[ast.AdditionalValueLike],
 	delimiter3 string,
 ) EnumerationLike {
 	return EnumerationClass().Enumeration(
@@ -631,7 +631,7 @@ func FunctionSubsectionClass() FunctionSubsectionClassLike {
 
 func FunctionSubsection(
 	delimiter string,
-	functionMethods fra.ListLike[ast.FunctionMethodLike],
+	functionMethods fra.Sequential[ast.FunctionMethodLike],
 ) FunctionSubsectionLike {
 	return FunctionSubsectionClass().FunctionSubsection(
 		delimiter,
@@ -667,7 +667,7 @@ func FunctionalSectionClass() FunctionalSectionClassLike {
 
 func FunctionalSection(
 	delimiter string,
-	functionalDeclarations fra.ListLike[ast.FunctionalDeclarationLike],
+	functionalDeclarations fra.Sequential[ast.FunctionalDeclarationLike],
 ) FunctionalSectionLike {
 	return FunctionalSectionClass().FunctionalSection(
 		delimiter,
@@ -698,7 +698,7 @@ func ImportListClass() ImportListClassLike {
 }
 
 func ImportList(
-	importedPackages fra.ListLike[ast.ImportedPackageLike],
+	importedPackages fra.Sequential[ast.ImportedPackageLike],
 ) ImportListLike {
 	return ImportListClass().ImportList(
 		importedPackages,
@@ -761,7 +761,7 @@ func InstanceSectionClass() InstanceSectionClassLike {
 
 func InstanceSection(
 	delimiter string,
-	instanceDeclarations fra.ListLike[ast.InstanceDeclarationLike],
+	instanceDeclarations fra.Sequential[ast.InstanceDeclarationLike],
 ) InstanceSectionLike {
 	return InstanceSectionClass().InstanceSection(
 		delimiter,
@@ -950,7 +950,7 @@ func ParameterListClass() ParameterListClassLike {
 }
 
 func ParameterList(
-	parameters fra.ListLike[ast.ParameterLike],
+	parameters fra.Sequential[ast.ParameterLike],
 ) ParameterListLike {
 	return ParameterListClass().ParameterList(
 		parameters,
@@ -989,7 +989,7 @@ func PrincipalSubsectionClass() PrincipalSubsectionClassLike {
 
 func PrincipalSubsection(
 	delimiter string,
-	principalMethods fra.ListLike[ast.PrincipalMethodLike],
+	principalMethods fra.Sequential[ast.PrincipalMethodLike],
 ) PrincipalSubsectionLike {
 	return PrincipalSubsectionClass().PrincipalSubsection(
 		delimiter,
@@ -1061,7 +1061,7 @@ func TypeSectionClass() TypeSectionClassLike {
 
 func TypeSection(
 	delimiter string,
-	typeDeclarations fra.ListLike[ast.TypeDeclarationLike],
+	typeDeclarations fra.Sequential[ast.TypeDeclarationLike],
 ) TypeSectionLike {
 	return TypeSectionClass().TypeSection(
 		delimiter,

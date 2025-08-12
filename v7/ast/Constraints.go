@@ -39,7 +39,7 @@ func ConstraintsClass() ConstraintsClassLike {
 func (c *constraintsClass_) Constraints(
 	delimiter1 string,
 	constraint ConstraintLike,
-	additionalConstraints fra.ListLike[AdditionalConstraintLike],
+	additionalConstraints fra.Sequential[AdditionalConstraintLike],
 	delimiter2 string,
 ) ConstraintsLike {
 	if uti.IsUndefined(delimiter1) {
@@ -82,7 +82,7 @@ func (v *constraints_) GetConstraint() ConstraintLike {
 	return v.constraint_
 }
 
-func (v *constraints_) GetAdditionalConstraints() fra.ListLike[AdditionalConstraintLike] {
+func (v *constraints_) GetAdditionalConstraints() fra.Sequential[AdditionalConstraintLike] {
 	return v.additionalConstraints_
 }
 
@@ -98,7 +98,7 @@ type constraints_ struct {
 	// Declare the instance attributes.
 	delimiter1_            string
 	constraint_            ConstraintLike
-	additionalConstraints_ fra.ListLike[AdditionalConstraintLike]
+	additionalConstraints_ fra.Sequential[AdditionalConstraintLike]
 	delimiter2_            string
 }
 

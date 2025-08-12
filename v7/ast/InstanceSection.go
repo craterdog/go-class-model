@@ -38,7 +38,7 @@ func InstanceSectionClass() InstanceSectionClassLike {
 
 func (c *instanceSectionClass_) InstanceSection(
 	delimiter string,
-	instanceDeclarations fra.ListLike[InstanceDeclarationLike],
+	instanceDeclarations fra.Sequential[InstanceDeclarationLike],
 ) InstanceSectionLike {
 	if uti.IsUndefined(delimiter) {
 		panic("The \"delimiter\" attribute is required by this class.")
@@ -68,7 +68,7 @@ func (v *instanceSection_) GetDelimiter() string {
 	return v.delimiter_
 }
 
-func (v *instanceSection_) GetInstanceDeclarations() fra.ListLike[InstanceDeclarationLike] {
+func (v *instanceSection_) GetInstanceDeclarations() fra.Sequential[InstanceDeclarationLike] {
 	return v.instanceDeclarations_
 }
 
@@ -79,7 +79,7 @@ func (v *instanceSection_) GetInstanceDeclarations() fra.ListLike[InstanceDeclar
 type instanceSection_ struct {
 	// Declare the instance attributes.
 	delimiter_            string
-	instanceDeclarations_ fra.ListLike[InstanceDeclarationLike]
+	instanceDeclarations_ fra.Sequential[InstanceDeclarationLike]
 }
 
 // Class Structure

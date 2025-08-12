@@ -24,7 +24,7 @@ package grammar
 import (
 	fmt "fmt"
 	ast "github.com/craterdog/go-class-model/v7/ast"
-	com "github.com/craterdog/go-component-framework/v7"
+	fra "github.com/craterdog/go-component-framework/v7"
 	sts "strings"
 	utf "unicode/utf8"
 )
@@ -100,21 +100,22 @@ func (v *validator_) PreprocessAspectSection(
 	index_ uint,
 	count_ uint,
 ) {
-	var aspectDeclarations = aspectSection.GetAspectDeclarations()
+	// We can "cheat" here because we know the code generator uses lists.
+	var aspectDeclarations = aspectSection.GetAspectDeclarations().(fra.ListLike[ast.AspectDeclarationLike])
 	aspectDeclarations.SortValuesWithRanker(
 		func(
 			first ast.AspectDeclarationLike,
 			second ast.AspectDeclarationLike,
-		) com.Rank {
+		) fra.Rank {
 			var firstName = first.GetDeclaration().GetName()
 			var secondName = second.GetDeclaration().GetName()
 			switch {
 			case firstName < secondName:
-				return com.LesserRank
+				return fra.LesserRank
 			case firstName > secondName:
-				return com.GreaterRank
+				return fra.GreaterRank
 			default:
-				return com.EqualRank
+				return fra.EqualRank
 			}
 		},
 	)
@@ -125,12 +126,13 @@ func (v *validator_) PreprocessClassSection(
 	index_ uint,
 	count_ uint,
 ) {
-	var classDeclarations = classSection.GetClassDeclarations()
+	// We can "cheat" here because we know the code generator uses lists.
+	var classDeclarations = classSection.GetClassDeclarations().(fra.ListLike[ast.ClassDeclarationLike])
 	classDeclarations.SortValuesWithRanker(
 		func(
 			first ast.ClassDeclarationLike,
 			second ast.ClassDeclarationLike,
-		) com.Rank {
+		) fra.Rank {
 			var firstName = sts.TrimSuffix(
 				first.GetDeclaration().GetName(),
 				"ClassLike",
@@ -141,11 +143,11 @@ func (v *validator_) PreprocessClassSection(
 			)
 			switch {
 			case firstName < secondName:
-				return com.LesserRank
+				return fra.LesserRank
 			case firstName > secondName:
-				return com.GreaterRank
+				return fra.GreaterRank
 			default:
-				return com.EqualRank
+				return fra.EqualRank
 			}
 		},
 	)
@@ -174,12 +176,13 @@ func (v *validator_) PreprocessFunctionalSection(
 	index_ uint,
 	count_ uint,
 ) {
-	var functionalDeclarations = functionalSection.GetFunctionalDeclarations()
+	// We can "cheat" here because we know the code generator uses lists.
+	var functionalDeclarations = functionalSection.GetFunctionalDeclarations().(fra.ListLike[ast.FunctionalDeclarationLike])
 	functionalDeclarations.SortValuesWithRanker(
 		func(
 			first ast.FunctionalDeclarationLike,
 			second ast.FunctionalDeclarationLike,
-		) com.Rank {
+		) fra.Rank {
 			var firstName = sts.TrimSuffix(
 				first.GetDeclaration().GetName(),
 				"Function",
@@ -190,11 +193,11 @@ func (v *validator_) PreprocessFunctionalSection(
 			)
 			switch {
 			case firstName < secondName:
-				return com.LesserRank
+				return fra.LesserRank
 			case firstName > secondName:
-				return com.GreaterRank
+				return fra.GreaterRank
 			default:
-				return com.EqualRank
+				return fra.EqualRank
 			}
 		},
 	)
@@ -237,12 +240,13 @@ func (v *validator_) PreprocessInstanceSection(
 	index_ uint,
 	count_ uint,
 ) {
-	var instanceDeclarations = instanceSection.GetInstanceDeclarations()
+	// We can "cheat" here because we know the code generator uses lists.
+	var instanceDeclarations = instanceSection.GetInstanceDeclarations().(fra.ListLike[ast.InstanceDeclarationLike])
 	instanceDeclarations.SortValuesWithRanker(
 		func(
 			first ast.InstanceDeclarationLike,
 			second ast.InstanceDeclarationLike,
-		) com.Rank {
+		) fra.Rank {
 			var firstName = sts.TrimSuffix(
 				first.GetDeclaration().GetName(),
 				"Like",
@@ -253,11 +257,11 @@ func (v *validator_) PreprocessInstanceSection(
 			)
 			switch {
 			case firstName < secondName:
-				return com.LesserRank
+				return fra.LesserRank
 			case firstName > secondName:
-				return com.GreaterRank
+				return fra.GreaterRank
 			default:
-				return com.EqualRank
+				return fra.EqualRank
 			}
 		},
 	)

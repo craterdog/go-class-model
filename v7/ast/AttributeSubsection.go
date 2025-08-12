@@ -38,7 +38,7 @@ func AttributeSubsectionClass() AttributeSubsectionClassLike {
 
 func (c *attributeSubsectionClass_) AttributeSubsection(
 	delimiter string,
-	attributeMethods fra.ListLike[AttributeMethodLike],
+	attributeMethods fra.Sequential[AttributeMethodLike],
 ) AttributeSubsectionLike {
 	if uti.IsUndefined(delimiter) {
 		panic("The \"delimiter\" attribute is required by this class.")
@@ -68,7 +68,7 @@ func (v *attributeSubsection_) GetDelimiter() string {
 	return v.delimiter_
 }
 
-func (v *attributeSubsection_) GetAttributeMethods() fra.ListLike[AttributeMethodLike] {
+func (v *attributeSubsection_) GetAttributeMethods() fra.Sequential[AttributeMethodLike] {
 	return v.attributeMethods_
 }
 
@@ -79,7 +79,7 @@ func (v *attributeSubsection_) GetAttributeMethods() fra.ListLike[AttributeMetho
 type attributeSubsection_ struct {
 	// Declare the instance attributes.
 	delimiter_        string
-	attributeMethods_ fra.ListLike[AttributeMethodLike]
+	attributeMethods_ fra.Sequential[AttributeMethodLike]
 }
 
 // Class Structure

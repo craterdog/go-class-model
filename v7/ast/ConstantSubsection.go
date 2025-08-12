@@ -38,7 +38,7 @@ func ConstantSubsectionClass() ConstantSubsectionClassLike {
 
 func (c *constantSubsectionClass_) ConstantSubsection(
 	delimiter string,
-	constantMethods fra.ListLike[ConstantMethodLike],
+	constantMethods fra.Sequential[ConstantMethodLike],
 ) ConstantSubsectionLike {
 	if uti.IsUndefined(delimiter) {
 		panic("The \"delimiter\" attribute is required by this class.")
@@ -68,7 +68,7 @@ func (v *constantSubsection_) GetDelimiter() string {
 	return v.delimiter_
 }
 
-func (v *constantSubsection_) GetConstantMethods() fra.ListLike[ConstantMethodLike] {
+func (v *constantSubsection_) GetConstantMethods() fra.Sequential[ConstantMethodLike] {
 	return v.constantMethods_
 }
 
@@ -79,7 +79,7 @@ func (v *constantSubsection_) GetConstantMethods() fra.ListLike[ConstantMethodLi
 type constantSubsection_ struct {
 	// Declare the instance attributes.
 	delimiter_       string
-	constantMethods_ fra.ListLike[ConstantMethodLike]
+	constantMethods_ fra.Sequential[ConstantMethodLike]
 }
 
 // Class Structure
