@@ -168,8 +168,7 @@ type ArrayClassLike[V any] interface {
 
 	// Function Methods
 	Merge(
-		first ArrayLike[V],
-		second ArrayLike[V],
+		arrays ...ArrayLike[V],
 	) ArrayLike[V]
 }
 

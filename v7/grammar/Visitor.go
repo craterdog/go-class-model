@@ -62,14 +62,14 @@ func (v *visitor_) VisitModel(
 ) {
 	v.processor_.PreprocessModel(
 		model,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitModel(model)
 	v.processor_.PostprocessModel(
 		model,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -84,14 +84,14 @@ func (v *visitor_) visitAbstraction(
 	if uti.IsDefined(optionalWrapper) {
 		v.processor_.PreprocessWrapper(
 			optionalWrapper,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitWrapper(optionalWrapper)
 		v.processor_.PostprocessWrapper(
 			optionalWrapper,
-			1,
-			1,
+			0,
+			0,
 		)
 	}
 	// Visit slot 1 between terms.
@@ -122,14 +122,14 @@ func (v *visitor_) visitAbstraction(
 	if uti.IsDefined(optionalArguments) {
 		v.processor_.PreprocessArguments(
 			optionalArguments,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitArguments(optionalArguments)
 		v.processor_.PostprocessArguments(
 			optionalArguments,
-			1,
-			1,
+			0,
+			0,
 		)
 	}
 }
@@ -148,14 +148,14 @@ func (v *visitor_) visitAdditionalArgument(
 	var argument = additionalArgument.GetArgument()
 	v.processor_.PreprocessArgument(
 		argument,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitArgument(argument)
 	v.processor_.PostprocessArgument(
 		argument,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -173,14 +173,14 @@ func (v *visitor_) visitAdditionalConstraint(
 	var constraint = additionalConstraint.GetConstraint()
 	v.processor_.PreprocessConstraint(
 		constraint,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitConstraint(constraint)
 	v.processor_.PostprocessConstraint(
 		constraint,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -197,14 +197,14 @@ func (v *visitor_) visitArgument(
 	var abstraction = argument.GetAbstraction()
 	v.processor_.PreprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitAbstraction(abstraction)
 	v.processor_.PostprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -222,14 +222,14 @@ func (v *visitor_) visitArguments(
 	var argument = arguments.GetArgument()
 	v.processor_.PreprocessArgument(
 		argument,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitArgument(argument)
 	v.processor_.PostprocessArgument(
 		argument,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 2 between terms.
 	v.processor_.ProcessArgumentsSlot(
@@ -286,14 +286,14 @@ func (v *visitor_) visitAspectDeclaration(
 	var declaration = aspectDeclaration.GetDeclaration()
 	v.processor_.PreprocessDeclaration(
 		declaration,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitDeclaration(declaration)
 	v.processor_.PostprocessDeclaration(
 		declaration,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 1 between terms.
 	v.processor_.ProcessAspectDeclarationSlot(
@@ -351,14 +351,14 @@ func (v *visitor_) visitAspectInterface(
 	var abstraction = aspectInterface.GetAbstraction()
 	v.processor_.PreprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitAbstraction(abstraction)
 	v.processor_.PostprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -368,14 +368,14 @@ func (v *visitor_) visitAspectMethod(
 	var method = aspectMethod.GetMethod()
 	v.processor_.PreprocessMethod(
 		method,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitMethod(method)
 	v.processor_.PostprocessMethod(
 		method,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -449,26 +449,26 @@ func (v *visitor_) visitAttributeMethod(
 	case ast.GetterMethodLike:
 		v.processor_.PreprocessGetterMethod(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitGetterMethod(actual)
 		v.processor_.PostprocessGetterMethod(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 	case ast.SetterMethodLike:
 		v.processor_.PreprocessSetterMethod(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitSetterMethod(actual)
 		v.processor_.PostprocessSetterMethod(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 	}
 }
@@ -517,14 +517,14 @@ func (v *visitor_) visitClassDeclaration(
 	var declaration = classDeclaration.GetDeclaration()
 	v.processor_.PreprocessDeclaration(
 		declaration,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitDeclaration(declaration)
 	v.processor_.PostprocessDeclaration(
 		declaration,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 1 between terms.
 	v.processor_.ProcessClassDeclarationSlot(
@@ -551,14 +551,14 @@ func (v *visitor_) visitClassDeclaration(
 	var classMethods = classDeclaration.GetClassMethods()
 	v.processor_.PreprocessClassMethods(
 		classMethods,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitClassMethods(classMethods)
 	v.processor_.PostprocessClassMethods(
 		classMethods,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 4 between terms.
 	v.processor_.ProcessClassDeclarationSlot(
@@ -576,14 +576,14 @@ func (v *visitor_) visitClassMethods(
 	var constructorSubsection = classMethods.GetConstructorSubsection()
 	v.processor_.PreprocessConstructorSubsection(
 		constructorSubsection,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitConstructorSubsection(constructorSubsection)
 	v.processor_.PostprocessConstructorSubsection(
 		constructorSubsection,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 1 between terms.
 	v.processor_.ProcessClassMethodsSlot(
@@ -595,14 +595,14 @@ func (v *visitor_) visitClassMethods(
 	if uti.IsDefined(optionalConstantSubsection) {
 		v.processor_.PreprocessConstantSubsection(
 			optionalConstantSubsection,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitConstantSubsection(optionalConstantSubsection)
 		v.processor_.PostprocessConstantSubsection(
 			optionalConstantSubsection,
-			1,
-			1,
+			0,
+			0,
 		)
 	}
 	// Visit slot 2 between terms.
@@ -615,14 +615,14 @@ func (v *visitor_) visitClassMethods(
 	if uti.IsDefined(optionalFunctionSubsection) {
 		v.processor_.PreprocessFunctionSubsection(
 			optionalFunctionSubsection,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitFunctionSubsection(optionalFunctionSubsection)
 		v.processor_.PostprocessFunctionSubsection(
 			optionalFunctionSubsection,
-			1,
-			1,
+			0,
+			0,
 		)
 	}
 }
@@ -688,14 +688,14 @@ func (v *visitor_) visitConstantMethod(
 	var abstraction = constantMethod.GetAbstraction()
 	v.processor_.PreprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitAbstraction(abstraction)
 	v.processor_.PostprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -744,14 +744,14 @@ func (v *visitor_) visitConstraint(
 	var abstraction = constraint.GetAbstraction()
 	v.processor_.PreprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitAbstraction(abstraction)
 	v.processor_.PostprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -769,14 +769,14 @@ func (v *visitor_) visitConstraints(
 	var constraint = constraints.GetConstraint()
 	v.processor_.PreprocessConstraint(
 		constraint,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitConstraint(constraint)
 	v.processor_.PostprocessConstraint(
 		constraint,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 2 between terms.
 	v.processor_.ProcessConstraintsSlot(
@@ -835,14 +835,14 @@ func (v *visitor_) visitConstructorMethod(
 	if uti.IsDefined(optionalParameterList) {
 		v.processor_.PreprocessParameterList(
 			optionalParameterList,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitParameterList(optionalParameterList)
 		v.processor_.PostprocessParameterList(
 			optionalParameterList,
-			1,
-			1,
+			0,
+			0,
 		)
 	}
 	// Visit slot 3 between terms.
@@ -862,14 +862,14 @@ func (v *visitor_) visitConstructorMethod(
 	var abstraction = constructorMethod.GetAbstraction()
 	v.processor_.PreprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitAbstraction(abstraction)
 	v.processor_.PostprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -935,16 +935,23 @@ func (v *visitor_) visitDeclaration(
 	if uti.IsDefined(optionalConstraints) {
 		v.processor_.PreprocessConstraints(
 			optionalConstraints,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitConstraints(optionalConstraints)
 		v.processor_.PostprocessConstraints(
 			optionalConstraints,
-			1,
-			1,
+			0,
+			0,
 		)
 	}
+}
+
+func (v *visitor_) visitDots(
+	dots ast.DotsLike,
+) {
+	var delimiter = dots.GetDelimiter()
+	v.processor_.ProcessDelimiter(delimiter)
 }
 
 func (v *visitor_) visitEnumeration(
@@ -969,14 +976,14 @@ func (v *visitor_) visitEnumeration(
 	var value = enumeration.GetValue()
 	v.processor_.PreprocessValue(
 		value,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitValue(value)
 	v.processor_.PostprocessValue(
 		value,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 3 between terms.
 	v.processor_.ProcessEnumerationSlot(
@@ -1035,14 +1042,14 @@ func (v *visitor_) visitFunctionMethod(
 	if uti.IsDefined(optionalParameterList) {
 		v.processor_.PreprocessParameterList(
 			optionalParameterList,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitParameterList(optionalParameterList)
 		v.processor_.PostprocessParameterList(
 			optionalParameterList,
-			1,
-			1,
+			0,
+			0,
 		)
 	}
 	// Visit slot 3 between terms.
@@ -1062,14 +1069,14 @@ func (v *visitor_) visitFunctionMethod(
 	var result = functionMethod.GetResult()
 	v.processor_.PreprocessResult(
 		result,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitResult(result)
 	v.processor_.PostprocessResult(
 		result,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -1110,14 +1117,14 @@ func (v *visitor_) visitFunctionalDeclaration(
 	var declaration = functionalDeclaration.GetDeclaration()
 	v.processor_.PreprocessDeclaration(
 		declaration,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitDeclaration(declaration)
 	v.processor_.PostprocessDeclaration(
 		declaration,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 1 between terms.
 	v.processor_.ProcessFunctionalDeclarationSlot(
@@ -1145,14 +1152,14 @@ func (v *visitor_) visitFunctionalDeclaration(
 	if uti.IsDefined(optionalParameterList) {
 		v.processor_.PreprocessParameterList(
 			optionalParameterList,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitParameterList(optionalParameterList)
 		v.processor_.PostprocessParameterList(
 			optionalParameterList,
-			1,
-			1,
+			0,
+			0,
 		)
 	}
 	// Visit slot 4 between terms.
@@ -1172,14 +1179,14 @@ func (v *visitor_) visitFunctionalDeclaration(
 	var result = functionalDeclaration.GetResult()
 	v.processor_.PreprocessResult(
 		result,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitResult(result)
 	v.processor_.PostprocessResult(
 		result,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -1244,14 +1251,14 @@ func (v *visitor_) visitGetterMethod(
 	var abstraction = getterMethod.GetAbstraction()
 	v.processor_.PreprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitAbstraction(abstraction)
 	v.processor_.PostprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -1299,14 +1306,14 @@ func (v *visitor_) visitInstanceDeclaration(
 	var declaration = instanceDeclaration.GetDeclaration()
 	v.processor_.PreprocessDeclaration(
 		declaration,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitDeclaration(declaration)
 	v.processor_.PostprocessDeclaration(
 		declaration,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 1 between terms.
 	v.processor_.ProcessInstanceDeclarationSlot(
@@ -1333,14 +1340,14 @@ func (v *visitor_) visitInstanceDeclaration(
 	var instanceMethods = instanceDeclaration.GetInstanceMethods()
 	v.processor_.PreprocessInstanceMethods(
 		instanceMethods,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitInstanceMethods(instanceMethods)
 	v.processor_.PostprocessInstanceMethods(
 		instanceMethods,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 4 between terms.
 	v.processor_.ProcessInstanceDeclarationSlot(
@@ -1358,14 +1365,14 @@ func (v *visitor_) visitInstanceMethods(
 	var principalSubsection = instanceMethods.GetPrincipalSubsection()
 	v.processor_.PreprocessPrincipalSubsection(
 		principalSubsection,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitPrincipalSubsection(principalSubsection)
 	v.processor_.PostprocessPrincipalSubsection(
 		principalSubsection,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 1 between terms.
 	v.processor_.ProcessInstanceMethodsSlot(
@@ -1377,14 +1384,14 @@ func (v *visitor_) visitInstanceMethods(
 	if uti.IsDefined(optionalAttributeSubsection) {
 		v.processor_.PreprocessAttributeSubsection(
 			optionalAttributeSubsection,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitAttributeSubsection(optionalAttributeSubsection)
 		v.processor_.PostprocessAttributeSubsection(
 			optionalAttributeSubsection,
-			1,
-			1,
+			0,
+			0,
 		)
 	}
 	// Visit slot 2 between terms.
@@ -1397,14 +1404,14 @@ func (v *visitor_) visitInstanceMethods(
 	if uti.IsDefined(optionalAspectSubsection) {
 		v.processor_.PreprocessAspectSubsection(
 			optionalAspectSubsection,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitAspectSubsection(optionalAspectSubsection)
 		v.processor_.PostprocessAspectSubsection(
 			optionalAspectSubsection,
-			1,
-			1,
+			0,
+			0,
 		)
 	}
 }
@@ -1446,14 +1453,14 @@ func (v *visitor_) visitInterfaceDeclarations(
 	var classSection = interfaceDeclarations.GetClassSection()
 	v.processor_.PreprocessClassSection(
 		classSection,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitClassSection(classSection)
 	v.processor_.PostprocessClassSection(
 		classSection,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 1 between terms.
 	v.processor_.ProcessInterfaceDeclarationsSlot(
@@ -1464,14 +1471,14 @@ func (v *visitor_) visitInterfaceDeclarations(
 	var instanceSection = interfaceDeclarations.GetInstanceSection()
 	v.processor_.PreprocessInstanceSection(
 		instanceSection,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitInstanceSection(instanceSection)
 	v.processor_.PostprocessInstanceSection(
 		instanceSection,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 2 between terms.
 	v.processor_.ProcessInterfaceDeclarationsSlot(
@@ -1482,14 +1489,14 @@ func (v *visitor_) visitInterfaceDeclarations(
 	var aspectSection = interfaceDeclarations.GetAspectSection()
 	v.processor_.PreprocessAspectSection(
 		aspectSection,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitAspectSection(aspectSection)
 	v.processor_.PostprocessAspectSection(
 		aspectSection,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -1554,14 +1561,14 @@ func (v *visitor_) visitMethod(
 	if uti.IsDefined(optionalParameterList) {
 		v.processor_.PreprocessParameterList(
 			optionalParameterList,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitParameterList(optionalParameterList)
 		v.processor_.PostprocessParameterList(
 			optionalParameterList,
-			1,
-			1,
+			0,
+			0,
 		)
 	}
 	// Visit slot 3 between terms.
@@ -1581,14 +1588,14 @@ func (v *visitor_) visitMethod(
 	var result = method.GetResult()
 	v.processor_.PreprocessResult(
 		result,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitResult(result)
 	v.processor_.PostprocessResult(
 		result,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -1598,14 +1605,14 @@ func (v *visitor_) visitModel(
 	var packageDeclaration = model.GetPackageDeclaration()
 	v.processor_.PreprocessPackageDeclaration(
 		packageDeclaration,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitPackageDeclaration(packageDeclaration)
 	v.processor_.PostprocessPackageDeclaration(
 		packageDeclaration,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 1 between terms.
 	v.processor_.ProcessModelSlot(
@@ -1616,14 +1623,14 @@ func (v *visitor_) visitModel(
 	var primitiveDeclarations = model.GetPrimitiveDeclarations()
 	v.processor_.PreprocessPrimitiveDeclarations(
 		primitiveDeclarations,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitPrimitiveDeclarations(primitiveDeclarations)
 	v.processor_.PostprocessPrimitiveDeclarations(
 		primitiveDeclarations,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 2 between terms.
 	v.processor_.ProcessModelSlot(
@@ -1634,14 +1641,14 @@ func (v *visitor_) visitModel(
 	var interfaceDeclarations = model.GetInterfaceDeclarations()
 	v.processor_.PreprocessInterfaceDeclarations(
 		interfaceDeclarations,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitInterfaceDeclarations(interfaceDeclarations)
 	v.processor_.PostprocessInterfaceDeclarations(
 		interfaceDeclarations,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -1659,14 +1666,14 @@ func (v *visitor_) visitMultivalue(
 	var parameterList = multivalue.GetParameterList()
 	v.processor_.PreprocessParameterList(
 		parameterList,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitParameterList(parameterList)
 	v.processor_.PostprocessParameterList(
 		parameterList,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 2 between terms.
 	v.processor_.ProcessMultivalueSlot(
@@ -1691,14 +1698,14 @@ func (v *visitor_) visitPackageDeclaration(
 	var legalNotice = packageDeclaration.GetLegalNotice()
 	v.processor_.PreprocessLegalNotice(
 		legalNotice,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitLegalNotice(legalNotice)
 	v.processor_.PostprocessLegalNotice(
 		legalNotice,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 1 between terms.
 	v.processor_.ProcessPackageDeclarationSlot(
@@ -1709,14 +1716,14 @@ func (v *visitor_) visitPackageDeclaration(
 	var packageHeader = packageDeclaration.GetPackageHeader()
 	v.processor_.PreprocessPackageHeader(
 		packageHeader,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitPackageHeader(packageHeader)
 	v.processor_.PostprocessPackageHeader(
 		packageHeader,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 2 between terms.
 	v.processor_.ProcessPackageDeclarationSlot(
@@ -1727,14 +1734,14 @@ func (v *visitor_) visitPackageDeclaration(
 	var packageImports = packageDeclaration.GetPackageImports()
 	v.processor_.PreprocessPackageImports(
 		packageImports,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitPackageImports(packageImports)
 	v.processor_.PostprocessPackageImports(
 		packageImports,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -1784,14 +1791,14 @@ func (v *visitor_) visitPackageImports(
 	if uti.IsDefined(optionalImportList) {
 		v.processor_.PreprocessImportList(
 			optionalImportList,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitImportList(optionalImportList)
 		v.processor_.PostprocessImportList(
 			optionalImportList,
-			1,
-			1,
+			0,
+			0,
 		)
 	}
 	// Visit slot 3 between terms.
@@ -1818,14 +1825,14 @@ func (v *visitor_) visitParameter(
 	var abstraction = parameter.GetAbstraction()
 	v.processor_.PreprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitAbstraction(abstraction)
 	v.processor_.PostprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 2 between terms.
 	v.processor_.ProcessParameterSlot(
@@ -1866,14 +1873,14 @@ func (v *visitor_) visitPrimitiveDeclarations(
 	var typeSection = primitiveDeclarations.GetTypeSection()
 	v.processor_.PreprocessTypeSection(
 		typeSection,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitTypeSection(typeSection)
 	v.processor_.PostprocessTypeSection(
 		typeSection,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 1 between terms.
 	v.processor_.ProcessPrimitiveDeclarationsSlot(
@@ -1884,14 +1891,14 @@ func (v *visitor_) visitPrimitiveDeclarations(
 	var functionalSection = primitiveDeclarations.GetFunctionalSection()
 	v.processor_.PreprocessFunctionalSection(
 		functionalSection,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitFunctionalSection(functionalSection)
 	v.processor_.PostprocessFunctionalSection(
 		functionalSection,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -1901,14 +1908,14 @@ func (v *visitor_) visitPrincipalMethod(
 	var method = principalMethod.GetMethod()
 	v.processor_.PreprocessMethod(
 		method,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitMethod(method)
 	v.processor_.PostprocessMethod(
 		method,
-		1,
-		1,
+		0,
+		0,
 	)
 }
 
@@ -1951,38 +1958,38 @@ func (v *visitor_) visitResult(
 	case ast.NoneLike:
 		v.processor_.PreprocessNone(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitNone(actual)
 		v.processor_.PostprocessNone(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 	case ast.AbstractionLike:
 		v.processor_.PreprocessAbstraction(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitAbstraction(actual)
 		v.processor_.PostprocessAbstraction(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 	case ast.MultivalueLike:
 		v.processor_.PreprocessMultivalue(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitMultivalue(actual)
 		v.processor_.PostprocessMultivalue(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 	}
 }
@@ -2009,14 +2016,14 @@ func (v *visitor_) visitSetterMethod(
 	var parameter = setterMethod.GetParameter()
 	v.processor_.PreprocessParameter(
 		parameter,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitParameter(parameter)
 	v.processor_.PostprocessParameter(
 		parameter,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 3 between terms.
 	v.processor_.ProcessSetterMethodSlot(
@@ -2041,14 +2048,14 @@ func (v *visitor_) visitTypeDeclaration(
 	var declaration = typeDeclaration.GetDeclaration()
 	v.processor_.PreprocessDeclaration(
 		declaration,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitDeclaration(declaration)
 	v.processor_.PostprocessDeclaration(
 		declaration,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 1 between terms.
 	v.processor_.ProcessTypeDeclarationSlot(
@@ -2059,14 +2066,14 @@ func (v *visitor_) visitTypeDeclaration(
 	var abstraction = typeDeclaration.GetAbstraction()
 	v.processor_.PreprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitAbstraction(abstraction)
 	v.processor_.PostprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 2 between terms.
 	v.processor_.ProcessTypeDeclarationSlot(
@@ -2078,14 +2085,14 @@ func (v *visitor_) visitTypeDeclaration(
 	if uti.IsDefined(optionalEnumeration) {
 		v.processor_.PreprocessEnumeration(
 			optionalEnumeration,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitEnumeration(optionalEnumeration)
 		v.processor_.PostprocessEnumeration(
 			optionalEnumeration,
-			1,
-			1,
+			0,
+			0,
 		)
 	}
 }
@@ -2135,14 +2142,14 @@ func (v *visitor_) visitValue(
 	var abstraction = value.GetAbstraction()
 	v.processor_.PreprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 	v.visitAbstraction(abstraction)
 	v.processor_.PostprocessAbstraction(
 		abstraction,
-		1,
-		1,
+		0,
+		0,
 	)
 	// Visit slot 2 between terms.
 	v.processor_.ProcessValueSlot(
@@ -2167,53 +2174,65 @@ func (v *visitor_) visitWrapper(
 ) {
 	// Visit the possible wrapper rule types.
 	switch actual := wrapper.GetAny().(type) {
+	case ast.DotsLike:
+		v.processor_.PreprocessDots(
+			actual,
+			0,
+			0,
+		)
+		v.visitDots(actual)
+		v.processor_.PostprocessDots(
+			actual,
+			0,
+			0,
+		)
 	case ast.StarLike:
 		v.processor_.PreprocessStar(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitStar(actual)
 		v.processor_.PostprocessStar(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 	case ast.ArrayLike:
 		v.processor_.PreprocessArray(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitArray(actual)
 		v.processor_.PostprocessArray(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 	case ast.MapLike:
 		v.processor_.PreprocessMap(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitMap(actual)
 		v.processor_.PostprocessMap(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 	case ast.ChannelLike:
 		v.processor_.PreprocessChannel(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 		v.visitChannel(actual)
 		v.processor_.PostprocessChannel(
 			actual,
-			1,
-			1,
+			0,
+			0,
 		)
 	}
 }

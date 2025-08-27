@@ -645,6 +645,20 @@ type Methodical interface {
 		declaration ast.DeclarationLike,
 		slot_ uint,
 	)
+	PreprocessDots(
+		dots ast.DotsLike,
+		index_ uint,
+		count_ uint,
+	)
+	PostprocessDots(
+		dots ast.DotsLike,
+		index_ uint,
+		count_ uint,
+	)
+	ProcessDotsSlot(
+		dots ast.DotsLike,
+		slot_ uint,
+	)
 	PreprocessEnumeration(
 		enumeration ast.EnumerationLike,
 		index_ uint,

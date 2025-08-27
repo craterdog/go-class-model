@@ -55,10 +55,13 @@ $AdditionalConstraint: "," Constraint
 $Abstraction: Wrapper? prefix? name Arguments?
 
 $Wrapper:
+    Dots
     Star
     Array
     Map
     Channel
+
+$Dots: "..."
 
 $Star: "*"
 

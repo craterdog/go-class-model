@@ -66,6 +66,7 @@ type (
 	ConstructorMethodClassLike     = ast.ConstructorMethodClassLike
 	ConstructorSubsectionClassLike = ast.ConstructorSubsectionClassLike
 	DeclarationClassLike           = ast.DeclarationClassLike
+	DotsClassLike                  = ast.DotsClassLike
 	EnumerationClassLike           = ast.EnumerationClassLike
 	FunctionMethodClassLike        = ast.FunctionMethodClassLike
 	FunctionSubsectionClassLike    = ast.FunctionSubsectionClassLike
@@ -127,6 +128,7 @@ type (
 	ConstructorMethodLike     = ast.ConstructorMethodLike
 	ConstructorSubsectionLike = ast.ConstructorSubsectionLike
 	DeclarationLike           = ast.DeclarationLike
+	DotsLike                  = ast.DotsLike
 	EnumerationLike           = ast.EnumerationLike
 	FunctionMethodLike        = ast.FunctionMethodLike
 	FunctionSubsectionLike    = ast.FunctionSubsectionLike
@@ -582,6 +584,18 @@ func Declaration(
 		delimiter,
 		name,
 		optionalConstraints,
+	)
+}
+
+func DotsClass() DotsClassLike {
+	return ast.DotsClass()
+}
+
+func Dots(
+	delimiter string,
+) DotsLike {
+	return DotsClass().Dots(
+		delimiter,
 	)
 }
 

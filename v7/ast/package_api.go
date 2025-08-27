@@ -387,6 +387,18 @@ type DeclarationClassLike interface {
 }
 
 /*
+DotsClassLike is a class interface that declares the
+complete set of class constructors, constants and functions that must be
+supported by each concrete dots-like class.
+*/
+type DotsClassLike interface {
+	// Constructor Methods
+	Dots(
+		delimiter string,
+	) DotsLike
+}
+
+/*
 EnumerationClassLike is a class interface that declares the
 complete set of class constructors, constants and functions that must be
 supported by each concrete enumeration-like class.
@@ -1205,6 +1217,19 @@ type DeclarationLike interface {
 	GetDelimiter() string
 	GetName() string
 	GetOptionalConstraints() ConstraintsLike
+}
+
+/*
+DotsLike is an instance interface that declares the
+complete set of principal, attribute and aspect methods that must be supported
+by each instance of a concrete dots-like class.
+*/
+type DotsLike interface {
+	// Principal Methods
+	GetClass() DotsClassLike
+
+	// Attribute Methods
+	GetDelimiter() string
 }
 
 /*

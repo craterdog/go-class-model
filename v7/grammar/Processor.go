@@ -587,6 +587,26 @@ func (v *processor_) ProcessDeclarationSlot(
 ) {
 }
 
+func (v *processor_) PreprocessDots(
+	dots ast.DotsLike,
+	index_ uint,
+	count_ uint,
+) {
+}
+
+func (v *processor_) PostprocessDots(
+	dots ast.DotsLike,
+	index_ uint,
+	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessDotsSlot(
+	dots ast.DotsLike,
+	slot_ uint,
+) {
+}
+
 func (v *processor_) PreprocessEnumeration(
 	enumeration ast.EnumerationLike,
 	index_ uint,
