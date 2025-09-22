@@ -161,10 +161,10 @@ func (v *scanner_) foundToken(
 
 	// Check for partial identifier matches.
 	var token = []rune(match)
-	var length = uint(len(token))
-	var previous = token[length-1]
-	if uint(len(v.runes_)) > v.next_+length {
-		var next = v.runes_[v.next_+length]
+	var size = uti.ArraySize(token)
+	var previous = token[size-1]
+	if uti.ArraySize(v.runes_) > v.next_+size {
+		var next = v.runes_[v.next_+size]
 		if (uni.IsLetter(previous) || uni.IsNumber(previous)) &&
 			(uni.IsLetter(next) || uni.IsNumber(next) || next == '_') {
 			return false
@@ -172,7 +172,7 @@ func (v *scanner_) foundToken(
 	}
 
 	// Found the requested token type.
-	v.next_ += length
+	v.next_ += size
 	v.emitToken(tokenType)
 	var count = uint(sts.Count(match, "\n"))
 	if count > 0 {
@@ -188,10 +188,10 @@ func (v *scanner_) foundToken(
 func (v *scanner_) indexOfLastEol(
 	runes []rune,
 ) uint {
-	var length = uint(len(runes))
-	for index := length; index > 0; index-- {
+	var size = uti.ArraySize(runes)
+	for index := size; index > 0; index-- {
 		if runes[index-1] == '\n' {
-			return length - index + 1
+			return size - index + 1
 		}
 	}
 	return 0
@@ -199,7 +199,7 @@ func (v *scanner_) indexOfLastEol(
 
 func (v *scanner_) scanTokens() {
 loop:
-	for v.next_ < uint(len(v.runes_)) {
+	for v.next_ < uti.ArraySize(v.runes_) {
 		switch {
 		// Find the next token type.
 		case v.foundToken(CommentToken):

@@ -3980,7 +3980,7 @@ func (v *parser_) formatError(
 	message += "⌃\033[36m\n"
 
 	// Append the following source line for context.
-	if line < uint(len(lines)) {
+	if line < uti.ArraySize(lines) {
 		message += fmt.Sprintf("%04d: ", line+1) + string(lines[line]) + "\n"
 	}
 	message += "\033[0m\n"
