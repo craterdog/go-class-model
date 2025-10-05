@@ -72,7 +72,7 @@ $Channel: "chan"
 $Map: "map" "[" name "]"
 
 $Type:
-	Functional
+    Functional
     Named
 
 $Functional: "func" "(" ParameterList? ")" Result?
