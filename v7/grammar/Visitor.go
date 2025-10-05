@@ -110,28 +110,18 @@ func (v *visitor_) visitAbstraction(
 		2,
 	)
 
-	var name = abstraction.GetName()
-	v.processor_.ProcessName(name)
-	// Visit slot 3 between terms.
-	v.processor_.ProcessAbstractionSlot(
-		abstraction,
-		3,
+	var type_ = abstraction.GetType()
+	v.processor_.PreprocessType(
+		type_,
+		0,
+		0,
 	)
-
-	var optionalArguments = abstraction.GetOptionalArguments()
-	if uti.IsDefined(optionalArguments) {
-		v.processor_.PreprocessArguments(
-			optionalArguments,
-			0,
-			0,
-		)
-		v.visitArguments(optionalArguments)
-		v.processor_.PostprocessArguments(
-			optionalArguments,
-			0,
-			0,
-		)
-	}
+	v.visitType(type_)
+	v.processor_.PostprocessType(
+		type_,
+		0,
+		0,
+	)
 }
 
 func (v *visitor_) visitAdditionalArgument(
@@ -1111,6 +1101,69 @@ func (v *visitor_) visitFunctionSubsection(
 	}
 }
 
+func (v *visitor_) visitFunctional(
+	functional ast.FunctionalLike,
+) {
+	var delimiter1 = functional.GetDelimiter1()
+	v.processor_.ProcessDelimiter(delimiter1)
+	// Visit slot 1 between terms.
+	v.processor_.ProcessFunctionalSlot(
+		functional,
+		1,
+	)
+
+	var delimiter2 = functional.GetDelimiter2()
+	v.processor_.ProcessDelimiter(delimiter2)
+	// Visit slot 2 between terms.
+	v.processor_.ProcessFunctionalSlot(
+		functional,
+		2,
+	)
+
+	var optionalParameterList = functional.GetOptionalParameterList()
+	if uti.IsDefined(optionalParameterList) {
+		v.processor_.PreprocessParameterList(
+			optionalParameterList,
+			0,
+			0,
+		)
+		v.visitParameterList(optionalParameterList)
+		v.processor_.PostprocessParameterList(
+			optionalParameterList,
+			0,
+			0,
+		)
+	}
+	// Visit slot 3 between terms.
+	v.processor_.ProcessFunctionalSlot(
+		functional,
+		3,
+	)
+
+	var delimiter3 = functional.GetDelimiter3()
+	v.processor_.ProcessDelimiter(delimiter3)
+	// Visit slot 4 between terms.
+	v.processor_.ProcessFunctionalSlot(
+		functional,
+		4,
+	)
+
+	var optionalResult = functional.GetOptionalResult()
+	if uti.IsDefined(optionalResult) {
+		v.processor_.PreprocessResult(
+			optionalResult,
+			0,
+			0,
+		)
+		v.visitResult(optionalResult)
+		v.processor_.PostprocessResult(
+			optionalResult,
+			0,
+			0,
+		)
+	}
+}
+
 func (v *visitor_) visitFunctionalDeclaration(
 	functionalDeclaration ast.FunctionalDeclarationLike,
 ) {
@@ -1132,59 +1185,15 @@ func (v *visitor_) visitFunctionalDeclaration(
 		1,
 	)
 
-	var delimiter1 = functionalDeclaration.GetDelimiter1()
-	v.processor_.ProcessDelimiter(delimiter1)
-	// Visit slot 2 between terms.
-	v.processor_.ProcessFunctionalDeclarationSlot(
-		functionalDeclaration,
-		2,
-	)
-
-	var delimiter2 = functionalDeclaration.GetDelimiter2()
-	v.processor_.ProcessDelimiter(delimiter2)
-	// Visit slot 3 between terms.
-	v.processor_.ProcessFunctionalDeclarationSlot(
-		functionalDeclaration,
-		3,
-	)
-
-	var optionalParameterList = functionalDeclaration.GetOptionalParameterList()
-	if uti.IsDefined(optionalParameterList) {
-		v.processor_.PreprocessParameterList(
-			optionalParameterList,
-			0,
-			0,
-		)
-		v.visitParameterList(optionalParameterList)
-		v.processor_.PostprocessParameterList(
-			optionalParameterList,
-			0,
-			0,
-		)
-	}
-	// Visit slot 4 between terms.
-	v.processor_.ProcessFunctionalDeclarationSlot(
-		functionalDeclaration,
-		4,
-	)
-
-	var delimiter3 = functionalDeclaration.GetDelimiter3()
-	v.processor_.ProcessDelimiter(delimiter3)
-	// Visit slot 5 between terms.
-	v.processor_.ProcessFunctionalDeclarationSlot(
-		functionalDeclaration,
-		5,
-	)
-
-	var result = functionalDeclaration.GetResult()
-	v.processor_.PreprocessResult(
-		result,
+	var functional = functionalDeclaration.GetFunctional()
+	v.processor_.PreprocessFunctional(
+		functional,
 		0,
 		0,
 	)
-	v.visitResult(result)
-	v.processor_.PostprocessResult(
-		result,
+	v.visitFunctional(functional)
+	v.processor_.PostprocessFunctional(
+		functional,
 		0,
 		0,
 	)
@@ -1685,6 +1694,33 @@ func (v *visitor_) visitMultivalue(
 	v.processor_.ProcessDelimiter(delimiter2)
 }
 
+func (v *visitor_) visitNamed(
+	named ast.NamedLike,
+) {
+	var name = named.GetName()
+	v.processor_.ProcessName(name)
+	// Visit slot 1 between terms.
+	v.processor_.ProcessNamedSlot(
+		named,
+		1,
+	)
+
+	var optionalArguments = named.GetOptionalArguments()
+	if uti.IsDefined(optionalArguments) {
+		v.processor_.PreprocessArguments(
+			optionalArguments,
+			0,
+			0,
+		)
+		v.visitArguments(optionalArguments)
+		v.processor_.PostprocessArguments(
+			optionalArguments,
+			0,
+			0,
+		)
+	}
+}
+
 func (v *visitor_) visitNone(
 	none ast.NoneLike,
 ) {
@@ -2042,6 +2078,38 @@ func (v *visitor_) visitStar(
 	v.processor_.ProcessDelimiter(delimiter)
 }
 
+func (v *visitor_) visitType(
+	type_ ast.TypeLike,
+) {
+	// Visit the possible type rule types.
+	switch actual := type_.GetAny().(type) {
+	case ast.FunctionalLike:
+		v.processor_.PreprocessFunctional(
+			actual,
+			0,
+			0,
+		)
+		v.visitFunctional(actual)
+		v.processor_.PostprocessFunctional(
+			actual,
+			0,
+			0,
+		)
+	case ast.NamedLike:
+		v.processor_.PreprocessNamed(
+			actual,
+			0,
+			0,
+		)
+		v.visitNamed(actual)
+		v.processor_.PostprocessNamed(
+			actual,
+			0,
+			0,
+		)
+	}
+}
+
 func (v *visitor_) visitTypeDeclaration(
 	typeDeclaration ast.TypeDeclarationLike,
 ) {
@@ -2210,18 +2278,6 @@ func (v *visitor_) visitWrapper(
 			0,
 			0,
 		)
-	case ast.MapLike:
-		v.processor_.PreprocessMap(
-			actual,
-			0,
-			0,
-		)
-		v.visitMap(actual)
-		v.processor_.PostprocessMap(
-			actual,
-			0,
-			0,
-		)
 	case ast.ChannelLike:
 		v.processor_.PreprocessChannel(
 			actual,
@@ -2230,6 +2286,18 @@ func (v *visitor_) visitWrapper(
 		)
 		v.visitChannel(actual)
 		v.processor_.PostprocessChannel(
+			actual,
+			0,
+			0,
+		)
+	case ast.MapLike:
+		v.processor_.PreprocessMap(
+			actual,
+			0,
+			0,
+		)
+		v.visitMap(actual)
+		v.processor_.PostprocessMap(
 			actual,
 			0,
 			0,

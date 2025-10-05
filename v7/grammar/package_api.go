@@ -701,6 +701,20 @@ type Methodical interface {
 		functionSubsection ast.FunctionSubsectionLike,
 		slot_ uint,
 	)
+	PreprocessFunctional(
+		functional ast.FunctionalLike,
+		index_ uint,
+		count_ uint,
+	)
+	PostprocessFunctional(
+		functional ast.FunctionalLike,
+		index_ uint,
+		count_ uint,
+	)
+	ProcessFunctionalSlot(
+		functional ast.FunctionalLike,
+		slot_ uint,
+	)
 	PreprocessFunctionalDeclaration(
 		functionalDeclaration ast.FunctionalDeclarationLike,
 		index_ uint,
@@ -897,6 +911,20 @@ type Methodical interface {
 		multivalue ast.MultivalueLike,
 		slot_ uint,
 	)
+	PreprocessNamed(
+		named ast.NamedLike,
+		index_ uint,
+		count_ uint,
+	)
+	PostprocessNamed(
+		named ast.NamedLike,
+		index_ uint,
+		count_ uint,
+	)
+	ProcessNamedSlot(
+		named ast.NamedLike,
+		slot_ uint,
+	)
 	PreprocessNone(
 		none ast.NoneLike,
 		index_ uint,
@@ -1063,6 +1091,20 @@ type Methodical interface {
 	)
 	ProcessStarSlot(
 		star ast.StarLike,
+		slot_ uint,
+	)
+	PreprocessType(
+		type_ ast.TypeLike,
+		index_ uint,
+		count_ uint,
+	)
+	PostprocessType(
+		type_ ast.TypeLike,
+		index_ uint,
+		count_ uint,
+	)
+	ProcessTypeSlot(
+		type_ ast.TypeLike,
 		slot_ uint,
 	)
 	PreprocessTypeDeclaration(

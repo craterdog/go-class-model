@@ -104,30 +104,21 @@ func (v *parser_) parseAbstraction() (
 		optionalPrefix = "" // Reset this to undefined.
 	}
 
-	// Attempt to parse a single name token.
-	var name string
-	name, token, ok = v.parseToken(NameToken)
-	if !ok {
-		if uti.IsDefined(tokens) {
-			// This is not a single name token.
-			v.putBack(tokens)
-			return
-		} else {
-			// Found a syntax error.
-			var message = v.formatError("$Abstraction", token)
-			panic(message)
-		}
-	}
-	if uti.IsDefined(tokens) {
-		tokens.AppendValue(token)
-	}
-
-	// Attempt to parse an optional Arguments rule.
-	var optionalArguments ast.ArgumentsLike
-	optionalArguments, _, ok = v.parseArguments()
-	if ok {
+	// Attempt to parse a single Type rule.
+	var type_ ast.TypeLike
+	type_, token, ok = v.parseType()
+	switch {
+	case ok:
 		// No additional put backs allowed at this point.
 		tokens = nil
+	case uti.IsDefined(tokens):
+		// This is not a single Type rule.
+		v.putBack(tokens)
+		return
+	default:
+		// Found a syntax error.
+		var message = v.formatError("$Abstraction", token)
+		panic(message)
 	}
 
 	// Found a single Abstraction rule.
@@ -136,8 +127,7 @@ func (v *parser_) parseAbstraction() (
 	abstraction = ast.AbstractionClass().Abstraction(
 		optionalWrapper,
 		optionalPrefix,
-		name,
-		optionalArguments,
+		type_,
 	)
 	return
 }
@@ -1952,6 +1942,96 @@ functionMethodsLoop:
 	return
 }
 
+func (v *parser_) parseFunctional() (
+	functional ast.FunctionalLike,
+	token TokenLike,
+	ok bool,
+) {
+	var tokens = fra.List[TokenLike]()
+
+	// Attempt to parse a single "func" literal.
+	var delimiter1 string
+	delimiter1, token, ok = v.parseDelimiter("func")
+	if !ok {
+		if uti.IsDefined(tokens) {
+			// This is not a single Functional rule.
+			v.putBack(tokens)
+			return
+		} else {
+			// Found a syntax error.
+			var message = v.formatError("$Functional", token)
+			panic(message)
+		}
+	}
+	if uti.IsDefined(tokens) {
+		tokens.AppendValue(token)
+	}
+
+	// Attempt to parse a single "(" literal.
+	var delimiter2 string
+	delimiter2, token, ok = v.parseDelimiter("(")
+	if !ok {
+		if uti.IsDefined(tokens) {
+			// This is not a single Functional rule.
+			v.putBack(tokens)
+			return
+		} else {
+			// Found a syntax error.
+			var message = v.formatError("$Functional", token)
+			panic(message)
+		}
+	}
+	if uti.IsDefined(tokens) {
+		tokens.AppendValue(token)
+	}
+
+	// Attempt to parse an optional ParameterList rule.
+	var optionalParameterList ast.ParameterListLike
+	optionalParameterList, _, ok = v.parseParameterList()
+	if ok {
+		// No additional put backs allowed at this point.
+		tokens = nil
+	}
+
+	// Attempt to parse a single ")" literal.
+	var delimiter3 string
+	delimiter3, token, ok = v.parseDelimiter(")")
+	if !ok {
+		if uti.IsDefined(tokens) {
+			// This is not a single Functional rule.
+			v.putBack(tokens)
+			return
+		} else {
+			// Found a syntax error.
+			var message = v.formatError("$Functional", token)
+			panic(message)
+		}
+	}
+	if uti.IsDefined(tokens) {
+		tokens.AppendValue(token)
+	}
+
+	// Attempt to parse an optional Result rule.
+	var optionalResult ast.ResultLike
+	optionalResult, _, ok = v.parseResult()
+	if ok {
+		// No additional put backs allowed at this point.
+		tokens = nil
+	}
+
+	// Found a single Functional rule.
+	ok = true
+	v.remove(tokens)
+	functional = ast.FunctionalClass().Functional(
+		delimiter1,
+		delimiter2,
+		optionalParameterList,
+		delimiter3,
+		optionalResult,
+	)
+	return
+}
+
 func (v *parser_) parseFunctionalDeclaration() (
 	functionalDeclaration ast.FunctionalDeclarationLike,
 	token TokenLike,
@@ -1976,77 +2056,15 @@ func (v *parser_) parseFunctionalDeclaration() (
 		panic(message)
 	}
 
-	// Attempt to parse a single "func" literal.
-	var delimiter1 string
-	delimiter1, token, ok = v.parseDelimiter("func")
-	if !ok {
-		if uti.IsDefined(tokens) {
-			// This is not a single FunctionalDeclaration rule.
-			v.putBack(tokens)
-			return
-		} else {
-			// Found a syntax error.
-			var message = v.formatError("$FunctionalDeclaration", token)
-			panic(message)
-		}
-	}
-	if uti.IsDefined(tokens) {
-		tokens.AppendValue(token)
-	}
-
-	// Attempt to parse a single "(" literal.
-	var delimiter2 string
-	delimiter2, token, ok = v.parseDelimiter("(")
-	if !ok {
-		if uti.IsDefined(tokens) {
-			// This is not a single FunctionalDeclaration rule.
-			v.putBack(tokens)
-			return
-		} else {
-			// Found a syntax error.
-			var message = v.formatError("$FunctionalDeclaration", token)
-			panic(message)
-		}
-	}
-	if uti.IsDefined(tokens) {
-		tokens.AppendValue(token)
-	}
-
-	// Attempt to parse an optional ParameterList rule.
-	var optionalParameterList ast.ParameterListLike
-	optionalParameterList, _, ok = v.parseParameterList()
-	if ok {
-		// No additional put backs allowed at this point.
-		tokens = nil
-	}
-
-	// Attempt to parse a single ")" literal.
-	var delimiter3 string
-	delimiter3, token, ok = v.parseDelimiter(")")
-	if !ok {
-		if uti.IsDefined(tokens) {
-			// This is not a single FunctionalDeclaration rule.
-			v.putBack(tokens)
-			return
-		} else {
-			// Found a syntax error.
-			var message = v.formatError("$FunctionalDeclaration", token)
-			panic(message)
-		}
-	}
-	if uti.IsDefined(tokens) {
-		tokens.AppendValue(token)
-	}
-
-	// Attempt to parse a single Result rule.
-	var result ast.ResultLike
-	result, token, ok = v.parseResult()
+	// Attempt to parse a single Functional rule.
+	var functional ast.FunctionalLike
+	functional, token, ok = v.parseFunctional()
 	switch {
 	case ok:
 		// No additional put backs allowed at this point.
 		tokens = nil
 	case uti.IsDefined(tokens):
-		// This is not a single Result rule.
+		// This is not a single Functional rule.
 		v.putBack(tokens)
 		return
 	default:
@@ -2060,11 +2078,7 @@ func (v *parser_) parseFunctionalDeclaration() (
 	v.remove(tokens)
 	functionalDeclaration = ast.FunctionalDeclarationClass().FunctionalDeclaration(
 		declaration,
-		delimiter1,
-		delimiter2,
-		optionalParameterList,
-		delimiter3,
-		result,
+		functional,
 	)
 	return
 }
@@ -2964,6 +2978,49 @@ func (v *parser_) parseMultivalue() (
 	return
 }
 
+func (v *parser_) parseNamed() (
+	named ast.NamedLike,
+	token TokenLike,
+	ok bool,
+) {
+	var tokens = fra.List[TokenLike]()
+
+	// Attempt to parse a single name token.
+	var name string
+	name, token, ok = v.parseToken(NameToken)
+	if !ok {
+		if uti.IsDefined(tokens) {
+			// This is not a single name token.
+			v.putBack(tokens)
+			return
+		} else {
+			// Found a syntax error.
+			var message = v.formatError("$Named", token)
+			panic(message)
+		}
+	}
+	if uti.IsDefined(tokens) {
+		tokens.AppendValue(token)
+	}
+
+	// Attempt to parse an optional Arguments rule.
+	var optionalArguments ast.ArgumentsLike
+	optionalArguments, _, ok = v.parseArguments()
+	if ok {
+		// No additional put backs allowed at this point.
+		tokens = nil
+	}
+
+	// Found a single Named rule.
+	ok = true
+	v.remove(tokens)
+	named = ast.NamedClass().Named(
+		name,
+		optionalArguments,
+	)
+	return
+}
+
 func (v *parser_) parseNone() (
 	none ast.NoneLike,
 	token TokenLike,
@@ -3630,6 +3687,33 @@ func (v *parser_) parseStar() (
 	return
 }
 
+func (v *parser_) parseType() (
+	type_ ast.TypeLike,
+	token TokenLike,
+	ok bool,
+) {
+	// Attempt to parse a single Functional Type.
+	var functional ast.FunctionalLike
+	functional, token, ok = v.parseFunctional()
+	if ok {
+		// Found a single Functional Type.
+		type_ = ast.TypeClass().Type(functional)
+		return
+	}
+
+	// Attempt to parse a single Named Type.
+	var named ast.NamedLike
+	named, token, ok = v.parseNamed()
+	if ok {
+		// Found a single Named Type.
+		type_ = ast.TypeClass().Type(named)
+		return
+	}
+
+	// This is not a single Type rule.
+	return
+}
+
 func (v *parser_) parseTypeDeclaration() (
 	typeDeclaration ast.TypeDeclarationLike,
 	token TokenLike,
@@ -3873,21 +3957,21 @@ func (v *parser_) parseWrapper() (
 		return
 	}
 
-	// Attempt to parse a single Map Wrapper.
-	var map_ ast.MapLike
-	map_, token, ok = v.parseMap()
-	if ok {
-		// Found a single Map Wrapper.
-		wrapper = ast.WrapperClass().Wrapper(map_)
-		return
-	}
-
 	// Attempt to parse a single Channel Wrapper.
 	var channel ast.ChannelLike
 	channel, token, ok = v.parseChannel()
 	if ok {
 		// Found a single Channel Wrapper.
 		wrapper = ast.WrapperClass().Wrapper(channel)
+		return
+	}
+
+	// Attempt to parse a single Map Wrapper.
+	var map_ ast.MapLike
+	map_, token, ok = v.parseMap()
+	if ok {
+		// Found a single Map Wrapper.
+		wrapper = ast.WrapperClass().Wrapper(map_)
 		return
 	}
 
@@ -4085,18 +4169,23 @@ var parserClassReference_ = &parserClass_{
 			"$Constraints":           `"[" Constraint AdditionalConstraint* "]"`,
 			"$Constraint":            `name Abstraction`,
 			"$AdditionalConstraint":  `"," Constraint`,
-			"$Abstraction":           `Wrapper? prefix? name Arguments?`,
+			"$Abstraction":           `Wrapper? prefix? Type`,
 			"$Wrapper": `
     Dots
     Star
     Array
-    Map
-    Channel`,
-			"$Dots":                  `"..."`,
-			"$Star":                  `"*"`,
-			"$Array":                 `"[" "]"`,
-			"$Map":                   `"map" "[" name "]"`,
-			"$Channel":               `"chan"`,
+    Channel
+    Map`,
+			"$Dots":    `"..."`,
+			"$Star":    `"*"`,
+			"$Array":   `"[" "]"`,
+			"$Channel": `"chan"`,
+			"$Map":     `"map" "[" name "]"`,
+			"$Type": `
+    Functional
+    Named`,
+			"$Functional":            `"func" "(" ParameterList? ")" Result?`,
+			"$Named":                 `name Arguments?`,
 			"$Arguments":             `"[" Argument AdditionalArgument* "]"`,
 			"$Argument":              `Abstraction`,
 			"$AdditionalArgument":    `"," Argument`,
@@ -4104,14 +4193,14 @@ var parserClassReference_ = &parserClass_{
 			"$Value":                 `name Abstraction "=" "iota"`,
 			"$AdditionalValue":       `name`,
 			"$FunctionalSection":     `"// FUNCTIONAL DECLARATIONS" FunctionalDeclaration*`,
-			"$FunctionalDeclaration": `Declaration "func" "(" ParameterList? ")" Result`,
+			"$FunctionalDeclaration": `Declaration Functional`,
 			"$ParameterList":         `Parameter+`,
 			"$Parameter":             `name Abstraction ","`,
 			"$Result": `
     None
     Abstraction
     Multivalue`,
-			"$None":                  `newline`,
+			"$None":                  `newline  ! A hack to work-around a flaw in the Go language syntax.`,
 			"$Multivalue":            `"(" ParameterList ")"`,
 			"$ClassSection":          `"// CLASS DECLARATIONS" ClassDeclaration+`,
 			"$ClassDeclaration":      `Declaration "interface" "{" ClassMethods "}"`,

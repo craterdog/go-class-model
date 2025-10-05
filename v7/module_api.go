@@ -70,6 +70,7 @@ type (
 	EnumerationClassLike           = ast.EnumerationClassLike
 	FunctionMethodClassLike        = ast.FunctionMethodClassLike
 	FunctionSubsectionClassLike    = ast.FunctionSubsectionClassLike
+	FunctionalClassLike            = ast.FunctionalClassLike
 	FunctionalDeclarationClassLike = ast.FunctionalDeclarationClassLike
 	FunctionalSectionClassLike     = ast.FunctionalSectionClassLike
 	GetterMethodClassLike          = ast.GetterMethodClassLike
@@ -84,6 +85,7 @@ type (
 	MethodClassLike                = ast.MethodClassLike
 	ModelClassLike                 = ast.ModelClassLike
 	MultivalueClassLike            = ast.MultivalueClassLike
+	NamedClassLike                 = ast.NamedClassLike
 	NoneClassLike                  = ast.NoneClassLike
 	PackageDeclarationClassLike    = ast.PackageDeclarationClassLike
 	PackageHeaderClassLike         = ast.PackageHeaderClassLike
@@ -96,6 +98,7 @@ type (
 	ResultClassLike                = ast.ResultClassLike
 	SetterMethodClassLike          = ast.SetterMethodClassLike
 	StarClassLike                  = ast.StarClassLike
+	TypeClassLike                  = ast.TypeClassLike
 	TypeDeclarationClassLike       = ast.TypeDeclarationClassLike
 	TypeSectionClassLike           = ast.TypeSectionClassLike
 	ValueClassLike                 = ast.ValueClassLike
@@ -132,6 +135,7 @@ type (
 	EnumerationLike           = ast.EnumerationLike
 	FunctionMethodLike        = ast.FunctionMethodLike
 	FunctionSubsectionLike    = ast.FunctionSubsectionLike
+	FunctionalLike            = ast.FunctionalLike
 	FunctionalDeclarationLike = ast.FunctionalDeclarationLike
 	FunctionalSectionLike     = ast.FunctionalSectionLike
 	GetterMethodLike          = ast.GetterMethodLike
@@ -146,6 +150,7 @@ type (
 	MethodLike                = ast.MethodLike
 	ModelLike                 = ast.ModelLike
 	MultivalueLike            = ast.MultivalueLike
+	NamedLike                 = ast.NamedLike
 	NoneLike                  = ast.NoneLike
 	PackageDeclarationLike    = ast.PackageDeclarationLike
 	PackageHeaderLike         = ast.PackageHeaderLike
@@ -158,6 +163,7 @@ type (
 	ResultLike                = ast.ResultLike
 	SetterMethodLike          = ast.SetterMethodLike
 	StarLike                  = ast.StarLike
+	TypeLike                  = ast.TypeLike
 	TypeDeclarationLike       = ast.TypeDeclarationLike
 	TypeSectionLike           = ast.TypeSectionLike
 	ValueLike                 = ast.ValueLike
@@ -216,14 +222,12 @@ func AbstractionClass() AbstractionClassLike {
 func Abstraction(
 	optionalWrapper ast.WrapperLike,
 	optionalPrefix string,
-	name string,
-	optionalArguments ast.ArgumentsLike,
+	type_ ast.TypeLike,
 ) AbstractionLike {
 	return AbstractionClass().Abstraction(
 		optionalWrapper,
 		optionalPrefix,
-		name,
-		optionalArguments,
+		type_,
 	)
 }
 
@@ -653,25 +657,37 @@ func FunctionSubsection(
 	)
 }
 
+func FunctionalClass() FunctionalClassLike {
+	return ast.FunctionalClass()
+}
+
+func Functional(
+	delimiter1 string,
+	delimiter2 string,
+	optionalParameterList ast.ParameterListLike,
+	delimiter3 string,
+	optionalResult ast.ResultLike,
+) FunctionalLike {
+	return FunctionalClass().Functional(
+		delimiter1,
+		delimiter2,
+		optionalParameterList,
+		delimiter3,
+		optionalResult,
+	)
+}
+
 func FunctionalDeclarationClass() FunctionalDeclarationClassLike {
 	return ast.FunctionalDeclarationClass()
 }
 
 func FunctionalDeclaration(
 	declaration ast.DeclarationLike,
-	delimiter1 string,
-	delimiter2 string,
-	optionalParameterList ast.ParameterListLike,
-	delimiter3 string,
-	result ast.ResultLike,
+	functional ast.FunctionalLike,
 ) FunctionalDeclarationLike {
 	return FunctionalDeclarationClass().FunctionalDeclaration(
 		declaration,
-		delimiter1,
-		delimiter2,
-		optionalParameterList,
-		delimiter3,
-		result,
+		functional,
 	)
 }
 
@@ -881,6 +897,20 @@ func Multivalue(
 	)
 }
 
+func NamedClass() NamedClassLike {
+	return ast.NamedClass()
+}
+
+func Named(
+	name string,
+	optionalArguments ast.ArgumentsLike,
+) NamedLike {
+	return NamedClass().Named(
+		name,
+		optionalArguments,
+	)
+}
+
 func NoneClass() NoneClassLike {
 	return ast.NoneClass()
 }
@@ -1050,6 +1080,18 @@ func Star(
 ) StarLike {
 	return StarClass().Star(
 		delimiter,
+	)
+}
+
+func TypeClass() TypeClassLike {
+	return ast.TypeClass()
+}
+
+func Type(
+	any_ any,
+) TypeLike {
+	return TypeClass().Type(
+		any_,
 	)
 }
 

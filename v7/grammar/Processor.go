@@ -667,6 +667,26 @@ func (v *processor_) ProcessFunctionSubsectionSlot(
 ) {
 }
 
+func (v *processor_) PreprocessFunctional(
+	functional ast.FunctionalLike,
+	index_ uint,
+	count_ uint,
+) {
+}
+
+func (v *processor_) PostprocessFunctional(
+	functional ast.FunctionalLike,
+	index_ uint,
+	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessFunctionalSlot(
+	functional ast.FunctionalLike,
+	slot_ uint,
+) {
+}
+
 func (v *processor_) PreprocessFunctionalDeclaration(
 	functionalDeclaration ast.FunctionalDeclarationLike,
 	index_ uint,
@@ -947,6 +967,26 @@ func (v *processor_) ProcessMultivalueSlot(
 ) {
 }
 
+func (v *processor_) PreprocessNamed(
+	named ast.NamedLike,
+	index_ uint,
+	count_ uint,
+) {
+}
+
+func (v *processor_) PostprocessNamed(
+	named ast.NamedLike,
+	index_ uint,
+	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessNamedSlot(
+	named ast.NamedLike,
+	slot_ uint,
+) {
+}
+
 func (v *processor_) PreprocessNone(
 	none ast.NoneLike,
 	index_ uint,
@@ -1183,6 +1223,26 @@ func (v *processor_) PostprocessStar(
 
 func (v *processor_) ProcessStarSlot(
 	star ast.StarLike,
+	slot_ uint,
+) {
+}
+
+func (v *processor_) PreprocessType(
+	type_ ast.TypeLike,
+	index_ uint,
+	count_ uint,
+) {
+}
+
+func (v *processor_) PostprocessType(
+	type_ ast.TypeLike,
+	index_ uint,
+	count_ uint,
+) {
+}
+
+func (v *processor_) ProcessTypeSlot(
+	type_ ast.TypeLike,
 	slot_ uint,
 ) {
 }

@@ -153,24 +153,6 @@ func (v *validator_) PreprocessClassSection(
 	)
 }
 
-func (v *validator_) PreprocessFunctionalDeclaration(
-	functionalDeclaration ast.FunctionalDeclarationLike,
-	index_ uint,
-	count_ uint,
-) {
-	var result = functionalDeclaration.GetResult()
-	switch result.GetAny().(type) {
-	case ast.NoneLike:
-		var declaration = functionalDeclaration.GetDeclaration()
-		var functionName = declaration.GetName()
-		var message = fmt.Sprintf(
-			"A functional must include a result type for the function: %s",
-			functionName,
-		)
-		panic(message)
-	}
-}
-
 func (v *validator_) PreprocessFunctionalSection(
 	functionalSection ast.FunctionalSectionLike,
 	index_ uint,

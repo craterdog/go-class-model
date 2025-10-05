@@ -38,18 +38,16 @@ func AbstractionClass() AbstractionClassLike {
 func (c *abstractionClass_) Abstraction(
 	optionalWrapper WrapperLike,
 	optionalPrefix string,
-	name string,
-	optionalArguments ArgumentsLike,
+	type_ TypeLike,
 ) AbstractionLike {
-	if uti.IsUndefined(name) {
-		panic("The \"name\" attribute is required by this class.")
+	if uti.IsUndefined(type_) {
+		panic("The \"type\" attribute is required by this class.")
 	}
 	var instance = &abstraction_{
 		// Initialize the instance attributes.
-		optionalWrapper_:   optionalWrapper,
-		optionalPrefix_:    optionalPrefix,
-		name_:              name,
-		optionalArguments_: optionalArguments,
+		optionalWrapper_: optionalWrapper,
+		optionalPrefix_:  optionalPrefix,
+		type_:            type_,
 	}
 	return instance
 }
@@ -72,12 +70,8 @@ func (v *abstraction_) GetOptionalPrefix() string {
 	return v.optionalPrefix_
 }
 
-func (v *abstraction_) GetName() string {
-	return v.name_
-}
-
-func (v *abstraction_) GetOptionalArguments() ArgumentsLike {
-	return v.optionalArguments_
+func (v *abstraction_) GetType() TypeLike {
+	return v.type_
 }
 
 // PROTECTED INTERFACE
@@ -86,10 +80,9 @@ func (v *abstraction_) GetOptionalArguments() ArgumentsLike {
 
 type abstraction_ struct {
 	// Declare the instance attributes.
-	optionalWrapper_   WrapperLike
-	optionalPrefix_    string
-	name_              string
-	optionalArguments_ ArgumentsLike
+	optionalWrapper_ WrapperLike
+	optionalPrefix_  string
+	type_            TypeLike
 }
 
 // Class Structure

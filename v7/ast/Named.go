@@ -29,26 +29,23 @@ import (
 
 // Access Function
 
-func FunctionalDeclarationClass() FunctionalDeclarationClassLike {
-	return functionalDeclarationClass()
+func NamedClass() NamedClassLike {
+	return namedClass()
 }
 
 // Constructor Methods
 
-func (c *functionalDeclarationClass_) FunctionalDeclaration(
-	declaration DeclarationLike,
-	functional FunctionalLike,
-) FunctionalDeclarationLike {
-	if uti.IsUndefined(declaration) {
-		panic("The \"declaration\" attribute is required by this class.")
+func (c *namedClass_) Named(
+	name string,
+	optionalArguments ArgumentsLike,
+) NamedLike {
+	if uti.IsUndefined(name) {
+		panic("The \"name\" attribute is required by this class.")
 	}
-	if uti.IsUndefined(functional) {
-		panic("The \"functional\" attribute is required by this class.")
-	}
-	var instance = &functionalDeclaration_{
+	var instance = &named_{
 		// Initialize the instance attributes.
-		declaration_: declaration,
-		functional_:  functional,
+		name_:              name,
+		optionalArguments_: optionalArguments,
 	}
 	return instance
 }
@@ -57,42 +54,42 @@ func (c *functionalDeclarationClass_) FunctionalDeclaration(
 
 // Principal Methods
 
-func (v *functionalDeclaration_) GetClass() FunctionalDeclarationClassLike {
-	return functionalDeclarationClass()
+func (v *named_) GetClass() NamedClassLike {
+	return namedClass()
 }
 
 // Attribute Methods
 
-func (v *functionalDeclaration_) GetDeclaration() DeclarationLike {
-	return v.declaration_
+func (v *named_) GetName() string {
+	return v.name_
 }
 
-func (v *functionalDeclaration_) GetFunctional() FunctionalLike {
-	return v.functional_
+func (v *named_) GetOptionalArguments() ArgumentsLike {
+	return v.optionalArguments_
 }
 
 // PROTECTED INTERFACE
 
 // Instance Structure
 
-type functionalDeclaration_ struct {
+type named_ struct {
 	// Declare the instance attributes.
-	declaration_ DeclarationLike
-	functional_  FunctionalLike
+	name_              string
+	optionalArguments_ ArgumentsLike
 }
 
 // Class Structure
 
-type functionalDeclarationClass_ struct {
+type namedClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func functionalDeclarationClass() *functionalDeclarationClass_ {
-	return functionalDeclarationClassReference_
+func namedClass() *namedClass_ {
+	return namedClassReference_
 }
 
-var functionalDeclarationClassReference_ = &functionalDeclarationClass_{
+var namedClassReference_ = &namedClass_{
 	// Initialize the class constants.
 }

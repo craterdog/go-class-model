@@ -429,6 +429,17 @@ type Sequential[V any] interface {
 }
 
 /*
+Synchronized is an aspect interface that declares a set of method signatures
+that must be supported by each instance of a synchronized concrete class.
+*/
+type Synchronized interface {
+	Go(
+		f func(),
+	)
+	Wait()
+}
+
+/*
 Updatable[V any] is an aspect interface that declares a set of method
 signatures that must be supported by each instance of an updatable concrete
 class.  It uses the same indexing scheme as the Accessible[V any] interface.

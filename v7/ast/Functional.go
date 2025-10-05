@@ -29,26 +29,35 @@ import (
 
 // Access Function
 
-func FunctionalDeclarationClass() FunctionalDeclarationClassLike {
-	return functionalDeclarationClass()
+func FunctionalClass() FunctionalClassLike {
+	return functionalClass()
 }
 
 // Constructor Methods
 
-func (c *functionalDeclarationClass_) FunctionalDeclaration(
-	declaration DeclarationLike,
-	functional FunctionalLike,
-) FunctionalDeclarationLike {
-	if uti.IsUndefined(declaration) {
-		panic("The \"declaration\" attribute is required by this class.")
+func (c *functionalClass_) Functional(
+	delimiter1 string,
+	delimiter2 string,
+	optionalParameterList ParameterListLike,
+	delimiter3 string,
+	optionalResult ResultLike,
+) FunctionalLike {
+	if uti.IsUndefined(delimiter1) {
+		panic("The \"delimiter1\" attribute is required by this class.")
 	}
-	if uti.IsUndefined(functional) {
-		panic("The \"functional\" attribute is required by this class.")
+	if uti.IsUndefined(delimiter2) {
+		panic("The \"delimiter2\" attribute is required by this class.")
 	}
-	var instance = &functionalDeclaration_{
+	if uti.IsUndefined(delimiter3) {
+		panic("The \"delimiter3\" attribute is required by this class.")
+	}
+	var instance = &functional_{
 		// Initialize the instance attributes.
-		declaration_: declaration,
-		functional_:  functional,
+		delimiter1_:            delimiter1,
+		delimiter2_:            delimiter2,
+		optionalParameterList_: optionalParameterList,
+		delimiter3_:            delimiter3,
+		optionalResult_:        optionalResult,
 	}
 	return instance
 }
@@ -57,42 +66,57 @@ func (c *functionalDeclarationClass_) FunctionalDeclaration(
 
 // Principal Methods
 
-func (v *functionalDeclaration_) GetClass() FunctionalDeclarationClassLike {
-	return functionalDeclarationClass()
+func (v *functional_) GetClass() FunctionalClassLike {
+	return functionalClass()
 }
 
 // Attribute Methods
 
-func (v *functionalDeclaration_) GetDeclaration() DeclarationLike {
-	return v.declaration_
+func (v *functional_) GetDelimiter1() string {
+	return v.delimiter1_
 }
 
-func (v *functionalDeclaration_) GetFunctional() FunctionalLike {
-	return v.functional_
+func (v *functional_) GetDelimiter2() string {
+	return v.delimiter2_
+}
+
+func (v *functional_) GetOptionalParameterList() ParameterListLike {
+	return v.optionalParameterList_
+}
+
+func (v *functional_) GetDelimiter3() string {
+	return v.delimiter3_
+}
+
+func (v *functional_) GetOptionalResult() ResultLike {
+	return v.optionalResult_
 }
 
 // PROTECTED INTERFACE
 
 // Instance Structure
 
-type functionalDeclaration_ struct {
+type functional_ struct {
 	// Declare the instance attributes.
-	declaration_ DeclarationLike
-	functional_  FunctionalLike
+	delimiter1_            string
+	delimiter2_            string
+	optionalParameterList_ ParameterListLike
+	delimiter3_            string
+	optionalResult_        ResultLike
 }
 
 // Class Structure
 
-type functionalDeclarationClass_ struct {
+type functionalClass_ struct {
 	// Declare the class constants.
 }
 
 // Class Reference
 
-func functionalDeclarationClass() *functionalDeclarationClass_ {
-	return functionalDeclarationClassReference_
+func functionalClass() *functionalClass_ {
+	return functionalClassReference_
 }
 
-var functionalDeclarationClassReference_ = &functionalDeclarationClass_{
+var functionalClassReference_ = &functionalClass_{
 	// Initialize the class constants.
 }

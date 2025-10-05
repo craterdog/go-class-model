@@ -52,14 +52,14 @@ $Constraint: name Abstraction
 
 $AdditionalConstraint: "," Constraint
 
-$Abstraction: Wrapper? prefix? name Arguments?
+$Abstraction: Wrapper? prefix? Type
 
 $Wrapper:
     Dots
     Star
     Array
-    Map
     Channel
+    Map
 
 $Dots: "..."
 
@@ -67,9 +67,17 @@ $Star: "*"
 
 $Array: "[" "]"
 
+$Channel: "chan"
+
 $Map: "map" "[" name "]"
 
-$Channel: "chan"
+$Type:
+	Functional
+    Named
+
+$Functional: "func" "(" ParameterList? ")" Result?
+
+$Named: name Arguments?
 
 $Arguments: "[" Argument AdditionalArgument* "]"
 
@@ -85,7 +93,7 @@ $AdditionalValue: name
 
 $FunctionalSection: "// FUNCTIONAL DECLARATIONS" FunctionalDeclaration*
 
-$FunctionalDeclaration: Declaration "func" "(" ParameterList? ")" Result
+$FunctionalDeclaration: Declaration Functional
 
 $ParameterList: Parameter+
 
@@ -96,7 +104,7 @@ $Result:
     Abstraction
     Multivalue
 
-$None: newline
+$None: newline  ! A hack to work-around a flaw in the Go language syntax.
 
 $Multivalue: "(" ParameterList ")"
 
