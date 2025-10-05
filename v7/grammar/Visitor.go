@@ -100,16 +100,6 @@ func (v *visitor_) visitAbstraction(
 		1,
 	)
 
-	var optionalPrefix = abstraction.GetOptionalPrefix()
-	if uti.IsDefined(optionalPrefix) {
-		v.processor_.ProcessPrefix(optionalPrefix)
-	}
-	// Visit slot 2 between terms.
-	v.processor_.ProcessAbstractionSlot(
-		abstraction,
-		2,
-	)
-
 	var type_ = abstraction.GetType()
 	v.processor_.PreprocessType(
 		type_,
@@ -1697,12 +1687,22 @@ func (v *visitor_) visitMultivalue(
 func (v *visitor_) visitNamed(
 	named ast.NamedLike,
 ) {
-	var name = named.GetName()
-	v.processor_.ProcessName(name)
+	var optionalPrefix = named.GetOptionalPrefix()
+	if uti.IsDefined(optionalPrefix) {
+		v.processor_.ProcessPrefix(optionalPrefix)
+	}
 	// Visit slot 1 between terms.
 	v.processor_.ProcessNamedSlot(
 		named,
 		1,
+	)
+
+	var name = named.GetName()
+	v.processor_.ProcessName(name)
+	// Visit slot 2 between terms.
+	v.processor_.ProcessNamedSlot(
+		named,
+		2,
 	)
 
 	var optionalArguments = named.GetOptionalArguments()
@@ -2083,18 +2083,6 @@ func (v *visitor_) visitType(
 ) {
 	// Visit the possible type rule types.
 	switch actual := type_.GetAny().(type) {
-	case ast.FunctionalLike:
-		v.processor_.PreprocessFunctional(
-			actual,
-			0,
-			0,
-		)
-		v.visitFunctional(actual)
-		v.processor_.PostprocessFunctional(
-			actual,
-			0,
-			0,
-		)
 	case ast.NamedLike:
 		v.processor_.PreprocessNamed(
 			actual,
@@ -2103,6 +2091,18 @@ func (v *visitor_) visitType(
 		)
 		v.visitNamed(actual)
 		v.processor_.PostprocessNamed(
+			actual,
+			0,
+			0,
+		)
+	case ast.FunctionalLike:
+		v.processor_.PreprocessFunctional(
+			actual,
+			0,
+			0,
+		)
+		v.visitFunctional(actual)
+		v.processor_.PostprocessFunctional(
 			actual,
 			0,
 			0,

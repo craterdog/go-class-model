@@ -36,6 +36,7 @@ func NamedClass() NamedClassLike {
 // Constructor Methods
 
 func (c *namedClass_) Named(
+	optionalPrefix string,
 	name string,
 	optionalArguments ArgumentsLike,
 ) NamedLike {
@@ -44,6 +45,7 @@ func (c *namedClass_) Named(
 	}
 	var instance = &named_{
 		// Initialize the instance attributes.
+		optionalPrefix_:    optionalPrefix,
 		name_:              name,
 		optionalArguments_: optionalArguments,
 	}
@@ -60,6 +62,10 @@ func (v *named_) GetClass() NamedClassLike {
 
 // Attribute Methods
 
+func (v *named_) GetOptionalPrefix() string {
+	return v.optionalPrefix_
+}
+
 func (v *named_) GetName() string {
 	return v.name_
 }
@@ -74,6 +80,7 @@ func (v *named_) GetOptionalArguments() ArgumentsLike {
 
 type named_ struct {
 	// Declare the instance attributes.
+	optionalPrefix_    string
 	name_              string
 	optionalArguments_ ArgumentsLike
 }

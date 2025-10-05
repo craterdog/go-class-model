@@ -52,7 +52,7 @@ $Constraint: name Abstraction
 
 $AdditionalConstraint: "," Constraint
 
-$Abstraction: Wrapper? prefix? Type
+$Abstraction: Wrapper? Type
 
 $Wrapper:
     Dots
@@ -72,12 +72,12 @@ $Channel: "chan"
 $Map: "map" "[" name "]"
 
 $Type:
-    Functional
     Named
+    Functional
+
+$Named: prefix? name Arguments?
 
 $Functional: "func" "(" ParameterList? ")" Result?
-
-$Named: name Arguments?
 
 $Arguments: "[" Argument AdditionalArgument* "]"
 

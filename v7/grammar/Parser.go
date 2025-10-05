@@ -93,17 +93,6 @@ func (v *parser_) parseAbstraction() (
 		tokens = nil
 	}
 
-	// Attempt to parse an optional prefix token.
-	var optionalPrefix string
-	optionalPrefix, token, ok = v.parseToken(PrefixToken)
-	if ok {
-		if uti.IsDefined(tokens) {
-			tokens.AppendValue(token)
-		}
-	} else {
-		optionalPrefix = "" // Reset this to undefined.
-	}
-
 	// Attempt to parse a single Type rule.
 	var type_ ast.TypeLike
 	type_, token, ok = v.parseType()
@@ -126,7 +115,6 @@ func (v *parser_) parseAbstraction() (
 	v.remove(tokens)
 	abstraction = ast.AbstractionClass().Abstraction(
 		optionalWrapper,
-		optionalPrefix,
 		type_,
 	)
 	return
@@ -2985,6 +2973,17 @@ func (v *parser_) parseNamed() (
 ) {
 	var tokens = fra.List[TokenLike]()
 
+	// Attempt to parse an optional prefix token.
+	var optionalPrefix string
+	optionalPrefix, token, ok = v.parseToken(PrefixToken)
+	if ok {
+		if uti.IsDefined(tokens) {
+			tokens.AppendValue(token)
+		}
+	} else {
+		optionalPrefix = "" // Reset this to undefined.
+	}
+
 	// Attempt to parse a single name token.
 	var name string
 	name, token, ok = v.parseToken(NameToken)
@@ -3015,6 +3014,7 @@ func (v *parser_) parseNamed() (
 	ok = true
 	v.remove(tokens)
 	named = ast.NamedClass().Named(
+		optionalPrefix,
 		name,
 		optionalArguments,
 	)
@@ -3692,21 +3692,21 @@ func (v *parser_) parseType() (
 	token TokenLike,
 	ok bool,
 ) {
-	// Attempt to parse a single Functional Type.
-	var functional ast.FunctionalLike
-	functional, token, ok = v.parseFunctional()
-	if ok {
-		// Found a single Functional Type.
-		type_ = ast.TypeClass().Type(functional)
-		return
-	}
-
 	// Attempt to parse a single Named Type.
 	var named ast.NamedLike
 	named, token, ok = v.parseNamed()
 	if ok {
 		// Found a single Named Type.
 		type_ = ast.TypeClass().Type(named)
+		return
+	}
+
+	// Attempt to parse a single Functional Type.
+	var functional ast.FunctionalLike
+	functional, token, ok = v.parseFunctional()
+	if ok {
+		// Found a single Functional Type.
+		type_ = ast.TypeClass().Type(functional)
 		return
 	}
 
@@ -4169,7 +4169,7 @@ var parserClassReference_ = &parserClass_{
 			"$Constraints":           `"[" Constraint AdditionalConstraint* "]"`,
 			"$Constraint":            `name Abstraction`,
 			"$AdditionalConstraint":  `"," Constraint`,
-			"$Abstraction":           `Wrapper? prefix? Type`,
+			"$Abstraction":           `Wrapper? Type`,
 			"$Wrapper": `
     Dots
     Star
@@ -4182,10 +4182,10 @@ var parserClassReference_ = &parserClass_{
 			"$Channel": `"chan"`,
 			"$Map":     `"map" "[" name "]"`,
 			"$Type": `
-    Functional
-    Named`,
+    Named
+    Functional`,
+			"$Named":                 `prefix? name Arguments?`,
 			"$Functional":            `"func" "(" ParameterList? ")" Result?`,
-			"$Named":                 `name Arguments?`,
 			"$Arguments":             `"[" Argument AdditionalArgument* "]"`,
 			"$Argument":              `Abstraction`,
 			"$AdditionalArgument":    `"," Argument`,

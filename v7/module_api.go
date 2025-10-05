@@ -221,12 +221,10 @@ func AbstractionClass() AbstractionClassLike {
 
 func Abstraction(
 	optionalWrapper ast.WrapperLike,
-	optionalPrefix string,
 	type_ ast.TypeLike,
 ) AbstractionLike {
 	return AbstractionClass().Abstraction(
 		optionalWrapper,
-		optionalPrefix,
 		type_,
 	)
 }
@@ -902,10 +900,12 @@ func NamedClass() NamedClassLike {
 }
 
 func Named(
+	optionalPrefix string,
 	name string,
 	optionalArguments ast.ArgumentsLike,
 ) NamedLike {
 	return NamedClass().Named(
+		optionalPrefix,
 		name,
 		optionalArguments,
 	)

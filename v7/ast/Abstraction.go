@@ -37,7 +37,6 @@ func AbstractionClass() AbstractionClassLike {
 
 func (c *abstractionClass_) Abstraction(
 	optionalWrapper WrapperLike,
-	optionalPrefix string,
 	type_ TypeLike,
 ) AbstractionLike {
 	if uti.IsUndefined(type_) {
@@ -46,7 +45,6 @@ func (c *abstractionClass_) Abstraction(
 	var instance = &abstraction_{
 		// Initialize the instance attributes.
 		optionalWrapper_: optionalWrapper,
-		optionalPrefix_:  optionalPrefix,
 		type_:            type_,
 	}
 	return instance
@@ -66,10 +64,6 @@ func (v *abstraction_) GetOptionalWrapper() WrapperLike {
 	return v.optionalWrapper_
 }
 
-func (v *abstraction_) GetOptionalPrefix() string {
-	return v.optionalPrefix_
-}
-
 func (v *abstraction_) GetType() TypeLike {
 	return v.type_
 }
@@ -81,7 +75,6 @@ func (v *abstraction_) GetType() TypeLike {
 type abstraction_ struct {
 	// Declare the instance attributes.
 	optionalWrapper_ WrapperLike
-	optionalPrefix_  string
 	type_            TypeLike
 }
 

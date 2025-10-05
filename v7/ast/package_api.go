@@ -56,7 +56,6 @@ type AbstractionClassLike interface {
 	// Constructor Methods
 	Abstraction(
 		optionalWrapper WrapperLike,
-		optionalPrefix string,
 		type_ TypeLike,
 	) AbstractionLike
 }
@@ -660,6 +659,7 @@ supported by each concrete named-like class.
 type NamedClassLike interface {
 	// Constructor Methods
 	Named(
+		optionalPrefix string,
 		name string,
 		optionalArguments ArgumentsLike,
 	) NamedLike
@@ -902,7 +902,6 @@ type AbstractionLike interface {
 
 	// Attribute Methods
 	GetOptionalWrapper() WrapperLike
-	GetOptionalPrefix() string
 	GetType() TypeLike
 }
 
@@ -1550,6 +1549,7 @@ type NamedLike interface {
 	GetClass() NamedClassLike
 
 	// Attribute Methods
+	GetOptionalPrefix() string
 	GetName() string
 	GetOptionalArguments() ArgumentsLike
 }
