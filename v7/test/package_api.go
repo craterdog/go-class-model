@@ -119,8 +119,8 @@ type AngleClassLike interface {
 	Angle(
 		radians float64,
 	) AngleLike
-	AngleFromString(
-		value string,
+	AngleFromSource(
+		source string,
 	) AngleLike
 
 	// Constant Methods
