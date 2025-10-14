@@ -3,7 +3,7 @@ module github.com/craterdog/go-class-model/v7
 go 1.25
 
 require (
-	github.com/craterdog/go-component-framework/v7 v7.26.0
+	github.com/craterdog/go-component-framework/v7 v7.28.0
 	github.com/craterdog/go-missing-utilities/v7 v7.18.0
 	github.com/stretchr/testify v1.11.1
 )
