@@ -5,7 +5,7 @@
 ### Overview
 This project was automatically generated based on the Crater Dog Syntax Notation™
 (CDSN) file located
-[here](https://github.com/craterdog/go-class-model/blob/main/v7/syntax.cdsn).
+[here](https://github.com/craterdog/go-class-model/blob/main/v8/syntax.cdsn).
 It provides a framework for parsing, validating and formatting Go class package
 API definition files (`<package>/package_api.go`) defined using Go Class Model
 Notation™ (GCMN).  And yes, this project was used by a
