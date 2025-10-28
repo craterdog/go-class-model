@@ -44,7 +44,7 @@ package grammar
 
 import (
 	ast "github.com/craterdog/go-class-model/v8/ast"
-	fra "github.com/craterdog/go-collection-framework/v8"
+	fra "github.com/craterdog/go-essential-composites/v8"
 )
 
 // TYPE DECLARATIONS

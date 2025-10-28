@@ -1,5 +1,5 @@
-github.com/craterdog/go-collection-framework/v8 v8.6.0 h1:BR1LptPdnvR7Z4pKEYREEmzcAgS1uAdTwcOFPPE6bLA=
-github.com/craterdog/go-collection-framework/v8 v8.6.0/go.mod h1:NoxLRBWBO4yi/Pg6V3sblUF5E+F/U9BFufkfGJEd3Yk=
+github.com/craterdog/go-essential-composites/v8 v8.0.0 h1:jpSlvLyAbI4D1NejdVj5vsdO51lT9uqPeNEYWWtxwmc=
+github.com/craterdog/go-essential-composites/v8 v8.0.0/go.mod h1:OJ4imuxsC1rljiCN2RM35aJWvMCNceWKGqyte7CPlHg=
 github.com/craterdog/go-missing-utilities/v8 v8.3.0 h1:jBlfDZyC1QnSXKAV61Y9RAsgqhSknUD1MtYV5xXQi+o=
 github.com/craterdog/go-missing-utilities/v8 v8.3.0/go.mod h1:UrJvQh367oQNTIQCgysf83X4GKMGZOCXeLJbOg5TC/c=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=

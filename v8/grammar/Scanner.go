@@ -23,7 +23,7 @@ package grammar
 
 import (
 	fmt "fmt"
-	fra "github.com/craterdog/go-collection-framework/v8"
+	fra "github.com/craterdog/go-essential-composites/v8"
 	uti "github.com/craterdog/go-missing-utilities/v8"
 	reg "regexp"
 	sts "strings"

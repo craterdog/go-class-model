@@ -33,7 +33,7 @@ package module
 import (
 	ast "github.com/craterdog/go-class-model/v8/ast"
 	gra "github.com/craterdog/go-class-model/v8/grammar"
-	fra "github.com/craterdog/go-collection-framework/v8"
+	fra "github.com/craterdog/go-essential-composites/v8"
 )
 
 // TYPE ALIASES
