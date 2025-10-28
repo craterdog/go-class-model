@@ -24,7 +24,7 @@ package grammar
 import (
 	fmt "fmt"
 	ast "github.com/craterdog/go-class-model/v8/ast"
-	fra "github.com/craterdog/go-essential-composites/v8"
+	com "github.com/craterdog/go-essential-composites/v8"
 	sts "strings"
 	utf "unicode/utf8"
 )
@@ -101,21 +101,21 @@ func (v *validator_) PreprocessAspectSection(
 	count_ uint,
 ) {
 	// We can "cheat" here because we know the code generator uses lists.
-	var aspectDeclarations = aspectSection.GetAspectDeclarations().(fra.ListLike[ast.AspectDeclarationLike])
+	var aspectDeclarations = aspectSection.GetAspectDeclarations().(com.ListLike[ast.AspectDeclarationLike])
 	aspectDeclarations.SortValuesWithRanker(
 		func(
 			first ast.AspectDeclarationLike,
 			second ast.AspectDeclarationLike,
-		) fra.Rank {
+		) com.Rank {
 			var firstName = first.GetDeclaration().GetName()
 			var secondName = second.GetDeclaration().GetName()
 			switch {
 			case firstName < secondName:
-				return fra.LesserRank
+				return com.LesserRank
 			case firstName > secondName:
-				return fra.GreaterRank
+				return com.GreaterRank
 			default:
-				return fra.EqualRank
+				return com.EqualRank
 			}
 		},
 	)
@@ -127,12 +127,12 @@ func (v *validator_) PreprocessClassSection(
 	count_ uint,
 ) {
 	// We can "cheat" here because we know the code generator uses lists.
-	var classDeclarations = classSection.GetClassDeclarations().(fra.ListLike[ast.ClassDeclarationLike])
+	var classDeclarations = classSection.GetClassDeclarations().(com.ListLike[ast.ClassDeclarationLike])
 	classDeclarations.SortValuesWithRanker(
 		func(
 			first ast.ClassDeclarationLike,
 			second ast.ClassDeclarationLike,
-		) fra.Rank {
+		) com.Rank {
 			var firstName = sts.TrimSuffix(
 				first.GetDeclaration().GetName(),
 				"ClassLike",
@@ -143,11 +143,11 @@ func (v *validator_) PreprocessClassSection(
 			)
 			switch {
 			case firstName < secondName:
-				return fra.LesserRank
+				return com.LesserRank
 			case firstName > secondName:
-				return fra.GreaterRank
+				return com.GreaterRank
 			default:
-				return fra.EqualRank
+				return com.EqualRank
 			}
 		},
 	)
@@ -159,12 +159,12 @@ func (v *validator_) PreprocessFunctionalSection(
 	count_ uint,
 ) {
 	// We can "cheat" here because we know the code generator uses lists.
-	var functionalDeclarations = functionalSection.GetFunctionalDeclarations().(fra.ListLike[ast.FunctionalDeclarationLike])
+	var functionalDeclarations = functionalSection.GetFunctionalDeclarations().(com.ListLike[ast.FunctionalDeclarationLike])
 	functionalDeclarations.SortValuesWithRanker(
 		func(
 			first ast.FunctionalDeclarationLike,
 			second ast.FunctionalDeclarationLike,
-		) fra.Rank {
+		) com.Rank {
 			var firstName = sts.TrimSuffix(
 				first.GetDeclaration().GetName(),
 				"Function",
@@ -175,11 +175,11 @@ func (v *validator_) PreprocessFunctionalSection(
 			)
 			switch {
 			case firstName < secondName:
-				return fra.LesserRank
+				return com.LesserRank
 			case firstName > secondName:
-				return fra.GreaterRank
+				return com.GreaterRank
 			default:
-				return fra.EqualRank
+				return com.EqualRank
 			}
 		},
 	)
@@ -223,12 +223,12 @@ func (v *validator_) PreprocessInstanceSection(
 	count_ uint,
 ) {
 	// We can "cheat" here because we know the code generator uses lists.
-	var instanceDeclarations = instanceSection.GetInstanceDeclarations().(fra.ListLike[ast.InstanceDeclarationLike])
+	var instanceDeclarations = instanceSection.GetInstanceDeclarations().(com.ListLike[ast.InstanceDeclarationLike])
 	instanceDeclarations.SortValuesWithRanker(
 		func(
 			first ast.InstanceDeclarationLike,
 			second ast.InstanceDeclarationLike,
-		) fra.Rank {
+		) com.Rank {
 			var firstName = sts.TrimSuffix(
 				first.GetDeclaration().GetName(),
 				"Like",
@@ -239,11 +239,11 @@ func (v *validator_) PreprocessInstanceSection(
 			)
 			switch {
 			case firstName < secondName:
-				return fra.LesserRank
+				return com.LesserRank
 			case firstName > secondName:
-				return fra.GreaterRank
+				return com.GreaterRank
 			default:
-				return fra.EqualRank
+				return com.EqualRank
 			}
 		},
 	)

@@ -23,7 +23,7 @@ package grammar
 
 import (
 	ast "github.com/craterdog/go-class-model/v8/ast"
-	uti "github.com/craterdog/go-missing-utilities/v8"
+	uti "github.com/craterdog/go-essential-utilities/v8"
 )
 
 // CLASS INTERFACE

@@ -22,8 +22,8 @@
 package ast
 
 import (
-	fra "github.com/craterdog/go-essential-composites/v8"
-	uti "github.com/craterdog/go-missing-utilities/v8"
+	com "github.com/craterdog/go-essential-composites/v8"
+	uti "github.com/craterdog/go-essential-utilities/v8"
 )
 
 // CLASS INTERFACE
@@ -40,7 +40,7 @@ func (c *enumerationClass_) Enumeration(
 	delimiter1 string,
 	delimiter2 string,
 	value ValueLike,
-	additionalValues fra.Sequential[AdditionalValueLike],
+	additionalValues com.Sequential[AdditionalValueLike],
 	delimiter3 string,
 ) EnumerationLike {
 	if uti.IsUndefined(delimiter1) {
@@ -91,7 +91,7 @@ func (v *enumeration_) GetValue() ValueLike {
 	return v.value_
 }
 
-func (v *enumeration_) GetAdditionalValues() fra.Sequential[AdditionalValueLike] {
+func (v *enumeration_) GetAdditionalValues() com.Sequential[AdditionalValueLike] {
 	return v.additionalValues_
 }
 
@@ -108,7 +108,7 @@ type enumeration_ struct {
 	delimiter1_       string
 	delimiter2_       string
 	value_            ValueLike
-	additionalValues_ fra.Sequential[AdditionalValueLike]
+	additionalValues_ com.Sequential[AdditionalValueLike]
 	delimiter3_       string
 }
 

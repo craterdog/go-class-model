@@ -22,8 +22,8 @@
 package ast
 
 import (
-	fra "github.com/craterdog/go-essential-composites/v8"
-	uti "github.com/craterdog/go-missing-utilities/v8"
+	com "github.com/craterdog/go-essential-composites/v8"
+	uti "github.com/craterdog/go-essential-utilities/v8"
 )
 
 // CLASS INTERFACE
@@ -39,7 +39,7 @@ func ConstraintsClass() ConstraintsClassLike {
 func (c *constraintsClass_) Constraints(
 	delimiter1 string,
 	constraint ConstraintLike,
-	additionalConstraints fra.Sequential[AdditionalConstraintLike],
+	additionalConstraints com.Sequential[AdditionalConstraintLike],
 	delimiter2 string,
 ) ConstraintsLike {
 	if uti.IsUndefined(delimiter1) {
@@ -82,7 +82,7 @@ func (v *constraints_) GetConstraint() ConstraintLike {
 	return v.constraint_
 }
 
-func (v *constraints_) GetAdditionalConstraints() fra.Sequential[AdditionalConstraintLike] {
+func (v *constraints_) GetAdditionalConstraints() com.Sequential[AdditionalConstraintLike] {
 	return v.additionalConstraints_
 }
 
@@ -98,7 +98,7 @@ type constraints_ struct {
 	// Declare the instance attributes.
 	delimiter1_            string
 	constraint_            ConstraintLike
-	additionalConstraints_ fra.Sequential[AdditionalConstraintLike]
+	additionalConstraints_ com.Sequential[AdditionalConstraintLike]
 	delimiter2_            string
 }
 

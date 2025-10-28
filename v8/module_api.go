@@ -33,7 +33,7 @@ package module
 import (
 	ast "github.com/craterdog/go-class-model/v8/ast"
 	gra "github.com/craterdog/go-class-model/v8/grammar"
-	fra "github.com/craterdog/go-essential-composites/v8"
+	com "github.com/craterdog/go-essential-composites/v8"
 )
 
 // TYPE ALIASES
@@ -288,7 +288,7 @@ func ArgumentsClass() ArgumentsClassLike {
 func Arguments(
 	delimiter1 string,
 	argument ast.ArgumentLike,
-	additionalArguments fra.Sequential[ast.AdditionalArgumentLike],
+	additionalArguments com.Sequential[ast.AdditionalArgumentLike],
 	delimiter2 string,
 ) ArgumentsLike {
 	return ArgumentsClass().Arguments(
@@ -321,7 +321,7 @@ func AspectDeclaration(
 	declaration ast.DeclarationLike,
 	delimiter1 string,
 	delimiter2 string,
-	aspectMethods fra.Sequential[ast.AspectMethodLike],
+	aspectMethods com.Sequential[ast.AspectMethodLike],
 	delimiter3 string,
 ) AspectDeclarationLike {
 	return AspectDeclarationClass().AspectDeclaration(
@@ -363,7 +363,7 @@ func AspectSectionClass() AspectSectionClassLike {
 
 func AspectSection(
 	delimiter string,
-	aspectDeclarations fra.Sequential[ast.AspectDeclarationLike],
+	aspectDeclarations com.Sequential[ast.AspectDeclarationLike],
 ) AspectSectionLike {
 	return AspectSectionClass().AspectSection(
 		delimiter,
@@ -377,7 +377,7 @@ func AspectSubsectionClass() AspectSubsectionClassLike {
 
 func AspectSubsection(
 	delimiter string,
-	aspectInterfaces fra.Sequential[ast.AspectInterfaceLike],
+	aspectInterfaces com.Sequential[ast.AspectInterfaceLike],
 ) AspectSubsectionLike {
 	return AspectSubsectionClass().AspectSubsection(
 		delimiter,
@@ -403,7 +403,7 @@ func AttributeSubsectionClass() AttributeSubsectionClassLike {
 
 func AttributeSubsection(
 	delimiter string,
-	attributeMethods fra.Sequential[ast.AttributeMethodLike],
+	attributeMethods com.Sequential[ast.AttributeMethodLike],
 ) AttributeSubsectionLike {
 	return AttributeSubsectionClass().AttributeSubsection(
 		delimiter,
@@ -465,7 +465,7 @@ func ClassSectionClass() ClassSectionClassLike {
 
 func ClassSection(
 	delimiter string,
-	classDeclarations fra.Sequential[ast.ClassDeclarationLike],
+	classDeclarations com.Sequential[ast.ClassDeclarationLike],
 ) ClassSectionLike {
 	return ClassSectionClass().ClassSection(
 		delimiter,
@@ -497,7 +497,7 @@ func ConstantSubsectionClass() ConstantSubsectionClassLike {
 
 func ConstantSubsection(
 	delimiter string,
-	constantMethods fra.Sequential[ast.ConstantMethodLike],
+	constantMethods com.Sequential[ast.ConstantMethodLike],
 ) ConstantSubsectionLike {
 	return ConstantSubsectionClass().ConstantSubsection(
 		delimiter,
@@ -526,7 +526,7 @@ func ConstraintsClass() ConstraintsClassLike {
 func Constraints(
 	delimiter1 string,
 	constraint ast.ConstraintLike,
-	additionalConstraints fra.Sequential[ast.AdditionalConstraintLike],
+	additionalConstraints com.Sequential[ast.AdditionalConstraintLike],
 	delimiter2 string,
 ) ConstraintsLike {
 	return ConstraintsClass().Constraints(
@@ -563,7 +563,7 @@ func ConstructorSubsectionClass() ConstructorSubsectionClassLike {
 
 func ConstructorSubsection(
 	delimiter string,
-	constructorMethods fra.Sequential[ast.ConstructorMethodLike],
+	constructorMethods com.Sequential[ast.ConstructorMethodLike],
 ) ConstructorSubsectionLike {
 	return ConstructorSubsectionClass().ConstructorSubsection(
 		delimiter,
@@ -609,7 +609,7 @@ func Enumeration(
 	delimiter1 string,
 	delimiter2 string,
 	value ast.ValueLike,
-	additionalValues fra.Sequential[ast.AdditionalValueLike],
+	additionalValues com.Sequential[ast.AdditionalValueLike],
 	delimiter3 string,
 ) EnumerationLike {
 	return EnumerationClass().Enumeration(
@@ -647,7 +647,7 @@ func FunctionSubsectionClass() FunctionSubsectionClassLike {
 
 func FunctionSubsection(
 	delimiter string,
-	functionMethods fra.Sequential[ast.FunctionMethodLike],
+	functionMethods com.Sequential[ast.FunctionMethodLike],
 ) FunctionSubsectionLike {
 	return FunctionSubsectionClass().FunctionSubsection(
 		delimiter,
@@ -695,7 +695,7 @@ func FunctionalSectionClass() FunctionalSectionClassLike {
 
 func FunctionalSection(
 	delimiter string,
-	functionalDeclarations fra.Sequential[ast.FunctionalDeclarationLike],
+	functionalDeclarations com.Sequential[ast.FunctionalDeclarationLike],
 ) FunctionalSectionLike {
 	return FunctionalSectionClass().FunctionalSection(
 		delimiter,
@@ -726,7 +726,7 @@ func ImportListClass() ImportListClassLike {
 }
 
 func ImportList(
-	importedPackages fra.Sequential[ast.ImportedPackageLike],
+	importedPackages com.Sequential[ast.ImportedPackageLike],
 ) ImportListLike {
 	return ImportListClass().ImportList(
 		importedPackages,
@@ -789,7 +789,7 @@ func InstanceSectionClass() InstanceSectionClassLike {
 
 func InstanceSection(
 	delimiter string,
-	instanceDeclarations fra.Sequential[ast.InstanceDeclarationLike],
+	instanceDeclarations com.Sequential[ast.InstanceDeclarationLike],
 ) InstanceSectionLike {
 	return InstanceSectionClass().InstanceSection(
 		delimiter,
@@ -994,7 +994,7 @@ func ParameterListClass() ParameterListClassLike {
 }
 
 func ParameterList(
-	parameters fra.Sequential[ast.ParameterLike],
+	parameters com.Sequential[ast.ParameterLike],
 ) ParameterListLike {
 	return ParameterListClass().ParameterList(
 		parameters,
@@ -1033,7 +1033,7 @@ func PrincipalSubsectionClass() PrincipalSubsectionClassLike {
 
 func PrincipalSubsection(
 	delimiter string,
-	principalMethods fra.Sequential[ast.PrincipalMethodLike],
+	principalMethods com.Sequential[ast.PrincipalMethodLike],
 ) PrincipalSubsectionLike {
 	return PrincipalSubsectionClass().PrincipalSubsection(
 		delimiter,
@@ -1117,7 +1117,7 @@ func TypeSectionClass() TypeSectionClassLike {
 
 func TypeSection(
 	delimiter string,
-	typeDeclarations fra.Sequential[ast.TypeDeclarationLike],
+	typeDeclarations com.Sequential[ast.TypeDeclarationLike],
 ) TypeSectionLike {
 	return TypeSectionClass().TypeSection(
 		delimiter,
@@ -1187,7 +1187,7 @@ func ScannerClass() ScannerClassLike {
 
 func Scanner(
 	source string,
-	tokens fra.QueueLike[gra.TokenLike],
+	tokens com.QueueLike[gra.TokenLike],
 ) ScannerLike {
 	return ScannerClass().Scanner(
 		source,

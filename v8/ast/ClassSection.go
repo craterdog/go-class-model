@@ -22,8 +22,8 @@
 package ast
 
 import (
-	fra "github.com/craterdog/go-essential-composites/v8"
-	uti "github.com/craterdog/go-missing-utilities/v8"
+	com "github.com/craterdog/go-essential-composites/v8"
+	uti "github.com/craterdog/go-essential-utilities/v8"
 )
 
 // CLASS INTERFACE
@@ -38,7 +38,7 @@ func ClassSectionClass() ClassSectionClassLike {
 
 func (c *classSectionClass_) ClassSection(
 	delimiter string,
-	classDeclarations fra.Sequential[ClassDeclarationLike],
+	classDeclarations com.Sequential[ClassDeclarationLike],
 ) ClassSectionLike {
 	if uti.IsUndefined(delimiter) {
 		panic("The \"delimiter\" attribute is required by this class.")
@@ -68,7 +68,7 @@ func (v *classSection_) GetDelimiter() string {
 	return v.delimiter_
 }
 
-func (v *classSection_) GetClassDeclarations() fra.Sequential[ClassDeclarationLike] {
+func (v *classSection_) GetClassDeclarations() com.Sequential[ClassDeclarationLike] {
 	return v.classDeclarations_
 }
 
@@ -79,7 +79,7 @@ func (v *classSection_) GetClassDeclarations() fra.Sequential[ClassDeclarationLi
 type classSection_ struct {
 	// Declare the instance attributes.
 	delimiter_         string
-	classDeclarations_ fra.Sequential[ClassDeclarationLike]
+	classDeclarations_ com.Sequential[ClassDeclarationLike]
 }
 
 // Class Structure

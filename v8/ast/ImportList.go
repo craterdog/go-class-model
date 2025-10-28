@@ -22,8 +22,8 @@
 package ast
 
 import (
-	fra "github.com/craterdog/go-essential-composites/v8"
-	uti "github.com/craterdog/go-missing-utilities/v8"
+	com "github.com/craterdog/go-essential-composites/v8"
+	uti "github.com/craterdog/go-essential-utilities/v8"
 )
 
 // CLASS INTERFACE
@@ -37,7 +37,7 @@ func ImportListClass() ImportListClassLike {
 // Constructor Methods
 
 func (c *importListClass_) ImportList(
-	importedPackages fra.Sequential[ImportedPackageLike],
+	importedPackages com.Sequential[ImportedPackageLike],
 ) ImportListLike {
 	if uti.IsUndefined(importedPackages) {
 		panic("The \"importedPackages\" attribute is required by this class.")
@@ -59,7 +59,7 @@ func (v *importList_) GetClass() ImportListClassLike {
 
 // Attribute Methods
 
-func (v *importList_) GetImportedPackages() fra.Sequential[ImportedPackageLike] {
+func (v *importList_) GetImportedPackages() com.Sequential[ImportedPackageLike] {
 	return v.importedPackages_
 }
 
@@ -69,7 +69,7 @@ func (v *importList_) GetImportedPackages() fra.Sequential[ImportedPackageLike] 
 
 type importList_ struct {
 	// Declare the instance attributes.
-	importedPackages_ fra.Sequential[ImportedPackageLike]
+	importedPackages_ com.Sequential[ImportedPackageLike]
 }
 
 // Class Structure

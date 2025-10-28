@@ -22,8 +22,8 @@
 package ast
 
 import (
-	fra "github.com/craterdog/go-essential-composites/v8"
-	uti "github.com/craterdog/go-missing-utilities/v8"
+	com "github.com/craterdog/go-essential-composites/v8"
+	uti "github.com/craterdog/go-essential-utilities/v8"
 )
 
 // CLASS INTERFACE
@@ -37,7 +37,7 @@ func ParameterListClass() ParameterListClassLike {
 // Constructor Methods
 
 func (c *parameterListClass_) ParameterList(
-	parameters fra.Sequential[ParameterLike],
+	parameters com.Sequential[ParameterLike],
 ) ParameterListLike {
 	if uti.IsUndefined(parameters) {
 		panic("The \"parameters\" attribute is required by this class.")
@@ -59,7 +59,7 @@ func (v *parameterList_) GetClass() ParameterListClassLike {
 
 // Attribute Methods
 
-func (v *parameterList_) GetParameters() fra.Sequential[ParameterLike] {
+func (v *parameterList_) GetParameters() com.Sequential[ParameterLike] {
 	return v.parameters_
 }
 
@@ -69,7 +69,7 @@ func (v *parameterList_) GetParameters() fra.Sequential[ParameterLike] {
 
 type parameterList_ struct {
 	// Declare the instance attributes.
-	parameters_ fra.Sequential[ParameterLike]
+	parameters_ com.Sequential[ParameterLike]
 }
 
 // Class Structure

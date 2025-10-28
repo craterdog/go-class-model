@@ -22,8 +22,8 @@
 package ast
 
 import (
-	fra "github.com/craterdog/go-essential-composites/v8"
-	uti "github.com/craterdog/go-missing-utilities/v8"
+	com "github.com/craterdog/go-essential-composites/v8"
+	uti "github.com/craterdog/go-essential-utilities/v8"
 )
 
 // CLASS INTERFACE
@@ -40,7 +40,7 @@ func (c *aspectDeclarationClass_) AspectDeclaration(
 	declaration DeclarationLike,
 	delimiter1 string,
 	delimiter2 string,
-	aspectMethods fra.Sequential[AspectMethodLike],
+	aspectMethods com.Sequential[AspectMethodLike],
 	delimiter3 string,
 ) AspectDeclarationLike {
 	if uti.IsUndefined(declaration) {
@@ -91,7 +91,7 @@ func (v *aspectDeclaration_) GetDelimiter2() string {
 	return v.delimiter2_
 }
 
-func (v *aspectDeclaration_) GetAspectMethods() fra.Sequential[AspectMethodLike] {
+func (v *aspectDeclaration_) GetAspectMethods() com.Sequential[AspectMethodLike] {
 	return v.aspectMethods_
 }
 
@@ -108,7 +108,7 @@ type aspectDeclaration_ struct {
 	declaration_   DeclarationLike
 	delimiter1_    string
 	delimiter2_    string
-	aspectMethods_ fra.Sequential[AspectMethodLike]
+	aspectMethods_ com.Sequential[AspectMethodLike]
 	delimiter3_    string
 }
 

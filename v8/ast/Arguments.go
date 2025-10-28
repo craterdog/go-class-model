@@ -22,8 +22,8 @@
 package ast
 
 import (
-	fra "github.com/craterdog/go-essential-composites/v8"
-	uti "github.com/craterdog/go-missing-utilities/v8"
+	com "github.com/craterdog/go-essential-composites/v8"
+	uti "github.com/craterdog/go-essential-utilities/v8"
 )
 
 // CLASS INTERFACE
@@ -39,7 +39,7 @@ func ArgumentsClass() ArgumentsClassLike {
 func (c *argumentsClass_) Arguments(
 	delimiter1 string,
 	argument ArgumentLike,
-	additionalArguments fra.Sequential[AdditionalArgumentLike],
+	additionalArguments com.Sequential[AdditionalArgumentLike],
 	delimiter2 string,
 ) ArgumentsLike {
 	if uti.IsUndefined(delimiter1) {
@@ -82,7 +82,7 @@ func (v *arguments_) GetArgument() ArgumentLike {
 	return v.argument_
 }
 
-func (v *arguments_) GetAdditionalArguments() fra.Sequential[AdditionalArgumentLike] {
+func (v *arguments_) GetAdditionalArguments() com.Sequential[AdditionalArgumentLike] {
 	return v.additionalArguments_
 }
 
@@ -98,7 +98,7 @@ type arguments_ struct {
 	// Declare the instance attributes.
 	delimiter1_          string
 	argument_            ArgumentLike
-	additionalArguments_ fra.Sequential[AdditionalArgumentLike]
+	additionalArguments_ com.Sequential[AdditionalArgumentLike]
 	delimiter2_          string
 }
 

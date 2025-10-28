@@ -23,8 +23,8 @@ package grammar
 
 import (
 	fmt "fmt"
-	fra "github.com/craterdog/go-essential-composites/v8"
-	uti "github.com/craterdog/go-missing-utilities/v8"
+	com "github.com/craterdog/go-essential-composites/v8"
+	uti "github.com/craterdog/go-essential-utilities/v8"
 	reg "regexp"
 	sts "strings"
 	uni "unicode"
@@ -42,7 +42,7 @@ func ScannerClass() ScannerClassLike {
 
 func (c *scannerClass_) Scanner(
 	source string,
-	tokens fra.QueueLike[TokenLike],
+	tokens com.QueueLike[TokenLike],
 ) ScannerLike {
 	if uti.IsUndefined(source) {
 		panic("The \"source\" attribute is required by this class.")
@@ -226,15 +226,15 @@ type scanner_ struct {
 	line_     uint // The line number in the source string of the next rune.
 	position_ uint // The position in the current line of the next rune.
 	runes_    []rune
-	tokens_   fra.QueueLike[TokenLike]
+	tokens_   com.QueueLike[TokenLike]
 }
 
 // Class Structure
 
 type scannerClass_ struct {
 	// Declare the class constants.
-	tokens_   fra.CatalogLike[TokenType, string]
-	matchers_ fra.CatalogLike[TokenType, *reg.Regexp]
+	tokens_   com.CatalogLike[TokenType, string]
+	matchers_ com.CatalogLike[TokenType, *reg.Regexp]
 }
 
 // Class Reference
@@ -245,7 +245,7 @@ func scannerClass() *scannerClass_ {
 
 var scannerClassReference_ = &scannerClass_{
 	// Initialize the class constants.
-	tokens_: fra.CatalogFromMap[TokenType, string](
+	tokens_: com.CatalogFromMap[TokenType, string](
 		map[TokenType]string{
 			// Define token identifiers for each type of expression.
 			ErrorToken:     "error",
@@ -258,7 +258,7 @@ var scannerClassReference_ = &scannerClass_{
 			SpaceToken:     "space",
 		},
 	),
-	matchers_: fra.CatalogFromMap[TokenType, *reg.Regexp](
+	matchers_: com.CatalogFromMap[TokenType, *reg.Regexp](
 		map[TokenType]*reg.Regexp{
 			// Define pattern matchers for each type of expression.
 			CommentToken:   reg.MustCompile("^" + comment_),

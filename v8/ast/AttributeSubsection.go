@@ -22,8 +22,8 @@
 package ast
 
 import (
-	fra "github.com/craterdog/go-essential-composites/v8"
-	uti "github.com/craterdog/go-missing-utilities/v8"
+	com "github.com/craterdog/go-essential-composites/v8"
+	uti "github.com/craterdog/go-essential-utilities/v8"
 )
 
 // CLASS INTERFACE
@@ -38,7 +38,7 @@ func AttributeSubsectionClass() AttributeSubsectionClassLike {
 
 func (c *attributeSubsectionClass_) AttributeSubsection(
 	delimiter string,
-	attributeMethods fra.Sequential[AttributeMethodLike],
+	attributeMethods com.Sequential[AttributeMethodLike],
 ) AttributeSubsectionLike {
 	if uti.IsUndefined(delimiter) {
 		panic("The \"delimiter\" attribute is required by this class.")
@@ -68,7 +68,7 @@ func (v *attributeSubsection_) GetDelimiter() string {
 	return v.delimiter_
 }
 
-func (v *attributeSubsection_) GetAttributeMethods() fra.Sequential[AttributeMethodLike] {
+func (v *attributeSubsection_) GetAttributeMethods() com.Sequential[AttributeMethodLike] {
 	return v.attributeMethods_
 }
 
@@ -79,7 +79,7 @@ func (v *attributeSubsection_) GetAttributeMethods() fra.Sequential[AttributeMet
 type attributeSubsection_ struct {
 	// Declare the instance attributes.
 	delimiter_        string
-	attributeMethods_ fra.Sequential[AttributeMethodLike]
+	attributeMethods_ com.Sequential[AttributeMethodLike]
 }
 
 // Class Structure
