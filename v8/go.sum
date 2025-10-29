@@ -1,7 +1,7 @@
-github.com/craterdog/go-essential-composites/v8 v8.1.0 h1:Smq94MIMQ3GNFJIKPpDedbigJrsFtj2eG3gQj32a5/Y=
-github.com/craterdog/go-essential-composites/v8 v8.1.0/go.mod h1:23+e02Oy44xtfK5nGM0b/7GgvURy6IJv9ry3Jt5uLMo=
-github.com/craterdog/go-essential-utilities/v8 v8.1.0 h1:8aIcTIg1DMZGOHUSxFDqgMfrRDlgvXXL/gRc+Im4b8s=
-github.com/craterdog/go-essential-utilities/v8 v8.1.0/go.mod h1:XP2oMvRbh91FtPEBXV0iDfrq18U1NonPi/+z5s7hzV4=
+github.com/craterdog/go-essential-composites/v8 v8.2.0 h1:rPimXi8ymnxFZ8lP/jO/P+90MirtxlQ+B6H+ubhH0o0=
+github.com/craterdog/go-essential-composites/v8 v8.2.0/go.mod h1:hTD4Lcu1o67/8XYjdRwCC6PmQeLMepUtMWH2LlYhooA=
+github.com/craterdog/go-essential-utilities/v8 v8.2.0 h1:C9kZJznZ/JrD5WM4DrEQN2aqvXFEBVgFs7gyx3i9ms4=
+github.com/craterdog/go-essential-utilities/v8 v8.2.0/go.mod h1:XP2oMvRbh91FtPEBXV0iDfrq18U1NonPi/+z5s7hzV4=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
